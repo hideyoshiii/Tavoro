@@ -37,6 +37,9 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'devise'
 
+gem 'rakuten_web_service'
+gem 'themoviedb-api'
+
 
 
 

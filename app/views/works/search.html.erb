@@ -1,0 +1,38 @@
+<%= form_tag({action: 'search'}, {method: 'get'}) do %>
+<%= label_tag :title,'書籍名検索' %>
+<%= text_field_tag 'title', params[:title] %>
+<%= submit_tag "検索" %>
+<% end %>
+<%= form_tag({action: 'search'}, {method: 'get'}) do %>
+<%= label_tag :author,'著者名検索' %>
+<%= text_field_tag 'author', params[:author] %>
+<%= submit_tag "検索" %>
+<% end %>
+
+<div style="padding:10px;">
+<% @movies.each do |movie| %>
+	<%= movie.title %>
+<% end %>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>商品名</th>
+<th>著者名</th>
+<th>画像</th>
+</tr>
+</thead>
+<tbody>
+<% if @items.present? %>
+<% @items.each do |item| %>
+<tr>
+<td><%= link_to item.title, "#{item["itemUrl"]}" %></td>
+<td><%= item.author %></td>
+<td><%= image_tag item["smallImageUrl"] %></td> 
+</tr>
+<% end %>
+<% end %>
+</tbody>
+</table>
+

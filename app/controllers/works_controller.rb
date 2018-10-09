@@ -5,4 +5,13 @@ class WorksController < ApplicationController
   end
   def index
   end
+
+  def search
+  	@movies = Tmdb::Search.keyword('Iron man')
+	if params[:title] #書籍名で検索
+	@items = RakutenWebService::Books::Book.search(title: params[:title])
+	elsif params[:author] #著者名で検索
+	@items = RakutenWebService::Books::Book.search(author: params[:author])
+	end
+  end
 end
