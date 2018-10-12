@@ -42,6 +42,8 @@ gem 'rakuten_web_service'
 gem 'themoviedb-api'
 gem 'rspotify'
 gem 'itunes-search-api', github: 'rlivsey/itunes-search-api'
+gem 'paperclip'
+gem 'aws-sdk'
 
 
 group :production do 
