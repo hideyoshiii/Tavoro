@@ -1,0 +1,52 @@
+<table>
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th>住所</th>
+      <th>電話番号</th>
+      <th>電話番号</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<% if @items.present? %>
+      <%= @items %>
+	    <% @items.each do |item| %>
+	      <tr>
+	         <td><%= item["trackCensoredName"] %></td>
+			　　　<td><%= item["artistName"] %></td>
+			　　　<td><%= image_tag item["artworkUrl100"] %></td>
+           <td>
+            <a id="play-pause-button" class="fas fa-play"></a>
+           </td>
+	      </tr>
+        <script>
+          var audio = new Audio("<%= item["previewUrl"] %>");
+
+          $('#play-pause-button').on("click",function(){
+            if($(this).hasClass('fa-play'))
+             {
+               $(this).removeClass('fa-play');
+               $(this).addClass('fa-pause');
+               audio.play();
+             }
+            else
+             {
+               $(this).removeClass('fa-pause');
+               $(this).addClass('fa-play');
+               audio.pause();
+             }
+          });
+
+          audio.onended = function() {
+             $("#play-pause-button").removeClass('fa-pause');
+             $("#play-pause-button").addClass('fa-play');
+          };
+        </script>
+	    <% end %>
+    <% else %>
+    <% end %>
+  </tbody>
+</table>
+
+

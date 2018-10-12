@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th>住所</th>
+      <th>電話番号</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<% if @items.present? %>
+	    <% @items.each do |item| %>
+	      <tr>
+	        <td><%= item["title"] %></td>
+				  <td><%= item["author"] %></td>
+				  <td><%= image_tag item["largeImageUrl"], :style =>'width:100px;height:100px;'  %></td> 
+	      </tr>
+	    <% end %>
+    <% end %>
+  </tbody>
+</table>

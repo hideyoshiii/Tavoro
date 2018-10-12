@@ -36,12 +36,12 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'devise'
+gem "figaro"
 
 gem 'rakuten_web_service'
 gem 'themoviedb-api'
 gem 'rspotify'
-
-
+gem 'itunes-search-api', github: 'rlivsey/itunes-search-api'
 
 
 group :production do 
