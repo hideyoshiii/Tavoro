@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Tavore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -33,7 +35,8 @@
             <% end %>
             <% if user_signed_in? %>
               <div style="float:right;padding:18px 10px 0px 0px;font-size:10px;">
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>  
+                <%= link_to 'プロフィール変更', edit_user_registration_path %>
               </div>
             <% else %>
               <div style="float:right;padding:18px 10px 0px 0px;font-size:10px;">
