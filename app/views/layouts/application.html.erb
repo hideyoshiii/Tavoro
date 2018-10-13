@@ -32,11 +32,11 @@
               </div>
             <% end %>
             <% if user_signed_in? %>
-              <div style="float:right;padding:10px 10px 0px 0px;">
+              <div style="float:right;padding:18px 10px 0px 0px;font-size:10px;">
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
               </div>
             <% else %>
-              <div style="float:right;padding:10px 10px 0px 0px;">
+              <div style="float:right;padding:18px 10px 0px 0px;font-size:10px;">
                 <%= link_to 'ログイン', new_user_session_path %>
               </div>
             <% end %>
