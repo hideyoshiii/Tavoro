@@ -1,0 +1,62 @@
+<%= form_tag(works_save_path, method: :get) do %>
+<%= hidden_field_tag :category, @category %>
+<%= hidden_field_tag :title, @title %>
+<%= hidden_field_tag :work_id, @work_id %>
+
+
+<br>
+<%= @item %>
+<br>
+<%= @posters %>
+<br>
+
+
+<%= radio_button_tag(:review, "favorite", true, {:id => "favorite"}) %>
+<label for="favorite">
+	おすすめ
+</label>
+
+<%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
+<label for="good">
+	観ました
+</label>
+
+<%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
+<label for="bad">
+	おすすめしない
+</label>
+
+<br>
+<textarea name="description" placeholder="What did you feel?" wrap="hard"></textarea>
+
+<div class="horizontal_scroll">
+	<% if @posters.present? %>
+		<% @posters.each.with_index(1) do |poster, i| %>
+			<% if i == 1 %>
+				<div class="scroll_item">
+					<div class="radio01">
+						<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/w500/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
+						<label for="image_url<%= i %>">
+							<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+						</label>
+					</div>
+				</div>
+			<% else %>
+				<div class="scroll_item">
+					<div class="radio01">
+						<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/w500/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
+						<label for="image_url<%= i %>">
+							<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+						</label>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+	<% end %>
+</div>
+
+<%= button_tag :type => "submit", :class =>"btn btn-default" do %>
+   投稿  
+<% end %>
+
+<% end %>

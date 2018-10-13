@@ -3,7 +3,9 @@ class WorksController < ApplicationController
 
   def home
   end
+
   def index
+  	@posts = Post.where(user_id: current_user.id).order('id DESC')
   end
 
   def search
@@ -41,12 +43,40 @@ class WorksController < ApplicationController
   def movie
   end
 
+  def movie_detail
+  	if params[:type] == "movie"
+  		@item = Tmdb::Movie.detail(params[:id].to_i)
+  		@title = @item["title"]
+  		@work_id = @item["id"]
+  		@category = params[:type]
+	  	@poster_ja = Tmdb::Movie.posters(@item["id"], language: 'ja')
+	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
+	    @poster_en = Tmdb::Movie.posters(@item["id"], language: 'en')
+	    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
+	    @posters = @poster_ja + @poster_en
+	end
+	if params[:type] == "tv"
+  		@item = Tmdb::TV.detail(params[:id].to_i)
+  		@title = @item["name"]
+  		@work_id = @item["id"]
+  		@category = params[:type]
+	  	@poster_ja = Tmdb::TV.posters(@item["id"], language: 'ja')
+	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
+	    @poster_en = Tmdb::TV.posters(@item["id"], language: 'en')
+	    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
+	    @posters = @poster_ja + @poster_en
+	end
+  end
+
   def ajax_movie_list
-    @items = Tmdb::Search.movie(params[:q])
+    @items = Tmdb::Search.multi(params[:q])
 	@items = @items[:results]
   end
 
   def book
+  end
+
+  def book_detail
   end
 
   def ajax_book_list
@@ -56,8 +86,24 @@ class WorksController < ApplicationController
   def music
   end
 
+  def music_detail
+  end
+
   def ajax_music_list
   	@items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music", :limit  => '5')
   end
-  
+
+  def save
+  	if params[:category] == "movie" || params[:category] == "tv"
+  		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id])
+  	end
+  	if @post.save
+      #保存に成功した場合
+      redirect_to "/works/index", notice: "保存しました" 
+    else
+      #保存に失敗した場合
+      redirect_to "/works/index", notice: "保存に失敗しました" 
+    end     
+  end
+
 end

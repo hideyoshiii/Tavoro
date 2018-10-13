@@ -4,16 +4,41 @@
       <th>ユーザー名</th>
       <th>住所</th>
       <th>電話番号</th>
+      <th>ボタン</th>
     </tr>
   </thead>
 
   <tbody>
   	<% if @items.present? %>
+      <%= @items %>
 	    <% @items.each do |item| %>
 	      <tr>
-	        <td><%= item["title"] %></td>
-			    <td><%= item["release_date"] %></td>
-			　　　<td><%= image_tag "https://image.tmdb.org/t/p/w500/#{item.poster_path}", :style =>'width:100px;height:100px;' %></td>
+	        <td>
+            <% if item["media_type"] == "movie" %>
+              <%= item["title"] %>
+            <% end %> 
+            <% if item["media_type"] == "tv" %>
+              <%= item["name"] %>
+            <% end %>             
+            </td>
+			    <td>
+            <% if item["media_type"] == "movie" %>
+              <%= item["release_date"].slice(0..3) %>
+            <% end %> 
+            <% if item["media_type"] == "tv" %>
+              <%= item["first_air_date"].slice(0..3) %>
+            <% end %>  
+          </td>
+			　　 <td>
+            <%= image_tag "https://image.tmdb.org/t/p/w500/#{item.poster_path}", :style =>'width:100px;height:100px;' %>  
+          </td>
+          <td>
+            <%= form_tag(works_movie_detail_path, method: :get) do %>
+              <%= hidden_field_tag :type, item["media_type"] %>
+              <%= hidden_field_tag :id, item["id"] %>
+              <%= submit_tag "ここにする", :class => "btn btn-default" %>
+            <% end %>
+          </td>
 	      </tr>
 	    <% end %>
     <% end %>

@@ -12,17 +12,36 @@
 
   <body>
   	<header>
-        <nav>
+        <div class="bar_top">
+          <div class="bar_top_in01">
+            <div style="float:left;padding:10px 5px 0px 10px;">
+              <%= image_tag "tavore_logo_01.png", :class =>'img_logo' %>
+            </div>
+            <div style="float:left;padding:11px 0px 0px 0px;color:rgba(39,134,160,0.8);font-size:22px;">
+              TAVORE
+            </div>
+          </div>
+          <div class="bar_top_in02">
             <% if user_signed_in? %>
-            <%= image_tag "user04.png", :class =>'img_user01' %>
-            <%= link_to current_user.name, works_index_path %>
-            <%= link_to 'プロフィール変更', edit_user_registration_path %>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-        <% else %>
-            <%= link_to 'サインアップ', new_user_registration_path %>
-            <%= link_to 'ログイン', new_user_session_path %>
+              <div style="float:right;padding:10px 10px 0px 0px;">
+                <% if current_user.image %>
+                  <%= image_tag current_user.image, :class => "img_user03" %>
+                <% else %>
+                  <%= image_tag "user04.png", :class =>'img_user03' %>
+                <% end %>
+              </div>
             <% end %>
-        </nav>
+            <% if user_signed_in? %>
+              <div style="float:right;padding:10px 10px 0px 0px;">
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+              </div>
+            <% else %>
+              <div style="float:right;padding:10px 10px 0px 0px;">
+                <%= link_to 'ログイン', new_user_session_path %>
+              </div>
+            <% end %>
+          </div>
+        </div>
     </header>
   	<p class="notice"><%= notice %></p>
   	<p class="alert"><%= alert %></p>

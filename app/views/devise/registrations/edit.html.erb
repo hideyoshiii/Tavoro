@@ -1,11 +1,36 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Edit</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="form01">
+     <label for="image">
+        <div class="preview00">
+          <div class="preview01">
+            <% if current_user.image %>
+              <%= image_tag current_user.image, :class => "img_user02" %>
+            <% else %>
+              <%= image_tag "user04.png", :class =>'img_user02' %>
+            <% end %>
+            <span><i class="fas fa-plus-circle"></i></span>
+          </div>
+        </div>
+        <div class="preview02">
+        </div>
+     </label>
+     <%= f.file_field :image, id:"image" %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "off" %>
+  </div>
+  <br>
+
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "off" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -26,18 +51,45 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<script type="text/javascript">
+  $(function(){
+  //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
+  $('form').on('change', 'input[type="file"]', function(e) {
+    var file = e.target.files[0],
+        reader = new FileReader(),
+        $preview00 = $(".preview00");
+        $preview02 = $(".preview02");
+        t = this;
 
-<%= link_to "Back", :back %>
+    // 画像ファイル以外の場合は何もしない
+    if(file.type.indexOf("image") < 0){
+      return false;
+    }
+
+    // ファイル読み込みが完了した際のイベント登録
+    reader.onload = (function(file) {
+      return function(e) {
+        //既存のプレビューを削除
+        $preview00.empty();
+        //既存のプレビューを削除
+        $preview02.empty();
+        // .prevewの領域の中にロードした画像を表示するimageタグを追加
+        $preview02.append($('<img>').attr({
+                  src: e.target.result,
+                  class: "img_user02",
+                  title: file.name
+              }));
+      };
+    })(file);
+
+    reader.readAsDataURL(file);
+  });
+});
+
+</script>

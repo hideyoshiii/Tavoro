@@ -1,5 +1,278 @@
 @import "bootstrap";
 
+html,body {
+  font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+body{
+  margin-top:-62px;
+}
+
+
+//固定バー関連
+.bar_top {
+    position: fixed;
+    top: 0;
+    left:0;
+    background:black;
+    width:100%;
+    height:50px;
+    padding:0;
+    margin:0 auto;
+    z-index:99;
+    border-bottom: 2px solid rgba(39,134,160,1);
+    font-size:0;
+}
+.bar_top_in01{
+	display:inline-block;
+	width:50%;
+	height:50px;
+	font-size:0;
+}
+.bar_top_in02{
+	display:inline-block;
+	width:50%;
+	height:50px;
+	font-size:0;
+}
+
+//ブロック要素関連
+.main {
+	height:100vh;
+	color:#FAFAFA;
+	background: #111111;
+	background: -webkit-linear-gradient(-90deg, #111111, #05627B); 
+	background: linear-gradient(-90eg, #111111, #05627B); 
+ }
+.block_main{
+		float: left;
+		vertical-align:top;
+		width:35%;
+		height:100vh;
+		padding:0;
+		margin:0;
+		overflow-y:scroll;
+		background:none;
+		border-left: solid 1px #000;
+		border-right: solid 1px #000;
+	}
+.block_side{
+		float: left;
+		vertical-align:top;
+		width:32.5%;
+		height:100vh;
+		overflow-y:scroll;
+		background:none;
+		text-aline:center;
+		font-size:0px;
+	}
+@media only screen and (max-width: 768px) {
+	.block_main{
+		width:100%;
+		height:100vh;
+		padding:0;
+		margin:0;
+		border:none;
+	}
+	.block_side{
+		width:0%;
+		overflow-y:scroll;
+		font-size:0px;
+	}
+}
+
+//画像関連
+.img_logo{
+	width: 30px;
+	height: 30px;
+	border-radius:50%;
+	border: solid 1px rgba(39,134,160,0.8);
+}
+.img_user03{
+	width: 30px;
+	height: 30px;
+	border-radius:50%;
+	border: solid 1px rgba(39,134,160,0.8);
+}
+.img_user04{
+	width: 50px;
+	height: 50px;
+	margin:30px 20px;
+	border-radius:50%;
+	background:rgba(0,0,0,0.1);
+}
+.img_profile01{
+	width: 50px;
+	height: 50px;
+	margin:30px 20px;
+	border-radius:50%;
+	border: solid 1px #777777;
+}
+.img_profile02{
+	width: 50px;
+	height: 50px;
+	margin:0;
+	padding:0;
+	border-radius:50%;
+	border: solid 1px #777777;
+}
+.img_lavoro{
+	width:100%;
+	height:100%;
+    padding:0;
+    margin:0 auto;
+    text-aligin:center;
+}
+.img_lavoro02{
+	width:100%;
+	height:100%;
+    padding:0;
+    margin:0 auto;
+    filter: blur(30px);
+}
+.img_lavoro03{
+	width:100%;
+	height:100%;
+    padding:0;
+    margin:0;
+}
+@media only screen and (max-width: 768px) {
+	.img_user04{
+		width: 40px;
+		height: 40px;
+	}
+	.img_profile01{
+		width: 40px;
+		height: 40px;
+	}
+	.img_profile02{
+		width: 40px;
+		height: 40px;
+	}
+}
+
+//フォント関連
+.font_white{
+	font-size:14px;
+	color:#FAFAFA;
+}
+.font_white_max{
+	font-size:16px;
+	color:#FAFAFA;
+}
+.font_white_big{
+	font-size:22px;
+	color:#FAFAFA;
+}
+.font_gray{
+	font-size:14px;
+	color:#777777;
+}
+.font_gray_max{
+	font-size:16px;
+	color:#777777;
+}
+.font_gray_big{
+	font-size:22px;
+	color:#777777;
+}
+.font_blue_max{
+	font-size:16px;
+	color:rgba(39,134,160,1);
+}
+.font_how{
+	font-size:18px;
+	color:#FAFAFA;
+}
+.font_head{
+	font-size:24px;
+	text-shadow: 4px 4px 4px rgba(17,17,17,1);
+}
+.font_category_min{
+	line-height:1.0;
+	padding-bottom:5px;
+	color:#888888;
+	font-size:10px;
+	text-align:left;
+}
+.font_title_min{
+	line-height:1.0;
+	color:white;
+	font-size:12px;
+	text-align:left;
+}
+.font_logo{
+	font-size:50px;
+	color:rgba(39,134,160,0.8);
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+.font_logo_sub01{
+	font-size:16px;
+	color:#999999;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+@media only screen and (max-width: 768px) {
+	.font_white{
+		font-size:13px;
+	}
+	.font_white_max{
+		font-size:14px;
+	}
+	.font_white_big{
+		font-size:18px;
+	}
+	.font_gray{
+		font-size:13px;
+	}
+	.font_gray_max{
+		font-size:15px;
+	}
+	.font_blue_max{
+		font-size:15px;
+	}
+	.font_how{
+		font-size:16px;
+	}
+	.font_head{
+		font-size:20px;
+	}
+	.font_category_min{
+		line-height:1.0;
+		padding-bottom:2px;
+		color:#888888;
+		font-size:10px;
+		text-align:left;
+	}
+	.font_title_min{
+		line-height:1.0;
+		color:white;
+		font-size:12px;
+		text-align:left;
+	}
+	.font_logo{
+		font-size:40px;
+	}
+	.font_logo_sub01{
+		font-size:14px;
+	}
+}
+
+//ドロップダウン関係
+.dropdown-menu{
+	background:rgba(5,98,123,0.85);
+	border:none;
+}
+.dropdown-menu>li>a{
+	color:#FAFAFA;
+}
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover{
+	color:#777777;
+	background:none;
+}
+
+
+
+
 #play-pause-button{
   font-size: 50px;
   cursor: pointer;
@@ -11,3 +284,457 @@
 	border-radius:50%;
 	border: solid 0.5px #999999;
 }
+.img_user02{
+	width: 100%;
+	height: 100%;
+	border-radius:50%;
+	border: solid 0.5px #999999;
+}
+
+
+.form01 > input
+{
+   display: none;
+}
+.form01 > label{
+  cursor:pointer;
+  width:auto;
+  height:auto;
+}
+
+.preview00{
+	display:inline-block;
+	width:auto;
+  	height:auto;
+}
+.preview01{
+	position:relative;
+	display:inline-block;
+	width:50px;
+  	height:auto;
+}	
+.preview01:before {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius:50%;
+	background: rgba(0, 0, 0, 0.4);
+}
+.preview01 span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width:100%;
+  margin:0 auto;
+  padding:0;
+  color:rgba(250, 250, 250, 0.9);
+  font-size:20px;
+  text-align:center;
+  }
+.preview02{
+	position:relative;
+	display:inline-block;
+	width:50px;
+  	height:auto;
+}
+
+
+
+
+
+
+
+
+.horizontal_scroll{
+    background-color: none;
+    width:100%;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0px;
+    padding: 0px;
+    -webkit-overflow-scrolling: touch;
+    font-size:0;
+    white-space: nowrap;
+}
+.horizontal_scroll::-webkit-scrollbar {
+  display: none;
+}
+.scroll_item {
+    display: inline-block;
+    width: auto;
+    background-color: none;
+    border-radius:0px;
+    margin-right:50px;
+    font-size:50px;
+}
+.scroll_item:first-child {
+    margin-left: 25%;
+}
+.scroll_item:last-child {
+    margin-right: 25%;
+}
+
+
+.radio01 input{
+    display: none;
+}
+.radio01 label {
+    position: relative;
+    padding:0;
+    margin:0;
+    width:auto;
+    height:auto;
+}
+.radio01 input[type="radio"]:checked + label {
+}
+.radio01 label:before {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+}
+.radio01 input[type="radio"]:checked + label:before {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0);
+}
+
+.img_tavore01{
+	width:200px;
+	height:auto;
+    padding:0;
+    margin:0 auto;
+}
+
+
+
+
+
+//配置関連
+.base01 {
+  	position: relative;
+	height:85vh;
+	width:100%;
+	padding:0;
+	margin: 0 auto;
+    overflow:hidden;
+  }
+.base01 span .layer01 {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width:65%;
+  height:auto;
+  padding:0;
+  margin:0;
+  z-index:2;
+  font-size:0;
+  }
+.base01 span .layer02 {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  -ms-transform: translate(-10%,-50%);
+  -webkit-transform: translate(-10%,-50%);
+  transform: translate(-10%,-50%);
+  max-width:80%;
+  width:auto;
+  height:auto;
+  padding:0;
+  margin:0 auto;
+  z-index:4;
+  font-size:0;
+  }
+.base01 span .layer03 {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  -ms-transform: translate(0%,0%);
+  -webkit-transform: translate(0%,0%);
+  transform: translate(0%,0%);
+  width:100%;
+  height:auto;
+  padding:0;
+  margin:0;
+  color:white;
+  z-index:4;
+  text-align:left;
+  background:none;
+  font-size:0;
+  }
+.base01 span .layer04 {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  -ms-transform: translate(0%,0%);
+  -webkit-transform: translate(0%,0%);
+  transform: translate(0%,0%);
+  width:100%;
+  height:auto;
+  padding:0;
+  margin:0;
+  color:white;
+  z-index:4;
+  text-align:left;
+  background:none;
+  font-size:0;
+  }
+.base01 span .layer05 {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  -ms-transform: translate(0%,0%);
+  -webkit-transform: translate(0%,0%);
+  transform: translate(0%,0%);
+  width:100%;
+  height:100%;
+  padding:0;
+  margin:0;
+  z-index:3;
+  text-align:right;
+  background:rgba(0,0,0,0.3);
+  font-size:0;
+  }
+.base01 span .layer06 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width:100%;
+  height:auto;
+  padding:0;
+  margin:0;
+  color:white;
+  z-index:4;
+  text-align:center;
+  background:none;
+  font-size:0;
+  }
+
+
+
+//吹き出しコメント
+.balloon{
+  position: relative;
+  background-color: rgba(39,134,160,0.95);
+  padding: 7px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  float:left;
+}
+.balloon::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: 8px;
+  top: -8.5px;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgba(39,134,160,0.95);
+  border-left: 10px solid transparent;
+}
+.balloon p{
+  padding:0;
+  margin:0 auto;
+  line-height:1.2;
+}
+@media only screen and (max-width: 768px) {
+	.balloon{
+	  margin-top:15px;
+	  font-size:14px;
+	}
+}
+
+
+
+//要素の横並び関連
+.pro01{
+		display:inline-block;
+		vertical-align:middle;
+		width:15%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-align:left;
+		font-size:0px;
+	}
+.pro02{
+		display:inline-block;
+		vertical-align:middle;
+		width:75%;
+		height:auto;
+		padding:0px 10px;
+		margin:0 auto;
+		background:none;
+		text-align:left;
+		font-size:0px;
+	}
+.pro03{
+		display:inline-block;
+		vertical-align:middle;
+		width:10%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-align:left;
+		font-size:0px;
+	}
+.pro04{
+		display:inline-block;
+		vertical-align:middle;
+		width:85%;
+		height:auto;
+		padding:20px;
+		margin:0 auto;
+		background:none;
+		text-align:left;
+		color:#FAFAFA;
+		font-size:18px;
+	}
+.pro05{
+		display:inline-block;
+		vertical-align:middle;
+		width:15%;
+		height:auto;
+		padding:20px;
+		margin:0 auto;
+		background:none;
+		text-align:right;
+		color:#FAFAFA;
+		font-size:18px;
+	}
+.pro06{
+		display:inline-block;
+		vertical-align:top;
+		width:15%;
+		height:auto;
+		padding:0px 20px 0px 10px;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+	}
+.pro07{
+		display:inline-block;
+		vertical-align:top;
+		width:80%;
+		height:auto;
+		padding:0px 20px;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+	}
+.pro08{
+		display:inline-block;
+		vertical-align:top;
+		width:5%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-aline:center;
+		font-size:0px;
+	}
+.pro09{
+		display:inline-block;
+		vertical-align:middle;
+		width:18%;
+		height:auto;
+		padding:0px 0px 0px 0px;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+	}
+.pro10{
+		display:inline-block;
+		vertical-align:middle;
+		width:77%;
+		height:auto;
+		padding:0px 20px;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+	}
+.pro11{
+		display:inline-block;
+		vertical-align:middle;
+		width:5%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-aline:center;
+		font-size:0px;
+	}
+.pro12{
+		display:inline-block;
+		vertical-align:middle;
+		width:100%;
+		height:auto;
+		padding:0 10px 0 0;
+		margin:0 auto;
+		background:none;
+		text-aline:right;
+		font-size:0px;
+	}
+.pro13{
+		display:inline-block;
+		vertical-align:middle;
+		width:15%;
+		height:auto;
+		padding:0 0px 0 10px;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+	}
+.pro14{
+		display:inline-block;
+		vertical-align:middle;
+		width:70%;
+		height:auto;
+		padding:0 0px 0 10px;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+	}
+.pro15{
+		display:inline-block;
+		vertical-align:middle;
+		width:15%;
+		height:auto;
+		padding:0 10px 0 0;
+		margin:0 auto;
+		background:none;
+		text-aline:right;
+		font-size:0px;
+	}
+
