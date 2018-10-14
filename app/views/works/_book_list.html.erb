@@ -1,21 +1,85 @@
-<table>
-  <thead>
-    <tr>
-      <th>ユーザー名</th>
-      <th>住所</th>
-      <th>電話番号</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  	<% if @items.present? %>
-	    <% @items.each do |item| %>
-	      <tr>
-	        <td><%= item["title"] %></td>
-				  <td><%= item["author"] %></td>
-				  <td><%= image_tag item["largeImageUrl"], :style =>'width:100px;height:100px;'  %></td> 
-	      </tr>
-	    <% end %>
+<% if @defaults.present? %>
+  <% @defaults.each do |item| %>
+    <%= form_tag(works_book_detail_path, method: :get) do %>
+      <% if item["size"] == "コミック" %>
+        <%= hidden_field_tag :type, "comic" %>
+      <% else %>
+        <%= hidden_field_tag :type, "book" %>
+      <% end %>
+      <%= hidden_field_tag :id, item["isbn"] %>
+      <button type="submit">
+        <div class="box_tests02">
+          <div class="pro09">
+            <div style="width:80%;">
+            <% if item["largeImageUrl"].blank? %>
+              <%= image_tag "nothing02.jpg", :class =>'img_lavoro03' %>
+            <% else %>
+              <% @image_url = item["largeImageUrl"] %>
+              <% @image_url = @image_url.sub!(/_ex.*/m, "") %>
+              <% @image_url = @image_url.chop! %>
+              <%= image_tag @image_url, :class =>'img_lavoro03' %>
+            <% end %>
+            </div>
+          </div>
+          <div class="pro10">
+            <span class="font_white_big">
+              <%= item["title"] %>
+            </span>
+            <br>
+            <span class="font_gray_max">
+              <%= item["author"] %>
+            </span>
+          </div>
+          <div class="pro11">
+            <span class="font_gray_max">
+              <i class="fas fa-chevron-right"></i>
+            </span>
+          </div>
+        </div>
+      </button>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+<% end %>
+
+
+
+<% if @items.present? %>
+  <% @items.each do |item| %>
+    <%= form_tag(works_book_detail_path, method: :get) do %>
+      <% if item["size"] == "コミック" %>
+        <%= hidden_field_tag :type, "comic" %>
+      <% else %>
+        <%= hidden_field_tag :type, "book" %>
+      <% end %>
+      <%= hidden_field_tag :id, item["isbn"] %>
+      <button type="submit">
+        <div class="box_tests02">
+          <div class="pro09">
+            <% if item["largeImageUrl"].blank? %>
+              <%= image_tag "nothing02.jpg", :class =>'img_lavoro03' %>
+            <% else %>
+              <% @image_url = item["largeImageUrl"] %>
+              <% @image_url = @image_url.sub!(/_ex.*/m, "") %>
+              <% @image_url = @image_url.chop! %>
+              <%= image_tag @image_url, :class =>'img_lavoro03' %>
+            <% end %>
+          </div>
+          <div class="pro10">
+            <span class="font_white_big">
+              <%= item["title"] %> 
+            </span>
+            <br>
+            <span class="font_gray_max">
+              <%= item["author"] %>
+            </span>
+          </div>
+          <div class="pro11">
+            <span class="font_gray_max">
+              <i class="fas fa-chevron-right"></i>
+            </span>
+          </div>
+        </div>
+      </button>
+    <% end %>
+  <% end %>
+<% end %>

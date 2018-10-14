@@ -81,13 +81,28 @@ class WorksController < ApplicationController
   end
 
   def book
+  	@defaults = RakutenWebService::Books::Book.search(size: 2,sort: "reviewCount")
   end
 
   def book_detail
+  	@items = RakutenWebService::Books::Book.search(isbn: params[:id].to_i)
+  	if @items.present?
+		@item = @items.first
+	end
+  	@title = @item["title"]
+  	@work_id = @item["isbn"]
+  	@category = params[:type]
+  	@poster = @item["largeImageUrl"]
+    @poster = @poster.sub!(/_ex.*/m, "")
+    @poster = @poster.chop!
   end
 
   def ajax_book_list
-  	@items = RakutenWebService::Books::Book.search(title: params[:q])
+  	if params[:q].blank?
+  		@defaults = RakutenWebService::Books::Book.search(size: 2,sort: "reviewCount")
+  	else
+  		@items = RakutenWebService::Books::Book.search(title: params[:q])
+  	end
   end
 
   def music
@@ -102,6 +117,9 @@ class WorksController < ApplicationController
 
   def save
   	if params[:category] == "movie" || params[:category] == "tv"
+  		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id])
+  	end
+  	if params[:category] == "book" || params[:category] == "comic"
   		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id])
   	end
   	if @post.save

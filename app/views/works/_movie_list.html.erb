@@ -1,8 +1,8 @@
 <% if params[:q].blank? %>
   <% @defaults.each do |item| %>
     <%= form_tag(works_movie_detail_path, method: :get) do %>
-    <%= hidden_field_tag :type, "movie" %>
-    <%= hidden_field_tag :id, item["id"] %>
+      <%= hidden_field_tag :type, "movie" %>
+      <%= hidden_field_tag :id, item["id"] %>
       <button type="submit">
         <div class="box_tests02">
           <div class="pro09">

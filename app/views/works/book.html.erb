@@ -1,11 +1,32 @@
-<div style="height:50px;"></div>
-<p>検索名<p>
-<input id="inc_search" type="text">
+<div class="main">
+	<div class="block_side">
+	</div>
+	<div class="block_main">
+		
+		<div style="height:50px;"></div>
+		<div class="test_radio03">
+			<span>
+				<div class="tango01">	
+					<div style="height:3vh;"></div>
+					<div class="nmn" style="text-align:center;width:100%;padding:10px;">
+						<input id="inc_search" placeholder="&#xf002; 検索する" type="text" required="">
+					</div>
+					<div class="box_tests03">
+						<div class="pro12">
+							<span class="font_gray">提供：RakutenBooks</span>
+						</div>
+					</div>
+					<div id='book_list'>
+					  <%= render partial: 'book_list' %>
+					</div>
+				</div>
+			</span>
+		</div>
 
-<div id='book_list'>
-  <%= render partial: 'book_list' %>
+	</div>
+	<div class="block_side">
+	</div>
 </div>
-
 
 <script type="text/javascript">
 	var

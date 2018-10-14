@@ -179,6 +179,12 @@ body{
     margin:0 auto;
     filter: blur(30px);
 }
+.img_lavoro05{
+	width:50%;
+	height:auto;
+    padding:0;
+    margin:0 auto;
+}
 @media only screen and (max-width: 768px) {
 	.img_user04{
 		width: 40px;
@@ -654,7 +660,7 @@ button {
   margin:0;
   z-index:3;
   text-align:right;
-  background:rgba(0,0,0,0.75);
+  background:rgba(0,0,0,0.85);
   font-size:0;
   }
 .base01 span .layer06 {
@@ -868,6 +874,7 @@ button {
 		display:inline-block;
 		vertical-align:middle;
 		width:77%;
+		min-width:300px;
 		height:auto;
 		padding:0px 20px;
 		margin:0 auto;
@@ -875,6 +882,11 @@ button {
 		text-aline:left;
 		font-size:0px;
 	}
+@media only screen and (max-width: 768px) {
+	.pro10{
+	  min-width:250px;
+	}
+}
 .pro11{
 		display:inline-block;
 		vertical-align:middle;
@@ -935,7 +947,7 @@ button {
 //ボタン配置関係
 .btns_plus{
   position:fixed;
-  top: 88%;
+  top: 90%;
   left: 50%;
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);

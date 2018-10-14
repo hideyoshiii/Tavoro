@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181013031345) do
+ActiveRecord::Schema.define(version: 20181014113757) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.integer "work_id"
+    t.decimal "work_id", precision: 50, scale: 10
     t.string "category"
     t.string "review"
     t.text "description"
