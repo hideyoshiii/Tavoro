@@ -1,52 +1,68 @@
-<table>
-  <thead>
-    <tr>
-      <th>ユーザー名</th>
-      <th>住所</th>
-      <th>電話番号</th>
-      <th>電話番号</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  	<% if @items.present? %>
-      <%= @items %>
-	    <% @items.each do |item| %>
-	      <tr>
-	         <td><%= item["trackCensoredName"] %></td>
-			　　　<td><%= item["artistName"] %></td>
-			　　　<td><%= image_tag item["artworkUrl100"] %></td>
-           <td>
-            <a id="play-pause-button" class="fas fa-play"></a>
-           </td>
-	      </tr>
-        <script>
-          var audio = new Audio("<%= item["previewUrl"] %>");
-
-          $('#play-pause-button').on("click",function(){
-            if($(this).hasClass('fa-play'))
-             {
-               $(this).removeClass('fa-play');
-               $(this).addClass('fa-pause');
-               audio.play();
-             }
-            else
-             {
-               $(this).removeClass('fa-pause');
-               $(this).addClass('fa-play');
-               audio.pause();
-             }
-          });
-
-          audio.onended = function() {
-             $("#play-pause-button").removeClass('fa-pause');
-             $("#play-pause-button").addClass('fa-play');
-          };
-        </script>
-	    <% end %>
-    <% else %>
+<% if params[:q].blank? %>
+  <% @defaults.each.with_index(1) do |item, i| %>
+    <%= form_tag(works_music_detail_path, method: :get) do %>
+    <%= hidden_field_tag :type, "music" %>
+    <%= hidden_field_tag :id, item["trackId"] %>
+      <button type="submit">
+        <div class="box_tests02">
+          <div class="pro09">
+            <% if item["artworkUrl100"].blank? %>
+              <%= image_tag "nothing03.jpg", :class =>'img_lavoro03' %>
+            <% else %>
+              <%= image_tag item["artworkUrl100"], :class =>'img_lavoro03' %>
+            <% end %>
+          </div>
+          <div class="pro10">
+            <span class="font_white_big">
+              <%= item["trackCensoredName"] %>  
+            </span>
+            <br>
+            <span class="font_gray_max">
+              <%= item["artistName"] %>
+            </span>
+          </div>
+          <div class="pro11">
+            <span class="font_gray_max">
+              <i class="fas fa-chevron-right"></i>
+            </span>
+          </div>
+        </div>
+      </button>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+<% end %>
 
+<% if @items.present? %>
+  <% @items.each.with_index(1) do |item, i| %>
+    <%= form_tag(works_music_detail_path, method: :get) do %>
+    <%= hidden_field_tag :type, "music" %>
+    <%= hidden_field_tag :id, item["trackId"] %>
+      <button type="submit">
+        <div class="box_tests02">
+          <div class="pro09">
+            <% if item["artworkUrl100"].blank? %>
+              <%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+            <% else %>
+              <%= image_tag item["artworkUrl100"], :class =>'img_lavoro03' %>
+            <% end %>
+          </div>
+          <div class="pro10">
+            <span class="font_white_big">
+              <%= item["trackCensoredName"] %>  
+            </span>
+            <br>
+            <span class="font_gray_max">
+              <%= item["artistName"] %>
+            </span>
+          </div>
+          <div class="pro11">
+            <span class="font_gray_max">
+              <i class="fas fa-chevron-right"></i>
+            </span>
+          </div>
+        </div>
+      </button>
+    <% end %>
+  <% end %>
+<% end %>
 

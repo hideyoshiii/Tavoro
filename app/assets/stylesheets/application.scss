@@ -185,6 +185,12 @@ body{
     padding:0;
     margin:0 auto;
 }
+.img_lavoro002{
+	width:150%;
+	height:auto;
+    padding:0;
+    margin:0 0 0 -25%;
+}
 @media only screen and (max-width: 768px) {
 	.img_user04{
 		width: 40px;
@@ -197,6 +203,12 @@ body{
 	.img_profile02{
 		width: 40px;
 		height: 40px;
+	}
+	.img_lavoro002{
+		width:140%;
+		height:auto;
+	    padding:0;
+	    margin:0 0 0 -20%;
 	}
 }
 
@@ -359,9 +371,13 @@ textarea:focus {
   border: 1px solid rgba(39,134,160,0.95);
 }
 button {
-  padding: 0;
+  width:100%;
+  margin:0;
+  padding:0;
   border: none;
   background: transparent;
+  font-size:0px;
+
 }
 .nmn02 textarea::-webkit-input-placeholder {
   color: #777777;
@@ -660,7 +676,7 @@ button {
   margin:0;
   z-index:3;
   text-align:right;
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.8);
   font-size:0;
   }
 .base01 span .layer06 {
@@ -698,6 +714,33 @@ button {
   margin:0;
   z-index:2;
   font-size:0;
+  }
+.pile00 {
+  	position: relative;
+  	width:50%;
+    height:auto;
+    margin:0 auto;
+    text-align:center
+  }
+.pile00 p {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin:10px;
+  }
+
+.pile02 {
+  	position: relative;
+  	width:30%;
+    height:auto;
+    margin:0 auto;
+    text-align:center
+  }
+.pile02 p {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin:5px;
   }
 
 
@@ -874,7 +917,6 @@ button {
 		display:inline-block;
 		vertical-align:middle;
 		width:77%;
-		min-width:300px;
 		height:auto;
 		padding:0px 20px;
 		margin:0 auto;
@@ -882,11 +924,6 @@ button {
 		text-aline:left;
 		font-size:0px;
 	}
-@media only screen and (max-width: 768px) {
-	.pro10{
-	  min-width:250px;
-	}
-}
 .pro11{
 		display:inline-block;
 		vertical-align:middle;
@@ -990,6 +1027,25 @@ button {
   font-size: 20px;
   transition: 0.2s;
 }
+#btn_preview {
+    display: block;
+    width: 28px;
+    height: 28px;
+    background: rgba(39,134,160,0.8);
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#btn_preview i {
+  color: #FAFAFA;
+  line-height: 28px;
+  vertical-align: middle;
+  font-size: 10px;
+  margin-left:3px;
+}
+
+
 
 //モーダル関連
 //モーダル関係

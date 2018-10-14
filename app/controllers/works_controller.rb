@@ -106,13 +106,28 @@ class WorksController < ApplicationController
   end
 
   def music
+  	@defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music", :limit  => '20', :attribute => "mixTerm")
   end
 
   def music_detail
+  	@items = ITunesSearchAPI.lookup(:id => params[:id].to_i, :country => "jp")
+  	if @items.present?
+		@item = @items.first
+	end
+	@title = @item["trackCensoredName"]
+  	@work_id = @item["trackId"]
+  	@category = params[:type]
+  	@poster = @item["artworkUrl100"]
+  	@poster = @poster.sub(/100x100bb/, '1000x1000bb')
+  	@preview_url = @item["previewUrl"]
   end
 
   def ajax_music_list
-  	@items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music", :limit  => '5')
+  	if params[:q].blank?
+  		@defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music", :limit  => '20', :attribute => "mixTerm")
+  	else
+  		@items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music", :limit  => '20')
+  	end
   end
 
   def save
@@ -121,6 +136,9 @@ class WorksController < ApplicationController
   	end
   	if params[:category] == "book" || params[:category] == "comic"
   		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id])
+  	end
+  	if params[:category] == "music"
+  		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id], preview_url: params[:preview_url])
   	end
   	if @post.save
       #保存に成功した場合
