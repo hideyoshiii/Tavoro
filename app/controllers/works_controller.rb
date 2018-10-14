@@ -41,6 +41,8 @@ class WorksController < ApplicationController
   end
 
   def movie
+  	@defaults = Tmdb::Movie.popular
+  	@defaults = @defaults[:results]
   end
 
   def movie_detail
@@ -69,8 +71,13 @@ class WorksController < ApplicationController
   end
 
   def ajax_movie_list
-    @items = Tmdb::Search.multi(params[:q])
-	@items = @items[:results]
+  	if params[:q].blank?
+	  	@defaults = Tmdb::Movie.latest
+	  	@defaults = @defaults[:results]
+  	else
+	    @items = Tmdb::Search.multi(params[:q])
+		@items = @items[:results]
+	end
   end
 
   def book

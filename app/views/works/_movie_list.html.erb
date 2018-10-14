@@ -1,46 +1,77 @@
-<table>
-  <thead>
-    <tr>
-      <th>ユーザー名</th>
-      <th>住所</th>
-      <th>電話番号</th>
-      <th>ボタン</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  	<% if @items.present? %>
-      <%= @items %>
-	    <% @items.each do |item| %>
-	      <tr>
-	        <td>
-            <% if item["media_type"] == "movie" %>
-              <%= item["title"] %>
-            <% end %> 
-            <% if item["media_type"] == "tv" %>
-              <%= item["name"] %>
-            <% end %>             
-            </td>
-			    <td>
-            <% if item["media_type"] == "movie" %>
-              <%= item["release_date"].slice(0..3) %>
-            <% end %> 
-            <% if item["media_type"] == "tv" %>
-              <%= item["first_air_date"].slice(0..3) %>
-            <% end %>  
-          </td>
-			　　 <td>
-            <%= image_tag "https://image.tmdb.org/t/p/w500/#{item.poster_path}", :style =>'width:100px;height:100px;' %>  
-          </td>
-          <td>
-            <%= form_tag(works_movie_detail_path, method: :get) do %>
-              <%= hidden_field_tag :type, item["media_type"] %>
-              <%= hidden_field_tag :id, item["id"] %>
-              <%= submit_tag "ここにする", :class => "btn btn-default" %>
+<% if params[:q].blank? %>
+  <% @defaults.each do |item| %>
+    <%= form_tag(works_movie_detail_path, method: :get) do %>
+    <%= hidden_field_tag :type, "movie" %>
+    <%= hidden_field_tag :id, item["id"] %>
+      <button type="submit">
+        <div class="box_tests02">
+          <div class="pro09">
+            <% if item["poster_path"].blank? %>
+              <%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+            <% else %>
+              <%= image_tag "https://image.tmdb.org/t/p/w500/#{item.poster_path}", :class =>'img_lavoro03' %>
             <% end %>
-          </td>
-	      </tr>
-	    <% end %>
+          </div>
+          <div class="pro10">
+            <span class="font_white_big">   
+              <%= item["title"] %>  
+            </span>
+            <br>
+            <span class="font_gray_max">
+              <%= item["release_date"].slice(0..3) %>            
+            </span>
+          </div>
+          <div class="pro11">
+            <span class="font_gray_max">
+              <i class="fas fa-chevron-right"></i>
+            </span>
+          </div>
+        </div>
+      </button>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+<% end %>
+
+<% if @items.present? %>
+  <% @items.each do |item| %>
+    <%= form_tag(works_movie_detail_path, method: :get) do %>
+    <%= hidden_field_tag :type, item["media_type"] %>
+    <%= hidden_field_tag :id, item["id"] %>
+      <button type="submit">
+        <div class="box_tests02">
+          <div class="pro09">
+            <% if item["poster_path"].blank? %>
+              <%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+            <% else %>
+              <%= image_tag "https://image.tmdb.org/t/p/w500/#{item.poster_path}", :class =>'img_lavoro03' %>
+            <% end %>
+          </div>
+          <div class="pro10">
+            <span class="font_white_big">
+              <% if item["media_type"] == "movie" %>
+                <%= item["title"] %>
+              <% end %> 
+              <% if item["media_type"] == "tv" %>
+                <%= item["name"] %>
+              <% end %>   
+            </span>
+            <br>
+            <span class="font_gray_max">
+              <% if item["media_type"] == "movie" %>
+                <%= item["release_date"].slice(0..3) %>
+              <% end %> 
+              <% if item["media_type"] == "tv" %>
+                <%= item["first_air_date"].slice(0..3) %>
+              <% end %>  
+            </span>
+          </div>
+          <div class="pro11">
+            <span class="font_gray_max">
+              <i class="fas fa-chevron-right"></i>
+            </span>
+          </div>
+        </div>
+      </button>
+    <% end %>
+  <% end %>
+<% end %>

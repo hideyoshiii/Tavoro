@@ -2,8 +2,8 @@
 	<div class="block_side">
 	</div>
 	<div class="block_main">
+		
 		<div style="height:50px;"></div>
-
 		<% if @posts.present? %>
 			<% @posts.each.with_index(1) do |post, i| %>
 				<div class="base01">
@@ -89,4 +89,66 @@
 	</div>
 	<div class="block_side">
 	</div>
+</div>
+
+
+<%#投稿ボタン%>
+<div class="btns_plus">
+	<a href="" data-toggle="modal" data-target="#myModal_post" id="btn_plus">
+		<i class="fas fa-plus"></i>
+	</a>
+</div>	
+<div class="modal fade" id="myModal_post">
+	<div style="height:50px;"></div>
+    <div class="modal-dialog">
+    	<div class="base01">
+			<%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
+			<span>
+				<div class="layer05">
+				</div>
+				<div class="layer06">
+			  		<div class="">	
+				  		<div style="font-size:24px;color:#FAFAFA;margin:0px 0px 20px;">
+					      	投稿を作成
+				        </div>
+				  		<div style="display:inline-block;vertical-align:top;margin:20px 20px 0px;">
+				  			<div>
+						      	<%= link_to(works_movie_path, id: 'btn_option') do %>
+						        	<i class="fas fa-film"></i>
+						        <% end %>
+					        </div>
+					        <div style="font-size:14px;color:#777777;margin-top:2px;">
+					        	映画
+					        </div>
+				        </div>
+				        <div style="display:inline-block;vertical-align:top;margin:0px 20px 0px;">
+				        	<div>
+				        		<%= link_to(works_book_path, id: 'btn_option') do %>
+						        	<i class="fas fa-book"></i>
+						        <% end %>
+						    </div>
+					        <div style="font-size:14px;color:#777777;margin-top:2px;">
+					        	ブック
+					        </div>
+				        </div>
+				        <div style="display:inline-block;vertical-align:top;margin:20px 20px 0px;">
+				        	<div>
+						      	<%= link_to(works_music_path, id: 'btn_option') do %>
+						        	<i class="fas fa-music"></i>
+						        <% end %>
+					        </div>
+					        <div style="font-size:14px;color:#777777;margin-top:2px;">
+					        	ミュージック
+					        </div>
+				        </div> 
+			        </div>   
+				</div>
+			</span>
+		</div>
+    </div>
+    <div class="btns_plus">
+		<a href="" data-toggle="modal" data-dismiss="modal" id="btn_plus">
+			<i class="fas fa-times"></i>
+		</a>
+	</div>	
 </div>
