@@ -20,4 +20,6 @@
 
 
 //ドロップダウンがスマホでも開くように
-.on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() })
+$(document).ready(function(){
+    $('.dropdown-toggle').dropdown();
+});
