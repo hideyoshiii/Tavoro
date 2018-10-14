@@ -363,15 +363,14 @@ button {
 }
 .nmn02 textarea {
   width:100%;
-  height:40px;
+  height:44px;
   padding:3px 5px 3px 5px;
-  font-size:20px;
+  font-size:24px;
   outline: none;
   border:none;
   border-radius: 0px;
-  border-bottom: 1px solid #777777;
-  -webkit-transition: all .3s;
-  transition: all .3s;
+  -webkit-transition: all .2s;
+  transition: all .2s;
   color:white;
   background:none;
   resize: none;
@@ -386,11 +385,11 @@ button {
     display: none;
 }
 .nmn03 label {
-    padding: 0.5em 1em;
+    padding: 0.4em 1em;
     color: #777777;
     border: solid 1px #777777;
     border-radius: 5px;
-    font-size:15px;
+    font-size:16px;
     background:none;
     margin:0px 5px;
 }
@@ -398,6 +397,21 @@ button {
     color: white;
     border: solid 1px white;
     border-radius: 5px;
+}
+@media only screen and (max-width: 768px) {
+	.nmn02 textarea {
+	  height:40px;
+	  font-size:20px;
+	}
+	.nmn03 label {
+	    padding: 0.4em 1em;
+	    color: #777777;
+	    border: solid 1px #777777;
+	    border-radius: 5px;
+	    font-size:13px;
+	    background:none;
+	    margin:0px 5px;
+	}
 }
 
 
@@ -682,6 +696,7 @@ button {
 
 
 
+
 //吹き出しコメント
 .balloon{
   position: relative;
@@ -920,7 +935,7 @@ button {
 //ボタン配置関係
 .btns_plus{
   position:fixed;
-  top: 85%;
+  top: 88%;
   left: 50%;
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
@@ -934,7 +949,7 @@ button {
     display: block;
     width: 60px;
     height: 60px;
-    background: rgba(39,134,160,0.8);
+    background: rgba(39,134,160,0.7);
     text-align: center;
     border-radius: 50%;
     transition: .2s;
@@ -998,5 +1013,22 @@ button {
 @media only screen and (max-width: 768px) {
 	.modal-dialog{
 		width:95%;
+	}
+}
+
+
+//高さ調整関連
+.height01{
+	height:10vh;
+}
+.height02{
+	height:5vh;
+}
+@media only screen and (max-width: 768px) {
+	.height01{
+		height:5vh;
+	}
+	.height01{
+		height:3vh;
 	}
 }
