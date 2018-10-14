@@ -17,3 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
+
+
+//ドロップダウンがスマホでも開くように
+.on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() })
