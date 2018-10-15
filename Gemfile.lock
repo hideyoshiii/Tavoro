@@ -294,6 +294,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.5)
   rails_12factor
+  rails_serve_static_assets
   rakuten_web_service
   rspotify
   sass-rails (~> 5.0)
