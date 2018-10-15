@@ -1,10 +1,11 @@
 @import "bootstrap";
 
 html,body {
+　height:100%;
   font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 body{
-  margin-top:-62px;
+  
 }
 
 
@@ -74,7 +75,7 @@ body{
 		float: left;
 		vertical-align:top;
 		width:35%;
-		height:100%;
+		height:100vh;
 		padding:0;
 		margin:0;
 		overflow-x:hidden;
@@ -822,6 +823,7 @@ button {
   margin-top: 20px;
   border-radius: 5px;
   font-size: 16px;
+  color:#FAFAFA;
   float:left;
 }
 .balloon::before{
@@ -1267,7 +1269,7 @@ button {
 .test_radio {
   	position: relative;
     display: inline-block; 
-	height:25vh;
+	height:27vh;
 	width:31%;
 	padding:0;
 	margin: 0 auto;
@@ -1292,7 +1294,7 @@ button {
 .test_radio_right {
   	position: relative;
     display: inline-block; 
-	height:25vh;
+	height:27vh;
 	width:31%;
 	padding:0;
 	margin: 0 auto;
@@ -1324,10 +1326,10 @@ button {
   }
 @media only screen and (max-width: 768px) {
 	.test_radio {
-		height:29vh;
+		height:30vh;
   	}
   	.test_radio_right {
-		height:29vh;
+		height:30vh;
   	}
 }
 
