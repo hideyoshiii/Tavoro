@@ -109,109 +109,6 @@
 						</a>
 					</div>	
 		  		<% end %>
-		  		<%#モーダルの中身%>
-				<div class="modal fade" id="myModal<%= i %>">
-					<div style="height:50px;"></div>
-		    		<div class="modal-dialog">
-		      			<div class="base01">
-							<% if post.image_url.blank? %>
-								<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
-							<% else %>
-								<% if post.category == "music" %>
-									<%= image_tag post.image_url, :class =>'img_lavoro002' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro02' %>
-								<% end %>
-							<% end %>
-							<span>
-								<div class="layer05">
-								</div>
-								<div class="layer03">
-									<div class="pro01">
-										<% if post.user.image.blank?  %>
-											<%= image_tag "user05.png", :class =>'img_user04' %>
-										<% else %>
-											<%= image_tag current_user.image, :class => "img_user04" %>
-										<% end %>
-									</div>
-									<div class="pro02">
-										<span class="font_white">
-											<%= post.user.name %>
-										</span>
-										<br>
-										<span class="font_white">
-											<% if post.category == "movie" %>
-												<i class="fas fa-film"></i> 映画
-											<% end %>
-											<% if post.category == "tv" %>
-												<i class="fas fa-film"></i> テレビ
-											<% end %>
-											<% if post.category == "book" %>
-												<i class="fas fa-book"></i> ブック
-											<% end %>
-											<% if post.category == "comic" %>
-												<i class="fas fa-book"></i> コミック
-											<% end %>
-											<% if post.category == "music" %>
-												<i class="fas fa-music"></i> ミュージック
-											<% end %>
-											 - <%= post.created_at.strftime('%Y/%m/%d') %>
-										</span>
-									</div>
-									<div class="pro03">
-										<div class="dropdown">
-										  <div class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-										    <span class="font_white_max">
-										    	<i class="fas fa-ellipsis-h"></i>
-										    </span>
-										  </div>
-										  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-										    <li><a href="#">投稿を編集</a></li>
-										    <li><a href="#">削除</a></li>
-										    <li><a href="#">共有</a></li>
-										  </ul>
-										</div>
-									</div>
-								</div>
-								<div class="layer07">
-									<% if post.image_url.blank? %>
-										<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
-									<% else %>
-										<%= image_tag post.image_url, :class =>'img_lavoro03' %>
-									<% end %>
-								</div>
-								<div class="layer02">
-									<div class="font_how">
-										<% if post.review == "favorite" %>
-											<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
-										<% end %>
-										<% if post.review == "good" %>
-											観ました
-										<% end %>
-										<% if post.review == "bad" %>
-											<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
-										<% end %>
-									</div>
-									<br>
-									<div class="font_head">
-										<%= post.title %>
-									</div>
-									<br>
-									<div class="balloon">
-									  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-									</div>
-								</div>
-								<div class="layer04">
-									<div class="pro04">
-										<a href="" data-toggle="modal" data-dismiss="modal">
-											<span style="font-size:24px;color:#777777;"><i class="far fa-arrow-alt-circle-left"></i></span>
-										</a>
-									</div>
-								</div>
-							</span>
-						</div>
-		      		</div>
-		      	</div>
 		  	<% end %>
 		  </div>
 		  <div class="tab-pane" id="fav">
@@ -233,6 +130,112 @@
 		    <p style="color:white;font-size:14px;">ミュージックはまだありません</p>
 		  </div>
 		</div>
+
+		<% @all.each.with_index(1) do |post, i| %>
+		<%#モーダルの中身%>
+		<div class="modal fade" id="myModal<%= i %>">
+			<div style="height:50px;"></div>
+			<div class="modal-dialog">
+	  			<div class="base01">
+					<% if post.image_url.blank? %>
+						<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
+					<% else %>
+						<% if post.category == "music" %>
+							<%= image_tag post.image_url, :class =>'img_lavoro002' %>
+						<% else %>
+							<%= image_tag post.image_url, :class =>'img_lavoro02' %>
+						<% end %>
+					<% end %>
+					<span>
+						<div class="layer05">
+						</div>
+						<div class="layer03">
+							<div class="pro01">
+								<% if post.user.image.blank?  %>
+									<%= image_tag "user05.png", :class =>'img_user04' %>
+								<% else %>
+									<%= image_tag current_user.image, :class => "img_user04" %>
+								<% end %>
+							</div>
+							<div class="pro02">
+								<span class="font_white">
+									<%= post.user.name %>
+								</span>
+								<br>
+								<span class="font_white">
+									<% if post.category == "movie" %>
+										<i class="fas fa-film"></i> 映画
+									<% end %>
+									<% if post.category == "tv" %>
+										<i class="fas fa-film"></i> テレビ
+									<% end %>
+									<% if post.category == "book" %>
+										<i class="fas fa-book"></i> ブック
+									<% end %>
+									<% if post.category == "comic" %>
+										<i class="fas fa-book"></i> コミック
+									<% end %>
+									<% if post.category == "music" %>
+										<i class="fas fa-music"></i> ミュージック
+									<% end %>
+									 - <%= post.created_at.strftime('%Y/%m/%d') %>
+								</span>
+							</div>
+							<div class="pro03">
+								<div class="dropdown">
+								  <div class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								    <span class="font_white_max">
+								    	<i class="fas fa-ellipsis-h"></i>
+								    </span>
+								  </div>
+								  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+								    <li><a href="#">投稿を編集</a></li>
+								    <li><a href="#">削除</a></li>
+								    <li><a href="#">共有</a></li>
+								  </ul>
+								</div>
+							</div>
+						</div>
+						<div class="layer07">
+							<% if post.image_url.blank? %>
+								<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+							<% else %>
+								<%= image_tag post.image_url, :class =>'img_lavoro03' %>
+							<% end %>
+						</div>
+						<div class="layer02">
+							<div class="font_how">
+								<% if post.review == "favorite" %>
+									<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+								<% end %>
+								<% if post.review == "good" %>
+									観ました
+								<% end %>
+								<% if post.review == "bad" %>
+									<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
+								<% end %>
+							</div>
+							<br>
+							<div class="font_head">
+								<%= post.title %>
+							</div>
+							<br>
+							<div class="balloon">
+							  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+							</div>
+						</div>
+						<div class="layer04">
+							<div class="pro04">
+								<a href="" data-toggle="modal" data-dismiss="modal">
+									<span style="font-size:24px;color:#777777;"><i class="far fa-arrow-alt-circle-left"></i></span>
+								</a>
+							</div>
+						</div>
+					</span>
+				</div>
+	  		</div>
+	  	</div>
+	<% end %>
 
 	</div>
 	<div class="block_side">
