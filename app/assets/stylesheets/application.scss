@@ -1250,6 +1250,10 @@ button {
     margin: 0px;
     padding: 0px;
 }
+.horizontal_scroll_search::-webkit-scrollbar {
+  display: none;
+  -webkit-appearance: none;
+}
 .scroll_lst_search {
     overflow-x: auto;
     overflow-y: hidden;
@@ -1329,7 +1333,7 @@ button {
 		height:27vh;
   	}
   	.test_radio_right {
-		height:37vh;
+		height:27vh;
   	}
 
 }
