@@ -23,10 +23,12 @@
           <div class="bar_top_in02">
             <% if user_signed_in? %>
               <div style="float:right;padding:10px 10px 0px 0px;">
-                <% if current_user.image %>
-                  <%= image_tag current_user.image, :class => "img_user03" %>
-                <% else %>
-                  <%= image_tag "user04.png", :class =>'img_user03' %>
+                <%= link_to "/users/#{current_user.id}/collection" do %>
+                  <% if current_user.image %>
+                    <%= image_tag current_user.image, :class => "img_user03" %>
+                  <% else %>
+                    <%= image_tag "user04.png", :class =>'img_user03' %>
+                  <% end %>
                 <% end %>
               </div>
             <% end %>

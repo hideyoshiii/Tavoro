@@ -34,6 +34,33 @@ body{
 	height:50px;
 	font-size:0;
 }
+.bar_collection {
+    position: fixed;
+    top: 50px;
+    left:32.5%;
+    background: #111111;
+	background: -webkit-linear-gradient(-90deg, #111111, #05627B); 
+	background: linear-gradient(-90eg, #111111, #05627B); 
+    width:35%;
+    height:110px;
+    padding:0;
+    margin:0 auto;
+    z-index:98;
+    font-size:0;
+    border-left: solid 1px #000;
+	border-right: solid 1px #000;
+}
+@media only screen and (max-width: 768px) {
+	.bar_collection {
+	    position: fixed;
+	    top:50px;
+	    left:0;
+	    width:100%;
+	    height:95px;
+	    border:none;
+	}
+}
+
 
 //ブロック要素関連
 .main {
@@ -185,11 +212,32 @@ body{
     padding:0;
     margin:0 auto;
 }
+.img_lavoro000{
+	width:140%;
+	height:auto;
+    padding:0;
+    margin:0 0 0 -20%;
+    text-aligin:center;
+}
 .img_lavoro002{
 	width:150%;
 	height:auto;
     padding:0;
     margin:0 0 0 -25%;
+}
+.img_profile001{
+	width: 100px;
+	height: 100px;
+	margin:0;
+	padding:0;
+	border-radius:50%
+}
+.img_profile002{
+	width: 100%;
+	height: 100%;
+	margin:0;
+	padding:0;
+	border-radius:50%
 }
 @media only screen and (max-width: 768px) {
 	.img_user04{
@@ -204,10 +252,12 @@ body{
 		width: 40px;
 		height: 40px;
 	}
+	.img_lavoro000{
+		width:140%;
+	    margin:0 0 0 -20%;
+	}
 	.img_lavoro002{
 		width:140%;
-		height:auto;
-	    padding:0;
 	    margin:0 0 0 -20%;
 	}
 }
@@ -696,6 +746,20 @@ button {
   background:none;
   font-size:0;
   }
+.base01 span .layer07 {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width:60%;
+  height:auto;
+  padding:0;
+  margin:0;
+  z-index:4;
+  font-size:0;
+  }
 .test_radio03 {
   	position: relative;
 	height:100vh;
@@ -807,6 +871,13 @@ button {
 	margin:0 auto;
 	padding:15px 10px 15px 5px;
 	background:rgba(5,98,123,0.3);
+}
+.box_tests001{
+	text-align:left;
+	margin:0 auto;
+	padding:7px;
+	font-size:0;
+	width:100%;
 }
 
 
@@ -979,8 +1050,39 @@ button {
 		text-aline:right;
 		font-size:0px;
 	}
-
-
+.pro16{
+		display:inline-block;
+		vertical-align:middle;
+		width:10%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+	}
+.pro17{
+		display:inline-block;
+		vertical-align:middle;
+		width:70%;
+		height:auto;
+		padding:0 0 0 10px;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+	}
+.pro18{
+		display:inline-block;
+		vertical-align:middle;
+		width:20%;
+		height:auto;
+		padding:0 10px 0 0;
+		margin:0 auto;
+		background:none;
+		text-aline:right;
+		font-size:0px;
+	}
 //ボタン配置関係
 .btns_plus{
   position:fixed;
@@ -994,6 +1096,24 @@ button {
 
 
 //ボタン関連
+.test_btn01{
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+    background: none;
+    color: #FAFAFA;
+    border: solid 1px #FAFAFA;
+    border-radius: 0px;
+}
+
+.test_btn02{
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+    background: none;
+    color: #FAFAFA;
+    border: solid 1px #FAFAFA;
+    border-radius: 0px;
+    font-size:10px;
+}
 #btn_plus {
     display: block;
     width: 60px;
@@ -1095,6 +1215,9 @@ button {
 .height03{
 	height:4vh;
 }
+.height04{
+	height:120px;
+}
 @media only screen and (max-width: 768px) {
 	.height01{
 		height:3vh;
@@ -1105,4 +1228,144 @@ button {
 	.height03{
 		height:1vh;
 	}
+	.height04{
+		height:100px;
+	}
 }
+
+
+
+
+
+.horizontal_scroll_search{
+    background-color: rgba(0,0,0,0);
+    width:100%;
+    height:auto;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+}
+.scroll_lst_search {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 0 10px;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+}
+.scroll_lst_search::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+.test_radio {
+  	position: relative;
+    display: inline-block; 
+	height:25vh;
+	width:31%;
+	padding:0;
+	margin: 0 auto;
+    margin:5px 0px 5px 1.75%;
+    overflow:hidden;
+    float:left;
+  }
+.test_radio span {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  height:25%;
+  margin:0;
+  padding:0px 5px;
+  z-index:3;
+  box-shadow: 0 -3px 5px 5px rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.7);
+  overflow:hidden;
+  word-wrap:break-word;
+  }
+.test_radio_right {
+  	position: relative;
+    display: inline-block; 
+	height:25vh;
+	width:31%;
+	padding:0;
+	margin: 0 auto;
+    margin:5px 1.75% 5px 1.75%;
+    overflow:hidden;
+    float:left;
+  }
+.test_radio_right span {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  height:25%;
+  margin:0;
+  padding:0px 5px;
+  z-index:3;
+  box-shadow: 0 -3px 5px 5px rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.7);
+  overflow:hidden;
+  word-wrap:break-word;
+  }
+.test_radio02 {
+  	position: relative;
+	height:85vh;
+	width:100%;
+	padding:0;
+	margin: 0 auto;
+    overflow:hidden;
+  }
+@media only screen and (max-width: 768px) {
+	.test_radio {
+		height:32vh;
+  	}
+  	.test_radio_right {
+		height:32vh;
+  	}
+}
+
+
+
+
+//タブ
+.nav-pills>li>a{
+	font-size:15px;
+	color:#999999;
+	border-radius:0px;
+	padding:3px 10px;
+	background:none
+	}
+.nav-pills>li+li{
+	margin-left:2px
+}
+.nav-pills>li>a,
+.nav-pills>li>a:focus,
+.nav-pills>li>a:hover{
+	background:none;
+}
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover{
+	color:#FAFAFA;
+	background:none;
+	border-bottom: solid 1px #FAFAFA;
+}
+.nav-tabs > li,
+.nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline;
+     zoom:1;
+}
+.nav-tabs,
+.nav-pills {
+    text-align:center;
+}
+.tab-pane{
+	min-height:100vh;
+}
+
+

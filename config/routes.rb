@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root :to => 'works#home'
 
   devise_for :users, controllers: { registrations: 'registrations' }
+  get "users/:id/collection" => "users#collection"
 
   get 'works/index' => "works#index"
   get 'works/search' => "works#search"
