@@ -45,6 +45,8 @@ gem 'itunes-search-api', github: 'rlivsey/itunes-search-api'
 gem 'paperclip'
 gem 'aws-sdk'
 
+gem 'hammerjs-rails'
+
 
 group :production do 
   gem 'pg'
