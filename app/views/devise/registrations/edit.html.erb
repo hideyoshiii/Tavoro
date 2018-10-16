@@ -1,61 +1,51 @@
-<div style="height:50px;"></div>
-<h2>Edit</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="form01">
-     <label for="image">
-        <div class="preview00">
-          <div class="preview01">
-            <% if current_user.image %>
-              <%= image_tag current_user.image, :class => "img_user02" %>
-            <% else %>
-              <%= image_tag "user04.png", :class =>'img_user02' %>
-            <% end %>
-            <span><i class="fas fa-plus-circle"></i></span>
+<div class="main">
+  <div class="block_side">
+  </div>
+  <div class="block_main">
+    
+    <div style="height:50px;"></div>
+    <div class="base03">
+      <span>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <div class="layer06">
+          <div class="form01">
+           <label for="image">
+              <div class="preview00">
+                <div class="preview01">
+                  <% if current_user.image %>
+                    <%= image_tag current_user.image, :class => "img_user02" %>
+                  <% else %>
+                    <%= image_tag "user04.png", :class =>'img_user02' %>
+                  <% end %>
+                  <span><i class="fas fa-plus-circle"></i></span>
+                </div>
+              </div>
+              <div class="preview02">
+              </div>
+            </label>
+            <%= f.file_field :image, id:"image" %>
+          </div>
+          <div class="gogo" style="margin-top:-3vh;">
+              <%= f.text_field :name,placeholder: "name", required: "" %>
+              <%= f.email_field :email,placeholder: "email", required: "" %>
+              <div class="font_white">
+                (パスワードを変更時のみ下欄を埋めてください)
+              </div>
+              <%= f.password_field :password,placeholder: "password" %>
+              <%= f.password_field :password_confirmation,:placeholder => 'password confirmation' %>
+              <div style="height:2vh;"></div>
+              <%= f.submit "完了",class:"btn_session" %>
+              <div style="height:10vh;"></div>
           </div>
         </div>
-        <div class="preview02">
-        </div>
-     </label>
-     <%= f.file_field :image, id:"image" %>
-  </div>
-  <br>
+        <% end %>
+      </span>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "off" %>
   </div>
-  <br>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "off" %>
+  <div class="block_side">
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+</div>
 
 
 <script type="text/javascript">
