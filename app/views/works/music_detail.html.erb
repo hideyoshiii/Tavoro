@@ -3,7 +3,7 @@
 	</div>
 	<div class="block_main">
 		<div style="height:50px;"></div>
-		<%= form_tag(works_save_path, method: :get) do %>
+		<%= form_tag(works_save_path, method: :post) do %>
 			<%= hidden_field_tag :category, @category %>
 			<%= hidden_field_tag :title, @title %>
 			<%= hidden_field_tag :work_id, @work_id %>
@@ -14,30 +14,32 @@
 				<%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
 				<span>
 					<div class="tango01">
-						<div class="box_tests04">
-							<div class="pro13">
-								<div style="text-align:left;">
-									<a href="" data-toggle="modal" data-dismiss="modal">
-										<span class="font_blue_max"><i class="fas fa-chevron-left"></i></span>
-									</a>
+						<div class="bar_post">					
+							<div class="box_tests04">
+								<div class="pro13">
+									<div style="text-align:left;">
+										<a href="javascript:void(0);" onclick="window.history.back();">
+								        	<span class="font_blue_max"><i class="fas fa-chevron-left"></i></span>
+								        </a>										
+									</div>
 								</div>
-							</div>
-							<div class="pro14">
-								<div style="text-align:center;">
-									<span class="font_white">
-										<%= @title %>
-									</span>
+								<div class="pro14">
+									<div style="text-align:center;">
+										<span class="font_white">
+											<%= @title %>
+										</span>
+									</div>
 								</div>
-							</div>
-							<div class="pro15">
-								<div style="text-align:right;">
-									<button type="submit">
-										<span class="font_blue_max">投稿</span>
-									</button>
+								<div class="pro15">
+									<div style="text-align:right;">
+										<button type="submit">
+											<span class="font_blue_max">投稿</span>
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="height01"></div>
+						<div class="height05"></div>
 						<div class="nmn03" style="text-align:center;width:100%;padding:10px;margin:0 auto;">
 							<div style="display:inline-block;">
 								<%= radio_button_tag(:review, "favorite", true, {:id => "favorite"}) %>

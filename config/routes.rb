@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   get 'works/music' => "works#music"
   get 'works/music/detail' => "works#music_detail"
   get 'works/ajax_music_list' => "works#ajax_music_list"
-  get 'works/save' => "works#save"
+  post 'works/save' => "works#save"
+  get "works/:id/edit" => "works#edit"
+  post "works/:id/update" => "works#update"
+  post "works/:id/destroy" => "works#destroy"
 end

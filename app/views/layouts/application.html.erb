@@ -7,6 +7,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -16,8 +17,12 @@
   	<header>
         <div class="bar_top">
           <div class="bar_top_in01">
-            <div style="float:left;padding:10px 5px 0px 10px;color:rgba(39,134,160,0.8);font-size:20px;">
-              TAVORE
+            <div style="float:left;">
+              <%= link_to "/works/index" do %>
+              <div style="padding:10px 5px 0px 10px;color:rgba(39,134,160,0.8);font-size:20px;">
+                TAVORE
+              </div>
+              <% end %>
             </div>
           </div>
           <div class="bar_top_in02">
@@ -45,9 +50,6 @@
           </div>
         </div>
     </header>
-    <div style="margin-top:-62px;"></div>
-  	<p class="notice"><%= notice %></p>
-  	<p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

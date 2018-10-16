@@ -149,4 +149,47 @@ class WorksController < ApplicationController
     end     
   end
 
+
+  def edit
+  	@post = Post.find(params[:id])
+  	@favorite = false
+  	@good = false
+  	@bad = false
+  	if @post.review == "favorite"
+  		@favorite = true
+  	end
+  	if @post.review == "good"
+  		@good = true
+  	end
+  	if @post.review == "bad"
+  		@bad = true
+  	end
+    if !(current_user == @post.user)
+      redirect_to root_path
+    end
+  end
+
+  def update
+  	@post = Post.find(params[:id])
+  	if params[:description]
+  		@post.description = params[:description]
+  	end
+  	if params[:review]
+  		@post.review = params[:review]
+  	end
+  	if params[:image_url]
+  		@post.image_url = params[:image_url]
+  	end
+    if @post.save
+      redirect_to "/works/index"
+    end
+  end
+
+  def destroy
+  	@post = Post.find(params[:id])
+    if @post.destroy
+    	redirect_to "/works/index"
+	end
+  end
+
 end

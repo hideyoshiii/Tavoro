@@ -1,3 +1,111 @@
-<div style="height:50px;"></div>
-<h1>ようこそ</h1>
-<p>トップページです。</p>
+
+
+<%= video_tag("tests03.mp4",:muted => true, :autoplay => true, :loop => true, :playsinline => true) %>
+
+<div class="base_home">
+	<span>
+		<div class="tango01">
+			<div style="text-align:center;">
+				<div class="font_logo">
+					TAVORE
+				</div>
+				<div class="font_logo_sub01">
+					more than fashion
+				</div>
+				<div class="height_logo"></div>
+				<% if user_signed_in? %>
+					<div style="display:inline-block;margin:0px 10px;">
+						<%= link_to "/works/index" do %>
+				          <div class="btn_register">
+							フィードへ
+						  </div>
+				        <% end %>
+					</div>
+				<% else %>
+					<div style="display:inline-block;margin:0px 10px;">
+						<a href="" data-toggle="modal" data-target="#myModal_sign_in">
+				          <div class="btn_session">
+							ログイン
+						  </div>
+				        </a>
+					</div>
+					<div style="display:inline-block;margin:0px 10px;">
+						<a href="" data-toggle="modal" data-target="#myModal_sign_up">
+					        <div class="btn_register">
+								アカウント作成
+							</div>
+				        </a>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</span>
+</div>
+
+<div class="modal fade" id="myModal_sign_in">
+	<div style="height:50px;"></div>
+    <div class="modal-dialog">
+    	<div class="base01">
+			<%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
+			<span>
+				<div class="layer05">
+				</div>
+				<div class="layer06">
+					<div class="font_gray_big">
+						Sign in
+					</div>
+					<div class="gogo">
+						<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+						  <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
+						  <%= f.password_field :password,placeholder: "password", required: "" %>
+						  <div style="height:5vh;"></div>
+	          			  <%= f.submit "完了",class:"btn_session" %>
+						<% end %>
+					</div>
+				</div>
+				<div class="layer04">
+					<div class="pro04">
+						<a href="" data-toggle="modal" data-dismiss="modal">
+							<span style="font-size:24px;color:#777777;"><i class="far fa-arrow-alt-circle-left"></i></span>
+						</a>
+					</div>
+				</div>
+			</span>
+		</div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal_sign_up">
+	<div style="height:50px;"></div>
+    <div class="modal-dialog">
+    	<div class="base01">
+			<%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
+			<span>
+				<div class="layer05">
+				</div>
+				<div class="layer06">
+					<div class="font_gray_big">
+						Sign up
+					</div>
+					<div class="gogo">
+						<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+						  <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
+						  <%= f.email_field :email,placeholder: "email", required: "" %>
+						  <%= f.password_field :password,placeholder: "password", required: "" %>
+						  <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
+						  <div style="height:5vh;"></div>
+	          			  <%= f.submit "完了",class:"btn_session" %>
+						<% end %>
+					</div>
+				</div>
+				<div class="layer04">
+					<div class="pro04">
+						<a href="" data-toggle="modal" data-dismiss="modal">
+							<span style="font-size:24px;color:#777777;"><i class="far fa-arrow-alt-circle-left"></i></span>
+						</a>
+					</div>
+				</div>
+			</span>
+		</div>
+    </div>
+</div>

@@ -59,9 +59,18 @@
 								    </span>
 								  </div>
 								  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-								    <li><a href="#">投稿を編集</a></li>
-								    <li><a href="#">削除</a></li>
-								    <li><a href="#">共有</a></li>
+								    <% if post.user.id == current_user.id %>
+									    <li>
+									    	<%= link_to "/works/#{post.id}/edit" do %>
+									    		投稿を編集
+									    	<% end %>
+									    </li>
+									    <li>
+									    	<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+									    		削除
+									    	<% end %>
+									    </li>
+								    <% end %>
 								  </ul>
 								</div>
 							</div>
@@ -89,10 +98,12 @@
 							<div class="font_head">
 								<%= post.title %>
 							</div>
-							<br>
-							<div class="balloon">
-							  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-							</div>
+							<% if post.description.present? %>
+								<br>
+								<div class="balloon">
+								  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+								</div>
+							<% end %>
 						</div>
 					</span>
 				</div>
@@ -108,13 +119,13 @@
 <%#投稿ボタン%>
 <div class="btns_plus">
 	<a href="" data-toggle="modal" data-target="#myModal_post" id="btn_plus">
-		<i class="fas fa-plus"></i>
+		<i><%= image_tag "plus.png", :class =>'img_plus' %></i>
 	</a>
 </div>	
 <div class="modal fade" id="myModal_post">
-	<div style="height:50px;"></div>
+	<div class="height_modal"></div>
     <div class="modal-dialog">
-    	<div class="base01">
+    	<div class="base02">
 			<%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
 			<span>
 				<div class="layer05">
@@ -161,7 +172,7 @@
     </div>
     <div class="btns_plus">
 		<a href="" data-toggle="modal" data-dismiss="modal" id="btn_plus">
-			<i class="fas fa-times"></i>
+			<i><%= image_tag "plus.png", :class =>'img_time' %></i>
 		</a>
 	</div>	
 </div>

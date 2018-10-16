@@ -11,7 +11,7 @@
 	          </div>
 	          <div class="pro17">
 	            <span class="font_white_max">   
-	              <%= @user.name %>'s Collection
+	              <%= @user.name %>
 	            </span>
 	          </div>
 	          <div class="pro18">
@@ -20,8 +20,7 @@
 	            </div>
 	          </div>
 	        </div>
-			<div class="horizontal_scroll_search">
-				
+			<div class="horizontal_scroll02">			
 				  <ul class="nav nav-pills js-tabs">
 				      <li class="active"><a href="#all" data-toggle="tab">すべて</a></li>
 					  <li><a href="#fav" data-toggle="tab">おすすめ</a></li>
@@ -31,8 +30,7 @@
 					  <li><a href="#comic" data-toggle="tab">コミック</a></li>
 					  <li><a href="#music" data-toggle="tab">ミュージック</a></li>
 				  </ul>
-				</div>
-			
+			</div>	
 		</div>
 		<div class="height04"></div>
 		<div class="tab-content">
@@ -139,21 +137,7 @@
 								<% end %>
 								<span>
 									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
+										<i class="fas fa-film"></i> 映画
 									</div>
 									<div class="font_title_min">
 										<%= post.title %>
@@ -175,21 +159,7 @@
 								<% end %>
 								<span>
 									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
+										<i class="fas fa-film"></i> 映画
 									</div>
 									<div class="font_title_min">
 										<%= post.title %>
@@ -208,7 +178,7 @@
 			  	<% @tv.each.with_index(1) do |post, i| %>
 			  		<% if i % 3 == 0 %>
 			  			<div class="test_radio_right">
-					    	<a href="" data-toggle="modal" data-target="#tv<%= i %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_tv<%= i %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -220,21 +190,7 @@
 								<% end %>
 								<span>
 									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
+										<i class="fas fa-film"></i> テレビ
 									</div>
 									<div class="font_title_min">
 										<%= post.title %>
@@ -244,7 +200,7 @@
 						</div>
 			  		<% else %>
 			  			<div class="test_radio">
-							<a href="" data-toggle="modal" data-target="#tv<%= i %>">
+							<a href="" data-toggle="modal" data-target="#myModal_tv<%= i %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -256,21 +212,7 @@
 								<% end %>
 								<span>
 									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
+										<i class="fas fa-film"></i> テレビ
 									</div>
 									<div class="font_title_min">
 										<%= post.title %>
@@ -300,22 +242,8 @@
 									<% end %>
 								<% end %>
 								<span>
-									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
+									<div class="font_category_min">										
+										<i class="fas fa-book"></i> ブック
 									</div>
 									<div class="font_title_min">
 										<%= post.title %>
@@ -337,21 +265,7 @@
 								<% end %>
 								<span>
 									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
+										<i class="fas fa-book"></i> ブック
 									</div>
 									<div class="font_title_min">
 										<%= post.title %>
@@ -382,21 +296,7 @@
 								<% end %>
 								<span>
 									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
+										<i class="fas fa-book"></i> コミック
 									</div>
 									<div class="font_title_min">
 										<%= post.title %>
@@ -418,21 +318,7 @@
 								<% end %>
 								<span>
 									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
+										<i class="fas fa-book"></i> コミック
 									</div>
 									<div class="font_title_min">
 										<%= post.title %>
@@ -463,21 +349,7 @@
 								<% end %>
 								<span>
 									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
+										<i class="fas fa-music"></i> ミュージック
 									</div>
 									<div class="font_title_min">
 										<%= post.title %>
@@ -499,21 +371,7 @@
 								<% end %>
 								<span>
 									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
+										<i class="fas fa-music"></i> ミュージック
 									</div>
 									<div class="font_title_min">
 										<%= post.title %>
@@ -536,9 +394,9 @@
 <% if @all.present? %>
 <% @all.each.with_index(1) do |post, i| %>
 	<div class="modal fade" id="myModal_all<%= i %>">
-		<div style="height:50px;"></div>
+		<div class="height_modal"></div>
 		<div class="modal-dialog">
-  			<div class="base01">
+  			<div class="base02">
 				<% if post.image_url.blank? %>
 					<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
 				<% else %>
@@ -621,15 +479,17 @@
 						<div class="font_head">
 							<%= post.title %>
 						</div>
-						<br>
-						<div class="balloon">
-						  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-						</div>
+						<% if post.description.present? %>
+							<br>
+							<div class="balloon">
+							  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+							</div>
+						<% end %>
 					</div>
 					<div class="layer04">
 						<div class="pro04">
 							<a href="" data-toggle="modal" data-dismiss="modal">
-								<span style="font-size:24px;color:#777777;"><i class="far fa-arrow-alt-circle-left"></i></span>
+								<%= image_tag "left_blue.png", :class =>'img_left' %>
 							</a>
 						</div>
 					</div>
@@ -645,9 +505,9 @@
 <% if @movie.present? %>
 <% @movie.each.with_index(1) do |post, i| %>
 	<div class="modal fade" id="myModal_movie<%= i %>">
-		<div style="height:50px;"></div>
+		<div class="height_modal"></div>
 		<div class="modal-dialog">
-  			<div class="base01">
+  			<div class="base02">
 				<% if post.image_url.blank? %>
 					<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
 				<% else %>
@@ -674,21 +534,7 @@
 							</span>
 							<br>
 							<span class="font_white">
-								<% if post.category == "movie" %>
-									<i class="fas fa-film"></i> 映画
-								<% end %>
-								<% if post.category == "tv" %>
-									<i class="fas fa-film"></i> テレビ
-								<% end %>
-								<% if post.category == "book" %>
-									<i class="fas fa-book"></i> ブック
-								<% end %>
-								<% if post.category == "comic" %>
-									<i class="fas fa-book"></i> コミック
-								<% end %>
-								<% if post.category == "music" %>
-									<i class="fas fa-music"></i> ミュージック
-								<% end %>
+								<i class="fas fa-film"></i> 映画
 								 - <%= post.created_at.strftime('%Y/%m/%d') %>
 							</span>
 						</div>
@@ -730,15 +576,17 @@
 						<div class="font_head">
 							<%= post.title %>
 						</div>
-						<br>
-						<div class="balloon">
-						  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-						</div>
+						<% if post.description.present? %>
+							<br>
+							<div class="balloon">
+							  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+							</div>
+						<% end %>
 					</div>
 					<div class="layer04">
 						<div class="pro04">
 							<a href="" data-toggle="modal" data-dismiss="modal">
-								<span style="font-size:24px;color:#777777;"><i class="far fa-arrow-alt-circle-left"></i></span>
+								<%= image_tag "left_blue.png", :class =>'img_left' %>
 							</a>
 						</div>
 					</div>
@@ -753,9 +601,9 @@
 <% if @tv.present? %>
 <% @tv.each.with_index(1) do |post, i| %>
 	<div class="modal fade" id="myModal_tv<%= i %>">
-		<div style="height:50px;"></div>
+		<div class="height_modal"></div>
 		<div class="modal-dialog">
-  			<div class="base01">
+  			<div class="base02">
 				<% if post.image_url.blank? %>
 					<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
 				<% else %>
@@ -782,21 +630,7 @@
 							</span>
 							<br>
 							<span class="font_white">
-								<% if post.category == "movie" %>
-									<i class="fas fa-film"></i> 映画
-								<% end %>
-								<% if post.category == "tv" %>
-									<i class="fas fa-film"></i> テレビ
-								<% end %>
-								<% if post.category == "book" %>
-									<i class="fas fa-book"></i> ブック
-								<% end %>
-								<% if post.category == "comic" %>
-									<i class="fas fa-book"></i> コミック
-								<% end %>
-								<% if post.category == "music" %>
-									<i class="fas fa-music"></i> ミュージック
-								<% end %>
+								<i class="fas fa-film"></i> テレビ
 								 - <%= post.created_at.strftime('%Y/%m/%d') %>
 							</span>
 						</div>
@@ -838,15 +672,17 @@
 						<div class="font_head">
 							<%= post.title %>
 						</div>
-						<br>
-						<div class="balloon">
-						  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-						</div>
+						<% if post.description.present? %>
+							<br>
+							<div class="balloon">
+							  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+							</div>
+						<% end %>
 					</div>
 					<div class="layer04">
 						<div class="pro04">
 							<a href="" data-toggle="modal" data-dismiss="modal">
-								<span style="font-size:24px;color:#777777;"><i class="far fa-arrow-alt-circle-left"></i></span>
+								<%= image_tag "left_blue.png", :class =>'img_left' %>
 							</a>
 						</div>
 					</div>
@@ -860,10 +696,10 @@
 <%#bookモーダルの中身%>
 <% if @book.present? %>
 <% @book.each.with_index(1) do |post, i| %>
-	<div class="modal fade" id="myModal_all<%= i %>">
-		<div style="height:50px;"></div>
+	<div class="modal fade" id="myModal_book<%= i %>">
+		<div class="height_modal"></div>
 		<div class="modal-dialog">
-  			<div class="base01">
+  			<div class="base02">
 				<% if post.image_url.blank? %>
 					<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
 				<% else %>
@@ -890,21 +726,7 @@
 							</span>
 							<br>
 							<span class="font_white">
-								<% if post.category == "movie" %>
-									<i class="fas fa-film"></i> 映画
-								<% end %>
-								<% if post.category == "tv" %>
-									<i class="fas fa-film"></i> テレビ
-								<% end %>
-								<% if post.category == "book" %>
-									<i class="fas fa-book"></i> ブック
-								<% end %>
-								<% if post.category == "comic" %>
-									<i class="fas fa-book"></i> コミック
-								<% end %>
-								<% if post.category == "music" %>
-									<i class="fas fa-music"></i> ミュージック
-								<% end %>
+								<i class="fas fa-book"></i> ブック
 								 - <%= post.created_at.strftime('%Y/%m/%d') %>
 							</span>
 						</div>
@@ -946,15 +768,17 @@
 						<div class="font_head">
 							<%= post.title %>
 						</div>
-						<br>
-						<div class="balloon">
-						  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-						</div>
+						<% if post.description.present? %>
+							<br>
+							<div class="balloon">
+							  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+							</div>
+						<% end %>
 					</div>
 					<div class="layer04">
 						<div class="pro04">
 							<a href="" data-toggle="modal" data-dismiss="modal">
-								<span style="font-size:24px;color:#777777;"><i class="far fa-arrow-alt-circle-left"></i></span>
+								<%= image_tag "left_blue.png", :class =>'img_left' %>
 							</a>
 						</div>
 					</div>
@@ -968,10 +792,10 @@
 <%#comicモーダルの中身%>
 <% if @comic.present? %>
 <% @comic.each.with_index(1) do |post, i| %>
-	<div class="modal fade" id="myModal_all<%= i %>">
-		<div style="height:50px;"></div>
+	<div class="modal fade" id="myModal_comic<%= i %>">
+		<div class="height_modal"></div>
 		<div class="modal-dialog">
-  			<div class="base01">
+  			<div class="base02">
 				<% if post.image_url.blank? %>
 					<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
 				<% else %>
@@ -998,21 +822,7 @@
 							</span>
 							<br>
 							<span class="font_white">
-								<% if post.category == "movie" %>
-									<i class="fas fa-film"></i> 映画
-								<% end %>
-								<% if post.category == "tv" %>
-									<i class="fas fa-film"></i> テレビ
-								<% end %>
-								<% if post.category == "book" %>
-									<i class="fas fa-book"></i> ブック
-								<% end %>
-								<% if post.category == "comic" %>
-									<i class="fas fa-book"></i> コミック
-								<% end %>
-								<% if post.category == "music" %>
-									<i class="fas fa-music"></i> ミュージック
-								<% end %>
+								<i class="fas fa-book"></i> コミック
 								 - <%= post.created_at.strftime('%Y/%m/%d') %>
 							</span>
 						</div>
@@ -1054,15 +864,17 @@
 						<div class="font_head">
 							<%= post.title %>
 						</div>
-						<br>
-						<div class="balloon">
-						  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-						</div>
+						<% if post.description.present? %>
+							<br>
+							<div class="balloon">
+							  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+							</div>
+						<% end %>
 					</div>
 					<div class="layer04">
 						<div class="pro04">
 							<a href="" data-toggle="modal" data-dismiss="modal">
-								<span style="font-size:24px;color:#777777;"><i class="far fa-arrow-alt-circle-left"></i></span>
+								<%= image_tag "left_blue.png", :class =>'img_left' %>
 							</a>
 						</div>
 					</div>
@@ -1077,9 +889,9 @@
 <% if @music.present? %>
 <% @music.each.with_index(1) do |post, i| %>
 	<div class="modal fade" id="myModal_music<%= i %>">
-		<div style="height:50px;"></div>
+		<div class="height_modal"></div>
 		<div class="modal-dialog">
-  			<div class="base01">
+  			<div class="base02">
 				<% if post.image_url.blank? %>
 					<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
 				<% else %>
@@ -1106,21 +918,7 @@
 							</span>
 							<br>
 							<span class="font_white">
-								<% if post.category == "movie" %>
-									<i class="fas fa-film"></i> 映画
-								<% end %>
-								<% if post.category == "tv" %>
-									<i class="fas fa-film"></i> テレビ
-								<% end %>
-								<% if post.category == "book" %>
-									<i class="fas fa-book"></i> ブック
-								<% end %>
-								<% if post.category == "comic" %>
-									<i class="fas fa-book"></i> コミック
-								<% end %>
-								<% if post.category == "music" %>
-									<i class="fas fa-music"></i> ミュージック
-								<% end %>
+								<i class="fas fa-music"></i> ミュージック
 								 - <%= post.created_at.strftime('%Y/%m/%d') %>
 							</span>
 						</div>
@@ -1162,15 +960,17 @@
 						<div class="font_head">
 							<%= post.title %>
 						</div>
-						<br>
-						<div class="balloon">
-						  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-						</div>
+						<% if post.description.present? %>
+							<br>
+							<div class="balloon">
+							  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+							</div>
+						<% end %>
 					</div>
 					<div class="layer04">
 						<div class="pro04">
 							<a href="" data-toggle="modal" data-dismiss="modal">
-								<span style="font-size:24px;color:#777777;"><i class="far fa-arrow-alt-circle-left"></i></span>
+								<%= image_tag "left_blue.png", :class =>'img_left' %>
 							</a>
 						</div>
 					</div>
@@ -1185,6 +985,71 @@
 
 
 
+<%#投稿ボタン%>
+<div class="btns_plus">
+	<a href="" data-toggle="modal" data-target="#myModal_post" id="btn_plus">
+		<i><%= image_tag "plus.png", :class =>'img_plus' %></i>
+	</a>
+</div>	
+<div class="modal fade" id="myModal_post">
+	<div class="height_modal"></div>
+    <div class="modal-dialog">
+    	<div class="base02">
+			<%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
+			<span>
+				<div class="layer05">
+				</div>
+				<div class="layer06">
+			  		<div class="">	
+				  		<div style="font-size:24px;color:#FAFAFA;margin:0px 0px 20px;">
+					      	投稿を作成
+				        </div>
+				  		<div style="display:inline-block;vertical-align:top;margin:20px 20px 0px;">
+				  			<div>
+						      	<%= link_to(works_movie_path, id: 'btn_option') do %>
+						        	<i class="fas fa-film"></i>
+						        <% end %>
+					        </div>
+					        <div style="font-size:14px;color:#777777;margin-top:2px;">
+					        	映画
+					        </div>
+				        </div>
+				        <div style="display:inline-block;vertical-align:top;margin:0px 20px 0px;">
+				        	<div>
+				        		<%= link_to(works_book_path, id: 'btn_option') do %>
+						        	<i class="fas fa-book"></i>
+						        <% end %>
+						    </div>
+					        <div style="font-size:14px;color:#777777;margin-top:2px;">
+					        	ブック
+					        </div>
+				        </div>
+				        <div style="display:inline-block;vertical-align:top;margin:20px 20px 0px;">
+				        	<div>
+						      	<%= link_to(works_music_path, id: 'btn_option') do %>
+						        	<i class="fas fa-music"></i>
+						        <% end %>
+					        </div>
+					        <div style="font-size:14px;color:#777777;margin-top:2px;">
+					        	ミュージック
+					        </div>
+				        </div> 
+			        </div>   
+				</div>
+			</span>
+		</div>
+    </div>
+    <div class="btns_plus">
+		<a href="" data-toggle="modal" data-dismiss="modal" id="btn_plus">
+			<i><%= image_tag "plus.png", :class =>'img_time' %></i>
+		</a>
+	</div>	
+</div>
+
+
+
+
+
 <%#タブスワイプ切り替え%>
 <script type="text/javascript">
 	$(function(){
@@ -1194,7 +1059,7 @@
   var $jsTabsLi = $('.js-tabs li');
  
   var $jsSwipe = $('.tab-pane');
-  var $scrollContainer = $('.horizontal_scroll_search');
+  var $scrollContainer = $('.horizontal_scroll02');
  
   var tabsLiLen = $jsTabsLi.length;
   var tabsLiWid = $jsTabsLi.eq(0).width();
