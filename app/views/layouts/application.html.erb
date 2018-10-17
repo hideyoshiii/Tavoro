@@ -4,6 +4,9 @@
     <title>Tavore</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+    <!-- meta-tags -->
+    <%= display_meta_tags(default_meta_tags) %>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -43,9 +46,11 @@
                 <%= link_to 'プロフィール変更', edit_user_registration_path %>
               </div>
             <% else %>
-              <div style="float:right;padding:18px 10px 0px 0px;font-size:10px;">
-                <%= link_to 'ログイン', new_user_session_path %>
+              <%= link_to "#" do %>
+              <div style="float:right;padding:13px 10px 0px 0px;font-size:15px;color:rgba(39,134,160,0.8);">
+                what's
               </div>
+              <% end %>
             <% end %>
           </div>
         </div>

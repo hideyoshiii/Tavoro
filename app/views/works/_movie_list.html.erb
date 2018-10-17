@@ -32,46 +32,49 @@
   <% end %>
 <% end %>
 
+
 <% if @items.present? %>
   <% @items.each do |item| %>
-    <%= form_tag(works_movie_detail_path, method: :get) do %>
-    <%= hidden_field_tag :type, item["media_type"] %>
-    <%= hidden_field_tag :id, item["id"] %>
-      <button type="submit">
-        <div class="box_tests02">
-          <div class="pro09">
-            <% if item["poster_path"].blank? %>
-              <%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
-            <% else %>
-              <%= image_tag "https://image.tmdb.org/t/p/w500/#{item.poster_path}", :class =>'img_lavoro03' %>
-            <% end %>
+    <% if item["media_type"] == "movie" || item["media_type"] == "tv" %>
+      <%= form_tag(works_movie_detail_path, method: :get) do %>
+      <%= hidden_field_tag :type, item["media_type"] %>
+      <%= hidden_field_tag :id, item["id"] %>
+        <button type="submit">
+          <div class="box_tests02">
+            <div class="pro09">
+              <% if item["poster_path"].blank? %>
+                <%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+              <% else %>
+                <%= image_tag "https://image.tmdb.org/t/p/w500/#{item.poster_path}", :class =>'img_lavoro03' %>
+              <% end %>
+            </div>
+            <div class="pro10">
+              <span class="font_white_big">
+                <% if item["media_type"] == "movie" %>
+                  <%= item["title"] %>
+                <% end %> 
+                <% if item["media_type"] == "tv" %>
+                  <%= item["name"] %>
+                <% end %>   
+              </span>
+              <br>
+              <span class="font_gray_max">
+                <% if item["media_type"] == "movie" %>
+                  <%= item["release_date"].slice(0..3) %>
+                <% end %> 
+                <% if item["media_type"] == "tv" %>
+                  <%= item["first_air_date"].slice(0..3) %>
+                <% end %>  
+              </span>
+            </div>
+            <div class="pro11">
+              <span class="font_gray_max">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </div>
           </div>
-          <div class="pro10">
-            <span class="font_white_big">
-              <% if item["media_type"] == "movie" %>
-                <%= item["title"] %>
-              <% end %> 
-              <% if item["media_type"] == "tv" %>
-                <%= item["name"] %>
-              <% end %>   
-            </span>
-            <br>
-            <span class="font_gray_max">
-              <% if item["media_type"] == "movie" %>
-                <%= item["release_date"].slice(0..3) %>
-              <% end %> 
-              <% if item["media_type"] == "tv" %>
-                <%= item["first_air_date"].slice(0..3) %>
-              <% end %>  
-            </span>
-          </div>
-          <div class="pro11">
-            <span class="font_gray_max">
-              <i class="fas fa-chevron-right"></i>
-            </span>
-          </div>
-        </div>
-      </button>
-    <% end %>
+        </button>
+      <% end %>
+    <% end %> 
   <% end %>
 <% end %>
