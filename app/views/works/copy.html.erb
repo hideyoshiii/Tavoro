@@ -1,0 +1,115 @@
+<div class="main">
+	<div class="block_side">
+	</div>
+	<div class="block_main">
+		<div style="height:50px;"></div>
+		<%= form_tag(works_save_path, method: :post) do %>
+		<%= hidden_field_tag :category, @post.category %>
+		<%= hidden_field_tag :title, @post.title %>
+		<%= hidden_field_tag :work_id, @post.work_id %>
+
+			<div class="test_radio03">
+				<%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
+				<span>
+					<div class="tango01">
+						<div class="bar_post">					
+							<div class="box_tests04">
+								<div class="pro13">
+									<div style="text-align:left;">
+										<a href="javascript:void(0);" onclick="window.history.back();">
+								        	<span class="font_blue_max"><i class="fas fa-chevron-left"></i></span>
+								        </a>										
+									</div>
+								</div>
+								<div class="pro14">
+									<div style="text-align:center;">
+										<span class="font_white">
+											<%= @post.title %>
+										</span>
+									</div>
+								</div>
+								<div class="pro15">
+									<div style="text-align:right;">
+										<button type="submit">
+											<span class="font_blue_max">投稿</span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="height05"></div>
+						<div class="nmn03" style="text-align:center;width:100%;padding:10px;margin:0 auto;">
+							<div style="display:inline-block;">
+								<%= radio_button_tag(:review, "favorite", true, {:id => "favorite"}) %>
+							    <label for="favorite"><i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i>おすすめ</label>
+							</div>
+						    <div style="display:inline-block;">
+							    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
+							    <label for="good" class="radio">観ました</label>
+						    </div>
+						    <div style="display:inline-block;">
+							    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
+							    <label for="bad" class="radio"><i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしない</label>
+						    </div>
+						</div>
+						<div class="height03"></div>
+						<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
+							<textarea name="description" id="textarea" placeholder="何か書く" wrap="hard"></textarea>
+						</div>
+						<div class="height02"></div>
+						<% if @post.category == "movie" || @post.category == "tv" %>
+							<div style="text-align:center;width:100%;margin:0 auto;">
+								<div class="horizontal_scroll">
+									<% if @posters.present? %>
+										<% @posters.each.with_index(1) do |poster, i| %>
+											<% if i == 1 %>
+												<div class="scroll_item">
+													<div class="radio01">
+														<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
+														<label for="image_url<%= i %>">
+															<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+														</label>
+													</div>
+												</div>
+											<% else %>
+												<div class="scroll_item">
+													<div class="radio01">
+														<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
+														<label for="image_url<%= i %>">
+															<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+														</label>
+													</div>
+												</div>
+											<% end %>
+										<% end %>
+									<% end %>
+								</div>
+							</div>
+						<% else %>
+							<div style="text-align:center;width:100%;margin:0 auto;">
+								<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
+								<%= hidden_field_tag :image_url, @post.image_url %>
+							</div>
+						<% end %>
+					</div>
+				</span>
+			</div>
+
+		<% end %>
+	</div>
+	<div class="block_side">
+	</div>
+</div>
+
+
+<%#テキストエリアの自動改行%>
+<script type="text/javascript">
+	$(function() {
+	  var $textarea = $('#textarea');
+	  var lineHeight = parseInt($textarea.css('lineHeight'));
+	  $textarea.on('input', function(e) {
+	    var lines = ($(this).val() + '\n').match(/\n/g).length;
+	    $(this).height(lineHeight * lines);
+	  });
+	});
+</script>

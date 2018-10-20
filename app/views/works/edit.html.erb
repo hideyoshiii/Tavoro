@@ -35,7 +35,6 @@
 							</div>
 						</div>
 						<div class="height05"></div>
-						<div class="height01"></div>
 						<div class="nmn03" style="text-align:center;width:100%;padding:10px;margin:0 auto;">
 							<div style="display:inline-block;">
 								<%= radio_button_tag(:review, "favorite", @favorite, {:id => "favorite"}) %>
@@ -55,9 +54,39 @@
 							<textarea name="description" id="textarea" placeholder="何か書く" wrap="hard"><%= @post.description %></textarea>
 						</div>
 						<div class="height02"></div>
-						<div style="text-align:center;width:100%;margin:0 auto;">
-							<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
-						</div>
+						<% if @post.category == "movie" || @post.category == "tv" %>
+							<div style="text-align:center;width:100%;margin:0 auto;">
+								<div class="horizontal_scroll">
+									<% if @posters.present? %>
+										<% @posters.each.with_index(1) do |poster, i| %>
+											<% if @post.image_url == "https://image.tmdb.org/t/p/original/#{poster.file_path}" %>
+												<div class="scroll_item">
+													<div class="radio01">
+														<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
+														<label for="image_url<%= i %>">
+															<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+														</label>
+													</div>
+												</div>
+											<% else %>
+												<div class="scroll_item">
+													<div class="radio01">
+														<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
+														<label for="image_url<%= i %>">
+															<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+														</label>
+													</div>
+												</div>
+											<% end %>
+										<% end %>
+									<% end %>
+								</div>
+							</div>
+						<% else %>
+							<div style="text-align:center;width:100%;margin:0 auto;">
+								<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
+							</div>
+						<% end %>
 					</div>
 				</span>
 			</div>

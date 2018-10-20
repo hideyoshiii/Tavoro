@@ -4,6 +4,14 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
   get "users/:id/collection" => "users#collection"
+  get "users/:id/profile" => "users#profile"
+
+  resources :users do
+    member do
+     get :following, :followers
+    end
+  end
+  resources :relationships,       only: [:create, :destroy]
 
   get 'works/index' => "works#index"
   get 'works/search' => "works#search"
@@ -17,7 +25,14 @@ Rails.application.routes.draw do
   get 'works/music/detail' => "works#music_detail"
   get 'works/ajax_music_list' => "works#ajax_music_list"
   post 'works/save' => "works#save"
+  get "works/:id/detail" => "works#detail"
   get "works/:id/edit" => "works#edit"
+  get "works/:id/copy" => "works#copy"
   post "works/:id/update" => "works#update"
   post "works/:id/destroy" => "works#destroy"
+
+  get 'works/test' => "works#test"
+
+  post "likes/:post_id/create" => "likes#create"
+  post "likes/:post_id/destroy" => "likes#destroy"
 end

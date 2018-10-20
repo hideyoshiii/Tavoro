@@ -4,8 +4,46 @@
 	<div class="block_main">
 
 		<div style="height:50px;"></div>
+		<div class="horizontal_scroll03">	
+			<% @user.followings.each do |user| %>				
+				<div class="scroll_item03">
+					<% if user.image.blank?  %>
+						<%= image_tag "user09.png", :class =>'img_user06' %>
+					<% else %>
+						<a href="" data-toggle="modal" data-target="#myModal_<%= user.id %>">
+							<%= image_tag user.image, :class => "img_user06" %>
+						</a>
+					<% end %>
+					<div style="font-size:10px;margin-top:3px;">
+						<%= user.name %>
+					</div>
+				</div>
+			<% end %>
+		</div>
 		<% if @posts.present? %>
 			<% @posts.each.with_index(1) do |post, i| %>
+				<style type="text/css">
+					#menu_in<%= post.id %>{
+					  overflow: hidden;
+					  width: auto;
+					  max-height: 0;
+					  opacity: 0;
+					  -webkit-transition: all .5s ease-in-out 0s;
+					  transition: all .5s ease-in-out 0s;
+					}
+					#menu_in<%= post.id %>.open {
+					  max-height:500px;
+					  opacity: 1;
+					  z-index: 9999;
+					}
+				</style>
+				<script type="text/javascript">
+					$(function(){
+				    $('#menu<%= post.id %>').click(function(){
+				        $('#menu_in<%= post.id %>').toggleClass('open');
+				    });
+				});
+				</script>
 				<div class="base01">
 					<% if post.image_url.blank? %>
 						<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
@@ -21,65 +59,49 @@
 						</div>
 						<div class="layer03">
 							<div class="pro01">
-								<% if post.user.image.blank?  %>
-									<%= image_tag "user05.png", :class =>'img_user04' %>
-								<% else %>
-									<%= image_tag current_user.image, :class => "img_user04" %>
+								<%= link_to "/users/#{post.user.id}/collection" do %>
+									<% if post.user.image.blank?  %>
+										<%= image_tag "user09.png", :class =>'img_user04' %>
+									<% else %>
+										<%= image_tag post.user.image, :class => "img_user04" %>
+									<% end %>
 								<% end %>
 							</div>
 							<div class="pro02">
-								<span class="font_white">
-									<%= post.user.name %>
-								</span>
-								<br>
-								<span class="font_white">
-									<% if post.category == "movie" %>
-										<i class="fas fa-film"></i> 映画
-									<% end %>
-									<% if post.category == "tv" %>
-										<i class="fas fa-film"></i> テレビ
-									<% end %>
-									<% if post.category == "book" %>
-										<i class="fas fa-book"></i> ブック
-									<% end %>
-									<% if post.category == "comic" %>
-										<i class="fas fa-book"></i> コミック
-									<% end %>
-									<% if post.category == "music" %>
-										<i class="fas fa-music"></i> ミュージック
-									<% end %>
-									 - <%= post.created_at.strftime('%Y/%m/%d') %>
-								</span>
+								<%= link_to "/users/#{post.user.id}/collection" do %>
+									<div class="font_white">
+										<%= post.user.name %>
+									</div>
+									<div class="font_white">
+										<% if post.category == "movie" %>
+											<i class="fas fa-film"></i> 映画
+										<% end %>
+										<% if post.category == "tv" %>
+											<i class="fas fa-film"></i> テレビ
+										<% end %>
+										<% if post.category == "book" %>
+											<i class="fas fa-book"></i> ブック
+										<% end %>
+										<% if post.category == "comic" %>
+											<i class="fas fa-book"></i> コミック
+										<% end %>
+										<% if post.category == "music" %>
+											<i class="fas fa-music"></i> ミュージック
+										<% end %>
+										 - <%= post.created_at.strftime('%Y/%m/%d') %>
+									</div>
+								<% end %>
 							</div>
-							<div class="pro03">
-								<div class="dropdown">
-								  <div class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-								    <span class="font_white_max">
-								    	<i class="fas fa-ellipsis-h"></i>
-								    </span>
-								  </div>
-								  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-								    <% if post.user.id == current_user.id %>
-									    <li>
-									    	<%= link_to "/works/#{post.id}/edit" do %>
-									    		投稿を編集
-									    	<% end %>
-									    </li>
-									    <li>
-									    	<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-									    		削除
-									    	<% end %>
-									    </li>
-								    <% end %>
-								  </ul>
-								</div>
+							<div class="pro03">		
 							</div>
 						</div>
 						<div class="layer01">
-							<% if post.image_url.blank? %>
-								<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
-							<% else %>
-								<%= image_tag post.image_url, :class =>'img_lavoro03' %>
+							<%= link_to "/works/#{post.id}/detail" do %>
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro03' %>
+								<% end %>
 							<% end %>
 						</div>
 						<div class="layer02">
@@ -94,7 +116,6 @@
 									<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
 								<% end %>
 							</div>
-							<br>
 							<div class="font_head">
 								<%= post.title %>
 							</div>
@@ -104,6 +125,40 @@
 								  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
 								</div>
 							<% end %>
+						</div>
+						<div class="layer08">
+							<div id="menu<%= post.id %>" style="margin:35px 15px 0px 0px;text-align:right;">
+								<%= image_tag "test07.png", :style =>'width:25px;height:25px;' %>
+							</div>
+							<div id="menu_in<%= post.id %>">
+								<% unless post.user.id == current_user.id %>
+								  	<div style="margin:30px 10px 0px 0px;">
+										<span id="like-of-<%= post.id %>">
+									      	<%= render partial: 'likes/like', locals: { post: post, likes: @likes } %>
+									    </span>
+									</div>
+									<div style="margin:30px 10px 0px 0px;">
+										<%= link_to "/works/#{post.id}/copy" do %>
+											<%= image_tag "test10.png", :style =>'width:35px;height:35px;' %>
+										<% end %>									
+									</div>
+								<% end %>
+								<% if post.user.id == current_user.id %>
+									<div style="margin:30px 10px 0px 0px;">
+										<%= image_tag "test16.png", :style =>'width:35px;height:35px;' %>
+									</div>
+									<div style="margin:30px 10px 0px 0px;">
+										<%= link_to "/works/#{post.id}/edit" do %>
+											<%= image_tag "test04.png", :style =>'width:35px;height:35px;' %>
+										<% end %>
+									</div>
+									<div style="margin:30px 10px 0px 0px;">
+										<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+											<%= image_tag "test01.png", :style =>'width:35px;height:35px;' %>
+										<% end %>
+									</div>	
+								<% end %>							
+							</div>
 						</div>
 					</span>
 				</div>
@@ -125,12 +180,12 @@
 <div class="modal fade" id="myModal_post">
 	<div class="height_modal"></div>
     <div class="modal-dialog">
-    	<div class="base02">
+    	<div class="base_modal">
 			<%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
 			<span>
-				<div class="layer08">
+				<div class="layer01">
 				</div>
-				<div class="layer06">
+				<div class="layer02">
 			  		<div class="">	
 				  		<div style="font-size:24px;color:#FAFAFA;margin:0px 0px 30px;">
 					      	投稿を作成
@@ -176,3 +231,283 @@
 		</a>
 	</div>	
 </div>
+
+
+<% @user.followings.each do |user| %>
+
+	<style type="text/css">
+		.slideshow_<%= user.id %> {
+		position: relative;
+		overflow: hidden;
+		height:100%;
+	}
+	input[name="slideshow_<%= user.id %>"] {
+		display: none;
+	}
+
+	/* :::::: slideContents :::::: */
+	.slideContents_<%= user.id %> {
+		display: flex;
+		position: relative;
+		width: 500%;
+		height:100%;
+		background: none;
+		text-align: center;
+		-webkit-user-select: none;
+		user-select: none;
+		transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	.slideContents_<%= user.id %> section {
+		width: 100%;
+		height:100%;
+		vertical-align: middle;
+	}
+	/* :::::: arrows :::::: */
+	.arrow_<%= user.id %>,
+	.arrow_<%= user.id %> label{
+		position: absolute;
+	}
+	.arrow_<%= user.id %> {
+		top: 85%;
+		padding:0;
+		margin: 0;
+		transition: background .3s;
+	}
+	.prev_<%= user.id %> {
+		left: 20px;
+	}
+	.next_<%= user.id %> {
+		right: 20px;
+	}
+	.arrow_<%= user.id %>,
+	.arrow_<%= user.id %> label {
+		cursor: pointer;
+		width: 40px;
+		height: 40px;
+	}
+	.down_<%= user.id %>{
+		position: absolute;
+		top: 92%;
+		left: 50%;
+		-ms-transform: translate(-50%,-50%);
+		-webkit-transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%);
+	}
+	/* :::::: mechanism :::::: */
+	#switch1_<%= user.id %>:checked ~ .slideContents_<%= user.id %> {
+		transform: translateX(0);
+	}
+	#switch2_<%= user.id %>:checked ~ .slideContents_<%= user.id %> {
+		transform: translateX(-20%);
+	}
+	#switch3_<%= user.id %>:checked ~ .slideContents_<%= user.id %> {
+		transform: translateX(-40%);
+	}
+	#switch4_<%= user.id %>:checked ~ .slideContents_<%= user.id %> {
+		transform: translateX(-60%);
+	}
+	#switch5_<%= user.id %>:checked ~ .slideContents_<%= user.id %> {
+		transform: translateX(-80%);
+	}
+
+	/* :::::: arrow mechanism :::::: */
+	.arrow_<%= user.id %> label {
+		pointer-events: none;
+	}
+	#switch1_<%= user.id %>:checked ~ .prev_<%= user.id %> label[for="switch5_<%= user.id %>"],
+	#switch2_<%= user.id %>:checked ~ .prev_<%= user.id %> label[for="switch1_<%= user.id %>"],
+	#switch3_<%= user.id %>:checked ~ .prev_<%= user.id %> label[for="switch2_<%= user.id %>"],
+	#switch4_<%= user.id %>:checked ~ .prev_<%= user.id %> label[for="switch3_<%= user.id %>"],
+	#switch5_<%= user.id %>:checked ~ .prev_<%= user.id %> label[for="switch4_<%= user.id %>"],
+	#switch1_<%= user.id %>:checked ~ .next_<%= user.id %> label[for="switch2_<%= user.id %>"],
+	#switch2_<%= user.id %>:checked ~ .next_<%= user.id %> label[for="switch3_<%= user.id %>"],
+	#switch3_<%= user.id %>:checked ~ .next_<%= user.id %> label[for="switch4_<%= user.id %>"],
+	#switch4_<%= user.id %>:checked ~ .next_<%= user.id %> label[for="switch5_<%= user.id %>"],
+	#switch5_<%= user.id %>:checked ~ .next_<%= user.id %> label[for="switch1_<%= user.id %>"] {
+		pointer-events: auto;
+	}
+	</style>
+
+	<% @postsn = Post.where(user_id: user.id).order('id DESC').limit(5) %>
+	<div class="modal fade" id="myModal_<%= user.id %>">
+		<div class="height_modal"></div>
+    	<div class="modal-dialog">
+
+			<div class="slideshow">
+				<input type="radio" name="slideshow_<%= user.id %>" id="switch1_<%= user.id %>" checked>
+				<input type="radio" name="slideshow_<%= user.id %>" id="switch2_<%= user.id %>">
+				<input type="radio" name="slideshow_<%= user.id %>" id="switch3_<%= user.id %>">
+				<input type="radio" name="slideshow_<%= user.id %>" id="switch4_<%= user.id %>">
+				<input type="radio" name="slideshow_<%= user.id %>" id="switch5_<%= user.id %>">
+				<div class="slideContents_<%= user.id %>">
+					<% @postsn.each.with_index(1) do |post, i| %>
+
+						<style type="text/css">
+							#menu_in_st<%= post.id %>{
+							  overflow: hidden;
+							  width: auto;
+							  max-height: 0;
+							  opacity: 0;
+							  -webkit-transition: all .5s ease-in-out 0s;
+							  transition: all .5s ease-in-out 0s;
+							}
+							#menu_in_st<%= post.id %>.open {
+							  max-height:500px;
+							  opacity: 1;
+							  z-index: 9999;
+							}
+						</style>
+						<script type="text/javascript">
+							$(function(){
+						    $('#menu_st<%= post.id %>').click(function(){
+						        $('#menu_in_st<%= post.id %>').toggleClass('open');
+						    });
+						});
+						</script>
+
+						<section>
+							<div class="base04">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
+								<% else %>
+									<% if post.category == "music" %>
+										<%= image_tag post.image_url, :class =>'img_lavoro002' %>
+									<% else %>
+										<%= image_tag post.image_url, :class =>'img_lavoro02' %>
+									<% end %>
+								<% end %>
+								<span>
+									<div class="layer05">
+									</div>
+									<div class="layer03">
+										<div class="pro01">
+											<%= link_to "/users/#{post.user.id}/collection" do %>
+												<% if post.user.image.blank?  %>
+													<%= image_tag "user09.png", :class =>'img_user04' %>
+												<% else %>
+													<%= image_tag post.user.image, :class => "img_user04" %>
+												<% end %>
+											<% end %>
+										</div>
+										<div class="pro02">
+											<%= link_to "/users/#{post.user.id}/collection" do %>
+												<div class="font_white">
+													<%= post.user.name %>
+												</div>
+												<div class="font_white">
+													<% if post.category == "movie" %>
+														<i class="fas fa-film"></i> 映画
+													<% end %>
+													<% if post.category == "tv" %>
+														<i class="fas fa-film"></i> テレビ
+													<% end %>
+													<% if post.category == "book" %>
+														<i class="fas fa-book"></i> ブック
+													<% end %>
+													<% if post.category == "comic" %>
+														<i class="fas fa-book"></i> コミック
+													<% end %>
+													<% if post.category == "music" %>
+														<i class="fas fa-music"></i> ミュージック
+													<% end %>
+													 - <%= post.created_at.strftime('%Y/%m/%d') %>
+												</div>
+											<% end %>
+										</div>
+										<div class="pro03">											
+										</div>
+									</div>
+									<div class="layer07">
+										<%= link_to "/works/#{post.id}/detail" do %>
+											<% if post.image_url.blank? %>
+												<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+											<% else %>
+												<%= image_tag post.image_url, :class =>'img_lavoro03' %>
+											<% end %>
+										<% end %>
+									</div>
+									<div class="layer02">
+										<div class="font_how">
+											<% if post.review == "favorite" %>
+												<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+											<% end %>
+											<% if post.review == "good" %>
+												観ました
+											<% end %>
+											<% if post.review == "bad" %>
+												<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
+											<% end %>
+										</div>
+										<div class="font_head">
+											<%= post.title %>
+										</div>
+										<% if post.description.present? %>
+											<div class="balloon_top"></div>
+											<div class="balloon">
+											  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+											</div>
+										<% end %>
+									</div>
+									<div class="layer09">
+										<div id="menu_st<%= post.id %>" style="margin:20px 15px 0px 0px;text-align:right;">
+											<%= image_tag "test07.png", :style =>'width:25px;height:25px;' %>
+										</div>
+										<div id="menu_in_st<%= post.id %>">
+										  	<% unless post.user.id == current_user.id %>
+											  	<div style="margin:30px 10px 0px 0px;">
+													<span id="like_st-of-<%= post.id %>">
+												      	<%= render partial: 'likes/like', locals: { post: post, likes: @likes } %>
+												    </span>
+												</div>
+												<div style="margin:30px 10px 0px 0px;">
+													<%= link_to "/works/#{post.id}/copy" do %>
+														<%= image_tag "test10.png", :style =>'width:35px;height:35px;' %>
+													<% end %>									
+												</div>
+											<% end %>
+											<% if post.user.id == current_user.id %>
+												<div style="margin:30px 10px 0px 0px;">
+													<%= image_tag "test16.png", :style =>'width:35px;height:35px;' %>
+												</div>
+												<div style="margin:30px 10px 0px 0px;">
+													<%= link_to "/works/#{post.id}/edit" do %>
+														<%= image_tag "test04.png", :style =>'width:35px;height:35px;' %>
+													<% end %>
+												</div>
+												<div style="margin:30px 10px 0px 0px;">
+													<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+														<%= image_tag "test01.png", :style =>'width:35px;height:35px;' %>
+													<% end %>
+												</div>	
+											<% end %>								
+										</div>
+									</div>
+								</span>
+							</div>
+						</section>
+					<% end %>
+				</div>
+				<div class="arrow_<%= user.id %> prev_<%= user.id %>">
+					<label for="switch1_<%= user.id %>"><%= image_tag "left_blue.png", :class =>'img_left02' %></label>
+					<label for="switch2_<%= user.id %>"></label>
+					<label for="switch3_<%= user.id %>"></label>
+					<label for="switch4_<%= user.id %>"></label>
+					<label for="switch5_<%= user.id %>"></label>
+				</div>
+				<div class="down_<%= user.id %>">
+					<a href="" data-toggle="modal" data-dismiss="modal">
+						<%= image_tag "close_blue.png", :class =>'img_left02' %>
+					</a>
+				</div>
+				<div class="arrow_<%= user.id %> next_<%= user.id %>">
+					<label for="switch1_<%= user.id %>"><%= image_tag "right_blue.png", :class =>'img_left02' %></label>
+					<label for="switch2_<%= user.id %>"></label>
+					<label for="switch3_<%= user.id %>"></label>
+					<label for="switch4_<%= user.id %>"></label>
+					<label for="switch5_<%= user.id %>"></label>
+				</div>
+
+			</div>
+		</div>
+	</div>
+<% end %>

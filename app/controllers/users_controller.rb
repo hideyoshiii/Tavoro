@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	
 	def collection
 		@user = User.find(params[:id])
 		@all = Post.where(user_id: @user.id).order('id DESC')
@@ -7,5 +8,9 @@ class UsersController < ApplicationController
 		@book = @all.where(category: "book").order('id DESC')
 		@comic = @all.where(category: "comic").order('id DESC')
 		@music = @all.where(category: "music").order('id DESC')
+	end
+
+	def profile
+		@user = User.find(params[:id])
 	end
 end

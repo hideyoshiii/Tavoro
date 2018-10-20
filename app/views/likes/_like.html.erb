@@ -1,0 +1,9 @@
+<% if Like.find_by(user_id: current_user.id, post_id: post.id) %>
+	<%= link_to "/likes/#{post.id}/destroy", method: :post, id: "like-button", remote: true do %>
+		<%= image_tag "like03.png", :style =>'width:35px;height:35px;' %>
+	<% end %>
+<% else %>
+	<%= link_to "/likes/#{post.id}/create", method: :post, id: "like-button", remote: true do %>
+		<%= image_tag "like02.png", :style =>'width:35px;height:35px;' %>
+	<% end %>
+<% end %>

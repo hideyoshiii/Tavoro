@@ -4,8 +4,29 @@ class WorksController < ApplicationController
   def home
   end
 
+  def test
+  	
+  end
+
   def index
-  	@posts = Post.where(user_id: current_user.id).order('id DESC')
+
+  	@user  = User.find(current_user.id)
+
+  	@users = @user.followings
+  	@posts = []
+  	@posts_mine = Post.where(user_id: current_user.id).order('id DESC')
+  	@posts.concat(@posts_mine)
+
+  	if @users.present?
+        @users.each do |user|
+          	posts = Post.where(user_id: user.id).order(created_at: :desc)
+          	#取得したユーザーの投稿一覧を@postsに格納
+          	@posts.concat(posts)
+        end
+        #@postsを新しい順に並べたい
+        @posts.sort_by!{|post| post.created_at}.reverse!
+    end
+
   end
 
   def search
@@ -149,9 +170,71 @@ class WorksController < ApplicationController
     end     
   end
 
+  def detail
+  	@post = Post.find(params[:id])
+
+  	@users = current_user.followings
+  	@comments = []
+
+  	if @users.present?
+        @users.each do |user|
+        	unless user == @post.user
+          		comments = Post.where(user_id: user.id, work_id: @post.work_id).order(created_at: :desc)
+          		#取得したユーザーの投稿一覧を@postsに格納
+	          	@comments.concat(comments)
+	        end
+        end
+        #@postsを新しい順に並べたい
+        @comments.sort_by!{|post| post.created_at}.reverse!
+    end
+
+  	if @post.category == "movie"
+  		@item = Tmdb::Movie.detail(@post.work_id)
+  		@detail01 = @item["release_date"].slice(0..3)
+  		@detail02 = @item["runtime"]
+  		@detail02 = "上映時間 : " + @detail02.to_s + "分"
+  		@detail03 = Tmdb::Movie.director(@post.work_id).first["name"]
+  		@detail03 = "監督 : " + @detail03
+  	end
+  	if @post.category == "tv"
+  		@item = Tmdb::TV.detail(@post.work_id)
+  		@detail01 = @item["last_episode_to_air"]["air_date"].slice(0..3)
+  	end
+  	if @post.category == "book"
+  		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
+	  	if @items.present?
+			@item = @items.first
+		end
+  		@detail01 = @item["salesDate"].slice(0..3)
+  		@detail02 = @item["author"]
+  		@detail02 = "著者 : " + @detail02
+  	end
+  	if @post.category == "comic"
+  		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
+	  	if @items.present?
+			@item = @items.first
+		end
+  		@detail01 = @item["salesDate"].slice(0..3)
+  		@detail02 = @item["author"]
+  		@detail02 = "著者 : " + @detail02
+  	end
+  	if @post.category == "music"
+  		@items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
+	  	if @items.present?
+			@item = @items.first
+		end
+  		@detail01 = @item["releaseDate"].slice(0..3)
+  		@detail02 = @item["artistName"]
+  		@detail02 = "アーティスト : " + @detail02
+  		@detail03 = @item["collectionName"]
+  		@detail03 = "アルバム : " + @detail03
+  	end
+  end
+
 
   def edit
   	@post = Post.find(params[:id])
+
   	@favorite = false
   	@good = false
   	@bad = false
@@ -167,6 +250,45 @@ class WorksController < ApplicationController
     if !(current_user == @post.user)
       redirect_to root_path
     end
+
+    if @post.category == "movie"
+  		@item = Tmdb::Movie.detail(@post.work_id)
+	  	@poster_ja = Tmdb::Movie.posters(@post.work_id, language: 'ja')
+	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
+	    @poster_en = Tmdb::Movie.posters(@post.work_id, language: 'en')
+	    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
+	    @posters = @poster_ja + @poster_en
+	end
+	if @post.category == "tv"
+  		@item = Tmdb::TV.detail(@post.work_id)
+	  	@poster_ja = Tmdb::TV.posters(@post.work_id, language: 'ja')
+	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
+	    @poster_en = Tmdb::TV.posters(@post.work_id, language: 'en')
+	    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
+	    @posters = @poster_ja + @poster_en
+	end
+
+  end
+
+  def copy
+  		@post = Post.find(params[:id])
+
+	  	if @post.category == "movie"
+	  		@item = Tmdb::Movie.detail(@post.work_id)
+		  	@poster_ja = Tmdb::Movie.posters(@post.work_id, language: 'ja')
+		  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
+		    @poster_en = Tmdb::Movie.posters(@post.work_id, language: 'en')
+		    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
+		    @posters = @poster_ja + @poster_en
+		end
+		if @post.category == "tv"
+	  		@item = Tmdb::TV.detail(@post.work_id)
+		  	@poster_ja = Tmdb::TV.posters(@post.work_id, language: 'ja')
+		  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
+		    @poster_en = Tmdb::TV.posters(@post.work_id, language: 'en')
+		    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
+		    @posters = @poster_ja + @poster_en
+		end
   end
 
   def update

@@ -64,7 +64,7 @@
 										<% if i == 1 %>
 											<div class="scroll_item">
 												<div class="radio01">
-													<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/w500/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
+													<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
 													<label for="image_url<%= i %>">
 														<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
 													</label>
@@ -73,7 +73,7 @@
 										<% else %>
 											<div class="scroll_item">
 												<div class="radio01">
-													<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/w500/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
+													<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
 													<label for="image_url<%= i %>">
 														<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
 													</label>
