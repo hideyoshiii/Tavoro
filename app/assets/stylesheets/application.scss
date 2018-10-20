@@ -234,6 +234,15 @@ html,body {
 	background:rgba(0,0,0,0.1);
 	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.4);
 }
+.img_user09{
+	width: 60px;
+	height: 60px;
+	padding:0;
+	margin:0;
+	border-radius:50%;
+	background:rgba(0,0,0,0.1);
+	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.4);
+}
 .img_profile01{
 	width: 50px;
 	height: 50px;
@@ -1492,6 +1501,23 @@ button {
 	padding:15px 10px 15px 5px;
 	background:none;
 }
+.box_tests05{
+	text-align:left;
+	margin:0 5px;
+	padding:15px 7px;
+	border-bottom:solid 1px #666666;
+}
+.box_tests06{
+	text-align:left;
+	padding:7px;
+	border-bottom:solid 1px #666666;
+}
+.box_tests07{
+	text-align:left;
+	padding:15px;
+	margin-left:20px;
+	border-bottom:solid 0.5px #666666;
+}
 .box_tests001{
 	text-align:left;
 	margin:0 auto;
@@ -1723,6 +1749,66 @@ button {
 		margin:0 auto;
 		background:none;
 		text-align:center;
+		font-size:0px;
+	}
+.pro21{
+		display:inline-block;
+		vertical-align:middle;
+		width:22%;
+		height:auto;
+		padding:0px 0px 0px 0px;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+		padding-left:5px;
+	}
+.pro22{
+		display:inline-block;
+		vertical-align:middle;
+		width:43%;
+		height:auto;
+		padding:0px 20px;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+		padding-left:5px;
+	}
+.pro23{
+		display:inline-block;
+		vertical-align:middle;
+		width:35%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-aline:right;
+		font-size:0px;
+		padding-right:10px;
+	}
+.pro24{
+		display:inline-block;
+		vertical-align:middle;
+		width:90%;
+		height:auto;
+		padding:0;
+		padding-left:10px;
+		margin:0 auto;
+		background:none;
+		text-aline:left;
+		font-size:0px;
+	}
+.pro25{
+		display:inline-block;
+		vertical-align:middle;
+		width:10%;
+		height:auto;
+		padding:0;
+		padding-right:10px;
+		margin:0 auto;
+		background:none;
+		text-aline:right;
 		font-size:0px;
 	}
 //ボタン配置関係
@@ -2396,5 +2482,17 @@ input[name="slideshow"] {
   margin:0 auto;
   font-size:0;
   z-index:2;
-  border-radius:15px 15px 0px 0px;
+  }
+
+.e1 > .e3 {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  background: none; 
+  width:100%;
+  height:auto;
+  padding:0;
+  margin:0 auto;
+  font-size:0;
+  z-index:2;
   }

@@ -12,28 +12,22 @@
             	</div>
 	          </div>
 	          <div class="pro17">
-	            <div style="margin-left:5px;">
+	            <div style="margin-left:10px;">
 	              	<div class="font_white"> 
 	              		<%= @user.name %>
 	              	</div>  
 	              	<div class="font_gray_min"> 
-	              		29フォロー 30フォロワー
+	              		<% @post_i = Post.where(user_id: @user.id).count %>
+	                	<%= @post_i %>投稿
 	              	</div>
 	            </div>
 	          </div>
 	          <div class="pro18">
 	            <div class="font_white" style="text-align:right;">
 	            	<% unless current_user?(@user) %>
-		            	<% if current_user.following?(@user) %>
-					    	<%= form_for(current_user.following_relationships.find_by(following_id: @user.id), html: { method: :delete }) do |f| %>
-							  <%= f.submit "フォロー中", class: "test_btn03" %>
-							<% end %>
-					  	<% else %>
-					    	<%= form_for(current_user.following_relationships.build(following_id: @user.id)) do |f| %>
-							  <div><%= f.hidden_field :following_id %></div>
-							  <%= f.submit "フォロー", class: "test_btn02" %>
-							<% end %>
-					  	<% end %>
+		            	<span id="relationship-of-<%= @user.id %>">
+					      	<%= render partial: 'relationships/relationship' %>
+					    </span>
 					<% else %>
 						<%= link_to "/users/#{@user.id}/profile" do %>  
 							<span class="test_btn03">

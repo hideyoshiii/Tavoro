@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	
+
 	def collection
 		@user = User.find(params[:id])
 		@all = Post.where(user_id: @user.id).order('id DESC')
@@ -13,4 +13,15 @@ class UsersController < ApplicationController
 	def profile
 		@user = User.find(params[:id])
 	end
+
+	def user
+	end
+
+  	def ajax_user_list
+    	@items = User.where('name LIKE ?', "%#{params[:q]}%")
+  	end
+
+  	def configuration 		
+  	end
+
 end

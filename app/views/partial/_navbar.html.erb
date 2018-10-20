@@ -1,0 +1,26 @@
+<div class="bar_top">
+  <div class="bar_top_in01">
+    <div style="float:left;">
+      <%= link_to "/works/index" do %>
+      <div style="padding:10px 5px 0px 10px;color:rgba(39,134,160,0.8);font-size:20px;">
+        TAVORE
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="bar_top_in02">
+    <% if user_signed_in? %>
+      <div style="float:right;padding:10px 15px 0px 0px;">
+        <a href="" data-toggle="modal" data-target="#myModal_profile">
+          <%= image_tag "user09.png", :class =>'img_icon01' %>
+        </a>
+      </div>
+    <% else %>
+      <%= link_to "#" do %>
+      <div style="float:right;padding:13px 10px 0px 0px;font-size:15px;color:rgba(39,134,160,0.8);">
+        what's
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   get "users/:id/collection" => "users#collection"
   get "users/:id/profile" => "users#profile"
+  get 'users/user' => "users#user"
+  get 'users/ajax_user_list' => "users#ajax_user_list"
+  get 'users/configuration' => "users#configuration"
 
   resources :users do
     member do

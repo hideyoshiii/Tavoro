@@ -1,11 +1,8 @@
-<div class="main">
-	<div class="block_side">
-	</div>
-	<div class="block_main">
-
-		<div style="height:50px;"></div>
-
-		<div class="a1">
+<% if user_signed_in? %>
+  <div class="modal fade" id="myModal_profile">
+    <div class="height_modal"></div>
+      <div class="modal-dialog">
+        <div class="a1">
           <div class="a4">
             <div class="d1">
               <%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
@@ -68,13 +65,17 @@
                     <% end %>
                   </div>
                 </div>
-                <div style="height:20vh;"></div>
+                <div style="height:10vh;"></div>
+                <div style="text-align:center;width:100%;">
+                  <a href="" data-toggle="modal" data-dismiss="modal">
+                    <%= image_tag "close_blue.png", :class =>'img_left02' %>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-		
-	</div>
-</div>
-
-
+      </div>
+    </div>
+  </div>
+<% end %>
