@@ -90,7 +90,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # 本番環境の時は変える
-  config.action_mailer.default_url_options = { host: 'tavore.herokuapp.com', port: 5432 }
+  config.action_mailer.default_url_options = { host: 'ec2-54-225-241-25.compute-1.amazonaws.com', port: 5432 }
 
   # config/environments/production.rb
   config.paperclip_defaults = {
