@@ -55,7 +55,7 @@
 		<div class="tab-content">
 		  <div class="tab-pane active" id="all">
 		  	<% if @all.blank? %>
-		  		<p style="color:white;font-size:14px;">nothing</p>
+		  		<%= render "partial/nothing" %>
 		  	<% else %>
 			  	<% @all.each.with_index(1) do |post, i| %>
 		  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -97,11 +97,11 @@
 		  	<% end %>
 		  </div>
 		  <div class="tab-pane" id="fav">
-		    <p style="color:white;font-size:14px;">おすすめはまだありません</p>
+		    <%= render "partial/nothing" %>
 		  </div>
 		  <div class="tab-pane" id="movie">
 		  	<% if @movie.blank? %>
-		  		<p style="color:white;font-size:14px;">nothing</p>
+		  		<%= render "partial/nothing" %>
 		  	<% else %>
 			    <% @movie.each.with_index(1) do |post, i| %>
 			  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -130,7 +130,7 @@
 		  </div>
 		  <div class="tab-pane" id="tv">
 		    <% if @tv.blank? %>
-		  		<p style="color:white;font-size:14px;">nothing</p>
+		  		<%= render "partial/nothing" %>
 		  	<% else %>
 			  	<% @tv.each.with_index(1) do |post, i| %>
 			  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -159,7 +159,7 @@
 		  </div>
 		  <div class="tab-pane" id="book">
 		    <% if @book.blank? %>
-		  		<p style="color:white;font-size:14px;">nothing</p>
+		  		<%= render "partial/nothing" %>
 		  	<% else %>
 			  	<% @book.each.with_index(1) do |post, i| %>
 			  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -188,7 +188,7 @@
 		  </div>
 		  <div class="tab-pane" id="comic">
 		    <% if @comic.blank? %>
-		  		<p style="color:white;font-size:14px;">nothing</p>
+		  		<%= render "partial/nothing" %>
 		  	<% else %>
 			  	<% @comic.each.with_index(1) do |post, i| %>
 			  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -217,7 +217,7 @@
 		  </div>
 		  <div class="tab-pane" id="music">
 		    <% if @music.blank? %>
-		  		<p style="color:white;font-size:14px;">nothing</p>
+		  		<%= render "partial/nothing" %>
 		  	<% else %>
 			  	<% @music.each.with_index(1) do |post, i| %>
 			  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">

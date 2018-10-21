@@ -1,5 +1,4 @@
 class WorksController < ApplicationController
-  before_action :sign_in_required, only: [:index]
 
   def home
   end
@@ -8,24 +7,22 @@ class WorksController < ApplicationController
   end
 
   def index
-
-  	@user  = User.find(current_user.id)
-
-  	@users = @user.followings
-  	@posts = []
-  	@posts_mine = Post.where(user_id: current_user.id).order('id DESC')
-  	@posts.concat(@posts_mine)
-
-  	if @users.present?
-        @users.each do |user|
-          	posts = Post.where(user_id: user.id).order(created_at: :desc)
-          	#取得したユーザーの投稿一覧を@postsに格納
-          	@posts.concat(posts)
-        end
-        #@postsを新しい順に並べたい
-        @posts.sort_by!{|post| post.created_at}.reverse!
+    if user_signed_in?
+    	@user  = User.find(current_user.id)
+    	@users = @user.followings
+    	@posts = []
+    	@posts_mine = Post.where(user_id: current_user.id).order('id DESC')
+    	@posts.concat(@posts_mine)
+    	if @users.present?
+          @users.each do |user|
+            	posts = Post.where(user_id: user.id).order(created_at: :desc)
+            	#取得したユーザーの投稿一覧を@postsに格納
+            	@posts.concat(posts)
+          end
+          #@postsを新しい順に並べたい
+          @posts.sort_by!{|post| post.created_at}.reverse!
+      end
     end
-
   end
 
   def category
@@ -183,10 +180,10 @@ class WorksController < ApplicationController
   	end
   	if @post.save
       #保存に成功した場合
-      redirect_to "/works/index", notice: "保存しました" 
+      redirect_to root_path
     else
       #保存に失敗した場合
-      redirect_to "/works/index", notice: "保存に失敗しました" 
+      redirect_to root_path
     end     
   end
 
@@ -323,15 +320,23 @@ class WorksController < ApplicationController
   		@post.image_url = params[:image_url]
   	end
     if @post.save
-      redirect_to "/works/index"
-    end
+      #保存に成功した場合
+      redirect_to root_path
+    else
+      #保存に失敗した場合
+      redirect_to root_path
+    end   
   end
 
   def destroy
   	@post = Post.find(params[:id])
     if @post.destroy
-    	redirect_to "/works/index"
-	end
+      #削除に成功した場合
+      redirect_to root_path
+    else
+      #削除に失敗した場合
+      redirect_to root_path
+    end   
   end
 
 end

@@ -27,7 +27,7 @@
 		<div class="height06"></div>
 
 		<% if @posts.blank? %>
-	  		<p style="color:white;font-size:14px;">nothing</p>
+	  		<%= render "partial/nothing" %>
 	  	<% else %>
 		  	<% @posts.each.with_index(1) do |post, i| %>
 	  			<div class="<%= 'test_radio09_right' if i % 2 == 0 %> <%= 'test_radio09' if i % 2 != 0 %>">

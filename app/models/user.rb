@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
-  has_attached_file :image, :styles => { :large => "400x400", :medium => "126x126", :thumb => "64x64>" }, :default_url => "user04.png"
+  has_attached_file :image, :styles => { :large => "400x400", :medium => "126x126", :thumb => "64x64>" }, :default_url => "user09.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def following?(other_user)
