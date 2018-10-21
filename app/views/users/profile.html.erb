@@ -26,13 +26,21 @@
                 </div>
                 <div style="height:2vh;"></div>
                 <div style="text-align:center;width:100%;">
-                  <div style="font-size:10px;display:inline-block;">
-                    29 フォロー 
+                  <div style="display:inline-block;">
+                    <%= link_to "/users/following" do %>
+                      <div style="font-size:12px;color:#FAFAFA;">
+                        <%= current_user.followings.count %> フォロー
+                      </div> 
+                    <% end %>
                   </div>
                   <div style="display:inline-block;width:10%;">
                   </div>
-                  <div style="font-size:10px;display:inline-block;">
-                    30 フォロワー
+                  <div style=";display:inline-block;">
+                    <%= link_to "/users/follower" do %>
+                      <div style="font-size:12px;color:#FAFAFA;">
+                        <%= current_user.followers.count %> フォロワー
+                      </div> 
+                    <% end %>
                   </div>
                 </div>
                 <div style="height:5vh;"></div>
@@ -45,24 +53,30 @@
                 <div style="text-align:center;width:100%;">
                   <div class="pro20">
                     <%= link_to "/users/user" do %>
-                      <%= image_tag "test26.png", :style =>'width:30px;height:30px;' %>
-                      <div style="font-size:10px;margin-top:5px;color:#FAFAFA;">
-                        友達を検索
+                      <div>
+                        <%= image_tag "test26.png", :style =>'width:30px;height:30px;' %>
+                      </div>
+                      <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
+                        友達を探す
                       </div>
                     <% end %>
                   </div>
                   <div class="pro20">
                     <%= link_to "/users/#{current_user.id}/collection" do %>
-                      <%= image_tag "test25.png", :style =>'width:30px;height:30px;' %>
-                      <div style="font-size:10px;margin-top:5px;color:#FAFAFA;">
+                      <div>
+                        <%= image_tag "test25.png", :style =>'width:30px;height:30px;' %>
+                      </div>
+                      <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
                         自分の投稿
                       </div>
                     <% end %>
                   </div>
                   <div class="pro20">
                     <%= link_to "/users/configuration" do %>
-                      <%= image_tag "test24.png", :style =>'width:30px;height:30px;' %>
-                      <div style="font-size:10px;margin-top:5px;color:#FAFAFA;">
+                      <div>
+                        <%= image_tag "test24.png", :style =>'width:30px;height:30px;' %>
+                      </div>
+                      <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
                         設定
                       </div>
                     <% end %>

@@ -24,4 +24,22 @@ class UsersController < ApplicationController
   	def configuration 		
   	end
 
+  	def following		
+  		@users = current_user.followings
+  	end
+
+  	def ajax_following_list
+  		@users = current_user.followings
+    	@items = @users.where('name LIKE ?', "%#{params[:q]}%")
+  	end
+
+  	def follower
+  		@users = current_user.followings
+  	end
+
+  	def ajax_follower_list
+  		@users = current_user.followers
+    	@items = @users.where('name LIKE ?', "%#{params[:q]}%")
+  	end
+
 end

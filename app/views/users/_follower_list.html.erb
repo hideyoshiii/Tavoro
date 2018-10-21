@@ -1,0 +1,91 @@
+<% if params[:q].blank? %>
+  	<% @users.each do |user| %>
+  		<% @user = user %>
+  		<% unless user == current_user %>
+          <div class="box_tests05">
+            <div class="pro21">
+              <%= link_to "/users/#{user.id}/collection" do %>
+	              <% if user.image.blank? %>
+	                <%= image_tag "user09.png", :class =>'img_user09' %>
+	              <% else %>
+	                <%= image_tag user.image, :class =>'img_user09' %>
+	              <% end %>
+              <% end %>
+            </div>
+            <div class="pro22">
+              <%= link_to "/users/#{user.id}/collection" do %>
+	              <span style="font-size:18px;color:#FAFAFA;">
+	                <%= user.name %>
+	              </span>
+	              <br>
+	              <span class="font_gray">
+	              	<% @post_i = Post.where(user_id: user.id).count %>
+	                <%= @post_i %>投稿
+	              </span>
+              <% end %>
+            </div>
+            <div class="pro23">
+            	<div style="text-align:right;">
+	                <% unless current_user?(user) %>
+		            	<span id="relationship-of-<%= @user.id %>">
+					      	<%= render partial: 'relationships/relationship' %>
+					    </span>
+					<% else %>
+						<%= link_to "/users/#{user.id}/profile" do %>  
+							<span class="test_btn03">
+								ダッシュボードへ
+							</span>
+						<% end %>
+				  	<% end %>
+			  	</div>
+            </div>
+          </div>
+        <% end %>
+  	<% end %>
+<% end %>
+
+<% if @items.present? %>
+  	<% @items.each do |user| %>
+  		<% @user = user %>
+  		<% unless user == current_user %>
+          <div class="box_tests05">
+            <div class="pro21">
+              <%= link_to "/users/#{user.id}/collection" do %>
+	              <% if user.image.blank? %>
+	                <%= image_tag "user09.png", :class =>'img_user09' %>
+	              <% else %>
+	                <%= image_tag user.image, :class =>'img_user09' %>
+	              <% end %>
+              <% end %>
+            </div>
+            <div class="pro22">
+              <%= link_to "/users/#{user.id}/collection" do %>
+	              <span style="font-size:18px;color:#FAFAFA;">
+	                <%= user.name %>
+	              </span>
+	              <br>
+	              <span class="font_gray">
+	              	<% @post_i = Post.where(user_id: user.id).count %>
+	                <%= @post_i %>投稿
+	              </span>
+              <% end %>
+            </div>
+            <div class="pro23">
+            	<div style="text-align:right;">
+	                <% unless current_user?(user) %>
+		            	<span id="relationship-of-<%= @user.id %>">
+					      	<%= render partial: 'relationships/relationship' %>
+					    </span>
+					<% else %>
+						<%= link_to "/users/#{user.id}/profile" do %>  
+							<span class="test_btn03">
+								ダッシュボードへ
+							</span>
+						<% end %>
+				  	<% end %>
+			  	</div>
+            </div>
+          </div>
+        <% end %>
+  	<% end %>
+<% end %>

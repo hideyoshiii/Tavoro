@@ -69,6 +69,16 @@ html,body {
     border-left: solid 1px #000;
 	border-right: solid 1px #000;
 }
+.bar_smoke{
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.65); 
+	z-index:-1;
+}
 @media only screen and (max-width: 768px) {
 	.bar_top {  
     	border-bottom: 1px solid rgba(39,134,160,1);
@@ -2041,6 +2051,22 @@ button {
   font-size: 10px;
   margin-left:1px;
 }
+#btn_preview01 {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: rgba(39,134,160,0.5);
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#btn_preview01 i {
+  color: #FAFAFA;
+  line-height: 20px;
+  vertical-align: middle;
+  font-size: 10px;
+  margin-left:1px;
+}
 @media only screen and (max-width: 768px) {
 	.btn_session{
 	    font-size:18px;
@@ -2215,7 +2241,7 @@ button {
 .test_radio09 {
   	position: relative;
     display: inline-block; 
-	height:40%;
+	height:41%;
 	width:47%;
 	padding:0;
 	margin: 0 auto;
@@ -2241,7 +2267,7 @@ button {
 .test_radio09_right {
   	position: relative;
     display: inline-block; 
-	height:40%;
+	height:41%;
 	width:47%;
 	padding:0;
 	margin: 0 auto;
@@ -2272,10 +2298,10 @@ button {
 		height:30%;
   	}
   	.test_radio09 {
-		height:45%;
+		height:47%;
   	}
   	.test_radio09_right {
-		height:45%;
+		height:47%;
   	}
 
 }

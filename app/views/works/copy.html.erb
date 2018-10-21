@@ -12,7 +12,8 @@
 				<%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
 				<span>
 					<div class="tango01">
-						<div class="bar_post">					
+						<div class="bar_post">	
+							<div class="bar_smoke"></div>					
 							<div class="box_tests04">
 								<div class="pro13">
 									<div style="text-align:left;">
@@ -97,7 +98,16 @@
 							</div>
 						<% else %>
 							<div style="text-align:center;width:100%;margin:0 auto;">
-								<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
+								<% if @post.category == "music" %>
+									<div class="pile00">
+										<%= image_tag @post.image_url, :class =>'img_lavoro03' %>
+										<p id="btn_preview">
+											<i id="icon_play" class="fas fa-play"></i>
+										</p>
+									</div>
+								<% else %>
+									<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
+								<% end %>
 								<%= hidden_field_tag :image_url, @post.image_url %>
 							</div>
 						<% end %>
@@ -123,3 +133,30 @@
 	  });
 	});
 </script>
+
+<%#audioのワンボタン再生%>
+<% if @post.preview_url.present?  %>
+<script>
+	  var audio = new Audio("<%= @post.preview_url %>");
+
+	  $('#btn_preview').on("click",function(){
+	    if($("#icon_play").hasClass('fa-play'))
+	     {
+	       $("#icon_play").removeClass('fa-play');
+	       $("#icon_play").addClass('fa-pause');
+	       audio.play();
+	     }
+	    else
+	     {
+	       $("#icon_play").removeClass('fa-pause');
+	       $("#icon_play").addClass('fa-play');
+	       audio.pause();
+	     }
+	  });
+
+	  audio.onended = function() {
+	     $("#icon_play").removeClass('fa-pause');
+	     $("#icon_play").addClass('fa-play');
+	  };
+</script>
+<% end %>

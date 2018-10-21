@@ -13,11 +13,11 @@
 					</div>
 					<div class="box_tests03">
 						<div class="pro12">
-							<span class="font_gray">友達を探す</span>
+							<span class="font_gray">フォロワー</span>
 						</div>
 					</div>
-					<div id='user_list'>
-					  <%= render partial: 'user_list' %>
+					<div id='follower_list'>
+					  <%= render partial: 'follower_list' %>
 					</div>
 				</div>
 			</span>
@@ -38,7 +38,7 @@
 	ajaxPost = function(input)
 	{
 	  $.ajax({
-	    url: "ajax_user_list",
+	    url: "ajax_follower_list",
 	      type: "GET",
 	      data: ("q=" + input)
 	  });

@@ -47,6 +47,7 @@
           	</div>
 
 			<div class="a2">
+				<div class="bar_smoke"></div>	
 				<div class="pro01">
 					<%= link_to "/users/#{post.user.id}/collection" do %>
 						<% if post.user.image.blank?  %>
@@ -137,8 +138,13 @@
 						<div class="up_bar">
 						</div>				
 						<div style="font-size:18px;color:#FAFAFA;text-align:center;">
+							<% if post.preview_url.present?  %>
+								<span id="btn_preview01" style="display:inline-block;">
+									<i id="icon_play" class="fas fa-play"></i>
+								</span>
+							<% end %>
 							<%= post.title %>
-							<% if @detail01.present?  %>
+							<% if @detail01.present? %>
 								<span style="font-size:14px;color:#999999;">
 									(<%= @detail01 %>)
 								</span>
@@ -243,3 +249,31 @@
 		
 	</div>
 </div>
+
+
+<%#audioのワンボタン再生%>
+<% if post.preview_url.present?  %>
+<script>
+	  var audio = new Audio("<%= post.preview_url %>");
+
+	  $('#btn_preview01').on("click",function(){
+	    if($("#icon_play").hasClass('fa-play'))
+	     {
+	       $("#icon_play").removeClass('fa-play');
+	       $("#icon_play").addClass('fa-pause');
+	       audio.play();
+	     }
+	    else
+	     {
+	       $("#icon_play").removeClass('fa-pause');
+	       $("#icon_play").addClass('fa-play');
+	       audio.pause();
+	     }
+	  });
+
+	  audio.onended = function() {
+	     $("#icon_play").removeClass('fa-pause');
+	     $("#icon_play").addClass('fa-play');
+	  };
+</script>
+<% end %>

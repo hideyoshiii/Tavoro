@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get "users/:id/profile" => "users#profile"
   get 'users/user' => "users#user"
   get 'users/ajax_user_list' => "users#ajax_user_list"
+  get 'users/following' => "users#following"
+  get 'users/ajax_following_list' => "users#ajax_following_list"
+  get 'users/follower' => "users#follower"
+  get 'users/ajax_follower_list' => "users#ajax_follower_list"
   get 'users/configuration' => "users#configuration"
 
   resources :users do
