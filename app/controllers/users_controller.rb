@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   	end
 
   	def follower
-  		@users = current_user.followings
+  		@users = current_user.followers
   	end
 
   	def ajax_follower_list
