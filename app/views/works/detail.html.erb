@@ -31,6 +31,21 @@
 
 		<div class="a1">
 
+			<div class="a4">
+	            <div class="d1">
+	              	<% if post.image_url.blank? %>
+						<%= image_tag "nothing01.jpg", :class =>'img_lavoro04' %>
+					<% else %>
+						<% if post.category == "music" %>
+							<%= image_tag post.image_url, :class =>'img_lavoro06' %>
+						<% else %>
+							<%= image_tag post.image_url, :class =>'img_lavoro04' %>
+						<% end %>
+					<% end %>
+					<div class="d2"></div>
+	            </div>
+          	</div>
+
 			<div class="a2">
 				<div class="pro01">
 					<%= link_to "/users/#{post.user.id}/collection" do %>
@@ -70,7 +85,7 @@
 				</div>
 			</div>
 			<div class="a3">
-				<div id="menu_st<%= post.id %>" style="margin:20px 15px 0px 0px;text-align:right;">
+				<div id="menu_st<%= post.id %>" class="icon_menu">
 					<%= image_tag "test07.png", :style =>'width:25px;height:25px;' %>
 				</div>
 				<div id="menu_in_st<%= post.id %>">
@@ -152,7 +167,15 @@
 										<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
 									<% end %>
 									<% if post.review == "good" %>
-										観ました
+										<% if post.category == "movie" || post.category == "tv" %>
+											観ました
+										<% end %>
+										<% if post.category == "book" || post.category == "comic" %>
+											読みました
+										<% end %>
+										<% if post.category == "music" %>
+											聴きました
+										<% end %>
 									<% end %>
 									<% if post.review == "bad" %>
 										<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
@@ -210,7 +233,7 @@
 								</div>
 							<% end %>
 						<% end %>
-						<div style="height:20vh;"></div>
+						<div style="height:5vh;"></div>
 					</div>
 				</div>
 			</div>

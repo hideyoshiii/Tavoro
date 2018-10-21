@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
 
   get 'works/index' => "works#index"
+  get 'works/category' => "works#category"
   get 'works/search' => "works#search"
   get 'works/movie' => "works#movie"
   get 'works/movie/detail' => "works#movie_detail"

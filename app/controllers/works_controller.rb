@@ -5,7 +5,6 @@ class WorksController < ApplicationController
   end
 
   def test
-  	
   end
 
   def index
@@ -27,6 +26,27 @@ class WorksController < ApplicationController
         @posts.sort_by!{|post| post.created_at}.reverse!
     end
 
+  end
+
+  def category
+    @user  = User.find(current_user.id)
+    @users = @user.followings
+
+    if params[:q].present?
+      @posts = []
+      @posts_mine = Post.where(user_id: current_user.id, category: params[:q]).order('id DESC')
+      @posts.concat(@posts_mine)
+      
+      if @users.present?
+          @users.each do |user|
+              posts = Post.where(user_id: user.id, category: params[:q]).order(created_at: :desc)
+              #取得したユーザーの投稿一覧を@postsに格納
+              @posts.concat(posts)
+          end
+          #@postsを新しい順に並べたい
+          @posts.sort_by!{|post| post.created_at}.reverse!
+      end
+    end
   end
 
   def search

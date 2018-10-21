@@ -344,7 +344,15 @@
 								<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
 							<% end %>
 							<% if post.review == "good" %>
-								観ました
+								<% if post.category == "movie" || post.category == "tv" %>
+									観ました
+								<% end %>
+								<% if post.category == "book" || post.category == "comic" %>
+									読みました
+								<% end %>
+								<% if post.category == "music" %>
+									聴きました
+								<% end %>
 							<% end %>
 							<% if post.review == "bad" %>
 								<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
@@ -362,7 +370,7 @@
 						<% end %>
 					</div>
 					<div class="layer10">
-						<div id="menu_st<%= post.id %>" style="margin:20px 15px 0px 0px;text-align:right;">
+						<div id="menu_st<%= post.id %>" class="icon_menu">
 							<%= image_tag "test07.png", :style =>'width:25px;height:25px;' %>
 						</div>
 						<div id="menu_in_st<%= post.id %>">
