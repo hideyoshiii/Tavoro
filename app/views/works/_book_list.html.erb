@@ -12,12 +12,12 @@
           <div class="box_tests02">
             <div class="pro09">
               <% if item["largeImageUrl"].blank? %>
-                <%= image_tag "nothing02.jpg", :class =>'img_lavoro11' %>
+                <%= image_tag "nothing02.jpg", :class =>'img_lavoro03' %>
               <% else %>
                 <% @image_url = item["largeImageUrl"] %>
                 <% @image_url = @image_url.sub!(/_ex.*/m, "") %>
                 <% @image_url = @image_url.chop! %>
-                <%= image_tag @image_url, :class =>'img_lavoro11' %>
+                <%= image_tag @image_url, :class =>'img_lavoro03' %>
               <% end %>
             </div>
             <div class="pro10">
@@ -52,16 +52,14 @@
         <button type="submit">
           <div class="box_tests02">
             <div class="pro09">
-              <div style="width:80%;">
               <% if item["largeImageUrl"].blank? %>
-                <%= image_tag "nothing02.jpg", :class =>'img_lavoro11' %>
+                <%= image_tag "nothing02.jpg", :class =>'img_lavoro03' %>
               <% else %>
                 <% @image_url = item["largeImageUrl"] %>
                 <% @image_url = @image_url.sub!(/_ex.*/m, "") %>
                 <% @image_url = @image_url.chop! %>
-                <%= image_tag @image_url, :class =>'img_lavoro11' %>
+                <%= image_tag @image_url, :class =>'img_lavoro03' %>
               <% end %>
-              </div>
             </div>
             <div class="pro10">
               <span class="font_white_big">

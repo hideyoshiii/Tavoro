@@ -1,28 +1,36 @@
 <div class="main">
 	<div class="block_side">
 	</div>
-	<div class="block_main">
-		
+	<div class="block_main">	
 		<div style="height:50px;"></div>
-		<div class="test_radio03">
-			<span>
-				<div class="tango01">	
-					<div style="height:3vh;"></div>
-					<div class="nmn" style="text-align:center;width:100%;padding:10px;">
-						<input id="inc_search" placeholder="&#xf002; 検索する" type="text" required="">
-					</div>
-					<div class="box_tests03">
-						<div class="pro12">
-							<span class="font_gray">フォロワー</span>
+		<div class="a1">
+          <div class="a4">
+            <div class="d1">
+              <div class="d4"></div>
+            </div>
+          </div>
+          <div class="a5">
+			<div class="test_radio03">
+				<span>
+					<div class="tango01">	
+						<div style="height:3vh;"></div>
+						<div class="nmn" style="text-align:center;width:100%;padding:10px;">
+							<input id="inc_search" placeholder="&#xf002; 検索する" type="text" required="">
 						</div>
+						<div class="box_tests03">
+							<div class="pro12">
+								<span class="font_gray">フォロワー</span>
+							</div>
+						</div>
+						<div id='follower_list'>
+						  <%= render partial: 'follower_list' %>
+						</div>
+						<div style="height:100px;"></div>
 					</div>
-					<div id='follower_list'>
-					  <%= render partial: 'follower_list' %>
-					</div>
-				</div>
-			</span>
+				</span>
+			</div>
+		  </div>
 		</div>
-
 	</div>
 	<div class="block_side">
 	</div>
@@ -48,7 +56,7 @@
 	  input = $.trim($(this).val());   //前後の不要な空白を削除
 	  if(preInput !== input){
 	    clearTimeout(preFunc);
-	    preFunc = setTimeout(ajaxPost(input), 1000);
+	    preFunc = setTimeout(ajaxPost(input), 2000);
 	  }
 	  preInput = input;
 	});
