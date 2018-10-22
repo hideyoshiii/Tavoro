@@ -89,6 +89,7 @@ class WorksController < ApplicationController
   		@title = @item["title"]
   		@work_id = @item["id"]
   		@category = params[:type]
+      @poster = "https://image.tmdb.org/t/p/original/" + @item["poster_path"].to_s
 	  	@poster_ja = Tmdb::Movie.posters(@item["id"], language: 'ja')
 	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
 	    @poster_en = Tmdb::Movie.posters(@item["id"], language: 'en')
@@ -100,6 +101,7 @@ class WorksController < ApplicationController
   		@title = @item["name"]
   		@work_id = @item["id"]
   		@category = params[:type]
+      @poster = "https://image.tmdb.org/t/p/original/" + @item["poster_path"].to_s
 	  	@poster_ja = Tmdb::TV.posters(@item["id"], language: 'ja')
 	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
 	    @poster_en = Tmdb::TV.posters(@item["id"], language: 'en')
@@ -192,6 +194,8 @@ class WorksController < ApplicationController
 
   	@users = current_user.followings
   	@comments = []
+    @comments_mine = Post.where(user_id: current_user.id, work_id: @post.work_id).order('id DESC')
+    @comments.concat(@comments_mine)
 
   	if @users.present?
         @users.each do |user|

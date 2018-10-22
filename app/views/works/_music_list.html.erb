@@ -1,68 +1,69 @@
 <% if params[:q].blank? %>
-  <% @defaults.each.with_index(1) do |item, i| %>
-    <%= form_tag(works_music_detail_path, method: :get) do %>
-    <%= hidden_field_tag :type, "music" %>
-    <%= hidden_field_tag :id, item["trackId"] %>
-      <button type="submit">
-        <div class="box_tests02">
-          <div class="pro09">
-            <% if item["artworkUrl100"].blank? %>
-              <%= image_tag "nothing03.jpg", :class =>'img_lavoro03' %>
-            <% else %>
-              <%= image_tag item["artworkUrl100"], :class =>'img_lavoro03' %>
-            <% end %>
+  <% if @defaults.present? %>
+    <% @defaults.each.with_index(1) do |item, i| %>
+      <%= form_tag(works_music_detail_path, method: :get) do %>
+      <%= hidden_field_tag :type, "music" %>
+      <%= hidden_field_tag :id, item["trackId"] %>
+        <button type="submit">
+          <div class="box_tests02">
+            <div class="pro09">
+              <% if item["artworkUrl100"].blank? %>
+                <%= image_tag "nothing03.jpg", :class =>'img_lavoro03' %>
+              <% else %>
+                <%= image_tag item["artworkUrl100"], :class =>'img_lavoro03' %>
+              <% end %>
+            </div>
+            <div class="pro10">
+              <span class="font_white_big">
+                <%= item["trackCensoredName"] %>  
+              </span>
+              <br>
+              <span class="font_gray_max">
+                <%= item["artistName"] %>
+              </span>
+            </div>
+            <div class="pro11">
+              <span class="font_gray_max">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </div>
           </div>
-          <div class="pro10">
-            <span class="font_white_big">
-              <%= item["trackCensoredName"] %>  
-            </span>
-            <br>
-            <span class="font_gray_max">
-              <%= item["artistName"] %>
-            </span>
+        </button>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+  <% if @items.present? %>
+    <% @items.each.with_index(1) do |item, i| %>
+      <%= form_tag(works_music_detail_path, method: :get) do %>
+      <%= hidden_field_tag :type, "music" %>
+      <%= hidden_field_tag :id, item["trackId"] %>
+        <button type="submit">
+          <div class="box_tests02">
+            <div class="pro09">
+              <% if item["artworkUrl100"].blank? %>
+                <%= image_tag "nothing03.jpg", :class =>'img_lavoro03' %>
+              <% else %>
+                <%= image_tag item["artworkUrl100"], :class =>'img_lavoro03' %>
+              <% end %>
+            </div>
+            <div class="pro10">
+              <span class="font_white_big">
+                <%= item["trackCensoredName"] %>  
+              </span>
+              <br>
+              <span class="font_gray_max">
+                <%= item["artistName"] %>
+              </span>
+            </div>
+            <div class="pro11">
+              <span class="font_gray_max">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </div>
           </div>
-          <div class="pro11">
-            <span class="font_gray_max">
-              <i class="fas fa-chevron-right"></i>
-            </span>
-          </div>
-        </div>
-      </button>
+        </button>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
-
-<% if @items.present? %>
-  <% @items.each.with_index(1) do |item, i| %>
-    <%= form_tag(works_music_detail_path, method: :get) do %>
-    <%= hidden_field_tag :type, "music" %>
-    <%= hidden_field_tag :id, item["trackId"] %>
-      <button type="submit">
-        <div class="box_tests02">
-          <div class="pro09">
-            <% if item["artworkUrl100"].blank? %>
-              <%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
-            <% else %>
-              <%= image_tag item["artworkUrl100"], :class =>'img_lavoro03' %>
-            <% end %>
-          </div>
-          <div class="pro10">
-            <span class="font_white_big">
-              <%= item["trackCensoredName"] %>  
-            </span>
-            <br>
-            <span class="font_gray_max">
-              <%= item["artistName"] %>
-            </span>
-          </div>
-          <div class="pro11">
-            <span class="font_gray_max">
-              <i class="fas fa-chevron-right"></i>
-            </span>
-          </div>
-        </div>
-      </button>
-    <% end %>
-  <% end %>
-<% end %>
-

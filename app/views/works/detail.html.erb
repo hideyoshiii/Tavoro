@@ -211,32 +211,34 @@
 								<% end %>
 							</div>
 							<% @comments.each.with_index(1) do |post, i| %>
-								<div class="box_comment02">
-									<div class="pro06">
-										<%= image_tag post.user.image, :class =>'img_user07' %>
-									</div>
-									<div class="pro07">
+								<% unless post.user == @post.user %>
+									<div class="box_comment02">
+										<div class="pro06">
+											<%= image_tag post.user.image, :class =>'img_user07' %>
+										</div>
 										<div class="pro07">
-											<div class="font_gray">
-												<%= post.user.name %> - <%= post.created_at.strftime('%Y/%m/%d') %>
+											<div class="pro07">
+												<div class="font_gray">
+													<%= post.user.name %> - <%= post.created_at.strftime('%Y/%m/%d') %>
+												</div>
+												<div class="font_white">
+													<% if post.review == "favorite" %>
+														<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+													<% end %>
+													<% if post.review == "good" %>
+														観ました
+													<% end %>
+													<% if post.review == "bad" %>
+														<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
+													<% end %>
+												</div>
+												<div style="font-size:18px;color:#999999;">
+													"<%= simple_format(post.description, {}, wrapper_tag: "span") %>"
+												</div>	
 											</div>
-											<div class="font_white">
-												<% if post.review == "favorite" %>
-													<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
-												<% end %>
-												<% if post.review == "good" %>
-													観ました
-												<% end %>
-												<% if post.review == "bad" %>
-													<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
-												<% end %>
-											</div>
-											<div style="font-size:18px;color:#999999;">
-												"<%= simple_format(post.description, {}, wrapper_tag: "span") %>"
-											</div>	
 										</div>
 									</div>
-								</div>
+								<% end %>
 							<% end %>
 						<% end %>
 						<div style="height:5vh;"></div>
