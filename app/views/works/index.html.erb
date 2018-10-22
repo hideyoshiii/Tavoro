@@ -153,10 +153,14 @@
 									<% if post.image_url.blank? %>
 										<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
 									<% else %>
+										<% if post.category == "movie" || post.category == "tv" %>
+											<%= image_tag post.image_url, :class =>'img_lavoro10' %>
+										<% end %>
+										<% if post.category == "book" || post.category == "comic" %>
+											<%= image_tag post.image_url, :class =>'img_lavoro09' %>
+										<% end %>
 										<% if post.category == "music" %>
 											<%= image_tag post.image_url, :class =>'img_lavoro03' %>
-										<% else %>
-											<%= image_tag post.image_url, :class =>'img_lavoro09' %>
 										<% end %>
 									<% end %>
 								<% end %>
