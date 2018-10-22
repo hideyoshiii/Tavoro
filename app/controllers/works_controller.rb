@@ -111,13 +111,10 @@ class WorksController < ApplicationController
   end
 
   def ajax_movie_list
-  	if params[:q].nil?
-	  	@defaults = Tmdb::Movie.latest
-	  	@defaults = @defaults[:results]
-  	else
-	    @items = Tmdb::Search.multi(params[:q])
-		@items = @items[:results]
-	end
+  	if params[:q].present?
+	  	@items = Tmdb::Search.multi(params[:q])
+      @items = @items[:results]
+  	end
   end
 
   def book
@@ -138,9 +135,7 @@ class WorksController < ApplicationController
   end
 
   def ajax_book_list
-  	if params[:q].nil?
-  		@defaults = RakutenWebService::Books::Book.search(size: 2,sort: "reviewCount")
-  	else
+  	if params[:q].present?
   		@items = RakutenWebService::Books::Book.search(title: params[:q])
   	end
   end
@@ -163,10 +158,8 @@ class WorksController < ApplicationController
   end
 
   def ajax_music_list
-  	if params[:q].nil?
-  		@defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music", :limit  => '20', :attribute => "mixTerm")
-  	else
-  		@items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music", :limit  => '20')
+  	if params[:q].present?
+  		@items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music", :limit  => '30')
   	end
   end
 

@@ -1,6 +1,6 @@
-<% if params[:q].blank? %>
-  <% if @defaults.present? %>
-    <% @defaults.each do |item| %>
+<% if params[:q].present? %>
+  <% if @items.present? %>
+    <% @items.each do |item| %>
       <%= form_tag(works_book_detail_path, method: :get) do %>
         <% if item["size"] == "コミック" %>
           <%= hidden_field_tag :type, "comic" %>
@@ -11,23 +11,21 @@
         <button type="submit">
           <div class="box_tests02">
             <div class="pro09">
-              <div style="width:80%;">
               <% if item["largeImageUrl"].blank? %>
-                <%= image_tag "nothing02.jpg", :class =>'img_lavoro03' %>
+                <%= image_tag "nothing02.jpg", :class =>'img_lavoro11' %>
               <% else %>
                 <% @image_url = item["largeImageUrl"] %>
                 <% @image_url = @image_url.sub!(/_ex.*/m, "") %>
                 <% @image_url = @image_url.chop! %>
-                <%= image_tag @image_url, :class =>'img_lavoro03' %>
+                <%= image_tag @image_url, :class =>'img_lavoro11' %>
               <% end %>
-              </div>
             </div>
             <div class="pro10">
               <span class="font_white_big">
-                <%= item["title"] %>
+                <%= item["title"] %> 
               </span>
               <br>
-              <span class="font_gray_max">
+              <span class="font_gray">
                 <%= item["author"] %>
               </span>
             </div>
@@ -42,8 +40,8 @@
     <% end %>
   <% end %>
 <% else %>
-  <% if @items.present? %>
-    <% @items.each do |item| %>
+  <% if @defaults.present? %>
+    <% @defaults.each do |item| %>
       <%= form_tag(works_book_detail_path, method: :get) do %>
         <% if item["size"] == "コミック" %>
           <%= hidden_field_tag :type, "comic" %>
@@ -54,18 +52,20 @@
         <button type="submit">
           <div class="box_tests02">
             <div class="pro09">
+              <div style="width:80%;">
               <% if item["largeImageUrl"].blank? %>
-                <%= image_tag "nothing02.jpg", :class =>'img_lavoro03' %>
+                <%= image_tag "nothing02.jpg", :class =>'img_lavoro11' %>
               <% else %>
                 <% @image_url = item["largeImageUrl"] %>
                 <% @image_url = @image_url.sub!(/_ex.*/m, "") %>
                 <% @image_url = @image_url.chop! %>
-                <%= image_tag @image_url, :class =>'img_lavoro03' %>
+                <%= image_tag @image_url, :class =>'img_lavoro11' %>
               <% end %>
+              </div>
             </div>
             <div class="pro10">
               <span class="font_white_big">
-                <%= item["title"] %> 
+                <%= item["title"] %>
               </span>
               <br>
               <span class="font_gray_max">
