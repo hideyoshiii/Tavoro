@@ -103,4 +103,16 @@ Rails.application.configure do
       s3_region: ENV.fetch('AWS_REGION'),
     }
   }
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               'smtp.gmail.com',
+    user_name:            'tavore.info@gmail.com',
+    password:             '3s561032s',
+    :authentication => :plain,
+    enable_starttls_auto: true
+  }
 end

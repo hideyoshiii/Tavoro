@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :send_welcome_mail
+ 
+  def send_welcome_mail
+    UserMailer.user_welcome_mail(self).deliver
+  end
+
   has_many :posts, dependent: :destroy
 
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
