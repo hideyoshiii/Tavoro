@@ -50,6 +50,8 @@ gem 'rails_serve_static_assets'
 
 gem 'meta-tags'
 
+gem 'rack-rewrite'
+
 
 group :production do 
   gem 'pg'
