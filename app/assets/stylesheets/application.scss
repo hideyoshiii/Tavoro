@@ -1634,7 +1634,19 @@ button {
   right: 0;
   margin:10px;
   }
-
+.pile01 {
+  	position: relative;
+  	width:100%;
+    height:auto;
+    margin:0 auto;
+    text-align:center
+  }
+.pile01 p {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin:10px;
+  }
 .pile02 {
   	position: relative;
   	width:30%;
