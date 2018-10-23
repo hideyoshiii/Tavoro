@@ -147,7 +147,7 @@ class WorksController < ApplicationController
   end
 
   def music
-  	@defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music", :limit  => '20', :attribute => "mixTerm")
+  	@defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music",:entity =>'song', :limit  => '30', :attribute => "mixTerm")
   end
 
   def music_detail
@@ -165,7 +165,7 @@ class WorksController < ApplicationController
 
   def ajax_music_list
   	if params[:q].present?
-  		@items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music", :limit  => '30')
+  		@items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music",:entity =>'song', :limit  => '30')
   	end
   end
 
