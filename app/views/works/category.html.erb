@@ -114,57 +114,59 @@
 	});
 	</script>
 	<% if post.category == "music" %>
-	<style type="text/css">
-		#btn_preview<%= post.id %> {
-	    display: block;
-	    width: 40px;
-	    height: 40px;
-	    background: rgba(50,50,50,0.7);
-	    text-align: center;
-	    border-radius: 50%;
-	    cursor: pointer;
-	    position: relative;
-	    margin-left:85%;
-	    margin-top:-15%;
-		}
-		@media only screen and (max-width: 768px) {
-			#btn_preview<%= post.id %>{
-			margin-left:80%;
-	    	margin-top:-20%;
-			}
-		}
-		#btn_preview<%= post.id %> i {
-		  color: #FAFAFA;
-		  line-height: 40px;
-		  vertical-align: middle;
-		  font-size: 9px;
-		  margin-left:1px;
-		}
-	</style>
-	<script type="text/javascript">
-	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
-	  $(function(){
-		  $('#btn_preview<%= post.id %>').on("click",function(){
-		    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
-		     {
-		       $("#icon_play<%= post.id %>").removeClass('fa-play');
-		       $("#icon_play<%= post.id %>").addClass('fa-pause');
-		       audio<%= post.id %>.play();
-		     }
-		    else
-		     {
-		       $("#icon_play<%= post.id %>").removeClass('fa-pause');
-		       $("#icon_play<%= post.id %>").addClass('fa-play');
-		       audio<%= post.id %>.pause();
-		     }
-		  });
-	  });
-	  audio<%= post.id %>.onended = function() {
-	     $("#icon_play<%= post.id %>").removeClass('fa-pause');
-	     $("#icon_play<%= post.id %>").addClass('fa-play');
-	  };
-   </script>
-   <% end %>
+		<% if post.preview_url.present? %>
+			<style type="text/css">
+				#btn_preview<%= post.id %> {
+			    display: block;
+			    width: 40px;
+			    height: 40px;
+			    background: rgba(50,50,50,0.7);
+			    text-align: center;
+			    border-radius: 50%;
+			    cursor: pointer;
+			    position: relative;
+			    margin-left:85%;
+			    margin-top:-15%;
+				}
+				@media only screen and (max-width: 768px) {
+					#btn_preview<%= post.id %>{
+					margin-left:80%;
+			    	margin-top:-20%;
+					}
+				}
+				#btn_preview<%= post.id %> i {
+				  color: #FAFAFA;
+				  line-height: 40px;
+				  vertical-align: middle;
+				  font-size: 9px;
+				  margin-left:1px;
+				}
+			</style>
+			<script type="text/javascript">
+			  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
+			  $(function(){
+				  $('#btn_preview<%= post.id %>').on("click",function(){
+				    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
+				     {
+				       $("#icon_play<%= post.id %>").removeClass('fa-play');
+				       $("#icon_play<%= post.id %>").addClass('fa-pause');
+				       audio<%= post.id %>.play();
+				     }
+				    else
+				     {
+				       $("#icon_play<%= post.id %>").removeClass('fa-pause');
+				       $("#icon_play<%= post.id %>").addClass('fa-play');
+				       audio<%= post.id %>.pause();
+				     }
+				  });
+			  });
+			  audio<%= post.id %>.onended = function() {
+			     $("#icon_play<%= post.id %>").removeClass('fa-pause');
+			     $("#icon_play<%= post.id %>").addClass('fa-play');
+			  };
+		   </script>
+    	<% end %>
+    <% end %>
 	<div class="modal fade" id="myModal_<%= post.id %>">
 		<div class="height_modal"></div>
 		<div class="modal-dialog">
@@ -241,9 +243,11 @@
 							<% end %>
 						<% end %>
 						<% if post.category == "music" %>
-							<div id="btn_preview<%= post.id %>">
-								<i id="icon_play<%= post.id %>" class="fas fa-play"></i>
-							</div>
+							<% if post.preview_url.present? %>
+								<div id="btn_preview<%= post.id %>">
+									<i id="icon_play<%= post.id %>" class="fas fa-play"></i>
+								</div>
+							<% end %>
 						<% end %>
 					</div>
 					<div class="layer02">

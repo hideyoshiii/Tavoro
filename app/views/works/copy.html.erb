@@ -29,6 +29,9 @@
 				<%= hidden_field_tag :category, @post.category %>
 				<%= hidden_field_tag :title, @post.title %>
 				<%= hidden_field_tag :work_id, @post.work_id %>
+				<% if @post.preview_url.present? %>
+					<%= hidden_field_tag :preview_url, @post.preview_url %>
+				<% end %>
 				<div class="test_radio03">
 					<span>
 						<div class="tango01">
