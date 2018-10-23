@@ -226,9 +226,6 @@
 							<% end %>
 							<% if post.user.id == current_user.id %>
 								<div style="margin:30px 10px 0px 0px;">
-									<%= image_tag "test16.png", :style =>'width:35px;height:35px;' %>
-								</div>
-								<div style="margin:30px 10px 0px 0px;">
 									<%= link_to "/works/#{post.id}/edit" do %>
 										<%= image_tag "test04.png", :style =>'width:35px;height:35px;' %>
 									<% end %>

@@ -2,18 +2,17 @@
 	<div class="block_side">
 	</div>
 	<div class="block_main">
-		
 		<div style="height:50px;"></div>
 		<div class="bar_collection">
 			<div class="bar_smoke"></div>	
 			<div class="box_tests001">
 	          <div class="pro16">
-          		<div style="margin:3px 0px 3px 5px;">
+          		<div style="margin:3px 0px 3px 10px;">
             		<%= image_tag @user.image, :class =>'img_user07' %>
             	</div>
 	          </div>
 	          <div class="pro17">
-	            <div style="margin-left:10px;">
+	            <div style="margin-left:15px;">
 	              	<div class="font_white"> 
 	              		<%= @user.name %>
 	              	</div>  
@@ -42,7 +41,6 @@
 			<div class="horizontal_scroll02">			
 				  <ul class="nav nav-pills js-tabs">
 				      <li class="active"><a href="#all" data-toggle="tab">すべて</a></li>
-					  <li><a href="#fav" data-toggle="tab">おすすめ</a></li>
 					  <li><a href="#movie" data-toggle="tab">映画</a></li>
 					  <li><a href="#tv" data-toggle="tab">テレビ</a></li>
 					  <li><a href="#book" data-toggle="tab">ブック</a></li>
@@ -95,9 +93,6 @@
 					</div>
 			  	<% end %>
 		  	<% end %>
-		  </div>
-		  <div class="tab-pane" id="fav">
-		    <%= render "partial/nothing" %>
 		  </div>
 		  <div class="tab-pane" id="movie">
 		  	<% if @movie.blank? %>
@@ -245,7 +240,6 @@
 		  	<% end %>
 		  </div>
 		</div>
-
 	</div>
 	<div class="block_side">
 	</div>
@@ -388,9 +382,6 @@
 								</div>
 							<% end %>
 							<% if post.user.id == current_user.id %>
-								<div style="margin:30px 10px 0px 0px;">
-									<%= image_tag "test16.png", :style =>'width:35px;height:35px;' %>
-								</div>
 								<div style="margin:30px 10px 0px 0px;">
 									<%= link_to "/works/#{post.id}/edit" do %>
 										<%= image_tag "test04.png", :style =>'width:35px;height:35px;' %>

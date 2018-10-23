@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root :to => 'works#index'
+  root :to => 'works#home'
 
   devise_for :users, controllers: { registrations: 'registrations' }
   get "users/:id/collection" => "users#collection"
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
   resources :relationships,       only: [:create, :destroy]
 
+  get 'works/index' => "works#index"
   get 'works/category' => "works#category"
   get 'works/search' => "works#search"
   get 'works/movie' => "works#movie"

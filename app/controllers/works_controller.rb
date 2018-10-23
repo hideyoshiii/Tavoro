@@ -1,6 +1,17 @@
 class WorksController < ApplicationController
 
   def home
+    if user_signed_in?
+      @user  = User.find(current_user.id)
+      if @user
+        @all = Post.where(user_id: @user.id).order('id DESC')
+        @movie = @all.where(category: "movie").order('id DESC')
+        @tv = @all.where(category: "tv").order('id DESC')
+        @book = @all.where(category: "book").order('id DESC')
+        @comic = @all.where(category: "comic").order('id DESC')
+        @music = @all.where(category: "music").order('id DESC')
+      end
+    end
   end
 
   def test
@@ -11,8 +22,6 @@ class WorksController < ApplicationController
     	@user  = User.find(current_user.id)
     	@users = @user.followings
     	@posts = []
-    	@posts_mine = Post.where(user_id: current_user.id).order('id DESC')
-    	@posts.concat(@posts_mine)
     	if @users.present?
           @users.each do |user|
             	posts = Post.where(user_id: user.id).order(created_at: :desc)
@@ -31,9 +40,6 @@ class WorksController < ApplicationController
 
     if params[:q].present?
       @posts = []
-      @posts_mine = Post.where(user_id: current_user.id, category: params[:q]).order('id DESC')
-      @posts.concat(@posts_mine)
-      
       if @users.present?
           @users.each do |user|
               posts = Post.where(user_id: user.id, category: params[:q]).order(created_at: :desc)
