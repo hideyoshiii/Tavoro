@@ -123,7 +123,7 @@
 									<div class="font_white">
 										<%= post.user.name %>
 									</div>
-									<div class="font_white">
+									<div class="font_gray">
 										<% if post.category == "movie" %>
 											<i class="fas fa-film"></i> 映画
 										<% end %>
@@ -139,7 +139,20 @@
 										<% if post.category == "music" %>
 											<i class="fas fa-music"></i> ミュージック
 										<% end %>
-										 - <%= post.created_at.strftime('%Y/%m/%d') %>
+										<% @seconds = (Time.now - post.created_at).round  %>
+										<% if @seconds <= 3600 %>
+											- <%= @seconds / 60 %>分前
+										<% else %>
+											<% if @seconds <= 86400 %>
+													- <%= @seconds / (60 * 60) %>時間前
+											<% else %>
+												<% if @seconds <= 604800 %>
+													- <%= @seconds / (60 * 60 * 24) %>日前
+												<% else %>
+													- <%= post.created_at.strftime('%m月%d日') %>
+												<% end %>
+											<% end %>
+										<% end %>
 									</div>
 								<% end %>
 							</div>
@@ -254,62 +267,4 @@
 </div>
 
 <%#投稿ボタン%>
-<div class="btns_plus">
-	<a href="" data-toggle="modal" data-target="#myModal_post" id="btn_plus">
-		<i><%= image_tag "plus.png", :class =>'img_plus' %></i>
-	</a>
-</div>	
-<div class="modal fade" id="myModal_post">
-	<div class="height_modal"></div>
-    <div class="modal-dialog">
-    	<div class="base_modal">
-			<%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
-			<span>
-				<div class="layer01">
-				</div>
-				<div class="layer02">
-			  		<div class="">	
-				  		<div style="font-size:24px;color:#FAFAFA;margin:0px 0px 30px;">
-					      	投稿を作成
-				        </div>
-				  		<div class="btns_choice02">
-				  			<div>
-						      	<%= link_to(works_movie_path, id: 'btn_option') do %>
-						        	<i class="fas fa-film"></i>
-						        <% end %>
-					        </div>
-					        <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
-					        	映画/テレビ
-					        </div>
-				        </div>
-				        <div class="btns_choice01">
-				        	<div>
-				        		<%= link_to(works_book_path, id: 'btn_option') do %>
-						        	<i class="fas fa-book"></i>
-						        <% end %>
-						    </div>
-					        <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
-					        	ブック
-					        </div>
-				        </div>
-				        <div class="btns_choice02">
-				        	<div>
-						      	<%= link_to(works_music_path, id: 'btn_option') do %>
-						        	<i class="fas fa-music"></i>
-						        <% end %>
-					        </div>
-					        <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
-					        	ミュージック
-					        </div>
-				        </div> 
-			        </div>   
-				</div>
-			</span>
-		</div>
-    </div>
-    <div class="btns_plus">
-		<a href="" data-dismiss="modal" id="btn_plus">
-			<i><%= image_tag "plus.png", :class =>'img_time' %></i>
-		</a>
-	</div>	
-</div>
+<%= render "partial/post_modal" %>

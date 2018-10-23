@@ -62,7 +62,7 @@
 						<div class="font_white">
 							<%= post.user.name %>
 						</div>
-						<div class="font_white">
+						<div class="font_gray">
 							<% if post.category == "movie" %>
 								<i class="fas fa-film"></i> 映画
 							<% end %>
@@ -78,7 +78,20 @@
 							<% if post.category == "music" %>
 								<i class="fas fa-music"></i> ミュージック
 							<% end %>
-							 - <%= post.created_at.strftime('%Y/%m/%d') %>
+							<% @seconds = (Time.now - post.created_at).round  %>
+							<% if @seconds <= 3600 %>
+								- <%= @seconds / 60 %>分前
+							<% else %>
+								<% if @seconds <= 86400 %>
+										- <%= @seconds / (60 * 60) %>時間前
+								<% else %>
+									<% if @seconds <= 604800 %>
+										- <%= @seconds / (60 * 60 * 24) %>日前
+									<% else %>
+										- <%= post.created_at.strftime('%m月%d日') %>
+									<% end %>
+								<% end %>
+							<% end %>
 						</div>
 					<% end %>
 				</div>
@@ -166,7 +179,21 @@
 							</div>
 							<div class="pro07">
 								<div class="font_gray">
-									<%= post.user.name %> - <%= post.created_at.strftime('%Y/%m/%d') %>
+									<%= post.user.name %>
+									<% @seconds = (Time.now - post.created_at).round  %>
+									<% if @seconds <= 3600 %>
+										- <%= @seconds / 60 %>分前
+									<% else %>
+										<% if @seconds <= 86400 %>
+												- <%= @seconds / (60 * 60) %>時間前
+										<% else %>
+											<% if @seconds <= 604800 %>
+												- <%= @seconds / (60 * 60 * 24) %>日前
+											<% else %>
+												- <%= post.created_at.strftime('%m月%d日') %>
+											<% end %>
+										<% end %>
+									<% end %>
 								</div>
 								<div class="font_white">
 									<% if post.review == "favorite" %>

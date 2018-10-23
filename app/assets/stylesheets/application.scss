@@ -427,6 +427,10 @@ a:hover {
 	height: 30px;
 	border-radius:50%;
 }
+.img_icon02{
+	width: 25px;
+	height: 25px;
+}
 .img_category{
 	width: 100%;
 	height: auto;
@@ -746,7 +750,7 @@ button {
 	    margin:0px 5px;
 	}
 }
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 320px) {
 	.nmn03 label {
 	    padding: 0.3em 0.9em;
 	    color: #777777;
@@ -1577,7 +1581,7 @@ button {
   margin:0;
   z-index:3;
   text-align:right;
-  background:rgba(0,0,0,0.65);
+  background:rgba(0,0,0,0.83);
   font-size:0;
   }
 .base_modal span .layer02 {
@@ -1804,7 +1808,7 @@ button {
 .pro02{
 		display:inline-block;
 		vertical-align:middle;
-		width:60%;
+		width:70%;
 		height:auto;
 		padding:0px 10px;
 		margin:0 auto;
@@ -1815,7 +1819,7 @@ button {
 .pro03{
 		display:inline-block;
 		vertical-align:middle;
-		width:25%;
+		width:15%;
 		height:auto;
 		padding:0;
 		margin:0 auto;
@@ -2225,6 +2229,29 @@ button {
   margin-left:1px;
   margin-top:-2px;
 }
+.btn_icon {
+	position:relative;
+    display: block;
+    width: 70px;
+    height: 70px;
+    background: rgba(0,0,0,0.2);
+    text-align: center;
+    border-radius: 50%;
+    transition: .2s;
+    border:1px solid rgba(70,70,70,0.9);
+}
+.btn_icon span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width:100%;
+  margin:0 auto;
+  padding:0;
+  text-align:center;
+  }
 @media only screen and (max-width: 768px) {
 	.btn_test10{
     	font-size:14px;
@@ -2242,7 +2269,9 @@ button {
 //モーダル関連
 .modal-dialog{
 	width:35%;
-	height:95%;
+	height:100%;
+	margin-top:0;
+	padding-top:0;
 }
 .modal.fade {
   transition-duration: 0.1s;
@@ -2322,7 +2351,7 @@ button {
 		height:100px;
 	}
 	.height05{
-		height:70px;
+		height:80px;
 	}
 	.height06{
 		height:60px;
