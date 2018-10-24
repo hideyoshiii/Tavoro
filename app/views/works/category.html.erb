@@ -252,8 +252,8 @@
 					</div>
 					<div class="layer02">
 						<div class="font_how">
-							<% if post.review == "favorite" %>
-								<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+							<% if post.review == "bookmark" %>
+								<i class="far fa-bookmark"></i> ブックマーク
 							<% end %>
 							<% if post.review == "good" %>
 								<% if post.category == "movie" || post.category == "tv" %>
@@ -265,6 +265,9 @@
 								<% if post.category == "music" %>
 									聴きました
 								<% end %>
+							<% end %>
+							<% if post.review == "favorite" %>
+								<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
 							<% end %>
 							<% if post.review == "bad" %>
 								<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません

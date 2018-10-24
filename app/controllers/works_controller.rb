@@ -4,12 +4,21 @@ class WorksController < ApplicationController
     if user_signed_in?
       @user  = User.find(current_user.id)
       if @user
-        @all = Post.where(user_id: @user.id).order('id DESC')
-        @movie = @all.where(category: "movie").order('id DESC')
-        @tv = @all.where(category: "tv").order('id DESC')
-        @book = @all.where(category: "book").order('id DESC')
-        @comic = @all.where(category: "comic").order('id DESC')
-        @music = @all.where(category: "music").order('id DESC')
+        @all = Post.where(user_id: @user.id).order(created_at: "DESC")
+
+        @checkeds = @all.where.not(review: "bookmark")
+        @checkeds_movie = @checkeds.where(category: "movie")
+        @checkeds_tv = @checkeds.where(category: "tv")
+        @checkeds_book = @checkeds.where(category: "book")
+        @checkeds_comic = @checkeds.where(category: "comic")
+        @checkeds_music = @checkeds.where(category: "music")
+
+        @bookmarks = @all.where(review: "bookmark")
+        @bookmarks_movie = @bookmarks.where(category: "movie")
+        @bookmarks_tv = @bookmarks.where(category: "tv")
+        @bookmarks_book = @bookmarks.where(category: "book")
+        @bookmarks_comic = @bookmarks.where(category: "comic")
+        @bookmarks_music = @bookmarks.where(category: "music")
       end
     end
   end
@@ -24,7 +33,8 @@ class WorksController < ApplicationController
     	@posts = []
     	if @users.present?
           @users.each do |user|
-            	posts = Post.where(user_id: user.id).order(created_at: :desc)
+            	posts = Post.where(user_id: user.id)
+              posts = posts.where.not(review: "bookmark")
             	#取得したユーザーの投稿一覧を@postsに格納
             	@posts.concat(posts)
           end
@@ -42,7 +52,8 @@ class WorksController < ApplicationController
       @posts = []
       if @users.present?
           @users.each do |user|
-              posts = Post.where(user_id: user.id, category: params[:q]).order(created_at: :desc)
+              posts = Post.where(user_id: user.id, category: params[:q])
+              posts = posts.where.not(review: "bookmark")
               #取得したユーザーの投稿一覧を@postsに格納
               @posts.concat(posts)
           end
@@ -255,14 +266,18 @@ class WorksController < ApplicationController
   def edit
   	@post = Post.find(params[:id])
 
+    @bookmark = false
+    @good = false
   	@favorite = false
-  	@good = false
   	@bad = false
+    if @post.review == "bookmark"
+      @bookmark = true
+    end
+    if @post.review == "good"
+      @good = true
+    end
   	if @post.review == "favorite"
   		@favorite = true
-  	end
-  	if @post.review == "good"
-  		@good = true
   	end
   	if @post.review == "bad"
   		@bad = true
@@ -316,12 +331,22 @@ class WorksController < ApplicationController
   	if params[:description]
   		@post.description = params[:description]
   	end
-  	if params[:review]
-  		@post.review = params[:review]
-  	end
   	if params[:image_url]
   		@post.image_url = params[:image_url]
   	end
+    if params[:review]
+      if @post.review == "bookmark"
+        unless params[:review] == "bookmark"
+          @post.created_at = Time.now
+        end
+        @post.review = params[:review]
+      else
+        if params[:review] == "bookmark"
+          @post.created_at = Time.now
+        end
+        @post.review = params[:review]
+      end
+    end
     if @post.save
       #保存に成功した場合
       redirect_to root_path

@@ -1,13 +1,24 @@
 class UsersController < ApplicationController
 
 	def collection
-		@user = User.find(params[:id])
-		@all = Post.where(user_id: @user.id).order('id DESC')
-		@movie = @all.where(category: "movie").order('id DESC')
-		@tv = @all.where(category: "tv").order('id DESC')
-		@book = @all.where(category: "book").order('id DESC')
-		@comic = @all.where(category: "comic").order('id DESC')
-		@music = @all.where(category: "music").order('id DESC')
+		@user = User.find(params[:id])	
+    if @user
+      @all = Post.where(user_id: @user.id).order(created_at: "DESC")
+
+      @checkeds = @all.where.not(review: "bookmark")
+      @checkeds_movie = @checkeds.where(category: "movie")
+      @checkeds_tv = @checkeds.where(category: "tv")
+      @checkeds_book = @checkeds.where(category: "book")
+      @checkeds_comic = @checkeds.where(category: "comic")
+      @checkeds_music = @checkeds.where(category: "music")
+
+      @bookmarks = @all.where(review: "bookmark")
+      @bookmarks_movie = @bookmarks.where(category: "movie")
+      @bookmarks_tv = @bookmarks.where(category: "tv")
+      @bookmarks_book = @bookmarks.where(category: "book")
+      @bookmarks_comic = @bookmarks.where(category: "comic")
+      @bookmarks_music = @bookmarks.where(category: "music")
+    end
 	end
 
 	def profile

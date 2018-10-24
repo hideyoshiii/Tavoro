@@ -26,11 +26,8 @@
 	<div class="block_side">
 	</div>
 	<div class="block_main">
-
 		<div style="height:50px;"></div>
-
 		<div class="a1">
-
 			<div class="a4">
 	            <div class="d1">
 	              	<% if post.image_url.blank? %>
@@ -45,7 +42,6 @@
 					<div class="d2"></div>
 	            </div>
           	</div>
-
 			<div class="a2">
 				<div class="bar_smoke"></div>	
 				<div class="pro01">
@@ -132,7 +128,6 @@
 					<% end %>								
 				</div>
 			</div>
-
 			<div class="a4">
 				<div class="b1">
 					<div class="b2">
@@ -144,7 +139,6 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="a5">
 				<div class="c1">
 					<div class="c2">						
@@ -196,8 +190,8 @@
 									<% end %>
 								</div>
 								<div class="font_white">
-									<% if post.review == "favorite" %>
-										<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+									<% if post.review == "bookmark" %>
+										<i class="far fa-bookmark"></i> ブックマーク
 									<% end %>
 									<% if post.review == "good" %>
 										<% if post.category == "movie" || post.category == "tv" %>
@@ -210,6 +204,9 @@
 											聴きました
 										<% end %>
 									<% end %>
+									<% if post.review == "favorite" %>
+										<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+									<% end %>
 									<% if post.review == "bad" %>
 										<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
 									<% end %>
@@ -219,52 +216,66 @@
 								</div>	
 							</div>
 						</div>
-						<% if @comments.blank? %>
+						<% if post.review == "bookmark" %>
 							<div style="text-align:center;margin-top:30px;font-size:18px;">
-								<%= image_tag "test18.png", :style =>'width:20px;height:20px;' %>
+								<%= image_tag "bookmark.png", :style =>'width:20px;height:20px;' %>
 							</div>
 							<div style="text-align:center;margin-top:10px;font-size:16px;color:#999999;">
-								他のアクティビティがありません
+								ブックマークは友達に表示されません
 							</div>
 							<div style="text-align:center;margin:30px;font-size:15px;">
-								<%= link_to "/works/#{post.id}/copy", :class =>'test_btn01' do %>
-										共有
+								<%= link_to "/works/#{post.id}/edit", :class =>'test_btn01' do %>
+										編集
 								<% end %>
 							</div>
 						<% else %>
-							<div style="text-align:center;margin:30px;font-size:15px;">
-								<%= link_to "/works/#{post.id}/copy", :class =>'test_btn01' do %>
-										共有
-								<% end %>
-							</div>
-							<% @comments.each.with_index(1) do |post, i| %>
-								<% unless post.user == @post.user %>
-									<div class="box_comment02">
-										<div class="pro06">
-											<%= image_tag post.user.image, :class =>'img_user07' %>
-										</div>
-										<div class="pro07">
+							<% if @comments.blank? %>
+								<div style="text-align:center;margin-top:30px;font-size:18px;">
+									<%= image_tag "test18.png", :style =>'width:20px;height:20px;' %>
+								</div>
+								<div style="text-align:center;margin-top:10px;font-size:16px;color:#999999;">
+									他のアクティビティがありません
+								</div>
+								<div style="text-align:center;margin:30px;font-size:15px;">
+									<%= link_to "/works/#{post.id}/copy", :class =>'test_btn01' do %>
+											共有
+									<% end %>
+								</div>
+							<% else %>
+								<div style="text-align:center;margin:30px;font-size:15px;">
+									<%= link_to "/works/#{post.id}/copy", :class =>'test_btn01' do %>
+											共有
+									<% end %>
+								</div>
+								<% @comments.each.with_index(1) do |post, i| %>
+									<% unless post.user == @post.user %>
+										<div class="box_comment02">
+											<div class="pro06">
+												<%= image_tag post.user.image, :class =>'img_user07' %>
+											</div>
 											<div class="pro07">
-												<div class="font_gray">
-													<%= post.user.name %> - <%= post.created_at.strftime('%Y/%m/%d') %>
+												<div class="pro07">
+													<div class="font_gray">
+														<%= post.user.name %> - <%= post.created_at.strftime('%Y/%m/%d') %>
+													</div>
+													<div class="font_white">
+														<% if post.review == "favorite" %>
+															<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+														<% end %>
+														<% if post.review == "good" %>
+															観ました
+														<% end %>
+														<% if post.review == "bad" %>
+															<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
+														<% end %>
+													</div>
+													<div style="font-size:18px;color:#999999;">
+														"<%= simple_format(post.description, {}, wrapper_tag: "span") %>"
+													</div>	
 												</div>
-												<div class="font_white">
-													<% if post.review == "favorite" %>
-														<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
-													<% end %>
-													<% if post.review == "good" %>
-														観ました
-													<% end %>
-													<% if post.review == "bad" %>
-														<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
-													<% end %>
-												</div>
-												<div style="font-size:18px;color:#999999;">
-													"<%= simple_format(post.description, {}, wrapper_tag: "span") %>"
-												</div>	
 											</div>
 										</div>
-									</div>
+									<% end %>
 								<% end %>
 							<% end %>
 						<% end %>
