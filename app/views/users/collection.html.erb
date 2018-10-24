@@ -54,7 +54,7 @@
 			  <div class="tab-pane active" id="all">
 			  	<div class="checked" style="height:100%;">
 				  	<% if @checkeds.blank? %>
-				  		<%= render "partial/nothing01" %>
+				  		<%= render "partial/nothing" %>
 				  	<% else %>
 					  	<% @checkeds.each.with_index(1) do |post, i| %>
 				  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -97,7 +97,7 @@
 			  	</div>
 			  	<div class="bookmark hide" style="height:100%;">
 			  		<% if @bookmarks.blank? %>
-				  		<%= render "partial/nothing01" %>
+				  		<%= render "partial/nothing" %>
 				  	<% else %>
 					  	<% @bookmarks.each.with_index(1) do |post, i| %>
 				  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -167,7 +167,7 @@
 				</div>
 			  	<div class="bookmark hide" style="height:100%;">
 			  		<% if @bookmarks_movie.blank? %>
-				  		<%= render "partial/nothing" %>
+				  		<%= render "partial/nothing02" %>
 				  	<% else %>
 					    <% @bookmarks_movie.each.with_index(1) do |post, i| %>
 					  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -219,7 +219,7 @@
 				</div>
 			  	<div class="bookmark hide" style="height:100%;">
 			  		<% if @bookmarks_tv.blank? %>
-				  		<%= render "partial/nothing" %>
+				  		<%= render "partial/nothing02" %>
 				  	<% else %>
 					  	<% @bookmarks_tv.each.with_index(1) do |post, i| %>
 					  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -271,7 +271,7 @@
 				</div>
 			  	<div class="bookmark hide" style="height:100%;">
 			  		<% if @bookmarks_book.blank? %>
-				  		<%= render "partial/nothing" %>
+				  		<%= render "partial/nothing02" %>
 				  	<% else %>
 					  	<% @bookmarks_book.each.with_index(1) do |post, i| %>
 					  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -323,7 +323,7 @@
 			  	</div>
 			  	<div class="bookmark hide" style="height:100%;">
 			  		<% if @bookmarks_comic.blank? %>
-				  		<%= render "partial/nothing" %>
+				  		<%= render "partial/nothing02" %>
 				  	<% else %>
 					  	<% @bookmarks_comic.each.with_index(1) do |post, i| %>
 					  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
@@ -375,7 +375,7 @@
 				</div>
 			  	<div class="bookmark hide" style="height:100%;">
 			  		<% if @bookmarks_music.blank? %>
-				  		<%= render "partial/nothing" %>
+				  		<%= render "partial/nothing02" %>
 				  	<% else %>
 					  	<% @bookmarks_music.each.with_index(1) do |post, i| %>
 					  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
