@@ -25,7 +25,7 @@
               <% end %>
             </div>
             <div class="pro23">
-            	<div style="text-align:right;">
+            	<div style="text-align:right;margin-right:10px;">
 	                <% unless current_user?(user) %>
 		            	<span id="relationship-of-<%= @user.id %>">
 					      	<%= render partial: 'relationships/relationship' %>
@@ -70,7 +70,7 @@
 	              <% end %>
 	            </div>
 	            <div class="pro23">
-	            	<div style="text-align:right;">
+	            	<div style="text-align:right;margin-right:10px;">
 		                <% unless current_user?(user) %>
 			            	<span id="relationship-of-<%= @user.id %>">
 						      	<%= render partial: 'relationships/relationship' %>

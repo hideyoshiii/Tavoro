@@ -44,21 +44,30 @@ a:visited{
 	height:50px;
 	font-size:0;
 }
-.bar_collection {
-    position: fixed;
-    top: 50px;
-    left:32.5%;
-    background: #111111;
-	background: -webkit-linear-gradient(-90deg, #111111, #05627B); 
+.bar_profile {
+	position: relative;
+    background: -webkit-linear-gradient(-90deg, #111111, #05627B); 
 	background: linear-gradient(-90eg, #111111, #05627B); 
-    width:35%;
+    width:100%;
+    height:auto;
+    padding:0;
+    margin:0 auto;
+    z-index:98;
+    font-size:0;
+    margin-bottom:-5px;
+}
+.bar_collection {
+    position: -webkit-sticky;
+  	position: sticky;
+    top: 50px;
+    background: -webkit-linear-gradient(-270deg, #111111, #05627B); 
+	background: linear-gradient(-270eg, #111111, #05627B); 
+    width:100%;
     height:auto;
     padding:2px 0px 10px;
     margin:0 auto;
     z-index:98;
     font-size:0;
-    border-left: solid 1px #000;
-	border-right: solid 1px #000;
 }
 .bar_post {
     position: fixed;
@@ -89,11 +98,6 @@ a:visited{
 @media only screen and (max-width: 768px) {
 	.bar_top {  
     	border-bottom: 1px solid rgba(39,134,160,1);
-	}
-	.bar_collection {
-	    left:0;
-	    width:100%;
-	    border:none;
 	}
 	.bar_post {
 	    left:0;
@@ -282,6 +286,16 @@ a:visited{
 .img_user10{
 	width: 27px;
 	height: 27px;
+	border-radius:50%;
+	background:rgba(0,0,0,0.1);
+	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.4);
+	object-fit: cover;
+}
+.img_user11{
+	width: 70px;
+	height: 70px;
+	padding:0;
+	margin:0;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
 	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.4);
@@ -878,7 +892,7 @@ button {
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
-    padding: 0 10px;
+    padding: 0 10px 5px;
     margin: 0;
     -webkit-overflow-scrolling: touch;
 }
@@ -2135,6 +2149,28 @@ button {
 		text-aline:right;
 		font-size:0px;
 	}
+.pro26{
+		display:inline-block;
+		vertical-align:middle;
+		width:35%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-aline:center;
+		font-size:0px;
+	}
+.pro27{
+		display:inline-block;
+		vertical-align:middle;
+		width:65%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-aline:center;
+		font-size:0px;
+	}
 //ボタン配置関係
 .btns_plus{
   position:fixed;
@@ -3087,8 +3123,8 @@ input[name="slideshow"] {
     text-decoration: none;
     background: none;
     color: #FAFAFA;
-    background: rgba(39,134,160,0.4);
-    border: solid 1px rgba(39,134,160,0.1);
+    background: rgba(5,98,123,0.4);
+    border: solid 1px rgba(5,98,123,0.4);
     border-radius: 0px;
     font-size:12px;
 }
@@ -3100,6 +3136,36 @@ input[name="slideshow"] {
     background: none;
     border: solid 1px rgba(220,220,220,0.3);
     border-radius: 0px;
+    font-size:12px;
+}
+.btn_on02{
+    padding: 0.4em 30%;
+    text-decoration: none;
+    background: none;
+    color: #FAFAFA;
+    background: rgba(5,98,123,0.4);
+    border: solid 1px rgba(5,98,123,0.1);
+    border-radius: 3px;
+    font-size:12px;
+}
+.btn_off02{
+    padding: 0.4em 30%;
+    text-decoration: none;
+    background: none;
+    color: rgba(220,220,220,0.9);
+    background: none;
+    border: solid 1px rgba(220,220,220,0.3);
+    border-radius: 3px;
+    font-size:12px;
+}
+.btn_dash02{
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+    background: none;
+    color: rgba(220,220,220,0.9);
+    background: none;
+    border: solid 1px rgba(220,220,220,0.3);
+    border-radius: 3px;
     font-size:12px;
 }
 

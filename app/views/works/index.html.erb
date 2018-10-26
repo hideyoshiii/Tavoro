@@ -278,19 +278,18 @@
 <%= render "partial/post_modal" %>
 
 <%#swiper%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script>
-$(function(){
-	var swiper = new Swiper('.swiper-container', {
-		parallax: true,
-		speed: 500,
-		navigation: {
-	    	nextEl: '.swiper-button-next',
-	    	prevEl: '.swiper-button-prev',
-	  	},
-	  	hideOnClick: false,
+	$(function(){
+		var swiper = new Swiper('.swiper-container', {
+			parallax: true,
+			speed: 500,
+			navigation: {
+		    	nextEl: '.swiper-button-next',
+		    	prevEl: '.swiper-button-prev',
+		  	},
+		  	hideOnClick: false,
+		});
 	});
-});
 </script>
 
 <% else %>
