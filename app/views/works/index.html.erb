@@ -280,15 +280,17 @@
 <%#swiper%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script>
-var swiper = new Swiper('.swiper-container', {
-	parallax: true,
-	speed: 400,
-	navigation: {
-    	nextEl: '.swiper-button-next',
-    	prevEl: '.swiper-button-prev',
-  	},
-  	hideOnClick: false,
-    effect: 'coverflow',
+$(function(){
+	var swiper = new Swiper('.swiper-container', {
+		parallax: true,
+		speed: 400,
+		navigation: {
+	    	nextEl: '.swiper-button-next',
+	    	prevEl: '.swiper-button-prev',
+	  	},
+	  	hideOnClick: false,
+	    effect: 'coverflow',
+	});
 });
 </script>
 
