@@ -76,12 +76,12 @@
 				</div>	
 			</div>
 			<div class="tab-content">
+			  <div style="height:5px;"></div>
 			  <div class="tab-pane active" id="all">
 			  	<div class="checked" style="height:100%;">
 				  	<% if @checkeds.blank? %>
 				  		<%= render "partial/nothing" %>
 				  	<% else %>
-				  		<div style="height:5px;"></div>
 					  	<% @checkeds.each.with_index(1) do |post, i| %>
 				  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 						    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
