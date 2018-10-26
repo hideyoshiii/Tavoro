@@ -1,27 +1,5 @@
 class WorksController < ApplicationController
 
-  def home
-    if user_signed_in?
-      @user  = User.find(current_user.id)
-      if @user
-        @all = Post.where(user_id: @user.id).order(created_at: "DESC")
-
-        @checkeds = @all.where.not(review: "bookmark")
-        @checkeds_movie = @checkeds.where(category: "movie")
-        @checkeds_tv = @checkeds.where(category: "tv")
-        @checkeds_book = @checkeds.where(category: "book")
-        @checkeds_comic = @checkeds.where(category: "comic")
-        @checkeds_music = @checkeds.where(category: "music")
-
-        @bookmarks = @all.where(review: "bookmark")
-        @bookmarks_movie = @bookmarks.where(category: "movie")
-        @bookmarks_tv = @bookmarks.where(category: "tv")
-        @bookmarks_book = @bookmarks.where(category: "book")
-        @bookmarks_comic = @bookmarks.where(category: "comic")
-        @bookmarks_music = @bookmarks.where(category: "music")
-      end
-    end
-  end
 
   def test
   end

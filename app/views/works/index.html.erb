@@ -1,78 +1,16 @@
+<% if user_signed_in? %>
 <div class="main">
 	<div class="block_side">
 	</div>
 	<div class="block_main">
 		<div style="height:50px;"></div>
-		<div style="padding:0px 0px 20px;background:rgba(0,0,0,0.7);border-bottom: solid 1px rgba(39,134,160,0.5);">
-			<div class="font_gray" style="margin-left:15px;padding-top:15px">
-				Category
-			</div>
-			<div class="border01"></div>
-			<div class="horizontal_scroll04">	
-				<div class="scroll_item04">
-					<%= form_tag("/works/category", method: :get) do %>
-						<%= hidden_field_tag :q, "movie" %>
-						<button>
-							<div class="pile_category">
-								<%= image_tag "movie.jpg", :class =>'img_category' %>
-								<p>movie</p>
-								<div class="smoke"></div>
-							</div>
-						</button>
-					<% end %>
-				</div>
-				<div class="scroll_item04">
-					<%= form_tag("/works/category", method: :get) do %>
-						<%= hidden_field_tag :q, "tv" %>
-						<button>
-							<div class="pile_category">
-								<%= image_tag "tv.jpg", :class =>'img_category' %>
-								<p>tv</p>
-								<div class="smoke"></div>
-							</div>
-						</button>
-					<% end %>
-				</div>
-				<div class="scroll_item04">
-					<%= form_tag("/works/category", method: :get) do %>
-						<%= hidden_field_tag :q, "book" %>
-						<button>
-							<div class="pile_category">
-								<%= image_tag "book.jpg", :class =>'img_category' %>
-								<p>book</p>
-								<div class="smoke"></div>
-							</div>
-						</button>
-					<% end %>
-				</div>
-				<div class="scroll_item04">
-					<%= form_tag("/works/category", method: :get) do %>
-						<%= hidden_field_tag :q, "comic" %>
-						<button>
-							<div class="pile_category">
-								<%= image_tag "comic.jpg", :class =>'img_category' %>
-								<p>comic</p>
-								<div class="smoke"></div>
-							</div>
-						</button>
-					<% end %>
-				</div>
-				<div class="scroll_item04">
-					<%= form_tag("/works/category", method: :get) do %>
-						<%= hidden_field_tag :q, "music" %>
-						<button>
-							<div class="pile_category">
-								<%= image_tag "music.jpg", :class =>'img_category' %>
-								<p>music</p>
-								<div class="smoke"></div>
-							</div>
-						</button>
-					<% end %>
-				</div>	
-			</div>
-		</div>
+		<div class="swiper-container" style="height:calc(100% - 50px)">
+		<div class="swiper-wrapper" style="height:100%">
+
+		
 		<% if @posts.present? %>
 			<% @posts.each.with_index(1) do |post, i| %>
+			<div class="swiper-slide" style="height:100%"> 
 				<style type="text/css">
 					#menu_in<%= post.id %>{
 					  overflow: hidden;
@@ -303,6 +241,7 @@
 						</div>
 					</span>
 				</div>
+			</div>
 			<% end %>
 		<% else %>
 			<div class="base_nothing">
@@ -325,6 +264,11 @@
 				</span>
 			</div>
 		<% end %>
+
+		</div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+		</div>
 	</div>
 	<div class="block_side">
 	</div>
@@ -332,3 +276,22 @@
 
 <%#投稿ボタン%>
 <%= render "partial/post_modal" %>
+
+<%#swiper%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+<script>
+var swiper = new Swiper('.swiper-container', {
+	parallax: true,
+	speed: 400,
+	navigation: {
+    	nextEl: '.swiper-button-next',
+    	prevEl: '.swiper-button-prev',
+  	},
+  	hideOnClick: false,
+    effect: 'coverflow',
+});
+</script>
+
+<% else %>
+	<%= render "works/home" %>
+<% end %>
