@@ -2381,10 +2381,10 @@ button {
 	padding-top:0;
 }
 .modal.fade {
-  transition-duration: 0.1s;
+  transition-duration: 0.3s;
 }
 .modal.in {
-  transition-duration: 0.1s;
+  transition-duration: 0.3s;
 }
 .modal.fade .modal-dialog {
     -webkit-transform: scale(0.1);
@@ -2393,9 +2393,9 @@ button {
     transform: scale(0.1);
     top: 300px;
     opacity: 0;
-    -webkit-transition: all 0.1s;
-    -moz-transition: all 0.1s;
-    transition: all 0.1s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
 }
 .modal.fade.in .modal-dialog {
     -webkit-transform: scale(1);

@@ -432,7 +432,9 @@
 	</div>
 	<%#allモーダルの中身%>
 	<% if @all.present? %>
-		<% @all.each.with_index(1) do |post, i| %>
+		<% @all.each.with_index do |post, i| %>
+		<% left_item = @all[i-1] unless i == 0 %>
+		<% right_item = @all[i+1] unless i == @all.size-1 %>
 			<style type="text/css">
 				#menu_in_st<%= post.id %>{
 				  overflow: hidden;
@@ -658,12 +660,24 @@
 								</div>
 							</div>
 							<div class="layer09">
-								<div class="pro19">
+								<div class="pro19">							
 									<a href="" data-dismiss="modal">
 										<%= image_tag "close_blue.png", :class =>'img_left02' %>
 									</a>
 								</div>
 							</div>
+							<% if left_item.present? %>
+								<a href="" data-dismiss="modal" data-toggle="modal" data-target="#myModal_<%= left_item.id %>">
+									<div class="swiper-button-prev">
+									</div>
+								</a>
+							<% end %>
+							<% if right_item.present? %>
+								<a href="" data-dismiss="modal" data-toggle="modal" data-target="#myModal_<%= right_item.id %>">
+									<div class="swiper-button-next">
+									</div>
+								</a>
+							<% end %>
 						</span>
 					</div>
 		  		</div>
