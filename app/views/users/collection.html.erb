@@ -81,8 +81,8 @@
 			  	<% if @checkeds.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
-				  	<% @checkeds.each.with_index do |post, i| %>
-			  			<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				  	<% @checkeds.each.with_index(1) do |post, i| %>
+			  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
@@ -117,10 +117,6 @@
 								</span>
 							</a>
 						</div>
-						<% left_item = @checkeds[i-1] unless i == 0 %>
-						<% right_item = @checkeds[i+1] unless i == @checkeds.size-1 %>
-						<% modal_name = "checkeds" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 				  	<% end %>
 			  	<% end %>
 		  	</div>
@@ -128,8 +124,8 @@
 		  		<% if @bookmarks.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
-				  	<% @bookmarks.each.with_index do |post, i| %>
-			  			<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				  	<% @bookmarks.each.with_index(1) do |post, i| %>
+			  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
@@ -164,10 +160,6 @@
 								</span>
 							</a>
 						</div>
-						<% left_item = @bookmarks[i-1] unless i == 0 %>
-						<% right_item = @bookmarks[i+1] unless i == @bookmarks.size-1 %>
-						<% modal_name = "bookmarks" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 				  	<% end %>
 			  	<% end %>
 		  	</div>
@@ -177,8 +169,8 @@
 			  	<% if @checkeds_movie.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
-				    <% @checkeds_movie.each.with_index do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				    <% @checkeds_movie.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_movie_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
@@ -195,10 +187,6 @@
 								</span>
 							</a>
 						</div>
-						<% left_item = @checkeds_movie[i-1] unless i == 0 %>
-						<% right_item = @checkeds_movie[i+1] unless i == @checkeds_movie.size-1 %>
-						<% modal_name = "checkeds_movie" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 				  	<% end %>
 			  	<% end %>
 			</div>
@@ -206,8 +194,8 @@
 		  		<% if @bookmarks_movie.blank? %>
 			  		<%= render "partial/nothing02" %>
 			  	<% else %>
-				    <% @bookmarks_movie.each.with_index do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				    <% @bookmarks_movie.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_movie_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
@@ -224,10 +212,6 @@
 								</span>
 							</a>
 						</div>
-						<% left_item = @bookmarks_movie[i-1] unless i == 0 %>
-						<% right_item = @bookmarks_movie[i+1] unless i == @bookmarks_movie.size-1 %>
-						<% modal_name = "bookmarks_movie" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 				  	<% end %>
 			  	<% end %>
 		  	</div>
@@ -237,8 +221,8 @@
 			    <% if @checkeds_tv.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
-				  	<% @checkeds_tv.each.with_index do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				  	<% @checkeds_tv.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_tv_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
@@ -255,10 +239,6 @@
 								</span>
 							</a>
 						</div>
-						<% left_item = @checkeds_tv[i-1] unless i == 0 %>
-						<% right_item = @checkeds_tv[i+1] unless i == @checkeds_tv.size-1 %>
-						<% modal_name = "checkeds_tv" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 				  	<% end %>
 			  	<% end %>
 			</div>
@@ -266,8 +246,8 @@
 		  		<% if @bookmarks_tv.blank? %>
 			  		<%= render "partial/nothing02" %>
 			  	<% else %>
-				  	<% @bookmarks_tv.each.with_index do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				  	<% @bookmarks_tv.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_tv_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
@@ -284,10 +264,6 @@
 								</span>
 							</a>
 						</div>
-						<% left_item = @bookmarks_tv[i-1] unless i == 0 %>
-						<% right_item = @bookmarks_tv[i+1] unless i == @bookmarks_tv.size-1 %>
-						<% modal_name = "bookmarks_tv" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 				  	<% end %>
 			  	<% end %>
 		  	</div>
@@ -297,8 +273,8 @@
 			    <% if @checkeds_book.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
-				  	<% @checkeds_book.each.with_index do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				  	<% @checkeds_book.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_book_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
@@ -315,10 +291,6 @@
 								</span>
 							</a>
 						</div>
-						<% left_item = @checkeds_book[i-1] unless i == 0 %>
-						<% right_item = @checkeds_book[i+1] unless i == @checkeds_book.size-1 %>
-						<% modal_name = "checkeds_book" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 				  	<% end %>
 			  	<% end %>
 			</div>
@@ -326,8 +298,8 @@
 		  		<% if @bookmarks_book.blank? %>
 			  		<%= render "partial/nothing02" %>
 			  	<% else %>
-				  	<% @bookmarks_book.each.with_index do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				  	<% @bookmarks_book.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_book_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
@@ -344,10 +316,6 @@
 								</span>
 							</a>
 						</div>
-						<% left_item = @bookmarks_book[i-1] unless i == 0 %>
-						<% right_item = @bookmarks_book[i+1] unless i == @bookmarks_book.size-1 %>
-						<% modal_name = "bookmarks_book" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 				  	<% end %>
 			  	<% end %>
 		  	</div>
@@ -357,8 +325,8 @@
 			    <% if @checkeds_comic.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
-				  	<% @checkeds_comic.each.with_index do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				  	<% @checkeds_comic.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_comic_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing02.jpg", :class =>'img_lavoro' %>
@@ -375,10 +343,6 @@
 								</span>
 							</a>
 						</div>
-						<% left_item = @checkeds_comic[i-1] unless i == 0 %>
-						<% right_item = @checkeds_comic[i+1] unless i == @checkeds_comic.size-1 %>
-						<% modal_name = "checkeds_comic" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 				  	<% end %>
 		  		<% end %>
 		  	</div>
@@ -386,8 +350,8 @@
 		  		<% if @bookmarks_comic.blank? %>
 			  		<%= render "partial/nothing02" %>
 			  	<% else %>
-				  	<% @bookmarks_comic.each.with_index do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				  	<% @bookmarks_comic.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_comic_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing02.jpg", :class =>'img_lavoro' %>
@@ -404,10 +368,6 @@
 								</span>
 							</a>
 						</div>
-						<% left_item = @bookmarks_comic[i-1] unless i == 0 %>
-						<% right_item = @bookmarks_comic[i+1] unless i == @bookmarks_comic.size-1 %>
-						<% modal_name = "bookmarks_comic" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 				  	<% end %>
 		  		<% end %>
 		  	</div>
@@ -417,8 +377,8 @@
 			    <% if @checkeds_music.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
-				  	<% @checkeds_music.each.with_index do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				  	<% @checkeds_music.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_music_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing03.jpg", :class =>'img_lavoro000' %>
@@ -434,11 +394,7 @@
 									</div>
 								</span>
 							</a>
-						</div>	
-						<% left_item = @checkeds_music[i-1] unless i == 0 %>
-						<% right_item = @checkeds_music[i+1] unless i == @checkeds_music.size-1 %>
-						<% modal_name = "checkeds_music" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>  		
+						</div>	  		
 				  	<% end %>
 			  	<% end %>
 			</div>
@@ -446,8 +402,8 @@
 		  		<% if @bookmarks_music.blank? %>
 			  		<%= render "partial/nothing02" %>
 			  	<% else %>
-				  	<% @bookmarks_music.each.with_index do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if (i + 1) % 3 == 0 %> <%= 'test_radio' if (i + 1) % 3 != 0 %>">
+				  	<% @bookmarks_music.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_music_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing03.jpg", :class =>'img_lavoro000' %>
@@ -463,11 +419,7 @@
 									</div>
 								</span>
 							</a>
-						</div>	 
-						<% left_item = @bookmarks_music[i-1] unless i == 0 %>
-						<% right_item = @bookmarks_music[i+1] unless i == @bookmarks_music.size-1 %>
-						<% modal_name = "bookmarks_music" %>
-						<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %> 		
+						</div>	  		
 				  	<% end %>
 			  	<% end %>
 		  	</div>
@@ -477,7 +429,114 @@
 	<div class="block_side">
 	</div>
 </div>
-
+<%#@checkedsモーダルの中身%>
+<% if @checkeds.present? %>
+	<% @checkeds.each.with_index do |post, i| %>
+		<% left_item = @checkeds[i-1] unless i == 0 %>
+		<% right_item = @checkeds[i+1] unless i == @checkeds.size-1 %>
+		<% modal_name = "checkeds" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@bookmarksモーダルの中身%>
+<% if @bookmarks.present? %>
+	<% @bookmarks.each.with_index do |post, i| %>
+		<% left_item = @bookmarks[i-1] unless i == 0 %>
+		<% right_item = @bookmarks[i+1] unless i == @bookmarks.size-1 %>
+		<% modal_name = "bookmarks" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@checkeds_movieモーダルの中身%>
+<% if @checkeds_movie.present? %>
+	<% @checkeds_movie.each.with_index do |post, i| %>
+		<% left_item = @checkeds_movie[i-1] unless i == 0 %>
+		<% right_item = @checkeds_movie[i+1] unless i == @checkeds_movie.size-1 %>
+		<% modal_name = "checkeds_movie" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@cbookmarks_movieモーダルの中身%>
+<% if @bookmarks_movie.present? %>
+	<% @bookmarks_movie.each.with_index do |post, i| %>
+		<% left_item = @bookmarks_movie[i-1] unless i == 0 %>
+		<% right_item = @bookmarks_movie[i+1] unless i == @bookmarks_movie.size-1 %>
+		<% modal_name = "bookmarks_movie" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@checkeds_tvモーダルの中身%>
+<% if @checkeds_tv.present? %>
+	<% @checkeds_tv.each.with_index do |post, i| %>
+		<% left_item = @checkeds_tv[i-1] unless i == 0 %>
+		<% right_item = @checkeds_tv[i+1] unless i == @checkeds_tv.size-1 %>
+		<% modal_name = "checkeds_tv" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@bookmarks_tvモーダルの中身%>
+<% if @bookmarks_tv.present? %>
+	<% @bookmarks_tv.each.with_index do |post, i| %>
+		<% left_item = @bookmarks_tv[i-1] unless i == 0 %>
+		<% right_item = @bookmarks_tv[i+1] unless i == @bookmarks_tv.size-1 %>
+		<% modal_name = "bookmarks_tv" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@checkeds_bookモーダルの中身%>
+<% if @checkeds_book.present? %>
+	<% @checkeds_book.each.with_index do |post, i| %>
+		<% left_item = @checkeds_book[i-1] unless i == 0 %>
+		<% right_item = @checkeds_book[i+1] unless i == @checkeds_book.size-1 %>
+		<% modal_name = "checkeds_book" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@bookmarks_bookモーダルの中身%>
+<% if @bookmarks_book.present? %>
+	<% @bookmarks_book.each.with_index do |post, i| %>
+		<% left_item = @bookmarks_book[i-1] unless i == 0 %>
+		<% right_item = @bookmarks_book[i+1] unless i == @bookmarks_book.size-1 %>
+		<% modal_name = "bookmarks_book" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@checkeds_comicモーダルの中身%>
+<% if @checkeds_comic.present? %>
+	<% @checkeds_comic.each.with_index do |post, i| %>
+		<% left_item = @checkeds_comic[i-1] unless i == 0 %>
+		<% right_item = @checkeds_comic[i+1] unless i == @checkeds_comic.size-1 %>
+		<% modal_name = "checkeds_comic" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@bookmarks_comicモーダルの中身%>
+<% if @bookmarks_comic.present? %>
+	<% @bookmarks_comic.each.with_index do |post, i| %>
+		<% left_item = @bookmarks_comic[i-1] unless i == 0 %>
+		<% right_item = @bookmarks_comic[i+1] unless i == @bookmarks_comic.size-1 %>
+		<% modal_name = "bookmarks_comic" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@checkeds_musicモーダルの中身%>
+<% if @checkeds_music.present? %>
+	<% @checkeds_music.each.with_index do |post, i| %>
+		<% left_item = @checkeds_music[i-1] unless i == 0 %>
+		<% right_item = @checkeds_music[i+1] unless i == @checkeds_music.size-1 %>
+		<% modal_name = "checkeds_music" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@bookmarks_musicモーダルの中身%>
+<% if @bookmarks_music.present? %>
+	<% @bookmarks_music.each.with_index do |post, i| %>
+		<% left_item = @bookmarks_music[i-1] unless i == 0 %>
+		<% right_item = @bookmarks_music[i+1] unless i == @bookmarks_music.size-1 %>
+		<% modal_name = "bookmarks_music" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
 <%#投稿ボタン%>
 <%= render "partial/post_modal" %>
 <%#タブスワイプ切り替え%>
