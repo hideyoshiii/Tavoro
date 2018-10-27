@@ -21,6 +21,7 @@ class WorksController < ApplicationController
           end
           #@postsを新しい順に並べたい
           @posts.sort_by!{|post| post.created_at}.reverse!
+          @posts = @posts.take(10)
       end
     end
   end
