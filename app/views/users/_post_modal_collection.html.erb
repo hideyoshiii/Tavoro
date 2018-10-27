@@ -1,5 +1,5 @@
 <style type="text/css">
-	#menu_in_st<%= post.id %>{
+	#menu_in_st_<%= modal_name %>_<%= post.id %>{
 	  overflow: hidden;
 	  width: auto;
 	  max-height: 0;
@@ -7,7 +7,7 @@
 	  -webkit-transition: all .5s ease-in-out 0s;
 	  transition: all .5s ease-in-out 0s;
 	}
-	#menu_in_st<%= post.id %>.open {
+	#menu_in_st_<%= modal_name %>_<%= post.id %>.open {
 	  max-height:500px;
 	  opacity: 1;
 	  z-index: 9999;
@@ -15,15 +15,15 @@
 </style>
 <script type="text/javascript">
 	$(function(){
-    $('#menu_st<%= post.id %>').click(function(){
-        $('#menu_in_st<%= post.id %>').toggleClass('open');
+    $('#menu_st_<%= modal_name %>_<%= post.id %>').click(function(){
+        $('#menu_in_st_<%= modal_name %>_<%= post.id %>').toggleClass('open');
     });
 });
 </script>
 <% if post.category == "music" %>
 	<% if post.preview_url.present? %>
 		<style type="text/css">
-			#btn_preview<%= post.id %> {
+			#btn_preview_<%= modal_name %>_<%= post.id %> {
 		    display: block;
 		    width: 40px;
 		    height: 40px;
@@ -36,12 +36,12 @@
 		    margin-top:-15%;
 			}
 			@media only screen and (max-width: 768px) {
-				#btn_preview<%= post.id %>{
+				#btn_preview_<%= modal_name %>_<%= post.id %>{
 				margin-left:80%;
 		    	margin-top:-20%;
 				}
 			}
-			#btn_preview<%= post.id %> i {
+			#btn_preview_<%= modal_name %>_<%= post.id %> i {
 			  color: #FAFAFA;
 			  line-height: 40px;
 			  vertical-align: middle;
@@ -50,26 +50,26 @@
 			}
 		</style>
 		<script type="text/javascript">
-		  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
+		  var audio_<%= modal_name %>_<%= post.id %> = new Audio("<%= post.preview_url %>");
 		  $(function(){
-			  $('#btn_preview<%= post.id %>').on("click",function(){
-			    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
+			  $('#btn_preview_<%= modal_name %>_<%= post.id %>').on("click",function(){
+			    if($("#icon_play_<%= modal_name %>_<%= post.id %>").hasClass('fa-play'))
 			     {
-			       $("#icon_play<%= post.id %>").removeClass('fa-play');
-			       $("#icon_play<%= post.id %>").addClass('fa-pause');
-			       audio<%= post.id %>.play();
+			       $("#icon_play_<%= modal_name %>_<%= post.id %>").removeClass('fa-play');
+			       $("#icon_play_<%= modal_name %>_<%= post.id %>").addClass('fa-pause');
+			       audio_<%= modal_name %>_<%= post.id %>.play();
 			     }
 			    else
 			     {
-			       $("#icon_play<%= post.id %>").removeClass('fa-pause');
-			       $("#icon_play<%= post.id %>").addClass('fa-play');
-			       audio<%= post.id %>.pause();
+			       $("#icon_play_<%= modal_name %>_<%= post.id %>").removeClass('fa-pause');
+			       $("#icon_play_<%= modal_name %>_<%= post.id %>").addClass('fa-play');
+			       audio_<%= modal_name %>_<%= post.id %>.pause();
 			     }
 			  });
 		  });
-		  audio<%= post.id %>.onended = function() {
-		     $("#icon_play<%= post.id %>").removeClass('fa-pause');
-		     $("#icon_play<%= post.id %>").addClass('fa-play');
+		  audio_<%= modal_name %>_<%= post.id %>.onended = function() {
+		     $("#icon_play_<%= modal_name %>_<%= post.id %>").removeClass('fa-pause');
+		     $("#icon_play_<%= modal_name %>_<%= post.id %>").addClass('fa-play');
 		  };
 	   </script>
 	<% end %>
@@ -151,8 +151,8 @@
 					<% end %>
 					<% if post.category == "music" %>
 						<% if post.preview_url.present? %>
-							<div id="btn_preview<%= post.id %>">
-								<i id="icon_play<%= post.id %>" class="fas fa-play"></i>
+							<div id="btn_preview_<%= modal_name %>_<%= post.id %>">
+								<i id="icon_play_<%= modal_name %>_<%= post.id %>" class="fas fa-play"></i>
 							</div>
 						<% end %>
 					<% end %>
@@ -192,10 +192,10 @@
 					<% end %>
 				</div>
 				<div class="layer10">
-					<div id="menu_st<%= post.id %>" class="icon_menu">
+					<div id="menu_st_<%= modal_name %>_<%= post.id %>" class="icon_menu">
 						<%= image_tag "test07.png", :style =>'width:25px;height:25px;' %>
 					</div>
-					<div id="menu_in_st<%= post.id %>">
+					<div id="menu_in_st_<%= modal_name %>_<%= post.id %>">
 					  	<% unless post.user.id == current_user.id %>
 						  	<div style="margin:30px 10px 0px 0px;">
 								<span id="like-of-<%= post.id %>">
