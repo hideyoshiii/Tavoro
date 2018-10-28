@@ -11,13 +11,8 @@
   <div class="bar_top_in02">
     <% if user_signed_in? %>
       <div style="float:right;padding:10px 15px 0px 0px;">
-        <a href="" data-toggle="modal" data-target="#myModal_profile">
-          <%= image_tag "user09.png", :class =>'img_icon01' %>
-        </a>
-      </div>
-      <div style="float:right;padding:12px 18px 0px 0px;">
         <%= link_to "/users/#{current_user.id}/collection" do %>
-          <%= image_tag "test25.png", :style =>'width:27px;height:27px;' %>
+          <%= image_tag "user09.png", :class =>'img_icon01' %>
         <% end %>
       </div>
     <% else %>

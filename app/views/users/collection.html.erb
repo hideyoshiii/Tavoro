@@ -76,7 +76,7 @@
 		</div>
 		<div class="tab-content">
 		  <div style="height:5px;"></div>
-		  <div class="tab-pane active" id="all">
+		  <div class="tab-pane fade in active" id="all">
 		  	<div class="checked" style="height:100%;">
 			  	<% if @checkeds.blank? %>
 			  		<%= render "partial/nothing" %>
@@ -164,7 +164,7 @@
 			  	<% end %>
 		  	</div>
 		  </div>
-		  <div class="tab-pane" id="movie">
+		  <div class="tab-pane fade" id="movie">
 		  	<div class="checked" style="height:100%;">
 			  	<% if @checkeds_movie.blank? %>
 			  		<%= render "partial/nothing" %>
@@ -216,7 +216,7 @@
 			  	<% end %>
 		  	</div>
 		  </div>
-		  <div class="tab-pane" id="tv">
+		  <div class="tab-pane fade" id="tv">
 		  	<div class="checked" style="height:100%;">
 			    <% if @checkeds_tv.blank? %>
 			  		<%= render "partial/nothing" %>
@@ -268,7 +268,7 @@
 			  	<% end %>
 		  	</div>
 		  </div>
-		  <div class="tab-pane" id="book">
+		  <div class="tab-pane fade" id="book">
 		  	<div class="checked" style="height:100%;">
 			    <% if @checkeds_book.blank? %>
 			  		<%= render "partial/nothing" %>
@@ -320,7 +320,7 @@
 			  	<% end %>
 		  	</div>
 		  </div>
-		  <div class="tab-pane" id="comic">
+		  <div class="tab-pane fade" id="comic">
 		  	<div class="checked" style="height:100%;">
 			    <% if @checkeds_comic.blank? %>
 			  		<%= render "partial/nothing" %>
@@ -372,7 +372,7 @@
 		  		<% end %>
 		  	</div>
 		  </div>
-		  <div class="tab-pane" id="music">
+		  <div class="tab-pane fade" id="music">
 		  	<div class="checked" style="height:100%;">
 			    <% if @checkeds_music.blank? %>
 			  		<%= render "partial/nothing" %>
@@ -570,7 +570,7 @@
     $nextTarget.find('a').trigger('click');  //--------D
  
     if($nextTarget.index() != -1){
-      $scrollContainer.scrollLeft($nextTarget.index() * tabsLiWid);  //--------E
+      $scrollContainer.animate({ scrollLeft: $nextTarget.index() * tabsLiWid }, 'swing');  //--------E
        
     }
   }
@@ -597,3 +597,7 @@
     });
 });
 </script>
+
+<% if current_user?(@user) %>
+	<%= render "partial/profile" %>
+<% end %>
