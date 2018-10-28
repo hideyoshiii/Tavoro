@@ -1,0 +1,32 @@
+<% if current_user.requester?(@user) %>
+	<div style="display:inline-block;">
+		<%= link_to "/follow_requests/#{@user.id}/approval", method: :post, :class => "btn_approval", remote: true do %>
+        	<%= image_tag "tick.png", :style =>'width:12px;height:12px;' %>
+        <% end %>
+  	</div>
+  	<div style="display:inline-block;">
+		<%= link_to "/follow_requests/#{@user.id}/unapproval", method: :post, :class => "btn_approval", data: { confirm: 'リクエストを拒否しますか？' }, remote: true do %>
+        	<%= image_tag "cancel.png", :style =>'width:12px;height:12px;' %>
+        <% end %>
+  	</div>			
+<% else %>
+	<% if @user.following?(current_user) %>
+		<%= link_to "/users/#{@user.id}/collection" do %>
+			<div class="font_gray_min" style="margin-bottom:3px;text-align:center;">
+				<%= image_tag "tick.png", :style =>'width:10px;height:10px;' %> フォローを承認しました
+			</div>
+			<div class="btn_follow_on">
+				プロフィールへ
+			</div>
+		<% end %>
+	<% else %>
+		<%= link_to "/users/#{@user.id}/collection" do %>
+			<div class="font_gray_min" style="margin-bottom:3px;text-align:center;">
+				<%= image_tag "cancel.png", :style =>'width:10px;height:10px;' %> フォローを拒否しました
+			</div>
+			<div class="btn_follow_on">
+				プロフィールへ
+			</div>
+		<% end %>
+	<% end %>
+<% end %>

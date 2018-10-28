@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   get "users/:id/collection" => "users#collection"
   get "users/:id/profile" => "users#profile"
+  get 'users/follow_request' => "users#follow_request"
   get 'users/user' => "users#user"
   get 'users/ajax_user_list' => "users#ajax_user_list"
   get 'users/following' => "users#following"
@@ -19,6 +20,16 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships,       only: [:create, :destroy]
+
+  resources :users do
+    member do
+     get :requesting, :requesters
+    end
+  end
+  resources :follow_requests,       only: [:create, :destroy]
+
+  post "follow_requests/:id/approval" => "follow_requests#approval"
+  post "follow_requests/:id/unapproval" => "follow_requests#unapproval"
 
   get 'works/category' => "works#category"
   get 'works/search' => "works#search"

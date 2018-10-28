@@ -14,13 +14,8 @@
             </div>
             <div class="pro22">
               <%= link_to "/users/#{user.id}/collection" do %>
-	              <span style="font-size:18px;color:#FAFAFA;">
+	              <span class="font_white_max">
 	                <%= user.name %>
-	              </span>
-	              <br>
-	              <span class="font_gray">
-	              	<% @post_i = Post.where(user_id: user.id).count %>
-	                <%= @post_i %>投稿
 	              </span>
               <% end %>
             </div>
@@ -30,12 +25,6 @@
 		            	<span id="relationship-of-<%= @user.id %>">
 					      	<%= render partial: 'relationships/relationship' %>
 					    </span>
-					<% else %>
-						<%= link_to "/users/#{user.id}/profile" do %>  
-							<span class="test_btn03">
-								ダッシュボードへ
-							</span>
-						<% end %>
 				  	<% end %>
 			  	</div>
             </div>
@@ -59,13 +48,8 @@
 	            </div>
 	            <div class="pro22">
 	              <%= link_to "/users/#{user.id}/collection" do %>
-		              <span style="font-size:18px;color:#FAFAFA;">
+		              <span class="font_white_max">
 		                <%= user.name %>
-		              </span>
-		              <br>
-		              <span class="font_gray">
-		              	<% @post_i = Post.where(user_id: user.id).count %>
-		                <%= @post_i %>投稿
 		              </span>
 	              <% end %>
 	            </div>
@@ -75,12 +59,6 @@
 			            	<span id="relationship-of-<%= @user.id %>">
 						      	<%= render partial: 'relationships/relationship' %>
 						    </span>
-						<% else %>
-							<%= link_to "/users/#{user.id}/profile" do %>  
-								<span class="test_btn03">
-									ダッシュボードへ
-								</span>
-							<% end %>
 					  	<% end %>
 				  	</div>
 	            </div>

@@ -50,20 +50,22 @@
                 <div style="height:10vh;"></div>
                 <div style="text-align:center;width:100%;">
                   <div class="pro20">
-                      <div>
-                        <%= image_tag "test23.png", :style =>'width:30px;height:30px;' %>
-                      </div>
-                      <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
-                        友達を招待
-                      </div>
-                  </div>
-                  <div class="pro20">
                     <%= link_to "/users/user" do %>
                       <div>
                         <%= image_tag "test32.png", :style =>'width:30px;height:30px;' %>
                       </div>
                       <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
                         友達を探す
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="pro20">
+                    <%= link_to "/users/follow_request" do %>
+                      <div>
+                        <%= image_tag "test33.png", :style =>'width:30px;height:30px;' %>
+                      </div>
+                      <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
+                        リクエスト
                       </div>
                     <% end %>
                   </div>

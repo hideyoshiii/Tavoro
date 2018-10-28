@@ -23,6 +23,12 @@ class UsersController < ApplicationController
     end
 	end
 
+  def follow_request
+    @user = current_user
+    @users_requester = current_user.requesters
+    @users_requesting = current_user.requestings
+  end
+
 	def profile
 		@user = User.find(params[:id])
 	end

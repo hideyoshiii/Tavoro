@@ -2092,7 +2092,7 @@ button {
 .pro21{
 		display:inline-block;
 		vertical-align:middle;
-		width:22%;
+		width:20%;
 		height:auto;
 		padding:0px 0px 0px 0px;
 		margin:0 auto;
@@ -2104,7 +2104,7 @@ button {
 .pro22{
 		display:inline-block;
 		vertical-align:middle;
-		width:43%;
+		width:40%;
 		height:auto;
 		padding:0px 20px;
 		margin:0 auto;
@@ -2116,7 +2116,7 @@ button {
 .pro23{
 		display:inline-block;
 		vertical-align:middle;
-		width:35%;
+		width:40%;
 		height:auto;
 		padding:0;
 		margin:0 auto;
@@ -3174,6 +3174,46 @@ input[name="slideshow"] {
     border-radius: 3px;
     font-size:12px;
 }
+.btn_follow_on{
+    padding: 0.6em 25%;
+    text-decoration: none;
+    background: none;
+    color: #FAFAFA;
+    background: rgba(5,98,123,0.4);
+    border: solid 1px rgba(5,98,123,0.1);
+    border-radius: 0px;
+    font-size:12px;
+}
+.btn_follow_off{
+    padding: 0.6em 25%;
+    text-decoration: none;
+    background: none;
+    color: rgba(220,220,220,0.9);
+    background: none;
+    border: solid 1px rgba(220,220,220,0.3);
+    border-radius: 0px;
+    font-size:12px;
+}
+.btn_follow_now{
+    padding: 0.6em 25%;
+    text-decoration: none;
+    background: none;
+    color: #FAFAFA;
+    background: rgba(116,198,122,0.4);
+    border: solid 1px rgba(248,197,90,0.1);
+    border-radius: 0px;
+    font-size:12px;
+}
+.btn_approval{
+    padding: 0.8em 1.5em;
+    text-decoration: none;
+    background: none;
+    color: rgba(220,220,220,0.9);
+    background: none;
+    border: solid 1px rgba(220,220,220,0.3);
+    border-radius: 0px;
+    font-size:12px;
+}
 .btn_dash02{
     padding: 0.5em 1.5em;
     text-decoration: none;
@@ -3181,7 +3221,7 @@ input[name="slideshow"] {
     color: rgba(220,220,220,0.9);
     background: none;
     border: solid 1px rgba(220,220,220,0.3);
-    border-radius: 3px;
+    border-radius: 0px;
     font-size:12px;
 }
 
