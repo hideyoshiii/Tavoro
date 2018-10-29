@@ -1,58 +1,58 @@
 <% if user_signed_in? %>
-  <div class="modal fade" id="myModal_profile">
+  <div class="modal fade" id="myModal_dashbord">
     <div class="height_modal"></div>
       <div class="modal-dialog">
         <div class="a1">
           <div class="a4">
             <div class="d1">
               <%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
-              <div class="d2"></div>
+              <div class="d3"></div>
             </div>
           </div>
           <div class="a5">
             <div class="e1">
               <div class="e2">
-                <div style="font-size:20px;text-align:center;">
-                  <% if current_user.image.blank?  %>
-                    <%= image_tag "user09.png", :class =>'img_user08' %>
-                  <% else %>
-                    <%= image_tag current_user.image, :class => "img_user08" %>
-                  <% end %>
-                </div>
-                <div style="font-size:18px;text-align:center;margin-top:10px;">
-                  <%= current_user.name %>
-                </div>
-                <div style="height:2vh;"></div>
+                <div style="width:100%;">
+                  <div style="text-align:center;">
+                    <% if current_user.image.blank?  %>
+                      <%= image_tag "user09.png", :class =>'img_user08' %>
+                    <% else %>
+                      <%= image_tag current_user.image, :class => "img_user08" %>
+                    <% end %>
+                  </div>
+                  <div style="font-size:18px;text-align:center;margin-top:10px;">
+                    <%= current_user.name %>
+                  </div>
+                </div>                      
+                <div style="height:5vh;"></div>
                 <div style="text-align:center;width:100%;">
-                  <div style="display:inline-block;">
+                  <div class="pro20">
                     <%= link_to "/users/following" do %>
-                      <div style="font-size:12px;color:rgba(220,220,220,0.9);">
-                        <%= current_user.followings.count %> フォロー
+                        <div style="font-size:15px;color:rgba(220,220,220,0.9);">
+                          <%= current_user.followings.count %>
+                        </div> 
+                      <div style="font-size:12px;color:rgba(220,220,220,0.9);margin-top:5px;">
+                          followings
                       </div> 
-                    <% end %>
+                     <% end %>
                   </div>
-                  <div style="display:inline-block;width:10%;">
-                  </div>
-                  <div style=";display:inline-block;">
+                  <div class="pro20">
                     <%= link_to "/users/follower" do %>
-                      <div style="font-size:12px;color:rgba(220,220,220,0.9);">
-                        <%= current_user.followers.count %> フォロワー
+                        <div style="font-size:15px;color:rgba(220,220,220,0.9);">
+                          <%= current_user.followers.count %>
+                        </div> 
+                      <div style="font-size:12px;color:rgba(220,220,220,0.9);margin-top:5px;">
+                          followers
                       </div> 
-                    <% end %>
+                     <% end %>
                   </div>
                 </div>
                 <div style="height:5vh;"></div>
-                <%= link_to edit_user_registration_path do %>
-                  <div style="font-size:10px;text-align:center;color:rgba(39,134,160,1);">
-                    <i class="fas fa-pen"></i> プロフィールを編集
-                  </div>
-                <% end %>
-                <div style="height:10vh;"></div>
                 <div style="text-align:center;width:100%;">
                   <div class="pro20">
                     <%= link_to "/users/user" do %>
                       <div>
-                        <%= image_tag "test32.png", :style =>'width:30px;height:30px;' %>
+                        <%= image_tag "test32.png", :style =>'width:20px;height:20px;' %>
                       </div>
                       <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
                         友達を探す
@@ -62,7 +62,7 @@
                   <div class="pro20">
                     <%= link_to "/users/follow_request" do %>
                       <div>
-                        <%= image_tag "test33.png", :style =>'width:28px;height:28px;padding:1px;' %>
+                        <%= image_tag "test33.png", :style =>'width:20px;height:20px;' %>
                       </div>
                       <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
                         <% @requesters_i = current_user.requesters.count %>
@@ -78,21 +78,23 @@
                   <div class="pro20">
                     <%= link_to "/users/configuration" do %>
                       <div>
-                        <%= image_tag "test24.png", :style =>'width:30px;height:30px;' %>
+                        <%= image_tag "test24.png", :style =>'width:20px;height:20px;' %>
                       </div>
                       <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
                         設定
                       </div>
                     <% end %>
+                  </div>         
+                </div> 
+                <div style="height:7vh;"></div>            
+              </div>
+              <div class="e5">
+                  <div class="pro19">             
+                    <a href="" data-dismiss="modal">
+                      <%= image_tag "close_blue.png", :class =>'img_left02' %>
+                    </a>
                   </div>
                 </div>
-                <div style="height:10vh;"></div>
-                <div style="text-align:center;width:100%;">
-                  <a href="" data-dismiss="modal">
-                    <%= image_tag "close_blue.png", :class =>'img_left02' %>
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -12,8 +12,13 @@
     <% if user_signed_in? %>
       <div style="float:right;padding:10px 15px 0px 0px;">
         <%= link_to "/users/#{current_user.id}/collection" do %>
-          <%= image_tag "user09.png", :class =>'img_icon01' %>
+          <%= image_tag "test25.png", :style =>'width:30px;height:30px;' %>
         <% end %>
+      </div>
+      <div style="float:right;padding:10px 15px 0px 0px;">
+        <a href="" data-toggle="modal" data-target="#myModal_dashbord">
+          <%= image_tag "user09.png", :class =>'img_icon01' %>
+        </a>
       </div>
     <% else %>
       <div style="float:right;padding:17px 10px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">

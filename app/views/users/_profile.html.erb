@@ -1,0 +1,80 @@
+<div class="modal fade" id="myModal_profile">
+    <div class="height_modal"></div>
+      <div class="modal-dialog">
+        <div class="a1">
+          <div class="a4">
+            <div class="d1">
+              <%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
+              <div class="d3"></div>
+            </div>
+          </div>
+          <div class="a5">
+            <div class="e1">
+              <div class="e2">
+              	<div style="width:100%;">
+	                <div style="text-align:center;">
+	                  <% if user.image.blank?  %>
+	                    <%= image_tag "user09.png", :class =>'img_user08' %>
+	                  <% else %>
+	                    <%= image_tag user.image, :class => "img_user08" %>
+	                  <% end %>
+	                </div>
+	                <div style="font-size:18px;text-align:center;margin-top:10px;">
+	                  <%= user.name %>
+	                </div>
+                </div>                      
+                	            
+                <div style="height:3vh;"></div>
+                <% unless current_user?(@user) %>
+	            	<div style="text-align:center;">
+		            	<div id="relationship-of-<%= @user.id %>">
+					      	<%= render partial: 'relationships/relationship' %>
+					    </div>
+				    </div>
+				<% else %>  
+					<div style="text-align:center;">
+		                <%= link_to edit_user_registration_path, :class => "btn_follow_off" do %>
+		                    プロフィールを編集
+		                <% end %>
+	                </div>
+	            <% end %>
+	            <% if @user.description.present? %>
+	            	<div style="height:5vh;"></div>
+					<div class="font_white" style="width:100%;padding:0 20px;">
+					  	<%= simple_format(@user.description, {}, wrapper_tag: "div") %>
+					</div>
+				<% end %>
+				<div style="height:5vh;"></div>
+                <div style="text-align:center;width:100%;">
+                  <div class="pro20">
+                  	  <div>
+                        <%= image_tag "checked.png", :style =>'width:15px;height:15px;' %>
+                      </div> 
+                      <div style="font-size:12px;color:rgba(220,220,220,0.9);margin-top:5px;">
+                        <%= @checkeds_i %> checkeds
+                      </div> 
+                  </div>
+                  <div class="pro20">
+                      <div>
+                        <%= image_tag "bookmark.png", :style =>'width:15px;height:15px;' %>
+                      </div> 
+                      <div style="font-size:12px;color:rgba(220,220,220,0.9);margin-top:5px;">
+                        <%= @bookmarks_i %> bookmarks
+                      </div> 
+                  </div>
+                </div>  
+				<div style="height:7vh;"></div>
+              </div>
+              <div class="e5">
+				<div class="pro19">							
+					<a href="" data-dismiss="modal">
+						<%= image_tag "close_blue.png", :class =>'img_left02' %>
+					</a>
+				</div>
+			  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

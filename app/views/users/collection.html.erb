@@ -3,77 +3,34 @@
 	</div>
 	<div class="block_main">
 		<div style="height:50px;"></div>
-		<div class="bar_profile">
-			<div class="bar_smoke"></div>	
-			<div class="box_tests001">
-	          <div class="pro26">
-          		<div style="text-align:center;margin:15px 0px 5px;">
-          			<div>
-            		<%= image_tag @user.image, :class =>'img_user11' %>
-            		</div>
-            		<div style="font-size:14px;margin-top:5px;">
-	        			<%= @user.name %>
-	        		</div>
-            	</div>
-	          </div>
-	          <div class="pro27">
-            	<div style="text-align:center;">
-            		<div style="display:inline-block;vertical-align:middle;margin:0px 20px;">
-						<div style="font-size:12px;">
-							<%= @checkeds_i %>
-						</div>
-						<div style="font-size:12px;">
-							checkeds
-						</div>
-					</div>
-					<div style="display:inline-block;vertical-align:middle;margin:0px 20px;">	
-						<div style="font-size:12px;">
-							<%= @bookmarks_i %>
-						</div>
-						<div style="font-size:12px;">
-							bookmarks
-						</div>	
-					</div>	
-            	</div>
-	            <% unless current_user?(@user) %>
-	            	<div style="text-align:center;margin:10px 0px 0px;">
-		            	<div id="relationship-of-<%= @user.id %>">
-					      	<%= render partial: 'relationships/relationship' %>
-					    </div>
-				    </div>
-				<% else %>   
-					<div style="text-align:center;margin:10px 15px 0px;">
-						<a href="" data-toggle="modal" data-target="#myModal_profile">
-			            	<div class="btn_dash02">
-			            		<% @requesters_i = current_user.requesters.count %>
-		                        <% if @requesters_i >= 1 %>
-		                          <span style="color:rgba(251, 71, 71, 0.85);">
-		                            <%= image_tag "bell.png", :style =>'width:14px;height:14px;margin-top:-2.5px;' %>
-		                          </span>
-		                        <% end %>
-						      	ダッシュボード
-						    </div>
-						</a>
-				    </div>         											
-				<% end %>
-	          </div>
-	        </div>
-	        <% if @user.description.present? %>
-				<div class="font_white" style="width:100%;padding:0px 15px 10px 20px;">
-				  	<%= simple_format(@user.description, {}, wrapper_tag: "div") %>
-				</div>
-			<% end %>
-		</div>
+		
 		<div class="bar_collection">
 			<div class="bar_smoke"></div>	
-			<div style="width:100%;text-align:left;margin:10px 0px 10px 25px;"> 	
-				<div id="checked" class="btn_on" style="display:inline-block;vertical-align:middle;">
-					<%= image_tag "checked.png", :style =>'width:13px;height:13px;' %>
+			<div style="width:100%;">
+				<div class="pro29">
+					<a href="" data-toggle="modal" data-target="#myModal_profile">
+						<div style="padding:10px 10px 10px 20px;display:inline-block;vertical-align:middle;">
+	            			<%= image_tag @user.image, :class =>'img_user11' %>
+	            		</div>
+						<div class="font_white" style="display:inline-block;vertical-align:middle;max-width:50%;word-wrap: break-word;">
+		        			<%= @user.name %>
+		        		</div>
+	        		</a>
 				</div>
-				<div id="bookmark" class="btn_off" style="display:inline-block;vertical-align:middle;">	
-					<%= image_tag "bookmark.png", :style =>'width:13px;height:13px;' %>
-				</div>				
-			</div>        
+				<div class="pro30">
+					<div style="width:100%;text-align:right;"> 	
+						<div id="checked" class="btn_on" style="display:inline-block;vertical-align:middle;">
+							<%= image_tag "checked.png", :style =>'width:13px;height:13px;' %>
+							<span style="color:#A7A7A7;"><%= @checkeds_i %></span> 
+						</div>
+						<div id="bookmark" class="btn_off" style="display:inline-block;vertical-align:middle;margin-right:10px;">	
+							<%= image_tag "bookmark.png", :style =>'width:13px;height:13px;' %>
+							<span style="color:#A7A7A7;"><%= @bookmarks_i %></span>
+						</div>				
+					</div>  
+				</div>
+			</div>
+			      
 			<div class="horizontal_scroll02">			
 				  <ul class="nav nav-pills js-tabs">
 				      <li class="active"><a href="#all" data-toggle="tab">すべて</a></li>
@@ -633,6 +590,17 @@
 });
 </script>
 
-<% if current_user?(@user) %>
-	<%= render "partial/profile" %>
-<% end %>
+<script type="text/javascript">
+	$(function(){
+    	$(window).scroll(function () {
+        	if ($(this).scrollTop() < -80) {
+            	$('#myModal_profile').modal('show'); 
+        	} else {      	
+        	}
+    	});
+	});
+</script>
+
+
+
+<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>

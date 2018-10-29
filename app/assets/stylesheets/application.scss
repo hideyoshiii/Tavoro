@@ -264,8 +264,8 @@ a:visited{
 	object-fit: cover;
 }
 .img_user08{
-	width: 90px;
-	height: 90px;
+	width: 120px;
+	height: 120px;
 	padding:0;
 	margin:0;
 	border-radius:50%;
@@ -292,8 +292,8 @@ a:visited{
 	object-fit: cover;
 }
 .img_user11{
-	width: 70px;
-	height: 70px;
+	width: 55px;
+	height: 55px;
 	padding:0;
 	margin:0;
 	border-radius:50%;
@@ -2129,7 +2129,7 @@ button {
 .pro22{
 		display:inline-block;
 		vertical-align:middle;
-		width:40%;
+		width:35%;
 		height:auto;
 		padding:0px 20px;
 		margin:0 auto;
@@ -2141,14 +2141,13 @@ button {
 .pro23{
 		display:inline-block;
 		vertical-align:middle;
-		width:40%;
+		width:45%;
 		height:auto;
 		padding:0;
 		margin:0 auto;
 		background:none;
 		text-aline:right;
 		font-size:0px;
-		padding-right:10px;
 	}
 .pro24{
 		display:inline-block;
@@ -2196,6 +2195,42 @@ button {
 		text-aline:center;
 		font-size:0px;
 	}
+.pro28{
+		display:inline-block;
+		vertical-align:middle;
+		width:33.333%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-aline:center;
+		font-size:0px;
+	}
+.pro29{
+		display:inline-block;
+		vertical-align:middle;
+		width:60%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-aline:center;
+		font-size:0px;
+	}
+.pro30{
+		display:inline-block;
+		vertical-align:middle;
+		width:40%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		text-aline:center;
+		font-size:0px;
+	}
+
+
+
 //ボタン配置関係
 .btns_plus{
   position:fixed;
@@ -3200,7 +3235,7 @@ input[name="slideshow"] {
     font-size:12px;
 }
 .btn_follow_on{
-    padding: 0.6em 25%;
+    padding: 0.6em 2.5em;
     text-decoration: none;
     background: none;
     color: #FAFAFA;
@@ -3210,7 +3245,7 @@ input[name="slideshow"] {
     font-size:12px;
 }
 .btn_follow_off{
-    padding: 0.6em 25%;
+    padding: 0.6em 2.5em;
     text-decoration: none;
     background: none;
     color: rgba(220,220,220,0.9);
@@ -3220,7 +3255,7 @@ input[name="slideshow"] {
     font-size:12px;
 }
 .btn_follow_now{
-    padding: 0.6em 25%;
+    padding: 0.6em 2.5em;
     text-decoration: none;
     background: none;
     color: #FAFAFA;
