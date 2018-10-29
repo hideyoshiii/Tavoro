@@ -1,0 +1,9 @@
+<% if Post.find_by(user_id: current_user.id, category: post.category, review: "bookmark", work_id: post.work_id) %>
+	<%= link_to "/works/#{post.id}/destroy_bookmark", method: :post, remote: true do %>
+		<%= image_tag "bookmark03.png", :style =>'width:35px;height:35px;' %>
+	<% end %>
+<% else %>
+	<%= link_to "/works/#{post.id}/create_bookmark", method: :post, remote: true do %>
+		<%= image_tag "bookmark02.png", :style =>'width:35px;height:35px;' %>
+	<% end %>
+<% end %>

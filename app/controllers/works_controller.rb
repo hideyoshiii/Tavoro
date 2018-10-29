@@ -349,4 +349,19 @@ class WorksController < ApplicationController
     end   
   end
 
+  def create_bookmark   
+    @post = Post.find(params[:id].to_s) 
+    if @post.category == "music"
+      @post_bookmark = Post.create(user_id: current_user.id, title: @post.title, category: @post.category, image_url: @post.image_url, review: "bookmark", work_id: @post.work_id, preview_url: @post.preview_url)
+    else
+      @post_bookmark = Post.create(user_id: current_user.id, title: @post.title, category: @post.category, image_url: @post.image_url, review: "bookmark", work_id: @post.work_id)
+    end
+  end
+
+  def destroy_bookmark 
+    @post = Post.find(params[:id].to_s) 
+    @post_bookmark = Post.find_by(user_id: current_user.id, category: @post.category, review: "bookmark", work_id: @post.work_id)
+    @post_bookmark.destroy 
+  end
+
 end

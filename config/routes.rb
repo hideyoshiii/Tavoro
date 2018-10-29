@@ -49,6 +49,9 @@ Rails.application.routes.draw do
   post "works/:id/update" => "works#update"
   post "works/:id/destroy" => "works#destroy"
 
+  post "works/:id/create_bookmark" => "works#create_bookmark"
+  post "works/:id/destroy_bookmark" => "works#destroy_bookmark"
+
   get 'works/test' => "works#test"
 
   post "likes/:post_id/create" => "likes#create"

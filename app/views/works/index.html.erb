@@ -214,9 +214,9 @@
 							</div>
 							<div id="menu_in<%= post.id %>">
 								<% unless post.user.id == current_user.id %>
-								  	<div style="margin:30px 10px 0px 0px;">
-										<span id="like-of-<%= post.id %>">
-									      	<%= render partial: 'likes/like', locals: { post: post, likes: @likes } %>
+									<div style="margin:30px 10px 0px 0px;">
+										<span id="bookmark-of-<%= post.id %>">
+									      	<%= render partial: 'works/bookmark', locals: { post: post } %>
 									    </span>
 									</div>
 									<div style="margin:30px 10px 0px 0px;">
