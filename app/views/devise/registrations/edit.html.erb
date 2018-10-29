@@ -28,12 +28,10 @@
           <div class="gogo" style="margin-top:-3vh;">
               <%= f.text_field :name,placeholder: "name", required: "" %>
               <%= f.email_field :email,placeholder: "email", required: "" %>
-              <div class="font_white">
-                (パスワードを変更時のみ下欄を埋めてください)
+              <div class="" style="text-align:center;width:75%;padding:10px;margin:0 auto;">
+                <%= f.text_area :description, id: "textarea", placeholder: "自己紹介を書く" %>
               </div>
-              <%= f.password_field :password,placeholder: "password" %>
-              <%= f.password_field :password_confirmation,:placeholder => 'password confirmation' %>
-              <div style="height:2vh;"></div>
+              <div style="height:5vh;"></div>
               <%= f.submit "完了",class:"btn_session" %>
               <div style="height:10vh;"></div>
           </div>
@@ -83,4 +81,16 @@
   });
 });
 
+</script>
+
+<%#テキストエリアの自動改行%>
+<script type="text/javascript">
+  $(function() {
+    var $textarea = $('#textarea');
+    var lineHeight = parseInt($textarea.css('lineHeight'));
+    $textarea.on('input', function(e) {
+      var lines = ($(this).val() + '\n').match(/\n/g).length;
+      $(this).height(lineHeight * lines);
+    });
+  });
 </script>

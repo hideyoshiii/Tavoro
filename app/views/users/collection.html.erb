@@ -17,24 +17,24 @@
             	</div>
 	          </div>
 	          <div class="pro27">
-	            	<div style="text-align:center;">
-	            		<div style="display:inline-block;vertical-align:middle;margin:0px 20px;">
-							<div style="font-size:12px;">
-								<%= @checkeds_i %>
-							</div>
-							<div style="font-size:12px;">
-								checkeds
-							</div>
+            	<div style="text-align:center;">
+            		<div style="display:inline-block;vertical-align:middle;margin:0px 20px;">
+						<div style="font-size:12px;">
+							<%= @checkeds_i %>
 						</div>
-						<div style="display:inline-block;vertical-align:middle;margin:0px 20px;">	
-							<div style="font-size:12px;">
-								<%= @bookmarks_i %>
-							</div>
-							<div style="font-size:12px;">
-								bookmarks
-							</div>	
+						<div style="font-size:12px;">
+							checkeds
+						</div>
+					</div>
+					<div style="display:inline-block;vertical-align:middle;margin:0px 20px;">	
+						<div style="font-size:12px;">
+							<%= @bookmarks_i %>
+						</div>
+						<div style="font-size:12px;">
+							bookmarks
 						</div>	
-	            	</div>
+					</div>	
+            	</div>
 	            <% unless current_user?(@user) %>
 	            	<div style="text-align:center;margin:10px 0px 0px;">
 		            	<div id="relationship-of-<%= @user.id %>">
@@ -45,6 +45,12 @@
 					<div style="text-align:center;margin:10px 15px 0px;">
 						<a href="" data-toggle="modal" data-target="#myModal_profile">
 			            	<div class="btn_dash02">
+			            		<% @requesters_i = current_user.requesters.count %>
+		                        <% if @requesters_i >= 1 %>
+		                          <span style="color:rgba(251, 71, 71, 0.85);">
+		                            <%= image_tag "bell.png", :style =>'width:14px;height:14px;margin-top:-2.5px;' %>
+		                          </span>
+		                        <% end %>
 						      	ダッシュボード
 						    </div>
 						</a>
@@ -52,6 +58,11 @@
 				<% end %>
 	          </div>
 	        </div>
+	        <% if @user.description.present? %>
+				<div class="font_white" style="width:100%;padding:0px 15px 10px 20px;">
+				  	<%= simple_format(@user.description, {}, wrapper_tag: "div") %>
+				</div>
+			<% end %>
 		</div>
 		<div class="bar_collection">
 			<div class="bar_smoke"></div>	
@@ -111,8 +122,10 @@
 											<i class="fas fa-music"></i> ミュージック
 										<% end %>
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -154,8 +167,10 @@
 											<i class="fas fa-music"></i> ミュージック
 										<% end %>
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -181,8 +196,10 @@
 									<div class="font_category_min">
 										<i class="fas fa-film"></i> 映画
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -206,8 +223,10 @@
 									<div class="font_category_min">
 										<i class="fas fa-film"></i> 映画
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -233,8 +252,10 @@
 									<div class="font_category_min">
 										<i class="fas fa-film"></i> テレビ
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -258,8 +279,10 @@
 									<div class="font_category_min">
 										<i class="fas fa-film"></i> テレビ
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -285,8 +308,10 @@
 									<div class="font_category_min">										
 										<i class="fas fa-book"></i> ブック
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -310,8 +335,10 @@
 									<div class="font_category_min">										
 										<i class="fas fa-book"></i> ブック
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -337,8 +364,10 @@
 									<div class="font_category_min">
 										<i class="fas fa-book"></i> コミック
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -362,8 +391,10 @@
 									<div class="font_category_min">
 										<i class="fas fa-book"></i> コミック
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -389,8 +420,10 @@
 									<div class="font_category_min">
 										<i class="fas fa-music"></i> ミュージック
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
@@ -414,8 +447,10 @@
 									<div class="font_category_min">
 										<i class="fas fa-music"></i> ミュージック
 									</div>
-									<div class="font_title_min">
-										<%= post.title %>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
 									</div>
 								</span>
 							</a>
