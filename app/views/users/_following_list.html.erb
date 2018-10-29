@@ -1,36 +1,42 @@
 <% if params[:q].blank? %>
-  	<% @users.each do |user| %>
-  		<% @user = user %>
-  		<% unless user == current_user %>
-          <div class="box_tests05">
-            <div class="pro21">
-              <%= link_to "/users/#{user.id}/collection" do %>
-	              <% if user.image.blank? %>
-	                <%= image_tag "user09.png", :class =>'img_user09' %>
-	              <% else %>
-	                <%= image_tag user.image, :class =>'img_user09' %>
+	<% if @users.present? %>
+	  	<% @users.each do |user| %>
+	  		<% @user = user %>
+	  		<% unless user == current_user %>
+	          <div class="box_tests05">
+	            <div class="pro21">
+	              <%= link_to "/users/#{user.id}/collection" do %>
+		              <% if user.image.blank? %>
+		                <%= image_tag "user09.png", :class =>'img_user09' %>
+		              <% else %>
+		                <%= image_tag user.image, :class =>'img_user09' %>
+		              <% end %>
 	              <% end %>
-              <% end %>
-            </div>
-            <div class="pro22">
-              <%= link_to "/users/#{user.id}/collection" do %>
-	              <span class="font_white_max">
-	                <%= user.name %>
-	              </span>
-              <% end %>
-            </div>
-            <div class="pro23">
-            	<div style="text-align:right;margin-right:10px;">
-	                <% unless current_user?(user) %>
-		            	<span id="relationship-of-<%= @user.id %>">
-					      	<%= render partial: 'relationships/relationship' %>
-					    </span>
-				  	<% end %>
-			  	</div>
-            </div>
-          </div>
-        <% end %>
-  	<% end %>
+	            </div>
+	            <div class="pro22">
+	              <%= link_to "/users/#{user.id}/collection" do %>
+		              <span class="font_white_max">
+		                <%= user.name %>
+		              </span>
+	              <% end %>
+	            </div>
+	            <div class="pro23">
+	            	<div style="text-align:right;margin-right:10px;">
+		                <% unless current_user?(user) %>
+			            	<span id="relationship-of-<%= @user.id %>">
+						      	<%= render partial: 'relationships/relationship' %>
+						    </span>
+					  	<% end %>
+				  	</div>
+	            </div>
+	          </div>
+	        <% end %>
+	  	<% end %>
+	 <% else %>
+	 	<div class="font_gray" style="margin-top:30vh;text-align:center;">
+			<%= image_tag "test28.png", :style =>'width:20px;height:20px;' %> フォローしているユーザーがいません
+		</div>
+	 <% end %>
 <% else %>
 	<% if @items.present? %>
 	  	<% @items.each do |user| %>
@@ -66,7 +72,7 @@
 	        <% end %>
 	  	<% end %>
 	<% else %>
-		<div style="font-size:15px;color:#777777;margin-top:10vh;text-align:center;">
+		<div class="font_gray" style="margin-top:30vh;text-align:center;">
 			<%= image_tag "test28.png", :style =>'width:20px;height:20px;' %> 結果がありません
 		</div>
 	<% end %>

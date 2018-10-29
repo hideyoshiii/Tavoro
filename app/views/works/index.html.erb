@@ -244,25 +244,7 @@
 			</div>
 			<% end %>
 		<% else %>
-			<div class="base_nothing">
-				<span>
-					<div class="layer02">
-						<div>
-							<%= image_tag "tavore_logo_01.png", :style =>'width:60px;height:60px;' %>
-						</div>
-						<div style="font-size:15px;">
-							ここにはあなたの友達の投稿が表示されます
-						</div>
-						<div style="margin-top:40px;">
-							<%= link_to "/users/user" do %>
-								<span class="btn_test10">
-									友達を探す
-								</span>
-							<% end %>
-						</div>
-					</div>
-				</span>
-			</div>
+			<%= render "partial/nothing01" %>
 		<% end %>
 
 		</div>

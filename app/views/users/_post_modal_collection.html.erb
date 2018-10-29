@@ -49,9 +49,9 @@
 			  margin-left:1px;
 			}
 		</style>
-		<script type="text/javascript">
-		  var audio_<%= modal_name %>_<%= post.id %> = new Audio("<%= post.preview_url %>");
+		<script type="text/javascript"> 
 		  $(function(){
+		  	　var audio_<%= modal_name %>_<%= post.id %> = new Audio("<%= post.preview_url %>");
 			  $('#btn_preview_<%= modal_name %>_<%= post.id %>').on("click",function(){
 			    if($("#icon_play_<%= modal_name %>_<%= post.id %>").hasClass('fa-play'))
 			     {

@@ -1,13 +1,12 @@
 <div class="main">
 	<div class="block_side">
 	</div>
-	
 	<div class="block_main">
 		<div style="height:50px;"></div>
 
 		<div style="width:100%;height:100%;font-size:0;">
 			<div class="bar_collection" style="padding:10px 0px 15px;">
-			<div class="bar_smoke"></div>		
+				<div class="bar_smoke"></div>		
 				<div class="horizontal_scroll02">			
 					  <ul class="nav nav-pills js-tabs">
 					      <li class="active" style="width:50%;"><a href="#other" data-toggle="tab">あなたへのリクエスト</a></li>
@@ -17,72 +16,84 @@
 			</div>
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="other" style="min-height:100%">
-					<% @users_requester.each do |user| %>
-				  		<% @user = user %>
-				  		<% unless user == current_user %>
-				          <div class="box_tests05">
-				            <div class="pro21">
-				              <%= link_to "/users/#{user.id}/collection" do %>
-					              <% if user.image.blank? %>
-					                <%= image_tag "user09.png", :class =>'img_user09' %>
-					              <% else %>
-					                <%= image_tag user.image, :class =>'img_user09' %>
+					<% if @users_requester.present? %>
+						<% @users_requester.each do |user| %>
+					  		<% @user = user %>
+					  		<% unless user == current_user %>
+					          <div class="box_tests05">
+					            <div class="pro21">
+					              <%= link_to "/users/#{user.id}/collection" do %>
+						              <% if user.image.blank? %>
+						                <%= image_tag "user09.png", :class =>'img_user09' %>
+						              <% else %>
+						                <%= image_tag user.image, :class =>'img_user09' %>
+						              <% end %>
 					              <% end %>
-				              <% end %>
-				            </div>
-				            <div class="pro22">
-				              <%= link_to "/users/#{user.id}/collection" do %>
-					              <span class="font_white_max">
-					                <%= user.name %>
-					              </span>
-				              <% end %>
-				            </div>
-				            <div class="pro23">
-				            	<div style="text-align:right;">
-					                <% unless current_user?(user) %>
-						            	<span id="follow_request-of-<%= @user.id %>">
-								          <%= render partial: 'follow_requests/follow_request' %>
-								        </span>
-								  	<% end %>
-							  	</div>
-				            </div>
-				          </div>
-				        <% end %>
-				  	<% end %>
+					            </div>
+					            <div class="pro22">
+					              <%= link_to "/users/#{user.id}/collection" do %>
+						              <span class="font_white_max">
+						                <%= user.name %>
+						              </span>
+					              <% end %>
+					            </div>
+					            <div class="pro23">
+					            	<div style="text-align:right;">
+						                <% unless current_user?(user) %>
+							            	<span id="follow_request-of-<%= @user.id %>">
+									          <%= render partial: 'follow_requests/follow_request' %>
+									        </span>
+									  	<% end %>
+								  	</div>
+					            </div>
+					          </div>
+					        <% end %>
+					  	<% end %>
+					<% else %>
+						<div class="font_gray" style="padding-top:30vh;text-align:center;">
+							<%= image_tag "test28.png", :style =>'width:20px;height:20px;' %> 現在,あなたへのリクエストはありません
+						</div>
+					<% end %>
 				</div>
-				<div class="tab-pane fade in active" id="you">
-					<% @users_requesting.each do |user| %>
-				  		<% @user = user %>
-				  		<% unless user == current_user %>
-				          <div class="box_tests05">
-				            <div class="pro21">
-				              <%= link_to "/users/#{user.id}/collection" do %>
-					              <% if user.image.blank? %>
-					                <%= image_tag "user09.png", :class =>'img_user09' %>
-					              <% else %>
-					                <%= image_tag user.image, :class =>'img_user09' %>
+				<div class="tab-pane fade " id="you">
+					<% if @users_requesting.present? %>
+						<% @users_requesting.each do |user| %>
+					  		<% @user = user %>
+					  		<% unless user == current_user %>
+					          <div class="box_tests05">
+					            <div class="pro21">
+					              <%= link_to "/users/#{user.id}/collection" do %>
+						              <% if user.image.blank? %>
+						                <%= image_tag "user09.png", :class =>'img_user09' %>
+						              <% else %>
+						                <%= image_tag user.image, :class =>'img_user09' %>
+						              <% end %>
 					              <% end %>
-				              <% end %>
-				            </div>
-				            <div class="pro22">
-				              <%= link_to "/users/#{user.id}/collection" do %>
-					              <span class="font_white_max">
-					                <%= user.name %>
-					              </span>
-				              <% end %>
-				            </div>
-				            <div class="pro23">
-				            	<div style="text-align:right;margin-right:10px;">
-					                <% unless current_user?(user) %>
-						            	<span id="relationship-of-<%= @user.id %>">
-									      	<%= render partial: 'relationships/relationship' %>
-									    </span>
-								  	<% end %>
-							  	</div>
-				            </div>
-				          </div>
-				        <% end %>
-				  	<% end %>
+					            </div>
+					            <div class="pro22">
+					              <%= link_to "/users/#{user.id}/collection" do %>
+						              <span class="font_white_max">
+						                <%= user.name %>
+						              </span>
+					              <% end %>
+					            </div>
+					            <div class="pro23">
+					            	<div style="text-align:right;margin-right:10px;">
+						                <% unless current_user?(user) %>
+							            	<span id="relationship-of-<%= @user.id %>">
+										      	<%= render partial: 'relationships/relationship' %>
+										    </span>
+									  	<% end %>
+								  	</div>
+					            </div>
+					          </div>
+					        <% end %>
+					  	<% end %>
+				  	<% else %>
+						<div class="font_gray" style="padding-top:30vh;text-align:center;">
+							<%= image_tag "test28.png", :style =>'width:20px;height:20px;' %> 現在,あなたの送ったリクエストはありません
+						</div>
+					<% end %>
 				</div>
 			</div>
 		</div>

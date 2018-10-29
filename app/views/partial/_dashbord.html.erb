@@ -5,8 +5,7 @@
         <div class="a1">
           <div class="a4">
             <div class="d1">
-              <%= image_tag "movie01.jpg", :class =>'img_lavoro04' %>
-              <div class="d3"></div>
+              <div class="d5"></div>
             </div>
           </div>
           <div class="a5">
@@ -23,25 +22,44 @@
                   <div style="font-size:18px;text-align:center;margin-top:10px;">
                     <%= current_user.name %>
                   </div>
-                </div>                      
+                </div>    
+                <% if current_user.description.present? %>
+                  <div style="height:2vh;"></div>
+                  <div class="font_white_min" style="width:100%;padding:0 20px;">
+                      <%= simple_format(current_user.description, {}, wrapper_tag: "div") %>
+                  </div>
+                  <div style="height:2vh;"></div>
+                  <div style="text-align:center;">
+                    <%= link_to edit_user_registration_path, :style => "font-size:11px;color:rgba(39,134,160,1);" do %>
+                        プロフィールを編集
+                    <% end %>
+                  </div>
+                <% else %>
+                  <div style="height:2vh;"></div>
+                  <div style="text-align:center;">
+                    <%= link_to edit_user_registration_path, :style => "font-size:11px;color:rgba(39,134,160,1);" do %>
+                        プロフィールを編集
+                    <% end %>
+                  </div>
+                <% end %>                  
                 <div style="height:5vh;"></div>
                 <div style="text-align:center;width:100%;">
                   <div class="pro20">
                     <%= link_to "/users/following" do %>
-                        <div style="font-size:15px;color:rgba(220,220,220,0.9);">
+                        <div style="font-size:15px;color:rgba(220,220,220,0.6);">
                           <%= current_user.followings.count %>
                         </div> 
-                      <div style="font-size:12px;color:rgba(220,220,220,0.9);margin-top:5px;">
+                      <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
                           followings
                       </div> 
                      <% end %>
                   </div>
                   <div class="pro20">
                     <%= link_to "/users/follower" do %>
-                        <div style="font-size:15px;color:rgba(220,220,220,0.9);">
+                        <div style="font-size:15px;color:rgba(220,220,220,0.6);">
                           <%= current_user.followers.count %>
                         </div> 
-                      <div style="font-size:12px;color:rgba(220,220,220,0.9);margin-top:5px;">
+                      <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
                           followers
                       </div> 
                      <% end %>
@@ -52,7 +70,7 @@
                   <div class="pro20">
                     <%= link_to "/users/user" do %>
                       <div>
-                        <%= image_tag "test32.png", :style =>'width:20px;height:20px;' %>
+                        <%= image_tag "test36.png", :style =>'width:20px;height:20px;opacity:0.6;' %>
                       </div>
                       <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
                         友達を探す
@@ -62,12 +80,12 @@
                   <div class="pro20">
                     <%= link_to "/users/follow_request" do %>
                       <div>
-                        <%= image_tag "test33.png", :style =>'width:20px;height:20px;' %>
+                        <%= image_tag "test37.png", :style =>'width:20px;height:20px;opacity:0.6;' %>
                       </div>
                       <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
                         <% @requesters_i = current_user.requesters.count %>
                         <% if @requesters_i >= 1 %>
-                          <span style="color:rgba(251, 71, 71, 0.85);">
+                          <span style="color:rgba(251, 71, 71, 0.85);font-weight:bold;">
                             <%= @requesters_i %>
                           </span>
                         <% end %>
@@ -78,7 +96,7 @@
                   <div class="pro20">
                     <%= link_to "/users/configuration" do %>
                       <div>
-                        <%= image_tag "test24.png", :style =>'width:20px;height:20px;' %>
+                        <%= image_tag "test38.png", :style =>'width:20px;height:20px;opacity:0.6;' %>
                       </div>
                       <div style="font-size:10px;margin-top:10px;color:#FAFAFA;">
                         設定

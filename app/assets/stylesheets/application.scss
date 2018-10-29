@@ -456,6 +456,12 @@ a:visited{
 	width: 25px;
 	height: 25px;
 }
+.img_icon03{
+	width: 30px;
+	height: 30px;
+	border-radius:50%;
+	background:rgba(251, 71, 71, 0.35);
+}
 .img_category{
 	width: 100%;
 	height: auto;
@@ -1057,21 +1063,16 @@ button {
   }
 .base_nothing {
   	position: relative;
-	height:90%;
+	height:100%;
 	width:100%;
 	padding:0;
 	margin: 0 auto;
     overflow:hidden;
     background:rgba(0,0,0,0.65);
   }
-@media only screen and (max-width: 768px) {
-	.base_nothing {
-	  height:95%;
-	}
-}
 .base_nothing span .layer01 {
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 50%;
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
@@ -1085,7 +1086,6 @@ button {
   }
 @media only screen and (max-width: 768px) {
 	.base_nothing span .layer01 {
-	  top: 30%;
 	  width:80%;
 	}
 }
@@ -1109,20 +1109,34 @@ button {
 	  width:80%;
 	}
 }
+.base_nothing span .layer03 {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width:90%;
+  height:auto;
+  padding:0;
+  margin:0 auto;
+  font-size:0;
+  text-align:center;
+  }
+@media only screen and (max-width: 768px) {
+	.base_nothing span .layer01 {
+	  width:80%;
+	}
+}
 .base_nothing02 {
   	position: relative;
-	height:90%;
+	height:100%;
 	width:100%;
 	padding:0;
 	margin: 0 auto;
     overflow:hidden;
     background:rgba(0,0,0,0.0);
   }
-@media only screen and (max-width: 768px) {
-	.base_nothing02 {
-	  height:95%;
-	}
-}
 .base_nothing02 span .layer01 {
   position: absolute;
   top: 35%;
@@ -1151,11 +1165,6 @@ button {
 	margin: 0 auto;
     overflow:hidden;
   }
-@media only screen and (max-width: 768px) {
-	.base01 {
-	  height:100%;
-	}
-}
 .base01 span .layer01 {
   position: absolute;
   top: 50%;
@@ -3171,21 +3180,21 @@ input[name="slideshow"] {
 
 //アイコン関連
 .icon_menu{
-	margin:30px 15px 0px 0px;
+	padding:30px 15px 0px 0px;
 	text-align:right;
 	cursor: pointer;
 }
 .icon_menu02{
-	margin:38px 15px 0px 0px;
+	padding:38px 15px 0px 0px;
 	text-align:right;
 	cursor: pointer;
 }
 @media only screen and (max-width: 768px) {
 	.icon_menu{
-		margin:20px 15px 0px 0px;
+		padding:20px 15px 0px 0px;
 	}
 	.icon_menu02{
-		margin:28px 15px 0px 0px;
+		padding:28px 15px 0px 0px;
 	}
 }
 

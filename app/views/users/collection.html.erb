@@ -29,8 +29,7 @@
 						</div>				
 					</div>  
 				</div>
-			</div>
-			      
+			</div>		      
 			<div class="horizontal_scroll02">			
 				  <ul class="nav nav-pills js-tabs">
 				      <li class="active"><a href="#all" data-toggle="tab">すべて</a></li>
@@ -42,6 +41,8 @@
 				  </ul>
 			</div>	
 		</div>
+
+		<% if current_user.following?(@user) || current_user == @user %>
 		<div class="tab-content">
 		  <div style="height:5px;"></div>
 		  <div class="tab-pane fade in active" id="all">
@@ -417,6 +418,10 @@
 		  	</div>
 		  </div>
 		</div>
+		<% else %>
+			<%= render "partial/nothing03" %>
+		<% end %>
+
 	</div>
 	<div class="block_side">
 	</div>
