@@ -20,7 +20,7 @@ module ApplicationHelper
 	        description: 'よりシンプルなコレクションSNS',
 	        type: 'website',
 	        url: 'https://www.tavore.net',
-	        image: image_url('tavore.jpg'),
+	        image: image_url('TAVORE.jpg'),
 	        locale: 'ja_JP'
 	      },
 	      twitter: {
@@ -30,7 +30,7 @@ module ApplicationHelper
 	        description: 'よりシンプルなコレクションSNS',
 	        type: 'website',
 	        url: 'https://www.tavore.net',
-	        image: image_url('tavore.jpg')
+	        image: image_url('TAVORE.jpg')
 	      }
 	    }
 	  end
