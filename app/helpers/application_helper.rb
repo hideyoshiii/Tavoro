@@ -16,7 +16,7 @@ module ApplicationHelper
 	      ],
 	      og: {
 	        site_name: 'TAVORE(タボーレ)',
-	        title: 'TAVORE(タボーレ)',
+	        title: 'TAVORE(タボーレ) | シンプルなコレクションSNS',
 	        description: 'よりシンプルなコレクションSNS',
 	        type: 'website',
 	        url: 'https://www.tavore.net',
@@ -24,9 +24,9 @@ module ApplicationHelper
 	        locale: 'ja_JP'
 	      },
 	      twitter: {
-	        card: 'summary_large_image',
+	        card: 'Summary Card',
 	        site: '@tavore_info',
-	        title: 'TAVORE(タボーレ)',
+	        title: 'TAVORE(タボーレ) | シンプルなコレクションSNS',
 	        description: 'よりシンプルなコレクションSNS',
 	        type: 'website',
 	        url: 'https://www.tavore.net',
