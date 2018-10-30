@@ -6,7 +6,7 @@ module ApplicationHelper
 	      title: 'TAVORE(タボーレ)',
 	      reverse: true,
 	      charset: 'utf-8',
-	      description: 'よりシンプルなコレクションSNS',
+	      description: 'シンプルなコレクションSNS',
 	      keywords: 'コレクション, 記録, SNS',
 	      canonical: 'https://www.tavore.net',
 	      separator: '|',
@@ -17,7 +17,7 @@ module ApplicationHelper
 	      og: {
 	        site_name: 'TAVORE(タボーレ)',
 	        title: 'TAVORE(タボーレ) | シンプルなコレクションSNS',
-	        description: 'よりシンプルなコレクションSNS',
+	        description: 'シンプルなコレクションSNS',
 	        type: 'website',
 	        url: 'https://www.tavore.net',
 	        image: image_url('TAVORE.jpg'),
@@ -27,7 +27,7 @@ module ApplicationHelper
 	        card: 'Summary Card',
 	        site: '@tavore_info',
 	        title: 'TAVORE(タボーレ) | シンプルなコレクションSNS',
-	        description: 'よりシンプルなコレクションSNS',
+	        description: 'シンプルなコレクションSNS',
 	        type: 'website',
 	        url: 'https://www.tavore.net',
 	        image: image_url('TAVORE.jpg')
