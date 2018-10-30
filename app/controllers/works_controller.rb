@@ -9,7 +9,7 @@ class WorksController < ApplicationController
     	@user  = User.find(current_user.id)
     	@users = @user.followings
     	@posts = []
-      @posts_mine = Post.where(user_id: current_user.id)
+      @posts_mine = Post.where(user_id: current_user.id).order(created_at: "DESC")
       @posts_mine = @posts_mine.where.not(review: "bookmark")
       @posts.concat(@posts_mine)
     	if @users.present?

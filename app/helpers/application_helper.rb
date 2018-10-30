@@ -3,17 +3,35 @@ module ApplicationHelper
 	def default_meta_tags
 	    {
 	      site: 'TAVORE(タボーレ)',
-	      title: 'list the works you read, watched, listened, others',
+	      title: 'TAVORE(タボーレ)',
 	      reverse: true,
 	      charset: 'utf-8',
-	      description: '',
-	      keywords: '記録, 映画, 本',
-	      canonical: 'https://tavore.herokuapp.com',
+	      description: 'よりシンプルなコレクションSNS',
+	      keywords: 'コレクション, 記録, SNS',
+	      canonical: 'https://www.tavore.net',
 	      separator: '|',
 	      icon: [
 	        { href: image_url('favicon.ico') },
 	        { href: image_url('apple-touch-icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' }
 	      ],
+	      og: {
+	        site_name: 'TAVORE(タボーレ)',
+	        title: 'TAVORE(タボーレ)',
+	        description: 'よりシンプルなコレクションSNS',
+	        type: 'website',
+	        url: 'https://www.tavore.net',
+	        image: image_url('tavore.jpg'),
+	        locale: 'ja_JP'
+	      },
+	      twitter: {
+	        card: 'summary_large_image',
+	        site: '@tavore_info',
+	        title: 'TAVORE(タボーレ)',
+	        description: 'よりシンプルなコレクションSNS',
+	        type: 'website',
+	        url: 'https://www.tavore.net',
+	        image: image_url('tavore.jpg')
+	      }
 	    }
 	  end
 

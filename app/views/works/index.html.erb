@@ -63,8 +63,9 @@
 							}
 						</style>
 						<script type="text/javascript">
-						  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
+						  
 						  $(function(){
+						  	var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
 							  $('#btn_preview<%= post.id %>').on("click",function(){
 							    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
 							     {

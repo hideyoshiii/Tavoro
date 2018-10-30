@@ -212,25 +212,32 @@
 									"<%= simple_format(post.description, {}, wrapper_tag: "span") %>"
 								</div>	
 							</div>
-						</div>						
-						<% if @comments.count <= 1 %>
-							<div style="text-align:center;margin-top:30px;font-size:18px;">
-								<%= image_tag "test18.png", :style =>'width:20px;height:20px;' %>
-							</div>
-							<div style="text-align:center;margin-top:10px;font-size:16px;color:#999999;">
-								他のアクティビティがありません
-							</div>
-							<div style="text-align:center;margin:30px;font-size:15px;">
-								<%= link_to "/works/#{post.id}/copy", :class =>'test_btn01' do %>
-										共有
-								<% end %>
-							</div>
+						</div>		
+						<% if post.user == current_user %>				
+							<% unless @comments.count >= 2 %>
+								<div style="text-align:center;margin-top:30px;font-size:18px;">
+									<%= image_tag "test18.png", :style =>'width:20px;height:20px;' %>
+								</div>
+								<div style="text-align:center;margin-top:10px;font-size:16px;color:#999999;">
+									他のアクティビティがありません
+								</div>	
+							<% end %>					
 						<% else %>
-							<div style="text-align:center;margin:30px;font-size:15px;">
-								<%= link_to "/works/#{post.id}/copy", :class =>'test_btn01' do %>
-										共有
-								<% end %>
-							</div>
+							<% unless @comments.count >= 1 %>
+								<div style="text-align:center;margin-top:30px;font-size:18px;">
+									<%= image_tag "test18.png", :style =>'width:20px;height:20px;' %>
+								</div>
+								<div style="text-align:center;margin-top:10px;font-size:16px;color:#999999;">
+									他のアクティビティがありません
+								</div>	
+							<% end %>	
+						<% end %>
+						<div style="text-align:center;margin:30px;font-size:15px;">
+							<%= link_to "/works/#{post.id}/copy", :class =>'test_btn01' do %>
+									共有
+							<% end %>
+						</div>
+						<% unless @comments.blank? %>
 							<% @comments.each.with_index(1) do |post, i| %>
 								<% unless post.user == @post.user %>
 									<div class="box_comment02">
@@ -270,7 +277,7 @@
 									</div>
 								<% end %>
 							<% end %>
-						<% end %>						
+						<% end %>										
 						<div style="height:5vh;"></div>
 					</div>
 				</div>
@@ -285,27 +292,29 @@
 
 <%#audioのワンボタン再生%>
 <% if post.preview_url.present?  %>
-<script>
-	  var audio = new Audio("<%= post.preview_url %>");
+	<script>
+		$(function(){
+		  var audio = new Audio("<%= post.preview_url %>");
 
-	  $('#btn_preview01').on("click",function(){
-	    if($("#icon_play").hasClass('fa-play'))
-	     {
-	       $("#icon_play").removeClass('fa-play');
-	       $("#icon_play").addClass('fa-pause');
-	       audio.play();
-	     }
-	    else
-	     {
-	       $("#icon_play").removeClass('fa-pause');
-	       $("#icon_play").addClass('fa-play');
-	       audio.pause();
-	     }
-	  });
+		  $('#btn_preview01').on("click",function(){
+		    if($("#icon_play").hasClass('fa-play'))
+		     {
+		       $("#icon_play").removeClass('fa-play');
+		       $("#icon_play").addClass('fa-pause');
+		       audio.play();
+		     }
+		    else
+		     {
+		       $("#icon_play").removeClass('fa-pause');
+		       $("#icon_play").addClass('fa-play');
+		       audio.pause();
+		     }
+		  });
 
-	  audio.onended = function() {
-	     $("#icon_play").removeClass('fa-pause');
-	     $("#icon_play").addClass('fa-play');
-	  };
-</script>
+		  audio.onended = function() {
+		     $("#icon_play").removeClass('fa-pause');
+		     $("#icon_play").addClass('fa-play');
+		  };
+		});
+	</script>
 <% end %>
