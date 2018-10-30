@@ -110,6 +110,7 @@ a:visited{
 
 //ブロック要素関連
 .main {
+	position:relative;
 	height:100%;
 	width:100%;
 	padding:0;
@@ -120,6 +121,15 @@ a:visited{
 	background: linear-gradient(-90eg, #111111, #05627B); 
 	overflow:hidden;
  }
+.main > .cover {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.4);
+}
 .block_main{
 		float: left;
 		vertical-align:top;
@@ -574,7 +584,7 @@ a:visited{
 }
 .font_logo_sub01{
 	font-size:16px;
-	color:#999999;
+	color:#FAFAFA;
 	text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 @media only screen and (max-width: 768px) {
@@ -2724,7 +2734,6 @@ button {
 }
 .tab-content{
 	height:100%;
-	background:rgba(0,0,0,0.4);
 }
 .tab-pane.fade {
   transition-duration: 0.3s;
@@ -2748,14 +2757,12 @@ video {
 @media only screen and (max-width: 768px) {
 	video {
 	  position: fixed;
-	  top: 55%;
-	  left: 50%;
-	  -ms-transform: translate(-50%,-50%);
-	  -webkit-transform: translate(-50%,-50%);
-	  transform: translate(-50%,-50%);
-	  width: 150%;
+	  top: 0%;
+	  left: 0%;
+	  width: auto;
 	  height: 100%;
 	  margin:0 auto;
+	  margin-left:-100%;
 	  padding:0;
 	  z-index:1;
 	  background:black;

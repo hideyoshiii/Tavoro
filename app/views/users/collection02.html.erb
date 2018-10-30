@@ -1,5 +1,4 @@
 <div class="main">
-	<div class="cover"></div>
 	<div class="block_side">
 	</div>
 	<div class="block_main">
@@ -53,7 +52,7 @@
 			  	<% else %>
 				  	<% @checkeds.each.with_index(1) do |post, i| %>
 			  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -98,7 +97,7 @@
 			  	<% else %>
 				  	<% @bookmarks.each.with_index(1) do |post, i| %>
 			  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -145,7 +144,7 @@
 			  	<% else %>
 				    <% @checkeds_movie.each.with_index(1) do |post, i| %>
 				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_movie_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -172,7 +171,7 @@
 			  	<% else %>
 				    <% @bookmarks_movie.each.with_index(1) do |post, i| %>
 				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_movie_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -201,7 +200,7 @@
 			  	<% else %>
 				  	<% @checkeds_tv.each.with_index(1) do |post, i| %>
 				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_tv_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -228,7 +227,7 @@
 			  	<% else %>
 				  	<% @bookmarks_tv.each.with_index(1) do |post, i| %>
 				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_tv_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -257,7 +256,7 @@
 			  	<% else %>
 				  	<% @checkeds_book.each.with_index(1) do |post, i| %>
 				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_book_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -284,7 +283,7 @@
 			  	<% else %>
 				  	<% @bookmarks_book.each.with_index(1) do |post, i| %>
 				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_book_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -313,7 +312,7 @@
 			  	<% else %>
 				  	<% @checkeds_comic.each.with_index(1) do |post, i| %>
 				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_comic_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing02.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -340,7 +339,7 @@
 			  	<% else %>
 				  	<% @bookmarks_comic.each.with_index(1) do |post, i| %>
 				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_comic_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing02.jpg", :class =>'img_lavoro' %>
 								<% else %>
@@ -369,7 +368,7 @@
 			  	<% else %>
 				  	<% @checkeds_music.each.with_index(1) do |post, i| %>
 				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_checkeds_music_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing03.jpg", :class =>'img_lavoro000' %>
 								<% else %>
@@ -396,7 +395,7 @@
 			  	<% else %>
 				  	<% @bookmarks_music.each.with_index(1) do |post, i| %>
 				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_bookmarks_music_<%= post.id %>">
 								<% if post.image_url.blank? %>
 									<%= image_tag "nothing03.jpg", :class =>'img_lavoro000' %>
 								<% else %>
@@ -427,250 +426,114 @@
 	<div class="block_side">
 	</div>
 </div>
-
-<%#モーダルの中身%>
-<% if @all.present? %>
-	<% @all.each.with_index do |post, i| %>
-		<style type="text/css">
-			#menu_in_st_<%= post.id %>{
-			  overflow: hidden;
-			  width: auto;
-			  max-height: 0;
-			  opacity: 0;
-			  -webkit-transition: all .5s ease-in-out 0s;
-			  transition: all .5s ease-in-out 0s;
-			}
-			#menu_in_st_<%= post.id %>.open {
-			  max-height:500px;
-			  opacity: 1;
-			  z-index: 9999;
-			}
-		</style>
-		<script type="text/javascript">
-			$(function(){
-		    $('#menu_st_<%= post.id %>').click(function(){
-		        $('#menu_in_st_<%= post.id %>').toggleClass('open');
-		    });
-		});
-		</script>
-		<% if post.category == "music" %>
-			<% if post.preview_url.present? %>
-				<style type="text/css">
-					#btn_preview_<%= post.id %> {
-				    display: block;
-				    width: 40px;
-				    height: 40px;
-				    background: rgba(50,50,50,0.7);
-				    text-align: center;
-				    border-radius: 50%;
-				    cursor: pointer;
-				    position: relative;
-				    margin-left:85%;
-				    margin-top:-15%;
-					}
-					@media only screen and (max-width: 768px) {
-						#btn_preview_<%= post.id %>{
-						margin-left:80%;
-				    	margin-top:-20%;
-						}
-					}
-					#btn_preview_<%= post.id %> i {
-					  color: #FAFAFA;
-					  line-height: 40px;
-					  vertical-align: middle;
-					  font-size: 9px;
-					  margin-left:1px;
-					}
-				</style>
-				<script type="text/javascript"> 
-				  $(function(){
-				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
-					  $('#btn_preview_<%= post.id %>').on("click",function(){
-					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-play');
-					       $("#icon_play_<%= post.id %>").addClass('fa-pause');
-					       audio_<%= post.id %>.play();
-					     }
-					    else
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					       $("#icon_play_<%= post.id %>").addClass('fa-play');
-					       audio_<%= post.id %>.pause();
-					     }
-					  });
-				  });
-				  audio_<%= post.id %>.onended = function() {
-				     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-				     $("#icon_play_<%= post.id %>").addClass('fa-play');
-				  };
-			   </script>
-			<% end %>
-		<% end %>
-		<div class="modal fade" id="myModal_<%= post.id %>">
-			<div class="height_modal"></div>
-			<div class="modal-dialog">
-				<div class="base02">
-					<% if post.image_url.blank? %>
-						<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
-					<% else %>
-						<% if post.category == "music" %>
-							<%= image_tag post.image_url, :class =>'img_lavoro002' %>
-						<% else %>
-							<%= image_tag post.image_url, :class =>'img_lavoro02' %>
-						<% end %>
-					<% end %>
-					<span>
-						<div class="layer05">
-						</div>
-						<div class="layer03">
-							<div class="pro01">
-								<%= link_to "/users/#{post.user.id}/collection" do %>
-									<% if post.user.image.blank?  %>
-										<%= image_tag "user09.png", :class =>'img_user04' %>
-									<% else %>
-										<%= image_tag post.user.image, :class => "img_user04" %>
-									<% end %>
-								<% end %>
-							</div>
-							<div class="pro02">
-								<%= link_to "/users/#{post.user.id}/collection" do %>
-									<div class="font_white">
-										<%= post.user.name %>
-									</div>
-									<div class="font_gray">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
-										<% @seconds = (Time.now - post.created_at).round  %>
-										<% if @seconds <= 3600 %>
-											- <%= @seconds / 60 %>分前
-										<% else %>
-											<% if @seconds <= 86400 %>
-													- <%= @seconds / (60 * 60) %>時間前
-											<% else %>
-												<% if @seconds <= 604800 %>
-													- <%= @seconds / (60 * 60 * 24) %>日前
-												<% else %>
-													- <%= post.created_at.strftime('%m月%d日') %>
-												<% end %>
-											<% end %>
-										<% end %>
-									</div>
-								<% end %>
-							</div>
-							<div class="pro03">
-							</div>
-						</div>
-						<div class="layer07">
-							<%= link_to "/works/#{post.id}/detail" do %>
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro03' %>
-								<% end %>
-							<% end %>
-							<% if post.category == "music" %>
-								<% if post.preview_url.present? %>
-									<div id="btn_preview_<%= post.id %>">
-										<i id="icon_play_<%= post.id %>" class="fas fa-play"></i>
-									</div>
-								<% end %>
-							<% end %>
-						</div>
-						<div class="layer02">
-							<div class="font_how">
-								<% if post.review == "bookmark" %>
-									<i class="far fa-bookmark"></i> ブックマーク
-								<% end %>
-								<% if post.review == "good" %>
-									<% if post.category == "movie" || post.category == "tv" %>
-										観ました
-									<% end %>
-									<% if post.category == "book" || post.category == "comic" %>
-										読みました
-									<% end %>
-									<% if post.category == "music" %>
-										聴きました
-									<% end %>
-								<% end %>
-								<% if post.review == "favorite" %>
-									<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
-								<% end %>
-								<% if post.review == "bad" %>
-									<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
-								<% end %>
-							</div>
-							<br>
-							<div class="font_head">
-								<%= post.title %>
-							</div>
-							<% if post.description.present? %>
-								<div class="balloon_top"></div>
-								<div class="balloon">
-								  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-								</div>
-							<% end %>
-						</div>
-						<div class="layer10">
-							<div id="menu_st_<%= post.id %>" class="icon_menu">
-								<%= image_tag "test07.png", :style =>'width:25px;height:25px;' %>
-							</div>
-							<div id="menu_in_st_<%= post.id %>">
-							  	<% unless post.user.id == current_user.id %>
-								  	<div style="margin:30px 10px 0px 0px;">
-										<span id="bookmark-of-<%= post.id %>">
-									      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-									    </span>
-									</div>
-									<div style="margin:30px 10px 0px 0px;">
-										<%= link_to "/works/#{post.id}/copy" do %>
-											<%= image_tag "test10.png", :style =>'width:35px;height:35px;' %>
-										<% end %>									
-									</div>
-								<% end %>
-								<% if post.user.id == current_user.id %>
-									<div style="margin:30px 10px 0px 0px;">
-										<%= link_to "/works/#{post.id}/edit" do %>
-											<%= image_tag "test04.png", :style =>'width:35px;height:35px;' %>
-										<% end %>
-									</div>
-									<div style="margin:30px 10px 0px 0px;">
-										<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-											<%= image_tag "test01.png", :style =>'width:35px;height:35px;' %>
-										<% end %>
-									</div>	
-								<% end %>								
-							</div>
-						</div>
-						<div class="layer09">
-							<div class="pro19">							
-								<a href="" data-dismiss="modal">
-									<%= image_tag "close_blue.png", :class =>'img_left02' %>
-								</a>
-							</div>
-						</div>
-					</span>
-				</div>
-			</div>
-		</div>
+<%#@checkedsモーダルの中身%>
+<% if @checkeds.present? %>
+	<% @checkeds.each.with_index do |post, i| %>
+		<% left_item = @checkeds[i-1] unless i == 0 %>
+		<% right_item = @checkeds[i+1] unless i == @checkeds.size-1 %>
+		<% modal_name = "checkeds" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
 	<% end %>
 <% end %>
-
-
-
+<%#@bookmarksモーダルの中身%>
+<% if @bookmarks.present? %>
+	<% @bookmarks.each.with_index do |post, i| %>
+		<% left_item = @bookmarks[i-1] unless i == 0 %>
+		<% right_item = @bookmarks[i+1] unless i == @bookmarks.size-1 %>
+		<% modal_name = "bookmarks" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@checkeds_movieモーダルの中身%>
+<% if @checkeds_movie.present? %>
+	<% @checkeds_movie.each.with_index do |post, i| %>
+		<% left_item = @checkeds_movie[i-1] unless i == 0 %>
+		<% right_item = @checkeds_movie[i+1] unless i == @checkeds_movie.size-1 %>
+		<% modal_name = "checkeds_movie" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@cbookmarks_movieモーダルの中身%>
+<% if @bookmarks_movie.present? %>
+	<% @bookmarks_movie.each.with_index do |post, i| %>
+		<% left_item = @bookmarks_movie[i-1] unless i == 0 %>
+		<% right_item = @bookmarks_movie[i+1] unless i == @bookmarks_movie.size-1 %>
+		<% modal_name = "bookmarks_movie" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@checkeds_tvモーダルの中身%>
+<% if @checkeds_tv.present? %>
+	<% @checkeds_tv.each.with_index do |post, i| %>
+		<% left_item = @checkeds_tv[i-1] unless i == 0 %>
+		<% right_item = @checkeds_tv[i+1] unless i == @checkeds_tv.size-1 %>
+		<% modal_name = "checkeds_tv" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@bookmarks_tvモーダルの中身%>
+<% if @bookmarks_tv.present? %>
+	<% @bookmarks_tv.each.with_index do |post, i| %>
+		<% left_item = @bookmarks_tv[i-1] unless i == 0 %>
+		<% right_item = @bookmarks_tv[i+1] unless i == @bookmarks_tv.size-1 %>
+		<% modal_name = "bookmarks_tv" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@checkeds_bookモーダルの中身%>
+<% if @checkeds_book.present? %>
+	<% @checkeds_book.each.with_index do |post, i| %>
+		<% left_item = @checkeds_book[i-1] unless i == 0 %>
+		<% right_item = @checkeds_book[i+1] unless i == @checkeds_book.size-1 %>
+		<% modal_name = "checkeds_book" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@bookmarks_bookモーダルの中身%>
+<% if @bookmarks_book.present? %>
+	<% @bookmarks_book.each.with_index do |post, i| %>
+		<% left_item = @bookmarks_book[i-1] unless i == 0 %>
+		<% right_item = @bookmarks_book[i+1] unless i == @bookmarks_book.size-1 %>
+		<% modal_name = "bookmarks_book" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@checkeds_comicモーダルの中身%>
+<% if @checkeds_comic.present? %>
+	<% @checkeds_comic.each.with_index do |post, i| %>
+		<% left_item = @checkeds_comic[i-1] unless i == 0 %>
+		<% right_item = @checkeds_comic[i+1] unless i == @checkeds_comic.size-1 %>
+		<% modal_name = "checkeds_comic" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@bookmarks_comicモーダルの中身%>
+<% if @bookmarks_comic.present? %>
+	<% @bookmarks_comic.each.with_index do |post, i| %>
+		<% left_item = @bookmarks_comic[i-1] unless i == 0 %>
+		<% right_item = @bookmarks_comic[i+1] unless i == @bookmarks_comic.size-1 %>
+		<% modal_name = "bookmarks_comic" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@checkeds_musicモーダルの中身%>
+<% if @checkeds_music.present? %>
+	<% @checkeds_music.each.with_index do |post, i| %>
+		<% left_item = @checkeds_music[i-1] unless i == 0 %>
+		<% right_item = @checkeds_music[i+1] unless i == @checkeds_music.size-1 %>
+		<% modal_name = "checkeds_music" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
+<%#@bookmarks_musicモーダルの中身%>
+<% if @bookmarks_music.present? %>
+	<% @bookmarks_music.each.with_index do |post, i| %>
+		<% left_item = @bookmarks_music[i-1] unless i == 0 %>
+		<% right_item = @bookmarks_music[i+1] unless i == @bookmarks_music.size-1 %>
+		<% modal_name = "bookmarks_music" %>
+		<%= render partial: "post_modal_collection", locals: {post: post, left_item: left_item, right_item: right_item, modal_name: modal_name} %>
+	<% end %>
+<% end %>
 <%#投稿ボタン%>
 <%= render "partial/post_modal" %>
 <%#タブスワイプ切り替え%>
