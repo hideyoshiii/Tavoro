@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_action :authenticate_user!, except: :index
 
 
   def test
