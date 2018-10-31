@@ -52,6 +52,8 @@ gem 'meta-tags'
 
 gem 'rack-rewrite'
 
+gem 'google-analytics-rails'
+
 
 group :production do 
   gem 'pg'
