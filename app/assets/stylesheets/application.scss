@@ -1307,6 +1307,19 @@ button {
   background:none;
   font-size:0;
   }
+.base01 span .layer10 {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width:100%;
+  height:100%;
+  padding:0;
+  margin:0;
+  z-index:3;
+  text-align:right;
+  background:rgba(0,0,0,0.3);
+  font-size:0;
+  }
 
 .base02 {
   	position: relative;
@@ -1518,6 +1531,19 @@ button {
   z-index:4;
   text-align:center;
   background:none;
+  font-size:0;
+  }
+.base03 span .layer07 {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width:100%;
+  height:100%;
+  padding:0;
+  margin:0;
+  z-index:3;
+  text-align:right;
+  background:rgba(0,0,0,0.3);
   font-size:0;
   }
 .base04 {

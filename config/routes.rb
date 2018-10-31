@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root :to => 'works#index'
 
   devise_for :users, controllers: { registrations: 'registrations' }
+
   get "users/:id/collection" => "users#collection"
   get "users/:id/profile" => "users#profile"
   get 'users/follow_request' => "users#follow_request"
@@ -51,6 +52,10 @@ Rails.application.routes.draw do
 
   post "works/:id/create_bookmark" => "works#create_bookmark"
   post "works/:id/destroy_bookmark" => "works#destroy_bookmark"
+
+  get 'policy' => "users#policy"
+  get 'terms' => "users#terms"
+  get 'contact' => "users#contact"
 
   get 'works/test' => "works#test"
 

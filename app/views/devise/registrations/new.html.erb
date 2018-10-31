@@ -6,6 +6,7 @@
     <div style="height:50px;"></div>
     <div class="base01">
       <span>
+        <div class="layer10"></div>
         <div class="layer06">
           <div class="font_white_big">
             Sign up
@@ -16,9 +17,10 @@
               <%= f.email_field :email,placeholder: "email", required: "" %>
               <%= f.password_field :password,placeholder: "password", required: "" %>
               <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
-              <div style="height:5vh;"></div>
+              <div style="height:2vh;"></div>
                     <%= f.submit "完了",class:"btn_session" %>
             <% end %>
+            <div style="height:10vh;"></div>
           </div>
         </div>
       </span>

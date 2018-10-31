@@ -57,16 +57,26 @@
 						<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 						  <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
 						  <%= f.password_field :password,placeholder: "password", required: "" %>
-						  <div style="height:5vh;"></div>
+						  <div style="height:3vh;"></div>
 	          			  <%= f.submit "完了",class:"btn_session" %>
 						<% end %>
+						<div style="height:5vh;"></div>
 					</div>
 				</div>
 				<div class="layer04">
-					<div class="pro04">
-						<a href="" data-toggle="modal" data-dismiss="modal">
-							<%= image_tag "left_gray.png", :class =>'img_left' %>
-						</a>
+					<div class="pro17">
+						<div style="margin:0px 0px 20px 20px;">
+							<a href="" data-toggle="modal" data-dismiss="modal">
+								<%= image_tag "left_gray.png", :class =>'img_left' %>
+							</a>
+						</div>
+					</div>
+					<div class="pro17" style="text-align:right;">
+						<%= link_to new_user_password_path do %>
+							<div class="font_gray_min" style="margin:0px 20px 20px 0px;">
+								パスワードを忘れたら
+							</div>
+						<% end %>
 					</div>
 				</div>
 			</span>
@@ -93,17 +103,19 @@
 						  <%= f.email_field :email,placeholder: "email", required: "" %>
 						  <%= f.password_field :password,placeholder: "password", required: "" %>
 						  <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
-						  <div style="height:3vh;"></div>
+						  <div style="height:2vh;"></div>
 	          			  <%= f.submit "完了",class:"btn_session" %>
 						<% end %>
 					</div>
-					<div style="height:2vh;"></div>
+					<div style="height:5vh;"></div>
 				</div>
 				<div class="layer04">
-					<div class="pro04">
-						<a href="" data-toggle="modal" data-dismiss="modal">
-							<%= image_tag "left_gray.png", :class =>'img_left' %>
-						</a>
+					<div class="pro17">
+						<div style="margin:0px 0px 20px 20px;">
+							<a href="" data-toggle="modal" data-dismiss="modal">
+								<%= image_tag "left_gray.png", :class =>'img_left' %>
+							</a>
+						</div>
 					</div>
 				</div>
 			</span>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:policy, :terms, :contact]
 
 	def collection
 		@user = User.find(params[:id])	
@@ -61,5 +61,15 @@ class UsersController < ApplicationController
   		@users = current_user.followers
     	@items = @users.where('name LIKE ?', "%#{params[:q]}%")
   	end
+
+
+    def policy     
+    end
+
+    def terms     
+    end
+
+    def contact     
+    end
 
 end
