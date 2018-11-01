@@ -2799,6 +2799,7 @@ button {
 }
 
 
+//PC
 video {
 	  position: fixed;
 	  top: 0%;
@@ -2810,7 +2811,14 @@ video {
 	  z-index:1;
 	  background:black;
 }
-@media only screen and (max-width: 768px) {
+//iPadヨコ
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+}
+//iPadタテ
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+}
+//iPhoneタテ
+@media only screen and (max-width: 767px) and (orientation: portrait) {
 	video {
 	  position: fixed;
 	  top: 0%;
@@ -2823,6 +2831,12 @@ video {
 	  z-index:1;
 	  background:black;
 	}
+}
+//iPhoneヨコ
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+}
+//SE以下タテ
+@media only screen and (max-width: 370px) and (orientation: portrait) {
 }
 
 
