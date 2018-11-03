@@ -55,7 +55,7 @@
 		  });
 		};
 
-		$('#inc_search').on('keyup', function() {
+		$('#inc_search').keyup(function() {
 		  input = $(this).val();   //前後の不要な空白を削除
 		  if(preInput !== input){
 		    clearTimeout(preFunc);
@@ -63,12 +63,8 @@
 		  }
 		  preInput = input;
 		});
-	});
-</script>
 
-<script type="text/javascript">
-	$(function(){
-		$( '#inc_search' ).keypress( function ( e ) {
+		$('#inc_search').keypress(function(e) {
 			if ( e.which == 13 ) {
 			// ここに処理を書く
 

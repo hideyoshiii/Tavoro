@@ -22,7 +22,7 @@ class WorksController < ApplicationController
           end
           #@postsを新しい順に並べたい
           @posts.sort_by!{|post| post.created_at}.reverse!
-          @posts = @posts.take(30)
+          @posts = @posts.take(25)
       end
     end
   end
@@ -118,7 +118,7 @@ class WorksController < ApplicationController
   end
 
   def book
-  	@defaults = RakutenWebService::Books::Book.search(size: 2,sort: "reviewCount", hits: 20)
+  	@defaults = RakutenWebService::Books::Book.search(size: 2,sort: "reviewCount", hits: 15)
   end
 
   def book_detail
@@ -136,12 +136,12 @@ class WorksController < ApplicationController
 
   def ajax_book_list
   	if params[:q].present?
-  		@items = RakutenWebService::Books::Book.search(title: params[:q], hits: 20)
+  		@items = RakutenWebService::Books::Book.search(title: params[:q], hits: 15)
   	end
   end
 
   def music
-  	@defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music",:entity =>'song', :limit  => '30', :attribute => "mixTerm")
+  	@defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music",:entity =>'song', :limit  => '20', :attribute => "mixTerm")
   end
 
   def music_detail
@@ -159,7 +159,7 @@ class WorksController < ApplicationController
 
   def ajax_music_list
   	if params[:q].present?
-  		@items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music",:entity =>'song', :limit  => '30')
+  		@items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music",:entity =>'song', :limit  => '20')
   	end
   end
 

@@ -448,10 +448,10 @@
 		</style>
 		<script type="text/javascript">
 			$(function(){
-		    $('#menu_st_<%= post.id %>').click(function(){
-		        $('#menu_in_st_<%= post.id %>').toggleClass('open');
-		    });
-		});
+			    $('#menu_st_<%= post.id %>').click(function(){
+			        $('#menu_in_st_<%= post.id %>').toggleClass('open');
+			    });
+			});
 		</script>
 		<% if post.category == "music" %>
 			<% if post.preview_url.present? %>
@@ -499,11 +499,11 @@
 					       audio_<%= post.id %>.pause();
 					     }
 					  });
+					  audio_<%= post.id %>.onended = function() {
+					     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+					     $("#icon_play_<%= post.id %>").addClass('fa-play');
+					  };
 				  });
-				  audio_<%= post.id %>.onended = function() {
-				     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-				     $("#icon_play_<%= post.id %>").addClass('fa-play');
-				  };
 			   </script>
 			<% end %>
 		<% end %>

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       @all = Post.where(user_id: @user.id).order(created_at: "DESC")
 
       @checkeds = @all.where.not(review: "bookmark")
-      @checkeds_i = @checkeds.count
+      @checkeds_i = @checkeds.size
       @checkeds_movie = @checkeds.where(category: "movie")
       @checkeds_tv = @checkeds.where(category: "tv")
       @checkeds_book = @checkeds.where(category: "book")
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @checkeds_music = @checkeds.where(category: "music")
 
       @bookmarks = @all.where(review: "bookmark")
-      @bookmarks_i = @bookmarks.count
+      @bookmarks_i = @bookmarks.size
       @bookmarks_movie = @bookmarks.where(category: "movie")
       @bookmarks_tv = @bookmarks.where(category: "tv")
       @bookmarks_book = @bookmarks.where(category: "book")

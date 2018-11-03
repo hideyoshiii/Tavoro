@@ -103,11 +103,7 @@
 						<div class="layer03">
 							<div class="pro01">
 								<%= link_to "/users/#{post.user.id}/collection" do %>
-									<% if post.user.image.blank?  %>
-										<%= image_tag "user09.png", :class =>'img_user04' %>
-									<% else %>
-										<%= image_tag post.user.image, :class => "img_user04" %>
-									<% end %>
+									<%= image_tag post.user.image, :class => "img_user04" %>
 								<% end %>
 							</div>
 							<div class="pro02">
