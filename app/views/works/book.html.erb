@@ -54,10 +54,10 @@
 		};
 
 		$('#inc_search').on('keyup', function() {
-		  input = $.trim($(this).val());   //前後の不要な空白を削除
+		  input = $(this).val();   //前後の不要な空白を削除
 		  if(preInput !== input){
 		    clearTimeout(preFunc);
-		    preFunc = setTimeout(ajaxPost(input), 2000);
+		    preFunc = setTimeout(ajaxPost(input), 700);
 		  }
 		  preInput = input;
 		});
