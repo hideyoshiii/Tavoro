@@ -2337,6 +2337,19 @@ button {
 	margin:30px 25px 0px;
 	text-align:center
 }
+.btns_session{
+	position:absolute;
+	top:90%;
+	left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width:100%;
+	margin:0 auto;
+	padding:0;
+	z-index:999;
+	text-align:center;
+}
 @media only screen and (max-width: 768px) {
 	.btns_choice01{
 		margin:0px 15px 0px;
@@ -2402,7 +2415,7 @@ button {
     background: none;
     color: rgba(225,225,255,0.8);
     border-radius: 0px;
-    font-size:19px;
+    font-size:18px;
     border: solid 1px rgba(225,225,255,0.8);
 }
 .btn_register{
@@ -2503,7 +2516,7 @@ button {
   padding:0;
   text-align:center;
   }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
 	.btn_test10{
     	font-size:14px;
 	}
@@ -2526,6 +2539,9 @@ button {
 
 
 //モーダル関連
+.modal{
+		height:100%;
+	}
 .modal-dialog{
 	width:35%;
 	height:100%;
@@ -2558,17 +2574,27 @@ button {
     transform: translate3d(0, -300px, 0);
     opacity: 1;
 }
-@media only screen and (max-width: 768px) {
-	.modal{
-		height:100%;
+//iPadヨコ
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+	.modal-dialog{
+		width:40%;
 	}
+}
+//iPadタテ
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+	.modal-dialog{
+		width:70%;
+	}
+}
+//iPhoneタテ
+@media only screen and (max-width: 767px) {
 	.modal-dialog{
 		width:100%;
-		height:100%;
 		margin:0;
 		padding:0;
 	}
 }
+
 
 
 
@@ -3500,19 +3526,4 @@ input[name="slideshow"] {
 
 
 
-
-
-.btns_session{
-	position:absolute;
-	top:90%;
-	left: 50%;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
-    width:100%;
-	margin:0 auto;
-	padding:0;
-	z-index:999;
-	text-align:center;
-}
 
