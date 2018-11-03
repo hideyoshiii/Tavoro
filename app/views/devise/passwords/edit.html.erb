@@ -1,25 +1,39 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+<div class="main">
+  <div class="block_side">
   </div>
+  <div class="block_main">
+    
+    <div style="height:50px;"></div>
+    <div class="base01">
+      <span>
+        <div class="layer10"></div>
+        <div class="layer06">
+          <div class="font_white_big">
+            パスワード再設定
+          </div>
+          <div style="height:2vh;"></div>
+          <div class="font_white">
+            パスワードを再設定します。<br>
+            新しいパスワードを入力してください。
+          </div>
+          <div style="height:2vh;"></div>
+          <div class="gogo">
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+              <%= f.hidden_field :reset_password_token %>
+              <%= f.password_field :password,placeholder: "password", required: "" %>
+              <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
+              <div style="height:3vh;"></div>
+              <%= f.submit "変更",class:"btn_session" %>
+            <% end %>
+          </div>
+          <div style="height:10vh;"></div>
+        </div>
+      </span>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="block_side">
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+

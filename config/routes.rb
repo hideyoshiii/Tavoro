@@ -56,6 +56,8 @@ Rails.application.routes.draw do
   get 'policy' => "users#policy"
   get 'terms' => "users#terms"
   get 'contact' => "users#contact"
+  get 'contact_comfirm' => "users#contact_comfirm"
+  get 'contact_send' => "users#contact_send"
 
   get 'works/test' => "works#test"
 

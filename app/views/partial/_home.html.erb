@@ -1,0 +1,252 @@
+<div class="main02">
+	<div class="block_side">
+	</div>
+	<div class="block_main">
+
+		<div style="height:50px;"></div>
+		<div class="swiper-container" style="height:calc(100% - 50px);">
+			<div class="swiper-wrapper" style="height:100%">
+
+				<div class="swiper-slide" style="height:100%"> 
+					<div class="a1">
+				        <div class="a4">
+				          <div class="d1">
+				          	<%= image_tag "nothing02.jpg", :class =>'img_lavoro02' %>
+				            <div class="d6"></div>
+				          </div>
+				        </div>
+				        <div class="a5">
+				          <div class="e1">
+				            <div class="e4">
+				              <div>
+				                <%= image_tag "tavore_logo_01.png", :style =>'width:120px;height:120px;' %>
+				              </div>
+				              <div style="font-size:22px;">
+				                TAVORE
+				              </div>
+				              <div style="height:7vh;"></div>
+				              <div style="font-size:16px;">
+				               シンプルなコレクションSNS
+				              </div>
+				              <div style="height:12vh;"></div>
+				            </div>
+				          </div>
+				        </div>
+					</div>
+				</div>
+
+				<div class="swiper-slide" style="height:100%"> 
+					<div class="a1">
+				        <div class="a4">
+				          <div class="d1">
+				            <%= image_tag "nothing02.jpg", :class =>'img_lavoro02' %>
+				            <div class="d6"></div>
+				          </div>
+				        </div>
+				        <div class="a5">
+				          <div class="e1">
+				            <div class="e4">
+				              	<div  style="font-size:18px;margin-bottom:3vh;">
+				                  映画、本、音楽をコレクション
+				                </div>
+				                <div style="width:63%;margin:0 auto;">
+				                  <%= image_tag "using01.PNG", :class =>'img_lavoro11' %>
+				                </div>
+				                <div style="height:17vh;"></div>
+				            </div>
+				          </div>
+				        </div>
+					</div>
+				</div>
+
+				<div class="swiper-slide" style="height:100%"> 
+					<div class="a1">
+				        <div class="a4">
+				          <div class="d1">
+				            <%= image_tag "nothing02.jpg", :class =>'img_lavoro02' %>
+				            <div class="d6"></div>
+				          </div>
+				        </div>
+				        <div class="a5">
+				          <div class="e1">
+				            <div class="e4">
+				              	<div  style="font-size:18px;margin-bottom:3vh;">
+				                  その時、感じたことを残そう
+				                </div>
+				                <div style="width:63%;margin:0 auto;">
+				                  <%= image_tag "using03.PNG", :class =>'img_lavoro11' %>
+				                </div>
+				                <div style="height:17vh;"></div>
+				            </div>
+				          </div>
+				        </div>
+					</div>
+				</div>
+
+				<div class="swiper-slide" style="height:100%"> 
+					<div class="a1">
+				        <div class="a4">
+				          <div class="d1">
+				            <%= image_tag "nothing02.jpg", :class =>'img_lavoro02' %>
+				            <div class="d6"></div>
+				          </div>
+				        </div>
+				        <div class="a5">
+				          <div class="e1">
+				            <div class="e4">
+				              	<div  style="font-size:18px;margin-bottom:3vh;">
+				                  友達の投稿から新しい作品を発見
+				                </div>
+				                <div style="width:63%;margin:0 auto;">
+				                  <%= image_tag "using04.PNG", :class =>'img_lavoro11' %>
+				                </div>
+				                <div style="height:17vh;"></div>
+				            </div>
+				          </div>
+				        </div>
+					</div>
+				</div>
+
+				<div class="swiper-slide" style="height:100%"> 
+					<div class="a1">
+				        <div class="a4">
+				          <div class="d1">
+				            <%= image_tag "nothing02.jpg", :class =>'img_lavoro02' %>
+				            <div class="d6"></div>
+				          </div>
+				        </div>
+				        <div class="a5">
+				          <div class="e1">
+				            <div class="e4">
+				              	<div  style="font-size:18px;margin-bottom:3vh;">
+				                  承認制で繋がりを管理
+				                </div>
+				                <div style="width:63%;margin:0 auto;">
+				                  <%= image_tag "using05.PNG", :class =>'img_lavoro11' %>
+				                </div>
+				                <div style="height:17vh;"></div>
+				            </div>
+				          </div>
+				        </div>
+					</div>
+				</div>
+
+			</div>
+			<div class="swiper-pagination"></div>
+			<div class="btns_session">
+				<div style="display:inline-block;margin-right:10px;">
+					<a href="" data-toggle="modal" data-target="#myModal_sign_in">
+			          <div class="btn_session">
+						ログイン
+					  </div>
+			        </a>
+				</div>
+				<div style="display:inline-block;margin-left:10px;">
+					<a href="" data-toggle="modal" data-target="#myModal_sign_up">
+				        <div class="btn_register">
+							アカウント作成
+						</div>
+			        </a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="block_side">
+	</div>
+</div>
+
+<div class="modal fade" id="myModal_sign_in">
+	<div class="height_modal"></div>
+    <div class="modal-dialog">
+    	<div class="base02">
+			<span>
+				<div class="layer12">
+				</div>
+				<div class="layer11">
+				</div>
+				<div class="layer06">
+					<div class="font_white_big">
+						Sign in
+					</div>
+					<div class="gogo">
+						<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+						  <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
+						  <%= f.password_field :password,placeholder: "password", required: "" %>
+						  <div style="height:3vh;"></div>
+	          			  <%= f.submit "完了",class:"btn_session" %>
+						<% end %>
+						<div style="height:5vh;"></div>
+					</div>
+				</div>
+				<div class="layer04">
+					<div class="pro17">
+						<div style="margin:0px 0px 20px 20px;">
+							<a href="" data-toggle="modal" data-dismiss="modal">
+								<%= image_tag "left_gray.png", :class =>'img_left' %>
+							</a>
+						</div>
+					</div>
+					<div class="pro17" style="text-align:right;">
+						<%= link_to new_user_password_path do %>
+							<div class="font_gray_min" style="margin:0px 20px 20px 0px;">
+								パスワードを忘れたら
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</span>
+		</div>
+    </div>
+</div>
+<div class="modal fade" id="myModal_sign_up">
+	<div class="height_modal"></div>
+    <div class="modal-dialog">
+    	<div class="base02">
+			<span>
+				<div class="layer12">
+				</div>
+				<div class="layer11">
+				</div>
+				<div class="layer06">
+					<div class="font_white_big">
+						Sign up
+					</div>
+					<div class="gogo">
+						<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+						  <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
+						  <%= f.email_field :email,placeholder: "email", required: "" %>
+						  <%= f.password_field :password,placeholder: "password", required: "" %>
+						  <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
+						  <div style="height:2vh;"></div>
+	          			  <%= f.submit "完了",class:"btn_session" %>
+						<% end %>
+					</div>
+					<div style="height:5vh;"></div>
+				</div>
+				<div class="layer04">
+					<div class="pro06">
+						<div style="margin:0px 0px 20px 20px;">
+							<a href="" data-toggle="modal" data-dismiss="modal">
+								<%= image_tag "left_gray.png", :class =>'img_left' %>
+							</a>
+						</div>
+					</div>
+					<div class="pro07" style="text-align:center;">				
+						<div class="font_gray_min" style="margin:0px 10px 0px 0px;">
+							アカウントを作成することで,TAVOREの
+							<%= link_to terms_path do %>
+								利用規約
+							<% end %>
+							と
+							<%= link_to policy_path do %>
+								プライバシーポリシー
+							<% end %>
+							に同意されたものとします。
+						</div>					
+					</div>
+				</div>
+			</span>
+		</div>
+    </div>
+</div>
