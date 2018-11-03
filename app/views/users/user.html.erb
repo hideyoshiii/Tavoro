@@ -15,7 +15,9 @@
 					<div class="tango01">	
 						<div style="height:3vh;"></div>
 						<div class="nmn" style="text-align:center;width:100%;padding:10px;">
-							<input id="inc_search" placeholder="&#xf002; 検索する" type="text" required="">
+							<form action="#">
+								<input id="inc_search" placeholder="&#xf002; 検索する" type="text" required="">
+							</form>
 						</div>
 						<div class="box_tests03">
 							<div class="pro12">
@@ -39,25 +41,41 @@
 
 
 <script type="text/javascript">
-	var
-	preFunc = null,
-	preInput = '',
-	input = '',
-	ajaxPost = function(input)
-	{
-	  $.ajax({
-	    url: "ajax_user_list",
-	      type: "GET",
-	      data: ("q=" + input)
-	  });
-	};
+	$(function(){
+		var
+		preFunc = null,
+		preInput = '',
+		input = '',
+		ajaxPost = function(input)
+		{
+		  $.ajax({
+		    url: "ajax_user_list",
+		      type: "GET",
+		      data: ("q=" + input)
+		  });
+		};
 
-	$('#inc_search').on('keyup', function() {
-	  input = $.trim($(this).val());   //前後の不要な空白を削除
-	  if(preInput !== input){
-	    clearTimeout(preFunc);
-	    preFunc = setTimeout(ajaxPost(input), 2000);
-	  }
-	  preInput = input;
+		$('#inc_search').on('keyup', function() {
+		  input = $.trim($(this).val());   //前後の不要な空白を削除
+		  if(preInput !== input){
+		    clearTimeout(preFunc);
+		    preFunc = setTimeout(ajaxPost(input), 2000);
+		  }
+		  preInput = input;
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$(function(){
+		$( '#inc_search' ).keypress( function ( e ) {
+			if ( e.which == 13 ) {
+			// ここに処理を書く
+
+			// スマホのキーボードを閉じる
+			  $("#inc_search").blur();
+			   return false;
+			}
+		})
 	});
 </script>
