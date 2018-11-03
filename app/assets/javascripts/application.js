@@ -30,10 +30,3 @@
 
 //= require turbolinks
 //= require_tree .
-
-
-
-//ドロップダウンがスマホでも開くように
-$(document).ready(function(){
-    $('.dropdown-toggle').dropdown();
-});
