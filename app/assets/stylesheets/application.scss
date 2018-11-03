@@ -121,6 +121,12 @@ a:visited{
 	background: linear-gradient(-180deg, #111111, #05627B); 
 	overflow:hidden;
  }
+@media only screen and (min-width: 768px) {
+	.main {
+		background: -webkit-linear-gradient(-0deg, #111111, #05627B); 
+		background: linear-gradient(-0deg, #111111, #05627B); 
+	 }
+}
 .main > .cover {
 	position: absolute;
 	content: "";
@@ -141,8 +147,13 @@ a:visited{
 	background: -webkit-linear-gradient(-180deg, #111111, #05627B); 
 	background: linear-gradient(-180deg, #111111, #05627B); 
 	overflow:hidden;
-	
  }
+@media only screen and (min-width: 768px) {
+	.main02 {
+		background: -webkit-linear-gradient(-0deg, #111111, #05627B); 
+		background: linear-gradient(-0deg, #111111, #05627B); 
+	 }
+}
 .block_main{
 		float: left;
 		vertical-align:top;

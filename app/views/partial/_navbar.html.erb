@@ -27,8 +27,71 @@
           </a>
         </div>
       <% end %>
+    <% else %>
+      <div style="float:right;padding:17px 10px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
+        <a href="" data-toggle="modal" data-target="#myModal_contact">
+          お問い合わせ
+        </a>
+      </div>
     <% end %>
   </div>
 </div>
+
+
+<% unless user_signed_in? %>
+
+<div class="modal fade" id="myModal_contact">
+  <div class="height_modal"></div>
+    <div class="modal-dialog">
+      <div class="a1">
+        <div class="a4">
+          <div class="d1">
+            <div class="d5"></div>
+          </div>
+        </div>
+        <div class="a5">
+          <div class="e1">
+            <div class="e4">
+              <a href="https://twitter.com/aripei_ask" blank>
+                  <div>
+                    <%= image_tag "aripei.png", :style =>'width:100px;height:100px;border-radius:50%;background:#FAFAFA;' %>
+                  </div>
+                  <div style="font-size:15px;margin-top:1vh;">
+                    <i class="fab fa-twitter" style="color:#22b8ff;"></i> @aripei_ask
+                  </div>
+                </a>
+                <div style="height:3vh;"></div>
+                <div class="font_white" style="margin-top:4vh;">
+                  TAVOREはアリペイが運営しております
+                </div>
+                <div class="font_white" style="margin-top:4vh;">
+                  皆さんのアドバイスやご指摘が本当に参考になります<br>
+                  小さなことでもご連絡いただけるとありがたいです
+                </div>
+                <div class="font_gray_min" style="margin-top:4vh;">
+                  Twitterアカウントをお持ちでない方はこちらまで
+                </div>
+                <a href="mailto:tavore.info&#64;gmail.com">
+                  <div style="font-size:14px;margin-top:1vh;">
+                    tavore.info@gmail.com
+                  </div>
+                </a>
+              <div style="height:12vh;"></div>
+            </div>
+            <div class="e5">
+              <div class="pro19">
+                <a href="" data-dismiss="modal">
+                  <%= image_tag "close_blue.png", :class =>'img_left02' %>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
 
 
