@@ -28,10 +28,10 @@
 				</style>
 				<script type="text/javascript">
 					$(function(){
-				    $('#menu<%= post.id %>').click(function(){
-				        $('#menu_in<%= post.id %>').toggleClass('open');
-				    });
-				});
+					    $('#menu<%= post.id %>').click(function(){
+					        $('#menu_in<%= post.id %>').toggleClass('open');
+					    });
+					});
 				</script>
 				<% if post.category == "music" %>
 					<% if post.preview_url.present? %>
@@ -62,10 +62,9 @@
 							  margin-left:1px;
 							}
 						</style>
-						<script type="text/javascript">
-						  
+						<script type="text/javascript">						  
 						  $(function(){
-						  	var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
+						  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
 							  $('#btn_preview<%= post.id %>').on("click",function(){
 							    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
 							     {
@@ -80,11 +79,11 @@
 							       audio<%= post.id %>.pause();
 							     }
 							  });
-						  });
-						  audio<%= post.id %>.onended = function() {
-						     $("#icon_play<%= post.id %>").removeClass('fa-pause');
-						     $("#icon_play<%= post.id %>").addClass('fa-play');
-						  };
+							  audio<%= post.id %>.onended = function() {
+							    $("#icon_play<%= post.id %>").removeClass('fa-pause');
+							    $("#icon_play<%= post.id %>").addClass('fa-play');
+							  };
+						  	});					
 					   </script>
 					<% end %>
 			   <% end %>

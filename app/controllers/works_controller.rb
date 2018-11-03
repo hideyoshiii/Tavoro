@@ -10,7 +10,7 @@ class WorksController < ApplicationController
     	@user  = User.find(current_user.id)
     	@users = @user.followings
     	@posts = []
-      @posts_mine = Post.where(user_id: current_user.id).order(created_at: "DESC")
+      @posts_mine = Post.where(user_id: @user.id).order(created_at: "DESC")
       @posts_mine = @posts_mine.where.not(review: "bookmark")
       @posts.concat(@posts_mine)
     	if @users.present?
@@ -118,7 +118,7 @@ class WorksController < ApplicationController
   end
 
   def book
-  	@defaults = RakutenWebService::Books::Book.search(size: 2,sort: "reviewCount")
+  	@defaults = RakutenWebService::Books::Book.search(size: 2,sort: "reviewCount", hits: 20)
   end
 
   def book_detail
@@ -136,7 +136,7 @@ class WorksController < ApplicationController
 
   def ajax_book_list
   	if params[:q].present?
-  		@items = RakutenWebService::Books::Book.search(title: params[:q])
+  		@items = RakutenWebService::Books::Book.search(title: params[:q], hits: 20)
   	end
   end
 
