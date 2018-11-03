@@ -33,7 +33,6 @@ Rails.application.routes.draw do
   post "follow_requests/:id/unapproval" => "follow_requests#unapproval"
 
   get 'works/category' => "works#category"
-  get 'works/search' => "works#search"
   get 'works/movie' => "works#movie"
   get 'works/movie/detail' => "works#movie_detail"
   get 'works/ajax_movie_list' => "works#ajax_movie_list"
