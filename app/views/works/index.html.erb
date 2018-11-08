@@ -104,7 +104,7 @@
 						<div class="layer03">
 							<div class="pro01">
 								<%= link_to "/users/#{post.user.id}/collection" do %>
-									<%= image_tag post.user.image, :class => "img_user04" %>
+									<%= image_tag post.user.image(:large), :class => "img_user04" %>
 								<% end %>
 							</div>
 							<div class="pro02">
