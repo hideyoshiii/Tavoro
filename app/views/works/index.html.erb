@@ -92,7 +92,7 @@
 						<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
 					<% else %>
 						<% if post.category == "music" %>
-							<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro02">
+							<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro002">
 						<% else %>
 							<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro02">
 							
@@ -271,6 +271,7 @@
 		  	effect: 'fade',
 		  	preloadImages: false,
 			lazy: {
+				loadPrevNextAmount: 5,
 				loadOnTransitionStart: true,
 			},
 		});
