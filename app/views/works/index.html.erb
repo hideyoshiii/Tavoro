@@ -35,7 +35,7 @@
 				</script>
 				<% if post.category == "music" %>
 					<% if post.preview_url.present? %>
-						<div class="swiper-lazy">
+						<div class="swiper-lazy-loading">
 							<style type="text/css">
 								#btn_preview<%= post.id %> {
 							    display: block;
@@ -272,6 +272,7 @@
 		  	preloadImages: false,
 			lazy: {
 				loadOnTransitionStart: true,
+				loadingClass: 'swiper-lazy-loading',
 			},
 		  	effect: 'fade',
 		});
