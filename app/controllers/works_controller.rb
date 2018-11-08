@@ -27,25 +27,6 @@ class WorksController < ApplicationController
     end
   end
 
-  def category
-    @user  = User.find(current_user.id)
-    @users = @user.followings
-
-    if params[:q].present?
-      @posts = []
-      if @users.present?
-          @users.each do |user|
-              posts = Post.where(user_id: user.id, category: params[:q])
-              posts = posts.where.not(review: "bookmark")
-              #取得したユーザーの投稿一覧を@postsに格納
-              @posts.concat(posts)
-          end
-          #@postsを新しい順に並べたい
-          @posts.sort_by!{|post| post.created_at}.reverse!
-      end
-    end
-  end
-
   def movie
   	@defaults = Tmdb::Movie.popular
   	@defaults = @defaults[:results]
