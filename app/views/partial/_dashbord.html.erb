@@ -13,11 +13,7 @@
               <div class="e2">
                 <div style="width:100%;">
                   <div style="text-align:center;">
-                    <% if current_user.image.blank?  %>
-                      <%= image_tag "user09.png", :class =>'img_user08' %>
-                    <% else %>
-                      <%= image_tag current_user.image, :class => "img_user08" %>
-                    <% end %>
+                    <%= image_tag current_user.image(:large), :class => "img_user08" %>
                   </div>
                   <div style="font-size:18px;text-align:center;margin-top:10px;">
                     <%= current_user.name %>

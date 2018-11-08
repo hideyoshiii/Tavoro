@@ -11,7 +11,7 @@
 				<div class="pro29">
 					<a href="" data-toggle="modal" data-target="#myModal_profile">
 						<div style="padding:10px 10px 10px 20px;display:inline-block;vertical-align:middle;">
-	            			<%= image_tag @user.image, :class =>'img_user11' %>
+	            			<%= image_tag @user.image(:medium), :class =>'img_user11' %>
 	            		</div>
 						<div class="font_white" style="display:inline-block;vertical-align:middle;max-width:50%;word-wrap: break-word;">
 		        			<%= @user.name %>
@@ -526,11 +526,7 @@
 						<div class="layer03">
 							<div class="pro01">
 								<%= link_to "/users/#{post.user.id}/collection" do %>
-									<% if post.user.image.blank?  %>
-										<%= image_tag "user09.png", :class =>'img_user04' %>
-									<% else %>
-										<%= image_tag post.user.image, :class => "img_user04" %>
-									<% end %>
+									<%= image_tag post.user.image(:medium), :class => "img_user04" %>
 								<% end %>
 							</div>
 							<div class="pro02">
