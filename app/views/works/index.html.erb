@@ -35,67 +35,68 @@
 				</script>
 				<% if post.category == "music" %>
 					<% if post.preview_url.present? %>
-						<style type="text/css">
-							#btn_preview<%= post.id %> {
-						    display: block;
-						    width: 40px;
-						    height: 40px;
-						    background: rgba(50,50,50,0.7);
-						    text-align: center;
-						    border-radius: 50%;
-						    cursor: pointer;
-						    position: relative;
-						    margin-left:85%;
-						    margin-top:-15%;
-							}
-							@media only screen and (max-width: 768px) {
-								#btn_preview<%= post.id %>{
-								margin-left:80%;
-						    	margin-top:-20%;
+						<div class="swiper-lazy-loading">
+							<style type="text/css">
+								#btn_preview<%= post.id %> {
+							    display: block;
+							    width: 40px;
+							    height: 40px;
+							    background: rgba(50,50,50,0.7);
+							    text-align: center;
+							    border-radius: 50%;
+							    cursor: pointer;
+							    position: relative;
+							    margin-left:85%;
+							    margin-top:-15%;
 								}
-							}
-							#btn_preview<%= post.id %> i {
-							  color: #FAFAFA;
-							  line-height: 40px;
-							  vertical-align: middle;
-							  font-size: 9px;
-							  margin-left:1px;
-							}
-						</style>
-						<script type="text/javascript">						  
-						  $(function(){
-						  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
-							  $('#btn_preview<%= post.id %>').on("click",function(){
-							    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
-							     {
-							       $("#icon_play<%= post.id %>").removeClass('fa-play');
-							       $("#icon_play<%= post.id %>").addClass('fa-pause');
-							       audio<%= post.id %>.play();
-							     }
-							    else
-							     {
-							       $("#icon_play<%= post.id %>").removeClass('fa-pause');
-							       $("#icon_play<%= post.id %>").addClass('fa-play');
-							       audio<%= post.id %>.pause();
-							     }
-							  });
-							  audio<%= post.id %>.onended = function() {
-							    $("#icon_play<%= post.id %>").removeClass('fa-pause');
-							    $("#icon_play<%= post.id %>").addClass('fa-play');
-							  };
-						  	});					
-					   </script>
+								@media only screen and (max-width: 768px) {
+									#btn_preview<%= post.id %>{
+									margin-left:80%;
+							    	margin-top:-20%;
+									}
+								}
+								#btn_preview<%= post.id %> i {
+								  color: #FAFAFA;
+								  line-height: 40px;
+								  vertical-align: middle;
+								  font-size: 9px;
+								  margin-left:1px;
+								}
+							</style>
+							<script type="text/javascript">						  
+							  $(function(){
+							  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
+								  $('#btn_preview<%= post.id %>').on("click",function(){
+								    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
+								     {
+								       $("#icon_play<%= post.id %>").removeClass('fa-play');
+								       $("#icon_play<%= post.id %>").addClass('fa-pause');
+								       audio<%= post.id %>.play();
+								     }
+								    else
+								     {
+								       $("#icon_play<%= post.id %>").removeClass('fa-pause');
+								       $("#icon_play<%= post.id %>").addClass('fa-play');
+								       audio<%= post.id %>.pause();
+								     }
+								  });
+								  audio<%= post.id %>.onended = function() {
+								    $("#icon_play<%= post.id %>").removeClass('fa-pause');
+								    $("#icon_play<%= post.id %>").addClass('fa-play');
+								  };
+							  	});					
+						   </script>
+						</div>
 					<% end %>
 			   <% end %>
 				<div class="base01">
 					<% if post.image_url.blank? %>
-						<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
+						<img data-src="/assets/nothing01.jpg" class="swiper-lazy img_lavoro03">
 					<% else %>
 						<% if post.category == "music" %>
 							<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro002">
 						<% else %>
-							<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro02">
-							
+							<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro02">						
 						<% end %>
 					<% end %>
 					<span>
@@ -151,7 +152,7 @@
 						<div class="layer01">
 							<%= link_to "/works/#{post.id}/detail" do %>
 								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+									<img data-src="/assets/nothing01.jpg" class="swiper-lazy img_lavoro03">
 								<% else %>
 									<% if post.category == "movie" || post.category == "tv" %>
 										<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro10">
@@ -175,7 +176,7 @@
 						<div class="layer02">
 							<div class="font_how">
 								<% if post.review == "bookmark" %>
-									<i class="far fa-bookmark"></i> ブックマーク
+									<i class="far fa-bookmark" style="color:rgba(220,220,220,0.8);text-shadow:none;"></i> ブックマーク
 								<% end %>
 								<% if post.review == "good" %>
 									<% if post.category == "movie" || post.category == "tv" %>
@@ -268,11 +269,11 @@
 		    	prevEl: '.swiper-button-prev',
 		  	},
 		  	hideOnClick: false,
-		  	effect: 'fade',
 		  	preloadImages: false,
 			lazy: {
 				loadOnTransitionStart: true,
 			},
+		  	effect: 'fade',
 		});
 	});
 </script>
