@@ -54,6 +54,8 @@ gem 'rack-rewrite'
 
 gem 'google-analytics-rails'
 
+gem 'serviceworker-rails'
+
 
 group :production do 
   gem 'pg'
