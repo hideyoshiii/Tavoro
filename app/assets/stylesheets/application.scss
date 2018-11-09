@@ -247,7 +247,7 @@ a:visited{
 .img_user04{
 	width: 50px;
 	height: 50px;
-	margin:12px 12px;
+	margin:12px 15px 12px 12px;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
 	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.4);
@@ -420,10 +420,10 @@ a:visited{
     text-aligin:center;
 }
 .img_lavoro002{
-	width:170%;
+	width:174%;
 	height:auto;
     padding:0;
-    margin:0 0 0 -35%;
+    margin:0 0 0 -37%;
 }
 .img_tavore01{
 	width:250px;
@@ -487,8 +487,8 @@ a:visited{
 }
 @media only screen and (max-width: 768px) {
 	.img_user04{
-		width: 40px;
-		height: 40px;
+		width: 45px;
+		height: 45px;
 	}
 	.img_user07{
 		width: 40px;
@@ -515,8 +515,8 @@ a:visited{
 	    margin:0 0 0 -25%;
 	}
 	.img_lavoro002{
-		width:170%;
-	    margin:0 0 0 -35%;
+		width:174%;
+	    margin:0 0 0 -37%;
 	}
 	.img_tavore01{
 		width:180px;
@@ -2323,6 +2323,26 @@ button {
 		text-aline:center;
 		font-size:0px;
 	}
+.pro31{
+		display:inline-block;
+		vertical-align:middle;
+		width:80%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		font-size:0px;
+}
+.pro32{
+		display:inline-block;
+		vertical-align:middle;
+		width:20%;
+		height:auto;
+		padding:0;
+		margin:0 auto;
+		background:none;
+		font-size:0px;
+}
 
 
 
@@ -3277,7 +3297,7 @@ input[name="slideshow"] {
 
 //アイコン関連
 .icon_menu{
-	padding:30px 15px 0px 0px;
+	padding:38px 15px 0px 0px;
 	text-align:right;
 	cursor: pointer;
 }
@@ -3286,9 +3306,13 @@ input[name="slideshow"] {
 	text-align:right;
 	cursor: pointer;
 }
+.icon_menu_child{
+	margin:30px 10px 0px 0px;
+	cursor: pointer;
+}
 @media only screen and (max-width: 768px) {
 	.icon_menu{
-		padding:20px 15px 0px 0px;
+		padding:28px 15px 0px 0px;
 	}
 	.icon_menu02{
 		padding:28px 15px 0px 0px;
@@ -3462,8 +3486,15 @@ input[name="slideshow"] {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+
+
+//凡庸
 .hide{
 	desplay:none;
+}
+.inline_block_default{
+	display:inline-block;
+	vertical-align:middle;
 }
 
 
