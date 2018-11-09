@@ -2127,7 +2127,7 @@ button {
 		vertical-align:middle;
 		width:15%;
 		height:auto;
-		padding:0 0px 0 10px;
+		padding:0 0 0 10px;
 		margin:0 auto;
 		background:none;
 		text-aline:left;
@@ -2138,7 +2138,7 @@ button {
 		vertical-align:middle;
 		width:70%;
 		height:auto;
-		padding:0 0px 0 10px;
+		padding:0 10px;
 		margin:0 auto;
 		background:none;
 		text-aline:left;
@@ -2149,7 +2149,7 @@ button {
 		vertical-align:middle;
 		width:15%;
 		height:auto;
-		padding:0 10px 0 0;
+		padding:0;
 		margin:0 auto;
 		background:none;
 		text-aline:right;
@@ -2649,6 +2649,9 @@ button {
 .height06{
 	height:70px;
 }
+.height07{
+	height:70px;
+}
 .height_logo{
 		height:10vh;
 	}
@@ -2672,6 +2675,9 @@ button {
 		height:80px;
 	}
 	.height06{
+		height:60px;
+	}
+	.height07{
 		height:60px;
 	}
 	.height_modal{
@@ -3297,12 +3303,12 @@ input[name="slideshow"] {
 
 //アイコン関連
 .icon_menu{
-	padding:38px 15px 0px 0px;
+	padding:36px 15px 0px 0px;
 	text-align:right;
 	cursor: pointer;
 }
 .icon_menu02{
-	padding:38px 15px 0px 0px;
+	padding:36px 15px 0px 0px;
 	text-align:right;
 	cursor: pointer;
 }
@@ -3312,10 +3318,10 @@ input[name="slideshow"] {
 }
 @media only screen and (max-width: 768px) {
 	.icon_menu{
-		padding:28px 15px 0px 0px;
+		padding:26px 15px 0px 0px;
 	}
 	.icon_menu02{
-		padding:28px 15px 0px 0px;
+		padding:26px 15px 0px 0px;
 	}
 }
 
@@ -3486,6 +3492,16 @@ input[name="slideshow"] {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+.contain_title02{
+	overflow: hidden;
+  	width: 100%;
+}
+.contain_title02 div{
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
 
 
 //凡庸
