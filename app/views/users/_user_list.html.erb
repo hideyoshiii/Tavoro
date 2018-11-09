@@ -6,11 +6,7 @@
 	          <div class="box_tests05">
 	            <div class="pro21">
 	              <%= link_to "/users/#{user.id}/collection" do %>
-		              <% if user.image.blank? %>
-		                <%= image_tag "user09.png", :class =>'img_user09' %>
-		              <% else %>
-		                <%= image_tag user.image, :class =>'img_user09' %>
-		              <% end %>
+		            <%= image_tag user.image(:medium), :class =>'img_user09' %>
 	              <% end %>
 	            </div>
 	            <div class="pro22">
