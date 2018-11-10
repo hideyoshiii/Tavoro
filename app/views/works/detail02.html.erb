@@ -1,0 +1,320 @@
+<% post = @post %>
+<style type="text/css">
+		#menu_in_st<%= post.id %>{
+		  overflow: hidden;
+		  width: auto;
+		  max-height: 0;
+		  opacity: 0;
+		  -webkit-transition: all .5s ease-in-out 0s;
+		  transition: all .5s ease-in-out 0s;
+		}
+		#menu_in_st<%= post.id %>.open {
+		  max-height:500px;
+		  opacity: 1;
+		  z-index: 9999;
+		}
+	</style>
+<script type="text/javascript">
+	$(function(){
+    $('#menu_st<%= post.id %>').click(function(){
+        $('#menu_in_st<%= post.id %>').toggleClass('open');
+    });
+});
+</script>
+
+<div class="main">
+	<div class="block_side">
+	</div>
+	<div class="block_main">
+		<div style="height:50px;"></div>
+		<div class="a1">
+			<div class="a4">
+	            <div class="d1">
+	              	<% if post.image_url.blank? %>
+						<%= image_tag "nothing01.jpg", :class =>'img_lavoro04' %>
+					<% else %>
+						<% if post.category == "music" %>
+							<%= image_tag post.image_url, :class =>'img_lavoro06' %>
+						<% else %>
+							<%= image_tag post.image_url, :class =>'img_lavoro04' %>
+						<% end %>
+					<% end %>
+					<div class="d2"></div>
+	            </div>
+          	</div>
+			<div class="a2">
+				<div class="bar_smoke"></div>	
+				<div class="pro01">
+					<%= link_to "/users/#{post.user.id}/collection" do %>
+						<% if post.user.image.blank?  %>
+							<%= image_tag "user09.png", :class =>'img_user04' %>
+						<% else %>
+							<%= image_tag post.user.image, :class => "img_user04" %>
+						<% end %>
+					<% end %>
+				</div>
+				<div class="pro02">
+					<%= link_to "/users/#{post.user.id}/collection" do %>
+						<div class="font_white">
+							<%= post.user.name %>
+						</div>
+						<div class="font_gray_min">
+							<% if post.category == "movie" %>
+								<i class="fas fa-film"></i> 映画
+							<% end %>
+							<% if post.category == "tv" %>
+								<i class="fas fa-film"></i> テレビ
+							<% end %>
+							<% if post.category == "book" %>
+								<i class="fas fa-book"></i> ブック
+							<% end %>
+							<% if post.category == "comic" %>
+								<i class="fas fa-book"></i> コミック
+							<% end %>
+							<% if post.category == "music" %>
+								<i class="fas fa-music"></i> ミュージック
+							<% end %>
+							<% @seconds = (Time.now - post.created_at).round  %>
+							<% if @seconds <= 3600 %>
+								- <%= @seconds / 60 %>分前
+							<% else %>
+								<% if @seconds <= 86400 %>
+										- <%= @seconds / (60 * 60) %>時間前
+								<% else %>
+									<% if @seconds <= 604800 %>
+										- <%= @seconds / (60 * 60 * 24) %>日前
+									<% else %>
+										- <%= post.created_at.strftime('%m月%d日') %>
+									<% end %>
+								<% end %>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+				<div class="pro03">
+				</div>
+			</div>
+			<div class="a3">
+				<div id="menu_st<%= post.id %>" class="icon_menu">
+					<%= image_tag "test07.png", :style =>'width:25px;height:25px;' %>
+				</div>
+				<div id="menu_in_st<%= post.id %>">
+				  	<% unless post.user.id == current_user.id %>
+					  	<div style="margin:30px 10px 0px 0px;">
+							<span id="bookmark-of-<%= post.id %>">
+						      	<%= render partial: 'works/bookmark', locals: { post: post } %>
+						    </span>
+						</div>
+						<div style="margin:30px 10px 0px 0px;">
+							<%= link_to "/works/#{post.id}/copy" do %>
+								<%= image_tag "test10.png", :style =>'width:35px;height:35px;' %>
+							<% end %>									
+						</div>
+					<% end %>
+					<% if post.user.id == current_user.id %>
+						<div style="margin:30px 10px 0px 0px;">
+							<%= link_to "/works/#{post.id}/edit" do %>
+								<%= image_tag "test04.png", :style =>'width:35px;height:35px;' %>
+							<% end %>
+						</div>
+						<div style="margin:30px 10px 0px 0px;">
+							<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+								<%= image_tag "test01.png", :style =>'width:35px;height:35px;' %>
+							<% end %>
+						</div>	
+					<% end %>								
+				</div>
+			</div>
+			<div class="a4">
+				<div class="b1">
+					<div class="b2">
+						<% if post.image_url.blank? %>
+							<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+						<% else %>
+							<%= image_tag post.image_url, :class =>'img_lavoro03' %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="a5">
+				<div class="c1">
+					<div class="c2">						
+						<div class="up_bar">
+						</div>				
+						<div style="font-size:18px;color:#FAFAFA;text-align:center;">
+							<% if post.preview_url.present?  %>
+								<span id="btn_preview01" style="display:inline-block;">
+									<i id="icon_play" class="fas fa-play"></i>
+								</span>
+							<% end %>
+							<%= post.title %>
+							<% if @detail01.present? %>
+								<span style="font-size:14px;color:#999999;">
+									(<%= @detail01 %>)
+								</span>
+							<% end %>
+						</div>
+						<% if @detail02.present?  %>
+							<div style="font-size:14px;color:#999999;text-align:center;">
+								<%= @detail02 %>
+							</div>
+						<% end %>
+						<% if @detail03.present?  %>
+							<div style="font-size:14px;color:#999999;text-align:center;">
+								<%= @detail03 %>
+							</div>
+						<% end %>
+						<div class="box_comment01">
+							<div class="pro06">
+								<%= image_tag post.user.image, :class =>'img_user07' %>
+							</div>
+							<div class="pro07">
+								<div class="font_gray">
+									<%= post.user.name %>
+									<% @seconds = (Time.now - post.created_at).round  %>
+									<% if @seconds <= 3600 %>
+										- <%= @seconds / 60 %>分前
+									<% else %>
+										<% if @seconds <= 86400 %>
+												- <%= @seconds / (60 * 60) %>時間前
+										<% else %>
+											<% if @seconds <= 604800 %>
+												- <%= @seconds / (60 * 60 * 24) %>日前
+											<% else %>
+												- <%= post.created_at.strftime('%m月%d日') %>
+											<% end %>
+										<% end %>
+									<% end %>
+								</div>
+								<div class="font_white">
+									<% if post.review == "bookmark" %>
+										<i class="far fa-bookmark"></i> ブックマーク
+									<% end %>
+									<% if post.review == "good" %>
+										<% if post.category == "movie" || post.category == "tv" %>
+											観ました
+										<% end %>
+										<% if post.category == "book" || post.category == "comic" %>
+											読みました
+										<% end %>
+										<% if post.category == "music" %>
+											聴きました
+										<% end %>
+									<% end %>
+									<% if post.review == "favorite" %>
+										<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+									<% end %>
+									<% if post.review == "bad" %>
+										<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
+									<% end %>
+								</div>
+								<div class="font_gray">
+									"<%= simple_format(post.description, {}, wrapper_tag: "span") %>"
+								</div>	
+							</div>
+						</div>		
+						<% if post.user == current_user %>				
+							<% unless @comments.count >= 2 %>
+								<div style="text-align:center;margin-top:30px;font-size:18px;">
+									<%= image_tag "test18.png", :style =>'width:20px;height:20px;' %>
+								</div>
+								<div style="text-align:center;margin-top:10px;font-size:16px;color:#999999;">
+									他のアクティビティがありません
+								</div>	
+							<% end %>					
+						<% else %>
+							<% unless @comments.count >= 1 %>
+								<div style="text-align:center;margin-top:30px;font-size:18px;">
+									<%= image_tag "test18.png", :style =>'width:20px;height:20px;' %>
+								</div>
+								<div style="text-align:center;margin-top:10px;font-size:16px;color:#999999;">
+									他のアクティビティがありません
+								</div>	
+							<% end %>	
+						<% end %>
+						<div style="text-align:center;margin:30px;font-size:15px;">
+							<%= link_to "/works/#{post.id}/copy", :class =>'test_btn01' do %>
+									共有
+							<% end %>
+						</div>
+						<% unless @comments.blank? %>
+							<% @comments.each.with_index(1) do |post, i| %>
+								<% unless post.user == @post.user %>
+									<div class="box_comment02">
+										<div class="pro06">
+											<%= image_tag post.user.image, :class =>'img_user07' %>
+										</div>										
+										<div class="pro07">
+											<div class="font_gray">
+												<%= post.user.name %> - <%= post.created_at.strftime('%Y/%m/%d') %>
+											</div>
+											<div class="font_white">
+												<% if post.review == "bookmark" %>
+													<i class="far fa-bookmark"></i> ブックマーク
+												<% end %>
+												<% if post.review == "good" %>
+													<% if post.category == "movie" || post.category == "tv" %>
+														観ました
+													<% end %>
+													<% if post.category == "book" || post.category == "comic" %>
+														読みました
+													<% end %>
+													<% if post.category == "music" %>
+														聴きました
+													<% end %>
+												<% end %>
+												<% if post.review == "favorite" %>
+													<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+												<% end %>
+												<% if post.review == "bad" %>
+													<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
+												<% end %>
+											</div>
+											<div class="font_gray">
+												"<%= simple_format(post.description, {}, wrapper_tag: "span") %>"
+											</div>	
+										</div>										
+									</div>
+								<% end %>
+							<% end %>
+						<% end %>										
+						<div style="height:5vh;"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	
+		
+	</div>
+</div>
+
+
+<%#audioのワンボタン再生%>
+<% if post.preview_url.present?  %>
+	<script>
+		$(function(){
+		  var audio = new Audio("<%= post.preview_url %>");
+
+		  $('#btn_preview01').on("click",function(){
+		    if($("#icon_play").hasClass('fa-play'))
+		     {
+		       $("#icon_play").removeClass('fa-play');
+		       $("#icon_play").addClass('fa-pause');
+		       audio.play();
+		     }
+		    else
+		     {
+		       $("#icon_play").removeClass('fa-pause');
+		       $("#icon_play").addClass('fa-play');
+		       audio.pause();
+		     }
+		  });
+
+		  audio.onended = function() {
+		     $("#icon_play").removeClass('fa-pause');
+		     $("#icon_play").addClass('fa-play');
+		  };
+		});
+	</script>
+<% end %>

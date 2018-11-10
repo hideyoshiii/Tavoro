@@ -151,6 +151,12 @@ class WorksController < ApplicationController
         @comments.sort_by!{|post| post.created_at}.reverse!
     end
 
+    if current_user == @post.user
+      @comments_all = @comments
+    else
+      @comments_all = @comments.push(@post)
+    end
+
   	if @post.category == "movie"
   		@item = Tmdb::Movie.detail(@post.work_id)
   		@detail01 = @item["release_date"].slice(0..3)
