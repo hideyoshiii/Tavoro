@@ -21,6 +21,7 @@
 </style>
 <%#audioのワンボタン再生%>
 <script>
+	$(function(){
 	  var audio = new Audio("<%= @post.preview_url %>");
 
 	  $('#btn_preview').on("click",function(){
@@ -42,6 +43,7 @@
 	     $("#icon_play").removeClass('fa-pause');
 	     $("#icon_play").addClass('fa-play');
 	  };
+	});
 </script>
 <% end %>
 
