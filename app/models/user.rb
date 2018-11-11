@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_create :generate_username
+
+  validates :username, format: { with: /\A[a-z\d_]{5,15}\z/i }, on: :update, unless: :encrypted_password_changed?
+  validates_uniqueness_of :username, on: :update, unless: :encrypted_password_changed?
+  validates_presence_of :username, on: :update, unless: :encrypted_password_changed?
+
   after_create :send_welcome_mail
  
   def send_welcome_mail
@@ -77,6 +83,15 @@ class User < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
+  end
+
+
+  private
+  def generate_username
+    loop do
+      self.username = SecureRandom.hex(4)
+      break unless User.where(username: username).exists?
+    end
   end
   
 end

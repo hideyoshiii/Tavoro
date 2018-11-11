@@ -7,6 +7,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    "/users/#{current_user.id}/collection"
+    "/users/edit"
   end
 end

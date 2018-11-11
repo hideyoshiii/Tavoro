@@ -1,0 +1,12 @@
+<div style="width:70%;text-align:center;font-size:12px;margin:-3vh auto 0;">
+	<% if @check == true %>
+		<div style="color:green;text-align:left;">
+			<%= @validation %>
+		</div>
+	<% end %>
+	<% if @check == false %>
+		<div style="color:red;text-align:left;">
+			<%= @validation %>
+		</div>
+	<% end %>
+</div>

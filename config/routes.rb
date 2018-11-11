@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'users/follower' => "users#follower"
   get 'users/ajax_follower_list' => "users#ajax_follower_list"
   get 'users/configuration' => "users#configuration"
+  get 'users/ajax_validate_username' => "users#ajax_validate_username"
 
   resources :users do
     member do

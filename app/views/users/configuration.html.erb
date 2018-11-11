@@ -45,10 +45,10 @@
 		          </div>
 		        </div>
 				<div class="box_tests07">
-				  	<a href="" data-toggle="modal" data-target="#myModal_reset_password">
+				  	<%= link_to edit_user_registration_path do %>
 			          <div class="pro24">
 			            <div class="font_white_max">
-			            	パスワード変更
+			            	アカウント編集
 			            </div>
 			          </div>
 			          <div class="pro25">
@@ -56,7 +56,7 @@
 			              <i class="fas fa-chevron-right"></i>
 			            </span>
 			          </div>
-			        </a>
+			        <% end %>
 		        </div>
 
 		        <div style="height:5vh;"></div>	
@@ -170,54 +170,9 @@
           </div>
         </div>
 		
-	
-		
 	</div>
 	<div class="block_side">
 	</div>
-</div>
-
-
-<%#パスワード変更モーダル%>
-<div class="modal fade" id="myModal_reset_password">
-	<div class="height_modal"></div>
-    <div class="modal-dialog">
-    	<div class="base02">
-			<span>
-				<div class="layer12">
-				</div>
-				<div class="layer11">
-				</div>
-				<div class="layer06">
-					<div class="font_white_big">
-						パスワードを変更
-					</div>
-					<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-					
-						<div class="gogo">
-							<div class="font_white">
-				                (パスワードを変更時のみ下欄を埋めてください)
-				            </div>
-				            <div style="height:5vh;"></div>
-				            <%= f.password_field :password,placeholder: "password" %>
-				            <%= f.password_field :password_confirmation,:placeholder => 'password confirmation' %>
-							<div style="height:5vh;"></div>
-				            <%= f.submit "変更",class:"btn_session" %>
-				            <div style="height:10vh;"></div>
-						</div>
-					<% end %>
-						
-				</div>
-				<div class="layer09">
-					<div class="pro19">							
-						<a href="" data-dismiss="modal">
-							<%= image_tag "close_blue.png", :class =>'img_left02' %>
-						</a>
-					</div>
-				</div>
-			</span>
-		</div>
-    </div>
 </div>
 
 

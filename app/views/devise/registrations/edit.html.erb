@@ -4,8 +4,13 @@
   <div class="block_main">
     
     <div style="height:50px;"></div>
-    <div class="base03">
-      <span>
+    <div class="a1">
+      <div class="a4">
+        <div class="d1">
+          <div class="d2"></div>
+        </div>
+      </div>
+      <div class="a6">
         <div class="bar_post">  
           <div class="bar_smoke"></div>         
           <div class="box_tests04">
@@ -30,92 +35,392 @@
           </div>
         </div>
         <div class="height07"></div>
-        <div class="layer07"></div>
+        <div style="height:5vh;"></div> 
+        <%#アイコン画像%>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <div class="layer06">
-          <div class="form01">
+          <div class="form01" style="text-align:center;">
            <label for="image">
               <div class="preview00">
                 <div class="preview01">
                   <% if current_user.image %>
-                    <%= image_tag current_user.image, :class => "img_user02" %>
+                    <%= image_tag current_user.image(:large), :class => "img_user02" %>
                   <% else %>
                     <%= image_tag "user04.png", :class =>'img_user02' %>
                   <% end %>
-                  <span><i class="fas fa-plus-circle"></i></span>
+                  <span><i class="fas fa-camera"></i></span>
                 </div>
               </div>
               <div class="preview02">
               </div>
             </label>
-            <%= f.file_field :image, id:"image" %>
+            <%= f.file_field :image, id:"image", onchange:"this.form.submit()" %>
           </div>
-          <div class="gogo" style="margin-top:-3vh;">
-              <%= f.text_field :name,placeholder: "name", required: "" %>
-              <%= f.email_field :email,placeholder: "email", required: "" %>
-              <div class="" style="text-align:center;width:75%;padding:10px;margin:0 auto;">
-                <%= f.text_area :description, id: "textarea", placeholder: "自己紹介を書く" %>
-              </div>
-              <div style="height:5vh;"></div>
-              <%= f.submit "完了",class:"btn_session" %>
-              <div style="height:2vh;"></div>
+        <% end %>
+        <%#名前%>
+        <div class="box_tests06">
+          <div class="pro24">
+             <div class="font_gray">
+              名前
+            </div>
           </div>
         </div>
-        <% end %>
-      </span>
+        <div class="box_tests07">
+          <a href="" data-toggle="modal" data-target="#myModal_name">
+            <div class="pro24">
+              <div class="font_white_max">
+                <%= @user.name %>
+              </div>
+            </div>
+            <div class="pro25">
+              <span class="font_gray_max">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+        <div style="height:5vh;"></div> 
+        <%#ユーザーid%>
+        <div class="box_tests06">
+          <div class="pro24">
+             <div class="font_gray">
+              ユーザーid
+            </div>
+          </div>
+        </div>
+        <div class="box_tests07">
+          <a href="" data-toggle="modal" data-target="#myModal_username">
+            <div class="pro24">
+              <div class="font_white_max">
+                <%= @user.username %>
+              </div>
+            </div>
+            <div class="pro25">
+              <span class="font_gray_max">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+        <div style="height:5vh;"></div> 
+        <%#自己紹介%>
+        <div class="box_tests06">
+          <div class="pro24">
+             <div class="font_gray">
+              自己紹介
+            </div>
+          </div>
+        </div>
+        <div class="box_tests07">
+          <a href="" data-toggle="modal" data-target="#myModal_description">
+            <div class="pro24">
+              <div class="font_white_max contain_title02" style="max-width:80%;">
+                <% if @user.description.present? %>
+                  <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
+                <% else %>
+                  <div style="color:#999999;">
+                    自己紹介がありません
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="pro25">
+              <span class="font_gray_max">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+        <div style="height:5vh;"></div>
+        <%#email%>
+        <div class="box_tests06">
+          <div class="pro24">
+             <div class="font_gray">
+              メールアドレス
+            </div>
+          </div>
+        </div>
+        <div class="box_tests07">
+          <a href="" data-toggle="modal" data-target="#myModal_email">
+            <div class="pro24">
+              <div class="font_white_max">
+                <%= @user.email %>
+              </div>
+            </div>
+            <div class="pro25">
+              <span class="font_gray_max">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+        <div style="height:5vh;"></div>
+        <%#password%>
+        <div class="box_tests06">
+          <div class="pro24">
+             <div class="font_gray">
+              パスワード
+            </div>
+          </div>
+        </div>
+        <div class="box_tests07">
+          <a href="" data-toggle="modal" data-target="#myModal_password">
+            <div class="pro24">
+              <div class="font_white_max">
+                パスワードを変更
+              </div>
+            </div>
+            <div class="pro25">
+              <span class="font_gray_max">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+        <div style="height:5vh;"></div>
+        <div style="height:10vh;"></div> 
+      </div>
     </div>
-
+          
   </div>
   <div class="block_side">
   </div>
 </div>
 
 
-<script type="text/javascript">
-  $(function(){
-  //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
-  $('form').on('change', 'input[type="file"]', function(e) {
-    var file = e.target.files[0],
-        reader = new FileReader(),
-        $preview00 = $(".preview00");
-        $preview02 = $(".preview02");
-        t = this;
 
-    // 画像ファイル以外の場合は何もしない
-    if(file.type.indexOf("image") < 0){
-      return false;
-    }
 
-    // ファイル読み込みが完了した際のイベント登録
-    reader.onload = (function(file) {
-      return function(e) {
-        //既存のプレビューを削除
-        $preview00.empty();
-        //既存のプレビューを削除
-        $preview02.empty();
-        // .prevewの領域の中にロードした画像を表示するimageタグを追加
-        $preview02.append($('<img>').attr({
-                  src: e.target.result,
-                  class: "img_user02",
-                  title: file.name
-              }));
-      };
-    })(file);
 
-    reader.readAsDataURL(file);
-  });
-});
 
-</script>
+
+
+
+
+
+
+
+<%#nameモーダル%>
+<div class="modal fade" id="myModal_name">
+  <div class="height_modal"></div>
+    <div class="modal-dialog">
+      <div class="base02">
+      <span>
+        <div class="layer12">
+        </div>
+        <div class="layer11">
+        </div>
+        <div class="layer06">
+          <div class="font_white_big">
+            名前
+          </div>
+          <div class="gogo">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
+              <div style="height:3vh;"></div>
+              <%= f.submit "保存",class:"btn_session" %>
+            <% end %>
+          </div>
+          <div style="height:5vh;"></div>
+        </div>
+        <div class="layer09">
+          <div class="pro19">             
+            <a href="" data-dismiss="modal">
+              <%= image_tag "close_blue.png", :class =>'img_left02' %>
+            </a>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+<%#usernameモーダル%>
+<div class="modal fade" id="myModal_username">
+  <div class="height_modal"></div>
+    <div class="modal-dialog">
+      <div class="base02">
+      <span>
+        <div class="layer12">
+        </div>
+        <div class="layer11">
+        </div>
+        <div class="layer06">
+          <div class="font_white_big">
+            ユーザーid
+          </div>
+          <div class="gogo">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.text_field :username,placeholder: "username", required: "", autofocus: true, :id => "inc_search" %>
+              <div id='validate_username'>
+                <%= render partial: 'users/validate_username' %>
+              </div>
+              <div style="height:3vh;"></div>
+              <%= f.submit "保存",class:"btn_session" %>
+            <% end %>
+          </div>
+          <div style="height:5vh;"></div>
+        </div>
+        <div class="layer09">
+          <div class="pro19">             
+            <a href="" data-dismiss="modal">
+              <%= image_tag "close_blue.png", :class =>'img_left02' %>
+            </a>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+<%#descriptionモーダル%>
+<div class="modal fade" id="myModal_description">
+  <div class="height_modal"></div>
+    <div class="modal-dialog">
+      <div class="base02">
+      <span>
+        <div class="layer12">
+        </div>
+        <div class="layer11">
+        </div>
+        <div class="layer06">
+          <div class="font_white_big">
+            自己紹介
+          </div>
+          <div class="gogo">
+            <div style="height:3vh;"></div>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <div class="" style="text-align:center;width:75%;padding:10px;margin:0 auto;">
+                <%= f.text_area :description, id: "textarea", placeholder: "自己紹介を書く", autofocus: true %>
+              </div>
+              <div style="height:5vh;"></div>
+              <%= f.submit "保存",class:"btn_session" %>
+            <% end %>
+          </div>
+          <div style="height:5vh;"></div>
+        </div>
+        <div class="layer09">
+          <div class="pro19">             
+            <a href="" data-dismiss="modal">
+              <%= image_tag "close_blue.png", :class =>'img_left02' %>
+            </a>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+<%#emailモーダル%>
+<div class="modal fade" id="myModal_email">
+  <div class="height_modal"></div>
+    <div class="modal-dialog">
+      <div class="base02">
+      <span>
+        <div class="layer12">
+        </div>
+        <div class="layer11">
+        </div>
+        <div class="layer06">
+          <div class="font_white_big">
+            メールアドレス
+          </div>
+          <div class="gogo">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
+              <div style="height:3vh;"></div>
+              <%= f.submit "保存",class:"btn_session" %>
+            <% end %>
+          </div>
+          <div style="height:5vh;"></div>
+        </div>
+        <div class="layer09">
+          <div class="pro19">             
+            <a href="" data-dismiss="modal">
+              <%= image_tag "close_blue.png", :class =>'img_left02' %>
+            </a>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+<%#password%>
+<div class="modal fade" id="myModal_password">
+  <div class="height_modal"></div>
+    <div class="modal-dialog">
+      <div class="base02">
+      <span>
+        <div class="layer12">
+        </div>
+        <div class="layer11">
+        </div>
+        <div class="layer06">
+          <div class="font_white_big">
+            パスワードを変更
+          </div>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %> 
+            <div class="gogo">
+              <div class="font_white">
+                (パスワードを変更時のみ下欄を埋めてください)
+              </div>
+              <div style="height:5vh;"></div>
+              <%= f.password_field :password,placeholder: "password", required: "" %>
+              <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
+              <div style="height:5vh;"></div>
+              <%= f.submit "変更",class:"btn_session" %>
+              <div style="height:10vh;"></div>
+            </div>
+          <% end %>     
+        </div>
+        <div class="layer09">
+          <div class="pro19">             
+            <a href="" data-dismiss="modal">
+              <%= image_tag "close_blue.png", :class =>'img_left02' %>
+            </a>
+          </div>
+        </div>
+      </span>
+    </div>
+    </div>
+</div>
+
+
+
 
 <%#テキストエリアの自動改行%>
 <script type="text/javascript">
   $(function() {
     var $textarea = $('#textarea');
     var lineHeight = parseInt($textarea.css('lineHeight'));
+    $(function() {
+      var lines = ($textarea.val() + '\n').match(/\n/g).length;
+      $textarea.height(lineHeight * lines);
+    });
     $textarea.on('input', function(e) {
       var lines = ($(this).val() + '\n').match(/\n/g).length;
       $(this).height(lineHeight * lines);
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(function(){
+    var
+    preFunc = null,
+    preInput = '',
+    input = '',
+    ajaxPost = function(input)
+    {
+      $.ajax({
+        url: "ajax_validate_username",
+          type: "GET",
+          data: ("q=" + input)
+      });
+    };
+
+    $('#inc_search').keyup(function() {
+      input = $(this).val();   //前後の不要な空白を削除
+      if(preInput !== input){
+        clearTimeout(preFunc);
+        preFunc = setTimeout(ajaxPost(input), 0);
+      }
+      preInput = input;
     });
   });
 </script>

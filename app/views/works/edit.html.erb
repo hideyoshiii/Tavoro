@@ -153,6 +153,10 @@
 	$(function() {
 	  var $textarea = $('#textarea');
 	  var lineHeight = parseInt($textarea.css('lineHeight'));
+	  $(function() {
+	      var lines = ($textarea.val() + '\n').match(/\n/g).length;
+	      $textarea.height(lineHeight * lines);
+	    });
 	  $textarea.on('input', function(e) {
 	    var lines = ($(this).val() + '\n').match(/\n/g).length;
 	    $(this).height(lineHeight * lines);

@@ -72,4 +72,26 @@ class UsersController < ApplicationController
     def contact     
     end
 
+    def ajax_validate_username
+      if params[:q].present?
+        if User.where(username: params[:q]).exists?
+          if current_user.username == params[:q]
+            
+          else
+            @validation = "このidはすでに使われています"
+            @check = false
+          end
+        else
+          if params[:q].match(/\A[a-z\d_]{5,15}\z/i)
+            @validation = "使用可能なidです"
+            @check = true
+          else
+            @validation = "idは5文字以上15文字以内で,英字,数字と「_」が使用できます。スペースは使用できません。"
+            @check = false
+          end
+        end
+      end
+    end
+
+
 end
