@@ -34,6 +34,16 @@
       <%= render "partial/navbar" %>
       <% if user_signed_in? %>
         <%= render "partial/dashbord" %>
+        <script type="text/javascript">
+          $(function(){
+              $(window).scroll(function () {
+                  if ($(this).scrollTop() < -80) {
+                      $('#myModal_dashbord').modal('show'); 
+                  } else {        
+                  }
+              });
+          });
+        </script>
       <% end %>
     </header>
 

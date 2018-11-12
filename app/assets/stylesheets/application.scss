@@ -76,17 +76,17 @@ a:visited{
     position: fixed;
     top: 50px;
     left:32.5%;
-    background: #111111;
-	background: -webkit-linear-gradient(-180deg, #111111, #05627B); 
-	background: linear-gradient(-180deg, #111111, #05627B); 
+	background: black; 
+	border-bottom: 1px solid rgba(39,134,160,0.5);
     width:35%;
-    height:auto;
+    height:40px;
     padding:0;
     margin:0 auto;
     z-index:98;
     font-size:0;
     border-left: solid 1px #000;
 	border-right: solid 1px #000;
+	padding-top:10px;
 }
 .bar_smoke{
 	position: absolute;
@@ -98,15 +98,18 @@ a:visited{
 	background: rgba(0, 0, 0, 0.65); 
 	z-index:-1;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
 	.bar_top {  
     	border-bottom: 1px solid rgba(39,134,160,1);
 	}
 	.bar_post {
 	    left:0;
 	    width:100%;
-	    height:auto;
 	    border:none;
+	    border-bottom: 1px solid rgba(39,134,160,1);
+	    margin-top:-1px;
+	    z-index:100;
+	    padding-top:5px;
 	}
 }
 
@@ -805,19 +808,19 @@ button {
     display: none;
 }
 .nmn03 label {
-    padding: 0.4em 1em;
+    padding: 0.5em 1.5em;
     color: #777777;
     border: solid 1px #777777;
-    border-radius: 5px;
-    font-size:15px;
+    border-radius: 0px;
+    font-size:14px;
     background:none;
     margin:0px 5px;
 }
 .nmn03 input[type="radio"]:checked + label {
-    color: #FAFAFA;
+    color: #c2c2c2;
     border: solid 1px white;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
 	.gogo input[type=text],
 	.gogo input[type=email],
 	.gogo input[type=password]{
@@ -830,7 +833,7 @@ button {
 	}
 	.nmn03 label {
 	    border: solid 0.5px #777777;
-	    font-size:13px;
+	    font-size:12px;
 	}
 	.nmn03 input[type="radio"]:checked + label {
 	    border: solid 0.5px white;
@@ -838,8 +841,8 @@ button {
 }
 @media only screen and (max-width: 370px) {
 	.nmn03 label {
-	    padding: 0.3em 0.9em;
-	    font-size:12px;
+	    padding: 0.4em 1.0em;
+	    font-size:11px;
 	}
 }
 
@@ -1994,7 +1997,7 @@ button {
 .box_tests04{
 	text-align:left;
 	margin:0 auto;
-	padding:15px 10px 15px 5px;
+	padding:10px 10px 10px 5px;
 	background:none;
 }
 .box_tests05{
@@ -2291,7 +2294,7 @@ button {
 		padding-left:10px;
 		margin:0 auto;
 		background:none;
-		text-aline:left;
+		text-align:left;
 		font-size:0px;
 	}
 .pro25{
@@ -2303,7 +2306,7 @@ button {
 		padding-right:10px;
 		margin:0 auto;
 		background:none;
-		text-aline:right;
+		text-align:right;
 		font-size:0px;
 	}
 .pro26{
@@ -3113,6 +3116,8 @@ input[name="slideshow"] {
   margin:0 auto;
   font-size:0;
   z-index:2;
+  overflow-y:scroll;
+  -webkit-overflow-scrolling: touch;
   }
 .a1 > .a6 {
   position: absolute;
@@ -3443,7 +3448,7 @@ input[name="slideshow"] {
     padding: 0.6em 2.5em;
     text-decoration: none;
     background: none;
-    color: rgba(220,220,220,0.9);
+    color: #FAFAFA;
     background: none;
     border: solid 1px rgba(220,220,220,0.3);
     border-radius: 0px;

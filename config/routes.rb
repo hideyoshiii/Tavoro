@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   get 'users/ajax_follower_list' => "users#ajax_follower_list"
   get 'users/configuration' => "users#configuration"
   get 'users/ajax_validate_username' => "users#ajax_validate_username"
+  get 'policy' => "users#policy"
+  get 'terms' => "users#terms"
+  get 'contact' => "users#contact"
+  get 'notification' => "users#notification"
 
   resources :users do
     member do
@@ -51,12 +55,6 @@ Rails.application.routes.draw do
 
   post "works/:id/create_bookmark" => "works#create_bookmark"
   post "works/:id/destroy_bookmark" => "works#destroy_bookmark"
-
-  get 'policy' => "users#policy"
-  get 'terms' => "users#terms"
-  get 'contact' => "users#contact"
-  get 'contact_comfirm' => "users#contact_comfirm"
-  get 'contact_send' => "users#contact_send"
 
   get 'works/test' => "works#test"
 

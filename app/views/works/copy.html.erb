@@ -1,10 +1,31 @@
+<div class="bar_post">			
+	<div style="">
+		<div class="pro13">
+			<div style="text-align:left;">
+				<a href="javascript:void(0);" onclick="window.history.back();">
+		        	<%= image_tag "left-arrow.png", :style =>'width:15px;height:15px;' %>
+		        </a>										
+			</div>
+		</div>
+		<div class="pro14">
+			<div class="contain_title02" style="text-align:center;">
+				<div style="font-size:14px;color:#c2c2c2;">
+					<%= @post.title %>
+				</div>
+			</div>
+		</div>
+		<div class="pro15">
+			<button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">		
+				投稿		
+			</button>
+		</div>
+	</div>
+</div>
+
 <div class="main">
 	<div class="block_side">
 	</div>
 	<div class="block_main">
-		<div style="height:50px;"></div>
-
-
 		<div class="a1">
           <div class="a4">
             <div class="d1">
@@ -32,124 +53,93 @@
 				<% if @post.preview_url.present? %>
 					<%= hidden_field_tag :preview_url, @post.preview_url %>
 				<% end %>
-				<div class="test_radio03">
-					<span>
-						<div class="tango01">
-							<div class="bar_post">	
-								<div class="bar_smoke"></div>					
-								<div class="box_tests04">
-									<div class="pro13">
-										<div style="text-align:left;">
-											<a href="javascript:void(0);" onclick="window.history.back();">
-									        	<span class="font_blue_max"><i class="fas fa-chevron-left"></i></span>
-									        </a>										
-										</div>
-									</div>
-									<div class="pro14">
-										<div class="contain_title02" style="text-align:center;">
-											<div class="font_white">
-												<%= @post.title %>
+				<div style="height:50px;"></div>
+				<div style="height:40px;"></div>
+				<div style="height:3vh;"></div>						
+				<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
+					<div style="display:inline-block;">
+					    <%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
+					    <label for="bookmark" class="radio">
+					    	<i class="far fa-bookmark"></i> ブックマーク
+					    </label>
+				    </div>
+				    <div style="display:inline-block;">
+					    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
+					    <label for="good" class="radio">
+					    	<% if @post.category == "movie" || @post.category == "tv" %>
+								観ました
+							<% end %>
+							<% if @post.category == "book" || @post.category == "comic" %>
+								読みました
+							<% end %>
+							<% if @post.category == "music" %>
+								聴きました
+							<% end %>
+					    </label>
+				    </div>
+				    <div style="height:1.5vh;"></div>
+				    <div style="display:inline-block;">
+						<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
+					    <label for="favorite"><i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i>おすすめ</label>
+					</div>
+				    <div style="display:inline-block;">
+					    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
+					    <label for="bad" class="radio"><i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしない</label>
+				    </div>
+				</div>
+				<div class="height03"></div>
+				<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
+					<textarea name="description" id="textarea" placeholder="何か書く" wrap="hard"></textarea>
+				</div>
+				<div class="height02"></div>
+				<% if @post.category == "movie" || @post.category == "tv" %>
+					<div style="text-align:center;width:100%;margin:0 auto;">
+						<div class="horizontal_scroll">
+							<% if @posters.present? %>
+								<% @posters.each.with_index(1) do |poster, i| %>
+									<% if @post.image_url == "https://image.tmdb.org/t/p/original/#{poster.file_path}" %>
+										<div class="scroll_item">
+											<div class="radio01">
+												<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
+												<label for="image_url<%= i %>">
+													<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+												</label>
 											</div>
 										</div>
-									</div>
-									<div class="pro15">
-										<div style="text-align:right;">
-											<button type="submit">
-												<span class="font_blue_max">投稿</span>
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="height05"></div>
-							<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
-								<div style="display:inline-block;">
-								    <%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
-								    <label for="bookmark" class="radio">
-								    	<i class="far fa-bookmark"></i> ブックマーク
-								    </label>
-							    </div>
-							    <div style="display:inline-block;">
-								    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
-								    <label for="good" class="radio">
-								    	<% if @post.category == "movie" || @post.category == "tv" %>
-											観ました
-										<% end %>
-										<% if @post.category == "book" || @post.category == "comic" %>
-											読みました
-										<% end %>
-										<% if @post.category == "music" %>
-											聴きました
-										<% end %>
-								    </label>
-							    </div>
-							    <div style="height:1.5vh;"></div>
-							    <div style="display:inline-block;">
-									<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
-								    <label for="favorite"><i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i>おすすめ</label>
-								</div>
-							    <div style="display:inline-block;">
-								    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
-								    <label for="bad" class="radio"><i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしない</label>
-							    </div>
-							</div>
-							<div class="height03"></div>
-							<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
-								<textarea name="description" id="textarea" placeholder="何か書く" wrap="hard"></textarea>
-							</div>
-							<div class="height02"></div>
-							<% if @post.category == "movie" || @post.category == "tv" %>
-								<div style="text-align:center;width:100%;margin:0 auto;">
-									<div class="horizontal_scroll">
-										<% if @posters.present? %>
-											<% @posters.each.with_index(1) do |poster, i| %>
-												<% if @post.image_url == "https://image.tmdb.org/t/p/original/#{poster.file_path}" %>
-													<div class="scroll_item">
-														<div class="radio01">
-															<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
-															<label for="image_url<%= i %>">
-																<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
-															</label>
-														</div>
-													</div>
-												<% else %>
-													<div class="scroll_item">
-														<div class="radio01">
-															<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
-															<label for="image_url<%= i %>">
-																<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
-															</label>
-														</div>
-													</div>
-												<% end %>
-											<% end %>
-										<% else %>
-											<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
-										<% end %>
-									</div>
-								</div>
-							<% else %>
-								<div style="text-align:center;width:100%;margin:0 auto;">
-									<% if @post.category == "music" %>
-										<div class="pile00">
-											<%= image_tag @post.image_url, :class =>'img_lavoro03' %>
-											<p id="btn_preview">
-												<i id="icon_play" class="fas fa-play"></i>
-											</p>
-										</div>
 									<% else %>
-										<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
+										<div class="scroll_item">
+											<div class="radio01">
+												<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
+												<label for="image_url<%= i %>">
+													<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+												</label>
+											</div>
+										</div>
 									<% end %>
-									<%= hidden_field_tag :image_url, @post.image_url %>
-								</div>
+								<% end %>
+							<% else %>
+								<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
 							<% end %>
 						</div>
-					</span>
-				</div>
+					</div>
+				<% else %>
+					<div style="text-align:center;width:100%;margin:0 auto;">
+						<% if @post.category == "music" %>
+							<div class="pile00">
+								<%= image_tag @post.image_url, :class =>'img_lavoro03' %>
+								<p id="btn_preview">
+									<i id="icon_play" class="fas fa-play"></i>
+								</p>
+							</div>
+						<% else %>
+							<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
+						<% end %>
+						<%= hidden_field_tag :image_url, @post.image_url %>
+					</div>
+				<% end %>			
 			<% end %>
 		  </div>
 		</div>
-
 	</div>
 	<div class="block_side">
 	</div>
@@ -170,27 +160,29 @@
 
 <%#audioのワンボタン再生%>
 <% if @post.preview_url.present?  %>
-<script>
-	  var audio = new Audio("<%= @post.preview_url %>");
+	<script type="text/javascript">
+		$(function() {
+		  var audio = new Audio("<%= @post.preview_url %>");
 
-	  $('#btn_preview').on("click",function(){
-	    if($("#icon_play").hasClass('fa-play'))
-	     {
-	       $("#icon_play").removeClass('fa-play');
-	       $("#icon_play").addClass('fa-pause');
-	       audio.play();
-	     }
-	    else
-	     {
-	       $("#icon_play").removeClass('fa-pause');
-	       $("#icon_play").addClass('fa-play');
-	       audio.pause();
-	     }
-	  });
+		  $('#btn_preview').on("click",function(){
+		    if($("#icon_play").hasClass('fa-play'))
+		     {
+		       $("#icon_play").removeClass('fa-play');
+		       $("#icon_play").addClass('fa-pause');
+		       audio.play();
+		     }
+		    else
+		     {
+		       $("#icon_play").removeClass('fa-pause');
+		       $("#icon_play").addClass('fa-play');
+		       audio.pause();
+		     }
+		  });
 
-	  audio.onended = function() {
-	     $("#icon_play").removeClass('fa-pause');
-	     $("#icon_play").addClass('fa-play');
-	  };
-</script>
+		  audio.onended = function() {
+		     $("#icon_play").removeClass('fa-pause');
+		     $("#icon_play").addClass('fa-play');
+		  };
+		});
+	</script>
 <% end %>

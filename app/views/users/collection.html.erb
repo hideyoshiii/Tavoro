@@ -728,17 +728,5 @@
 });
 </script>
 
-<script type="text/javascript">
-	$(function(){
-    	$(window).scroll(function () {
-        	if ($(this).scrollTop() < -80) {
-            	$('#myModal_profile_<%= @user.id %>').modal('show'); 
-        	} else {      	
-        	}
-    	});
-	});
-</script>
-
-
 
 <%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>

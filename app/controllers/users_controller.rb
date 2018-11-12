@@ -93,5 +93,8 @@ class UsersController < ApplicationController
       end
     end
 
+    def notification
+    end
+
 
 end

@@ -15,15 +15,25 @@
           <%= image_tag "test25.png", :style =>'width:30px;height:30px;' %>
         <% end %>
       </div>
-      <div style="float:right;padding:10px 15px 0px 0px;">
+      <div style="float:right;padding:10px 12px 0px 0px;">
         <a href="" data-toggle="modal" data-target="#myModal_dashbord">
             <%= image_tag "user09.png", :class =>'img_icon01' %>
         </a>
       </div>
+      <div style="float:right;padding:13px 12px 0px 0px;">
+        <%= link_to notification_path do %>
+          <%= image_tag "bell02.png", :style =>'width:24px;height:24px;' %>
+        <% end %>
+      </div>
+      <div style="float:right;padding:13px 12px 0px 0px;">
+        <%= link_to "/users/user" do %>
+          <%= image_tag "test26.png", :style =>'width:24px;height:24px;' %>
+        <% end %>
+      </div>
       <% if current_user.requesters.count >= 1 %>
-        <div style="float:right;padding:13.5px 15px 0px 0px;">
+        <div style="float:right;padding:13px 12px 0px 0px;">
           <a href="" data-toggle="modal" data-target="#myModal_dashbord">            
-            <%= image_tag "bell.png", :style =>'width:25px;height:25px;' %>
+            <%= image_tag "bell.png", :style =>'width:24px;height:24px;' %>
           </a>
         </div>
       <% end %>
