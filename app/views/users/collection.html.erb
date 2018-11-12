@@ -9,7 +9,7 @@
 			<div class="bar_smoke"></div>	
 			<div style="width:100%;">
 				<div class="pro29">
-					<a href="" data-toggle="modal" data-target="#myModal_profile">
+					<a href="" data-toggle="modal" data-target="#myModal_profile_<%= @user.id %>">
 						<div style="padding:10px 10px 10px 20px;display:inline-block;vertical-align:middle;">
 	            			<%= image_tag @user.image(:large), :class =>'img_user11' %>
 	            		</div>
@@ -732,7 +732,7 @@
 	$(function(){
     	$(window).scroll(function () {
         	if ($(this).scrollTop() < -80) {
-            	$('#myModal_profile').modal('show'); 
+            	$('#myModal_profile_<%= @user.id %>').modal('show'); 
         	} else {      	
         	}
     	});

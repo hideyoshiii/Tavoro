@@ -62,6 +62,11 @@
 </div>
 
 
+<%#プロフィールモーダル用のrender%>
+<div id='following_list_modal'>
+  <%= render partial: 'following_list_modal' %>
+</div>
+
 
 
 <script type="text/javascript">
@@ -87,11 +92,7 @@
 		  }
 		  preInput = input;
 		});
-	});
-</script>
 
-<script type="text/javascript">
-	$(function(){
 		$( '#inc_search' ).keypress( function ( e ) {
 			if ( e.which == 13 ) {
 			// ここに処理を書く
@@ -100,6 +101,6 @@
 			  $("#inc_search").blur();
 			   return false;
 			}
-		})
+		});
 	});
 </script>

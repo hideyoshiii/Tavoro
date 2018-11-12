@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 	  end
 
   	def ajax_user_list
-    	@items = User.where('name LIKE ?', "%#{params[:q]}%")
+    	@user = User.find_by(username: params[:q])
   	end
 
   	def configuration 		

@@ -1,0 +1,23 @@
+<% if params[:q].blank? %>
+	<% if @users.present? %>
+	  	<% @users.each do |user| %>
+	  		<% unless user == current_user %>	  		
+		        <% @user = user %>
+	  			<% @checkeds_i = Post.where(user_id: user.id).where.not(review: "bookmark").size %>
+	  			<% @bookmarks_i = Post.where(user_id: user.id, review: "bookmark").size %>
+		        <%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>	
+	        <% end %>
+	  	<% end %>
+	<% end %>
+<% else %>
+	<% if @items.present? %>
+	  	<% @items.each do |user| %>
+	  		<% unless user == current_user %>	
+		        <% @user = user %>
+	  			<% @checkeds_i = Post.where(user_id: user.id).where.not(review: "bookmark").size %>
+	  			<% @bookmarks_i = Post.where(user_id: user.id, review: "bookmark").size %>
+		        <%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>	
+	        <% end %>
+	  	<% end %>
+	<% end %>
+<% end %>

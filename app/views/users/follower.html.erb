@@ -63,6 +63,13 @@
 
 
 
+<%#プロフィールモーダル用のrender%>
+<div id='follower_list_modal'>
+  <%= render partial: 'follower_list_modal' %>
+</div>
+
+
+
 <script type="text/javascript">
 	$(function(){
 		var
@@ -86,11 +93,7 @@
 		  }
 		  preInput = input;
 		});
-	});
-</script>
 
-<script type="text/javascript">
-	$(function(){
 		$( '#inc_search' ).keypress( function ( e ) {
 			if ( e.which == 13 ) {
 			// ここに処理を書く
@@ -99,6 +102,6 @@
 			  $("#inc_search").blur();
 			   return false;
 			}
-		})
+		});
 	});
 </script>

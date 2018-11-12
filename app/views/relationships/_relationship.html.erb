@@ -1,18 +1,21 @@
 <% if current_user.following?(@user) %>
-	<%= form_for(current_user.following_relationships.find_by(following_id: @user.id), data: { confirm: 'フォローを解除しますか？' }, html: { method: :delete }, remote: true) do |f| %>
-		<%= f.submit "フォロー中", class: "btn_follow_on" %>
+	<%= link_to "/users/#{@user.id}/collection", :style => "display:inline-block;vertical-align:middle;margin-right:5px;" do %>
+		<div class="btn_follow_off">
+			コレクションへ
+		</div>
 	<% end %>
+	<div style="display:inline-block;vertical-align:middle;">
+		<%= form_for(current_user.following_relationships.find_by(following_id: @user.id), data: { confirm: 'フォローを解除しますか？' }, html: { method: :delete }, remote: true) do |f| %>
+			<button>
+				<div class="btn_follow_off" style="padding-left:1.0em;padding-right:1.0em;">
+					<%= image_tag "checked.png", :style =>'width:13px;height:13px;' %>					
+				</div>
+			</button>
+		<% end %>
+	</div>
 <% else %>
-	<% if current_user.requesting?(@user) %>
-		<%= form_for(current_user.requesting_follow_requests.find_by(requesting_id: @user.id), data: { confirm: 'リクエストを取り消しますか？' }, html: { method: :delete }, remote: true) do |f| %>
-			<%= f.submit "フォロー申請中", class: "btn_follow_now" %>
-		<% end %>
-	<% else %>
-		<%= form_for(current_user.requesting_follow_requests.build(requesting_id: @user.id), remote: true) do |f| %>
-			<div>
-				<%= f.hidden_field :requesting_id %>
-			</div>
-			<%= f.submit "フォロー申請", class: "btn_follow_off" %>
-		<% end %>
+	<%= form_for(current_user.following_relationships.build(following_id: @user.id), remote: true) do |f| %>
+	  <%= f.hidden_field :following_id %>
+	  <%= f.submit "フォローする", class: "btn_follow_on" %>
 	<% end %>
 <% end %>

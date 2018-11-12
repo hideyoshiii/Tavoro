@@ -1,33 +1,22 @@
 <% if params[:q].present? %>
-	<% if @items.present? %>
-	  	<% @items.each do |user| %>
-	  		<% @user = user %>
-	  		<% unless user == current_user %>
-	          <div class="box_tests05">
-	            <div class="pro21">
-	              <%= link_to "/users/#{user.id}/collection" do %>
-		            <%= image_tag user.image(:medium), :class =>'img_user09' %>
-	              <% end %>
+	<% if @user.present? %>
+  		<% unless current_user?(@user) %>
+  			<div style="height:10vh;"></div>      
+          	<div style="width:100%;">
+	            <div style="text-align:center;">
+	                <%= image_tag @user.image(:large), :class => "img_user08" %>
 	            </div>
-	            <div class="pro22">
-	              <%= link_to "/users/#{user.id}/collection" do %>
-		              <span class="font_white_max">
-		                <%= user.name %>
-		              </span>
-	              <% end %>
+	            <div style="font-size:18px;text-align:center;margin-top:10px;">
+	              <%= @user.name %>
 	            </div>
-	            <div class="pro23">
-	            	<div style="text-align:right;margin-right:10px;">
-		                <% unless current_user?(user) %>
-			            	<span id="relationship-of-<%= @user.id %>">
-						      	<%= render partial: 'relationships/relationship' %>
-						    </span>
-					  	<% end %>
-				  	</div>
-	            </div>
-	          </div>
-	        <% end %>
-	  	<% end %>
+	        </div>  
+	        <div style="height:3vh;"></div>      
+        	<div style="text-align:center;">
+            	<div id="relationship-of-<%= @user.id %>">
+			      	<%= render partial: 'relationships/relationship' %>
+			    </div>
+		    </div>  	
+        <% end %>
 	<% else %>
 		<div style="font-size:15px;color:#777777;margin-top:10vh;text-align:center;">
 			<%= image_tag "test28.png", :style =>'width:20px;height:20px;' %> 結果がありません
