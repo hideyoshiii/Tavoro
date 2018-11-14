@@ -10,6 +10,9 @@
 		            <div class="pro22">  
 		              	<span class="font_white_max">
 		                	<%= user.name %>
+		                	<% if user.authority == "public" %>
+		                		<%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+		                	<% end %>
 		              	</span>
 		            </div>
 		            <div class="pro23" style="text-align:right;padding-right:10px;">
@@ -38,6 +41,9 @@
 		            <div class="pro22">  
 		              	<span class="font_white_max">
 		                	<%= user.name %>
+		                	<% if user.authority == "public" %>
+		                		<%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+		                	<% end %>
 		              	</span>
 		            </div>
 		            <div class="pro23" style="text-align:right;padding-right:10px;">

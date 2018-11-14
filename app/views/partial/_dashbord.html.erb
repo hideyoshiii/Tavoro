@@ -17,6 +17,9 @@
                   </div>
                   <div style="font-size:18px;text-align:center;margin-top:10px;">
                     <%= current_user.name %>
+                    <% if current_user.authority == "public" %>
+                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+                    <% end %>
                   </div>
                 </div>          
               </div>     
@@ -28,13 +31,13 @@
               <% end %>                                 
               <div style="height:3vh;"></div>
               <div style="text-align:center;">
-                <%= link_to "/users/#{current_user.id}/collection", :style => "display:inline-block;vertical-align:top;margin:0 5px;" do %>
+                <%= link_to "/#{current_user.username}/posts", :style => "display:inline-block;vertical-align:top;margin:0 5px;" do %>
                   <div class="btn_follow_on">
                     <%= image_tag "test44.png", :style =>'width:16px;height:16px;margin-top:-3.5px;' %>&nbsp;&nbsp;投稿へ
                   </div>
                 <% end %>
                 <div style="display:inline-block;vertical-align:top;">
-                  <%= link_to "/users/configuration" do %>
+                  <%= link_to configuration_path do %>
                     <div class="btn_follow_on" style="padding-left:1.0em;padding-right:1.0em;">
                       <%= image_tag "test53.png", :style =>'width:14px;height:14px;margin-top:-2px' %>        
                     </div>

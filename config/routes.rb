@@ -4,8 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  get "users/:id/collection" => "users#collection"
-  get "users/:id/profile" => "users#profile"
+  get ":id/posts" => "users#posts"
   get 'users/follow_request' => "users#follow_request"
   get 'users/user' => "users#user"
   get 'users/ajax_user_list' => "users#ajax_user_list"
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
   get 'users/ajax_following_list' => "users#ajax_following_list"
   get 'users/follower' => "users#follower"
   get 'users/ajax_follower_list' => "users#ajax_follower_list"
-  get 'users/configuration' => "users#configuration"
+  get 'configuration' => "users#configuration"
   get 'users/ajax_validate_username' => "users#ajax_validate_username"
   get 'policy' => "users#policy"
   get 'terms' => "users#terms"

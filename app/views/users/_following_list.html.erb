@@ -1,6 +1,9 @@
 <% if params[:q].blank? %>
 	<% if @users.present? %>
-	  	<% @users.each do |user| %>
+		<div style="padding:8px 10px;background:rgba(200,200,200,0.1);font-size:10px;border-bottom:solid 0.5px rgba(100, 100, 100, 0.5);">
+			公式アカウント  <%= @users_public_i %>
+		</div>
+	  	<% @users_public.each do |user| %>
 	  		<% unless user == current_user %>
 		  		<a href="" data-toggle="modal" data-target="#myModal_profile_<%= user.id %>">
 		          <div class="box_tests05">
@@ -10,6 +13,36 @@
 		            <div class="pro22">  
 		              	<span class="font_white_max">
 		                	<%= user.name %>
+		                	<% if user.authority == "public" %>
+		                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+		                    <% end %>
+		              	</span>
+		            </div>
+		            <div class="pro23" style="text-align:right;padding-right:10px;">
+		            	<div class="font_gray_max">
+			              <i class="fas fa-chevron-right"></i>
+			            </div>
+		            </div>
+		          </div>
+		        </a>      
+	        <% end %>
+	  	<% end %>
+	  	<div style="padding:8px 10px;background:rgba(200,200,200,0.1);font-size:10px;border-bottom:solid 0.5px rgba(100, 100, 100, 0.5);">
+			友達  <%= @users_normal_i %>
+		</div>
+	  	<% @users_normal.each do |user| %>
+	  		<% unless user == current_user %>
+		  		<a href="" data-toggle="modal" data-target="#myModal_profile_<%= user.id %>">
+		          <div class="box_tests05">
+		            <div class="pro21">
+			            <%= image_tag user.image(:medium), :class =>'img_user09' %>
+		            </div>
+		            <div class="pro22">  
+		              	<span class="font_white_max">
+		                	<%= user.name %>
+		                	<% if user.authority == "public" %>
+		                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+		                    <% end %>
 		              	</span>
 		            </div>
 		            <div class="pro23" style="text-align:right;padding-right:10px;">
@@ -38,6 +71,9 @@
 		            <div class="pro22">  
 		              	<span class="font_white_max">
 		                	<%= user.name %>
+		                	<% if user.authority == "public" %>
+		                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+		                    <% end %>
 		              	</span>
 		            </div>
 		            <div class="pro23" style="text-align:right;padding-right:10px;">

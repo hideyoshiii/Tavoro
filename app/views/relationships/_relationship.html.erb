@@ -1,11 +1,11 @@
 <% if current_user?(@user) %>
-	<%= link_to "/users/#{@user.id}/collection", :style => "display:inline-block;vertical-align:top;margin:0 5px;" do %>
+	<%= link_to "/#{@user.username}/posts", :style => "display:inline-block;vertical-align:top;margin:0 5px;" do %>
 		<div class="btn_follow_on">
 			<%= image_tag "test44.png", :style =>'width:16px;height:16px;margin-top:-3.5px;' %>&nbsp;&nbsp;投稿へ
 		</div>
 	<% end %>
 	<div style="display:inline-block;vertical-align:top;">
-		<%= link_to "/users/configuration" do %>
+		<%= link_to configuration_path do %>
 			<div class="btn_follow_on" style="padding-left:1.0em;padding-right:1.0em;">
 				<%= image_tag "test53.png", :style =>'width:14px;height:14px;margin-top:-2px' %>				
 			</div>
@@ -13,7 +13,7 @@
 	</div>
 <% else %>
 	<% if current_user.following?(@user) %>
-		<%= link_to "/users/#{@user.id}/collection", :style => "display:inline-block;vertical-align:top;margin:0 5px;" do %>
+		<%= link_to "/#{@user.username}/posts", :style => "display:inline-block;vertical-align:top;margin:0 5px;" do %>
 			<div class="btn_follow_on">
 				<%= image_tag "test44.png", :style =>'width:16px;height:16px;margin-top:-3.5px;' %>&nbsp;&nbsp;投稿へ
 			</div>
@@ -31,6 +31,11 @@
 		<%= form_for(current_user.following_relationships.build(following_id: @user.id), remote: true) do |f| %>
 		  <%= f.hidden_field :following_id %>
 		  <%= f.submit "フォローする", class: "btn_follow_off" %>
+		<% end %>
+		<% unless @info.blank? %>
+			<div style="font-size:10px;color:red;margin-top:5px;">
+				<%= @info %>
+			</div>
 		<% end %>
 	<% end %>
 <% end %>

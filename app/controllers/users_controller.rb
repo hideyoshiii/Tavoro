@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:policy, :terms, :contact]
 
-	def collection
-		@user = User.find(params[:id])	
+	def posts
+		@user = User.find_by(username: params[:id])	
     if @user
       @all = Post.where(user_id: @user.id).order(created_at: "DESC")
 
@@ -30,9 +30,6 @@ class UsersController < ApplicationController
     @users_requesting = current_user.requestings
   end
 
-	def profile
-		@user = User.find(params[:id])
-	end
 
 	  def user
 	  end
@@ -46,6 +43,10 @@ class UsersController < ApplicationController
 
   	def following		
   		@users = current_user.followings
+      @users_public = @users.where(authority: "public")
+      @users_public_i = @users_public.size
+      @users_normal = @users.where(authority: nil)
+      @users_normal_i = @users_normal.size
   	end
 
   	def ajax_following_list

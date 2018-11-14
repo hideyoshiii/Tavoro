@@ -15,6 +15,9 @@
 	            		</div>
 						<div class="font_white" style="display:inline-block;vertical-align:middle;max-width:50%;word-wrap: break-word;">
 		        			<%= @user.name %>
+		        			<% if @user.authority == "public" %>
+		                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+		                    <% end %>
 		        		</div>
 	        		</a>
 				</div>
@@ -525,13 +528,16 @@
 						</div>
 						<div class="layer03">
 							<div class="pro31">
-								<%= link_to "/users/#{post.user.id}/collection" do %>
+								<a href="" data-toggle="modal" data-target="#myModal_profile_<%= post.user.id %>">
 									<div class="inline_block_default">
 										<%= image_tag post.user.image(:medium), :class => "img_user04" %>
 									</div>
 									<div class="inline_block_default">
 										<div class="font_white" style="word-wrap:break-word;">
 											<%= post.user.name %>
+											<% if post.user.authority == "public" %>
+						                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+						                    <% end %>
 										</div>
 										<div class="font_gray_min" style="word-wrap:break-word;">
 											<% if post.category == "movie" %>
@@ -565,7 +571,7 @@
 											<% end %>
 										</div>
 									</div>
-								<% end %>
+								</a>
 							</div>						
 							<div class="pro32">		
 							</div>

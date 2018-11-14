@@ -11,7 +11,7 @@
   <div class="bar_top_in02">
     <% if user_signed_in? %>
       <div style="float:right;padding:10px 15px 0px 0px;">
-        <%= link_to "/users/#{current_user.id}/collection" do %>
+        <%= link_to "/#{current_user.username}/posts" do %>
           <%= image_tag "test25.png", :style =>'width:30px;height:30px;' %>
         <% end %>
       </div>

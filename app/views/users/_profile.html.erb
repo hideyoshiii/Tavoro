@@ -17,6 +17,9 @@
                   </div>
                   <div style="font-size:18px;text-align:center;margin-top:10px;">
                     <%= user.name %>
+                    <% if user.authority == "public" %>
+                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+                    <% end %>
                   </div>
                 </div>          
               </div>     
