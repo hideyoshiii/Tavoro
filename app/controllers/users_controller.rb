@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:policy, :terms, :contact]
+  after_action :notification_update, only: [:notification]
 
 	def posts
 		@user = User.find_by(username: params[:id])	
@@ -95,7 +96,15 @@ class UsersController < ApplicationController
     end
 
     def notification
+      @notifications = Notification.where(user_id: current_user.id)
+      @notifications_yes = @notifications.where(read: true)
+      @notifications_no = @notifications.where(read: false)
     end
+
+    private
+      def notification_update
+        @notifications_no.update_all(read: true)
+      end
 
 
 end
