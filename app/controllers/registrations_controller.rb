@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  after_action :follow_tavore, on: [:create]
+  after_action :follow_tavore, only: [:create]
 
   protected
  
