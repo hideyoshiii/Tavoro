@@ -175,31 +175,33 @@
 							<% end %>
 						</div>
 						<div class="layer02">
-							<div class="font_how">
-								<% if post.review == "bookmark" %>
-									<i class="far fa-bookmark" style="color:rgba(220,220,220,0.8);text-shadow:none;"></i> ブックマーク
-								<% end %>
-								<% if post.review == "good" %>
-									<% if post.category == "movie" || post.category == "tv" %>
-										観ました
+							<%= link_to "/works/#{post.id}/detail" do %>
+								<div class="font_how">
+									<% if post.review == "bookmark" %>
+										<i class="far fa-bookmark" style="color:rgba(220,220,220,0.8);text-shadow:none;"></i> ブックマーク
 									<% end %>
-									<% if post.category == "book" || post.category == "comic" %>
-										読みました
+									<% if post.review == "good" %>
+										<% if post.category == "movie" || post.category == "tv" %>
+											観ました
+										<% end %>
+										<% if post.category == "book" || post.category == "comic" %>
+											読みました
+										<% end %>
+										<% if post.category == "music" %>
+											聴きました
+										<% end %>
 									<% end %>
-									<% if post.category == "music" %>
-										聴きました
+									<% if post.review == "favorite" %>
+										<i class="fas fa-star" style="color:rgba(252,228,4,0.8);text-shadow:none;"></i> おすすめしています
 									<% end %>
-								<% end %>
-								<% if post.review == "favorite" %>
-									<i class="fas fa-star" style="color:rgba(252,228,4,0.8);text-shadow:none;"></i> おすすめしています
-								<% end %>
-								<% if post.review == "bad" %>
-									<i class="fas fa-ban" style="color:rgba(236,12,28,0.8);text-shadow:none;"></i> おすすめしていません
-								<% end %>
-							</div>
-							<div class="font_head">
-								<%= post.title %>
-							</div>
+									<% if post.review == "bad" %>
+										<i class="fas fa-ban" style="color:rgba(236,12,28,0.8);text-shadow:none;"></i> おすすめしていません
+									<% end %>
+								</div>
+								<div class="font_head">
+									<%= post.title %>
+								</div>
+							<% end %>
 							<% if post.description.present? %>
 								<div class="balloon_top"></div>
 								<div class="balloon">
@@ -247,8 +249,10 @@
 		<% end %>
 
 		</div>
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
+		<div class="visible-md visible-lg">
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
 		</div>
 	</div>
 	<div class="block_side">

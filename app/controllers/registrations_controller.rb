@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  after_action :follow_tavore, on: [:create]
 
   protected
  
@@ -8,5 +9,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   def after_update_path_for(resource)
     "/users/edit"
+  end
+
+  def follow_tavore
+      @tavore = User.find_by(username: "tavore")
+      if @tavore
+        current_user.follow!(@tavore)
+      end
   end
 end

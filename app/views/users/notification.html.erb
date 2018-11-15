@@ -34,47 +34,57 @@
           <div class="a5">
           		<div style="height:50px;"></div>
 				<div style="height:40px;"></div>
-
-				<% @notifications_no.each do |item| %>
-					<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
-						<div class="box_tests08">
-				            <div class="pro21">
-					            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
-				            </div>
-				            <div class="pro22">  
-				              	<span class="font_white_min">
-				                	<%= item.notified_by.name %>さんからフォローされました
-				              	</span>
-				            </div>
-				            <div class="pro23" style="text-align:right;padding-right:10px;">
-				            	<div class="font_gray_max">
-					            	<i class="fas fa-chevron-right"></i>
+				<% if @notifications.present? %>
+					<% @notifications_no.each do |item| %>
+						<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
+							<div class="box_tests08">
+					            <div class="pro21">
+						            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
 					            </div>
-				            </div>
-				        </div>
-			    	</a>
-			    <% end %>
-			    <% @notifications_yes.each do |item| %>
-			    	<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
-				        <div class="box_tests09">
-				            <div class="pro21">
-					            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
-				            </div>
-				            <div class="pro22">  
-				              	<span class="font_white_min">
-				                	<%= item.notified_by.name %>さんからフォローされました
-				              	</span>
-				            </div>
-				            <div class="pro23" style="text-align:right;padding-right:10px;">
-				            	<div class="font_gray_max">
-					            	<i class="fas fa-chevron-right"></i>
+					            <div class="pro22">  
+					              	<span class="font_white_min">
+					                	<%= item.notified_by.name %>さんからフォローされました
+					              	</span>
 					            </div>
-				            </div>
-				        </div>
-			        </a>
-			    <% end %>
-			    
-		        <div style="height:10vh;"></div> 
+					            <div class="pro23" style="text-align:right;padding-right:10px;">
+					            	<div class="font_gray_max">
+						            	<i class="fas fa-chevron-right"></i>
+						            </div>
+					            </div>
+					        </div>
+				    	</a>
+				    <% end %>
+				    <% @notifications_yes.each do |item| %>
+				    	<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
+					        <div class="box_tests09">
+					            <div class="pro21">
+						            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
+					            </div>
+					            <div class="pro22">  
+					              	<span class="font_white_min">
+					                	<%= item.notified_by.name %>さんからフォローされました
+					              	</span>
+					            </div>
+					            <div class="pro23" style="text-align:right;padding-right:10px;">
+					            	<div class="font_gray_max">
+						            	<i class="fas fa-chevron-right"></i>
+						            </div>
+					            </div>
+					        </div>
+				        </a>
+				    <% end %>
+			        <div style="height:10vh;"></div> 
+			    <% else %>
+			    	<div style="height:50px;"></div>
+			        <div style="height:20vh;"></div>
+					<div style="text-align:center;margin-top:20px;">
+						<%= image_tag "bell02.png", :style =>'width:35px;height:35px;' %>
+					</div>
+					<div style="text-align:center;margin-top:10px;font-size:12px;color:#999999;">
+						通知はありません
+					</div>	
+				    <div style="height:10vh;"></div> 
+				<% end %>
           </div>
         </div>	
 	</div>
