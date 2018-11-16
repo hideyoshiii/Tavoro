@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="a5">
-			<%= form_tag(works_save_path, method: :post) do %>
+			<%= form_tag(works_save_path, method: :post, :name => "myform") do %>
 				<%= hidden_field_tag :category, @post.category %>
 				<%= hidden_field_tag :title, @post.title %>
 				<%= hidden_field_tag :work_id, @post.work_id %>
@@ -155,6 +155,13 @@
 	    var lines = ($(this).val() + '\n').match(/\n/g).length;
 	    $(this).height(lineHeight * lines);
 	  });
+	});
+</script>
+
+<%#投稿ボタンボタン%>
+<script type="text/javascript">
+	$('#btn_post').click(function() {
+		document.myform.submit();
 	});
 </script>
 

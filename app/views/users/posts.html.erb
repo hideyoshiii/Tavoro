@@ -1,56 +1,55 @@
+<div class="bar_collection">
+	<div class="bar_smoke"></div>	
+	<div style="width:100%;">
+		<div class="pro29">
+			<a href="" data-toggle="modal" data-target="#myModal_profile_<%= @user.id %>">
+				<div style="padding:10px 10px 10px 20px;display:inline-block;vertical-align:middle;">
+        			<%= image_tag @user.image(:large), :class =>'img_user11' %>
+        		</div>
+				<div class="font_white" style="display:inline-block;vertical-align:middle;max-width:50%;word-wrap: break-word;">
+        			<%= @user.name %>
+        			<% if @user.authority == "public" %>
+                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+                    <% end %>
+        		</div>
+    		</a>
+		</div>
+		<div class="pro30">
+			<div style="width:100%;text-align:right;"> 	
+				<div id="checked" class="btn_on" style="display:inline-block;vertical-align:middle;">
+					<%= image_tag "checked.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
+					<span style="color:#c2c2c2;"><%= @checkeds_i %></span> 
+				</div>
+				<div id="bookmark" class="btn_off" style="display:inline-block;vertical-align:middle;margin-right:10px;">	
+					<%= image_tag "bookmark.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
+					<span style="color:#c2c2c2;"><%= @bookmarks_i %></span>
+				</div>				
+			</div>  
+		</div>
+	</div>		      
+	<div class="horizontal_scroll02" style="margin-top:-3px;">			
+		  <ul class="nav nav-pills js-tabs">
+		      <li class="active"><a href="#all" data-toggle="tab">すべて</a></li>
+			  <li><a href="#movie" data-toggle="tab">映画</a></li>
+			  <li><a href="#tv" data-toggle="tab">テレビ</a></li>
+			  <li><a href="#book" data-toggle="tab">ブック</a></li>
+			  <li><a href="#comic" data-toggle="tab">コミック</a></li>
+			  <li><a href="#music" data-toggle="tab">ミュージック</a></li>
+		  </ul>
+	</div>	
+</div>
+
 <div class="main">
 	<div class="cover"></div>
 	<div class="block_side">
 	</div>
 	<div class="block_main">
-		<div style="height:50px;"></div>
 		
-		<div class="bar_collection">
-			<div class="bar_smoke"></div>	
-			<div style="width:100%;">
-				<div class="pro29">
-					<a href="" data-toggle="modal" data-target="#myModal_profile_<%= @user.id %>">
-						<div style="padding:10px 10px 10px 20px;display:inline-block;vertical-align:middle;">
-	            			<%= image_tag @user.image(:large), :class =>'img_user11' %>
-	            		</div>
-						<div class="font_white" style="display:inline-block;vertical-align:middle;max-width:50%;word-wrap: break-word;">
-		        			<%= @user.name %>
-		        			<% if @user.authority == "public" %>
-		                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
-		                    <% end %>
-		        		</div>
-	        		</a>
-				</div>
-				<div class="pro30">
-					<div style="width:100%;text-align:right;"> 	
-						<div id="checked" class="btn_on" style="display:inline-block;vertical-align:middle;">
-							<%= image_tag "checked.png", :style =>'width:13px;height:13px;' %>
-							<span style="color:#A7A7A7;"><%= @checkeds_i %></span> 
-						</div>
-						<div id="bookmark" class="btn_off" style="display:inline-block;vertical-align:middle;margin-right:10px;">	
-							<%= image_tag "bookmark.png", :style =>'width:13px;height:13px;' %>
-							<span style="color:#A7A7A7;"><%= @bookmarks_i %></span>
-						</div>				
-					</div>  
-				</div>
-			</div>		      
-			<div class="horizontal_scroll02">			
-				  <ul class="nav nav-pills js-tabs">
-				      <li class="active"><a href="#all" data-toggle="tab">すべて</a></li>
-					  <li><a href="#movie" data-toggle="tab">映画</a></li>
-					  <li><a href="#tv" data-toggle="tab">テレビ</a></li>
-					  <li><a href="#book" data-toggle="tab">ブック</a></li>
-					  <li><a href="#comic" data-toggle="tab">コミック</a></li>
-					  <li><a href="#music" data-toggle="tab">ミュージック</a></li>
-				  </ul>
-			</div>	
-		</div>
-
 		<% if current_user.following?(@user) || current_user == @user %>
 		<div class="tab-content">
-		  <div style="height:5px;"></div>
 		  <div class="tab-pane fade in active" id="all">
-		  	<div class="checked" style="height:100%;">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 			  	<% if @checkeds.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
@@ -95,7 +94,8 @@
 				  	<% end %>
 			  	<% end %>
 		  	</div>
-		  	<div class="bookmark hide" style="height:100%;">
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 		  		<% if @bookmarks.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
@@ -142,7 +142,8 @@
 		  	</div>
 		  </div>
 		  <div class="tab-pane fade" id="movie">
-		  	<div class="checked" style="height:100%;">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 			  	<% if @checkeds_movie.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
@@ -169,7 +170,8 @@
 				  	<% end %>
 			  	<% end %>
 			</div>
-		  	<div class="bookmark hide" style="height:100%;">
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 		  		<% if @bookmarks_movie.blank? %>
 			  		<%= render "partial/nothing02" %>
 			  	<% else %>
@@ -198,7 +200,8 @@
 		  	</div>
 		  </div>
 		  <div class="tab-pane fade" id="tv">
-		  	<div class="checked" style="height:100%;">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 			    <% if @checkeds_tv.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
@@ -225,7 +228,8 @@
 				  	<% end %>
 			  	<% end %>
 			</div>
-		  	<div class="bookmark hide" style="height:100%;">
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 		  		<% if @bookmarks_tv.blank? %>
 			  		<%= render "partial/nothing02" %>
 			  	<% else %>
@@ -254,7 +258,8 @@
 		  	</div>
 		  </div>
 		  <div class="tab-pane fade" id="book">
-		  	<div class="checked" style="height:100%;">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 			    <% if @checkeds_book.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
@@ -281,7 +286,8 @@
 				  	<% end %>
 			  	<% end %>
 			</div>
-		  	<div class="bookmark hide" style="height:100%;">
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 		  		<% if @bookmarks_book.blank? %>
 			  		<%= render "partial/nothing02" %>
 			  	<% else %>
@@ -310,7 +316,8 @@
 		  	</div>
 		  </div>
 		  <div class="tab-pane fade" id="comic">
-		  	<div class="checked" style="height:100%;">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 			    <% if @checkeds_comic.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
@@ -337,7 +344,8 @@
 				  	<% end %>
 		  		<% end %>
 		  	</div>
-		  	<div class="bookmark hide" style="height:100%;">
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 		  		<% if @bookmarks_comic.blank? %>
 			  		<%= render "partial/nothing02" %>
 			  	<% else %>
@@ -366,7 +374,8 @@
 		  	</div>
 		  </div>
 		  <div class="tab-pane fade" id="music">
-		  	<div class="checked" style="height:100%;">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 			    <% if @checkeds_music.blank? %>
 			  		<%= render "partial/nothing" %>
 			  	<% else %>
@@ -393,7 +402,8 @@
 				  	<% end %>
 			  	<% end %>
 			</div>
-		  	<div class="bookmark hide" style="height:100%;">
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
 		  		<% if @bookmarks_music.blank? %>
 			  		<%= render "partial/nothing02" %>
 			  	<% else %>

@@ -40,8 +40,16 @@
       </div>
     <% else %>
       <div style="float:right;padding:17px 10px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
-        <a href="" data-toggle="modal" data-target="#myModal_contact">
-          お問い合わせ
+        <a href="" data-toggle="modal" data-target="#myModal_what">
+          What'sTavore
+        </a>
+      </div>
+      <div style="float:right;padding:17px 5px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
+        /
+      </div>
+      <div style="float:right;padding:17px 5px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
+        <a href="" data-toggle="modal" data-target="#myModal_app">
+          App 
         </a>
       </div>
     <% end %>
@@ -49,53 +57,173 @@
 </div>
 
 
+
+
+
+
 <% unless user_signed_in? %>
 
-<div class="modal fade" id="myModal_contact">
+<div class="modal fade" id="myModal_what">
   <div class="height_modal"></div>
     <div class="modal-dialog">
       <div class="a1">
         <div class="a4">
           <div class="d1">
-            <div class="d5"></div>
+            <div class="d6"></div>
           </div>
         </div>
-        <div class="a5">
-          <div class="e1">
-            <div class="e4">
-              <a href="https://twitter.com/aripei_ask" blank>
-                  <div>
-                    <%= image_tag "aripei.png", :style =>'width:100px;height:100px;border-radius:50%;background:#FAFAFA;' %>
-                  </div>
-                  <div style="font-size:15px;margin-top:1vh;">
-                    <i class="fab fa-twitter" style="color:#22b8ff;"></i> @aripei_ask
-                  </div>
-                </a>
-                <div style="height:3vh;"></div>
-                <div class="font_white" style="margin-top:4vh;">
-                  TAVOREはアリペイが運営しております
-                </div>
-                <div class="font_white" style="margin-top:4vh;">
-                  皆さんのアドバイスやご指摘が本当に参考になります<br>
-                  小さなことでもご連絡いただけるとありがたいです
-                </div>
-                <div class="font_gray_min" style="margin-top:4vh;">
-                  Twitterアカウントをお持ちでない方はこちらまで
-                </div>
-                <a href="mailto:tavore.info&#64;gmail.com">
-                  <div style="font-size:14px;margin-top:1vh;">
-                    tavore.info@gmail.com
-                  </div>
-                </a>
-              <div style="height:12vh;"></div>
-            </div>
-            <div class="e5">
-              <div class="pro19">
-                <a href="" data-dismiss="modal">
-                  <%= image_tag "close_blue.png", :class =>'img_left02' %>
-                </a>
+        <div class="a7">
+            <a href="" data-toggle="modal" data-dismiss="modal">
+              <div style="padding:20px;">
+                <%= image_tag "test40.png", :style =>'width:18px;height:18px;opacity:0.35' %>
               </div>
+            </a>  
+        </div>
+        <div class="a6" style="text-align:center;">
+          <div style="position:relative;width:0;height:0;z-index:1;"></div>
+          <div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;"> 
+            <div style="height:5vh;"></div>
+            <%= image_tag "tavore_logo_01.png", :style =>'width:80px;height:80px;' %>
+            <div style="font-size:18px;">
+              TAVORE
             </div>
+            <div style="height:5vh;"></div>
+            <div style="width:80%;margin:0 auto;padding:0;text-align:left;">
+              <div class="font_white" style="color:#F3F3F3;">
+                僕の隣にはいつも音楽があった
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                別に音楽にすごく詳しかったわけではないし
+                <br>誰かのファンで毎回ライブに通ってたってわけでもない    
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                でも気づけばどんな時だって音楽を聴いてきた。
+                <br>失恋して１人で悲しんだ夜や、友達の影響でハマったロックとか、アジアを旅してる時なんかもね
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                僕の人生と音楽は1セット...
+                とまではいかないけれど少なくとも特別な思いがある曲があったりするんだ
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                それに、多くはないけれど本や映画にも出会った
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                何百冊と読んできたわけじゃないけど、好きな本はあるんだ、もちろん映画もね
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                小さい頃『ホームアローン』に憧れて家中にトラップを仕掛けた事もある
+                <br>もちろん怒られたさ、そりゃもうこっぴどく
+                <br>でも後悔はしてない、楽しかったし、やりたかったから
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                今思うと、
+                <br>本や映画、そして音楽なんて、別に無くても良かったのかもしれない
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                別にそれがないと生きてなかったってものはない
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                でも今の自分を作り上げてるのはそんな作品たちだ
+                <br>大事な事を思い出させてくれる本があるし、エモい気持ちにさせてくれる曲がある
+                <br>映画のあのワンシーンが自分の軸になってたりする
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                たぶん僕達はそんな作品達を忘れたくない
+                <br>ずっと自分の中に、大切に持っておきたい
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                だから読書ノートをつくったり、観た映画をメモしたりしようとする
+                <br>でもそういうのって続かないし、めんどくさいよね
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                そんな僕みたいな人でも自然に、
+                <br>息をするように記録ができるのがTAVORE
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                投稿が共有されるのは気の許せる友達だけだから、
+                <br>別にいかにも通そうなコメントなんてしなくていい
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                <br>自分がその作品と接したときに湧いた感情をそのまま残せばいいし、
+                <br>別にコメントなんて残さなくてもいい
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                友達と語りあったり、アルバムのように見返してみたりすると、その作品がより一層好きになるかもしれないね
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                まだまだ足りないことの方が多いサービスだけど、
+                <br>みんなと一緒に育てていけたらと思ってる
+              </div>
+              <div style="height:5vh;"></div>
+              <div class="font_white" style="color:#F3F3F3;">
+                「こんな機能欲しいな！」だったり、
+                「こんな不具合がある！」みたいなのがあったら、
+                <br>下のアカウントまで気軽に教えてくれたら嬉しいな！
+              </div>
+              <div style="height:10vh;"></div>
+            </div>   
+            <a href="https://twitter.com/aripei_ask" target="blank"> 
+              <%= image_tag "tavore_logo_02.png", :style =>'width:80px;height:80px;border-radius:50%;border: solid 1px #111111;' %>        
+              <div style="font-size:15px;color:#F3F3F3;margin-top:2vh;">
+                <i class="fab fa-twitter" style="color:#22b8ff;"></i> @tavore_info
+              </div>  
+            </a>    
+            <div class="font_gray_min" style="margin-top:4vh;">
+              Twitterアカウントをお持ちでない方はこちらまで
+            </div>
+            <a href="mailto:tavore.info&#64;gmail.com">
+              <div style="font-size:14px;margin-top:1vh;">
+                tavore.info@gmail.com
+              </div>
+            </a>
+            <div style="height:15vh;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal_app">
+  <div class="height_modal"></div>
+    <div class="modal-dialog">
+      <div class="a1">
+        <div class="a4">
+          <div class="d1">
+            <div class="d6"></div>
+          </div>
+        </div>
+        <div class="a7">
+            <a href="" data-toggle="modal" data-dismiss="modal">
+              <div style="padding:20px;">
+                <%= image_tag "test40.png", :style =>'width:18px;height:18px;opacity:0.35' %>
+              </div>
+            </a>  
+        </div>
+        <div class="a6" style="text-align:center;">
+          <div style="position:relative;width:0;height:0;z-index:1;"></div>
+          <div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;"> 
+            <div style="height:40vh;"></div>
+            <%= image_tag "tool.png", :style =>'width:35px;height:35px;' %>
+            <div style="margin-top:10px;font-size:16px;color:#999999;">
+              In preparation
+            </div>  
           </div>
         </div>
       </div>
