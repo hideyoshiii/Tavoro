@@ -75,7 +75,7 @@
         <div class="a7">
             <a href="" data-toggle="modal" data-dismiss="modal">
               <div style="padding:20px;">
-                <%= image_tag "test40.png", :style =>'width:18px;height:18px;opacity:0.35' %>
+                <%= image_tag "test40.png", :style =>'width:18px;height:18px;opacity:0.4' %>
               </div>
             </a>  
         </div>
@@ -174,7 +174,7 @@
               <div class="font_white" style="color:#F3F3F3;">
                 「こんな機能欲しいな！」だったり、
                 「こんな不具合がある！」みたいなのがあったら、
-                <br>下のアカウントまで気軽に教えてくれたら嬉しいな！
+                <br>下のアカウントまで気軽に教えてくれたら嬉しいな
               </div>
               <div style="height:10vh;"></div>
             </div>   
@@ -212,18 +212,37 @@
         <div class="a7">
             <a href="" data-toggle="modal" data-dismiss="modal">
               <div style="padding:20px;">
-                <%= image_tag "test40.png", :style =>'width:18px;height:18px;opacity:0.35' %>
+                <%= image_tag "test40.png", :style =>'width:18px;height:18px;opacity:0.4' %>
               </div>
             </a>  
         </div>
         <div class="a6" style="text-align:center;">
           <div style="position:relative;width:0;height:0;z-index:1;"></div>
           <div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;"> 
-            <div style="height:40vh;"></div>
-            <%= image_tag "tool.png", :style =>'width:35px;height:35px;' %>
-            <div style="margin-top:10px;font-size:16px;color:#999999;">
-              In preparation
-            </div>  
+            <div style="height:10vh;"></div>
+            <div class="font_white_max" style="color:#F3F3F3;">
+              TAVOREはPWAに対応しています
+            </div>
+            <div style="height:2vh;"></div>
+            <div class="font_white_min" style="color:#F3F3F3;">
+              ホーム画面に追加することで、
+              <br>ネイティブアプリと同じ操作性で使用することができます
+            </div>
+            <div style="height:7vh;"></div>
+            <div style="width:40%;display:inline-block;">
+            <%= video_tag("pwa01.mp4", controls: true, poster: 'pwa01_poster.PNG', muted: true, playsinline: true) %>
+            <div class="font_white_max" style="margin-top:2vh;">
+              追加方法
+            </div>
+            </div>
+            <div style="width:6.66%;display:inline-block;">
+            </div>
+            <div style="width:40%;display:inline-block">
+            <%= video_tag("pwa02.mp4", controls: true, poster: 'pwa02_poster.PNG', muted: true, playsinline: true) %>
+            <div class="font_white_max" style="margin-top:2vh;">
+              操作性
+            </div>
+            </div>
           </div>
         </div>
       </div>

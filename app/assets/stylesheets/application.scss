@@ -2919,46 +2919,12 @@ button {
 
 //PC
 video {
-	  position: fixed;
-	  top: 0%;
-	  left: 0%;
 	  width: 100%;
-	  height: 100%;
+	  height: auto;
 	  margin:0 auto;
 	  padding:0;
-	  z-index:1;
 	  background:black;
 }
-//iPadヨコ
-@media only screen and (max-width: 1024px) and (orientation: landscape) {
-}
-//iPadタテ
-@media only screen and (max-width: 1024px) and (orientation: portrait) {
-}
-//iPhoneタテ
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-	video {
-	  position: fixed;
-	  top: 0%;
-	  left: 0%;
-	  width: auto;
-	  height: 100%;
-	  margin:0 auto;
-	  margin-left:-100%;
-	  padding:0;
-	  z-index:1;
-	  background:black;
-	}
-}
-//iPhoneヨコ
-@media only screen and (max-width: 768px) and (orientation: landscape) {
-}
-//SE以下タテ
-@media only screen and (max-width: 370px) and (orientation: portrait) {
-}
-
-
-
 
 
 
