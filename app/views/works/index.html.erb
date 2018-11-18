@@ -249,7 +249,6 @@
 		<% end %>
 
 		</div>
-		<div class="swiper-pagination"></div>
 		<div class="visible-md visible-lg">
 			<div class="swiper-button-prev"></div>
 			<div class="swiper-button-next"></div>
@@ -282,16 +281,13 @@
 <script>
 	$(function(){
 		var swiper = new Swiper('.swiper-container', {
+			direction: 'vertical',
 			speed: 500,
 			touchAngle: 55,
 			navigation: {
 		    	nextEl: '.swiper-button-next',
 		    	prevEl: '.swiper-button-prev',
 		  	},
-		  	pagination: {
-				    el: '.swiper-pagination',
-				    type: 'progressbar',
-				  },
 		  	hideOnClick: false,
 		  	preloadImages: false,
 			lazy: {
