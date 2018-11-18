@@ -101,6 +101,9 @@ class UsersController < ApplicationController
       @notifications_no = @notifications.where(read: false)
     end
 
+    def invitation    
+    end
+
     private
       def notification_update
         @notifications_no.update_all(read: true)

@@ -1,0 +1,120 @@
+<div class="bar_post">			
+	<div style="">
+		<div class="pro13">
+			<div style="text-align:left;">
+				<a href="javascript:void(0);" onclick="window.history.back();">
+		        	<%= image_tag "left-arrow.png", :style =>'width:15px;height:15px;' %>
+		        </a>										
+			</div>
+		</div>
+		<div class="pro14">
+			<div class="contain_title02" style="text-align:center;">
+				<div style="font-size:14px;color:#c2c2c2;">
+					友達を招待
+				</div>
+			</div>
+		</div>
+		<div class="pro15">
+			<div style="text-align:right;">							
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="main">
+	<div class="block_side">
+	</div>
+	<div class="block_main">
+		<div class="a1">
+          <div class="a4">
+            <div class="d1">    
+              <div class="d4"></div>
+            </div>
+          </div>
+          <div class="a5" style="">
+          	<div style="height:50px;"></div>
+          	<div style="height:39px;"></div>
+			  <div class="swiper-container" style="height:calc(100% - 90px)">
+			    <div class="swiper-wrapper" style="height:100%">
+			    	<div class="swiper-slide" style="height:100%;"> 
+						<div style="height:10vh;"></div>
+		          		<div class="invitation_card">
+		          			<div style="height:5vh;"></div>
+		          			<%= image_tag current_user.image(:large), :class => "img_user13" %>
+		          			<div style="height:1vh;"></div>
+		          			<div class="font_white">
+								<%= current_user.name %>
+							</div>    
+							<div style="height:3vh;"></div>								
+							<div class="font_white_min" style="opacity:0.9;">
+								招待コード:238952
+							</div>
+							<div style="height:1vh;"></div>
+							<div class="font_white_min" style="color:#FB473E;opacity:0.9;">
+								already used
+							</div>
+							<div style="height:5vh;"></div>							
+							<span class="btn_follow_off">
+								招待URLをコピー
+							</span>
+							<div style="height:3vh;"></div>		
+							<span class="btn_follow_off">
+								LINEで送る
+							</span>				
+						</div>
+			    	</div>
+			    	
+			    	<div class="swiper-slide" style="height:100%;"> 
+						<div style="height:10vh;"></div>
+		          		<div class="invitation_card" style="">
+		          			<div style="height:17vh;"></div>
+		          			<%= image_tag "test10.png", :style =>'width:40px;height:40px;opacity:0.6;' %>
+		          			<div style="height:3vh;"></div>
+						  	<div class="font_gray">
+						  		招待URLを発行する
+						  	</div>	
+						</div>
+			    	</div>
+
+			    </div>
+			    <!-- Add Pagination -->
+			    <div class="swiper-pagination"></div>
+			    <!-- Add Arrows -->
+			    <div class="visible-md visible-lg">
+				    <div class="swiper-button-next"></div>
+				    <div class="swiper-button-prev"></div>
+				</div>
+			  </div>
+        </div>	
+	</div>
+	<div class="block_side">
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+	<script>
+		$(function(){
+			var swiper = new Swiper('.swiper-container', {
+				loop: true,
+				slidesPerView: 1.6,
+      			centeredSlides: true,
+      			spaceBetween: 10,
+				speed: 500,
+				touchAngle: 55,
+				pagination: {
+				    el: '.swiper-pagination',
+				    type: 'progressbar',
+				  },
+				navigation: {
+			    	nextEl: '.swiper-button-next',
+			    	prevEl: '.swiper-button-prev',
+			  	},
+			  	effect: 'coverflow',
+			  	coverflowEffect: {
+				    rotate: 40,
+				    shadow: false,
+				    slideShadows: false,
+				},
+			});
+		});
+	</script>

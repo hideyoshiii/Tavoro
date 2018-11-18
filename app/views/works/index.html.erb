@@ -249,6 +249,7 @@
 		<% end %>
 
 		</div>
+		<div class="swiper-pagination"></div>
 		<div class="visible-md visible-lg">
 			<div class="swiper-button-prev"></div>
 			<div class="swiper-button-next"></div>
@@ -287,12 +288,16 @@
 		    	nextEl: '.swiper-button-next',
 		    	prevEl: '.swiper-button-prev',
 		  	},
+		  	pagination: {
+				    el: '.swiper-pagination',
+				    type: 'progressbar',
+				  },
 		  	hideOnClick: false,
 		  	preloadImages: false,
 			lazy: {
 				loadOnTransitionStart: true,
+				loadPrevNext: true,
 			},
-		  	effect: 'fade',
 		});
 	});
 </script>

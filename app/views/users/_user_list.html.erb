@@ -59,7 +59,7 @@
 		</div>
 	<% end %>
 <% else %>
-	<div style="height:20vh;"></div>
+	<div style="height:16vh;"></div>
 	<div style="text-align:center;margin-top:20px;">
 		<%= image_tag "users.png", :style =>'width:35px;height:35px;' %>
 	</div>
@@ -67,6 +67,14 @@
 		フォローは20人まで追加できます
 		<br>
 		公式アカウントは無制限です
+	</div>	
+	<div style="height:5vh;"></div>	
+	<div style="text-align:center;">
+		<%= link_to invitation_path do %>	
+			<span class="btn_follow_off">
+				<%= image_tag "letter.png", :style =>'width:15px;height:15px;margin-top:-2px;' %> 友達を招待
+			</span>
+		<% end %>
 	</div>	
     <div style="height:10vh;"></div> 
 <% end %>

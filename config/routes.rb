@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'terms' => "users#terms"
   get 'contact' => "users#contact"
   get 'notification' => "users#notification"
+  get 'invitation' => "users#invitation"
 
   resources :users do
     member do
