@@ -3657,7 +3657,7 @@ html.pushbar_locked{
 	filter:blur(15px);
 }
 .pushbar{
-	z-index: 1000;
+	z-index: 100000;
 	position: fixed;
 	will-change: transform;
 	overflow-y: auto;
@@ -3681,8 +3681,8 @@ html.pushbar_locked{
 	background: #000000;
 }
 html.pushbar_locked .pushbar_overlay{
-	opacity:0.5;
-	z-index: 999;
+	opacity:0.7;
+	z-index: 99999;
     transition:opacity 0.5s ease;
 }
 .pushbar.from_left{
@@ -3719,8 +3719,8 @@ html.pushbar_locked .pushbar_overlay{
 	transform: translateZ(0) translateY(100%);
 	background: -webkit-linear-gradient(-180deg, rgba(17,17,17,0.95), rgba(5,98,123,0.95)); 
   	background: linear-gradient(-180deg, rgba(17,17,17,0.95), rgba(5,98,123,0.95)); 
-  	border-radius:10px 10px 0px 0px;
-  	padding:10px;
+  	border-radius:15px 15px 0px 0px;
+  	padding:12px;
   	text-align:center;
 }
 .pushbar.opened{
@@ -3753,7 +3753,7 @@ html.pushbar_locked .pushbar_overlay{
     border-radius: 2px;
     font-size:14px;
     text-align:left;
-    opacity:0.7;
+    opacity:0.8;
 }
 //iPadヨコ
 @media only screen and (max-width: 1024px) and (orientation: landscape) {

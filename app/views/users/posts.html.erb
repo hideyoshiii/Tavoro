@@ -444,28 +444,6 @@
 <%#モーダルの中身%>
 <% if @all.present? %>
 	<% @all.each.with_index do |post, i| %>
-		<style type="text/css">
-			#menu_in_st_<%= post.id %>{
-			  overflow: hidden;
-			  width: auto;
-			  max-height: 0;
-			  opacity: 0;
-			  -webkit-transition: all .5s ease-in-out 0s;
-			  transition: all .5s ease-in-out 0s;
-			}
-			#menu_in_st_<%= post.id %>.open {
-			  max-height:500px;
-			  opacity: 1;
-			  z-index: 9999;
-			}
-		</style>
-		<script type="text/javascript">
-			$(function(){
-			    $('#menu_st_<%= post.id %>').click(function(){
-			        $('#menu_in_st_<%= post.id %>').toggleClass('open');
-			    });
-			});
-		</script>
 		<% if post.category == "music" %>
 			<% if post.preview_url.present? %>
 				<style type="text/css">
@@ -584,6 +562,11 @@
 								</a>
 							</div>						
 							<div class="pro32">		
+								<div style="text-align:right;">
+									<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:10px;">
+										<%= image_tag "ellipsis.png", :style =>'width:17px;height:17px;' %>
+									</a>			
+								</div>
 							</div>
 						</div>
 						<div class="layer07">
@@ -637,37 +620,6 @@
 								</div>
 							<% end %>
 						</div>
-						<div class="layer08">
-							<div id="menu_st_<%= post.id %>" class="icon_menu">
-								<%= image_tag "test07.png", :style =>'width:25px;height:25px;' %>
-							</div>
-							<div id="menu_in_st_<%= post.id %>">
-							  	<% unless post.user.id == current_user.id %>
-								  	<div class="icon_menu_child">
-										<span id="bookmark-of-<%= post.id %>">
-									      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-									    </span>
-									</div>
-									<div class="icon_menu_child">
-										<%= link_to "/works/#{post.id}/copy" do %>
-											<%= image_tag "test10.png", :style =>'width:35px;height:35px;' %>
-										<% end %>									
-									</div>
-								<% end %>
-								<% if post.user.id == current_user.id %>
-									<div class="icon_menu_child">
-										<%= link_to "/works/#{post.id}/edit" do %>
-											<%= image_tag "test04.png", :style =>'width:35px;height:35px;' %>
-										<% end %>
-									</div>
-									<div class="icon_menu_child">
-										<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-											<%= image_tag "test01.png", :style =>'width:35px;height:35px;' %>
-										<% end %>
-									</div>	
-								<% end %>								
-							</div>
-						</div>
 						<div class="layer09">
 							<div class="pro19">							
 								<a href="" data-dismiss="modal">
@@ -679,13 +631,50 @@
 				</div>
 			</div>
 		</div>
+		<%# ハーフモーダル %>
+		<div data-pushbar-id="mypushbar_<%= post.id %>" class="pushbar from_bottom">
+			<div class="bar_pushbar"></div>	
+			<% unless post.user.id == current_user.id %>
+				<span id="bookmark-of-<%= post.id %>">
+			      	<%= render partial: 'works/bookmark', locals: { post: post } %>
+			    </span>
+				<%= link_to "/works/#{post.id}/copy" do %>
+					<div class="btn_pushbar_item">  
+						<%= image_tag "add.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
+					</div>	
+				<% end %>									
+			<% end %>
+			<% if post.user.id == current_user.id %>			
+				<%= link_to "/works/#{post.id}/edit" do %>
+					<div class="btn_pushbar_item">  
+						<%= image_tag "edit.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
+					</div>
+				<% end %>					
+				<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+					<div class="btn_pushbar_item" style="color:#FB473E;">  
+						<%= image_tag "trash_red.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を削除する
+					</div>	
+				<% end %>				
+			<% end %>	
+		    <a data-pushbar-close>
+				<div class="btn_pushbar_close">  
+					<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル	  
+				</div>
+		  	</a>
+		</div>
 	<% end %>
 <% end %>
 
 
+<%#プロフィールモーダル%>
+<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
 
 <%#投稿ボタン%>
 <%= render "partial/post_modal" %>
+
+
+
+
 <%#タブスワイプ切り替え%>
 <script type="text/javascript">
 	$(function(){
@@ -724,6 +713,8 @@
  
 });
 </script>
+
+<%#ブックマーク切り替え%>
 <script type="text/javascript">
 	$(function(){
     $('#checked').click(function(){
@@ -746,4 +737,161 @@
 </script>
 
 
-<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
+<%#ハーフモーダルjs%>
+<script type="text/javascript">
+	class Pushbar {
+	  constructor(config = { overlay: true, blur: false }) {
+	    this.activeBar = null;
+	    this.overlay = false;
+
+	    if (config.overlay) {
+	      this.overlay = document.createElement('div');
+	      this.overlay.classList.add('pushbar_overlay');
+	      document.querySelector('body').appendChild(this.overlay);
+	    }
+
+	    if (config.blur) {
+	      const mainContent = document.querySelector('.pushbar_main_content');
+	      if (mainContent) {
+	        mainContent.classList.add('pushbar_blur');
+	      }
+	    }
+
+	    this.bindEvents();
+	  }
+
+	  get opened() {
+	    const { activeBar } = this;
+	    return Boolean(activeBar instanceof HTMLElement && activeBar.classList.contains('opened'));
+	  }
+	  
+	  get activeBarId() {
+	    const { activeBar } = this;
+	    return activeBar instanceof HTMLElement && activeBar.getAttribute('data-pushbar-id');
+	  }
+
+	  static dispatchOpen(pushbar) {
+	    const event = new CustomEvent('pushbar_opening', { bubbles: true, detail: { pushbar } });
+	    pushbar.dispatchEvent(event);
+	  }
+
+	  static dispatchClose(pushbar) {
+	    const event = new CustomEvent('pushbar_closing', { bubbles: true, detail: { pushbar } });
+	    pushbar.dispatchEvent(event);
+	  }
+
+	  static findElementById(pushbarId) {
+	    return document.querySelector(`[data-pushbar-id="${pushbarId}"]`);
+	  }
+
+	  handleOpenEvent(e) {
+	    e.preventDefault();
+	    const pushbarId = e.currentTarget.getAttribute('data-pushbar-target');
+	    if (pushbarId) {
+	      this.open(pushbarId);
+	    }
+	  }
+
+	  handleCloseEvent(e) {
+	    e.preventDefault();
+	    this.close();
+	  }
+
+	  handleKeyEvent(e) {
+	    if (this.opened && e.keyCode === 27) {
+	      this.close();
+	    }
+	  }
+
+	  bindEvents() {
+	    const triggers = document.querySelectorAll('[data-pushbar-target]');
+	    const closers = document.querySelectorAll('[data-pushbar-close]');
+
+	    triggers.forEach(trigger => trigger.addEventListener('click', e => this.handleOpenEvent(e), false));
+	    closers.forEach(closer => closer.addEventListener('click', e => this.handleCloseEvent(e), false));
+
+	    if (this.overlay) {
+	      this.overlay.addEventListener('click', e => this.handleCloseEvent(e), false);
+	    }
+	    document.addEventListener('keyup', e => this.handleKeyEvent(e));
+	  }
+
+	  open(pushbarId) {
+	    // Current bar is already opened
+	    if (String(pushbarId) === this.activeBarId && this.opened) {
+	      return;
+	    }
+	    
+	    // Get new pushbar target
+	    const pushbar = Pushbar.findElementById(pushbarId);
+
+	    if (!pushbar) return;
+	    
+	    // Close active bar (if exists)
+	    if (this.opened) {
+	      this.close();
+	    }
+	    
+	    Pushbar.dispatchOpen(pushbar);
+	    pushbar.classList.add('opened');
+
+	    const Root = document.querySelector('html');
+	    Root.classList.add('pushbar_locked');
+	    Root.setAttribute('pushbar', pushbarId);
+	    this.activeBar = pushbar;
+	  }
+
+	  close() {
+	    const { activeBar } = this;
+	    if (!activeBar) return;
+	    
+	    Pushbar.dispatchClose(activeBar);
+	    activeBar.classList.remove('opened');
+
+	    const Root = document.querySelector('html');
+	    Root.classList.remove('pushbar_locked');
+	    Root.removeAttribute('pushbar');
+	    
+	    this.activeBar = null;
+	  }
+	}
+</script>
+
+<%#バウンスjs%>
+<script type="text/javascript">
+(function(global){var startY=0;var enabled=false;var supportsPassiveOption=false;try{var opts=Object.defineProperty({},"passive",{get:function(){supportsPassiveOption=true}});window.addEventListener("test",null,opts)}catch(e){}var handleTouchmove=function(evt){var el=evt.target;var zoom=window.innerWidth/window.document.documentElement.clientWidth;if(evt.touches.length>1||zoom!==1){return}while(el!==document.body&&el!==document){var style=window.getComputedStyle(el);if(!style){break}if(el.nodeName==="INPUT"&&el.getAttribute("type")==="range"){return}var scrolling=style.getPropertyValue("-webkit-overflow-scrolling");var overflowY=style.getPropertyValue("overflow-y");var height=parseInt(style.getPropertyValue("height"),10);var isScrollable=scrolling==="touch"&&(overflowY==="auto"||overflowY==="scroll");var canScroll=el.scrollHeight>el.offsetHeight;if(isScrollable&&canScroll){var curY=evt.touches?evt.touches[0].screenY:evt.screenY;var isAtTop=startY<=curY&&el.scrollTop===0;var isAtBottom=startY>=curY&&el.scrollHeight-el.scrollTop===height;if(isAtTop||isAtBottom){evt.preventDefault()}return}el=el.parentNode}evt.preventDefault()};var handleTouchstart=function(evt){startY=evt.touches?evt.touches[0].screenY:evt.screenY};var enable=function(){window.addEventListener("touchstart",handleTouchstart,supportsPassiveOption?{passive:false}:false);window.addEventListener("touchmove",handleTouchmove,supportsPassiveOption?{passive:false}:false);enabled=true};var disable=function(){window.removeEventListener("touchstart",handleTouchstart,false);window.removeEventListener("touchmove",handleTouchmove,false);enabled=false};var isEnabled=function(){return enabled};var testDiv=document.createElement("div");document.documentElement.appendChild(testDiv);testDiv.style.WebkitOverflowScrolling="touch";var scrollSupport="getComputedStyle"in window&&window.getComputedStyle(testDiv)["-webkit-overflow-scrolling"]==="touch";document.documentElement.removeChild(testDiv);if(scrollSupport){enable()}var iNoBounce={enable:enable,disable:disable,isEnabled:isEnabled};if(typeof module!=="undefined"&&module.exports){module.exports=iNoBounce}if(typeof global.define==="function"){(function(define){define("iNoBounce",[],function(){return iNoBounce})})(global.define)}else{global.iNoBounce=iNoBounce}})(this);
+</script>
+
+<script type="text/javascript">
+  $(function(){
+
+  	//最初はバウンスの有効化
+  	iNoBounce.disable()
+
+  	//ハーフモーダル生成
+  	var pushbar = new Pushbar({
+        blur:false,
+        overlay:true,
+    });
+
+  	//開いているとき
+    $('body').on("pushbar_opening", function(){
+    	//バウンスの無効化
+    	iNoBounce.enable()
+		//スワイプ方向定義
+	    var hammertime = new Hammer(document.body);
+		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+	    //スワイプイベント登録
+	  	$('body').hammer().on('swipedown', function(){
+		    pushbar.close();	
+		});
+	});
+
+	//閉じているとき
+	$('body').on("pushbar_closing", function(){
+		//バウンスの有効化
+		iNoBounce.disable()
+	});
+
+  });
+</script>
