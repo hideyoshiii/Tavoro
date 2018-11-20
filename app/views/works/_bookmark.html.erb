@@ -1,9 +1,13 @@
 <% if Post.find_by(user_id: current_user.id, category: post.category, review: "bookmark", work_id: post.work_id) %>
 	<%= link_to "/works/#{post.id}/destroy_bookmark", method: :post, remote: true do %>
-		<%= image_tag "bookmark03.png", :style =>'width:35px;height:35px;' %>
+		<div class="btn_pushbar_item">  
+			<%= image_tag "bookmark03.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品のブックマークを削除する
+		</div>
 	<% end %>
 <% else %>
 	<%= link_to "/works/#{post.id}/create_bookmark", method: :post, remote: true do %>
-		<%= image_tag "bookmark02.png", :style =>'width:35px;height:35px;' %>
+		<div class="btn_pushbar_item">  
+			<%= image_tag "bookmark.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品をブックマークする
+		</div>
 	<% end %>
 <% end %>

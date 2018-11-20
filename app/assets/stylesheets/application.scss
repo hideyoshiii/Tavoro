@@ -3641,6 +3641,150 @@ input[name="slideshow"] {
 }
 
 
+
+
+
+//ハーフモーダル
+.pushbar.opened{
+	display: block;
+}
+html.pushbar_locked{
+    overflow: hidden;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+.pushbar_locked .pushbar_main_content.pushbar_blur{
+	filter:blur(15px);
+}
+.pushbar{
+	z-index: 1000;
+	position: fixed;
+	will-change: transform;
+	overflow-y: auto;
+	transition:transform 0.4s ease;
+	will-change: transform;
+	background:#fff;
+}
+.pushbar_overlay{
+	z-index: -999;
+	position: fixed;
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	top: 0;
+	left: 0;
+    will-change: opacity;
+    transition:opacity 0.5s ease;
+    opacity:0;
+    will-change: opacity;
+	background: #000000;
+}
+html.pushbar_locked .pushbar_overlay{
+	opacity:0.5;
+	z-index: 999;
+    transition:opacity 0.5s ease;
+}
+.pushbar.from_left{
+	top: 0;
+	left: 0;
+	width: 256px;
+	max-width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	transform: translateZ(0) translateX(-100%);
+}
+.pushbar.from_right{
+	top: 0;
+	right: 0;
+	width: 256px;
+	max-width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	transform: translateZ(0) translateX(100%);
+}
+.pushbar.from_top{
+	top: 0;
+	left: 0;
+	width: 100%;
+	max-width: 100%;
+	min-height: 150px;
+	transform: translateZ(0) translateY(-100%);
+}
+.pushbar.from_bottom{
+	bottom: 0;
+	left:32.5%;
+	width: 35%;
+	height: auto;
+	transform: translateZ(0) translateY(100%);
+	background: -webkit-linear-gradient(-180deg, rgba(17,17,17,0.95), rgba(5,98,123,0.95)); 
+  	background: linear-gradient(-180deg, rgba(17,17,17,0.95), rgba(5,98,123,0.95)); 
+  	border-radius:10px 10px 0px 0px;
+  	padding:10px;
+  	text-align:center;
+}
+.pushbar.opened{
+   transform: translateX(0px) translateY(0px);
+}
+.bar_pushbar{
+	width:20%;
+	height:2px;
+	background:rgba(39,134,160,0.5);
+	margin:0px auto 25px;
+	text-align:center;
+	border-radius:25px;
+}
+.btn_pushbar_close{
+	width:100%;
+	height:auto;
+    padding: 15px 0;
+    margin:0 auto;
+    color: #FAFAFA;
+    background: rgba(0,0,0,0.2);
+    border-radius: 2px;
+    font-size:14px;
+}
+.btn_pushbar_item{
+	width:100%;
+	height:auto;
+    padding: 0 15px 22px;
+    margin:0 auto;
+    color: #FAFAFA;
+    border-radius: 2px;
+    font-size:14px;
+    text-align:left;
+    opacity:0.7;
+}
+//iPadヨコ
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+	.bar_post {
+	    left:30%;
+	    width:40%;
+	}
+}
+//iPadタテ
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+	.pushbar.from_bottom {
+	    left:15%;
+	    width:70%;
+	}
+}
+//iPhoneタテ
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+	.pushbar.from_bottom {
+	    left:0;
+	    width:100%;
+	}
+}
+//iPhoneヨコ
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+}
+//SE以下タテ
+@media only screen and (max-width: 370px) and (orientation: portrait) {
+}
+
+
+
 //凡庸
 .hide{
 	desplay:none;
@@ -3649,9 +3793,3 @@ input[name="slideshow"] {
 	display:inline-block;
 	vertical-align:middle;
 }
-
-
-
-
-
-

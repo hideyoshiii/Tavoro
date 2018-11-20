@@ -28,6 +28,6 @@
 
 //= require touch-emulator
 
-//= require turbolinks
+
 //= require_tree .
 //= require serviceworker-companion
