@@ -20,23 +20,23 @@
 					<%= image_tag "checked.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
 					<span style="color:#c2c2c2;"><%= @checkeds_i %></span> 
 				</div>
-				<div id="bookmark" class="btn_off" style="display:inline-block;vertical-align:middle;margin-right:10px;">	
+				<div id="bookmark" class="btn_off" style="display:inline-block;vertical-align:middle;margin-right:10px;">
 					<%= image_tag "bookmark.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
 					<span style="color:#c2c2c2;"><%= @bookmarks_i %></span>
 				</div>				
 			</div>  
 		</div>
 	</div>		      
-	<div class="horizontal_scroll02" style="margin-top:-3px;">			
-		  <ul class="nav nav-pills js-tabs">
-		      <li class="active"><a href="#all" data-toggle="tab">すべて</a></li>
-			  <li><a href="#movie" data-toggle="tab">映画</a></li>
-			  <li><a href="#tv" data-toggle="tab">テレビ</a></li>
-			  <li><a href="#book" data-toggle="tab">ブック</a></li>
-			  <li><a href="#comic" data-toggle="tab">コミック</a></li>
-			  <li><a href="#music" data-toggle="tab">ミュージック</a></li>
-		  </ul>
-	</div>	
+	<div class="tabContainer">
+        <div class="tab_table">
+            <div class="tab__button active">すべて</div>
+            <div class="tab__button">映画</div>
+            <div class="tab__button">テレビ</div>
+            <div class="tab__button">ブック</div>
+            <div class="tab__button">コミック</div>
+            <div class="tab__button">ミュージック</div>
+        </div>
+    </div>
 </div>
 
 <div class="main">
@@ -44,398 +44,403 @@
 	<div class="block_side">
 	</div>
 	<div class="block_main">
-		
-		<% if current_user.following?(@user) || current_user == @user %>
-		<div class="tab-content">
-		  <div class="tab-pane fade in active" id="all">
-		  	<div class="checked" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-			  	<% if @checkeds.blank? %>
-			  		<%= render "partial/nothing" %>
-			  	<% else %>
-				  	<% @checkeds.each.with_index(1) do |post, i| %>
-			  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
-								<% else %>
-									<% if post.category == "music" %>
-										<%= image_tag post.image_url, :class =>'img_lavoro000' %>
-									<% else %>
-										<%= image_tag post.image_url, :class =>'img_lavoro' %>
-									<% end %>
-								<% end %>
-								<span>
-									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-				  	<% end %>
-			  	<% end %>
-		  	</div>
-		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-		  		<% if @bookmarks.blank? %>
-			  		<%= render "partial/nothing" %>
-			  	<% else %>
-				  	<% @bookmarks.each.with_index(1) do |post, i| %>
-			  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
-								<% else %>
-									<% if post.category == "music" %>
-										<%= image_tag post.image_url, :class =>'img_lavoro000' %>
-									<% else %>
-										<%= image_tag post.image_url, :class =>'img_lavoro' %>
-									<% end %>
-								<% end %>
-								<span>
-									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<i class="fas fa-film"></i> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<i class="fas fa-film"></i> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<i class="fas fa-book"></i> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<i class="fas fa-book"></i> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<i class="fas fa-music"></i> ミュージック
-										<% end %>
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-				  	<% end %>
-			  	<% end %>
-		  	</div>
-		  </div>
-		  <div class="tab-pane fade" id="movie">
-		  	<div class="checked" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-			  	<% if @checkeds_movie.blank? %>
-			  		<%= render "partial/nothing" %>
-			  	<% else %>
-				    <% @checkeds_movie.each.with_index(1) do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro' %>
-								<% end %>
-								<span>
-									<div class="font_category_min">
-										<i class="fas fa-film"></i> 映画
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-				  	<% end %>
-			  	<% end %>
-			</div>
-		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-		  		<% if @bookmarks_movie.blank? %>
-			  		<%= render "partial/nothing02" %>
-			  	<% else %>
-				    <% @bookmarks_movie.each.with_index(1) do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro' %>
-								<% end %>
-								<span>
-									<div class="font_category_min">
-										<i class="fas fa-film"></i> 映画
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-				  	<% end %>
-			  	<% end %>
-		  	</div>
-		  </div>
-		  <div class="tab-pane fade" id="tv">
-		  	<div class="checked" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-			    <% if @checkeds_tv.blank? %>
-			  		<%= render "partial/nothing" %>
-			  	<% else %>
-				  	<% @checkeds_tv.each.with_index(1) do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro' %>
-								<% end %>
-								<span>
-									<div class="font_category_min">
-										<i class="fas fa-film"></i> テレビ
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-				  	<% end %>
-			  	<% end %>
-			</div>
-		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-		  		<% if @bookmarks_tv.blank? %>
-			  		<%= render "partial/nothing02" %>
-			  	<% else %>
-				  	<% @bookmarks_tv.each.with_index(1) do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro' %>
-								<% end %>
-								<span>
-									<div class="font_category_min">
-										<i class="fas fa-film"></i> テレビ
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-				  	<% end %>
-			  	<% end %>
-		  	</div>
-		  </div>
-		  <div class="tab-pane fade" id="book">
-		  	<div class="checked" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-			    <% if @checkeds_book.blank? %>
-			  		<%= render "partial/nothing" %>
-			  	<% else %>
-				  	<% @checkeds_book.each.with_index(1) do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro' %>
-								<% end %>
-								<span>
-									<div class="font_category_min">										
-										<i class="fas fa-book"></i> ブック
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-				  	<% end %>
-			  	<% end %>
-			</div>
-		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-		  		<% if @bookmarks_book.blank? %>
-			  		<%= render "partial/nothing02" %>
-			  	<% else %>
-				  	<% @bookmarks_book.each.with_index(1) do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro' %>
-								<% end %>
-								<span>
-									<div class="font_category_min">										
-										<i class="fas fa-book"></i> ブック
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-				  	<% end %>
-			  	<% end %>
-		  	</div>
-		  </div>
-		  <div class="tab-pane fade" id="comic">
-		  	<div class="checked" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-			    <% if @checkeds_comic.blank? %>
-			  		<%= render "partial/nothing" %>
-			  	<% else %>
-				  	<% @checkeds_comic.each.with_index(1) do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing02.jpg", :class =>'img_lavoro' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro' %>
-								<% end %>
-								<span>
-									<div class="font_category_min">
-										<i class="fas fa-book"></i> コミック
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-				  	<% end %>
-		  		<% end %>
-		  	</div>
-		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-		  		<% if @bookmarks_comic.blank? %>
-			  		<%= render "partial/nothing02" %>
-			  	<% else %>
-				  	<% @bookmarks_comic.each.with_index(1) do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing02.jpg", :class =>'img_lavoro' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro' %>
-								<% end %>
-								<span>
-									<div class="font_category_min">
-										<i class="fas fa-book"></i> コミック
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-				  	<% end %>
-		  		<% end %>
-		  	</div>
-		  </div>
-		  <div class="tab-pane fade" id="music">
-		  	<div class="checked" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-			    <% if @checkeds_music.blank? %>
-			  		<%= render "partial/nothing" %>
-			  	<% else %>
-				  	<% @checkeds_music.each.with_index(1) do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing03.jpg", :class =>'img_lavoro000' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro000' %>
-								<% end %>
-								<span>
-									<div class="font_category_min">
-										<i class="fas fa-music"></i> ミュージック
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>	  		
-				  	<% end %>
-			  	<% end %>
-			</div>
-		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
-		  		<div style="height:165px;"></div>
-		  		<% if @bookmarks_music.blank? %>
-			  		<%= render "partial/nothing02" %>
-			  	<% else %>
-				  	<% @bookmarks_music.each.with_index(1) do |post, i| %>
-				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing03.jpg", :class =>'img_lavoro000' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro000' %>
-								<% end %>
-								<span>
-									<div class="font_category_min">
-										<i class="fas fa-music"></i> ミュージック
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>	  		
-				  	<% end %>
-			  	<% end %>
-		  	</div>
-		  </div>
-		</div>
-		<% else %>
-			<%= render "partial/nothing03" %>
-		<% end %>
 
+		<div class="swiper-container" style="height:100%">
+			<div class="swiper-wrapper" style="height:100%">
+
+				<div class="swiper-slide" style="height:100%">
+		        	<div class="checked" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+					  	<% if @checkeds.blank? %>
+					  		<%= render "partial/nothing" %>
+					  	<% else %>
+						  	<% @checkeds.each.with_index(1) do |post, i| %>
+					  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing01.jpg" class="swiper-lazy img_lavoro">
+										<% else %>
+											<% if post.category == "music" %>
+												<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro000">
+											<% else %>
+												<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro">
+											<% end %>
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<% if post.category == "movie" %>
+													<i class="fas fa-film"></i> 映画
+												<% end %>
+												<% if post.category == "tv" %>
+													<i class="fas fa-film"></i> テレビ
+												<% end %>
+												<% if post.category == "book" %>
+													<i class="fas fa-book"></i> ブック
+												<% end %>
+												<% if post.category == "comic" %>
+													<i class="fas fa-book"></i> コミック
+												<% end %>
+												<% if post.category == "music" %>
+													<i class="fas fa-music"></i> ミュージック
+												<% end %>
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+					  	<% end %>
+				  	</div>
+				  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+				  		<% if @bookmarks.blank? %>
+					  		<%= render "partial/nothing" %>
+					  	<% else %>
+						  	<% @bookmarks.each.with_index(1) do |post, i| %>
+					  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing01.jpg" class="swiper-lazy img_lavoro">
+										<% else %>
+											<% if post.category == "music" %>
+												<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro000">
+											<% else %>
+												<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro">
+											<% end %>
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<% if post.category == "movie" %>
+													<i class="fas fa-film"></i> 映画
+												<% end %>
+												<% if post.category == "tv" %>
+													<i class="fas fa-film"></i> テレビ
+												<% end %>
+												<% if post.category == "book" %>
+													<i class="fas fa-book"></i> ブック
+												<% end %>
+												<% if post.category == "comic" %>
+													<i class="fas fa-book"></i> コミック
+												<% end %>
+												<% if post.category == "music" %>
+													<i class="fas fa-music"></i> ミュージック
+												<% end %>
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+					  	<% end %>
+				  	</div>
+		        </div>
+
+		        <div class="swiper-slide" style="height:100%">
+		        	<div class="checked" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+					  	<% if @checkeds_movie.blank? %>
+					  		<%= render "partial/nothing" %>
+					  	<% else %>
+						    <% @checkeds_movie.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing01.jpg" class="swiper-lazy img_lavoro">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro">
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<i class="fas fa-film"></i> 映画
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+					  	<% end %>
+					</div>
+				  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+				  		<% if @bookmarks_movie.blank? %>
+					  		<%= render "partial/nothing02" %>
+					  	<% else %>
+						    <% @bookmarks_movie.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing01.jpg" class="swiper-lazy img_lavoro">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro">
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<i class="fas fa-film"></i> 映画
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+					  	<% end %>
+				  	</div>
+		        </div>
+
+		        <div class="swiper-slide" style="height:100%">
+		        	<div class="checked" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+					    <% if @checkeds_tv.blank? %>
+					  		<%= render "partial/nothing" %>
+					  	<% else %>
+						  	<% @checkeds_tv.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing01.jpg" class="swiper-lazy img_lavoro">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro">
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<i class="fas fa-film"></i> テレビ
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+					  	<% end %>
+					</div>
+				  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+				  		<% if @bookmarks_tv.blank? %>
+					  		<%= render "partial/nothing02" %>
+					  	<% else %>
+						  	<% @bookmarks_tv.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing01.jpg" class="swiper-lazy img_lavoro">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro">
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<i class="fas fa-film"></i> テレビ
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+					  	<% end %>
+				  	</div>
+		        </div>
+
+		        <div class="swiper-slide" style="height:100%">
+		        	<div class="checked" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+					    <% if @checkeds_book.blank? %>
+					  		<%= render "partial/nothing" %>
+					  	<% else %>
+						  	<% @checkeds_book.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing02.jpg" class="swiper-lazy img_lavoro">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro">
+										<% end %>
+										<span>
+											<div class="font_category_min">										
+												<i class="fas fa-book"></i> ブック
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+					  	<% end %>
+					</div>
+				  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+				  		<% if @bookmarks_book.blank? %>
+					  		<%= render "partial/nothing02" %>
+					  	<% else %>
+						  	<% @bookmarks_book.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing02.jpg" class="swiper-lazy img_lavoro">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro">
+										<% end %>
+										<span>
+											<div class="font_category_min">										
+												<i class="fas fa-book"></i> ブック
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+					  	<% end %>
+				  	</div>
+		        </div>
+
+		        <div class="swiper-slide" style="height:100%">
+		        	<div class="checked" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+					    <% if @checkeds_comic.blank? %>
+					  		<%= render "partial/nothing" %>
+					  	<% else %>
+						  	<% @checkeds_comic.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing02.jpg" class="swiper-lazy img_lavoro">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro">
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<i class="fas fa-book"></i> コミック
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+				  		<% end %>
+				  	</div>
+				  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+				  		<% if @bookmarks_comic.blank? %>
+					  		<%= render "partial/nothing02" %>
+					  	<% else %>
+						  	<% @bookmarks_comic.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing02.jpg" class="swiper-lazy img_lavoro">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro">
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<i class="fas fa-book"></i> コミック
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+				  		<% end %>
+		  			</div>
+		        </div>
+
+		        <div class="swiper-slide" style="height:100%">
+		        	<div class="checked" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+					    <% if @checkeds_music.blank? %>
+					  		<%= render "partial/nothing" %>
+					  	<% else %>
+						  	<% @checkeds_music.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing03.jpg" class="swiper-lazy img_lavoro000">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro000">
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<i class="fas fa-music"></i> ミュージック
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>	  		
+						  	<% end %>
+					  	<% end %>
+					</div>
+				  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+				  		<% if @bookmarks_music.blank? %>
+					  		<%= render "partial/nothing02" %>
+					  	<% else %>
+						  	<% @bookmarks_music.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing03.jpg" class="swiper-lazy img_lavoro000">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro000">
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<i class="fas fa-music"></i> ミュージック
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>	  		
+						  	<% end %>
+					  	<% end %>
+				  	</div>
+		        </div>
+
+			</div>
+		</div>
+		
 	</div>
 	<div class="block_side">
 	</div>
@@ -659,7 +664,7 @@
 			<% end %>	
 		    <a data-pushbar-close>
 				<div class="btn_pushbar_close">  
-					<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル	  
+					<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル  
 				</div>
 		  	</a>
 		</div>
@@ -676,44 +681,61 @@
 
 
 
-<%#タブスワイプ切り替え%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-  var ACTIVE_SELECTOR = '.nav-pills > .active';
- 
-  var $jsTabs = $('.js-tabs');
-  var $jsTabsLi = $('.js-tabs li');
- 
-  var $jsSwipe = $('.tab-pane');
-  var $scrollContainer = $('.horizontal_scroll02');
- 
-  var tabsLiLen = $jsTabsLi.length;
-  var tabsLiWid = $jsTabsLi.eq(0).width();
- 
- 
-  //スワイプイベント登録
-  $jsSwipe.hammer().on('swipeleft',next);  //--------C
-  $jsSwipe.hammer().on('swiperight',prev);
- 
-  function next() {
-    tabManager($(ACTIVE_SELECTOR).next('li'));
-  }
-  function prev() {
-    tabManager($(ACTIVE_SELECTOR).prev('li'));
-  }                                        //--------C
- 
-  // 指定されたタブをカレントし要素にスクロールする
-  function tabManager($nextTarget){
-    $nextTarget.find('a').trigger('click');  //--------D
- 
-    if($nextTarget.index() != -1){
-      $scrollContainer.animate({ scrollLeft: $nextTarget.index() * tabsLiWid }, 'swing');  //--------E
-       
+    /******************************************
+    事前準備
+    *******************************************/
+    //タブボタンの数を取得
+    var tabQuantity = $('.tab__button').length;
+    //タブの長さとボディの長さの差分を取得
+    var tabExtraDistance = $('.tab_table').width();
+    /******************************************
+    スライダー発動
+    *******************************************/
+    var swiper = new Swiper('.swiper-container', {
+			speed: 600,
+			touchAngle: 55,
+			preloadImages: false,
+			lazy: {
+				loadOnTransitionStart: true,
+				loadPrevNext: true,
+			},
+		  	on: {
+			    slideChange: function () {
+			      var newIndex = swiper.realIndex;
+            	  slideChange(newIndex);
+			    },
+			  },
+		});
+    /******************************************
+    スライドする時に発動する関数。タブの表示調整を行う。
+    *******************************************/
+    function slideChange(newIndex){
+        //クラスを調整
+        $('.tab__button').removeClass('active');
+        $('.tab_table > div:nth-child(' + ( newIndex + 1 ) + ')').addClass('active');
+        //スクロールするべき距離を取得。タブ全体の長さ / ( タブの個数 - 1 ) * スライドの現在地
+        var scrollDestination = ( tabExtraDistance / (tabQuantity - 1) ) * ( newIndex );
+        //スクロール位置を調整
+        $('.tabContainer').animate({ scrollLeft: scrollDestination }, 'slow');
     }
-  }
- 
+    /******************************************
+    タブボタンクリックで発動する関数
+    *******************************************/
+    $('.tab__button').on('click',function(e){
+        //何番目の要素かを取ってスライドを移動する
+        var nth = $('.tab__button').index(this);
+        swiper.slideTo(nth, 500, false);
+        //クリックイベントを無効化
+        e.preventDefault();
+    })
 });
 </script>
+
+
+
 
 <%#ブックマーク切り替え%>
 <script type="text/javascript">

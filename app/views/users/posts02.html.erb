@@ -1,0 +1,898 @@
+<div class="bar_collection">
+	<div class="bar_smoke"></div>	
+	<div style="width:100%;">
+		<div class="pro29">
+			<a href="" data-toggle="modal" data-target="#myModal_profile_<%= @user.id %>">
+				<div style="padding:10px 10px 10px 20px;display:inline-block;vertical-align:middle;">
+        			<%= image_tag @user.image(:large), :class =>'img_user11' %>
+        		</div>
+				<div class="font_white" style="display:inline-block;vertical-align:middle;max-width:50%;word-wrap: break-word;">
+        			<%= @user.name %>
+        			<% if @user.authority == "public" %>
+                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+                    <% end %>
+        		</div>
+    		</a>
+		</div>
+		<div class="pro30">
+			<div style="width:100%;text-align:right;"> 	
+				<div id="checked" class="btn_on" style="display:inline-block;vertical-align:middle;">
+					<%= image_tag "checked.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
+					<span style="color:#c2c2c2;"><%= @checkeds_i %></span> 
+				</div>
+				<div id="bookmark" class="btn_off" style="display:inline-block;vertical-align:middle;margin-right:10px;">	
+					<%= image_tag "bookmark.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
+					<span style="color:#c2c2c2;"><%= @bookmarks_i %></span>
+				</div>				
+			</div>  
+		</div>
+	</div>		      
+	<div class="horizontal_scroll02" style="margin-top:-3px;">			
+		  <ul class="nav nav-pills js-tabs">
+		      <li class="active"><a href="#all" data-toggle="tab">すべて</a></li>
+			  <li><a href="#movie" data-toggle="tab">映画</a></li>
+			  <li><a href="#tv" data-toggle="tab">テレビ</a></li>
+			  <li><a href="#book" data-toggle="tab">ブック</a></li>
+			  <li><a href="#comic" data-toggle="tab">コミック</a></li>
+			  <li><a href="#music" data-toggle="tab">ミュージック</a></li>
+		  </ul>
+	</div>	
+</div>
+
+<div class="main">
+	<div class="cover"></div>
+	<div class="block_side">
+	</div>
+	<div class="block_main">
+		
+		<% if current_user.following?(@user) || current_user == @user %>
+		<div class="tab-content">
+		  <div class="tab-pane fade in active" id="all">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+			  	<% if @checkeds.blank? %>
+			  		<%= render "partial/nothing" %>
+			  	<% else %>
+				  	<% @checkeds.each.with_index(1) do |post, i| %>
+			  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
+								<% else %>
+									<% if post.category == "music" %>
+										<%= image_tag post.image_url, :class =>'img_lavoro000' %>
+									<% else %>
+										<%= image_tag post.image_url, :class =>'img_lavoro' %>
+									<% end %>
+								<% end %>
+								<span>
+									<div class="font_category_min">
+										<% if post.category == "movie" %>
+											<i class="fas fa-film"></i> 映画
+										<% end %>
+										<% if post.category == "tv" %>
+											<i class="fas fa-film"></i> テレビ
+										<% end %>
+										<% if post.category == "book" %>
+											<i class="fas fa-book"></i> ブック
+										<% end %>
+										<% if post.category == "comic" %>
+											<i class="fas fa-book"></i> コミック
+										<% end %>
+										<% if post.category == "music" %>
+											<i class="fas fa-music"></i> ミュージック
+										<% end %>
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>
+				  	<% end %>
+			  	<% end %>
+		  	</div>
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+		  		<% if @bookmarks.blank? %>
+			  		<%= render "partial/nothing" %>
+			  	<% else %>
+				  	<% @bookmarks.each.with_index(1) do |post, i| %>
+			  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
+								<% else %>
+									<% if post.category == "music" %>
+										<%= image_tag post.image_url, :class =>'img_lavoro000' %>
+									<% else %>
+										<%= image_tag post.image_url, :class =>'img_lavoro' %>
+									<% end %>
+								<% end %>
+								<span>
+									<div class="font_category_min">
+										<% if post.category == "movie" %>
+											<i class="fas fa-film"></i> 映画
+										<% end %>
+										<% if post.category == "tv" %>
+											<i class="fas fa-film"></i> テレビ
+										<% end %>
+										<% if post.category == "book" %>
+											<i class="fas fa-book"></i> ブック
+										<% end %>
+										<% if post.category == "comic" %>
+											<i class="fas fa-book"></i> コミック
+										<% end %>
+										<% if post.category == "music" %>
+											<i class="fas fa-music"></i> ミュージック
+										<% end %>
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>
+				  	<% end %>
+			  	<% end %>
+		  	</div>
+		  </div>
+		  <div class="tab-pane fade" id="movie">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+			  	<% if @checkeds_movie.blank? %>
+			  		<%= render "partial/nothing" %>
+			  	<% else %>
+				    <% @checkeds_movie.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro' %>
+								<% end %>
+								<span>
+									<div class="font_category_min">
+										<i class="fas fa-film"></i> 映画
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>
+				  	<% end %>
+			  	<% end %>
+			</div>
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+		  		<% if @bookmarks_movie.blank? %>
+			  		<%= render "partial/nothing02" %>
+			  	<% else %>
+				    <% @bookmarks_movie.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro' %>
+								<% end %>
+								<span>
+									<div class="font_category_min">
+										<i class="fas fa-film"></i> 映画
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>
+				  	<% end %>
+			  	<% end %>
+		  	</div>
+		  </div>
+		  <div class="tab-pane fade" id="tv">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+			    <% if @checkeds_tv.blank? %>
+			  		<%= render "partial/nothing" %>
+			  	<% else %>
+				  	<% @checkeds_tv.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro' %>
+								<% end %>
+								<span>
+									<div class="font_category_min">
+										<i class="fas fa-film"></i> テレビ
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>
+				  	<% end %>
+			  	<% end %>
+			</div>
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+		  		<% if @bookmarks_tv.blank? %>
+			  		<%= render "partial/nothing02" %>
+			  	<% else %>
+				  	<% @bookmarks_tv.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro' %>
+								<% end %>
+								<span>
+									<div class="font_category_min">
+										<i class="fas fa-film"></i> テレビ
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>
+				  	<% end %>
+			  	<% end %>
+		  	</div>
+		  </div>
+		  <div class="tab-pane fade" id="book">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+			    <% if @checkeds_book.blank? %>
+			  		<%= render "partial/nothing" %>
+			  	<% else %>
+				  	<% @checkeds_book.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro' %>
+								<% end %>
+								<span>
+									<div class="font_category_min">										
+										<i class="fas fa-book"></i> ブック
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>
+				  	<% end %>
+			  	<% end %>
+			</div>
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+		  		<% if @bookmarks_book.blank? %>
+			  		<%= render "partial/nothing02" %>
+			  	<% else %>
+				  	<% @bookmarks_book.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro' %>
+								<% end %>
+								<span>
+									<div class="font_category_min">										
+										<i class="fas fa-book"></i> ブック
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>
+				  	<% end %>
+			  	<% end %>
+		  	</div>
+		  </div>
+		  <div class="tab-pane fade" id="comic">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+			    <% if @checkeds_comic.blank? %>
+			  		<%= render "partial/nothing" %>
+			  	<% else %>
+				  	<% @checkeds_comic.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing02.jpg", :class =>'img_lavoro' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro' %>
+								<% end %>
+								<span>
+									<div class="font_category_min">
+										<i class="fas fa-book"></i> コミック
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>
+				  	<% end %>
+		  		<% end %>
+		  	</div>
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+		  		<% if @bookmarks_comic.blank? %>
+			  		<%= render "partial/nothing02" %>
+			  	<% else %>
+				  	<% @bookmarks_comic.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing02.jpg", :class =>'img_lavoro' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro' %>
+								<% end %>
+								<span>
+									<div class="font_category_min">
+										<i class="fas fa-book"></i> コミック
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>
+				  	<% end %>
+		  		<% end %>
+		  	</div>
+		  </div>
+		  <div class="tab-pane fade" id="music">
+		  	<div class="checked" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+			    <% if @checkeds_music.blank? %>
+			  		<%= render "partial/nothing" %>
+			  	<% else %>
+				  	<% @checkeds_music.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing03.jpg", :class =>'img_lavoro000' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro000' %>
+								<% end %>
+								<span>
+									<div class="font_category_min">
+										<i class="fas fa-music"></i> ミュージック
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>	  		
+				  	<% end %>
+			  	<% end %>
+			</div>
+		  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;">
+		  		<div style="height:165px;"></div>
+		  		<% if @bookmarks_music.blank? %>
+			  		<%= render "partial/nothing02" %>
+			  	<% else %>
+				  	<% @bookmarks_music.each.with_index(1) do |post, i| %>
+				  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+					    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing03.jpg", :class =>'img_lavoro000' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro000' %>
+								<% end %>
+								<span>
+									<div class="font_category_min">
+										<i class="fas fa-music"></i> ミュージック
+									</div>
+									<div class="contain_title">
+										<div class="font_title_min">
+											<%= post.title %>
+										</div>
+									</div>
+								</span>
+							</a>
+						</div>	  		
+				  	<% end %>
+			  	<% end %>
+		  	</div>
+		  </div>
+		</div>
+		<% else %>
+			<%= render "partial/nothing03" %>
+		<% end %>
+
+	</div>
+	<div class="block_side">
+	</div>
+</div>
+
+<%#モーダルの中身%>
+<% if @all.present? %>
+	<% @all.each.with_index do |post, i| %>
+		<% if post.category == "music" %>
+			<% if post.preview_url.present? %>
+				<style type="text/css">
+					#btn_preview_<%= post.id %> {
+				    display: block;
+				    width: 40px;
+				    height: 40px;
+				    background: rgba(50,50,50,0.7);
+				    text-align: center;
+				    border-radius: 50%;
+				    cursor: pointer;
+				    position: relative;
+				    margin-left:85%;
+				    margin-top:-15%;
+					}
+					@media only screen and (max-width: 768px) {
+						#btn_preview_<%= post.id %>{
+						margin-left:80%;
+				    	margin-top:-20%;
+						}
+					}
+					#btn_preview_<%= post.id %> i {
+					  color: #FAFAFA;
+					  line-height: 40px;
+					  vertical-align: middle;
+					  font-size: 9px;
+					  margin-left:1px;
+					}
+				</style>
+				<script type="text/javascript"> 
+				  $(function(){
+				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
+				  	  audio_<%= post.id %>.preload = 'none';
+					  $('#btn_preview_<%= post.id %>').on("click",function(){
+					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
+					     {
+					       $("#icon_play_<%= post.id %>").removeClass('fa-play');
+					       $("#icon_play_<%= post.id %>").addClass('fa-pause');
+					       audio_<%= post.id %>.play();
+					     }
+					    else
+					     {
+					       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+					       $("#icon_play_<%= post.id %>").addClass('fa-play');
+					       audio_<%= post.id %>.pause();
+					     }
+					  });
+					  audio_<%= post.id %>.onended = function() {
+					     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+					     $("#icon_play_<%= post.id %>").addClass('fa-play');
+					  };
+				  });
+			   </script>
+			<% end %>
+		<% end %>
+		<div class="modal fade" id="myModal_<%= post.id %>">
+			<div class="height_modal"></div>
+			<div class="modal-dialog">
+				<div class="base01">
+					<% if post.image_url.blank? %>
+						<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
+					<% else %>
+						<% if post.category == "music" %>
+							<%= image_tag post.image_url, :class =>'img_lavoro002' %>
+						<% else %>
+							<%= image_tag post.image_url, :class =>'img_lavoro02' %>
+						<% end %>
+					<% end %>
+					<span>
+						<div class="layer05">
+						</div>
+						<div class="layer03">
+							<div class="pro31">
+								<a href="" data-toggle="modal" data-target="#myModal_profile_<%= post.user.id %>">
+									<div class="inline_block_default">
+										<%= image_tag post.user.image(:medium), :class => "img_user04" %>
+									</div>
+									<div class="inline_block_default">
+										<div class="font_white" style="word-wrap:break-word;">
+											<%= post.user.name %>
+											<% if post.user.authority == "public" %>
+						                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+						                    <% end %>
+										</div>
+										<div class="font_gray_min" style="word-wrap:break-word;">
+											<% if post.category == "movie" %>
+												<i class="fas fa-film"></i> 映画
+											<% end %>
+											<% if post.category == "tv" %>
+												<i class="fas fa-film"></i> テレビ
+											<% end %>
+											<% if post.category == "book" %>
+												<i class="fas fa-book"></i> ブック
+											<% end %>
+											<% if post.category == "comic" %>
+												<i class="fas fa-book"></i> コミック
+											<% end %>
+											<% if post.category == "music" %>
+												<i class="fas fa-music"></i> ミュージック
+											<% end %>
+											<% @seconds = (Time.now - post.created_at).round  %>
+											<% if @seconds <= 3600 %>
+												- <%= @seconds / 60 %>分前
+											<% else %>
+												<% if @seconds <= 86400 %>
+														- <%= @seconds / (60 * 60) %>時間前
+												<% else %>
+													<% if @seconds <= 604800 %>
+														- <%= @seconds / (60 * 60 * 24) %>日前
+													<% else %>
+														- <%= post.created_at.strftime('%m月%d日') %>
+													<% end %>
+												<% end %>
+											<% end %>
+										</div>
+									</div>
+								</a>
+							</div>						
+							<div class="pro32">		
+								<div style="text-align:right;">
+									<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:10px;">
+										<%= image_tag "ellipsis.png", :style =>'width:17px;height:17px;' %>
+									</a>			
+								</div>
+							</div>
+						</div>
+						<div class="layer07">
+							<%= link_to "/works/#{post.id}/detail" do %>
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro03' %>
+								<% end %>
+							<% end %>
+							<% if post.category == "music" %>
+								<% if post.preview_url.present? %>
+									<div id="btn_preview_<%= post.id %>">
+										<i id="icon_play_<%= post.id %>" class="fas fa-play"></i>
+									</div>
+								<% end %>
+							<% end %>
+						</div>
+						<div class="layer02">
+							<%= link_to "/works/#{post.id}/detail" do %>
+								<div class="font_how">
+									<% if post.review == "bookmark" %>
+										<i class="far fa-bookmark"></i> ブックマーク
+									<% end %>
+									<% if post.review == "good" %>
+										<% if post.category == "movie" || post.category == "tv" %>
+											観ました
+										<% end %>
+										<% if post.category == "book" || post.category == "comic" %>
+											読みました
+										<% end %>
+										<% if post.category == "music" %>
+											聴きました
+										<% end %>
+									<% end %>
+									<% if post.review == "favorite" %>
+										<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+									<% end %>
+									<% if post.review == "bad" %>
+										<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
+									<% end %>
+								</div>
+								<div class="font_head">
+									<%= post.title %>
+								</div>
+							<% end %>
+							<% if post.description.present? %>
+								<div class="balloon_top"></div>
+								<div class="balloon">
+								  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+								</div>
+							<% end %>
+						</div>
+						<div class="layer09">
+							<div class="pro19">							
+								<a href="" data-dismiss="modal">
+									<%= image_tag "close_blue.png", :class =>'img_left02' %>
+								</a>
+							</div>
+						</div>
+					</span>
+				</div>
+			</div>
+		</div>
+		<%# ハーフモーダル %>
+		<div data-pushbar-id="mypushbar_<%= post.id %>" class="pushbar from_bottom">
+			<div class="bar_pushbar"></div>	
+			<% unless post.user.id == current_user.id %>
+				<span id="bookmark-of-<%= post.id %>">
+			      	<%= render partial: 'works/bookmark', locals: { post: post } %>
+			    </span>
+				<%= link_to "/works/#{post.id}/copy" do %>
+					<div class="btn_pushbar_item">  
+						<%= image_tag "add.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
+					</div>	
+				<% end %>									
+			<% end %>
+			<% if post.user.id == current_user.id %>			
+				<%= link_to "/works/#{post.id}/edit" do %>
+					<div class="btn_pushbar_item">  
+						<%= image_tag "edit.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
+					</div>
+				<% end %>					
+				<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+					<div class="btn_pushbar_item" style="color:#FB473E;">  
+						<%= image_tag "trash_red.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を削除する
+					</div>	
+				<% end %>				
+			<% end %>	
+		    <a data-pushbar-close>
+				<div class="btn_pushbar_close">  
+					<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル	  
+				</div>
+		  	</a>
+		</div>
+	<% end %>
+<% end %>
+
+
+<%#プロフィールモーダル%>
+<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
+
+<%#投稿ボタン%>
+<%= render "partial/post_modal" %>
+
+
+
+
+<%#タブスワイプ切り替え%>
+<script type="text/javascript">
+	$(function(){
+  var ACTIVE_SELECTOR = '.nav-pills > .active';
+ 
+  var $jsTabs = $('.js-tabs');
+  var $jsTabsLi = $('.js-tabs li');
+ 
+  var $jsSwipe = $('.tab-pane');
+  var $scrollContainer = $('.horizontal_scroll02');
+ 
+  var tabsLiLen = $jsTabsLi.length;
+  var tabsLiWid = $jsTabsLi.eq(0).width();
+ 
+ 
+  //スワイプイベント登録
+  $jsSwipe.hammer().on('swipeleft',next);  //--------C
+  $jsSwipe.hammer().on('swiperight',prev);
+ 
+  function next() {
+    tabManager($(ACTIVE_SELECTOR).next('li'));
+  }
+  function prev() {
+    tabManager($(ACTIVE_SELECTOR).prev('li'));
+  }                                        //--------C
+ 
+  // 指定されたタブをカレントし要素にスクロールする
+  function tabManager($nextTarget){
+    $nextTarget.find('a').trigger('click');  //--------D
+ 
+    if($nextTarget.index() != -1){
+      $scrollContainer.animate({ scrollLeft: $nextTarget.index() * tabsLiWid }, 'swing');  //--------E
+       
+    }
+  }
+ 
+});
+</script>
+
+<%#ブックマーク切り替え%>
+<script type="text/javascript">
+	$(function(){
+    $('#checked').click(function(){
+    	$('#checked').addClass("btn_on");
+    	$('#checked').removeClass("btn_off");
+    	$('#bookmark').addClass("btn_off");
+    	$('#bookmark').removeClass("btn_on");
+        $('.checked').removeClass("hide");
+        $('.bookmark').addClass("hide");
+    });
+    $('#bookmark').click(function(){
+    	$('#bookmark').addClass("btn_on");
+    	$('#bookmark').removeClass("btn_off");
+    	$('#checked').addClass("btn_off");
+    	$('#checked').removeClass("btn_on");
+        $('.bookmark').removeClass("hide");
+        $('.checked').addClass("hide");
+    });
+});
+</script>
+
+
+<%#ハーフモーダルjs%>
+<script type="text/javascript">
+	class Pushbar {
+	  constructor(config = { overlay: true, blur: false }) {
+	    this.activeBar = null;
+	    this.overlay = false;
+
+	    if (config.overlay) {
+	      this.overlay = document.createElement('div');
+	      this.overlay.classList.add('pushbar_overlay');
+	      document.querySelector('body').appendChild(this.overlay);
+	    }
+
+	    if (config.blur) {
+	      const mainContent = document.querySelector('.pushbar_main_content');
+	      if (mainContent) {
+	        mainContent.classList.add('pushbar_blur');
+	      }
+	    }
+
+	    this.bindEvents();
+	  }
+
+	  get opened() {
+	    const { activeBar } = this;
+	    return Boolean(activeBar instanceof HTMLElement && activeBar.classList.contains('opened'));
+	  }
+	  
+	  get activeBarId() {
+	    const { activeBar } = this;
+	    return activeBar instanceof HTMLElement && activeBar.getAttribute('data-pushbar-id');
+	  }
+
+	  static dispatchOpen(pushbar) {
+	    const event = new CustomEvent('pushbar_opening', { bubbles: true, detail: { pushbar } });
+	    pushbar.dispatchEvent(event);
+	  }
+
+	  static dispatchClose(pushbar) {
+	    const event = new CustomEvent('pushbar_closing', { bubbles: true, detail: { pushbar } });
+	    pushbar.dispatchEvent(event);
+	  }
+
+	  static findElementById(pushbarId) {
+	    return document.querySelector(`[data-pushbar-id="${pushbarId}"]`);
+	  }
+
+	  handleOpenEvent(e) {
+	    e.preventDefault();
+	    const pushbarId = e.currentTarget.getAttribute('data-pushbar-target');
+	    if (pushbarId) {
+	      this.open(pushbarId);
+	    }
+	  }
+
+	  handleCloseEvent(e) {
+	    e.preventDefault();
+	    this.close();
+	  }
+
+	  handleKeyEvent(e) {
+	    if (this.opened && e.keyCode === 27) {
+	      this.close();
+	    }
+	  }
+
+	  bindEvents() {
+	    const triggers = document.querySelectorAll('[data-pushbar-target]');
+	    const closers = document.querySelectorAll('[data-pushbar-close]');
+
+	    triggers.forEach(trigger => trigger.addEventListener('click', e => this.handleOpenEvent(e), false));
+	    closers.forEach(closer => closer.addEventListener('click', e => this.handleCloseEvent(e), false));
+
+	    if (this.overlay) {
+	      this.overlay.addEventListener('click', e => this.handleCloseEvent(e), false);
+	    }
+	    document.addEventListener('keyup', e => this.handleKeyEvent(e));
+	  }
+
+	  open(pushbarId) {
+	    // Current bar is already opened
+	    if (String(pushbarId) === this.activeBarId && this.opened) {
+	      return;
+	    }
+	    
+	    // Get new pushbar target
+	    const pushbar = Pushbar.findElementById(pushbarId);
+
+	    if (!pushbar) return;
+	    
+	    // Close active bar (if exists)
+	    if (this.opened) {
+	      this.close();
+	    }
+	    
+	    Pushbar.dispatchOpen(pushbar);
+	    pushbar.classList.add('opened');
+
+	    const Root = document.querySelector('html');
+	    Root.classList.add('pushbar_locked');
+	    Root.setAttribute('pushbar', pushbarId);
+	    this.activeBar = pushbar;
+	  }
+
+	  close() {
+	    const { activeBar } = this;
+	    if (!activeBar) return;
+	    
+	    Pushbar.dispatchClose(activeBar);
+	    activeBar.classList.remove('opened');
+
+	    const Root = document.querySelector('html');
+	    Root.classList.remove('pushbar_locked');
+	    Root.removeAttribute('pushbar');
+	    
+	    this.activeBar = null;
+	  }
+	}
+</script>
+
+<%#バウンスjs%>
+<script type="text/javascript">
+(function(global){var startY=0;var enabled=false;var supportsPassiveOption=false;try{var opts=Object.defineProperty({},"passive",{get:function(){supportsPassiveOption=true}});window.addEventListener("test",null,opts)}catch(e){}var handleTouchmove=function(evt){var el=evt.target;var zoom=window.innerWidth/window.document.documentElement.clientWidth;if(evt.touches.length>1||zoom!==1){return}while(el!==document.body&&el!==document){var style=window.getComputedStyle(el);if(!style){break}if(el.nodeName==="INPUT"&&el.getAttribute("type")==="range"){return}var scrolling=style.getPropertyValue("-webkit-overflow-scrolling");var overflowY=style.getPropertyValue("overflow-y");var height=parseInt(style.getPropertyValue("height"),10);var isScrollable=scrolling==="touch"&&(overflowY==="auto"||overflowY==="scroll");var canScroll=el.scrollHeight>el.offsetHeight;if(isScrollable&&canScroll){var curY=evt.touches?evt.touches[0].screenY:evt.screenY;var isAtTop=startY<=curY&&el.scrollTop===0;var isAtBottom=startY>=curY&&el.scrollHeight-el.scrollTop===height;if(isAtTop||isAtBottom){evt.preventDefault()}return}el=el.parentNode}evt.preventDefault()};var handleTouchstart=function(evt){startY=evt.touches?evt.touches[0].screenY:evt.screenY};var enable=function(){window.addEventListener("touchstart",handleTouchstart,supportsPassiveOption?{passive:false}:false);window.addEventListener("touchmove",handleTouchmove,supportsPassiveOption?{passive:false}:false);enabled=true};var disable=function(){window.removeEventListener("touchstart",handleTouchstart,false);window.removeEventListener("touchmove",handleTouchmove,false);enabled=false};var isEnabled=function(){return enabled};var testDiv=document.createElement("div");document.documentElement.appendChild(testDiv);testDiv.style.WebkitOverflowScrolling="touch";var scrollSupport="getComputedStyle"in window&&window.getComputedStyle(testDiv)["-webkit-overflow-scrolling"]==="touch";document.documentElement.removeChild(testDiv);if(scrollSupport){enable()}var iNoBounce={enable:enable,disable:disable,isEnabled:isEnabled};if(typeof module!=="undefined"&&module.exports){module.exports=iNoBounce}if(typeof global.define==="function"){(function(define){define("iNoBounce",[],function(){return iNoBounce})})(global.define)}else{global.iNoBounce=iNoBounce}})(this);
+</script>
+
+<script type="text/javascript">
+  $(function(){
+
+  	//最初はバウンスの有効化
+  	iNoBounce.disable()
+
+  	//ハーフモーダル生成
+  	var pushbar = new Pushbar({
+        blur:false,
+        overlay:true,
+    });
+
+  	//開いているとき
+    $('body').on("pushbar_opening", function(){
+    	//バウンスの無効化
+    	iNoBounce.enable()
+		//スワイプ方向定義
+	    var hammertime = new Hammer(document.body);
+		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+	    //スワイプイベント登録
+	  	$('body').hammer().on('swipedown', function(){
+		    pushbar.close();	
+		});
+	});
+
+	//閉じているとき
+	$('body').on("pushbar_closing", function(){
+		//バウンスの有効化
+		iNoBounce.disable()
+	});
+
+  });
+</script>
