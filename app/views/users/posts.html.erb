@@ -476,6 +476,7 @@
 				<script type="text/javascript"> 
 				  $(function(){
 				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
+				  	  audio<%= post.id %>.preload = 'none';
 					  $('#btn_preview_<%= post.id %>').on("click",function(){
 					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
 					     {
