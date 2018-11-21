@@ -30,7 +30,6 @@
 //= require serviceworker-companion
 
 
-
 //ハーフモーダル
 class Pushbar {
 	  constructor(config = { overlay: true, blur: false }) {

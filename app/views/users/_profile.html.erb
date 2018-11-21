@@ -91,7 +91,7 @@
             </div>
             <div class="e5">
     				<div class="pro19">							
-    					<a href="" data-dismiss="modal">
+    					<a data-dismiss="modal" id="dismiss_profile_<%= @user.id %>">
     						<%= image_tag "close_blue.png", :class =>'img_left02' %>
     					</a>
     				</div>
@@ -101,3 +101,23 @@
     </div>
   </div>
 </div>
+
+<%#モーダルtubolinks不具合修正%>
+<script type="text/javascript">
+  $(function(){
+    var display_profile_<%= @user.id %> = $('#myModal_profile_<%= @user.id %>').css('display');
+    //モーダルが表示されているのに表示判定されてなかったら
+    if(display_profile_<%= @user.id %> === 'block'){
+      //モーダルを表示状態にする        
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#myModal_profile_<%= @user.id %>').modal('toggle');
+      //クリックでモーダルを閉じる 
+      $('#dismiss_profile_<%= @user.id %>').on("click",function(){
+        $('body').removeClass('modal-open');
+          $('.modal-backdrop').remove();
+        $('#myModal_profile_<%= @user.id %>').modal('hide'); 
+      });
+    }       
+  });
+</script>

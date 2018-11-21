@@ -98,7 +98,7 @@
             </div>
             <div class="e5">
             <div class="pro19">             
-              <a href="" data-dismiss="modal">
+              <a data-dismiss="modal" id="dismiss_dashbord">
                 <%= image_tag "close_blue.png", :class =>'img_left02' %>
               </a>
             </div>
@@ -108,3 +108,24 @@
     </div>
   </div>
 </div>
+
+
+<%#モーダルtubolinks不具合修正%>
+<script type="text/javascript">
+  $(function(){
+    var display_dashbord = $('#myModal_dashbord').css('display');
+    //モーダルが表示されているのに表示判定されてなかったら
+    if(display_dashbord === 'block'){
+      //モーダルを表示状態にする        
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#myModal_dashbord').modal('toggle');
+      //クリックでモーダルを閉じる 
+      $('#dismiss_dashbord').on("click",function(){
+        $('body').removeClass('modal-open');
+          $('.modal-backdrop').remove();
+        $('#myModal_dashbord').modal('hide'); 
+      });
+    }       
+  });
+</script>

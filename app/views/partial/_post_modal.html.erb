@@ -65,9 +65,29 @@
 			</span>
 		</div>
     </div>
-    <div class="btns_plus">
-		<a href="" data-dismiss="modal" id="btn_plus">
+    <a class="btns_plus" data-dismiss="modal" id="dismiss_post">
+		<span id="btn_plus">
 			<i><%= image_tag "plus.png", :class =>'img_time' %></i>
-		</a>
-	</div>	
+		</span>
+	</a>	
 </div>
+
+<%#モーダルtubolinks不具合修正%>
+<script type="text/javascript">
+  $(function(){
+    var display_post = $('#myModal_post').css('display');
+    //モーダルが表示されているのに表示判定されてなかったら
+    if(display_post === 'block'){
+      //モーダルを表示状態にする
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#myModal_post').modal('toggle');
+      //クリックでモーダルを閉じる 
+      $('#dismiss_post').on("click",function(){
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        $('#myModal_post').modal('hide'); 
+      });
+    }       
+  });
+</script>

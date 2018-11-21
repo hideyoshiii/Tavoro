@@ -449,8 +449,28 @@
 <%#モーダルの中身%>
 <% if @all.present? %>
 	<% @all.each.with_index do |post, i| %>
+		<%#モーダルtubolinks不具合修正%>
+		<script type="text/javascript">
+			$(function(){
+				var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
+				//モーダルが表示されているのに表示判定されてなかったら
+				if(display_<%= post.id %> === 'block'){
+					//モーダルを表示状態にする
+					$('body').removeClass('modal-open');
+      				$('.modal-backdrop').remove();				
+					$('#myModal_<%= post.id %>').modal('toggle');
+					//クリックでモーダルを閉じる 
+					$('#dismiss_<%= post.id %>').on("click",function(){
+						$('body').removeClass('modal-open');
+					  	$('.modal-backdrop').remove();
+						$('#myModal_<%= post.id %>').modal('hide'); 
+					});
+				}				
+			});
+		</script>
 		<% if post.category == "music" %>
 			<% if post.preview_url.present? %>
+				<%#musicプレビューcss%>
 				<style type="text/css">
 					#btn_preview_<%= post.id %> {
 				    display: block;
@@ -478,6 +498,7 @@
 					  margin-left:1px;
 					}
 				</style>
+				<%#musicプレビューjs%>
 				<script type="text/javascript"> 
 				  $(function(){
 				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");				  	  
@@ -627,7 +648,7 @@
 						</div>
 						<div class="layer09">
 							<div class="pro19">							
-								<a href="" data-dismiss="modal">
+								<a data-dismiss="modal" id="dismiss_<%= post.id %>">
 									<%= image_tag "close_blue.png", :class =>'img_left02' %>
 								</a>
 							</div>
