@@ -4,72 +4,74 @@
 		<i><%= image_tag "plus.png", :class =>'img_plus' %></i>
 	</a>
 </div>	
+
+<%#投稿モーダル%>
 <div class="modal fade" id="myModal_post">
-	<div class="height_modal"></div>
+  <div class="height_modal"></div>
     <div class="modal-dialog">
-    	<div class="base_modal">
-			<span>
-				<div class="layer01">
-				</div>
-				<div class="layer03">
-				</div>
-				<div class="layer02">
-			  		<div class="">	
-				  		<div style="font-size:24px;color:#FAFAFA;margin:0px 0px 40px;">
-					      	投稿を作成
-				        </div>
-				  		<div class="btns_choice02">
-				  			<div>
-						      	<%= link_to(works_movie_path) do %>
-							      	<div class="btn_icon">
-							      		<span>
-							        		<%= image_tag "movie.png", :class =>'img_icon02' %>
-							        	</span>
-							        </div>
-						        <% end %>
+      <div class="a1">
+        <div class="a4">
+          <div class="d1">
+            <div class="d6"></div>
+          </div>
+        </div>
+        <div class="a8" style="text-align:center;"> 
+        	<div class="">	
+		  		<div style="font-size:24px;color:#FAFAFA;margin:0px 0px 40px;">
+			      	投稿を作成
+		        </div>
+		  		<div class="btns_choice02">
+		  			<div>
+				      	<%= link_to(works_movie_path) do %>
+					      	<div class="btn_icon">
+					      		<span>
+					        		<%= image_tag "movie.png", :class =>'img_icon02' %>
+					        	</span>
 					        </div>
-					        <div style="font-size:12px;color:#FAFAFA;margin-top:10px;">
-					        	映画/テレビ
+				        <% end %>
+			        </div>
+			        <div style="font-size:12px;color:#FAFAFA;margin-top:10px;">
+			        	映画/テレビ
+			        </div>
+		        </div>
+		        <div class="btns_choice01">
+		        	<div>
+		        		<%= link_to(works_book_path) do %>
+				        	<div class="btn_icon">
+					      		<span>
+					        		<%= image_tag "book.png", :class =>'img_icon02' %>
+					        	</span>
 					        </div>
-				        </div>
-				        <div class="btns_choice01">
-				        	<div>
-				        		<%= link_to(works_book_path) do %>
-						        	<div class="btn_icon">
-							      		<span>
-							        		<%= image_tag "book.png", :class =>'img_icon02' %>
-							        	</span>
-							        </div>
-						        <% end %>
-						    </div>
-					        <div style="font-size:12px;color:#FAFAFA;margin-top:10px;">
-					        	ブック
+				        <% end %>
+				    </div>
+			        <div style="font-size:12px;color:#FAFAFA;margin-top:10px;">
+			        	ブック
+			        </div>
+		        </div>
+		        <div class="btns_choice02">
+		        	<div>
+				      	<%= link_to(works_music_path) do %>
+				        	<div class="btn_icon">
+					      		<span>
+					        		<%= image_tag "music.png", :class =>'img_icon02' %>
+					        	</span>
 					        </div>
-				        </div>
-				        <div class="btns_choice02">
-				        	<div>
-						      	<%= link_to(works_music_path) do %>
-						        	<div class="btn_icon">
-							      		<span>
-							        		<%= image_tag "music.png", :class =>'img_icon02' %>
-							        	</span>
-							        </div>
-						        <% end %>
-					        </div>
-					        <div style="font-size:12px;color:#FAFAFA;margin-top:10px;">
-					        	ミュージック
-					        </div>
-				        </div> 
-			        </div>   
-				</div>
+				        <% end %>
+			        </div>
+			        <div style="font-size:12px;color:#FAFAFA;margin-top:10px;">
+			        	ミュージック
+			        </div>
+		        </div> 
+	        </div>   
+        </div>
+        <a class="btns_plus" data-dismiss="modal" id="dismiss_post">
+			<span id="btn_plus">
+				<i><%= image_tag "plus.png", :class =>'img_time' %></i>
 			</span>
-		</div>
+		</a>
+      </div>
     </div>
-    <a class="btns_plus" data-dismiss="modal" id="dismiss_post">
-		<span id="btn_plus">
-			<i><%= image_tag "plus.png", :class =>'img_time' %></i>
-		</span>
-	</a>	
+  </div>
 </div>
 
 <%#モーダルtubolinks不具合修正%>

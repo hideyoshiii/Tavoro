@@ -7,23 +7,40 @@ class WorksController < ApplicationController
 
   def index
     if user_signed_in?
-    	@user  = User.find(current_user.id)
-    	@users = @user.followings
-    	@posts = []
+      @user  = User.find(current_user.id)
+      @users = @user.followings
+      @posts = []
       @posts_mine = Post.where(user_id: @user.id).order(created_at: "DESC")
       @posts_mine = @posts_mine.where.not(review: "bookmark")
-      @posts.concat(@posts_mine)
-    	if @users.present?
+      #もしカテゴリー指定がなければ
+      if params[:category].blank?
+        @category = "all"
+        @posts.concat(@posts_mine)
+        if @users.present?
           @users.each do |user|
-            	posts = Post.where(user_id: user.id)
+              posts = Post.where(user_id: user.id)
               posts = posts.where.not(review: "bookmark")
-            	#取得したユーザーの投稿一覧を@postsに格納
-            	@posts.concat(posts)
-          end
-          #@postsを新しい順に並べたい
-          @posts.sort_by!{|post| post.created_at}.reverse!
-          @posts = @posts.take(25)
+              #取得したユーザーの投稿一覧を@postsに格納
+              @posts.concat(posts)
+          end  
+        end
+      else
+        @category = params[:category]
+        @posts_mine = @posts_mine.where(category: @category)
+        @posts.concat(@posts_mine)
+        if @users.present?
+          @users.each do |user|
+              posts = Post.where(user_id: user.id)
+              posts = posts.where.not(review: "bookmark")
+              posts = posts.where(category: @category)
+              #取得したユーザーの投稿一覧を@postsに格納
+              @posts.concat(posts)
+          end  
+        end
       end
+      #@postsを新しい順に並べたい
+      @posts.sort_by!{|post| post.created_at}.reverse!
+      @posts = @posts.take(25)
     end
   end
 

@@ -1,0 +1,65 @@
+<div id="menu_category_back"></div>
+<div class="btns_category font_white">
+	<div id="menu_category_in">
+		<%= link_to root_path do %>
+			<div class="<%= 'font_blue' if @category == 'all' %> <%= 'font_white' if @category != 'all' %>">
+				すべて
+			</div>
+		<% end %>
+		<div style="height:5vh;"></div>
+		<%= link_to root_path(params: {category: "movie"}) do %>
+			<div class="<%= 'font_blue' if @category == 'movie' %> <%= 'font_white' if @category != 'movie' %>">
+				映画
+			</div>
+		<% end %>
+		<div style="height:5vh;"></div>
+		<%= link_to root_path(params: {category: "tv"}) do %>
+			<div class="<%= 'font_blue' if @category == 'tv' %> <%= 'font_white' if @category != 'tv' %>">
+				テレビ
+			</div>
+		<% end %>
+		<div style="height:5vh;"></div>
+		<%= link_to root_path(params: {category: "book"}) do %>
+			<div class="<%= 'font_blue' if @category == 'book' %> <%= 'font_white' if @category != 'book' %>">
+				ブック
+			</div>
+		<% end %>
+		<div style="height:5vh;"></div>
+		<%= link_to root_path(params: {category: "comic"}) do %>
+			<div class="<%= 'font_blue' if @category == 'comic' %> <%= 'font_white' if @category != 'comic' %>">
+				コミック
+			</div>
+		<% end %>
+		<div style="height:5vh;"></div>
+		<%= link_to root_path(params: {category: "music"}) do %>
+			<div class="<%= 'font_blue' if @category == 'music' %> <%= 'font_white' if @category != 'music' %>">
+				ミュージック
+			</div>
+		<% end %>
+		<div style="height:5vh;"></div>
+	</div>
+	<div id="menu_category">
+		<div class="switch_category open" style="font-size:15px;color:#c2c2c2;">
+			<%= @category %> posts
+		</div>
+		<div class="switch_category" style="font-size:15px;color:#c2c2c2;">
+			close <%= image_tag "cross_white.png", :style =>'width:9px;height:9px;margin-top:-1px;margin-right:5px;' %>
+		</div>
+	</div>
+</div>	
+
+<script type="text/javascript">
+	$(function(){
+	    $('#menu_category').click(function(){
+	    	$('#menu_category_back').toggleClass('open');
+	        $('#menu_category_in').toggleClass('open');
+	        $('.switch_category').toggleClass('open');
+	        var Bounce = iNoBounce.isEnabled()
+	        if(Bounce === true){
+	        	iNoBounce.disable()
+	        } else {
+	        	iNoBounce.enable()
+	        }
+	    });
+	});
+</script>

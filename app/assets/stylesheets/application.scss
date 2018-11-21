@@ -619,9 +619,13 @@ a:visited{
 	font-size:22px;
 	color:#777777;
 }
+.font_blue{
+	font-size:14px;
+	color:#2FB4B4;
+}
 .font_blue_max{
 	font-size:16px;
-	color:rgba(39,134,160,1);
+	color:#2FB4B4;
 }
 .font_how{
 	font-size:18px;
@@ -680,6 +684,9 @@ a:visited{
 	}
 	.font_gray_max{
 		font-size:15px;
+	}
+	.font_blue{
+		font-size:13px;
 	}
 	.font_blue_max{
 		font-size:15px;
@@ -2635,7 +2642,7 @@ button {
     text-align: center;
     border-radius: 50%;
     transition: .2s;
-    border:1px solid rgba(100,100,100,0.8);
+    border:1px solid rgba(100,100,100,0.35);
 }
 .btn_icon span {
   position: absolute;
@@ -3188,6 +3195,21 @@ input[name="slideshow"] {
   font-size:0;
   z-index:2;
   text-align:center;
+  }
+.a1 > .a9 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width:100%;
+  height:auto;
+  padding:0;
+  margin:0 auto;
+  font-size:0;
+  z-index:2;
+  text-align:right;
   }
 .b1{
 	position: relative;
@@ -3805,7 +3827,7 @@ html.pushbar_locked .pushbar_overlay{
 
 
 
-
+//タブスワイプ 
 .tabContainer {
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
@@ -3844,6 +3866,76 @@ html.pushbar_locked .pushbar_overlay{
 .tab__button.active{
     border-bottom: 1px solid rgba(39,134,160,0.8);
 }
+
+
+//カテゴリーモーダル
+.btns_category{
+  position:fixed;
+  bottom:6.5%;
+  right:36.5%;
+  z-index:999;
+  text-align:right;
+}
+.switch_category {
+  display:none;
+}
+.switch_category.open {
+  display:block;
+}
+#menu_category_in{
+  display:none;
+}
+#menu_category_in.open {
+  display:block;
+  animation: show 0.5s ease 0s;
+}
+#menu_category_back{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;	
+  background: rgba(0,0,0,0.8);
+}
+#menu_category_back.open {
+  display:block;
+  z-index: 998;
+  animation: show 0.5s ease 0s;
+}
+@keyframes show{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+//iPadヨコ
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+	.btns_category{
+	  right:35%;
+	}
+}
+//iPadタテ
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+	.btns_category{
+	  right:20%;
+	}
+}
+//iPhoneタテ
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+	.btns_category{
+	  right:5%;
+	}
+}
+//iPhoneヨコ
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+}
+//SE以下タテ
+@media only screen and (max-width: 370px) and (orientation: portrait) {
+}
+
 
 
 
