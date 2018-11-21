@@ -7,7 +7,6 @@
 		<div class="swiper-container" style="height:calc(100% - 50px)">
 		<div class="swiper-wrapper" style="height:100%">
 
-		
 		<% if @posts.present? %>
 			<% @posts.each.with_index(1) do |post, i| %>
 			<div class="swiper-slide" style="height:100%"> 
@@ -43,7 +42,6 @@
 						<script type="text/javascript" class="swiper-lazy">						  
 						  $(function(){
 						  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
-						  	  audio<%= post.id %>.preload = 'none';
 							  $('#btn_preview<%= post.id %>').on("click",function(){
 							    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
 							     {
@@ -249,7 +247,7 @@
 					</div>	
 				<% end %>				
 			<% end %>	
-		    <a data-pushbar-close data-pushbar-target="mypushbar_<%= post.id %>">
+		    <a data-pushbar-close>
 				<div class="btn_pushbar_close">  
 					<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル
 				</div>
@@ -285,6 +283,17 @@
 <%#ハーフモーダル%>
 <script type="text/javascript">
   $(function(){
+  	//overlayを削除
+  	if ($('div').hasClass("pushbar_overlay")) {
+	  var Back = document.querySelector('html');
+	  Back.classList.remove('pushbar_locked');
+	  Back.removeAttribute('pushbar');
+	}
+	//ハーフモーダルを削除
+	if ($('.opened').hasClass("opened")) {
+	  var Bar = document.querySelector('.opened');
+	  Bar.classList.remove('opened');
+	}
   	//ハーフモーダル生成
   	var pushbar = new Pushbar({
         blur:false,

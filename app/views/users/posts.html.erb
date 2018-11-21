@@ -480,8 +480,7 @@
 				</style>
 				<script type="text/javascript"> 
 				  $(function(){
-				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
-				  	  audio_<%= post.id %>.preload = 'none';
+				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");				  	  
 					  $('#btn_preview_<%= post.id %>').on("click",function(){
 					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
 					     {
@@ -662,7 +661,7 @@
 					</div>	
 				<% end %>				
 			<% end %>	
-		    <a data-pushbar-close data-pushbar-target="mypushbar_<%= post.id %>">
+		    <a data-pushbar-close>
 				<div class="btn_pushbar_close">  
 					<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル  
 				</div>
@@ -677,7 +676,6 @@
 
 <%#投稿ボタン%>
 <%= render "partial/post_modal" %>
-
 
 
 <%#タブ切り替え%>
@@ -761,6 +759,17 @@
 <%#ハーフモーダル%>
 <script type="text/javascript">
   $(function(){
+  	//overlayを削除
+  	if ($('div').hasClass("pushbar_overlay")) {
+	  var Back = document.querySelector('html');
+	  Back.classList.remove('pushbar_locked');
+	  Back.removeAttribute('pushbar');
+	}
+	//ハーフモーダルを削除
+	if ($('.opened').hasClass("opened")) {
+	  var Bar = document.querySelector('.opened');
+	  Bar.classList.remove('opened');
+	}
   	//ハーフモーダル生成
   	var pushbar = new Pushbar({
         blur:false,
