@@ -39,28 +39,28 @@
 							  margin-left:1px;
 							}
 						</style>
-						<audio class="my_audio<%= post.id %>" controls preload="none" style="display: none" id="audioControl">
-						    <source class="notificationTone<%= post.id %>">
-						</audio>
-						<script type="text/javascript" class="">						  
-						  $(function(){						  	  	  	  
-							  $('#btn_preview<%= post.id %>').on('touchstart click tap',function(){
+						<script type="text/javascript" class="swiper-lazy">						  
+						  $(function(){
+						  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
+						  	  audio<%= post.id %>.preload = 'none';
+							  $('#btn_preview<%= post.id %>').on("click",function(){
 							    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
 							     {
 							       $("#icon_play<%= post.id %>").removeClass('fa-play');
 							       $("#icon_play<%= post.id %>").addClass('fa-pause');
-							       	$(".notificationTone<%= post.id %>").attr('src', "<%= post.preview_url %>");
-									  $(".my_audio<%= post.id %>").trigger('load');
-									  $(".my_audio<%= post.id %>").trigger('play');
+							       audio<%= post.id %>.play();
 							     }
 							    else
 							     {
 							       $("#icon_play<%= post.id %>").removeClass('fa-pause');
 							       $("#icon_play<%= post.id %>").addClass('fa-play');
-							       $(".my_audio<%= post.id %>").trigger('pause');
+							       audio<%= post.id %>.pause();
 							     }
 							  });
-							  
+							  audio<%= post.id %>.onended = function() {
+							    $("#icon_play<%= post.id %>").removeClass('fa-pause');
+							    $("#icon_play<%= post.id %>").addClass('fa-play');
+							  };
 						  	});					
 					   </script>
 					<% end %>

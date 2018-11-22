@@ -61,7 +61,7 @@
 														プロフィールへ											
 												</a> 
 												<div style="height:5vh;"></div>
-												<% end %> 
+											<% end %> 
 					          			<% else %>
 					          				<%= image_tag "user09.png", :class => "img_user13", :style => "box-shadow:none;opacity:0.8;" %>
 					          				<div style="height:3vh;"></div>
@@ -109,7 +109,7 @@
 								</div> 		
 							  	<div style="height:5vh;"></div>
 							  	<%= form_for @invitation do |f| %> 
-								  	<button type="submit">
+								  	<button type="submit" data-confirm="招待URLを発行しますか？">
 								  		<div class="btn_invite" style="display:inline-block;">
 								  			招待URLを発行する
 								  		</div>
