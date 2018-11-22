@@ -181,32 +181,26 @@
             </a>  
         </div>
         <div class="a8" style="text-align:center;">  
-        	<div style="height:7vh;"></div>          	
-			<div class="font_white_big">
-				Sign up
+        	<%= image_tag "tavore_logo_01.png", :style =>'width:80px;height:80px;' %>
+            <div style="font-size:18px;">
+              TAVORE
+            </div>
+        	<div style="height:5vh;"></div> 
+        	<div style="padding:0 10%;">	
+				<div class="font_white">
+					TAVOREは完全招待制です
+					<br>すでに利用しているユーザーから招待してもらうか
+					<br>以下から運営に招待をリクエストしてください
+				</div>
+				<div style="height:6vh;"></div> 
+				<a href="">
+			        <div class="btn_register">
+						招待をリクエスト
+					</div>
+		        </a>
+		        <div style="height:7vh;"></div> 
 			</div>
-			<div class="gogo">
-				<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-				  <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
-				  <%= f.email_field :email,placeholder: "email", required: "" %>
-				  <%= f.password_field :password,placeholder: "password", required: "" %>
-				  <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
-				  <div style="height:2vh;"></div>
-      			  <%= f.submit "完了",class:"btn_session" %>
-				<% end %>
-			</div>
-			<div style="height:7vh;"></div>
-			<div class="font_gray_min" style="padding:0 15%;text-align:left;">
-				アカウントを作成することで,TAVOREの
-				<%= link_to terms_path do %>
-					利用規約
-				<% end %>
-				と
-				<%= link_to policy_path do %>
-					プライバシーポリシー
-				<% end %>
-				に同意されたものとします。
-			</div>					
+			
         </div>
       </div>
     </div>
