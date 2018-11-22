@@ -61,6 +61,9 @@ Rails.application.routes.draw do
   post "likes/:post_id/create" => "likes#create"
   post "likes/:post_id/destroy" => "likes#destroy"
 
+  resources :invitations, only: [:create, :destroy]
+  get 'invitation/:id' => "invitations#invite"
+
 
   get '*path', to: 'application#render_404'
 end

@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"></script>
+
 <div class="bar_post">			
 	<div style="">
 		<div class="pro13">
@@ -36,43 +38,85 @@
           	<div style="height:39px;"></div>
 			  <div class="swiper-container" style="height:calc(100% - 90px)">
 			    <div class="swiper-wrapper" style="height:100%">
-			    	<div class="swiper-slide" style="height:100%;"> 
-						<div style="height:10vh;"></div>
-		          		<div class="invitation_card">
-		          			<div style="height:5vh;"></div>
-		          			<%= image_tag current_user.image(:large), :class => "img_user13" %>
-		          			<div style="height:1vh;"></div>
-		          			<div class="font_white">
-								<%= current_user.name %>
-							</div>    
-							<div style="height:3vh;"></div>								
-							<div class="font_white_min" style="opacity:0.9;">
-								招待コード:238952
-							</div>
-							<div style="height:1vh;"></div>
-							<div class="font_white_min" style="color:#FB473E;opacity:0.9;">
-								already used
-							</div>
-							<div style="height:5vh;"></div>							
-							<span class="btn_follow_off">
-								招待URLをコピー
-							</span>
-							<div style="height:3vh;"></div>		
-							<span class="btn_follow_off">
-								LINEで送る
-							</span>				
-						</div>
-			    	</div>
+
+			    	<% if @invitations.present? %>
+						<% @invitations.each.with_index(1) do |invitation, i| %>
+					    	<div class="swiper-slide" style="height:100%;"> 
+								<div style="height:10vh;"></div>
+				          		<div class="invitation_card">
+				          			<span>
+					          			<% if invitation.used == true %>
+					          				<% if User.find_by(id: invitation.invited_user) %>
+						          				<%= image_tag invitation.invited_user.image(:large), :class => "img_user13" %>
+						          				<div style="height:2vh;"></div>
+						          				<div class="font_white">
+													<%= invitation.invited_user.name %>								
+												</div>
+												<div style="height:1vh;"></div>
+						          				<div class="font_white_min" style="color:#2FB4B4;">
+													<%= invitation.invited_user.name %>さんを招待しました
+												</div>  
+												<div style="height:5vh;"></div>				
+												<a data-toggle="modal" data-target="#myModal_profile_<%= invitation.invited_user.id %>" class="btn_invite">	
+														プロフィールへ											
+												</a> 
+												<div style="height:5vh;"></div>
+												<% end %> 
+					          			<% else %>
+					          				<%= image_tag "user09.png", :class => "img_user13", :style => "box-shadow:none;opacity:0.8;" %>
+					          				<div style="height:3vh;"></div>
+					          				<div class="font_white_min" style="opacity:0.9;">
+												招待コード : <%= invitation.code %>
+											</div>
+											<div style="height:1vh;"></div>
+					          				<div class="font_white_min" style="color:#38ef7d;">
+												このコードはまだ使用されていません
+											</div>  
+											<div style="height:5vh;"></div>							
+											<a data-clipboard-text="https://www.tavore.net/invitation/<%= invitation.code %>" id="copy<%= invitation.id %>" class="btn_invite" style="display:inline-block;">
+												招待URLをコピー
+											</a>
+											<div style="height:5vh;"></div>	
+											<%#コピーのJS%>
+											<script>
+												$(function(){
+												  var clipboard = new Clipboard('#copy<%= invitation.id %>');
+												  clipboard.on('success', function(e) {
+												    console.info('Trigger:', e.trigger);
+												    alert('コピーできました');
+												  });
+												  clipboard.on('error', function(e) {
+												    console.error('Trigger:', e.trigger);
+												    alert('このブラウザでは対応していません');
+												  });
+											  	});
+											</script>	  
+					          			<% end %>	
+					          		</span>	   
+								</div>
+					    	</div>
+					    <% end %>
+				    <% end %>
 			    	
 			    	<div class="swiper-slide" style="height:100%;"> 
 						<div style="height:10vh;"></div>
-		          		<div class="invitation_card" style="">
-		          			<div style="height:17vh;"></div>
-		          			<%= image_tag "test10.png", :style =>'width:40px;height:40px;opacity:0.6;' %>
-		          			<div style="height:3vh;"></div>
-						  	<div class="font_gray">
-						  		招待URLを発行する
-						  	</div>	
+		          		<div class="invitation_card">
+		          			<span>
+			          			<%= image_tag "test10.png", :style =>'width:50px;height:50px;opacity:0.8;' %>	
+			          			<div style="height:2vh;"></div>
+		          				<div class="font_gray_min">
+									招待コードを発行
+								</div> 		
+							  	<div style="height:5vh;"></div>
+							  	<%= form_for @invitation do |f| %> 
+								  	<button type="submit">
+								  		<div class="btn_invite" style="display:inline-block;">
+								  			招待URLを発行する
+								  		</div>
+								  	</button>							 
+								<% end %>
+								<div style="height:5vh;"></div>
+							</span>
 						</div>
 			    	</div>
 
@@ -91,30 +135,49 @@
 	</div>
 </div>
 
+<% if @invitations.present? %>
+	<% @user_list = [] %>
+	<% @invitations.each.with_index(1) do |invitation, i| %>
+		<% if invitation.used == true %>
+			<% if User.find_by(id: invitation.invited_user) %>
+				<% unless @user_list.include?(invitation.invited_user.id) %>
+					<% @user = invitation.invited_user %>
+			  		<% @checkeds_i = Post.where(user_id: @user.id).where.not(review: "bookmark").size %>
+			  		<% @bookmarks_i = Post.where(user_id: @user.id, review: "bookmark").size %>
+					<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
+					<% @user_list.push(invitation.invited_user.id) %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
-	<script>
-		$(function(){
-			var swiper = new Swiper('.swiper-container', {
-				loop: true,
-				slidesPerView: 1.6,
-      			centeredSlides: true,
-      			spaceBetween: 10,
-				speed: 500,
-				touchAngle: 55,
-				pagination: {
-				    el: '.swiper-pagination',
-				    type: 'progressbar',
-				  },
-				navigation: {
-			    	nextEl: '.swiper-button-next',
-			    	prevEl: '.swiper-button-prev',
-			  	},
-			  	effect: 'coverflow',
-			  	coverflowEffect: {
-				    rotate: 40,
-				    shadow: false,
-				    slideShadows: false,
-				},
-			});
+<script>
+	$(function(){
+		var swiper = new Swiper('.swiper-container', {
+			loop: true,
+			slidesPerView: 1.6,
+  			centeredSlides: true,
+  			spaceBetween: 10,
+			speed: 500,
+			touchAngle: 55,
+			pagination: {
+			    el: '.swiper-pagination',
+			    type: 'progressbar',
+			  },
+			navigation: {
+		    	nextEl: '.swiper-button-next',
+		    	prevEl: '.swiper-button-prev',
+		  	},
+		  	effect: 'coverflow',
+		  	coverflowEffect: {
+			    rotate: 40,
+			    shadow: false,
+			    slideShadows: false,
+			},
 		});
-	</script>
+	});
+</script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181114195019) do
+ActiveRecord::Schema.define(version: 20181122041438) do
 
   create_table "follow_requests", force: :cascade do |t|
     t.integer "requester_id"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20181114195019) do
     t.index ["requester_id", "requesting_id"], name: "index_follow_requests_on_requester_id_and_requesting_id", unique: true
     t.index ["requester_id"], name: "index_follow_requests_on_requester_id"
     t.index ["requesting_id"], name: "index_follow_requests_on_requesting_id"
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "invited_user_id"
+    t.string "code"
+    t.boolean "used", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_invitations_on_code", unique: true
+    t.index ["invited_user_id"], name: "index_invitations_on_invited_user_id"
+    t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|

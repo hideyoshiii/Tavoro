@@ -369,6 +369,16 @@ a:visited{
 	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.4);
 	object-fit: cover;
 }
+.img_user14{
+	width: 50px;
+	height: 50px;
+	padding:0;
+	margin:0;
+	border-radius:50%;
+	background:rgba(0,0,0,0.1);
+	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.4);
+	object-fit: cover;
+}
 .img_profile01{
 	width: 50px;
 	height: 50px;
@@ -2568,6 +2578,15 @@ button {
     font-size:19px;
     border: solid 1px rgba(39,134,160,0.8);
 }
+.btn_invite{
+    display: inline-block;
+    padding: 0.4em 1.7em;
+    text-decoration: none;
+    background: rgba(39,134,160,0.4);
+    color: rgba(225,225,255,1);
+    border-radius: 2px;
+    font-size:16px;
+}
 #btn_plus {
     display: block;
     width: 55px;
@@ -2666,12 +2685,18 @@ button {
 	.btn_register{
 	    font-size:15px;
 	}
+	.btn_invite{
+	    font-size:13px;
+	}
 }
 @media only screen and (max-width: 370px) {
 	.btn_session{
 	    font-size:13px;
 	}
 	.btn_register{
+	    font-size:13px;
+	}
+	.btn_invite{
 	    font-size:13px;
 	}
 }
@@ -3671,15 +3696,54 @@ input[name="slideshow"] {
 
 
 .invitation_card {
-    border-radius:2px;
+	position: relative;
     background: -webkit-linear-gradient(-450deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5));
     background: linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5)); 
     width:100%;
     height:70%;
-    padding:10px;
     text-align:center;
     overflow:hidden;
+    padding:15px;
     margin:0 auto;
+    border-radius:2px;
+}
+.invitation_card span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width:100%;
+  height:auto;
+  padding:0;
+  margin:0;
+  text-align:center;
+}
+.invitation_card02 {
+	position: relative;
+    background: -webkit-linear-gradient(-450deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5));
+    background: linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5)); 
+    width:70%;
+    height:65vh;
+    text-align:center;
+    overflow:hidden;
+    padding:15px;
+    margin:0 auto;
+    border-radius:2px;
+}
+.invitation_card02 span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width:100%;
+  height:auto;
+  padding:0 20px;
+  margin:0;
+  text-align:center;
 }
 
 

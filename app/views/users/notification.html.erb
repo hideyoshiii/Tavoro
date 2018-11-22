@@ -36,42 +36,46 @@
 				<div style="height:40px;"></div>
 				<% if @notifications.present? %>
 					<% @notifications_no.each do |item| %>
-						<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
-							<div class="box_tests08">
-					            <div class="pro21">
-						            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
-					            </div>
-					            <div class="pro22">  
-					              	<span class="font_white_min">
-					                	<%= item.notified_by.name %>さんからフォローされました
-					              	</span>
-					            </div>
-					            <div class="pro23" style="text-align:right;padding-right:10px;">
-					            	<div class="font_gray_max">
-						            	<i class="fas fa-chevron-right"></i>
+						<% if User.find_by(id: item.notified_by) %>
+							<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
+								<div class="box_tests08">
+						            <div class="pro21">
+							            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
 						            </div>
-					            </div>
-					        </div>
-				    	</a>
+						            <div class="pro22">  
+						              	<span class="font_white_min">
+						                	<%= item.notified_by.name %>さんからフォローされました
+						              	</span>
+						            </div>
+						            <div class="pro23" style="text-align:right;padding-right:10px;">
+						            	<div class="font_gray_max">
+							            	<i class="fas fa-chevron-right"></i>
+							            </div>
+						            </div>
+						        </div>
+					    	</a>
+				    	<% end %>
 				    <% end %>
 				    <% @notifications_yes.each do |item| %>
-				    	<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
-					        <div class="box_tests09">
-					            <div class="pro21">
-						            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
-					            </div>
-					            <div class="pro22">  
-					              	<span class="font_white_min">
-					                	<%= item.notified_by.name %>さんからフォローされました
-					              	</span>
-					            </div>
-					            <div class="pro23" style="text-align:right;padding-right:10px;">
-					            	<div class="font_gray_max">
-						            	<i class="fas fa-chevron-right"></i>
+				    	<% if User.find_by(id: item.notified_by) %>
+					    	<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
+						        <div class="box_tests09">
+						            <div class="pro21">
+							            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
 						            </div>
-					            </div>
-					        </div>
-				        </a>
+						            <div class="pro22">  
+						              	<span class="font_white_min">
+						                	<%= item.notified_by.name %>さんからフォローされました
+						              	</span>
+						            </div>
+						            <div class="pro23" style="text-align:right;padding-right:10px;">
+						            	<div class="font_gray_max">
+							            	<i class="fas fa-chevron-right"></i>
+							            </div>
+						            </div>
+						        </div>
+					        </a>
+					    <% end %>
 				    <% end %>
 			        <div style="height:10vh;"></div> 
 			    <% else %>
@@ -96,12 +100,14 @@
 <% if @notifications.present? %>
 	<% @user_list = [] %>
 	<% @notifications.each.with_index(1) do |item, i| %>
-		<% unless @user_list.include?(item.notified_by.id) %>
-			<% @user = item.notified_by %>
-	  		<% @checkeds_i = Post.where(user_id: @user.id).where.not(review: "bookmark").size %>
-	  		<% @bookmarks_i = Post.where(user_id: @user.id, review: "bookmark").size %>
-			<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
-			<% @user_list.push(item.notified_by.id) %>
+		<% if User.find_by(id: item.notified_by) %>
+			<% unless @user_list.include?(item.notified_by.id) %>
+				<% @user = item.notified_by %>
+		  		<% @checkeds_i = Post.where(user_id: @user.id).where.not(review: "bookmark").size %>
+		  		<% @bookmarks_i = Post.where(user_id: @user.id, review: "bookmark").size %>
+				<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
+				<% @user_list.push(item.notified_by.id) %>
+			<% end %>
 		<% end %>
 	<% end %>
 <% end %>

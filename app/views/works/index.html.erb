@@ -48,7 +48,12 @@
 							     {
 							       $("#icon_play<%= post.id %>").removeClass('fa-play');
 							       $("#icon_play<%= post.id %>").addClass('fa-pause');
-							       audio<%= post.id %>.play();
+							       	if (audio<%= post.id %>.readyState === 4) {
+									  audio<%= post.id %>.play();
+									} else {
+									  audio<%= post.id %>.load();
+									  audio<%= post.id %>.play();
+									}
 							     }
 							    else
 							     {

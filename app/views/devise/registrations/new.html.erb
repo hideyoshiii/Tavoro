@@ -3,44 +3,35 @@
   </div>
   <div class="block_main">
     
-    <div style="height:50px;"></div>
-    <div class="base01">
-      <span>
-        <div class="layer10"></div>
-        <div class="layer06">
-          <div class="font_white_big">
-            Sign up
-          </div>
-          <div class="gogo">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
-              <%= f.email_field :email,placeholder: "email", required: "" %>
-              <%= f.password_field :password,placeholder: "password", required: "" %>
-              <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
-              <div style="height:2vh;"></div>
-                    <%= f.submit "完了",class:"btn_session" %>
-            <% end %>
-            <div style="height:10vh;"></div>
-          </div>
+    <div class="a1">
+      <div class="a4">
+        <div class="d1">
+          <div class="d6"></div>
         </div>
-        <div class="layer04">
-          <div class="pro12" style="text-align:center;">        
-            <div class="font_gray_min" style="margin:0px 20px 80px 20px;">
-              アカウントを作成することで,TAVOREの
-              <%= link_to terms_path do %>
-                利用規約
-              <% end %>
-              と
-              <%= link_to policy_path do %>
-                プライバシーポリシー
-              <% end %>
-              に同意されたものとします。
-            </div>          
-          </div>
+      </div>
+      <div class="a8" style="text-align:center;">
+        <div style="height:50px;"></div>
+        <div class="invitation_card02">
+          <span>  
+            <div>
+              <%= image_tag "tavore_logo_01.png", :style =>'width:100px;height:100px;' %>
+            </div>
+            <div style="font-size:22px;">
+                Not Found
+            </div>
+            <div style="height:3vh;"></div>
+            <div class="font_white_min">
+                不具合が発生しました
+            </div>
+            <div style="height:5vh;"></div>
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn_invite">
+              前のページへ戻る
+            </a>        
+          </span>
         </div>
-      </span>
-    </div>
-
+      </div>
+    </div>  
+    
   </div>
   <div class="block_side">
   </div>
