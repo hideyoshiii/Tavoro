@@ -39,16 +39,16 @@
 							  margin-left:1px;
 							}
 						</style>
-						<script type="text/javascript" class="swiper-lazy">						  
+						<script type="text/javascript">						  
 						  $(function(){
-						  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
-						  	  audio<%= post.id %>.preload = 'none';
+						  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");					  	  
 							  $('#btn_preview<%= post.id %>').on("click",function(){
 							    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
 							     {
 							       $("#icon_play<%= post.id %>").removeClass('fa-play');
 							       $("#icon_play<%= post.id %>").addClass('fa-pause');
 							       	if (audio<%= post.id %>.readyState === 4) {
+							       	  audio<%= post.id %>.load();
 									  audio<%= post.id %>.play();
 									} else {
 									  audio<%= post.id %>.load();
