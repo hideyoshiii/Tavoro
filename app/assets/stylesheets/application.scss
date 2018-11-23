@@ -2580,10 +2580,10 @@ button {
 }
 .btn_invite{
     display: inline-block;
-    padding: 0.4em 1.7em;
+    padding: 0.5em 1.7em;
     text-decoration: none;
     background: rgba(39,134,160,0.4);
-    color: rgba(225,225,255,1);
+    color: #FAFAFA;
     border-radius: 2px;
     font-size:16px;
 }
@@ -2686,7 +2686,7 @@ button {
 	    font-size:15px;
 	}
 	.btn_invite{
-	    font-size:13px;
+	    font-size:15px;
 	}
 }
 @media only screen and (max-width: 370px) {
