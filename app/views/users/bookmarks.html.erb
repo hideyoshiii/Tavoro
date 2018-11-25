@@ -378,7 +378,7 @@
 							<% end %>
 							<% if post.category == "music" %>
 								<% if post.preview_url.present? %>
-									<div id="btn_preview_<%= post.id %>">
+									<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
 										<i id="icon_play_<%= post.id %>" class="fas fa-play"></i>
 									</div>
 								<% end %>
@@ -467,31 +467,6 @@
 		<script type="text/javascript">
 			$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
 		    	$('img.lazyload_modal_<%= post.id %>').lazyload();
-		    	<% if post.category == "music" %>
-					<% if post.preview_url.present? %>
-						if (typeof audio_<%= post.id %> === 'undefined') {
-					    	var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");				  	  
-							  $('#btn_preview_<%= post.id %>').on("click",function(){
-							    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
-							     {
-							       $("#icon_play_<%= post.id %>").removeClass('fa-play');
-							       $("#icon_play_<%= post.id %>").addClass('fa-pause');
-							       audio_<%= post.id %>.play();
-							     }
-							    else
-							     {
-							       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-							       $("#icon_play_<%= post.id %>").addClass('fa-play');
-							       audio_<%= post.id %>.pause();
-							     }
-							  });
-							  audio_<%= post.id %>.onended = function() {
-							     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-							     $("#icon_play_<%= post.id %>").addClass('fa-play');
-							  };
-						}
-				  	<% end %>
-				<% end %>
 		    });      
 		</script>
 		<%#モーダルtubolinks不具合修正%>
@@ -513,6 +488,35 @@
 				}				
 			});
 		</script>
+		<%# 音楽プレビューjs %>
+		<% if post.category == "music" %>
+			<% if post.preview_url.present? %>
+				<script type="text/javascript">						  
+				  	$(function(){
+				  	  var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
+				  	  audio_<%= post.id %>.preload = 'none';
+					  $('#btn_preview_<%= post.id %>').on("click",function(){
+					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
+					     {
+					       $("#icon_play_<%= post.id %>").removeClass('fa-play');
+					       $("#icon_play_<%= post.id %>").addClass('fa-pause');
+					       audio_<%= post.id %>.play();
+					     }
+					    else
+					     {
+					       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+					       $("#icon_play_<%= post.id %>").addClass('fa-play');
+					       audio_<%= post.id %>.pause();
+					     }
+					  });
+					  audio_<%= post.id %>.onended = function() {
+					    $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+					    $("#icon_play_<%= post.id %>").addClass('fa-play');
+					  };
+				  	});					
+			   	</script>
+			<% end %>
+		<% end %>
 	<% end %>
 <% end %>
 
