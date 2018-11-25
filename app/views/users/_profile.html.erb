@@ -9,7 +9,7 @@
               <% if @list = List.find_by(user_id: @user.id, title: "プロフィール") %>
                 <%= image_tag @list.post.image_url, :class =>'img_myboom' %>
               <% else %>
-                <%= image_tag "nothing01.jpg", :class =>'img_myboom' %>
+                <%#myboomのデフォルト画像%>
               <% end %>
             </div>
           </div>

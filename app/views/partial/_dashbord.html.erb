@@ -5,10 +5,10 @@
         <div class="d1">
           <div class="d7"></div>
           <div class="d8">
-            <% if @list = List.find_by(user_id: current_user.id, title: "プロフィール") %>
-              <%= image_tag @list.post.image_url, :class =>'img_myboom' %>
+            <% if @list_mine = List.find_by(user_id: current_user.id, title: "プロフィール") %>
+              <%= image_tag @list_mine.post.image_url, :class =>'img_myboom' %>
             <% else %>
-              <%= image_tag "nothing01.jpg", :class =>'img_myboom' %>
+              <%#myboomのデフォルト画像%>
             <% end %>
           </div>
         </div>
@@ -16,22 +16,22 @@
       <div class="a11">
         <div class="font_white" style="margin:10px;width:35%;display:inline-block;">
           <div class="contain_title02">
-            <% if @list.present? %>
+            <% if @list_mine.present? %>
               <div>
-                <% if @list.post.category == "movie" %>
-                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list.post.title %>
+                <% if @list_mine.post.category == "movie" %>
+                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
                 <% end %>
-                <% if @list.post.category == "tv" %>
-                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list.post.title %>
+                <% if @list_mine.post.category == "tv" %>
+                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
                 <% end %>
-                <% if @list.post.category == "book" %>
-                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list.post.title %>
+                <% if @list_mine.post.category == "book" %>
+                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
                 <% end %>
-                <% if @list.post.category == "comic" %>
-                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list.post.title %>
+                <% if @list_mine.post.category == "comic" %>
+                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
                 <% end %>
-                <% if @list.post.category == "music" %>
-                  <%= image_tag "music_white.png", :class =>'icon_category' %> <%= @list.post.title %>
+                <% if @list_mine.post.category == "music" %>
+                  <%= image_tag "music_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
                 <% end %>
               </div>
             <% else %>

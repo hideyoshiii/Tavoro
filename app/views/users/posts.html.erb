@@ -49,7 +49,7 @@
 			<div class="swiper-wrapper" style="height:100%">
 
 				<div class="swiper-slide" style="height:100%">
-		        	<div class="checked" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+		        	<div class="checked" id="ggg" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
 				  		<div style="height:165px;"></div>
 					  	<% if @checkeds.blank? %>
 					  		<%= render "partial/nothing" %>
@@ -61,9 +61,9 @@
 											<img data-src="nothing01.jpg" class="swiper-lazy img_lavoro001">
 										<% else %>
 											<% if post.category == "music" %>
-												<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro000">
+												<img data-src="<%= post.image_url %>" class="img_lavoro000 lazyload">
 											<% else %>
-												<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro001">
+												<img data-src="<%= post.image_url %>" class="img_lavoro001 lazyload">
 											<% end %>
 										<% end %>
 										<span>
@@ -95,7 +95,7 @@
 						  	<% end %>
 					  	<% end %>
 				  	</div>
-				  	<div class="bookmark hide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  	<div class="bookmark hide" id="hhh" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
 				  		<div style="height:165px;"></div>
 				  		<% if @bookmarks.blank? %>
 					  		<%= render "partial/nothing" %>
@@ -107,9 +107,9 @@
 											<img data-src="nothing01.jpg" class="swiper-lazy img_lavoro001">
 										<% else %>
 											<% if post.category == "music" %>
-												<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro000">
+												<img  data-src="<%= post.image_url %>" class="img_lavoro000 lazyload">
 											<% else %>
-												<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro001">
+												<img data-src="<%= post.image_url %>" class="img_lavoro001 lazyload">
 											<% end %>
 										<% end %>
 										<span>
@@ -446,253 +446,7 @@
 	</div>
 </div>
 
-<%#モーダルの中身%>
-<% if @all.present? %>
-	<% @all.each.with_index do |post, i| %>
-		<%#モーダルtubolinks不具合修正%>
-		<script type="text/javascript">
-			$(function(){
-				var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
-				//モーダルが表示されているのに表示判定されてなかったら
-				if(display_<%= post.id %> === 'block'){
-					//モーダルを表示状態にする
-					$('body').removeClass('modal-open');
-      				$('.modal-backdrop').remove();				
-					$('#myModal_<%= post.id %>').modal('toggle');
-					//クリックでモーダルを閉じる 
-					$('#dismiss_<%= post.id %>').on("click",function(){
-						$('body').removeClass('modal-open');
-					  	$('.modal-backdrop').remove();
-						$('#myModal_<%= post.id %>').modal('hide'); 
-					});
-				}				
-			});
-		</script>
-		<% if post.category == "music" %>
-			<% if post.preview_url.present? %>
-				<%#musicプレビューcss%>
-				<style type="text/css">
-					#btn_preview_<%= post.id %> {
-				    display: block;
-				    width: 40px;
-				    height: 40px;
-				    background: rgba(50,50,50,0.7);
-				    text-align: center;
-				    border-radius: 50%;
-				    cursor: pointer;
-				    position: relative;
-				    margin-left:85%;
-				    margin-top:-15%;
-					}
-					@media only screen and (max-width: 768px) {
-						#btn_preview_<%= post.id %>{
-						margin-left:80%;
-				    	margin-top:-20%;
-						}
-					}
-					#btn_preview_<%= post.id %> i {
-					  color: #FAFAFA;
-					  line-height: 40px;
-					  vertical-align: middle;
-					  font-size: 9px;
-					  margin-left:1px;
-					}
-				</style>
-				<%#musicプレビューjs%>
-				<script type="text/javascript"> 
-				  $(function(){
-				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");				  	  
-					  $('#btn_preview_<%= post.id %>').on("click",function(){
-					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-play');
-					       $("#icon_play_<%= post.id %>").addClass('fa-pause');
-					       audio_<%= post.id %>.play();
-					     }
-					    else
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					       $("#icon_play_<%= post.id %>").addClass('fa-play');
-					       audio_<%= post.id %>.pause();
-					     }
-					  });
-					  audio_<%= post.id %>.onended = function() {
-					     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					     $("#icon_play_<%= post.id %>").addClass('fa-play');
-					  };
-				  });
-			   </script>
-			<% end %>
-		<% end %>
-		<div class="modal fade" id="myModal_<%= post.id %>">
-			<div class="height_modal"></div>
-			<div class="modal-dialog">
-				<div class="base01">
-					<% if post.image_url.blank? %>
-						<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
-					<% else %>
-						<% if post.category == "music" %>
-							<%= image_tag post.image_url, :class =>'img_lavoro002' %>
-						<% else %>
-							<%= image_tag post.image_url, :class =>'img_lavoro02' %>
-						<% end %>
-					<% end %>
-					<span>
-						<div class="layer05">
-						</div>
-						<div class="layer03">
-							<div class="pro31">
-								<a href="" data-toggle="modal" data-target="#myModal_profile_<%= post.user.id %>">
-									<div class="inline_block_default">
-										<%= image_tag post.user.image(:medium), :class => "img_user04" %>
-									</div>
-									<div class="inline_block_default">
-										<div class="font_white" style="word-wrap:break-word;">
-											<%= post.user.name %>
-											<% if post.user.authority == "public" %>
-						                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
-						                    <% end %>
-										</div>
-										<div class="font_gray_min" style="word-wrap:break-word;">
-											<% if post.category == "movie" %>
-												<%= image_tag "movie_gray.png", :class =>'icon_category' %> 映画
-											<% end %>
-											<% if post.category == "tv" %>
-												<%= image_tag "movie_gray.png", :class =>'icon_category' %> テレビ
-											<% end %>
-											<% if post.category == "book" %>
-												<%= image_tag "book_gray.png", :class =>'icon_category' %> ブック
-											<% end %>
-											<% if post.category == "comic" %>
-												<%= image_tag "book_gray.png", :class =>'icon_category' %> コミック
-											<% end %>
-											<% if post.category == "music" %>
-												<%= image_tag "music_gray.png", :class =>'icon_category' %> ミュージック
-											<% end %>
-											<% @seconds = (Time.now - post.created_at).round  %>
-											<% if @seconds <= 3600 %>
-												- <%= @seconds / 60 %>分前
-											<% else %>
-												<% if @seconds <= 86400 %>
-														- <%= @seconds / (60 * 60) %>時間前
-												<% else %>
-													<% if @seconds <= 604800 %>
-														- <%= @seconds / (60 * 60 * 24) %>日前
-													<% else %>
-														- <%= post.created_at.strftime('%m月%d日') %>
-													<% end %>
-												<% end %>
-											<% end %>
-										</div>
-									</div>
-								</a>
-							</div>						
-							<div class="pro32">		
-								<div style="text-align:right;">
-									<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:10px;">
-										<%= image_tag "ellipsis.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
-									</a>			
-								</div>
-							</div>
-						</div>
-						<div class="layer07">
-							<%= link_to "/works/#{post.id}/detail" do %>
-								<% if post.image_url.blank? %>
-									<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro03' %>
-								<% end %>
-							<% end %>
-							<% if post.category == "music" %>
-								<% if post.preview_url.present? %>
-									<div id="btn_preview_<%= post.id %>">
-										<i id="icon_play_<%= post.id %>" class="fas fa-play"></i>
-									</div>
-								<% end %>
-							<% end %>
-						</div>
-						<div class="layer02">
-							<%= link_to "/works/#{post.id}/detail" do %>
-								<div class="font_how">
-									<% if post.review == "bookmark" %>
-										<i class="far fa-bookmark"></i> ブックマーク
-									<% end %>
-									<% if post.review == "good" %>
-										<% if post.category == "movie" || post.category == "tv" %>
-											観ました
-										<% end %>
-										<% if post.category == "book" || post.category == "comic" %>
-											読みました
-										<% end %>
-										<% if post.category == "music" %>
-											聴きました
-										<% end %>
-									<% end %>
-									<% if post.review == "favorite" %>
-										<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
-									<% end %>
-									<% if post.review == "bad" %>
-										<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
-									<% end %>
-								</div>
-								<div class="font_head">
-									<%= post.title %>
-								</div>
-							<% end %>
-							<% if post.description.present? %>
-								<div class="balloon_top"></div>
-								<div class="balloon">
-								  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-								</div>
-							<% end %>
-						</div>
-						<div class="layer09">
-							<div class="pro19">							
-								<a data-dismiss="modal" id="dismiss_<%= post.id %>">
-									<%= image_tag "close_blue.png", :class =>'img_left02' %>
-								</a>
-							</div>
-						</div>
-					</span>
-				</div>
-			</div>
-		</div>
-		<%# ハーフモーダル %>
-		<div data-pushbar-id="mypushbar_<%= post.id %>" class="pushbar from_bottom">
-			<div class="bar_pushbar"></div>	
-			<% unless post.user.id == current_user.id %>
-				<span id="bookmark-of-<%= post.id %>">
-			      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-			    </span>
-				<%= link_to "/works/#{post.id}/copy" do %>
-					<div class="btn_pushbar_item">  
-						<%= image_tag "add.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
-					</div>	
-				<% end %>									
-			<% end %>
-			<% if post.user.id == current_user.id %>	
-				<span id="list-of-<%= post.id %>">
-			      	<%= render partial: 'works/list', locals: { post: post } %>
-			    </span>			
-				<%= link_to "/works/#{post.id}/edit" do %>
-					<div class="btn_pushbar_item">  
-						<%= image_tag "edit.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
-					</div>
-				<% end %>					
-				<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-					<div class="btn_pushbar_item" style="color:#FB473E;">  
-						<%= image_tag "trash_red.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を削除する
-					</div>	
-				<% end %>				
-			<% end %>	
-		    <a data-pushbar-close>
-				<div class="btn_pushbar_close">  
-					<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル  
-				</div>
-		  	</a>
-		</div>
-	<% end %>
-<% end %>
+
 
 
 <%#プロフィールモーダル%>
@@ -817,4 +571,21 @@
 		iNoBounce.disable()
 	});
   });
+</script>
+
+
+<script type="text/javascript">
+	!function(t,e){"object"==typeof exports?module.exports=e(t):"function"==typeof define&&define.amd?define([],e(t)):t.LazyLoad=e(t)}("undefined"!=typeof global?global:this.window||this.global,function(t){"use strict";function e(t,e){this.settings=r(s,e||{}),this.images=t||document.querySelectorAll(this.settings.selector),this.observer=null,this.init()}const s={src:"data-src",srcset:"data-srcset",selector:".lazyload"},r=function(){let t={},e=!1,s=0,o=arguments.length;"[object Boolean]"===Object.prototype.toString.call(arguments[0])&&(e=arguments[0],s++);for(;s<o;s++)!function(s){for(let o in s)Object.prototype.hasOwnProperty.call(s,o)&&(e&&"[object Object]"===Object.prototype.toString.call(s[o])?t[o]=r(!0,t[o],s[o]):t[o]=s[o])}(arguments[s]);return t};if(e.prototype={init:function(){if(!t.IntersectionObserver)return void this.loadImages();let e=this,s={root:null,rootMargin:"0px",threshold:[0]};this.observer=new IntersectionObserver(function(t){t.forEach(function(t){if(t.intersectionRatio>0){e.observer.unobserve(t.target);let s=t.target.getAttribute(e.settings.src),r=t.target.getAttribute(e.settings.srcset);"img"===t.target.tagName.toLowerCase()?(s&&(t.target.src=s),r&&(t.target.srcset=r)):t.target.style.backgroundImage="url("+s+")"}})},s),this.images.forEach(function(t){e.observer.observe(t)})},loadAndDestroy:function(){this.settings&&(this.loadImages(),this.destroy())},loadImages:function(){if(!this.settings)return;let t=this;this.images.forEach(function(e){let s=e.getAttribute(t.settings.src),r=e.getAttribute(t.settings.srcset);"img"===e.tagName.toLowerCase()?(s&&(e.src=s),r&&(e.srcset=r)):e.style.backgroundImage="url("+s+")"})},destroy:function(){this.settings&&(this.observer.disconnect(),this.settings=null)}},t.lazyload=function(t,s){return new e(t,s)},t.jQuery){const s=t.jQuery;s.fn.lazyload=function(t){return t=t||{},t.attribute=t.attribute||"data-src",new e(s.makeArray(this),t),this}}return e});
+</script>
+<script type="text/javascript" charset="utf-8">
+$(function() {
+    $('img.lazyload').lazyload({ 
+    	container: $('#ggg'),
+        effect : 'fadeIn'
+    });
+    $('img.lazyload').lazyload({ 
+    	container: $('#hhh'),
+        effect : 'fadeIn'
+    });
+});
 </script>
