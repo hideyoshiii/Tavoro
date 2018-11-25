@@ -147,10 +147,11 @@
 			<%# 音楽プレビューjs %>
 			<% if post.category == "music" %>
 				<% if post.preview_url.present? %>
-					<script type="text/javascript">						  
+					<script type="text/javascript">	
+					var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");					  
 						$(function(){
-					  	  var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
-					  	  audio_<%= post.id %>.preload = 'none';
+					  	  
+					  	  
 						  $('#btn_preview_<%= post.id %>').on("click",function(){
 						    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
 						     {
