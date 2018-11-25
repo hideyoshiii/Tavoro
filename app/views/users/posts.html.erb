@@ -58,12 +58,12 @@
 					  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_lavoro001 lazyload_min">
+											<img data-src="nothing01.jpg" class="img_lavoro001 swiper-lazy">
 										<% else %>
 											<% if post.category == "music" %>
-												<img data-src="<%= post.image_url %>" class="img_lavoro000 lazyload_min">
+												<img data-src="<%= post.image_url %>" class="img_lavoro000 swiper-lazy">
 											<% else %>
-												<img data-src="<%= post.image_url %>" class="img_lavoro001 lazyload_min">
+												<img data-src="<%= post.image_url %>" class="img_lavoro001 swiper-lazy">
 											<% end %>
 										<% end %>
 										<span>
@@ -104,12 +104,12 @@
 					  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_lavoro001 lazyload_min">
+											<img data-src="nothing01.jpg" class="img_lavoro001 swiper-lazy">
 										<% else %>
 											<% if post.category == "music" %>
-												<img  data-src="<%= post.image_url %>" class="img_lavoro000 lazyload_min">
+												<img  data-src="<%= post.image_url %>" class="img_lavoro000 swiper-lazy">
 											<% else %>
-												<img data-src="<%= post.image_url %>" class="img_lavoro001 lazyload_min">
+												<img data-src="<%= post.image_url %>" class="img_lavoro001 swiper-lazy">
 											<% end %>
 										<% end %>
 										<span>
@@ -826,10 +826,4 @@
 		iNoBounce.disable()
 	});
   });
-</script>
-
-<script type="text/javascript">
-	$(function() {
-	    $('img.lazyload_min').lazyload();
-	});      
 </script>
