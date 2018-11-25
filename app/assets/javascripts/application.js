@@ -15,6 +15,16 @@
 //= require rails-ujs
 //= require bootstrap
 
+//= require hammer
+//= require hammer.min
+
+//= require jquery.hammer
+
+//= require hammer-time
+//= require hammer-time.min
+
+//= require touch-emulator
+
 //= require turbolinks
 //= require_tree .
 //= require serviceworker-companion
