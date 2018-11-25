@@ -12,33 +12,6 @@
 			<div class="swiper-slide" style="height:100%"> 
 				<% if post.category == "music" %>
 					<% if post.preview_url.present? %>
-						<style type="text/css">
-							#btn_preview<%= post.id %> {
-						    display: block;
-						    width: 40px;
-						    height: 40px;
-						    background: rgba(50,50,50,0.7);
-						    text-align: center;
-						    border-radius: 50%;
-						    cursor: pointer;
-						    position: relative;
-						    margin-left:85%;
-						    margin-top:-15%;
-							}
-							@media only screen and (max-width: 768px) {
-								#btn_preview<%= post.id %>{
-								margin-left:80%;
-						    	margin-top:-20%;
-								}
-							}
-							#btn_preview<%= post.id %> i {
-							  color: #FAFAFA;
-							  line-height: 40px;
-							  vertical-align: middle;
-							  font-size: 9px;
-							  margin-left:1px;
-							}
-						</style>
 					<% end %>
 			   <% end %>
 				<div class="base01">
@@ -127,7 +100,7 @@
 							<% end %>
 							<% if post.category == "music" %>
 								<% if post.preview_url.present? %>
-									<div id="btn_preview<%= post.id %>">
+									<div class="btn_preview_default" id="btn_preview<%= post.id %>">
 										<i id="icon_play<%= post.id %>" class="fas fa-play"></i>
 									</div>
 								<% end %>
@@ -170,35 +143,36 @@
 						</div>
 					</span>
 				</div>
-				<% if post.category == "music" %>
-					<% if post.preview_url.present? %>
-						<script type="text/javascript" class="swiper-lazy">						  
-						  $(function(){
-						  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
-						  	  audio<%= post.id %>.preload = 'none';
-							  $('#btn_preview<%= post.id %>').on("click",function(){
-							    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
-							     {
-							       $("#icon_play<%= post.id %>").removeClass('fa-play');
-							       $("#icon_play<%= post.id %>").addClass('fa-pause');
-							       audio<%= post.id %>.play();
-							     }
-							    else
-							     {
-							       $("#icon_play<%= post.id %>").removeClass('fa-pause');
-							       $("#icon_play<%= post.id %>").addClass('fa-play');
-							       audio<%= post.id %>.pause();
-							     }
-							  });
-							  audio<%= post.id %>.onended = function() {
-							    $("#icon_play<%= post.id %>").removeClass('fa-pause');
-							    $("#icon_play<%= post.id %>").addClass('fa-play');
-							  };
-						  	});					
-					   </script>
-					<% end %>
-				<% end %>
 			</div>
+			<%# 音楽プレビューjs %>
+			<% if post.category == "music" %>
+				<% if post.preview_url.present? %>
+					<script type="text/javascript">						  
+					  $(function(){
+					  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
+					  	  audio<%= post.id %>.preload = 'none';
+						  $('#btn_preview<%= post.id %>').on("click",function(){
+						    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
+						     {
+						       $("#icon_play<%= post.id %>").removeClass('fa-play');
+						       $("#icon_play<%= post.id %>").addClass('fa-pause');
+						       audio<%= post.id %>.play();
+						     }
+						    else
+						     {
+						       $("#icon_play<%= post.id %>").removeClass('fa-pause');
+						       $("#icon_play<%= post.id %>").addClass('fa-play');
+						       audio<%= post.id %>.pause();
+						     }
+						  });
+						  audio<%= post.id %>.onended = function() {
+						    $("#icon_play<%= post.id %>").removeClass('fa-pause');
+						    $("#icon_play<%= post.id %>").addClass('fa-play');
+						  };
+					  	});					
+				   </script>
+				<% end %>
+			<% end %>
 			<% end %>
 		<% else %>
 			<%= render "partial/nothing01" %>

@@ -4122,6 +4122,37 @@ html.pushbar_locked .pushbar_overlay{
 }
 
 
+//音楽再生関連
+.btn_preview_default{
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: rgba(50,50,50,0.7);
+	text-align: center;
+	border-radius: 50%;
+	cursor: pointer;
+	position: relative;
+	margin-left:85%;
+	margin-top:-15%;
+}
+@media only screen and (max-width: 768px) {
+	.btn_preview_default{
+	margin-left:80%;
+	margin-top:-20%;
+	}
+}
+.btn_preview_default i {
+  color: #FAFAFA;
+  line-height: 40px;
+  vertical-align: middle;
+  font-size: 9px;
+  margin-left:1px;
+}
+
+
+
+
+
 //凡庸
 .hide{
 	desplay:none;
