@@ -150,20 +150,19 @@
 					<script type="text/javascript">						  
 						$(function(){
 					  	  var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
-					  	  audio_<%= post.id %>.preload = 'none';
+					  	  audio_<%= post.id %>.load();
 						  $('#btn_preview_<%= post.id %>').on("click",function(){
-						  	audio_<%= post.id %>.play();
 						    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
 						     {
 						       $("#icon_play_<%= post.id %>").removeClass('fa-play');
 						       $("#icon_play_<%= post.id %>").addClass('fa-pause');
-						       
+						       audio_<%= post.id %>.play();
 						     }
 						    else
 						     {
 						       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
 						       $("#icon_play_<%= post.id %>").addClass('fa-play');
-						       
+						       audio_<%= post.id %>.pause();
 						     }
 						  });
 						  audio_<%= post.id %>.onended = function() {
