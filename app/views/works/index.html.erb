@@ -148,7 +148,7 @@
 			<% if post.category == "music" %>
 				<% if post.preview_url.present? %>
 					<script type="text/javascript">						  
-						$(document).on("turbolinks:load", function(){
+						$(function(){
 					  	  var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
 					  	  audio_<%= post.id %>.preload = 'none';
 						  $('#btn_preview_<%= post.id %>').on("click",function(){
