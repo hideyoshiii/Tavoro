@@ -5,23 +5,16 @@ class UsersController < ApplicationController
 	def posts
 		@user = User.find_by(username: params[:id])	
     if @user
-      @all = Post.where(user_id: @user.id).order(created_at: "DESC")
+      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
+      @checkeds_i = @alls.where.not(review: "bookmark").size
+      @bookmarks_i = @alls.where(review: "bookmark").size
 
-      @checkeds = @all.where.not(review: "bookmark")
-      @checkeds_i = @checkeds.size
-      @checkeds_movie = @checkeds.where(category: "movie")
-      @checkeds_tv = @checkeds.where(category: "tv")
-      @checkeds_book = @checkeds.where(category: "book")
-      @checkeds_comic = @checkeds.where(category: "comic")
-      @checkeds_music = @checkeds.where(category: "music")
-
-      @bookmarks = @all.where(review: "bookmark")
-      @bookmarks_i = @bookmarks.size
-      @bookmarks_movie = @bookmarks.where(category: "movie")
-      @bookmarks_tv = @bookmarks.where(category: "tv")
-      @bookmarks_book = @bookmarks.where(category: "book")
-      @bookmarks_comic = @bookmarks.where(category: "comic")
-      @bookmarks_music = @bookmarks.where(category: "music")
+      @all = @alls.where.not(review: "bookmark")
+      @movie = @all.where(category: "movie")
+      @tv = @all.where(category: "tv")
+      @book = @all.where(category: "book")
+      @comic = @all.where(category: "comic")
+      @music = @all.where(category: "music")
     end
 	end
 
