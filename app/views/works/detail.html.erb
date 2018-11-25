@@ -266,62 +266,6 @@
 				}				
 			});
 		</script>
-		<% if post.category == "music" %>
-			<% if post.preview_url.present? %>
-				<%#musicプレビューcss%>
-				<style type="text/css">
-					#btn_preview_<%= post.id %> {
-				    display: block;
-				    width: 40px;
-				    height: 40px;
-				    background: rgba(50,50,50,0.7);
-				    text-align: center;
-				    border-radius: 50%;
-				    cursor: pointer;
-				    position: relative;
-				    margin-left:85%;
-				    margin-top:-15%;
-					}
-					@media only screen and (max-width: 768px) {
-						#btn_preview_<%= post.id %>{
-						margin-left:80%;
-				    	margin-top:-20%;
-						}
-					}
-					#btn_preview_<%= post.id %> i {
-					  color: #FAFAFA;
-					  line-height: 40px;
-					  vertical-align: middle;
-					  font-size: 9px;
-					  margin-left:1px;
-					}
-				</style>
-				<%#musicプレビューjs%>
-				<script type="text/javascript"> 
-				  $(function(){
-				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
-					  $('#btn_preview_<%= post.id %>').on("click",function(){
-					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-play');
-					       $("#icon_play_<%= post.id %>").addClass('fa-pause');
-					       audio_<%= post.id %>.play();
-					     }
-					    else
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					       $("#icon_play_<%= post.id %>").addClass('fa-play');
-					       audio_<%= post.id %>.pause();
-					     }
-					  });
-					  audio_<%= post.id %>.onended = function() {
-					     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					     $("#icon_play_<%= post.id %>").addClass('fa-play');
-					  };
-				  });
-			   </script>
-			<% end %>
-		<% end %>
 		<div class="modal fade" id="myModal_<%= post.id %>">
 			<div class="height_modal"></div>
 			<div class="modal-dialog">
@@ -403,7 +347,7 @@
 							<% end %>
 							<% if post.category == "music" %>
 								<% if post.preview_url.present? %>
-									<div id="btn_preview_<%= post.id %>">
+									<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
 										<i id="icon_play_<%= post.id %>" class="fas fa-play"></i>
 									</div>
 								<% end %>
@@ -488,6 +432,35 @@
 				</div>
 		  	</a>
 		</div>
+		<%# 音楽プレビューjs %>
+		<% if post.category == "music" %>
+			<% if post.preview_url.present? %>
+				<script type="text/javascript">						  
+				  	$(function(){
+				  	  var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
+				  	  audio_<%= post.id %>.preload = 'none';
+					  $('#btn_preview_<%= post.id %>').on("click",function(){
+					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
+					     {
+					       $("#icon_play_<%= post.id %>").removeClass('fa-play');
+					       $("#icon_play_<%= post.id %>").addClass('fa-pause');
+					       audio_<%= post.id %>.play();
+					     }
+					    else
+					     {
+					       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+					       $("#icon_play_<%= post.id %>").addClass('fa-play');
+					       audio_<%= post.id %>.pause();
+					     }
+					  });
+					  audio_<%= post.id %>.onended = function() {
+					    $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+					    $("#icon_play_<%= post.id %>").addClass('fa-play');
+					  };
+				  	});					
+			   	</script>
+			<% end %>
+		<% end %>
 		<%# プロフィールモーダル %>
 		<% unless @user_list.include?(post.user.id) %>
 			<% @user = post.user %>

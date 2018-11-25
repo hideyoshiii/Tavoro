@@ -27,7 +27,15 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    
+    <script type="text/javascript">   
+      $(document).on("turbolinks:load", function(){
+       $("#fakeLoader").fakeLoader({
+          zIndex: "99999",
+          spinner: "spinner5",
+          bgColor: "none",
+        });
+      });   
+    </script>
     
   </head>
 
