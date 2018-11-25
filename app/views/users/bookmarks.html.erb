@@ -16,16 +16,16 @@
 		</div>
 		<div class="pro30">
 			<div style="width:100%;text-align:right;"> 	
-				<div class="btn_on" style="display:inline-block;vertical-align:middle;">
-					<%= image_tag "checked.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
-					<span style="color:#c2c2c2;"><%= @checkeds_i %></span> 
-				</div>
-				<%= link_to "/#{@user.username}/bookmarks" do %>
-					<div class="btn_off" style="display:inline-block;vertical-align:middle;margin-right:10px;">
-						<%= image_tag "bookmark.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
-						<span style="color:#c2c2c2;"><%= @bookmarks_i %></span>
-					</div>		
+				<%= link_to "/#{@user.username}/posts" do %>
+					<div class="btn_off" style="display:inline-block;vertical-align:middle;">
+						<%= image_tag "checked.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
+						<span style="color:#c2c2c2;"><%= @checkeds_i %></span> 
+					</div>
 				<% end %>		
+				<div class="btn_on" style="display:inline-block;vertical-align:middle;margin-right:10px;">
+					<%= image_tag "bookmark.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
+					<span style="color:#c2c2c2;"><%= @bookmarks_i %></span>
+				</div>		
 			</div>  
 		</div>
 	</div>		      

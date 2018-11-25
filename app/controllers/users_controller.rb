@@ -18,6 +18,22 @@ class UsersController < ApplicationController
     end
 	end
 
+  def bookmarks
+    @user = User.find_by(username: params[:id]) 
+    if @user
+      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
+      @checkeds_i = @alls.where.not(review: "bookmark").size
+      @bookmarks_i = @alls.where(review: "bookmark").size
+
+      @all = @alls.where(review: "bookmark")
+      @movie = @all.where(category: "movie")
+      @tv = @all.where(category: "tv")
+      @book = @all.where(category: "book")
+      @comic = @all.where(category: "comic")
+      @music = @all.where(category: "music")
+    end
+  end
+
   def follow_request
     @user = current_user
     @users_requester = current_user.requesters

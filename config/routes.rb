@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
   get ":id/posts" => "users#posts"
+  get ":id/bookmarks" => "users#bookmarks"
   get 'users/follow_request' => "users#follow_request"
   get 'users/user' => "users#user"
   get 'users/ajax_user_list' => "users#ajax_user_list"
