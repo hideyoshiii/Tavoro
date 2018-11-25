@@ -170,8 +170,7 @@
 						</div>
 					</span>
 				</div>
-			</div>
-			<% if post.category == "music" %>
+				<% if post.category == "music" %>
 					<% if post.preview_url.present? %>
 						<script type="text/javascript" class="swiper-lazy">						  
 						  $(function(){
@@ -198,7 +197,8 @@
 						  	});					
 					   </script>
 					<% end %>
-			   <% end %>
+				<% end %>
+			</div>
 			<% end %>
 		<% else %>
 			<%= render "partial/nothing01" %>
