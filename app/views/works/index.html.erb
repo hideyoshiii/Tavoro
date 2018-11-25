@@ -156,13 +156,13 @@
 						     {
 						       $("#icon_play_<%= post.id %>").removeClass('fa-play');
 						       $("#icon_play_<%= post.id %>").addClass('fa-pause');
-						       audio_<%= post.id %>.play(audio_<%= post.id %>);
+						       new Audio('<%= post.preview_url %>').play();
 						     }
 						    else
 						     {
 						       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
 						       $("#icon_play_<%= post.id %>").addClass('fa-play');
-						       audio_<%= post.id %>.pause(audio_<%= post.id %>);
+						       audio_<%= post.id %>.pause();
 						     }
 						  });
 						  audio_<%= post.id %>.onended = function() {
