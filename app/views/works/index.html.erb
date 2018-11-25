@@ -39,30 +39,6 @@
 							  margin-left:1px;
 							}
 						</style>
-						<script type="text/javascript" class="swiper-lazy">						  
-						  $(function(){
-						  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
-						  	  audio<%= post.id %>.preload = 'none';
-							  $('#btn_preview<%= post.id %>').on("click",function(){
-							    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
-							     {
-							       $("#icon_play<%= post.id %>").removeClass('fa-play');
-							       $("#icon_play<%= post.id %>").addClass('fa-pause');
-							       audio<%= post.id %>.play();
-							     }
-							    else
-							     {
-							       $("#icon_play<%= post.id %>").removeClass('fa-pause');
-							       $("#icon_play<%= post.id %>").addClass('fa-play');
-							       audio<%= post.id %>.pause();
-							     }
-							  });
-							  audio<%= post.id %>.onended = function() {
-							    $("#icon_play<%= post.id %>").removeClass('fa-pause');
-							    $("#icon_play<%= post.id %>").addClass('fa-play');
-							  };
-						  	});					
-					   </script>
 					<% end %>
 			   <% end %>
 				<div class="base01">
@@ -195,6 +171,33 @@
 					</span>
 				</div>
 			</div>
+			<% if post.category == "music" %>
+					<% if post.preview_url.present? %>
+						<script type="text/javascript" class="swiper-lazy">						  
+						  $(function(){
+						  	  var audio<%= post.id %> = new Audio("<%= post.preview_url %>");
+							  $('#btn_preview<%= post.id %>').on("click",function(){
+							    if($("#icon_play<%= post.id %>").hasClass('fa-play'))
+							     {
+							       $("#icon_play<%= post.id %>").removeClass('fa-play');
+							       $("#icon_play<%= post.id %>").addClass('fa-pause');
+							       audio<%= post.id %>.play();
+							     }
+							    else
+							     {
+							       $("#icon_play<%= post.id %>").removeClass('fa-pause');
+							       $("#icon_play<%= post.id %>").addClass('fa-play');
+							       audio<%= post.id %>.pause();
+							     }
+							  });
+							  audio<%= post.id %>.onended = function() {
+							    $("#icon_play<%= post.id %>").removeClass('fa-pause');
+							    $("#icon_play<%= post.id %>").addClass('fa-play');
+							  };
+						  	});					
+					   </script>
+					<% end %>
+			   <% end %>
 			<% end %>
 		<% else %>
 			<%= render "partial/nothing01" %>
