@@ -449,25 +449,6 @@
 <%#モーダルの中身%>
 <% if @all.present? %>
 	<% @all.each.with_index do |post, i| %>
-		<%#モーダルtubolinks不具合修正%>
-		<script type="text/javascript">
-			$(function(){
-				var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
-				//モーダルが表示されているのに表示判定されてなかったら
-				if(display_<%= post.id %> === 'block'){
-					//モーダルを表示状態にする
-					$('body').removeClass('modal-open');
-      				$('.modal-backdrop').remove();				
-					$('#myModal_<%= post.id %>').modal('toggle');
-					//クリックでモーダルを閉じる 
-					$('#dismiss_<%= post.id %>').on("click",function(){
-						$('body').removeClass('modal-open');
-					  	$('.modal-backdrop').remove();
-						$('#myModal_<%= post.id %>').modal('hide'); 
-					});
-				}				
-			});
-		</script>
 		<% if post.category == "music" %>
 			<% if post.preview_url.present? %>
 				<%#musicプレビューcss%>
@@ -498,30 +479,6 @@
 					  margin-left:1px;
 					}
 				</style>
-				<%#musicプレビューjs%>
-				<script type="text/javascript"> 
-				  $(function(){
-				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");				  	  
-					  $('#btn_preview_<%= post.id %>').on("click",function(){
-					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-play');
-					       $("#icon_play_<%= post.id %>").addClass('fa-pause');
-					       audio_<%= post.id %>.play();
-					     }
-					    else
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					       $("#icon_play_<%= post.id %>").addClass('fa-play');
-					       audio_<%= post.id %>.pause();
-					     }
-					  });
-					  audio_<%= post.id %>.onended = function() {
-					     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					     $("#icon_play_<%= post.id %>").addClass('fa-play');
-					  };
-				  });
-			   </script>
 			<% end %>
 		<% end %>
 		<div class="modal fade" id="myModal_<%= post.id %>">
@@ -692,11 +649,51 @@
 		  	</a>
 		</div>
 		<script type="text/javascript">
-			$(function() {
-				$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
-			    	$('img.lazyload_modal_<%= post.id %>').lazyload();
-			    });     
-			});      
+			$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
+		    	$('img.lazyload_modal_<%= post.id %>').lazyload();
+		    	<% if post.category == "music" %>
+					<% if post.preview_url.present? %>
+				    	var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");				  	  
+						  $('#btn_preview_<%= post.id %>').on("click",function(){
+						    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
+						     {
+						       $("#icon_play_<%= post.id %>").removeClass('fa-play');
+						       $("#icon_play_<%= post.id %>").addClass('fa-pause');
+						       audio_<%= post.id %>.play();
+						     }
+						    else
+						     {
+						       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+						       $("#icon_play_<%= post.id %>").addClass('fa-play');
+						       audio_<%= post.id %>.pause();
+						     }
+						  });
+						  audio_<%= post.id %>.onended = function() {
+						     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+						     $("#icon_play_<%= post.id %>").addClass('fa-play');
+						  };
+				  	<% end %>
+				<% end %>
+		    });      
+		</script>
+		<%#モーダルtubolinks不具合修正%>
+		<script type="text/javascript">
+			$(function(){
+				var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
+				//モーダルが表示されているのに表示判定されてなかったら
+				if(display_<%= post.id %> === 'block'){
+					//モーダルを表示状態にする
+					$('body').removeClass('modal-open');
+      				$('.modal-backdrop').remove();				
+					$('#myModal_<%= post.id %>').modal('toggle');
+					//クリックでモーダルを閉じる 
+					$('#dismiss_<%= post.id %>').on("click",function(){
+						$('body').removeClass('modal-open');
+					  	$('.modal-backdrop').remove();
+						$('#myModal_<%= post.id %>').modal('hide'); 
+					});
+				}				
+			});
 		</script>
 	<% end %>
 <% end %>
