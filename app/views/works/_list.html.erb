@@ -1,0 +1,13 @@
+<% if List.find_by(user_id: current_user.id, post_id: post.id, title: "プロフィール") %>
+	<%= link_to "/works/#{post.id}/destroy_list", method: :post, remote: true do %>
+		<div class="btn_pushbar_item">  
+			<%= image_tag "eye_blue.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>プロフィールの設定を解除する
+		</div>
+	<% end %>
+<% else %>
+	<%= link_to "/works/#{post.id}/create_list", method: :post, remote: true do %>
+		<div class="btn_pushbar_item">  
+			<%= image_tag "eye_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この投稿をプロフィールに設定する
+		</div>
+	<% end %>
+<% end %>

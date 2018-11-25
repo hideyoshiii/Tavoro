@@ -93,19 +93,19 @@
 										</div>
 										<div class="font_gray_min" style="word-wrap:break-word;margin-top:2px;">
 											<% if post.category == "movie" %>
-												<%= image_tag "movie_gray.png", :style =>'width:12px;height:12px;margin-top:-2px;' %> 映画
+												<%= image_tag "movie_gray.png", :class =>'icon_category' %> 映画
 											<% end %>
 											<% if post.category == "tv" %>
-												<%= image_tag "movie_gray.png", :style =>'width:12px;height:12px;margin-top:-2px;' %> テレビ
+												<%= image_tag "movie_gray.png", :class =>'icon_category' %> テレビ
 											<% end %>
 											<% if post.category == "book" %>
-												<%= image_tag "book_gray.png", :style =>'width:12px;height:12px;margin-top:-2px;' %> ブック
+												<%= image_tag "book_gray.png", :class =>'icon_category' %> ブック
 											<% end %>
 											<% if post.category == "comic" %>
-												<%= image_tag "book_gray.png", :style =>'width:12px;height:12px;margin-top:-2px;' %> コミック
+												<%= image_tag "book_gray.png", :class =>'icon_category' %> コミック
 											<% end %>
 											<% if post.category == "music" %>
-												<%= image_tag "music_gray.png", :style =>'width:12px;height:12px;margin-top:-2px;' %> ミュージック
+												<%= image_tag "music_gray.png", :class =>'icon_category' %> ミュージック
 											<% end %>
 											<% @seconds = (Time.now - post.created_at).round  %>
 											<% if @seconds <= 3600 %>
@@ -236,7 +236,10 @@
 					</div>	
 				<% end %>									
 			<% end %>
-			<% if post.user.id == current_user.id %>			
+			<% if post.user.id == current_user.id %>	
+				<span id="list-of-<%= post.id %>">
+			      	<%= render partial: 'works/list', locals: { post: post } %>
+			    </span>		
 				<%= link_to "/works/#{post.id}/edit" do %>
 					<div class="btn_pushbar_item">  
 						<%= image_tag "edit.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 

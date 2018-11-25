@@ -337,4 +337,19 @@ class WorksController < ApplicationController
     @post_bookmark.destroy 
   end
 
+  def create_list
+    @post = Post.find(params[:id].to_s) 
+    @lists = List.where(user_id: current_user.id, title: "プロフィール")
+    if @lists.present?
+      @lists.destroy_all
+    end
+    @post_list = List.create(user_id: current_user.id, post_id: @post.id, title: "プロフィール")
+  end
+
+  def destroy_list 
+    @post = Post.find(params[:id].to_s) 
+    @post_list = List.find_by(user_id: current_user.id, post_id: @post.id, title: "プロフィール")
+    @post_list.destroy 
+  end
+
 end

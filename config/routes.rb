@@ -56,6 +56,9 @@ Rails.application.routes.draw do
   post "works/:id/create_bookmark" => "works#create_bookmark"
   post "works/:id/destroy_bookmark" => "works#destroy_bookmark"
 
+  post "works/:id/create_list" => "works#create_list"
+  post "works/:id/destroy_list" => "works#destroy_list"
+
   get 'works/test' => "works#test"
 
   post "likes/:post_id/create" => "likes#create"

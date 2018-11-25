@@ -18,6 +18,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+  has_many :lists, dependent: :destroy
+
   has_many :notifications, dependent: :destroy
 
   has_many :invitations, dependent: :destroy

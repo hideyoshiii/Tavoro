@@ -4,100 +4,125 @@
       <div class="a1">
         <div class="a4">
           <div class="d1">
-            <div class="d5"></div>
+            <div class="d7"></div>
+            <div class="d8">
+              <% if @list = List.find_by(user_id: @user.id, title: "プロフィール") %>
+                <%= image_tag @list.post.image_url, :class =>'img_myboom' %>
+              <% else %>
+                <%= image_tag "nothing01.jpg", :class =>'img_myboom' %>
+              <% end %>
+            </div>
           </div>
         </div>
-        <div class="a5">
-          <div class="e1">
-            <div class="e2">
-              <div style="width:100%;">       
-              	<div style="width:100%;">
-                  <div style="text-align:center;">
-                      <%= image_tag user.image(:large), :class => "img_user08" %>
-                  </div>
-                  <div style="font-size:18px;text-align:center;margin-top:10px;">
-                    <%= user.name %>
-                    <% if user.authority == "public" %>
-                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
-                    <% end %>
-                  </div>
-                </div>          
-              </div>     
-              <% if @user.description.present? %>
-                <div style="height:0.5vh;"></div>
-                <div class="font_gray_min" style="width:100%;padding:0 20px;color:#C2C2C2;">
-                  <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
+        <div class="a11">
+          <div class="font_white" style="margin:10px;width:35%;display:inline-block;">
+            <div class="contain_title02">
+              <% if @list.present? %>
+                <div>
+                  <% if @list.post.category == "movie" %>
+                    <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list.post.title %>
+                  <% end %>
+                  <% if @list.post.category == "tv" %>
+                    <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list.post.title %>
+                  <% end %>
+                  <% if @list.post.category == "book" %>
+                    <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list.post.title %>
+                  <% end %>
+                  <% if @list.post.category == "comic" %>
+                    <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list.post.title %>
+                  <% end %>
+                  <% if @list.post.category == "music" %>
+                    <%= image_tag "music_white.png", :class =>'icon_category' %> <%= @list.post.title %>
+                  <% end %>
                 </div>
-              <% end %>                   	            
-              <div style="height:3vh;"></div>
-            	<div style="text-align:center;">
-	            	<div id="relationship-of-<%= @user.id %>">
-				      	  <%= render partial: 'relationships/relationship' %>
-				        </div>
-			        </div>       
-              <% if current_user?(@user) %>
-  			        <div style="height:5vh;"></div>
-                <div style="text-align:center;width:100%;">
-                  <div class="pro20">
-                    <%= link_to "/users/following" do %>
-                      <div style="font-size:18px;color:#FAFAFA;">
-                        <%= current_user.followings.size %>
-                      </div> 
-                      <div style="font-size:12px;color:#C2C2C2;margin-top:0px;">
-                          followings
-                      </div> 
-                    <% end %>
-                  </div>
-                  <div class="pro20">
-                    <%= link_to "/users/follower" do %>
-                      <div style="font-size:18px;color:#FAFAFA">
-                        <%= current_user.followers.size %>
-                      </div> 
-                      <div style="font-size:12px;color:#C2C2C2;margin-top:0px;">
-                          followers
-                      </div> 
-                    <% end %>
-                  </div> 
+              <% else %>
+                <div>
+                  <%#myboomが設定されていません%>
                 </div>
               <% end %>
-              <div style="height:7vh;"></div>
-              <div style="text-align:center;width:100%;">
-                <div class="pro20">
-              	  <div>
-                    <%= image_tag "checked.png", :style =>'width:18px;height:18px;' %>
-                  </div> 
-                  <div style="font-size:12px;color:#C2C2C2;margin-top:5px;">
-                    <%= @checkeds_i %> checkeds
-                  </div> 
-                </div>
-                <div class="pro20">
-                  <div>
-                    <%= image_tag "bookmark.png", :style =>'width:18px;height:18px;' %>
-                  </div> 
-                  <div style="font-size:12px;color:#C2C2C2;margin-top:5px;">
-                    <%= @bookmarks_i %> bookmarks
-                  </div> 
-                </div>
-                <div class="pro20">
-                  <div>
-                    <%= image_tag "test51.png", :style =>'width:18px;height:18px;' %>
-                  </div> 
-                  <div style="font-size:12px;color:#C2C2C2;margin-top:5px;">
-                    coming soon
-                  </div> 
-                </div>
-              </div>  
-			        <div style="height:10vh;"></div>
             </div>
-            <div class="e5">
-    				<div class="pro19">							
-    					<a data-dismiss="modal" id="dismiss_profile_<%= @user.id %>">
-    						<%= image_tag "close_blue.png", :class =>'img_left02' %>
-    					</a>
-    				</div>
-		      </div>
+          </div>
         </div>
-      </div>
+        <div class="a8">     
+          <div style="width:100%;"> 
+            <% if current_user?(@user) %>
+              <div class="pro34" style="vertical-align:bottom;">
+                <%= link_to "/users/following" do %>              
+                  <div style="font-size:11px;color:#C2C2C2;border-bottom: solid 1px rgba(5,98,123,0.8);margin-bottom:1vh;">
+                      <%= current_user.followings.size %> followings
+                  </div> 
+                <% end %>
+              </div> 
+            <% end %>      
+          	<div class="pro33" style="vertical-align:bottom;">
+              <div style="text-align:center;">
+                  <%= image_tag user.image(:large), :class => "img_user08" %>
+              </div>
+              <div style="font-size:18px;text-align:center;margin-top:10px;">
+                <%= user.name %>
+                <% if user.authority == "public" %>
+                  <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+                <% end %>
+              </div>
+            </div>  
+            <% if current_user?(@user) %>
+              <div class="pro34" style="vertical-align:bottom;">
+                <%= link_to "/users/follower" do %>   
+                  <div style="font-size:11px;color:#C2C2C2;border-bottom: solid 1px rgba(5,98,123,0.8);margin-bottom:1vh;">
+                      <%= current_user.followers.size %> followers
+                  </div> 
+                <% end %>
+              </div>  
+            <% end %>         
+          </div>     
+          <% if @user.description.present? %>
+            <div style="height:0.5vh;"></div>
+            <div class="font_gray_min" style="width:100%;padding:0 20px;color:#C2C2C2;">
+              <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
+            </div>
+          <% end %>                   	            
+          <div style="height:5vh;"></div>
+        	<div style="text-align:center;">
+          	<div id="relationship-of-<%= @user.id %>">
+		      	  <%= render partial: 'relationships/relationship' %>
+		        </div>
+	        </div>       
+          <div style="height:8vh;"></div>
+          <div style="text-align:center;width:95%;display:inline-block;">
+            <div class="pro20">
+          	  <div>
+                <%= image_tag "checked.png", :style =>'width:16px;height:16px;' %>
+              </div> 
+              <div style="font-size:12px;margin-top:5px;">
+                <%= @checkeds_i %> checkeds
+              </div> 
+            </div>
+            <div class="pro20">
+              <div>
+                <%= image_tag "bookmark.png", :style =>'width:16px;height:16px;' %>
+              </div> 
+              <div style="font-size:12px;margin-top:5px;">
+                <%= @bookmarks_i %> bookmarks
+              </div> 
+            </div>
+            <div class="pro20">
+              <div>
+                <%= image_tag "test51.png", :style =>'width:16px;height:16px;' %>
+              </div> 
+              <div style="font-size:12px;margin-top:5px;">
+                coming soon
+              </div> 
+            </div>
+          </div>  
+	        <div style="height:10vh;"></div>
+        </div>
+        <div class="a10">
+          <div class="pro19">             
+            <a data-dismiss="modal" id="dismiss_dashbord">
+              <%= image_tag "close_blue.png", :class =>'img_left02' %>
+            </a>
+          </div>
+        </div>
     </div>
   </div>
 </div>
