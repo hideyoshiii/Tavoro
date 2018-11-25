@@ -201,40 +201,7 @@
 			<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
 			<% @user_list.push(post.user.id) %>
 		<% end %>
-		<%# ハーフモーダル %>
-		<div data-pushbar-id="mypushbar_<%= post.id %>" class="pushbar from_bottom">
-			<div class="bar_pushbar"></div>	
-			<% unless post.user.id == current_user.id %>
-				<span id="bookmark-of-<%= post.id %>">
-			      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-			    </span>
-				<%= link_to "/works/#{post.id}/copy" do %>
-					<div class="btn_pushbar_item">  
-						<%= image_tag "add.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
-					</div>	
-				<% end %>									
-			<% end %>
-			<% if post.user.id == current_user.id %>	
-				<span id="list-of-<%= post.id %>">
-			      	<%= render partial: 'works/list', locals: { post: post } %>
-			    </span>		
-				<%= link_to "/works/#{post.id}/edit" do %>
-					<div class="btn_pushbar_item">  
-						<%= image_tag "edit.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
-					</div>
-				<% end %>					
-				<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-					<div class="btn_pushbar_item" style="color:#FB473E;">  
-						<%= image_tag "trash_red.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を削除する
-					</div>	
-				<% end %>				
-			<% end %>	
-		    <a data-pushbar-close>
-				<div class="btn_pushbar_close">  
-					<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル
-				</div>
-		  	</a>
-		</div>
+		
 	<% end %>
 <% end %>
 
@@ -266,40 +233,7 @@
 	});
 </script>
 
-<%#ハーフモーダル%>
-<script type="text/javascript">
-  $(function(){
-  	//overlayを削除
-  	if ($('div').hasClass("pushbar_overlay")) {
-	  var Back = document.querySelector('html');
-	  Back.classList.remove('pushbar_locked');
-	  Back.removeAttribute('pushbar');
-	}
-	//ハーフモーダルを削除
-	if ($('.opened').hasClass("opened")) {
-	  var Bar = document.querySelector('.opened');
-	  Bar.classList.remove('opened');
-	}
-  	//ハーフモーダル生成
-  	var pushbar = new Pushbar({
-        blur:false,
-        overlay:true,
-    });
-  	//開いているとき
-    $('body').on("pushbar_opening", function(){
-		//スワイプ方向定義
-	    var hammertime = new Hammer(document.body);
-		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-	    //スワイプイベント登録
-	  	$('body').hammer().on('swipedown', function(){
-		    pushbar.close();	
-		});
-	});
-	//閉じているとき
-	$('body').on("pushbar_closing", function(){
-	});
-  });
-</script>
+
 
 <% else %>
 	<%= render "partial/home" %>
