@@ -58,12 +58,12 @@
 					  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_lavoro001 swiper-lazy">
+											<img data-src="nothing01.jpg" class="img_lavoro001 lazyload">
 										<% else %>
 											<% if post.category == "music" %>
-												<img data-src="<%= post.image_url %>" class="img_lavoro000 swiper-lazy">
+												<img data-src="<%= post.image_url %>" class="img_lavoro000 lazyload">
 											<% else %>
-												<img data-src="<%= post.image_url %>" class="img_lavoro001 swiper-lazy">
+												<img data-src="<%= post.image_url %>" class="img_lavoro001 lazyload">
 											<% end %>
 										<% end %>
 										<span>
@@ -104,12 +104,12 @@
 					  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_lavoro001 swiper-lazy">
+											<img data-src="nothing01.jpg" class="img_lavoro001 lazyload">
 										<% else %>
 											<% if post.category == "music" %>
-												<img  data-src="<%= post.image_url %>" class="img_lavoro000 swiper-lazy">
+												<img  data-src="<%= post.image_url %>" class="img_lavoro000 lazyload">
 											<% else %>
-												<img data-src="<%= post.image_url %>" class="img_lavoro001 swiper-lazy">
+												<img data-src="<%= post.image_url %>" class="img_lavoro001 lazyload">
 											<% end %>
 										<% end %>
 										<span>
@@ -501,7 +501,6 @@
 				<%#musicプレビューjs%>
 				<script type="text/javascript"> 
 				  $(function(){
-				  	$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
 				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");				  	  
 					  $('#btn_preview_<%= post.id %>').on("click",function(){
 					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
@@ -521,7 +520,6 @@
 					     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
 					     $("#icon_play_<%= post.id %>").addClass('fa-play');
 					  };
-					});
 				  });
 			   </script>
 			<% end %>
@@ -828,4 +826,11 @@
 		iNoBounce.disable()
 	});
   });
+</script>
+
+
+<script type="text/javascript">
+	$(function() {
+    	$('img.lazyload').lazyload();
+	});
 </script>
