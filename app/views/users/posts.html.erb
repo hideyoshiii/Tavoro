@@ -501,6 +501,7 @@
 				<%#musicプレビューjs%>
 				<script type="text/javascript"> 
 				  $(function(){
+				  	$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
 				  	　var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");				  	  
 					  $('#btn_preview_<%= post.id %>').on("click",function(){
 					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
@@ -520,6 +521,7 @@
 					     $("#icon_play_<%= post.id %>").removeClass('fa-pause');
 					     $("#icon_play_<%= post.id %>").addClass('fa-play');
 					  };
+					});
 				  });
 			   </script>
 			<% end %>
