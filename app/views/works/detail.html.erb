@@ -521,8 +521,6 @@
     });
   	//開いているとき
     $('body').on("pushbar_opening", function(){
-    	//バウンスの無効化
-    	iNoBounce.enable()
 		//スワイプ方向定義
 	    var hammertime = new Hammer(document.body);
 		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
@@ -533,8 +531,6 @@
 	});
 	//閉じているとき
 	$('body').on("pushbar_closing", function(){
-		//バウンスの有効化
-		iNoBounce.disable()
 	});
   });
 </script>
