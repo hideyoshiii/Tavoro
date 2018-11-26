@@ -147,11 +147,13 @@
 			<%# 音楽プレビューjs %>
 			<% if post.category == "music" %>
 				<% if post.preview_url.present? %>
+				<audio id="audio_<%= post.id %>">
+					<source src="<%= post.preview_url %>" type="audio/mpeg" />
+				</audio>
 					<script type="text/javascript">						  
 						$(function(){
-					  	  var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
-					  	  audio_<%= post.id %>.preload = 'none';
-						  $('#btn_preview_<%= post.id %>').on("touchend",function(){
+					  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
+						  $('#btn_preview_<%= post.id %>').on("click",function(){
 						    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
 						     {
 						       $("#icon_play_<%= post.id %>").removeClass('fa-play');
