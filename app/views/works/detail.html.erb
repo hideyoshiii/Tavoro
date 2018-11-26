@@ -435,10 +435,12 @@
 		<%# 音楽プレビューjs %>
 		<% if post.category == "music" %>
 			<% if post.preview_url.present? %>
+				<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
+					<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
+				</audio>
 				<script type="text/javascript">						  
-				  	$(function(){
-				  	  var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
-				  	  audio_<%= post.id %>.preload = 'none';
+					$(function(){
+				  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
 					  $('#btn_preview_<%= post.id %>').on("click",function(){
 					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
 					     {
@@ -457,7 +459,7 @@
 					    $("#icon_play_<%= post.id %>").removeClass('fa-pause');
 					    $("#icon_play_<%= post.id %>").addClass('fa-play');
 					  };
-				  	});					
+				  	});				
 			   	</script>
 			<% end %>
 		<% end %>

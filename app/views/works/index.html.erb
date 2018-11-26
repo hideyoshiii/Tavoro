@@ -147,9 +147,9 @@
 			<%# 音楽プレビューjs %>
 			<% if post.category == "music" %>
 				<% if post.preview_url.present? %>
-				<audio id="audio_<%= post.id %>">
-					<source src="<%= post.preview_url %>" type="audio/mpeg" />
-				</audio>
+					<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
+						<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
+					</audio>
 					<script type="text/javascript">						  
 						$(function(){
 					  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
