@@ -151,7 +151,7 @@
 						$(function(){
 					  	  var audio_<%= post.id %> = new Audio("<%= post.preview_url %>");
 					  	  audio_<%= post.id %>.preload = 'none';
-						  $('#btn_preview_<%= post.id %>').on("touchstart",function(){
+						  $('#btn_preview_<%= post.id %>').on("touchend",function(){
 						    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
 						     {
 						       $("#icon_play_<%= post.id %>").removeClass('fa-play');
