@@ -190,186 +190,176 @@
 
 <%#nameモーダル%>
 <div class="modal fade" id="myModal_name">
-  <div class="height_modal"></div>
-    <div class="modal-dialog">
-      <div class="base02">
-      <span>
-        <div class="layer12">
+  <div class="modal-dialog">
+    <div class="a1">
+      <div class="a4">
+        <div class="d1">    
+          <div class="d4"></div>
         </div>
-        <div class="layer11">
+      </div>
+      <div class="a8">
+        <div class="font_white_big">
+          名前
         </div>
-        <div class="layer06">
-          <div class="font_white_big">
-            名前
-          </div>
-          <div class="gogo">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
-              <div style="height:3vh;"></div>
-              <%= f.submit "保存",class:"btn_session" %>
-            <% end %>
-          </div>
-          <div style="height:5vh;"></div>
+        <div class="gogo">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
+            <div style="height:3vh;"></div>
+            <%= f.submit "保存",class:"btn_session" %>
+          <% end %>
         </div>
-        <div class="layer09">
-          <div class="pro19">             
-            <a href="" data-dismiss="modal">
-              <%= image_tag "close_blue.png", :class =>'img_left02' %>
-            </a>
-          </div>
+        <div style="height:5vh;"></div>
+      </div>
+      <div class="a10">
+        <div class="pro19">             
+          <a href="" data-dismiss="modal">
+            <%= image_tag "close_blue.png", :class =>'img_left02' %>
+          </a>
         </div>
-      </span>
+      </div>
     </div>
   </div>
 </div>
 <%#usernameモーダル%>
 <div class="modal fade" id="myModal_username">
-  <div class="height_modal"></div>
-    <div class="modal-dialog">
-      <div class="base02">
-      <span>
-        <div class="layer12">
+  <div class="modal-dialog">
+    <div class="a1">
+      <div class="a4">
+        <div class="d1">    
+          <div class="d4"></div>
         </div>
-        <div class="layer11">
+      </div>
+      <div class="a8">
+        <div class="font_white_big">
+          ユーザーid
         </div>
-        <div class="layer06">
-          <div class="font_white_big">
-            ユーザーid
-          </div>
-          <div class="gogo">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= f.text_field :username,placeholder: "username", required: "", autofocus: true, :id => "inc_search" %>
-              <div id='validate_username'>
-                <%= render partial: 'users/validate_username' %>
-              </div>
-              <div style="height:3vh;"></div>
-              <%= f.submit "保存",class:"btn_session" %>
-            <% end %>
-          </div>
-          <div style="height:5vh;"></div>
+        <div class="gogo">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.text_field :username,placeholder: "username", required: "", autofocus: true, :id => "inc_search" %>
+            <div id='validate_username'>
+              <%= render partial: 'users/validate_username' %>
+            </div>
+            <div style="height:3vh;"></div>
+            <%= f.submit "保存",class:"btn_session" %>
+          <% end %>
         </div>
-        <div class="layer09">
-          <div class="pro19">             
-            <a href="" data-dismiss="modal">
-              <%= image_tag "close_blue.png", :class =>'img_left02' %>
-            </a>
-          </div>
+        <div style="height:5vh;"></div>
+      </div>
+      <div class="a10">
+        <div class="pro19">             
+          <a href="" data-dismiss="modal">
+            <%= image_tag "close_blue.png", :class =>'img_left02' %>
+          </a>
         </div>
-      </span>
+      </div>
     </div>
   </div>
 </div>
+
 <%#descriptionモーダル%>
 <div class="modal fade" id="myModal_description">
-  <div class="height_modal"></div>
-    <div class="modal-dialog">
-      <div class="base02">
-      <span>
-        <div class="layer12">
+  <div class="modal-dialog">
+    <div class="a1">
+      <div class="a4">
+        <div class="d1">    
+          <div class="d4"></div>
         </div>
-        <div class="layer11">
+      </div>
+      <div class="a8">
+        <div class="font_white_big">
+          自己紹介
         </div>
-        <div class="layer06">
-          <div class="font_white_big">
-            自己紹介
-          </div>
-          <div class="gogo">
-            <div style="height:3vh;"></div>
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <div class="" style="text-align:center;width:75%;padding:10px;margin:0 auto;">
-                <%= f.text_area :description, id: "textarea", placeholder: "自己紹介を書く", autofocus: true %>
-              </div>
-              <div style="height:5vh;"></div>
-              <%= f.submit "保存",class:"btn_session" %>
-            <% end %>
-          </div>
-          <div style="height:5vh;"></div>
+        <div class="gogo">
+          <div style="height:3vh;"></div>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="" style="text-align:center;width:75%;padding:10px;margin:0 auto;">
+              <%= f.text_area :description, id: "textarea", placeholder: "自己紹介を書く", autofocus: true %>
+            </div>
+            <div style="height:5vh;"></div>
+            <%= f.submit "保存",class:"btn_session" %>
+          <% end %>
         </div>
-        <div class="layer09">
-          <div class="pro19">             
-            <a href="" data-dismiss="modal">
-              <%= image_tag "close_blue.png", :class =>'img_left02' %>
-            </a>
-          </div>
+        <div style="height:5vh;"></div>
+      </div>
+      <div class="a10">
+        <div class="pro19">             
+          <a href="" data-dismiss="modal">
+            <%= image_tag "close_blue.png", :class =>'img_left02' %>
+          </a>
         </div>
-      </span>
+      </div>
     </div>
   </div>
 </div>
 <%#emailモーダル%>
 <div class="modal fade" id="myModal_email">
-  <div class="height_modal"></div>
-    <div class="modal-dialog">
-      <div class="base02">
-      <span>
-        <div class="layer12">
+  <div class="modal-dialog">
+    <div class="a1">
+      <div class="a4">
+        <div class="d1">    
+          <div class="d4"></div>
         </div>
-        <div class="layer11">
+      </div>
+      <div class="a8">
+        <div class="font_white_big">
+          メールアドレス
         </div>
-        <div class="layer06">
-          <div class="font_white_big">
-            メールアドレス
-          </div>
-          <div class="gogo">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
-              <div style="height:3vh;"></div>
-              <%= f.submit "保存",class:"btn_session" %>
-            <% end %>
-          </div>
-          <div style="height:5vh;"></div>
+        <div class="gogo">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
+            <div style="height:3vh;"></div>
+            <%= f.submit "保存",class:"btn_session" %>
+          <% end %>
         </div>
-        <div class="layer09">
-          <div class="pro19">             
-            <a href="" data-dismiss="modal">
-              <%= image_tag "close_blue.png", :class =>'img_left02' %>
-            </a>
-          </div>
+        <div style="height:5vh;"></div>
+      </div>
+      <div class="a10">
+        <div class="pro19">             
+          <a href="" data-dismiss="modal">
+            <%= image_tag "close_blue.png", :class =>'img_left02' %>
+          </a>
         </div>
-      </span>
+      </div>
     </div>
   </div>
 </div>
-<%#password%>
+<%#passwordモーダル%>
 <div class="modal fade" id="myModal_password">
-  <div class="height_modal"></div>
-    <div class="modal-dialog">
-      <div class="base02">
-      <span>
-        <div class="layer12">
+  <div class="modal-dialog">
+    <div class="a1">
+      <div class="a4">
+        <div class="d1">    
+          <div class="d4"></div>
         </div>
-        <div class="layer11">
+      </div>
+      <div class="a8">
+        <div class="font_white_big">
+          パスワードを変更
         </div>
-        <div class="layer06">
-          <div class="font_white_big">
-            パスワードを変更
-          </div>
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %> 
-            <div class="gogo">
-              <div class="font_white">
-                (パスワードを変更時のみ下欄を埋めてください)
-              </div>
-              <div style="height:5vh;"></div>
-              <%= f.password_field :password,placeholder: "password", required: "" %>
-              <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
-              <div style="height:5vh;"></div>
-              <%= f.submit "変更",class:"btn_session" %>
-              <div style="height:10vh;"></div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %> 
+          <div class="gogo">
+            <div class="font_white">
+              (パスワードを変更時のみ下欄を埋めてください)
             </div>
-          <% end %>     
-        </div>
-        <div class="layer09">
-          <div class="pro19">             
-            <a href="" data-dismiss="modal">
-              <%= image_tag "close_blue.png", :class =>'img_left02' %>
-            </a>
+            <div style="height:5vh;"></div>
+            <%= f.password_field :password,placeholder: "password", required: "" %>
+            <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
+            <div style="height:5vh;"></div>
+            <%= f.submit "変更",class:"btn_session" %>
+            <div style="height:10vh;"></div>
           </div>
+        <% end %>     
+      </div>
+      <div class="a10">
+        <div class="pro19">             
+          <a href="" data-dismiss="modal">
+            <%= image_tag "close_blue.png", :class =>'img_left02' %>
+          </a>
         </div>
-      </span>
+      </div>
     </div>
-    </div>
+  </div>
 </div>
-
 
 
 

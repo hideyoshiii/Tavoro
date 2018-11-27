@@ -1,3 +1,50 @@
+<% if @post.preview_url.present? %>
+	<style type="text/css">
+		#btn_preview {
+	    display: block;
+	    width: 32px;
+	    height: 32px;
+	    background: rgba(50,50,50,0.7);
+	    text-align: center;
+	    border-radius: 50%;
+	    cursor: pointer;
+		}
+		#btn_preview i {
+		  color: #FAFAFA;
+		  line-height: 32px;
+		  vertical-align: middle;
+		  font-size: 8px;
+		  margin-left:1px;
+		}
+	</style>
+	<audio id="audio" controls preload="none" style="display:none;">
+		<source src="<%= @post.preview_url %>" type="audio/mpeg"></source>
+	</audio>
+	<script type="text/javascript">						  
+		$(function(){
+	  	  var audio = document.getElementById('audio');
+		  $('#btn_preview').on("click",function(){
+		    if($("#icon_play").hasClass('fa-play'))
+		     {
+		       $("#icon_play").removeClass('fa-play');
+		       $("#icon_play").addClass('fa-pause');
+		       audio.play();
+		     }
+		    else
+		     {
+		       $("#icon_play").removeClass('fa-pause');
+		       $("#icon_play").addClass('fa-play');
+		       audio.pause();
+		     }
+		  });
+		  audio.onended = function() {
+		    $("#icon_play").removeClass('fa-pause');
+		    $("#icon_play").addClass('fa-play');
+		  };
+	  	});				
+		</script>
+<% end %>
+
 <div class="bar_post">			
 	<div style="">
 		<div class="pro13">
@@ -120,12 +167,16 @@
 				<% else %>
 					<div style="text-align:center;width:100%;margin:0 auto;">
 						<% if @post.category == "music" %>
-							<div class="pile00">
-								<%= image_tag @post.image_url, :class =>'img_lavoro03' %>
-								<p id="btn_preview">
-									<i id="icon_play" class="fas fa-play"></i>
-								</p>
-							</div>
+							<div style="text-align:center;width:60%;margin:0 auto;">
+								<div class="pile_preview">								
+									<%= image_tag @post.image_url, :class =>'img_lavoro03' %>		
+									<% if @post.preview_url.present? %>
+										<div id="btn_preview">
+											<i id="icon_play" class="fas fa-play"></i>
+										</div>
+									<% end %>
+								</div>
+							</div>	
 						<% else %>
 							<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
 						<% end %>
@@ -163,31 +214,3 @@
 	});
 </script>
 
-<%#audioのワンボタン再生%>
-<% if @post.preview_url.present?  %>
-	<script type="text/javascript">
-		$(function() {
-		  var audio = new Audio("<%= @post.preview_url %>");
-
-		  $('#btn_preview').on("click",function(){
-		    if($("#icon_play").hasClass('fa-play'))
-		     {
-		       $("#icon_play").removeClass('fa-play');
-		       $("#icon_play").addClass('fa-pause');
-		       audio.play();
-		     }
-		    else
-		     {
-		       $("#icon_play").removeClass('fa-pause');
-		       $("#icon_play").addClass('fa-play');
-		       audio.pause();
-		     }
-		  });
-
-		  audio.onended = function() {
-		     $("#icon_play").removeClass('fa-pause');
-		     $("#icon_play").addClass('fa-play');
-		  };
-		});
-	</script>
-<% end %>

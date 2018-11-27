@@ -1,3 +1,50 @@
+<% if @preview_url.present? %>
+	<style type="text/css">
+		#btn_preview {
+	    display: block;
+	    width: 32px;
+	    height: 32px;
+	    background: rgba(50,50,50,0.7);
+	    text-align: center;
+	    border-radius: 50%;
+	    cursor: pointer;
+		}
+		#btn_preview i {
+		  color: #FAFAFA;
+		  line-height: 32px;
+		  vertical-align: middle;
+		  font-size: 8px;
+		  margin-left:1px;
+		}
+	</style>
+	<audio id="audio" controls preload="none" style="display:none;">
+		<source src="<%= @preview_url %>" type="audio/mpeg"></source>
+	</audio>
+	<script type="text/javascript">						  
+		$(function(){
+	  	  var audio = document.getElementById('audio');
+		  $('#btn_preview').on("click",function(){
+		    if($("#icon_play").hasClass('fa-play'))
+		     {
+		       $("#icon_play").removeClass('fa-play');
+		       $("#icon_play").addClass('fa-pause');
+		       audio.play();
+		     }
+		    else
+		     {
+		       $("#icon_play").removeClass('fa-pause');
+		       $("#icon_play").addClass('fa-play');
+		       audio.pause();
+		     }
+		  });
+		  audio.onended = function() {
+		    $("#icon_play").removeClass('fa-pause');
+		    $("#icon_play").addClass('fa-play');
+		  };
+	  	});				
+		</script>
+<% end %>
+
 <div class="bar_post">			
 	<div style="">
 		<div class="pro13">
@@ -70,8 +117,8 @@
 					<textarea name="description" id="textarea" placeholder="何か書く" wrap="hard"></textarea>
 				</div>
 				<div class="height02"></div>
-				<div style="text-align:center;width:100%;margin:0 auto;">
-					<div class="pile00">
+				<div style="text-align:center;width:60%;margin:0 auto;">
+					<div class="pile_preview">
 						<% if @poster.blank? %>
 							<%= image_tag "nothing03.jpg", :class =>'img_lavoro03' %>
 							<%= hidden_field_tag :image_url, "nothing03.jpg" %>
@@ -79,9 +126,11 @@
 							<%= image_tag @poster, :class =>'img_lavoro03' %>
 							<%= hidden_field_tag :image_url, @poster %>
 						<% end %>
-						<p id="btn_preview">
-							<i id="icon_play" class="fas fa-play"></i>
-						</p>
+						<% if @preview_url.present? %>
+							<div id="btn_preview">
+								<i id="icon_play" class="fas fa-play"></i>
+							</div>
+						<% end %>
 					</div>
 				</div>	
 			<% end %>
@@ -109,32 +158,5 @@
 <script type="text/javascript">
 	$('#btn_post').click(function() {
 		document.myform.submit();
-	});
-</script>
-
-<%#audioのワンボタン再生%>
-<script type="text/javascript">
-	$(function() {
-	  var audio = new Audio("<%= @preview_url %>");
-
-	  $('#btn_preview').on("click",function(){
-	    if($("#icon_play").hasClass('fa-play'))
-	     {
-	       $("#icon_play").removeClass('fa-play');
-	       $("#icon_play").addClass('fa-pause');
-	       audio.play();
-	     }
-	    else
-	     {
-	       $("#icon_play").removeClass('fa-pause');
-	       $("#icon_play").addClass('fa-play');
-	       audio.pause();
-	     }
-	  });
-
-	  audio.onended = function() {
-	     $("#icon_play").removeClass('fa-pause');
-	     $("#icon_play").addClass('fa-play');
-	  };
 	});
 </script>

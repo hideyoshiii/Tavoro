@@ -149,40 +149,38 @@
 
 <%#アカウント削除モーダル%>
 <div class="modal fade" id="myModal_destroy_account">
-	<div class="height_modal"></div>
     <div class="modal-dialog">
-    	<div class="base02">
-			<span>
-				<div class="layer12">
-				</div>
-				<div class="layer11">
-				</div>
-				<div class="layer06">
-					<div class="font_white_big">
-						アカウントを削除
+    	<div class="a1">
+          <div class="a4">
+            <div class="d1">    
+              <div class="d4"></div>
+            </div>
+          </div>
+          <div class="a8">
+          	<div class="font_white_big">
+				アカウントを削除
+			</div>
+			<div style="height:5vh;"></div>
+			<div class="font_gray" style="padding:0 10%;">
+				アカウントを削除するとこれまでのデータが全て削除されます
+			</div>
+			<div style="height:5vh;"></div>
+			<div style="width:50%;text-align:center;margin:0 auto;">
+				<%= link_to "/users", method: :delete, data: { confirm: '本当に削除してよろしいですか？' } do %>
+					<div class="btn_session" style="color:rgba(251, 71, 71, 0.9);">
+						削除
 					</div>
-					<div style="height:5vh;"></div>
-					<div class="font_gray" style="padding:0 30px;">
-						アカウントを削除するとこれまでのデータが全て削除されます
-					</div>
-					<div style="height:5vh;"></div>
-					<div style="width:50%;text-align:center;margin:0 auto;">
-						<%= link_to "/users", method: :delete, data: { confirm: '本当に削除してよろしいですか？' } do %>
-							<div class="btn_session" style="color:rgba(251, 71, 71, 0.9);">
-								削除
-							</div>
-						<% end %>
-					</div>	
-					<div style="height:10vh;"></div>		
-				</div>
-				<div class="layer09">
-					<div class="pro19">							
-						<a href="" data-dismiss="modal">
-							<%= image_tag "close_blue.png", :class =>'img_left02' %>
-						</a>
-					</div>
-				</div>
-			</span>
+				<% end %>
+			</div>	
+			<div style="height:10vh;"></div>	
+          </div>
+          <div class="a10">
+			<div class="pro19">							
+				<a href="" data-dismiss="modal">
+					<%= image_tag "close_blue.png", :class =>'img_left02' %>
+				</a>
+			</div>
+		  </div>
 		</div>
     </div>
 </div>

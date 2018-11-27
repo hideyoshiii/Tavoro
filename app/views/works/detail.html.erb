@@ -1,50 +1,50 @@
 <% post = @post %>
 
-<% if @post.preview_url.present?  %>
-<style type="text/css">
-	#btn_preview {
-    display: block;
-    width: 32px;
-    height: 32px;
-    background: rgba(50,50,50,0.7);
-    text-align: center;
-    border-radius: 50%;
-    cursor: pointer;
-	}
-	#btn_preview i {
-	  color: #FAFAFA;
-	  line-height: 32px;
-	  vertical-align: middle;
-	  font-size: 8px;
-	  margin-left:1px;
-	}
-</style>
-<%#audioのワンボタン再生%>
-<script>
-	$(function(){
-	  var audio = new Audio("<%= @post.preview_url %>");
-
-	  $('#btn_preview').on("click",function(){
-	    if($("#icon_play").hasClass('fa-play'))
-	     {
-	       $("#icon_play").removeClass('fa-play');
-	       $("#icon_play").addClass('fa-pause');
-	       audio.play();
-	     }
-	    else
-	     {
-	       $("#icon_play").removeClass('fa-pause');
-	       $("#icon_play").addClass('fa-play');
-	       audio.pause();
-	     }
-	  });
-
-	  audio.onended = function() {
-	     $("#icon_play").removeClass('fa-pause');
-	     $("#icon_play").addClass('fa-play');
-	  };
-	});
-</script>
+<% if post.preview_url.present? %>
+	<style type="text/css">
+		#btn_preview {
+	    display: block;
+	    width: 32px;
+	    height: 32px;
+	    background: rgba(50,50,50,0.7);
+	    text-align: center;
+	    border-radius: 50%;
+	    cursor: pointer;
+		}
+		#btn_preview i {
+		  color: #FAFAFA;
+		  line-height: 32px;
+		  vertical-align: middle;
+		  font-size: 8px;
+		  margin-left:1px;
+		}
+	</style>
+	<audio id="audio" controls preload="none" style="display:none;">
+		<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
+	</audio>
+	<script type="text/javascript">						  
+		$(function(){
+	  	  var audio = document.getElementById('audio');
+		  $('#btn_preview').on("click",function(){
+		    if($("#icon_play").hasClass('fa-play'))
+		     {
+		       $("#icon_play").removeClass('fa-play');
+		       $("#icon_play").addClass('fa-pause');
+		       audio.play();
+		     }
+		    else
+		     {
+		       $("#icon_play").removeClass('fa-pause');
+		       $("#icon_play").addClass('fa-play');
+		       audio.pause();
+		     }
+		  });
+		  audio.onended = function() {
+		    $("#icon_play").removeClass('fa-pause');
+		    $("#icon_play").addClass('fa-play');
+		  };
+	  	});				
+		</script>
 <% end %>
 
 <div class="main">
@@ -87,15 +87,15 @@
           					<% if post.image_url.blank? %>
 								<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
 							<% else %>
-								<% if @post.category == "music" %>
+								<% if post.category == "music" %>
 									<div class="pile03">
-										<%= image_tag @post.image_url, :class =>'img_lavoro03' %>
+										<%= image_tag post.image_url, :class =>'img_lavoro03' %>
 										<div id="btn_preview">
 											<i id="icon_play" class="fas fa-play"></i>
 										</div>
 									</div>
 								<% else %>
-									<%= image_tag @post.image_url, :class =>'img_lavoro03' %>
+									<%= image_tag post.image_url, :class =>'img_lavoro03' %>
 								<% end %>
 							<% end %>
           				</div>
