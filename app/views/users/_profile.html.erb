@@ -7,7 +7,7 @@
             <div class="d7"></div>
             <div class="d8">
               <% if @list = List.find_by(user_id: @user.id, title: "プロフィール") %>
-                <%= image_tag @list.post.image_url, :class =>'img_myboom' %>
+                <img data-src="<%= @list.post.image_url %>" class="img_myboom lazyload_modal_profile_<%= @user.id %>">
               <% else %>
                 <%#myboomのデフォルト画像%>
               <% end %>
@@ -56,7 +56,7 @@
             <% end %>      
           	<div class="pro33" style="vertical-align:bottom;">
               <div style="text-align:center;">
-                  <%= image_tag user.image(:large), :class => "img_user08" %>
+                  <img data-src="<%= user.image(:large) %>" class="img_user08 lazyload_modal_profile_<%= @user.id %>">
               </div>
               <div style="font-size:18px;text-align:center;margin-top:10px;">
                 <%= user.name %>
@@ -126,6 +126,13 @@
     </div>
   </div>
 </div>
+
+<%#lazyload.js%>
+<script type="text/javascript">
+  $('#myModal_profile_<%= @user.id %>').on("show.bs.modal", function () {
+      $('img.lazyload_modal_profile_<%= @user.id %>').lazyload();
+    });      
+</script>
 
 <%#モーダルtubolinks不具合修正%>
 <script type="text/javascript">

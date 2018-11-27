@@ -1,150 +1,218 @@
 <% if user_signed_in? %>
-<div class="main">
-	<div class="block_side">
-	</div>
-	<div class="block_main">
-		<div style="height:50px;"></div>
-		<div class="swiper-container" style="height:calc(100% - 50px)">
-		<div class="swiper-wrapper" style="height:100%">
-
-		<% if @posts.present? %>
-			<% @posts.each.with_index(1) do |post, i| %>
-			<div class="swiper-slide" style="height:100%"> 
-				<% if post.category == "music" %>
-					<% if post.preview_url.present? %>
-					<% end %>
-			   <% end %>
-				<div class="base01">
-					<% if post.image_url.blank? %>
-						<img data-src="/assets/nothing01.jpg" class="swiper-lazy img_lavoro03">
-					<% else %>
-						<% if post.category == "music" %>
-							<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro002">
-						<% else %>
-							<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro02">						
-						<% end %>
-					<% end %>
-					<span>
-						<div class="layer05">
-						</div>
-						<div class="layer03">
-							<div class="pro31">
-								<a href="" data-toggle="modal" data-target="#myModal_profile_<%= post.user.id %>">
-									<div class="inline_block_default">
-										<%= image_tag post.user.image(:medium), :class => "img_user04" %>
-									</div>
-									<div class="inline_block_default">
-										<div class="font_white" style="word-wrap:break-word;margin-top:2px;">
-											<%= post.user.name %>
-											<% if post.user.authority == "public" %>
-						                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
-						                    <% end %>
+	<div class="main">
+		<div class="block_side">
+		</div>
+		<div class="block_main">
+			<div style="height:50px;"></div>
+			<div class="swiper-container" style="height:calc(100% - 50px)">
+				<div class="swiper-wrapper" style="height:100%">
+					<% if @posts.present? %>
+						<% @posts.each.with_index(1) do |post, i| %>
+							<div class="swiper-slide" style="height:100%"> 
+								<% if post.category == "music" %>
+									<% if post.preview_url.present? %>
+									<% end %>
+							   	<% end %>
+								<div class="base01">
+									<% if post.image_url.blank? %>
+										<img data-src="/assets/nothing01.jpg" class="swiper-lazy img_lavoro03">
+									<% else %>
+										<% if post.category == "music" %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro002">
+										<% else %>
+											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro02">						
+										<% end %>
+									<% end %>
+									<span>
+										<div class="layer05">
 										</div>
-										<div class="font_gray_min" style="word-wrap:break-word;margin-top:2px;">
-											<% if post.category == "movie" %>
-												<%= image_tag "movie_gray.png", :class =>'icon_category' %> 映画
-											<% end %>
-											<% if post.category == "tv" %>
-												<%= image_tag "movie_gray.png", :class =>'icon_category' %> テレビ
-											<% end %>
-											<% if post.category == "book" %>
-												<%= image_tag "book_gray.png", :class =>'icon_category' %> ブック
-											<% end %>
-											<% if post.category == "comic" %>
-												<%= image_tag "book_gray.png", :class =>'icon_category' %> コミック
-											<% end %>
-											<% if post.category == "music" %>
-												<%= image_tag "music_gray.png", :class =>'icon_category' %> ミュージック
-											<% end %>
-											<% @seconds = (Time.now - post.created_at).round  %>
-											<% if @seconds <= 3600 %>
-												- <%= @seconds / 60 %>分前
-											<% else %>
-												<% if @seconds <= 86400 %>
-														- <%= @seconds / (60 * 60) %>時間前
+										<div class="layer03">
+											<div class="pro31">
+												<a href="" data-toggle="modal" data-target="#myModal_profile_<%= post.user.id %>">
+													<div class="inline_block_default">
+														<img data-src="<%= post.user.image(:medium) %>" class="swiper-lazy img_user04">
+													</div>
+													<div class="inline_block_default">
+														<div class="font_white" style="word-wrap:break-word;margin-top:2px;">
+															<%= post.user.name %>
+															<% if post.user.authority == "public" %>
+										                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+										                    <% end %>
+														</div>
+														<div class="font_gray_min" style="word-wrap:break-word;margin-top:2px;">
+															<% if post.category == "movie" %>
+																<%= image_tag "movie_gray.png", :class =>'icon_category' %> 映画
+															<% end %>
+															<% if post.category == "tv" %>
+																<%= image_tag "movie_gray.png", :class =>'icon_category' %> テレビ
+															<% end %>
+															<% if post.category == "book" %>
+																<%= image_tag "book_gray.png", :class =>'icon_category' %> ブック
+															<% end %>
+															<% if post.category == "comic" %>
+																<%= image_tag "book_gray.png", :class =>'icon_category' %> コミック
+															<% end %>
+															<% if post.category == "music" %>
+																<%= image_tag "music_gray.png", :class =>'icon_category' %> ミュージック
+															<% end %>
+															<% @seconds = (Time.now - post.created_at).round  %>
+															<% if @seconds <= 3600 %>
+																- <%= @seconds / 60 %>分前
+															<% else %>
+																<% if @seconds <= 86400 %>
+																		- <%= @seconds / (60 * 60) %>時間前
+																<% else %>
+																	<% if @seconds <= 604800 %>
+																		- <%= @seconds / (60 * 60 * 24) %>日前
+																	<% else %>
+																		- <%= post.created_at.strftime('%m月%d日') %>
+																	<% end %>
+																<% end %>
+															<% end %>
+														</div>
+													</div>
+												</a>
+											</div>						
+											<div class="pro32">		
+												<div style="text-align:right;">
+													<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:20px 10px 20px 20px;">
+														<%= image_tag "ellipsis.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
+													</a>			
+												</div>
+											</div>
+										</div>
+										<div class="layer01">
+											<%= link_to "/works/#{post.id}/detail" do %>
+												<% if post.image_url.blank? %>
+													<img data-src="/assets/nothing01.jpg" class="swiper-lazy img_lavoro03">
 												<% else %>
-													<% if @seconds <= 604800 %>
-														- <%= @seconds / (60 * 60 * 24) %>日前
-													<% else %>
-														- <%= post.created_at.strftime('%m月%d日') %>
+													<% if post.category == "movie" || post.category == "tv" %>
+														<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro10">
+													<% end %>
+													<% if post.category == "book" || post.category == "comic" %>
+														<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro09">
+													<% end %>
+													<% if post.category == "music" %>
+														<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro03">
 													<% end %>
 												<% end %>
 											<% end %>
+											<% if post.category == "music" %>
+												<% if post.preview_url.present? %>
+													<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
+														<i id="icon_play_<%= post.id %>" class="fas fa-play"></i>
+													</div>
+												<% end %>
+											<% end %>
 										</div>
-									</div>
-								</a>
-							</div>						
-							<div class="pro32">		
-								<div style="text-align:right;">
-									<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:20px 10px 20px 20px;">
-										<%= image_tag "ellipsis.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
-									</a>			
+										<div class="layer02">
+											<%= link_to "/works/#{post.id}/detail" do %>
+												<div class="font_how">
+													<% if post.review == "bookmark" %>
+														<i class="far fa-bookmark" style="color:rgba(220,220,220,0.8);text-shadow:none;"></i> ブックマーク
+													<% end %>
+													<% if post.review == "good" %>
+														<% if post.category == "movie" || post.category == "tv" %>
+															観ました
+														<% end %>
+														<% if post.category == "book" || post.category == "comic" %>
+															読みました
+														<% end %>
+														<% if post.category == "music" %>
+															聴きました
+														<% end %>
+													<% end %>
+													<% if post.review == "favorite" %>
+														<i class="fas fa-star" style="color:rgba(252,228,4,0.8);text-shadow:none;"></i> おすすめしています
+													<% end %>
+													<% if post.review == "bad" %>
+														<i class="fas fa-ban" style="color:rgba(236,12,28,0.8);text-shadow:none;"></i> おすすめしていません
+													<% end %>
+												</div>
+												<div class="font_head">
+													<%= post.title %>
+												</div>
+											<% end %>
+											<% if post.description.present? %>
+												<div class="balloon_top"></div>
+												<div class="balloon">
+												  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+												</div>
+											<% end %>
+										</div>
+									</span>
 								</div>
 							</div>
-						</div>
-						<div class="layer01">
-							<%= link_to "/works/#{post.id}/detail" do %>
-								<% if post.image_url.blank? %>
-									<img data-src="/assets/nothing01.jpg" class="swiper-lazy img_lavoro03">
-								<% else %>
-									<% if post.category == "movie" || post.category == "tv" %>
-										<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro10">
-									<% end %>
-									<% if post.category == "book" || post.category == "comic" %>
-										<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro09">
-									<% end %>
-									<% if post.category == "music" %>
-										<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro03">
-									<% end %>
-								<% end %>
-							<% end %>
-							<% if post.category == "music" %>
-								<% if post.preview_url.present? %>
-									<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
-										<i id="icon_play_<%= post.id %>" class="fas fa-play"></i>
-									</div>
-								<% end %>
-							<% end %>
-						</div>
-						<div class="layer02">
-							<%= link_to "/works/#{post.id}/detail" do %>
-								<div class="font_how">
-									<% if post.review == "bookmark" %>
-										<i class="far fa-bookmark" style="color:rgba(220,220,220,0.8);text-shadow:none;"></i> ブックマーク
-									<% end %>
-									<% if post.review == "good" %>
-										<% if post.category == "movie" || post.category == "tv" %>
-											観ました
-										<% end %>
-										<% if post.category == "book" || post.category == "comic" %>
-											読みました
-										<% end %>
-										<% if post.category == "music" %>
-											聴きました
-										<% end %>
-									<% end %>
-									<% if post.review == "favorite" %>
-										<i class="fas fa-star" style="color:rgba(252,228,4,0.8);text-shadow:none;"></i> おすすめしています
-									<% end %>
-									<% if post.review == "bad" %>
-										<i class="fas fa-ban" style="color:rgba(236,12,28,0.8);text-shadow:none;"></i> おすすめしていません
-									<% end %>
-								</div>
-								<div class="font_head">
-									<%= post.title %>
-								</div>
-							<% end %>
-							<% if post.description.present? %>
-								<div class="balloon_top"></div>
-								<div class="balloon">
-								  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
-								</div>
-							<% end %>
-						</div>
-					</span>
+						<% end %>
+					<% else %>
+						<%= render "partial/nothing01" %>
+					<% end %>
+				</div>
+				<div class="visible-md visible-lg">
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
 				</div>
 			</div>
-			<%# 音楽プレビューjs %>
+		</div>
+		<div class="block_side">
+		</div>
+	</div>
+
+
+	<% if @posts.present? %>
+		<% @user_list = [] %>
+		<% @posts.each.with_index(1) do |post, i| %>
+			<%# プロフフィールモーダル %>
+			<% unless @user_list.include?(post.user.id) %>
+				<% @user = post.user %>
+		  		<% @checkeds_i = Post.where(user_id: @user.id).where.not(review: "bookmark").size %>
+		  		<% @bookmarks_i = Post.where(user_id: @user.id, review: "bookmark").size %>
+				<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
+				<% @user_list.push(post.user.id) %>
+			<% end %>
+			<%# ハーフモーダル %>
+			<div data-pushbar-id="mypushbar_<%= post.id %>" class="pushbar from_bottom">
+				<div class="bar_pushbar"></div>	
+				<% unless post.user.id == current_user.id %>
+					<span id="bookmark-of-<%= post.id %>">
+				      	<%= render partial: 'works/bookmark', locals: { post: post } %>
+				    </span>
+					<%= link_to "/works/#{post.id}/copy" do %>
+						<div class="btn_pushbar_item">  
+							<%= image_tag "add.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
+						</div>	
+					<% end %>									
+				<% end %>
+				<% if post.user.id == current_user.id %>	
+					<span id="list-of-<%= post.id %>">
+				      	<%= render partial: 'works/list', locals: { post: post } %>
+				    </span>		
+					<%= link_to "/works/#{post.id}/edit" do %>
+						<div class="btn_pushbar_item">  
+							<%= image_tag "edit.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
+						</div>
+					<% end %>					
+					<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+						<div class="btn_pushbar_item" style="color:#FB473E;">  
+							<%= image_tag "trash_red.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を削除する
+						</div>	
+					<% end %>				
+				<% end %>	
+			    <a data-pushbar-close>
+					<div class="btn_pushbar_close">  
+						<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル
+					</div>
+			  	</a>
+			</div>
+		<% end %>
+	<% end %>
+	<%#投稿ボタン%>
+	<%= render "partial/post_modal" %>
+	<%#カテゴリーボタン%>
+	<%= render "partial/category" %>
+	<%# 音楽プレビューjs %>
+	<% if @posts.present? %>
+		<% @posts.each.with_index(1) do |post, i| %>
 			<% if post.category == "music" %>
 				<% if post.preview_url.present? %>
 					<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
@@ -175,134 +243,63 @@
 				   	</script>
 				<% end %>
 			<% end %>
-			<% end %>
-		<% else %>
-			<%= render "partial/nothing01" %>
 		<% end %>
-
-		</div>
-		<div class="visible-md visible-lg">
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
-		</div>
-		</div>
-	</div>
-	<div class="block_side">
-	</div>
-</div>
-
-
-<% if @posts.present? %>
-	<% @user_list = [] %>
-	<% @posts.each.with_index(1) do |post, i| %>
-		<%# プロフフィールモーダル %>
-		<% unless @user_list.include?(post.user.id) %>
-			<% @user = post.user %>
-	  		<% @checkeds_i = Post.where(user_id: @user.id).where.not(review: "bookmark").size %>
-	  		<% @bookmarks_i = Post.where(user_id: @user.id, review: "bookmark").size %>
-			<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
-			<% @user_list.push(post.user.id) %>
-		<% end %>
-		<%# ハーフモーダル %>
-		<div data-pushbar-id="mypushbar_<%= post.id %>" class="pushbar from_bottom">
-			<div class="bar_pushbar"></div>	
-			<% unless post.user.id == current_user.id %>
-				<span id="bookmark-of-<%= post.id %>">
-			      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-			    </span>
-				<%= link_to "/works/#{post.id}/copy" do %>
-					<div class="btn_pushbar_item">  
-						<%= image_tag "add.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
-					</div>	
-				<% end %>									
-			<% end %>
-			<% if post.user.id == current_user.id %>	
-				<span id="list-of-<%= post.id %>">
-			      	<%= render partial: 'works/list', locals: { post: post } %>
-			    </span>		
-				<%= link_to "/works/#{post.id}/edit" do %>
-					<div class="btn_pushbar_item">  
-						<%= image_tag "edit.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
-					</div>
-				<% end %>					
-				<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-					<div class="btn_pushbar_item" style="color:#FB473E;">  
-						<%= image_tag "trash_red.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を削除する
-					</div>	
-				<% end %>				
-			<% end %>	
-		    <a data-pushbar-close>
-				<div class="btn_pushbar_close">  
-					<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル
-				</div>
-		  	</a>
-		</div>
 	<% end %>
-<% end %>
-
-<%#投稿ボタン%>
-<%= render "partial/post_modal" %>
-<%#カテゴリーボタン%>
-<%= render "partial/category" %>
-
-
-
-<%#swiper%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
-<script>
-	$(function(){
-		var swiper = new Swiper('.swiper-container', {
-			speed: 500,
-			touchAngle: 55,
-			navigation: {
-		    	nextEl: '.swiper-button-next',
-		    	prevEl: '.swiper-button-prev',
-		  	},
-		  	hideOnClick: false,
-		  	preloadImages: false,
-			lazy: {
-				loadOnTransitionStart: true,
-				loadPrevNext: true,
-			},
+	<%#swiper.js%>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+	<script>
+		$(function(){
+			var swiper = new Swiper('.swiper-container', {
+				speed: 500,
+				touchAngle: 55,
+				navigation: {
+			    	nextEl: '.swiper-button-next',
+			    	prevEl: '.swiper-button-prev',
+			  	},
+			  	hideOnClick: false,
+			  	preloadImages: false,
+				lazy: {
+					loadOnTransitionStart: true,
+					loadPrevNext: true,
+				},
+			});
 		});
-	});
-</script>
-
-<%#ハーフモーダル%>
-<script type="text/javascript">
-  $(function(){
-  	//overlayを削除
-  	if ($('div').hasClass("pushbar_overlay")) {
-	  var Back = document.querySelector('html');
-	  Back.classList.remove('pushbar_locked');
-	  Back.removeAttribute('pushbar');
-	}
-	//ハーフモーダルを削除
-	if ($('.opened').hasClass("opened")) {
-	  var Bar = document.querySelector('.opened');
-	  Bar.classList.remove('opened');
-	}
-  	//ハーフモーダル生成
-  	var pushbar = new Pushbar({
-        blur:false,
-        overlay:true,
-    });
-  	//開いているとき
-    $('body').on("pushbar_opening", function(){
-		//スワイプ方向定義
-	    var hammertime = new Hammer(document.body);
-		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-	    //スワイプイベント登録
-	  	$('body').hammer().on('swipedown', function(){
-		    pushbar.close();	
+	</script>
+	<%#ハーフモーダルjs%>
+	<script type="text/javascript">
+	  $(function(){
+	  	//overlayを削除
+	  	if ($('div').hasClass("pushbar_overlay")) {
+		  var Back = document.querySelector('html');
+		  Back.classList.remove('pushbar_locked');
+		  Back.removeAttribute('pushbar');
+		}
+		//ハーフモーダルを削除
+		if ($('.opened').hasClass("opened")) {
+		  var Bar = document.querySelector('.opened');
+		  Bar.classList.remove('opened');
+		}
+	  	//ハーフモーダル生成
+	  	var pushbar = new Pushbar({
+	        blur:false,
+	        overlay:true,
+	    });
+	  	//開いているとき
+	    $('body').on("pushbar_opening", function(){
+			//スワイプ方向定義
+		    var hammertime = new Hammer(document.body);
+			hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+		    //スワイプイベント登録
+		  	$('body').hammer().on('swipedown', function(){
+			    pushbar.close();	
+			});
 		});
-	});
-	//閉じているとき
-	$('body').on("pushbar_closing", function(){
-	});
-  });
-</script>
-
+		//閉じているとき
+		$('body').on("pushbar_closing", function(){
+		});
+	  });
+	</script>
+<%#ログインしていない時%>
 <% else %>
 	<%= render "partial/home" %>
 	<%#swiper.js%>
