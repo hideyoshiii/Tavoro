@@ -19,7 +19,7 @@
 	<audio id="audio" controls preload="none" style="display:none;">
 		<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
 	</audio>
-	<script type="text/javascript">						  
+	<script type="text/javascript" defer>						  
 		$(function(){
 	  	  var audio = document.getElementById('audio');
 		  $('#btn_preview').on("click",function(){
@@ -435,7 +435,7 @@
 				<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
 					<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
 				</audio>
-				<script type="text/javascript">						  
+				<script type="text/javascript" defer>						  
 					$(function(){
 				  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
 					  $('#btn_preview_<%= post.id %>').on("click",function(){

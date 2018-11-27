@@ -466,7 +466,7 @@
 				<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
 					<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
 				</audio>
-				<script type="text/javascript">						  
+				<script type="text/javascript" defer>						  
 					$(function(){
 				  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
 					  $('#btn_preview_<%= post.id %>').on("click",function(){
@@ -508,16 +508,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-    /******************************************
-    事前準備
-    *******************************************/
     //タブボタンの数を取得
     var tabQuantity = $('.tab__button').length;
     //タブの長さとボディの長さの差分を取得
     var tabExtraDistance = $('.tab_table').width();
-    /******************************************
-    スライダー発動
-    *******************************************/
+    //スライダー発動
     var swiper = new Swiper('.swiper-container', {
 			speed: 600,
 			touchAngle: 55,
@@ -533,9 +528,7 @@
 			    },
 			  },
 		});
-    /******************************************
-    スライドする時に発動する関数。タブの表示調整を行う。
-    *******************************************/
+    //スライドする時に発動する関数。タブの表示調整を行う
     function slideChange(newIndex){
         //クラスを調整
         $('.tab__button').removeClass('active');
@@ -545,9 +538,7 @@
         //スクロール位置を調整
         $('.tabContainer').animate({ scrollLeft: scrollDestination }, 'slow');
     }
-    /******************************************
-    タブボタンクリックで発動する関数
-    *******************************************/
+    //タブボタンクリックで発動する関数
     $('.tab__button').on('click',function(e){
         //何番目の要素かを取ってスライドを移動する
         var nth = $('.tab__button').index(this);
