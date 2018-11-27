@@ -218,30 +218,37 @@
         <div class="a6" style="text-align:center;">
           <div style="position:relative;width:0;height:0;z-index:1;"></div>
           <div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;"> 
-            <div style="height:15vh;"></div>
+            <div style="height:5vh;"></div>
             <div class="font_white_big" style="color:#F3F3F3;">
-              TAVOREはPWAに対応しています
+              アプリと同じ使い心地で
             </div>
             <div style="height:2vh;"></div>
             <div class="font_white_min" style="color:#F3F3F3;">
               ホーム画面に追加することで、
               <br>ネイティブアプリと同じ操作性で使用することができます
             </div>
+            <div style="height:5vh;"></div>
+            <div style="width:90%;display:inline-block;">
+              <div style="width:40%;display:inline-block;vertical-align:center;">
+                <%= image_tag "pwa01.png", :style =>'width:100%;height:auto;' %>
+              </div>
+              <div style="width:20%;display:inline-block;vertical-align:center;">
+                <%= image_tag "right-arrow.png", :style =>'width:20px;height:auto;' %>
+              </div>
+              <div style="width:40%;display:inline-block;vertical-align:center;">
+                <%= image_tag "pwa02.png", :style =>'width:100%;height:auto;' %>
+              </div>
+            </div>
             <div style="height:7vh;"></div>
-            <div style="width:40%;display:inline-block;">
-            <%= video_tag("pwa01.mp4", controls: true, poster: 'pwa01_poster.PNG', muted: true, playsinline: true) %>
-            <div class="font_white_big" style="margin-top:2vh;">
+            <div class="font_white_big" style="color:#F3F3F3;">
               追加方法
             </div>
+            <div style="height:2vh;"></div>
+            <div style="width:60%;display:inline-block">
+              <%= video_tag("pwa.mp4", autoplay: true, muted: true, playsinline: true, loop: true) %>
             </div>
-            <div style="width:6.66%;display:inline-block;">
-            </div>
-            <div style="width:40%;display:inline-block">
-            <%= video_tag("pwa02.mp4", controls: true, poster: 'pwa02_poster.PNG', muted: true, playsinline: true) %>
-            <div class="font_white_big" style="margin-top:2vh;">
-              操作性
-            </div>
-            </div>
+            <div style="height:7vh;"></div>
+          
           </div>
         </div>
       </div>
