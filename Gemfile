@@ -45,9 +45,6 @@ gem 'itunes-search-api', github: 'rlivsey/itunes-search-api'
 gem 'paperclip'
 gem 'aws-sdk'
 
-gem 'hammerjs-rails'
-gem 'rails_serve_static_assets'
-
 gem 'meta-tags'
 
 gem 'rack-rewrite'

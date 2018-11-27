@@ -500,7 +500,7 @@
 	    var hammertime = new Hammer(document.body);
 		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 	    //スワイプイベント登録
-	  	$('body').hammer().on('swipedown', function(){
+	  	hammertime.on('swipedown', function(){
 		    pushbar.close();	
 		});
 	});
