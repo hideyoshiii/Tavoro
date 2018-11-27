@@ -1,5 +1,4 @@
 @import "bootstrap";
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css);
 
 html,body {
@@ -3206,19 +3205,16 @@ html.pushbar_locked .pushbar_overlay{
 	position: relative;
 	margin-left:85%;
 	margin-top:-15%;
+	font-size: 10px;
+	line-height: 40px;
+	vertical-align: middle;
+  	padding-left:1px;
 }
 @media only screen and (max-width: 768px) {
 	.btn_preview_default{
 	margin-left:80%;
 	margin-top:-20%;
 	}
-}
-.btn_preview_default i {
-  color: #FAFAFA;
-  line-height: 40px;
-  vertical-align: middle;
-  font-size: 9px;
-  margin-left:1px;
 }
 
 
@@ -3227,7 +3223,7 @@ html.pushbar_locked .pushbar_overlay{
 
 //凡庸関連
 .hide{
-	desplay:none;
+	display:none;
 }
 .inline_block_default{
 	display:inline-block;
