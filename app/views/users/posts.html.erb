@@ -271,7 +271,6 @@
 <% if @all.present? %>
 	<% @all.each.with_index do |post, i| %>
 		<div class="modal fade" id="myModal_<%= post.id %>">
-			<div class="height_modal"></div>
 			<div class="modal-dialog">
 				<div class="base01">
 					<% if post.image_url.blank? %>
