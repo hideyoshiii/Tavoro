@@ -2905,9 +2905,6 @@ html.pushbar_locked{
     -ms-touch-action: none;
     touch-action: none;
 }
-.pushbar_locked .pushbar_main_content.pushbar_blur{
-	filter:blur(15px);
-}
 .pushbar{
 	z-index: 100000;
 	position: fixed;
