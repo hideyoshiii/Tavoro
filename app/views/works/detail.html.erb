@@ -435,7 +435,7 @@
 				<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
 					<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
 				</audio>
-				<script type="text/javascript" defer>						  
+				<script defer>						  
 					$(function(){
 				  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
 					  $('#btn_preview_<%= post.id %>').on("click",function(){
@@ -472,9 +472,9 @@
 <% end %>
 
 <%#hammer.js%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 <%#pushbar.js%>
-<script type="text/javascript">
+<script defer>
 	class Pushbar {
 	  constructor(config = { overlay: true }) {
 	    this.activeBar = null;
@@ -568,7 +568,7 @@
 	};
 </script>
 <%#ハーフモーダル%>
-<script type="text/javascript">
+<script defer>
   $(function(){
   	//overlayを削除
   	if ($('div').hasClass("pushbar_overlay")) {
