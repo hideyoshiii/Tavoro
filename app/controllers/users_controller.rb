@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
       @list_favorite = List.find_by(user_id: @user.id, title: "お気に入り")
       if @list_favorite.present?
-        @list_favorite_items = ListItem.where(list_id: @list_favorite.id)
+        @list_favorite_items = ListItem.where(list_id: @list_favorite.id).order(created_at: "DESC")
       end
       
     end
