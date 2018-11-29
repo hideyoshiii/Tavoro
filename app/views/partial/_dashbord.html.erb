@@ -6,7 +6,7 @@
           <div class="d7"></div>
           <% if @list = List.find_by(user_id: current_user.id, title: "プロフィール") %>
               <% if @list_item = ListItem.find_by(list_id: @list.id) %>
-                <img data-src="<%= @list_item.post.image_url %>" class="img_myboom lazyload_modal_profile_<%= @user.id %>">
+                <img data-src="<%= @list_item.post.image_url %>" class="img_myboom lazyload_modal_dashbord %>">
               <% else %>
                 <%#myboomのデフォルト画像%>
               <% end %>
@@ -21,16 +21,16 @@
             <% if @list_item.present? %>
               <div>
                 <% if @list_item.post.category == "movie" %>
-                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
+                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
                 <% end %>
                 <% if @list_item.post.category == "tv" %>
-                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
+                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
                 <% end %>
                 <% if @list_item.post.category == "book" %>
-                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
+                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
                 <% end %>
                 <% if @list_item.post.category == "comic" %>
-                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
+                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
                 <% end %>
                 <% if @list_item.post.category == "music" %>
                   <%= image_tag "music_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
