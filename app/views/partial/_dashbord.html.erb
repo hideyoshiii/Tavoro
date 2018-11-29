@@ -4,13 +4,11 @@
       <div class="a4">
         <div class="d1">
           <div class="d7"></div>
-          <div class="d8">
-            <% if @list_mine = List.find_by(user_id: current_user.id, title: "プロフィール") %>
-              <img data-src="<%= @list_mine.post.image_url %>" class="img_myboom lazyload_modal_dashbord">
-            <% else %>
-              <%#myboomのデフォルト画像%>
-            <% end %>
-          </div>
+          <% if @list_mine = List.find_by(user_id: current_user.id, title: "プロフィール") %>
+            <img data-src="<%= @list_mine.post.image_url %>" class="img_myboom lazyload_modal_dashbord">
+          <% else %>
+            <%#myboomのデフォルト画像%>
+          <% end %>
         </div>
       </div>
       <div class="a11">

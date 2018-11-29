@@ -268,13 +268,9 @@
 			<div class="modal-dialog">
 				<div class="base01">
 					<% if post.image_url.blank? %>
-						<%= image_tag "nothing01.jpg", :class =>'img_lavoro02' %>
-					<% else %>
-						<% if post.category == "music" %>
-							<%= image_tag post.image_url, :class =>'img_lavoro002' %>
-						<% else %>
-							<%= image_tag post.image_url, :class =>'img_lavoro02' %>
-						<% end %>
+						<%= image_tag "nothing01.jpg", :class =>'img_myboom' %>
+					<% else %>						
+						<%= image_tag post.image_url, :class =>'img_myboom' %>					
 					<% end %>
 					<span>
 						<div class="layer05">

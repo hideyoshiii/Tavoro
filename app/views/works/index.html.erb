@@ -15,15 +15,11 @@
 							   	<% end %>
 								<div class="base01">
 									<% if post.image_url.blank? %>
-										<img data-src="/assets/nothing01.jpg" class="swiper-lazy img_lavoro03">
-									<% else %>
-										<% if post.category == "music" %>
-											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro002">
-										<% else %>
-											<img data-src="<%= post.image_url %>" class="swiper-lazy img_lavoro02">						
-										<% end %>
+										<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+									<% else %>										
+										<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 									<% end %>
-									<span>
+									<span>										
 										<div class="layer05">
 										</div>
 										<div class="layer03">
