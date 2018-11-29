@@ -6,7 +6,11 @@
           <div class="d1">
             <div class="d7"></div>
             <% if @list = List.find_by(user_id: @user.id, title: "プロフィール") %>
-              <img data-src="<%= @list.post.image_url %>" class="img_myboom lazyload_modal_profile_<%= @user.id %>">
+              <% if @list_item = ListItem.find_by(list_id: @list.id) %>
+                <img data-src="<%= @list_item.post.image_url %>" class="img_myboom lazyload_modal_profile_<%= @user.id %>">
+              <% else %>
+                <%#myboomのデフォルト画像%>
+              <% end %>
             <% else %>
               <%#myboomのデフォルト画像%>
             <% end %>
@@ -15,7 +19,7 @@
         <div class="a11">
           <div class="font_white" style="margin:10px;width:35%;display:inline-block;">
             <div class="contain_title02">
-              <% if @list.present? %>
+              <% if @list_item.present? %>
                 <div>
                   <% if @list.post.category == "movie" %>
                     <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list.post.title %>

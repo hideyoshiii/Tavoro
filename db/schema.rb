@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181125003835) do
+ActiveRecord::Schema.define(version: 20181129053020) do
 
   create_table "follow_requests", force: :cascade do |t|
     t.integer "requester_id"
@@ -41,15 +41,22 @@ ActiveRecord::Schema.define(version: 20181125003835) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "list_items", force: :cascade do |t|
+    t.integer "list_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_list_items_on_list_id"
+    t.index ["post_id"], name: "index_list_items_on_post_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "post_id"
     t.string "title"
     t.text "description"
     t.boolean "private", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_lists_on_post_id"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 

@@ -339,17 +339,21 @@ class WorksController < ApplicationController
 
   def create_list
     @post = Post.find(params[:id].to_s) 
-    @lists = List.where(user_id: current_user.id, title: "プロフィール")
-    if @lists.present?
-      @lists.destroy_all
+    @list = List.find_by(user_id: current_user.id, title: "プロフィール")
+    if @list.present?
+      @list_items = ListItem.where(list_id: @list.id)
+      @list_items.destroy_all
+    else
+      @list = List.create(user_id: current_user.id, title: "プロフィール")
     end
-    @post_list = List.create(user_id: current_user.id, post_id: @post.id, title: "プロフィール")
+    @list_item = ListItem.create(list_id: @list.id, post_id: @post.id)
   end
 
   def destroy_list 
     @post = Post.find(params[:id].to_s) 
-    @post_list = List.find_by(user_id: current_user.id, post_id: @post.id, title: "プロフィール")
-    @post_list.destroy 
+    @list = List.find_by(user_id: current_user.id, title: "プロフィール")
+    @list_item = ListItem.find_by(list_id: @list.id, post_id: @post.id)
+    @list_item.destroy 
   end
 
 end
