@@ -379,7 +379,7 @@
 							<% if post.description.present? %>
 								<div class="balloon_top"></div>
 								<div class="balloon">
-								  	<%= simple_format(post.description, {}, wrapper_tag: "div") %>
+								  	<%= safe_join(post.description.split("\n"), tag(:br)) %>
 								</div>
 							<% end %>
 						</div>

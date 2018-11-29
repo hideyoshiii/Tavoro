@@ -54,7 +54,11 @@
             <% end %>      
           	<div class="pro33" style="vertical-align:bottom;">
               <div style="text-align:center;">
+                <% if user.image.present? %>
                   <img data-src="<%= user.image(:large) %>" class="img_user08 lazyload_modal_profile_<%= @user.id %>">
+                <% else %>
+                  <%= image_tag "user09.png", :class =>'img_user08' %>
+                <% end %>
               </div>
               <div style="font-size:18px;text-align:center;margin-top:10px;">
                 <%= user.name %>
@@ -75,11 +79,20 @@
           </div>     
           <% if @user.description.present? %>
             <div style="height:0.5vh;"></div>
-            <div class="font_gray_min" style="width:100%;padding:0 20px;color:#C2C2C2;">
+            <div class="font_gray_min" style="width:50%;color:#C2C2C2;display:inline-block;">
               <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
             </div>
-          <% end %>                   	            
-          <div style="height:5vh;"></div>
+          <% else %> 
+            <% if current_user?(@user) %>
+              <div style="height:1vh;"></div>
+              <%= link_to edit_user_registration_path do %>
+                <div class="font_gray_min" style="width:50%;color:#2FB4B4;display:inline-block;">
+                  自己紹介を書く
+                </div>
+              <% end %>
+            <% end %> 
+          <% end %>                	            
+          <div style="height:4vh;"></div>
         	<div style="text-align:center;">
           	<div id="relationship-of-<%= @user.id %>">
 		      	  <%= render partial: 'relationships/relationship' %>

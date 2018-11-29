@@ -42,9 +42,9 @@
               <div class="preview00">
                 <div class="preview01">
                   <% if current_user.image %>
-                    <%= image_tag current_user.image(:large), :class => "img_user02" %>
+                    <%= image_tag current_user.image(:large), :class => "img_user08" %>
                   <% else %>
-                    <%= image_tag "user04.png", :class =>'img_user02' %>
+                    <%= image_tag "user04.png", :class =>'img_user08' %>
                   <% end %>
                   <span><i class="fas fa-camera"></i></span>
                 </div>
@@ -273,6 +273,7 @@
           <div style="height:3vh;"></div>
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <div class="" style="text-align:center;width:75%;padding:10px;margin:0 auto;">
+              <div style="position:relative;width:0;height:0;z-index:1;"></div>
               <%= f.text_area :description, id: "textarea", placeholder: "自己紹介を書く", autofocus: true %>
             </div>
             <div style="height:5vh;"></div>
@@ -369,9 +370,9 @@
     var $textarea = $('#textarea');
     var lineHeight = parseInt($textarea.css('lineHeight'));
     $(function() {
-      var lines = ($textarea.val() + '\n').match(/\n/g).length;
-      $textarea.height(lineHeight * lines);
-    });
+        var lines = ($textarea.val() + '\n').match(/\n/g).length;
+        $textarea.height(lineHeight * lines);
+      });
     $textarea.on('input', function(e) {
       var lines = ($(this).val() + '\n').match(/\n/g).length;
       $(this).height(lineHeight * lines);
