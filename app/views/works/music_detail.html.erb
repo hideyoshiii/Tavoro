@@ -74,9 +74,9 @@
           <div class="a4">
             <div class="d1">
               <% if @poster.blank? %>
-              	<%= image_tag "nothing03.jpg", :class =>'img_lavoro08' %>
+              	<%= image_tag "nothing03.jpg", :class =>'img_myboom_blur' %>
               <% else %>
-              	<%= image_tag @poster, :class =>'img_lavoro08' %>
+              	<%= image_tag @poster, :class =>'img_myboom_blur' %>
               <% end %>
               <div class="d3"></div>
             </div>
@@ -109,11 +109,11 @@
 					    <label for="bad" class="radio"><i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしない</label>
 				    </div>
 				</div>
-				<div class="height03"></div>
+				<div style="height:1.5vh;"></div>
 				<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
 					<textarea name="description" id="textarea" placeholder="何か書く" wrap="hard"></textarea>
 				</div>
-				<div class="height02"></div>
+				<div style="height:1.5vh;"></div>
 				<div style="text-align:center;width:60%;margin:0 auto;">
 					<div class="pile_preview">
 						<% if @poster.blank? %>

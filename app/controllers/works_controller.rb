@@ -215,6 +215,7 @@ class WorksController < ApplicationController
   		@detail03 = @item["collectionName"]
   		@detail03 = "アルバム : " + @detail03
   	end
+
   end
 
 

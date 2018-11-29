@@ -19,7 +19,7 @@
 	<audio id="audio" controls preload="none" style="display:none;">
 		<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
 	</audio>
-	<script type="text/javascript" defer>						  
+	<script defer>						  
 		$(function(){
 	  	  var audio = document.getElementById('audio');
 		  $('#btn_preview').on("click",function(){
@@ -49,18 +49,13 @@
 	</div>
 	<div class="block_main">
 		<div style="height:50px;"></div>
-
 		<div class="a1">
 			<div class="a4">
 	            <div class="d1">
 	              	<% if post.image_url.blank? %>
-						<%= image_tag "nothing01.jpg", :class =>'img_lavoro04' %>
+						<%= image_tag "nothing01.jpg", :class =>'img_myboom_blur' %>
 					<% else %>
-						<% if post.category == "music" %>
-							<%= image_tag post.image_url, :class =>'img_lavoro06' %>
-						<% else %>
-							<%= image_tag post.image_url, :class =>'img_lavoro04' %>
-						<% end %>
+						<%= image_tag post.image_url, :class =>'img_myboom_blur' %>
 					<% end %>
 					<div class="d3"></div>
 	            </div>
@@ -226,7 +221,7 @@
           			Reccomends
           		</div>
           		<div style="height:3vh;"></div>
-          		<div style="text-align:center;margin-top:20px;">
+          		<div style="text-align:center;margin-top:10px;">
 					<%= image_tag "tool.png", :style =>'width:35px;height:35px;' %>
 				</div>
 				<div style="text-align:center;margin-top:10px;font-size:16px;color:#999999;">
@@ -244,25 +239,6 @@
 <% if @comments_all.present? %>
 	<% @user_list = [] %>
 	<% @comments_all.each.with_index do |post, i| %>
-		<%#モーダルtubolinks不具合修正%>
-		<script type="text/javascript">
-			$(function(){
-				var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
-				//モーダルが表示されているのに表示判定されてなかったら
-				if(display_<%= post.id %> === 'block'){
-					//モーダルを表示状態にする
-					$('body').removeClass('modal-open');
-      				$('.modal-backdrop').remove();				
-					$('#myModal_<%= post.id %>').modal('toggle');
-					//クリックでモーダルを閉じる 
-					$('#dismiss_<%= post.id %>').on("click",function(){
-						$('body').removeClass('modal-open');
-					  	$('.modal-backdrop').remove();
-						$('#myModal_<%= post.id %>').modal('hide'); 
-					});
-				}				
-			});
-		</script>
 		<div class="modal fade" id="myModal_<%= post.id %>">
 			<div class="height_modal"></div>
 			<div class="modal-dialog">
@@ -428,6 +404,25 @@
 				</div>
 		  	</a>
 		</div>
+		<%#モーダルtubolinks不具合修正%>
+		<script defer>
+			$(function(){
+				var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
+				//モーダルが表示されているのに表示判定されてなかったら
+				if(display_<%= post.id %> === 'block'){
+					//モーダルを表示状態にする
+					$('body').removeClass('modal-open');
+      				$('.modal-backdrop').remove();				
+					$('#myModal_<%= post.id %>').modal('toggle');
+					//クリックでモーダルを閉じる 
+					$('#dismiss_<%= post.id %>').on("click",function(){
+						$('body').removeClass('modal-open');
+					  	$('.modal-backdrop').remove();
+						$('#myModal_<%= post.id %>').modal('hide'); 
+					});
+				}				
+			});
+		</script>
 		<%# 音楽プレビューjs %>
 		<% if post.category == "music" %>
 			<% if post.preview_url.present? %>

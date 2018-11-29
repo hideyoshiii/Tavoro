@@ -17,7 +17,7 @@
       </div>
       <div style="float:right;padding:10px 12px 0px 0px;">
         <a href="" data-toggle="modal" data-target="#myModal_dashbord">
-            <%= image_tag "user09.png", :class =>'img_icon01' %>
+            <%= image_tag "user09.png", :style =>'width:30px;height:30px;' %>
         </a>
       </div>
       <% if Notification.where(user_id: current_user.id,read: false).size >= 1 %>
