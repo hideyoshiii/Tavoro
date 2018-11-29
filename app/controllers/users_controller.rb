@@ -15,6 +15,12 @@ class UsersController < ApplicationController
       @book = @all.where(category: "book")
       @comic = @all.where(category: "comic")
       @music = @all.where(category: "music")
+
+      @list_favorite = List.find_by(user_id: @user.id, title: "お気に入り")
+      if @list_favorite.present?
+        @list_favorite_items = ListItem.where(list_id: @list_favorite.id)
+      end
+      
     end
 	end
 

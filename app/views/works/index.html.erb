@@ -179,7 +179,10 @@
 						</div>	
 					<% end %>									
 				<% end %>
-				<% if post.user.id == current_user.id %>	
+				<% if post.user.id == current_user.id %>
+					<span id="favorite-of-<%= post.id %>">
+				      	<%= render partial: 'works/favorite', locals: { post: post } %>
+				    </span>		
 					<span id="list-of-<%= post.id %>">
 				      	<%= render partial: 'works/list', locals: { post: post } %>
 				    </span>		

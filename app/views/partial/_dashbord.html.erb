@@ -21,16 +21,16 @@
             <% if @list_item.present? %>
               <div>
                 <% if @list_item.post.category == "movie" %>
-                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
+                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
                 <% end %>
                 <% if @list_item.post.category == "tv" %>
-                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
+                  <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
                 <% end %>
                 <% if @list_item.post.category == "book" %>
-                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
+                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
                 <% end %>
                 <% if @list_item.post.category == "comic" %>
-                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_mine.post.title %>
+                  <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
                 <% end %>
                 <% if @list_item.post.category == "music" %>
                   <%= image_tag "music_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>

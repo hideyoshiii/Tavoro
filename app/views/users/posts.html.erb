@@ -32,6 +32,7 @@
 	<div class="tabContainer">
         <div class="tab_table">
             <div class="tab__button active">すべて</div>
+            <div class="tab__button">お気に入り</div>
             <div class="tab__button">映画</div>
             <div class="tab__button">テレビ</div>
             <div class="tab__button">ブック</div>
@@ -94,6 +95,53 @@
 						  	<% end %>
 					  	<% end %>
 				  	</div>
+		        </div>
+		        <div class="swiper-slide" style="height:100%">
+		        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+					  	<% if @list_favorite_items.blank? %>
+					  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+								<%= image_tag "warning_wihte.png", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+							</div>	
+					  	<% else %>
+						    <% @list_favorite_items.each.with_index(1) do |item, i| %>
+						    	<% post = item.post %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
+										<% if post.image_url.blank? %>
+											<img data-src="nothing01.jpg" class="img_myboom swiper-lazy">
+										<% else %>									
+											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<% if post.category == "movie" %>
+													<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> 映画
+												<% end %>
+												<% if post.category == "tv" %>
+													<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> テレビ
+												<% end %>
+												<% if post.category == "book" %>
+													<%= image_tag "book_gray.png", :class =>'icon_category_min' %> ブック
+												<% end %>
+												<% if post.category == "comic" %>
+													<%= image_tag "book_gray.png", :class =>'icon_category_min' %> コミック
+												<% end %>
+												<% if post.category == "music" %>
+													<%= image_tag "music_gray.png", :class =>'icon_category_min' %> ミュージック
+												<% end %>
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+					  	<% end %>
+					</div>	
 		        </div>
 		        <div class="swiper-slide" style="height:100%">
 		        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
@@ -407,7 +455,10 @@
 					</div>	
 				<% end %>									
 			<% end %>
-			<% if post.user.id == current_user.id %>	
+			<% if post.user.id == current_user.id %>
+				<span id="favorite-of-<%= post.id %>">
+			      	<%= render partial: 'works/favorite', locals: { post: post } %>
+			    </span>		
 				<span id="list-of-<%= post.id %>">
 			      	<%= render partial: 'works/list', locals: { post: post } %>
 			    </span>			

@@ -356,4 +356,20 @@ class WorksController < ApplicationController
     @list_item.destroy 
   end
 
+  def create_favorite
+    @post = Post.find(params[:id].to_s) 
+    @list = List.find_by(user_id: current_user.id, title: "お気に入り")
+    if @list.blank?
+      @list = List.create(user_id: current_user.id, title: "お気に入り")
+    end
+    @list_item = ListItem.create(list_id: @list.id, post_id: @post.id)
+  end
+
+  def destroy_favorite
+    @post = Post.find(params[:id].to_s) 
+    @list = List.find_by(user_id: current_user.id, title: "お気に入り")
+    @list_item = ListItem.find_by(list_id: @list.id, post_id: @post.id)
+    @list_item.destroy 
+  end
+
 end
