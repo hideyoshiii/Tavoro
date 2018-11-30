@@ -93,13 +93,13 @@
         <div style="text-align:center;">
           <%= link_to "/#{current_user.username}/posts", :style => "display:inline-block;vertical-align:top;margin:0 5px;" do %>
             <div class="btn_follow_on">
-              <%= image_tag "test44.png", :style =>'width:16px;height:16px;margin-top:-3.5px;' %>&nbsp;&nbsp;投稿へ
+              <%= image_tag "bag_white.png", :style =>'width:16px;height:16px;margin-top:-3.5px;' %>&nbsp;&nbsp;投稿へ
             </div>
           <% end %>
           <div style="display:inline-block;vertical-align:top;">
             <%= link_to configuration_path do %>
               <div class="btn_follow_on" style="padding-left:1.0em;padding-right:1.0em;">
-                <%= image_tag "test53.png", :style =>'width:14px;height:14px;margin-top:-2px' %>        
+                <%= image_tag "control_white.png", :style =>'width:14px;height:14px;margin-top:-2px' %>        
               </div>
             <% end %>
           </div>
@@ -108,7 +108,7 @@
         <div style="text-align:center;width:95%;display:inline-block;">
           <div class="pro20">
             <div>
-              <%= image_tag "checked.png", :style =>'width:16px;height:16px;' %>
+              <%= image_tag "checked_white.png", :style =>'width:16px;height:16px;' %>
             </div> 
             <div style="font-size:12px;margin-top:5px;">
               <%= Post.where(user_id: current_user.id).where.not(review: "bookmark").size %> checkeds
@@ -116,7 +116,7 @@
           </div>
           <div class="pro20">
             <div>
-              <%= image_tag "bookmark.png", :style =>'width:16px;height:16px;' %>
+              <%= image_tag "bookmark_white.png", :style =>'width:16px;height:16px;' %>
             </div> 
             <div style="font-size:12px;margin-top:5px;">
               <%= Post.where(user_id: current_user.id, review: "bookmark").size %> bookmarks
@@ -124,7 +124,7 @@
           </div>
           <div class="pro20">
             <div>
-              <%= image_tag "test51.png", :style =>'width:16px;height:16px;' %>
+              <%= image_tag "file_white.png", :style =>'width:16px;height:16px;' %>
             </div> 
             <div style="font-size:12px;margin-top:5px;">
               coming soon

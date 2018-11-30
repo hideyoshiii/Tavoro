@@ -335,7 +335,7 @@ class WorksController < ApplicationController
   def destroy_bookmark 
     @post = Post.find(params[:id].to_s) 
     @post_bookmark = Post.find_by(user_id: current_user.id, category: @post.category, review: "bookmark", work_id: @post.work_id)
-    @post_bookmark.destroy 
+    @post_bookmark.destroy
   end
 
   def create_list

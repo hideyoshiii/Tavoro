@@ -54,14 +54,14 @@
             	</div>
         	</div>  
 		<% else %>
-		<div style="font-size:15px;color:#777777;margin-top:10vh;text-align:center;">
-			<%= image_tag "test28.png", :style =>'width:15px;height:15px;' %> 入力したIDのユーザーは存在しません
+		<div style="font-size:15px;color:#777777;margin-top:30vh;text-align:center;">
+			<%= image_tag "warning_gray.png", :style =>'width:15px;height:15px;' %> 入力したIDのユーザーは存在しません
 		</div>
 	<% end %>
 <% else %>
 	<div style="height:16vh;"></div>
 	<div style="text-align:center;margin-top:20px;">
-		<%= image_tag "users.png", :style =>'width:35px;height:35px;' %>
+		<%= image_tag "users_gray.png", :style =>'width:35px;height:35px;' %>
 	</div>
 	<div style="text-align:center;margin-top:10px;font-size:12px;color:#999999;">
 		フォローは20人まで追加できます
@@ -72,7 +72,7 @@
 	<div style="text-align:center;">
 		<%= link_to invitation_path do %>	
 			<span class="btn_invite">
-				<%= image_tag "letter.png", :style =>'width:15px;height:15px;margin-top:-2px;' %> 友達を招待
+				<%= image_tag "letter_white.png", :style =>'width:15px;height:15px;margin-top:-2px;' %> 友達を招待
 			</span>
 		<% end %>
 	</div>	

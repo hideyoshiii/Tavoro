@@ -18,12 +18,12 @@
 			<div style="width:100%;text-align:right;"> 	
 				<%= link_to "/#{@user.username}/posts" do %>
 					<div class="btn_off" style="display:inline-block;vertical-align:middle;">
-						<%= image_tag "checked.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
+						<%= image_tag "checked_white.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
 						<span style="color:#c2c2c2;"><%= @checkeds_i %></span> 
 					</div>
 				<% end %>		
 				<div class="btn_on" style="display:inline-block;vertical-align:middle;margin-right:10px;">
-					<%= image_tag "bookmark.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
+					<%= image_tag "bookmark_white.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
 					<span style="color:#c2c2c2;"><%= @bookmarks_i %></span>
 				</div>		
 			</div>  
@@ -327,7 +327,7 @@
 							<div class="pro32">		
 								<div style="text-align:right;">
 									<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:10px;">
-										<%= image_tag "ellipsis.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
+										<%= image_tag "ellipsis_gray.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
 									</a>			
 								</div>
 							</div>
@@ -403,7 +403,7 @@
 			    </span>
 				<%= link_to "/works/#{post.id}/copy" do %>
 					<div class="btn_pushbar_item">  
-						<%= image_tag "add.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
+						<%= image_tag "add_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
 					</div>	
 				<% end %>									
 			<% end %>
@@ -416,7 +416,7 @@
 			    </span>			
 				<%= link_to "/works/#{post.id}/edit" do %>
 					<div class="btn_pushbar_item">  
-						<%= image_tag "edit.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
+						<%= image_tag "edit_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
 					</div>
 				<% end %>					
 				<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
@@ -427,7 +427,7 @@
 			<% end %>	
 		    <a data-pushbar-close>
 				<div class="btn_pushbar_close">  
-					<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル  
+					<%= image_tag "ban_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル  
 				</div>
 		  	</a>
 		</div>

@@ -8,6 +8,7 @@ html,body {
   	margin:0;
   	font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   	color:#FAFAFA;
+  	font-size:0;
 }
 body.open {
   overflow: hidden;
@@ -41,19 +42,16 @@ a:visited{
     margin:0 auto;
     z-index:99;
     border-bottom: 2px solid rgba(39,134,160,1);
-    font-size:0;
 }
 .bar_top_in01{
 	display:inline-block;
 	width:50%;
 	height:50px;
-	font-size:0;
 }
 .bar_top_in02{
 	display:inline-block;
 	width:50%;
 	height:50px;
-	font-size:0;
 }
 .bar_profile {
 	position: relative;
@@ -64,7 +62,6 @@ a:visited{
     padding:0;
     margin:0 auto;
     z-index:98;
-    font-size:0;
     margin-bottom:-5px;
 }
 .bar_collection {
@@ -78,7 +75,6 @@ a:visited{
     padding:0;
     margin:0 auto;
     z-index:98;
-    font-size:0;
     border-left: solid 1px #000;
 	border-right: solid 1px #000;
 }
@@ -93,7 +89,6 @@ a:visited{
     padding:0;
     margin:0 auto;
     z-index:98;
-    font-size:0;
     border-left: solid 1px #000;
 	border-right: solid 1px #000;
 	padding-top:10px;
@@ -860,7 +855,6 @@ button {
     margin: 0px;
     padding: 0px;
     -webkit-overflow-scrolling: touch;
-    font-size:0;
     white-space: nowrap;
 }
 .horizontal_scroll::-webkit-scrollbar {
@@ -932,7 +926,6 @@ button {
     margin: 0px;
     padding: 20px 0px;
     -webkit-overflow-scrolling: touch;
-    font-size:0;
     white-space: nowrap;
     border-bottom: solid 1px rgba(39,134,160,1);
 }
@@ -966,7 +959,6 @@ button {
     margin: 0px;
     padding: 10px 0px 10px;
     -webkit-overflow-scrolling: touch;
-    font-size:0;
     white-space: nowrap;
 }
 .horizontal_scroll04::-webkit-scrollbar {
@@ -1014,7 +1006,6 @@ button {
   padding:0;
   margin:0;
   z-index:4;
-  font-size:0;
   text-align:center;
   }
 .base01 span .layer02 {
@@ -1030,7 +1021,6 @@ button {
   padding:0;
   margin:0 auto;
   z-index:5;
-  font-size:0;
   }
 .base01 span .layer03 {
   position: absolute;
@@ -1043,8 +1033,6 @@ button {
   color:white;
   z-index:5;
   text-align:left;
-  background:none;
-  font-size:0;
   }
 .base01 span .layer04 {
   position: absolute;
@@ -1057,11 +1045,8 @@ button {
   height:auto;
   padding:0;
   margin:0;
-  color:white;
   z-index:4;
   text-align:left;
-  background:none;
-  font-size:0;
   }
 .base01 span .layer05 {
   position: absolute;
@@ -1075,9 +1060,7 @@ button {
   padding:0;
   margin:0;
   z-index:3;
-  text-align:right;
-  background:rgba(0,0,0,0.8);
-  font-size:0;
+  background:rgba(0,0,0,0.75);
   }
 .base01 span .layer06 {
   position: absolute;
@@ -1090,11 +1073,8 @@ button {
   height:auto;
   padding:0;
   margin:0;
-  color:white;
   z-index:4;
   text-align:center;
-  background:none;
-  font-size:0;
   }
 .base01 span .layer07 {
   position: absolute;
@@ -1108,7 +1088,6 @@ button {
   padding:0;
   margin:0;
   z-index:4;
-  font-size:0;
   }
 .base01 span .layer08 {
   position: absolute;
@@ -1119,7 +1098,6 @@ button {
   padding:0;
   margin:0;
   z-index:6;
-  font-size:0;
   }
 .base01 span .layer09 {
   position: absolute;
@@ -1132,7 +1110,6 @@ button {
   z-index:5;
   text-align:center;
   background:none;
-  font-size:0;
   }
 .base01 span .layer10 {
   position: absolute;
@@ -1145,7 +1122,6 @@ button {
   z-index:3;
   text-align:right;
   background:rgba(0,0,0,0.3);
-  font-size:0;
   }
 .test_radio03 {
   	position: relative;
@@ -1165,7 +1141,6 @@ button {
   padding:0;
   margin:0;
   z-index:2;
-  font-size:0;
   }
 .pile_preview {
   	position: relative;
@@ -1206,7 +1181,6 @@ button {
   padding:0;
   margin:0;
   background:rgba(0,0,0,0.3);
-  font-size:0;
   z-index:1;
   }
 
@@ -1312,7 +1286,6 @@ button {
 	text-align:left;
 	margin:0 auto;
 	padding:7px;
-	font-size:0;
 	width:100%;
 }
 .box_comment01{
@@ -2043,7 +2016,6 @@ video {
     height:100%;
     padding:0;
     margin:0 auto;
-    font-size:0;
     overflow:hidden;
     z-index:1;
 }
@@ -2061,7 +2033,6 @@ video {
   color:white;
   z-index:5;
   text-align:left;
-  font-size:0;
   background: -webkit-linear-gradient(-180deg, rgba(17,17,17,0.95), rgba(5,98,123,0.95)); 
   background: linear-gradient(-180deg, rgba(17,17,17,0.95), rgba(5,98,123,0.95)); 
   }
@@ -2074,7 +2045,6 @@ video {
   padding:0;
   margin:0;
   z-index:6;
-  font-size:0;
   }
 .a1 > .a4 {
   position: absolute;
@@ -2084,7 +2054,6 @@ video {
   height:100%;
   padding:0;
   margin:0 auto;
-  font-size:0;
   z-index:1;
   background: -webkit-linear-gradient(-180deg, rgba(17,17,17,0.95), rgba(5,98,123,0.95)); 
   background: linear-gradient(-180deg, rgba(17,17,17,0.95), rgba(5,98,123,0.95)); 
@@ -2097,7 +2066,6 @@ video {
   height:100%;
   padding:0;
   margin:0 auto;
-  font-size:0;
   z-index:2;
   overflow-y:scroll;
   -webkit-overflow-scrolling: touch;
@@ -2112,7 +2080,6 @@ video {
   margin:0;
   color:white;
   z-index:6;
-  font-size:0;
   background: none; 
   overflow:scroll;
   }
@@ -2125,7 +2092,6 @@ video {
   padding:0;
   margin:0;
   z-index:7;
-  font-size:0;
   background: none; 
   }
 .a1 > .a8 {
@@ -2139,7 +2105,6 @@ video {
   height:auto;
   padding:0;
   margin:0 auto;
-  font-size:0;
   z-index:2;
   text-align:center;
   }
@@ -2154,7 +2119,6 @@ video {
   height:auto;
   padding:0;
   margin:0 auto;
-  font-size:0;
   z-index:2;
   text-align:right;
   }
@@ -2168,8 +2132,6 @@ video {
   margin:0;
   z-index:5;
   text-align:center;
-  background:none;
-  font-size:0;
   }
 .a1 > .a11 {
   position: absolute;
@@ -2179,7 +2141,6 @@ video {
   height:auto;
   padding:0;
   margin:0 auto;
-  font-size:0;
   z-index:3;
   text-align:right;
   }
@@ -2194,7 +2155,6 @@ video {
   height:100%;
   padding:0;
   margin:0 auto;
-  font-size:0;
   z-index:2;
   text-align:center;
   }
@@ -2205,7 +2165,6 @@ video {
 	padding:0;
 	margin:0;
 	overflow:hidden;
-	background:none;
 	z-index:1;
 	text-align:center;
 }
@@ -2223,7 +2182,6 @@ video {
   z-index:2;
   text-align:right;
   background:rgba(0,0,0,0.5);
-  font-size:0;
   }
 .d1 > .d3 {
   position: absolute;
@@ -2238,7 +2196,6 @@ video {
   margin:0;
   z-index:2;
   background:rgba(0,0,0,0.75);
-  font-size:0;
   }
 .d1 > .d4 {
   position: absolute;
@@ -2253,7 +2210,6 @@ video {
   margin:0;
   z-index:2;
   background:rgba(0,0,0,0.5);
-  font-size:0;
   }
 .d1 > .d5 {
   position: absolute;
@@ -2268,7 +2224,6 @@ video {
   margin:0;
   z-index:2;
   background:rgba(0,0,0,1);
-  font-size:0;
   }
 .d1 > .d6 {
   position: absolute;
@@ -2283,7 +2238,6 @@ video {
   margin:0;
   z-index:2;
   background:rgba(0,0,0,0.8);
-  font-size:0;
   }
 .d1 > .d7 {
   position: absolute;
@@ -2294,8 +2248,7 @@ video {
   padding:0;
   margin:0;
   z-index:3;
-  background:rgba(0,0,0,0.8);
-  font-size:0;
+  background:rgba(0,0,0,0.75);
 }
 .d1 > .d8 {
   position: absolute;
@@ -2309,7 +2262,6 @@ video {
   height:100%;
   padding:0;
   margin:0 auto;
-  font-size:0;
   z-index:2;
   text-align:center;
   }
@@ -2337,7 +2289,6 @@ video {
   height:auto;
   padding:0;
   margin:0 auto;
-  font-size:0;
   z-index:2;
   text-align:center;
   }
@@ -2350,7 +2301,6 @@ video {
   height:auto;
   padding:0;
   margin:0 auto;
-  font-size:0;
   z-index:2;
   }
 .e1 > .e4 {
@@ -2365,7 +2315,6 @@ video {
   height:auto;
   padding:0;
   margin:0 auto;
-  font-size:0;
   z-index:2;
   text-align:center;
   padding:20px;
@@ -2381,7 +2330,6 @@ video {
   z-index:5;
   text-align:center;
   background:none;
-  font-size:0;
   }
 .e1 > .e6 {
   position: absolute;
@@ -2393,7 +2341,6 @@ video {
   margin:0;
   z-index:2;
   background:rgba(0,0,0,0.6);
-  font-size:0;
   }
 
 
@@ -2528,7 +2475,7 @@ video {
 //swiper関連
 .swiper-button-next,.swiper-button-prev{
 	position:absolute;
-	top:88%;
+	top:84%;
 	width:30px;
 	height:30px;
 	margin-top:0;
@@ -2544,14 +2491,14 @@ video {
 	pointer-events:none
 }
 .swiper-button-prev,.swiper-container-rtl .swiper-button-next{
-	background-image:url(/assets/left-arrow04.png);
-	left:20%;
+	background-image:url(/assets/prev_blue.png);
+	left:15%;
 	right:auto;
 	opacity:.7;
 }
 .swiper-button-next,.swiper-container-rtl .swiper-button-prev{
-	background-image:url(/assets/right-arrow04.png);
-	right:20%;
+	background-image:url(/assets/next_blue.png);
+	right:15%;
 	left:auto;
 	opacity:.7;
 }
@@ -2676,15 +2623,12 @@ video {
 html.pushbar_locked{
     overflow: hidden;
     -ms-touch-action: none;
-    touch-action: none;
 }
 .pushbar{
 	z-index: 100000;
 	position: fixed;
-	will-change: transform;
 	overflow-y: auto;
-	transition:transform 0.4s ease;
-	will-change: transform;
+	transition:transform 0.3s ease;
 	background:#fff;
 }
 .pushbar_overlay{
@@ -2696,16 +2640,14 @@ html.pushbar_locked{
 	min-height: 100vh;
 	top: 0;
 	left: 0;
-    will-change: opacity;
-    transition:opacity 0.5s ease;
+    transition:opacity 0.3s ease;
     opacity:0;
-    will-change: opacity;
 	background: #000000;
 }
 html.pushbar_locked .pushbar_overlay{
 	opacity:0.8;
 	z-index: 99999;
-    transition:opacity 0.5s ease;
+    transition:opacity 0.3s ease;
 }
 .pushbar.from_left{
 	top: 0;
@@ -2739,10 +2681,20 @@ html.pushbar_locked .pushbar_overlay{
 	width: 35%;
 	height: auto;
 	transform: translateZ(0) translateY(100%);
-	background: rgba(5,98,123,0.5); 
+	background: rgba(5,98,123,0.9); 
   	border-radius:10px 10px 0px 0px;
   	padding:12px;
   	text-align:center;
+}
+.pushbar.from_bottom:before {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.4);
+	z-index:-1;
 }
 .pushbar.opened{
    transform: translateX(0px) translateY(0px);
@@ -2817,7 +2769,6 @@ html.pushbar_locked .pushbar_overlay{
     margin: 0px;
     margin-top:-7px;
     padding: 0px;
-    font-size:0;
     white-space: nowrap;
 }
 .tabContainer::-webkit-scrollbar {

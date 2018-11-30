@@ -15,7 +15,7 @@
 							   	<% end %>
 								<div class="base01">
 									<% if post.image_url.blank? %>
-										<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+										<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
 									<% else %>										
 										<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 									<% end %>
@@ -72,7 +72,7 @@
 											<div class="pro32">		
 												<div style="text-align:right;">
 													<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:20px 10px 20px 20px;">
-														<%= image_tag "ellipsis.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
+														<%= image_tag "ellipsis_gray.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
 													</a>			
 												</div>
 											</div>
@@ -175,7 +175,7 @@
 				    </span>
 					<%= link_to "/works/#{post.id}/copy" do %>
 						<div class="btn_pushbar_item">  
-							<%= image_tag "add.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
+							<%= image_tag "add_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
 						</div>	
 					<% end %>									
 				<% end %>
@@ -188,7 +188,7 @@
 				    </span>		
 					<%= link_to "/works/#{post.id}/edit" do %>
 						<div class="btn_pushbar_item">  
-							<%= image_tag "edit.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
+							<%= image_tag "edit_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
 						</div>
 					<% end %>					
 					<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
@@ -199,7 +199,7 @@
 				<% end %>	
 			    <a data-pushbar-close>
 					<div class="btn_pushbar_close">  
-						<%= image_tag "ban.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル
+						<%= image_tag "ban_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル
 					</div>
 			  	</a>
 			</div>
@@ -396,23 +396,4 @@
 <%#ログインしていない時%>
 <% else %>
 	<%= render "partial/home" %>
-	<%#swiper.js%>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
-	<script defer>
-		$(function(){
-			var swiper = new Swiper('.swiper-container', {
-				speed: 500,
-				touchAngle: 55,
-				pagination: {
-				    el: '.swiper-pagination',
-				    type: 'bullets',
-				  },
-				navigation: {
-			    	nextEl: '.swiper-button-next',
-			    	prevEl: '.swiper-button-prev',
-			  	},
-			  	effect: 'fade',
-			});
-		});
-	</script>
 <% end %>
