@@ -137,7 +137,7 @@
 							<% if @posters.present? %>
 								<% @posters.each.with_index(1) do |poster, i| %>
 									<% if @post.image_url == "https://image.tmdb.org/t/p/original/#{poster.file_path}" %>
-										<div class="scroll_item">
+										<div class="scroll_item04">
 											<div class="radio01">
 												<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
 												<label for="image_url<%= i %>">
@@ -146,7 +146,7 @@
 											</div>
 										</div>
 									<% else %>
-										<div class="scroll_item">
+										<div class="scroll_item04">
 											<div class="radio01">
 												<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
 												<label for="image_url<%= i %>">

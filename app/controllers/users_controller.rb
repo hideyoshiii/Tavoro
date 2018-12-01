@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       if @list_favorite.present?
         @list_favorite_items = ListItem.where(list_id: @list_favorite.id).order(created_at: "DESC")
       end
-      
+
     end
 	end
 
@@ -120,6 +120,7 @@ class UsersController < ApplicationController
       @invitation = Invitation.new  
 
       @invitations = Invitation.where(user_id: current_user.id).order(created_at: "DESC")
+      @invitations_true = @invitations.where(used: true)
     end
 
     private
