@@ -70,7 +70,7 @@
 		      data: ("q=" + input)
 		  });
 		};
-		$('#inc_search').keyup(function() {
+		$('#inc_search').on('input',function(){
 		  input = $(this).val();   //前後の不要な空白を削除
 		  if(preInput !== input){
 		    clearTimeout(preFunc);
