@@ -26,7 +26,11 @@
 											<div class="pro31">
 												<a href="" data-toggle="modal" data-target="#myModal_profile_<%= post.user.id %>">
 													<div class="inline_block_default">
-														<img data-src="<%= post.user.image(:medium) %>" class="swiper-lazy img_user04">
+														<% if post.user.image.present? %>
+											                <img data-src="<%= post.user.image(:medium) %>" class="swiper-lazy img_user04">
+											            <% else %>
+											                <img data-src="assets/user09.png" class="swiper-lazy img_user04" style="box-shadow:none;">
+											            <% end %>												
 													</div>
 													<div class="inline_block_default">
 														<div class="font_white" style="word-wrap:break-word;margin-top:2px;">

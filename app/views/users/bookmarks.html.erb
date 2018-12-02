@@ -61,7 +61,7 @@
 					  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">				
 										<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
+											<img data-src="assets/nothing01.jpg" class="img_myboom lazyload_min">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom lazyload_min">
 										<% end %>										
@@ -107,7 +107,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">	
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -139,7 +139,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>	
@@ -171,7 +171,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">	
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>										
@@ -203,7 +203,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">	
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>								
@@ -235,7 +235,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">			
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -270,7 +270,7 @@
 			<div class="modal-dialog">
 				<div class="base01">
 					<% if post.image_url.blank? %>
-						<img data-src="nothing01.jpg" class="img_myboom lazyload_modal_<%= post.id %>">
+						<img data-src="nothing01.jpg" class="assets/img_myboom lazyload_modal_<%= post.id %>">
 					<% else %>					
 						<img  data-src="<%= post.image_url %>" class="img_myboom lazyload_modal_<%= post.id %>">
 					<% end %>
@@ -335,7 +335,7 @@
 						<div class="layer07">
 							<%= link_to "/works/#{post.id}/detail" do %>
 								<% if post.image_url.blank? %>
-									<img data-src="nothing01.jpg" class="img_lavoro03 lazyload_modal_<%= post.id %>">
+									<img data-src="assets/nothing01.jpg" class="img_lavoro03 lazyload_modal_<%= post.id %>">
 								<% else %>
 									<img  data-src="<%= post.image_url %>" class="img_lavoro03 lazyload_modal_<%= post.id %>">
 								<% end %>
