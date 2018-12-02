@@ -1,0 +1,417 @@
+<% post = @post %>
+
+<% if post.preview_url.present? %>
+	<style type="text/css">
+		#btn_preview {
+	    display: block;
+	    width: 32px;
+	    height: 32px;
+	    background: rgba(50,50,50,0.7);
+	    text-align: center;
+	    border-radius: 50%;
+	    cursor: pointer;
+	    line-height: 32px;
+	    vertical-align: middle;
+	    font-size: 8px;
+	    padding-left:1px;
+		}
+	</style>
+	<audio id="audio" controls preload="none" style="display:none;">
+		<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
+	</audio>
+	<script defer>						  
+		$(function(){
+	  	  var audio = document.getElementById('audio');
+		  $('#btn_preview').on("click",function(){
+		    if($("#icon_play").hasClass('fa-play'))
+		     {
+		       $("#icon_play").removeClass('fa-play');
+		       $("#icon_play").addClass('fa-pause');
+		       audio.play();
+		     }
+		    else
+		     {
+		       $("#icon_play").removeClass('fa-pause');
+		       $("#icon_play").addClass('fa-play');
+		       audio.pause();
+		     }
+		  });
+		  audio.onended = function() {
+		    $("#icon_play").removeClass('fa-pause');
+		    $("#icon_play").addClass('fa-play');
+		  };
+	  	});				
+		</script>
+<% end %>
+
+<div class="main">
+	<div class="block_side">
+	</div>
+	<div class="block_main">
+		<div style="height:50px;"></div>
+		<div class="a1">
+			<div class="a4">
+	            <div class="d1">
+	              	<% if post.image_url.blank? %>
+						<%= image_tag "nothing01.jpg", :class =>'img_myboom_blur' %>
+					<% else %>
+						<%= image_tag post.image_url, :class =>'img_myboom_blur' %>
+					<% end %>
+					<div class="d3"></div>
+	            </div>
+          	</div>
+          	<div class="a7">
+          		<a href="javascript:void(0);" onclick="window.history.back();">
+					<div style="padding:20px;">
+		        		<%= image_tag "cross_gray.png", :style =>'width:18px;height:18px;' %>
+		        	</div>
+		        </a>	
+          	</div>
+          	<div class="a6">
+          		<div style="height:3vh;"></div>
+          		<div style="font-size:18px;padding-left:15px;">
+          			Works
+          		</div>
+          		<div style="height:1vh;"></div>
+          		<div style="width:90%;text-align:center;margin:0 auto;">
+          			<div class="pro26">
+          				<div style="text-align:left;padding:12px 10px;">
+          					<% if post.image_url.blank? %>
+								<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+							<% else %>
+								<% if post.category == "music" %>
+									<div class="pile_preview">
+										<%= image_tag post.image_url, :class =>'img_lavoro03' %>
+										<div id="btn_preview">
+											<i id="icon_play" class="fas fa-play"></i>
+										</div>
+									</div>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro03' %>
+								<% end %>
+							<% end %>
+          				</div>
+          			</div>
+          			<div class="pro27" style="text-align:left;padding:20px 10px;">
+          				<div class="font_white_big">
+          					<%= post.title %>
+          				</div>
+      					<% if @detail01.present? %>
+							<div style="font-size:12px;color:#999999;">
+								<%= @detail01 %>
+							</div>
+						<% end %>
+      					<% if @detail02.present?  %>
+							<div style="font-size:12px;color:#999999;">
+								<%= @detail02 %>
+							</div>
+						<% end %>          				
+      					<% if @detail03.present?  %>
+							<div style="font-size:12px;color:#999999;">
+								<%= @detail03 %>
+							</div>
+						<% end %>
+          			</div>
+          		</div>
+          		<div style="height:2vh;"></div>
+          		<div style="font-size:18px;padding-left:15px;">
+          			Comments
+          		</div>
+          		<div style="height:3vh;"></div>
+          		<div class="horizontal_scroll">	
+          			<div class="scroll_item02">
+          				<div class="card02">
+	          				<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>" style="width:100%;height:100%;">
+							  	<div style="height:25px;"></div>
+							  	<div style="">
+							  		<%= image_tag post.user.image(:medium), :class => "img_user12" %>
+							  	</div>
+							  	<div style="height:5px;"></div>
+							  	<div class="font_white">
+							  		<%= post.user.name %>
+							  		<% if post.user.authority == "public" %>
+				                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+				                    <% end %>
+							  	</div>
+							  	<div style="height:10px;"></div>
+							  	<div class="font_white_min">
+							  		<% if post.review == "bookmark" %>
+										<i class="far fa-bookmark" style="color:rgba(220,220,220,0.6);"></i> ブックマーク
+									<% end %>
+									<% if post.review == "good" %>
+										<% if post.category == "movie" || post.category == "tv" %>
+											観ました
+										<% end %>
+										<% if post.category == "book" || post.category == "comic" %>
+											読みました
+										<% end %>
+										<% if post.category == "music" %>
+											聴きました
+										<% end %>
+									<% end %>
+									<% if post.review == "favorite" %>
+										<i class="fas fa-star" style="color:rgba(252,228,4,0.6);"></i> おすすめしています
+									<% end %>
+									<% if post.review == "bad" %>
+										<i class="fas fa-ban" style="color:rgba(236,12,28,0.6);"></i> おすすめしていません
+									<% end %>
+							  	</div>
+							  	<div style="height:5px;"></div>
+							  	<div class="contain_title03">
+							  		<div style="font-size:11px;color:#999999;padding:0 10px;">
+							  			"<%= post.description %>"
+							  		</div>
+							  	</div>
+							</a>
+						</div>
+				  	</div>
+	          		<% @comments.each.with_index(1) do |post, i| %>		
+	          		  	<% unless post.user == @post.user %>
+							<div class="scroll_item02">
+								<div class="card02">
+									<a href="" data-toggle="modal" data-target="#myModal_<%= post.id %>" style="width:100%;height:100%;">
+									  	<div style="height:25px;"></div>
+									  	<div style="">
+									  		<%= image_tag post.user.image(:medium), :class => "img_user12" %>
+									  	</div>
+									  	<div style="height:5px;"></div>
+									  	<div class="font_white">
+									  		<%= post.user.name %>
+									  	</div>
+									  	<div style="height:10px;"></div>
+									  	<div class="font_white_min">
+									  		<% if post.review == "bookmark" %>
+												<i class="far fa-bookmark" style="color:rgba(220,220,220,0.6);"></i> ブックマーク
+											<% end %>
+											<% if post.review == "good" %>
+												<% if post.category == "movie" || post.category == "tv" %>
+													観ました
+												<% end %>
+												<% if post.category == "book" || post.category == "comic" %>
+													読みました
+												<% end %>
+												<% if post.category == "music" %>
+													聴きました
+												<% end %>
+											<% end %>
+											<% if post.review == "favorite" %>
+												<i class="fas fa-star" style="color:rgba(252,228,4,0.6);"></i> おすすめしています
+											<% end %>
+											<% if post.review == "bad" %>
+												<i class="fas fa-ban" style="color:rgba(236,12,28,0.6);"></i> おすすめしていません
+											<% end %>
+									  	</div>
+									  	<div style="height:5px;"></div>
+									  	<div class="contain_title03">
+									  		<div style="font-size:11px;color:#999999;padding:0 10px;">
+									  			"<%= post.description %>"
+									  		</div>
+									  	</div>
+									</a>
+								</div>
+							</div>
+					  	<% end %>
+					<% end %>				
+					<div class="scroll_item02">
+						<div class="card02" style="background:rgba(220,220,220,0.15);">
+							<%= link_to "/works/#{post.id}/copy" ,:style => 'width:100%;height:100%;' do %>
+							  	<div style="height:60px;"></div>
+							  	<%= image_tag "add_gray.png", :style =>'width:40px;height:40px;' %>
+							  	<div style="font-size:12px;color:#999999;margin-top:10px;">
+							  		この作品を追加する
+							  	</div>	
+						  	<% end %>
+						 </div>
+					</div>	
+				</div>	
+				<div style="height:20vh;"></div>
+          	</div>
+		</div>
+		
+	</div>
+</div>
+
+
+<%#モーダルの中身%>
+<% if @comments_all.present? %>
+	<% @user_list = [] %>
+	<% @comments_all.each.with_index do |post, i| %>
+		<div class="modal fade" id="myModal_<%= post.id %>">
+			<div class="modal-dialog">
+				<div class="base01">
+					<% if post.image_url.blank? %>
+						<%= image_tag "nothing01.jpg", :class =>'img_myboom' %>
+					<% else %>						
+						<%= image_tag post.image_url, :class =>'img_myboom' %>					
+					<% end %>
+					<span>
+						<div class="layer05">
+						</div>
+						<div class="layer03">
+							<div class="pro31">
+								<a href="" data-toggle="modal" data-target="#myModal_profile_<%= post.user.id %>">
+									<div class="inline_block_default">
+										<%= image_tag post.user.image(:medium), :class => "img_user04" %>
+									</div>
+									<div class="inline_block_default">
+										<div class="font_white" style="word-wrap:break-word;">
+											<%= post.user.name %>
+											<% if post.user.authority == "public" %>
+						                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+						                    <% end %>
+										</div>
+										<div class="font_gray_min" style="word-wrap:break-word;">
+											<% if post.category == "movie" %>
+												<%= image_tag "movie_gray.png", :style =>'width:12px;height:12px;margin-top:-2px;' %> 映画
+											<% end %>
+											<% if post.category == "tv" %>
+												<%= image_tag "movie_gray.png", :style =>'width:12px;height:12px;margin-top:-2px;' %> テレビ
+											<% end %>
+											<% if post.category == "book" %>
+												<%= image_tag "book_gray.png", :style =>'width:12px;height:12px;margin-top:-2px;' %> ブック
+											<% end %>
+											<% if post.category == "comic" %>
+												<%= image_tag "book_gray.png", :style =>'width:12px;height:12px;margin-top:-2px;' %> コミック
+											<% end %>
+											<% if post.category == "music" %>
+												<%= image_tag "music_gray.png", :style =>'width:12px;height:12px;margin-top:-2px;' %> ミュージック
+											<% end %>
+											<% @seconds = (Time.now - post.created_at).round  %>
+											<% if @seconds <= 3600 %>
+												- <%= @seconds / 60 %>分前
+											<% else %>
+												<% if @seconds <= 86400 %>
+														- <%= @seconds / (60 * 60) %>時間前
+												<% else %>
+													<% if @seconds <= 604800 %>
+														- <%= @seconds / (60 * 60 * 24) %>日前
+													<% else %>
+														- <%= post.created_at.strftime('%m月%d日') %>
+													<% end %>
+												<% end %>
+											<% end %>
+										</div>
+									</div>
+								</a>
+							</div>						
+							<div class="pro32">		
+								<div style="text-align:right;">
+									<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:10px;">
+										<%= image_tag "ellipsis_gray.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
+									</a>			
+								</div>
+							</div>
+						</div>
+						<div class="layer07">
+							<%= link_to "/works/#{post.id}/detail" do %>
+								<% if post.image_url.blank? %>
+									<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_lavoro03' %>
+								<% end %>
+							<% end %>
+							<% if post.category == "music" %>
+								<% if post.preview_url.present? %>
+									<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
+										<i id="icon_play_<%= post.id %>" class="fas fa-play"></i>
+									</div>
+								<% end %>
+							<% end %>
+						</div>
+						<div class="layer02">
+							<div class="font_how">
+								<% if post.review == "bookmark" %>
+									<i class="far fa-bookmark"></i> ブックマーク
+								<% end %>
+								<% if post.review == "good" %>
+									<% if post.category == "movie" || post.category == "tv" %>
+										観ました
+									<% end %>
+									<% if post.category == "book" || post.category == "comic" %>
+										読みました
+									<% end %>
+									<% if post.category == "music" %>
+										聴きました
+									<% end %>
+								<% end %>
+								<% if post.review == "favorite" %>
+									<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+								<% end %>
+								<% if post.review == "bad" %>
+									<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
+								<% end %>
+							</div>
+							<br>
+							<div class="font_head">
+								<%= post.title %>
+							</div>
+							<% if post.description.present? %>
+								<div class="balloon_top"></div>
+								<div class="balloon">
+								  	<%= safe_join(post.description.split("\n"), tag(:br)) %>
+								</div>
+							<% end %>
+						</div>
+						<div class="layer09">
+							<div class="pro19">							
+								<a data-dismiss="modal" id="dismiss_<%= post.id %>">
+									<%= image_tag "close_blue.png", :class =>'img_left02' %>
+								</a>
+							</div>
+						</div>
+					</span>
+				</div>
+			</div>
+		</div>
+		<%#モーダルtubolinks不具合修正%>
+		<script defer>
+			$(function(){
+				var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
+				//モーダルが表示されているのに表示判定されてなかったら
+				if(display_<%= post.id %> === 'block'){
+					//モーダルを表示状態にする
+					$('body').removeClass('modal-open');
+      				$('.modal-backdrop').remove();				
+					$('#myModal_<%= post.id %>').modal('toggle');
+					//クリックでモーダルを閉じる 
+					$('#dismiss_<%= post.id %>').on("click",function(){
+						$('body').removeClass('modal-open');
+					  	$('.modal-backdrop').remove();
+						$('#myModal_<%= post.id %>').modal('hide'); 
+					});
+				}				
+			});
+		</script>
+		<%# 音楽プレビューjs %>
+		<% if post.category == "music" %>
+			<% if post.preview_url.present? %>
+				<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
+					<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
+				</audio>
+				<script defer>						  
+					$(function(){
+				  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
+					  $('#btn_preview_<%= post.id %>').on("click",function(){
+					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
+					     {
+					       $("#icon_play_<%= post.id %>").removeClass('fa-play');
+					       $("#icon_play_<%= post.id %>").addClass('fa-pause');
+					       audio_<%= post.id %>.play();
+					     }
+					    else
+					     {
+					       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+					       $("#icon_play_<%= post.id %>").addClass('fa-play');
+					       audio_<%= post.id %>.pause();
+					     }
+					  });
+					  audio_<%= post.id %>.onended = function() {
+					    $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+					    $("#icon_play_<%= post.id %>").addClass('fa-play');
+					  };
+				  	});				
+			   	</script>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>

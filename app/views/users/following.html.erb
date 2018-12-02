@@ -55,15 +55,14 @@
 	</div>
 </div>
 
-
 <%#プロフィールモーダル用のrender%>
 <div id='following_list_modal'>
   <%= render partial: 'following_list_modal' %>
 </div>
 
 
-
-<script type="text/javascript">
+<%#インクリメンタルサーチjs%>
+<script>
 	$(function(){
 		var
 		preFunc = null,
@@ -77,8 +76,7 @@
 		      data: ("q=" + input)
 		  });
 		};
-
-		$('#inc_search').on('keyup', function() {
+		$('#inc_search').on('input',function(){
 		  input = $.trim($(this).val());   //前後の不要な空白を削除
 		  if(preInput !== input){
 		    clearTimeout(preFunc);
@@ -86,7 +84,6 @@
 		  }
 		  preInput = input;
 		});
-
 		$( '#inc_search' ).keypress( function ( e ) {
 			if ( e.which == 13 ) {
 			// ここに処理を書く

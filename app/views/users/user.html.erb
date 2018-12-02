@@ -50,8 +50,8 @@
 </div>
 
 
-
-<script type="text/javascript">
+<%#インクリメンタルサーチjs%>
+<script>
 	$(function(){
 		var
 		preFunc = null,
@@ -65,7 +65,6 @@
 		      data: ("q=" + input)
 		  });
 		};
-
 		$('#inc_search').keypress(function(e) {
 			input = $(this).val();
 			if ( e.which == 13 ) {

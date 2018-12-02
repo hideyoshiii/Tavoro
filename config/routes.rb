@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
+  get "tavore/index" => "demos#index"
+  get "tavore/posts" => "demos#posts"
+  get "tavore/bookmarks" => "demos#bookmarks"
+  get "tavore/detail" => "demos#detail"
+
   get ":id/posts" => "users#posts"
   get ":id/bookmarks" => "users#bookmarks"
   get 'users/follow_request' => "users#follow_request"
