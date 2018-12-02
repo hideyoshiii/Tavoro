@@ -12,12 +12,12 @@
           <div class="box_tests02">
             <div class="pro09">
               <% if item["largeImageUrl"].blank? %>
-                <%= image_tag "nothing02.jpg", :class =>'img_lavoro03' %>
+                <img data-src="/assets/nothing02.jpg" class="img_lavoro03 lazyload">
               <% else %>
                 <% @image_url = item["largeImageUrl"] %>
                 <% @image_url = @image_url.sub!(/_ex.*/m, "") %>
                 <% @image_url = @image_url.chop! %>
-                <%= image_tag @image_url, :class =>'img_lavoro03' %>
+                <img data-src="<%= @image_url %>" class="img_lavoro03 lazyload">
               <% end %>
             </div>
             <div class="pro10">
@@ -53,12 +53,12 @@
           <div class="box_tests02">
             <div class="pro09">
               <% if item["largeImageUrl"].blank? %>
-                <%= image_tag "nothing02.jpg", :class =>'img_lavoro03' %>
+                <img data-src="/assets/nothing02.jpg" class="img_lavoro03 lazyload">
               <% else %>
                 <% @image_url = item["largeImageUrl"] %>
                 <% @image_url = @image_url.sub!(/_ex.*/m, "") %>
                 <% @image_url = @image_url.chop! %>
-                <%= image_tag @image_url, :class =>'img_lavoro03' %>
+                <img data-src="<%= @image_url %>" class="img_lavoro03 lazyload">
               <% end %>
             </div>
             <div class="pro10">
@@ -81,3 +81,10 @@
     <% end %>
   <% end %>
  <% end %>
+
+ <%#lazyload.js%>
+<script>
+  $(function() {
+    $('img.lazyload').lazyload();
+  });
+</script>

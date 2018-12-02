@@ -55,7 +55,7 @@
 	</div>
 </div>
 
-
+<%#インクリメンタルサーチjs%>
 <script>
 	$(function(){
 		var
@@ -70,7 +70,6 @@
 		      data: ("q=" + input)
 		  });
 		};
-
 		$('#inc_search').keyup(function() {
 		  input = $(this).val();   //前後の不要な空白を削除
 		  if(preInput !== input){
@@ -79,7 +78,6 @@
 		  }
 		  preInput = input;
 		});
-
 		$('#inc_search').keypress(function(e) {
 			if ( e.which == 13 ) {
 			// ここに処理を書く

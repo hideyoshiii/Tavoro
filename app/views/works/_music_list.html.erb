@@ -8,9 +8,10 @@
           <div class="box_tests02">
             <div class="pro09">
               <% if item["artworkUrl100"].blank? %>
-                <%= image_tag "nothing03.jpg", :class =>'img_lavoro03' %>
+                <img data-src="/assets/nothing03.jpg" class="img_lavoro03 lazyload">
               <% else %>
-                <%= image_tag item["artworkUrl100"], :class =>'img_lavoro03' %>
+                <% @image_url = item["artworkUrl100"] %>
+                <img data-src="<%= @image_url %>" class="img_lavoro03 lazyload">
               <% end %>
             </div>
             <div class="pro10">
@@ -42,9 +43,10 @@
           <div class="box_tests02">
             <div class="pro09">
               <% if item["artworkUrl100"].blank? %>
-                <%= image_tag "nothing03.jpg", :class =>'img_lavoro03' %>
+                <img data-src="/assets/nothing03.jpg" class="img_lavoro03 lazyload">
               <% else %>
-                <%= image_tag item["artworkUrl100"], :class =>'img_lavoro03' %>
+                <% @image_url = item["artworkUrl100"] %>
+                <img data-src="<%= @image_url %>" class="img_lavoro03 lazyload">
               <% end %>
             </div>
             <div class="pro10">
@@ -67,3 +69,10 @@
     <% end %>
   <% end %>
 <% end %>
+
+<%#lazyload.js%>
+<script>
+  $(function() {
+    $('img.lazyload').lazyload();
+  });
+</script>
