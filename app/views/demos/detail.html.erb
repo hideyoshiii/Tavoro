@@ -111,8 +111,26 @@
 								<%= @detail03 %>
 							</div>
 						<% end %>
+						<div class="btn_session" style="font-size:14px;margin-top:2vh;color:#f7b733;">
+							Amazonで購入する
+						</div>	
           			</div>
           		</div>
+          		<div style="height:2vh;"></div>
+          		<div style="font-size:18px;padding-left:15px;">
+          			Overview
+          		</div>
+          		<div style="height:1vh;"></div>
+				<div class="font_white" style="color:#b4b4b4;text-align:left;padding: 0px 30px;">
+					<% if @detail04.present?  %>
+						<%= @detail04 %>				
+					<% end %>
+					<% if @detail05.present?  %>
+						<div style="font-size:12px;color:#999999;text-align:right;">
+							提供 : <%= @detail05 %>
+						</div>
+					<% end %>
+				</div>
           		<div style="height:2vh;"></div>
           		<div style="font-size:18px;padding-left:15px;">
           			Comments
@@ -223,15 +241,6 @@
 						  	<% end %>
 						 </div>
 					</div>	
-				</div>	
-				<div style="height:3vh;"></div>
-          		<div style="height:3vh;"></div>
-          		<div style="font-size:18px;padding-left:15px;">
-          			Reccomends
-          		</div>
-          		<div style="height:3vh;"></div>
-				<div class="btn_session" style="text-align:left;margin-left:30px;color:#f7b733;">
-					Amazonで購入する
 				</div>	
 				<div style="height:20vh;"></div>
           	</div>

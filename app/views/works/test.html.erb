@@ -2,6 +2,21 @@
 	<div class="block_side">
 	</div>
 	<div class="block_main">
+		<div style="height:50px;"></div>
+		<div style="height:40px;"></div>
+		<div style="font-size:20px;">
+			<% if @items01.present? %>
+				<% @items01.each do |item| %>
+					<%= item["title"] %><br>					
+				<% end %>			
+			<% end %>
+			<hr>
+			<% if @items02.present? %>
+				<% @items02.each do |item| %>
+					<%= item["title"] %><br>					
+				<% end %>			
+			<% end %>
+		</div>
 		
 	</div>
 	<div class="block_side">

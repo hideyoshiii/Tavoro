@@ -36,10 +36,14 @@ class DemosController < ApplicationController
 	  		@detail02 = "上映時間 : " + @detail02.to_s + "分"
 	  		@detail03 = Tmdb::Movie.director(@post.work_id).first["name"]
 	  		@detail03 = "監督 : " + @detail03
+	  		@detail04 = @item["overview"]
+	  		@detail05 = "TheMovieDB"
 	  	end
 	  	if @post.category == "tv"
 	  		@item = Tmdb::TV.detail(@post.work_id)
 	  		@detail01 = @item["last_episode_to_air"]["air_date"].slice(0..3)
+	  		@detail04 = @item["overview"]
+	  		@detail05 = "TheMovieDB"
 	  	end
 	  	if @post.category == "book"
 	  		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
@@ -49,6 +53,8 @@ class DemosController < ApplicationController
 	  		@detail01 = @item["salesDate"].slice(0..3)
 	  		@detail02 = @item["author"]
 	  		@detail02 = "著者 : " + @detail02
+	  		@detail04 = @item["itemCaption"]
+	  		@detail05 = "楽天books"
 	  	end
 	  	if @post.category == "comic"
 	  		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
@@ -58,6 +64,8 @@ class DemosController < ApplicationController
 	  		@detail01 = @item["salesDate"].slice(0..3)
 	  		@detail02 = @item["author"]
 	  		@detail02 = "著者 : " + @detail02
+	  		@detail04 = @item["itemCaption"]
+	  		@detail05 = "楽天books"
 	  	end
 	  	if @post.category == "music"
 	  		@items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
@@ -69,6 +77,8 @@ class DemosController < ApplicationController
 	  		@detail02 = "アーティスト : " + @detail02
 	  		@detail03 = @item["collectionName"]
 	  		@detail03 = "アルバム : " + @detail03
+	  		@detail04 = @item["primaryGenreName"]
+	  		@detail05 = "iTunes"
 	  	end
   	end
 

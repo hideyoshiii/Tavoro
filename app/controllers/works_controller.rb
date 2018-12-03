@@ -3,6 +3,8 @@ class WorksController < ApplicationController
 
 
   def test
+    @items01 = RakutenWebService::Kobo::Ebook.search(title: "D.Gray-man")
+    @items02 = RakutenWebService::Books::Book.search(title: "D.Gray-man")
   end
 
   def index
