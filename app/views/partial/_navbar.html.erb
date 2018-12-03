@@ -3,7 +3,7 @@
     <div style="float:left;">
       <%= link_to root_path do %>
       <div style="padding:12px 5px 0px 10px;color:rgba(39,134,160,0.8);font-size:20px;">
-        TAVORE <%= image_tag "alpha.png", :style =>'width:10px;height:10px;margin:2px 0px 0px -3px;' %>
+        TAVORE
       </div>
       <% end %>
     </div>
@@ -37,6 +37,24 @@
         <%= link_to "/users/user" do %>
           <%= image_tag "search_gray.png", :style =>'width:24px;height:24px;' %>
         <% end %>
+      </div>
+      <div class="visible-md visible-lg">
+        <div style="float:right;padding:17px 5px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
+          /
+        </div>
+        <div style="float:right;padding:17px 5px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
+          <a href="/policy">
+            プライバシーポリシー 
+          </a>
+        </div>
+        <div style="float:right;padding:17px 5px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
+          /
+        </div>
+        <div style="float:right;padding:17px 5px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
+          <a href="/contact">
+            お問い合わせ
+          </a>
+        </div>
       </div>
     <% else %>
       <div style="float:right;padding:17px 10px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
