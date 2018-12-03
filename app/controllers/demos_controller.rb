@@ -1,46 +1,11 @@
 class DemosController < ApplicationController
 
-	def index
-      @user  = User.find_by(username: "hideyoshi")
-      @users = @user.followings
-      @posts = []
-      @posts_mine = Post.where(user_id: @user.id).order(created_at: "DESC")
-      @posts_mine = @posts_mine.where.not(review: "bookmark")
-      #もしカテゴリー指定がなければ
-      if params[:category].blank?
-        @category = "all"
-        @posts.concat(@posts_mine)
-        if @users.present?
-          @users.each do |user|
-              posts = Post.where(user_id: user.id)
-              posts = posts.where.not(review: "bookmark")
-              #取得したユーザーの投稿一覧を@postsに格納
-              @posts.concat(posts)
-          end  
-        end
-      else
-        @category = params[:category]
-        @posts_mine = @posts_mine.where(category: @category)
-        @posts.concat(@posts_mine)
-        if @users.present?
-          @users.each do |user|
-              posts = Post.where(user_id: user.id)
-              posts = posts.where.not(review: "bookmark")
-              posts = posts.where(category: @category)
-              #取得したユーザーの投稿一覧を@postsに格納
-              @posts.concat(posts)
-          end  
-        end
-      end
-      #@postsを新しい順に並べたい
-      @posts.sort_by!{|post| post.created_at}.reverse!
-      @posts = @posts.take(25)
-  	end
-
+	
   	def detail
-	  	@post = Post.find(99)
+	  	@post = Post.find(params[:id])
 
 	  	@user  = User.find_by(username: "hideyoshi")
+	  	@current_user = @user
 	  	@users = @user.followings
 	  	@comments = []
 	    @comments_mine = Post.where(user_id: @user.id, work_id: @post.work_id).order('id DESC')
@@ -109,6 +74,7 @@ class DemosController < ApplicationController
 
   	def posts
 		@user  = User.find_by(username: "hideyoshi")
+		@current_user = @user
 	    if @user
 	      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
 	      @checkeds_i = @alls.where.not(review: "bookmark").size
@@ -127,22 +93,6 @@ class DemosController < ApplicationController
 	      end
 	    end
 	end
-
-	def bookmarks
-	    @user  = User.find_by(username: "hideyoshi")
-	    if @user
-	      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
-	      @checkeds_i = @alls.where.not(review: "bookmark").size
-	      @bookmarks_i = @alls.where(review: "bookmark").size
-
-	      @all = @alls.where(review: "bookmark")
-	      @movie = @all.where(category: "movie")
-	      @tv = @all.where(category: "tv")
-	      @book = @all.where(category: "book")
-	      @comic = @all.where(category: "comic")
-	      @music = @all.where(category: "music")
-	    end
-	  end
 
 
 end

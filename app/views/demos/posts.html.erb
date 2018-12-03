@@ -16,16 +16,10 @@
 		</div>
 		<div class="pro30">
 			<div style="width:100%;text-align:right;"> 	
-				<div class="btn_on" style="display:inline-block;vertical-align:middle;">
+				<div class="btn_on" style="display:inline-block;vertical-align:middle;margin-right:10px;">
 					<%= image_tag "checked_white.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
-					<span style="color:#c2c2c2;"><%= @checkeds_i %></span> 
-				</div>
-				<%= link_to "/#{@user.username}/bookmarks" do %>
-					<div class="btn_off" style="display:inline-block;vertical-align:middle;margin-right:10px;">
-						<%= image_tag "bookmark_white.png", :style =>'width:12px;height:12px;margin-top:-2px;' %>
-						<span style="color:#c2c2c2;"><%= @bookmarks_i %></span>
-					</div>		
-				<% end %>		
+					<span style="color:#c2c2c2;"><%= @checkeds_i %></span>  checked
+				</div>	
 			</div>  
 		</div>
 	</div>		      
@@ -109,7 +103,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -155,7 +149,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -187,7 +181,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -219,7 +213,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="nothing02.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing02.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -251,7 +245,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">			
 										<% if post.image_url.blank? %>
-											<img data-src="nothing02.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing02.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -283,7 +277,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="nothing03.jpg" class="img_myboom swiper-lazy">
+											<img data-src="assets/nothing03.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>									
@@ -318,7 +312,7 @@
 			<div class="modal-dialog">
 				<div class="base01">
 					<% if post.image_url.blank? %>
-						<img data-src="nothing01.jpg" class="img_myboom lazyload_modal_<%= post.id %>">
+						<img data-src="assets/nothing01.jpg" class="img_myboom lazyload_modal_<%= post.id %>">
 					<% else %>					
 						<img  data-src="<%= post.image_url %>" class="img_myboom lazyload_modal_<%= post.id %>">
 					<% end %>
@@ -381,9 +375,9 @@
 							</div>
 						</div>
 						<div class="layer07">
-							<%= link_to "/works/#{post.id}/detail" do %>
+							<%= link_to "/tavore/#{post.id}/detail" do %>
 								<% if post.image_url.blank? %>
-									<img data-src="nothing01.jpg" class="img_lavoro03 lazyload_modal_<%= post.id %>">
+									<img data-src="assets/nothing01.jpg" class="img_lavoro03 lazyload_modal_<%= post.id %>">
 								<% else %>
 									<img  data-src="<%= post.image_url %>" class="img_lavoro03 lazyload_modal_<%= post.id %>">
 								<% end %>
@@ -397,7 +391,7 @@
 							<% end %>
 						</div>
 						<div class="layer02">
-							<%= link_to "/works/#{post.id}/detail" do %>
+							<%= link_to "/tavore/#{post.id}/detail" do %>
 								<div class="font_how">
 									<% if post.review == "bookmark" %>
 										<i class="far fa-bookmark"></i> ブックマーク
@@ -441,6 +435,43 @@
 					</span>
 				</div>
 			</div>
+		</div>
+		<%# ハーフモーダル %>
+		<div data-pushbar-id="mypushbar_<%= post.id %>" class="pushbar from_bottom">
+			<div class="bar_pushbar"></div>	
+			<% unless post.user.id == @current_user.id %>
+				<span id="bookmark-of-<%= post.id %>">
+			      	<%= render partial: 'works/bookmark', locals: { post: post } %>
+			    </span>
+				<%= link_to "/works/#{post.id}/copy" do %>
+					<div class="btn_pushbar_item">  
+						<%= image_tag "add_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
+					</div>	
+				<% end %>									
+			<% end %>
+			<% if post.user.id == @current_user.id %>
+				<span id="favorite-of-<%= post.id %>">
+			      	<%= render partial: 'works/favorite', locals: { post: post } %>
+			    </span>		
+				<span id="list-of-<%= post.id %>">
+			      	<%= render partial: 'works/list', locals: { post: post } %>
+			    </span>			
+				<%= link_to "/works/#{post.id}/edit" do %>
+					<div class="btn_pushbar_item">  
+						<%= image_tag "edit_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
+					</div>
+				<% end %>					
+				<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+					<div class="btn_pushbar_item" style="color:#FB473E;">  
+						<%= image_tag "trash_red.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を削除する
+					</div>	
+				<% end %>				
+			<% end %>	
+		    <a data-pushbar-close>
+				<div class="btn_pushbar_close">  
+					<%= image_tag "ban_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル  
+				</div>
+		  	</a>
 		</div>
 		<script>
 			$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
@@ -500,8 +531,13 @@
 	<% end %>
 <% end %>
 
+
+<%#プロフィールモーダル%>
+<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
+
 <%#投稿ボタン%>
 <%= render "partial/post_modal" %>
+
 
 <%#タブ切り替え%>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
@@ -547,6 +583,44 @@
     })
 });
 </script>
+
+
+<%#hammer.js%>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
+<%#ハーフモーダル%>
+<script defer>
+  $(function(){
+  	//overlayを削除
+  	if ($('div').hasClass("pushbar_overlay")) {
+	  var Back = document.querySelector('html');
+	  Back.classList.remove('pushbar_locked');
+	  Back.removeAttribute('pushbar');
+	}
+	//ハーフモーダルを削除
+	if ($('.opened').hasClass("opened")) {
+	  var Bar = document.querySelector('.opened');
+	  Bar.classList.remove('opened');
+	}
+  	//ハーフモーダル生成
+  	var pushbar = new Pushbar({
+        overlay:true,
+    });
+  	//開いているとき
+    $('body').on("pushbar_opening", function(){
+		//スワイプ方向定義
+	    var hammertime = new Hammer(document.body);
+		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+	  	//スワイプイベント登録
+	  	hammertime.on('swipedown', function(){
+		    pushbar.close();	
+		});
+	});
+	//閉じているとき
+	$('body').on("pushbar_closing", function(){
+	});
+  });
+</script>
+
 
 <%#lazyload.js%>
 <script>
