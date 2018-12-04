@@ -314,7 +314,7 @@
 <%#モーダルの中身%>
 <% if @all.present? %>
 	<% @all.each.with_index do |post, i| %>
-		<div class="modal fade" id="myModal_<%= post.id %>">
+		<div class="modal scale fade" id="myModal_<%= post.id %>">
 			<div class="modal-dialog">
 				<div class="base01">
 					<% if post.image_url.blank? %>
@@ -479,6 +479,7 @@
 				</div>
 		  	</a>
 		</div>
+		<%#lazyload.js%>
 		<script>
 			$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
 		    	$('img.lazyload_modal_<%= post.id %>').lazyload();
@@ -539,10 +540,10 @@
 
 
 <%#プロフィールモーダル%>
-<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
+<%= render partial: 'partial/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
 
 <%#投稿ボタン%>
-<%= render "partial/post_modal" %>
+<%= render "partial/modal_post" %>
 
 
 <%#タブ切り替え%>

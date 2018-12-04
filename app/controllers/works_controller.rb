@@ -3,8 +3,8 @@ class WorksController < ApplicationController
 
 
   def test
-    @items01 = RakutenWebService::Kobo::Ebook.search(title: "D.Gray-man")
-    @items02 = RakutenWebService::Books::Book.search(title: "D.Gray-man")
+    @items01 = ITunesSearchAPI.search(:term => "坂本ですが", :country => "jp", :media => "ebook", :limit  => '100')
+    @items02 = RakutenWebService::Books::Book.search(title: "坂本ですが")
   end
 
   def index
@@ -152,70 +152,101 @@ class WorksController < ApplicationController
 
   def detail
   	@post = Post.find(params[:id])
-
   	@users = current_user.followings
-  	@comments = []
-    @comments_mine = Post.where(user_id: current_user.id, work_id: @post.work_id).order('id DESC')
-    @comments.concat(@comments_mine)
+  	@posts_other = []
+    @posts_other_mine = Post.where(user_id: current_user.id, work_id: @post.work_id).order('id DESC')
+    @posts_other.concat(@posts_other_mine)
 
   	if @users.present?
         @users.each do |user|
-        	unless user == @post.user
-          		comments = Post.where(user_id: user.id, work_id: @post.work_id).order(created_at: :desc)
-          		#取得したユーザーの投稿一覧を@postsに格納
-	          	@comments.concat(comments)
-	        end
+      		posts_other = Post.where(user_id: user.id, work_id: @post.work_id).order(created_at: :desc)
+        	@posts_other.concat(posts_other)
         end
-        #@postsを新しい順に並べたい
-        @comments.sort_by!{|post| post.created_at}.reverse!
+        @posts_other.sort_by!{|post| post.created_at}.reverse!
     end
 
-    if current_user == @post.user
-      @comments_all = @comments
-    else
-      @comments_all = @comments.push(@post)
-    end
+    @posts_reccomend = Post.where(user_id: @post.user.id, category: @post.category)
+    @posts_reccomend = @posts_reccomend.where.not(id: @post.id)
+    @posts_reccomend = @posts_reccomend.order("RANDOM()").limit(6)
 
   	if @post.category == "movie"
   		@item = Tmdb::Movie.detail(@post.work_id)
-  		@detail01 = @item["release_date"].slice(0..3)
-  		@detail02 = @item["runtime"]
-  		@detail02 = "上映時間 : " + @detail02.to_s + "分"
-  		@detail03 = Tmdb::Movie.director(@post.work_id).first["name"]
-  		@detail03 = "監督 : " + @detail03
+      if @item.present?
+    		@detail01 = @item["release_date"].slice(0..3)
+    		@detail02 = @item["runtime"]
+        if @detail02.present?
+    		  @detail02 = "上映時間 : " + @detail02.to_s + "分"
+        end
+    		@detail03 = Tmdb::Movie.director(@post.work_id).first["name"]
+        if @detail03.present?
+    		  @detail03 = "監督 : " + @detail03
+        end
+      end
   	end
+
   	if @post.category == "tv"
   		@item = Tmdb::TV.detail(@post.work_id)
-  		@detail01 = @item["last_episode_to_air"]["air_date"].slice(0..3)
+      if @item.present?
+  		  @detail01 = @item["first_air_date"].slice(0..3)
+        if @item["genres"].present?
+          @detail02 = @item["genres"][0]["name"]
+          if @detail02.present?
+            @detail02 = "ジャンル : " + @detail02
+          end
+        end
+        if @item["created_by"].present?
+          @detail03 = @item["created_by"][0]["name"]
+          if @detail03.present?
+            @detail03 = "制作 : " + @detail03
+          end
+        end
+      end
   	end
+
   	if @post.category == "book"
   		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
 	  	if @items.present?
-			@item = @items.first
-		end
-  		@detail01 = @item["salesDate"].slice(0..3)
-  		@detail02 = @item["author"]
-  		@detail02 = "著者 : " + @detail02
+  			@item = @items.first
+        if @item.present?
+          @detail01 = @item["salesDate"].slice(0..3)
+          @detail02 = @item["author"]
+          if @detail02.present?
+            @detail02 = "著者 : " + @detail02
+          end
+        end
+		  end
   	end
+
   	if @post.category == "comic"
   		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
 	  	if @items.present?
-			@item = @items.first
-		end
-  		@detail01 = @item["salesDate"].slice(0..3)
-  		@detail02 = @item["author"]
-  		@detail02 = "著者 : " + @detail02
+  			@item = @items.first
+        if @item.present?
+          @detail01 = @item["salesDate"].slice(0..3)
+          @detail02 = @item["author"]
+          if @detail02.present?
+            @detail02 = "著者 : " + @detail02
+          end
+        end
+  		end
   	end
+
   	if @post.category == "music"
   		@items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
 	  	if @items.present?
-			@item = @items.first
-		end
-  		@detail01 = @item["releaseDate"].slice(0..3)
-  		@detail02 = @item["artistName"]
-  		@detail02 = "アーティスト : " + @detail02
-  		@detail03 = @item["collectionName"]
-  		@detail03 = "アルバム : " + @detail03
+			  @item = @items.first
+        if @item.present?
+          @detail01 = @item["releaseDate"].slice(0..3)
+          @detail02 = @item["artistName"]
+          if @detail02.present?
+            @detail02 = "アーティスト : " + @detail02
+          end
+          @detail03 = @item["collectionName"]
+          if @detail03.present?
+            @detail03 = "アルバム : " + @detail03
+          end
+        end
+		  end
   	end
 
   end

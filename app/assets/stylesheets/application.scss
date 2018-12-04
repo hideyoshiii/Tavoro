@@ -318,8 +318,8 @@ a:visited{
 	object-fit: cover;
 }
 .img_user12{
-	width: 50px;
-	height: 50px;
+	width: 45px;
+	height: 45px;
 	padding:0;
 	margin:0;
 	border-radius:50%;
@@ -986,13 +986,23 @@ button {
 }
 .card02 {
     border-radius:2px;
-    background: -webkit-linear-gradient(-450deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5));
+    background: -webkit-linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5));
     background: linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5)); 
     width:160px;
     height:220px;
     padding:10px;
     text-align:center;
     overflow:hidden;
+}
+.card03 {
+	position: relative;
+    background: -webkit-linear-gradient(-45deg, rgba(17,17,17,0.4), rgba(5,98,123,0.4));
+    background: linear-gradient(-45deg, rgba(17,17,17,0.4), rgba(5,98,123,0.4)); 
+    width:90%;
+    height:auto;
+    padding:15px;
+    margin:0 auto;
+    border-radius:2px;
 }
 
 
@@ -1827,39 +1837,52 @@ button {
 
 //モーダル関連
 .modal{
-		height:100%;
-	}
+	height:100%;
+}
 .modal-dialog{
 	width:35%;
 	height:100%;
 	margin-top:0;
 	padding-top:0;
 }
-.modal.fade {
-  transition-duration: 0.3s;
+.modal.bottom.fade {
+  transition-duration: 0.35s;
 }
-.modal.in {
-  transition-duration: 0.3s;
+.modal.bottom.in {
+  transition-duration: 0.35s;
 }
-.modal.fade .modal-dialog {
-    -webkit-transform: scale(0.1);
-    -moz-transform: scale(0.1);
-    -ms-transform: scale(0.1);
-    transform: scale(0.1);
-    top: 300px;
-    opacity: 0;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
+.modal.top.fade {
+  transition-duration: 0.4s;
 }
-.modal.fade.in .modal-dialog {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
+.modal.top.in {
+  transition-duration: 0.4s;
+}
+.modal.scale.fade {
+  transition-duration: 0.1s;
+}
+.modal.scale.in {
+  transition-duration: 0.1s;
+}
+.modal.bottom.fade .modal-dialog {
+ 	transform: translate3d(0, 25%, 0);
+ 	transition: all 0.35s;
+}
+.modal.bottom.fade.in .modal-dialog {
+    transform: translate3d(0, 0, 0);
+}
+.modal.top.fade .modal-dialog {
+ 	transform: translate3d(0, -25%, 0);
+ 	transition: all 0.4s;
+}
+.modal.top.fade.in .modal-dialog {
+    transform: translate3d(0, 0, 0);
+}
+.modal.scale.fade .modal-dialog {
+    transform: scale(0);
+    transition: all 0.35s;
+}
+.modal.scale.fade.in .modal-dialog {
     transform: scale(1);
-    -webkit-transform: translate3d(0, -300px, 0);
-    transform: translate3d(0, -300px, 0);
-    opacity: 1;
 }
 //iPadヨコ
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
@@ -1920,6 +1943,29 @@ button {
     border-radius:3px;
   }
 .test_radio_right span {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  height:25%;
+  margin:0;
+  padding:0px 5px;
+  z-index:3;
+  box-shadow: 0 -3px 5px 5px rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.7);
+  overflow:hidden;
+  word-wrap:break-word;
+  }
+.grid_posts {
+  	position: relative;
+	height:210px;
+	width:140px;
+	padding:0;
+    margin:0;
+    overflow:hidden;
+    border-radius:3px;
+  }
+.grid_posts span {
   position: absolute;
   bottom: 0%;
   left: 0%;

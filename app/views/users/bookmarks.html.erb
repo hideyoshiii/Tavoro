@@ -266,7 +266,7 @@
 <%#モーダルの中身%>
 <% if @all.present? %>
 	<% @all.each.with_index do |post, i| %>
-		<div class="modal fade" id="myModal_<%= post.id %>">
+		<div class="modal scale fade" id="myModal_<%= post.id %>">
 			<div class="modal-dialog">
 				<div class="base01">
 					<% if post.image_url.blank? %>
@@ -431,13 +431,14 @@
 				</div>
 		  	</a>
 		</div>
-		<script type="text/javascript">
+		<%#lazyload.js%>
+		<script>
 			$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
 		    	$('img.lazyload_modal_<%= post.id %>').lazyload();
 		    });      
 		</script>
 		<%#モーダルtubolinks不具合修正%>
-		<script type="text/javascript">
+		<script defer>
 			$(function(){
 				var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
 				//モーダルが表示されているのに表示判定されてなかったら
@@ -461,7 +462,7 @@
 				<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
 					<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
 				</audio>
-				<script type="text/javascript" defer>						  
+				<script defer>	  
 					$(function(){
 				  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
 					  $('#btn_preview_<%= post.id %>').on("click",function(){
@@ -491,15 +492,15 @@
 
 
 <%#プロフィールモーダル%>
-<%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
+<%= render partial: 'partial/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
 
 <%#投稿ボタン%>
-<%= render "partial/post_modal" %>
+<%= render "partial/modal_post" %>
 
 
 <%#タブ切り替え%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
-<script type="text/javascript">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+<script defer>
 	$(function(){
     //タブボタンの数を取得
     var tabQuantity = $('.tab__button').length;
@@ -544,9 +545,9 @@
 
 
 <%#hammer.js%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 <%#ハーフモーダル%>
-<script type="text/javascript">
+<script defer>
   $(function(){
   	//overlayを削除
   	if ($('div').hasClass("pushbar_overlay")) {
@@ -580,7 +581,7 @@
 </script>
 
 <%#lazyload.js%>
-<script type="text/javascript">
+<script>
 	$(function() {
     	$('img.lazyload_min').lazyload();
 	});

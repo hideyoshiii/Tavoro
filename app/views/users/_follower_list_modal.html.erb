@@ -5,7 +5,7 @@
 		        <% @user = user %>
 	  			<% @checkeds_i = Post.where(user_id: user.id).where.not(review: "bookmark").size %>
 	  			<% @bookmarks_i = Post.where(user_id: user.id, review: "bookmark").size %>
-		        <%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>	
+		        <%= render partial: 'partial/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>	
 	        <% end %>
 	  	<% end %>
 	<% end %>
@@ -16,7 +16,7 @@
 		        <% @user = user %>
 	  			<% @checkeds_i = Post.where(user_id: user.id).where.not(review: "bookmark").size %>
 	  			<% @bookmarks_i = Post.where(user_id: user.id, review: "bookmark").size %>
-		        <%= render partial: 'users/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>	
+		        <%= render partial: 'partial/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>	
 	        <% end %>
 	  	<% end %>
 	<% end %>

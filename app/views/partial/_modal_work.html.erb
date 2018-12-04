@@ -1,0 +1,128 @@
+<div class="modal scale fade" id="myModal_<%= post.id %>">
+	<div class="modal-dialog">
+		<div class="base01">
+			<% if post.image_url.blank? %>
+				<img data-src="assets/nothing01.jpg" class="img_myboom lazyload_modal_<%= post.id %>">
+			<% else %>					
+				<img  data-src="<%= post.image_url %>" class="img_myboom lazyload_modal_<%= post.id %>">
+			<% end %>
+			<span>
+				<div class="layer05">
+				</div>
+				<div class="layer03">
+					<div class="pro31">
+						<a href="" data-toggle="modal" data-target="#myModal_profile_<%= post.user.id %>">
+							<div class="inline_block_default">
+								<%= image_tag post.user.image(:medium), :class => "img_user04" %>
+							</div>
+							<div class="inline_block_default">
+								<div class="font_white" style="word-wrap:break-word;">
+									<%= post.user.name %>
+									<% if post.user.authority == "public" %>
+				                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+				                    <% end %>
+								</div>
+								<div class="font_gray_min" style="word-wrap:break-word;">
+									<% if post.category == "movie" %>
+										<%= image_tag "movie_gray.png", :class =>'icon_category' %> 映画
+									<% end %>
+									<% if post.category == "tv" %>
+										<%= image_tag "movie_gray.png", :class =>'icon_category' %> テレビ
+									<% end %>
+									<% if post.category == "book" %>
+										<%= image_tag "book_gray.png", :class =>'icon_category' %> ブック
+									<% end %>
+									<% if post.category == "comic" %>
+										<%= image_tag "book_gray.png", :class =>'icon_category' %> コミック
+									<% end %>
+									<% if post.category == "music" %>
+										<%= image_tag "music_gray.png", :class =>'icon_category' %> ミュージック
+									<% end %>
+									<% @seconds = (Time.now - post.created_at).round  %>
+									<% if @seconds <= 3600 %>
+										- <%= @seconds / 60 %>分前
+									<% else %>
+										<% if @seconds <= 86400 %>
+												- <%= @seconds / (60 * 60) %>時間前
+										<% else %>
+											<% if @seconds <= 604800 %>
+												- <%= @seconds / (60 * 60 * 24) %>日前
+											<% else %>
+												- <%= post.created_at.strftime('%m月%d日') %>
+											<% end %>
+										<% end %>
+									<% end %>
+								</div>
+							</div>
+						</a>
+					</div>						
+					<div class="pro32">		
+						<div style="text-align:right;">
+							<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:10px;">
+								<%= image_tag "ellipsis_gray.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
+							</a>			
+						</div>
+					</div>
+				</div>
+				<div class="layer07">
+					<%= link_to "/works/#{post.id}/detail" do %>
+						<% if post.image_url.blank? %>
+							<img data-src="assets/nothing01.jpg" class="img_lavoro03 lazyload_modal_<%= post.id %>">
+						<% else %>
+							<img  data-src="<%= post.image_url %>" class="img_lavoro03 lazyload_modal_<%= post.id %>">
+						<% end %>
+					<% end %>
+					<% if post.category == "music" %>
+						<% if post.preview_url.present? %>
+							<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
+								<i id="icon_play_<%= post.id %>" class="fas fa-play"></i>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
+				<div class="layer02">
+					<%= link_to "/works/#{post.id}/detail" do %>
+						<div class="font_how">
+							<% if post.review == "bookmark" %>
+								<i class="far fa-bookmark"></i> ブックマーク
+							<% end %>
+							<% if post.review == "good" %>
+								<% if post.category == "movie" || post.category == "tv" %>
+									観ました
+								<% end %>
+								<% if post.category == "book" || post.category == "comic" %>
+									読みました
+								<% end %>
+								<% if post.category == "music" %>
+									聴きました
+								<% end %>
+							<% end %>
+							<% if post.review == "favorite" %>
+								<i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめしています
+							<% end %>
+							<% if post.review == "bad" %>
+								<i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしていません
+							<% end %>
+						</div>
+						<div class="font_head">
+							<%= post.title %>
+						</div>
+					<% end %>
+					<% if post.description.present? %>
+						<div class="balloon_top"></div>
+						<div class="balloon">
+						  	<%= safe_join(post.description.split("\n"), tag(:br)) %>
+						</div>
+					<% end %>
+				</div>
+				<div class="layer09">
+					<div class="pro19">							
+						<a data-dismiss="modal" id="dismiss_<%= post.id %>">
+							<%= image_tag "close_blue.png", :class =>'img_left02' %>
+						</a>
+					</div>
+				</div>
+			</span>
+		</div>
+	</div>
+</div>
