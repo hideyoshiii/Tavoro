@@ -243,6 +243,77 @@ a:visited{
 
 
 
+//モーダル関連
+.modal{
+	height:100%;
+}
+.modal-dialog{
+	width:35%;
+	height:100%;
+	margin-top:0;
+	padding-top:0;
+}
+.modal.bottom.fade {
+  transition-duration: 0.35s;
+}
+.modal.bottom.in {
+  transition-duration: 0.35s;
+}
+.modal.top.fade {
+  transition-duration: 0.4s;
+}
+.modal.top.in {
+  transition-duration: 0.4s;
+}
+.modal.scale.fade {
+  transition-duration: 0.1s;
+}
+.modal.scale.in {
+  transition-duration: 0.1s;
+}
+.modal.bottom.fade .modal-dialog {
+ 	transform: translate3d(0, 25%, 0);
+ 	transition: all 0.35s;
+}
+.modal.bottom.fade.in .modal-dialog {
+    transform: translate3d(0, 0, 0);
+}
+.modal.top.fade .modal-dialog {
+ 	transform: translate3d(0, -25%, 0);
+ 	transition: all 0.4s;
+}
+.modal.top.fade.in .modal-dialog {
+    transform: translate3d(0, 0, 0);
+}
+.modal.scale.fade .modal-dialog {
+    transform: scale(0);
+    transition: all 0.3s;
+}
+.modal.scale.fade.in .modal-dialog {
+    transform: scale(1);
+}
+//iPadヨコ
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+	.modal-dialog{
+		width:40%;
+	}
+}
+//iPadタテ
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+	.modal-dialog{
+		width:70%;
+	}
+}
+//iPhoneタテ
+@media only screen and (max-width: 767px) {
+	.modal-dialog{
+		width:100%;
+		margin:0;
+		padding:0;
+	}
+}
+
+
 
 //画像関連
 .img_myboom{
@@ -996,8 +1067,8 @@ button {
 }
 .card03 {
 	position: relative;
-    background: -webkit-linear-gradient(-45deg, rgba(17,17,17,0.4), rgba(5,98,123,0.4));
-    background: linear-gradient(-45deg, rgba(17,17,17,0.4), rgba(5,98,123,0.4)); 
+    background: -webkit-linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5));
+    background: linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5)); 
     width:90%;
     height:auto;
     padding:15px;
@@ -1832,79 +1903,6 @@ button {
 	    font-size:13px;
 	}
 }
-
-
-
-//モーダル関連
-.modal{
-	height:100%;
-}
-.modal-dialog{
-	width:35%;
-	height:100%;
-	margin-top:0;
-	padding-top:0;
-}
-.modal.bottom.fade {
-  transition-duration: 0.35s;
-}
-.modal.bottom.in {
-  transition-duration: 0.35s;
-}
-.modal.top.fade {
-  transition-duration: 0.4s;
-}
-.modal.top.in {
-  transition-duration: 0.4s;
-}
-.modal.scale.fade {
-  transition-duration: 0.1s;
-}
-.modal.scale.in {
-  transition-duration: 0.1s;
-}
-.modal.bottom.fade .modal-dialog {
- 	transform: translate3d(0, 25%, 0);
- 	transition: all 0.35s;
-}
-.modal.bottom.fade.in .modal-dialog {
-    transform: translate3d(0, 0, 0);
-}
-.modal.top.fade .modal-dialog {
- 	transform: translate3d(0, -25%, 0);
- 	transition: all 0.4s;
-}
-.modal.top.fade.in .modal-dialog {
-    transform: translate3d(0, 0, 0);
-}
-.modal.scale.fade .modal-dialog {
-    transform: scale(0);
-    transition: all 0.35s;
-}
-.modal.scale.fade.in .modal-dialog {
-    transform: scale(1);
-}
-//iPadヨコ
-@media only screen and (max-width: 1024px) and (orientation: landscape) {
-	.modal-dialog{
-		width:40%;
-	}
-}
-//iPadタテ
-@media only screen and (max-width: 1024px) and (orientation: portrait) {
-	.modal-dialog{
-		width:70%;
-	}
-}
-//iPhoneタテ
-@media only screen and (max-width: 767px) {
-	.modal-dialog{
-		width:100%;
-		margin:0;
-		padding:0;
-	}
-}
-
 
 
 //コレクション画像グリッド
