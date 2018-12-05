@@ -10,25 +10,25 @@
   </div>
   <div class="bar_top_in02">
     <% if user_signed_in? %>
-      <div style="float:right;padding:12px 12px 0px 0px;">
+      <div style="float:right;padding:12px 10px 0px 0px;">
         <a href="" data-toggle="modal" data-target="#myModal_dashbord">
             <%= image_tag "user09.png", :style =>'width:28px;height:28px;' %>
         </a>
       </div>
       <% if Notification.where(user_id: current_user.id,read: false).size >= 1 %>
-        <div style="float:right;padding:13px 12px 0px 0px;">
+        <div style="float:right;padding:13px 10px 0px 0px;">
           <%= link_to notification_path do %>
             <%= image_tag "bell_red.png", :style =>'width:24px;height:24px;' %>
           <% end %>
         </div>
       <% else %>
-        <div style="float:right;padding:13px 12px 0px 0px;">
+        <div style="float:right;padding:13px 10px 0px 0px;">
           <%= link_to notification_path do %>
             <%= image_tag "bell_gray.png", :style =>'width:24px;height:24px;' %>
           <% end %>
         </div>
       <% end %>
-      <div style="float:right;padding:13px 12px 0px 0px;">
+      <div style="float:right;padding:13px 10px 0px 0px;">
         <%= link_to "/users/user" do %>
           <%= image_tag "search_gray.png", :style =>'width:24px;height:24px;' %>
         <% end %>
