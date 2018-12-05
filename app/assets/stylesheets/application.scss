@@ -315,6 +315,29 @@ a:visited{
 
 
 
+//ハーフモーダル関連
+.btn_half_close{
+	width:100%;
+	height:auto;
+    padding: 30px 0;
+    margin:0;
+    color: #FAFAFA;
+    background: rgba(0,0,0,1);
+    font-size:16px;
+}
+.btn_half_item{
+	width:100%;
+	height:auto;
+    padding:0;
+    margin:0;
+    color: #FAFAFA;
+    font-size:16px;
+    text-align:left;
+    opacity:0.9;
+}
+
+
+
 //画像関連
 .img_myboom{
 	width:102%;
@@ -2216,6 +2239,17 @@ video {
   z-index:2;
   text-align:center;
   }
+.a1 > .a13 {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width:100%;
+  height:auto;
+  padding:0;
+  margin:0;
+  z-index:8;
+  text-align:center;
+  }
 .d1{
 	position: relative;
 	width:100%;
@@ -2230,9 +2264,6 @@ video {
   position: absolute;
   top: 0%;
   left: 0%;
-  -ms-transform: translate(0%,0%);
-  -webkit-transform: translate(0%,0%);
-  transform: translate(0%,0%);
   width:100%;
   height:100%;
   padding:0;
@@ -2245,9 +2276,6 @@ video {
   position: absolute;
   top: 0%;
   left: 0%;
-  -ms-transform: translate(0%,0%);
-  -webkit-transform: translate(0%,0%);
-  transform: translate(0%,0%);
   width:100%;
   height:100%;
   padding:0;
@@ -2259,9 +2287,6 @@ video {
   position: absolute;
   top: 0%;
   left: 0%;
-  -ms-transform: translate(0%,0%);
-  -webkit-transform: translate(0%,0%);
-  transform: translate(0%,0%);
   width:100%;
   height:100%;
   padding:0;
@@ -2273,9 +2298,6 @@ video {
   position: absolute;
   top: 0%;
   left: 0%;
-  -ms-transform: translate(0%,0%);
-  -webkit-transform: translate(0%,0%);
-  transform: translate(0%,0%);
   width:100%;
   height:100%;
   padding:0;
@@ -2287,9 +2309,6 @@ video {
   position: absolute;
   top: 0%;
   left: 0%;
-  -ms-transform: translate(0%,0%);
-  -webkit-transform: translate(0%,0%);
-  transform: translate(0%,0%);
   width:100%;
   height:100%;
   padding:0;
@@ -2617,149 +2636,6 @@ video {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
 }
-
-
-
-//ハーフモーダル関連
-.pushbar.opened{
-	display: block;
-}
-html.pushbar_locked{
-    overflow: hidden;
-    -ms-touch-action: none;
-}
-.pushbar{
-	z-index: 100000;
-	position: fixed;
-	overflow-y: auto;
-	transition:transform 0.3s ease;
-	background:#fff;
-}
-.pushbar_overlay{
-	z-index: -999;
-	position: fixed;
-	width: 100%;
-	max-width: 100%;
-	height: 100%;
-	min-height: 100vh;
-	top: 0;
-	left: 0;
-    transition:opacity 0.3s ease;
-    opacity:0;
-	background: #000000;
-}
-html.pushbar_locked .pushbar_overlay{
-	opacity:0.8;
-	z-index: 99999;
-    transition:opacity 0.3s ease;
-}
-.pushbar.from_left{
-	top: 0;
-	left: 0;
-	width: 256px;
-	max-width: 100%;
-	height: 100%;
-	min-height: 100vh;
-	transform: translateZ(0) translateX(-100%);
-}
-.pushbar.from_right{
-	top: 0;
-	right: 0;
-	width: 256px;
-	max-width: 100%;
-	height: 100%;
-	min-height: 100vh;
-	transform: translateZ(0) translateX(100%);
-}
-.pushbar.from_top{
-	top: 0;
-	left: 0;
-	width: 100%;
-	max-width: 100%;
-	min-height: 150px;
-	transform: translateZ(0) translateY(-100%);
-}
-.pushbar.from_bottom{
-	bottom: 0;
-	left:32.5%;
-	width: 35%;
-	height: auto;
-	transform: translateZ(0) translateY(100%);
-	background: rgba(5,98,123,0.9); 
-  	border-radius:10px 10px 0px 0px;
-  	padding:12px;
-  	text-align:center;
-}
-.pushbar.from_bottom:before {
-	position: absolute;
-	content: "";
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.4);
-	z-index:-1;
-}
-.pushbar.opened{
-   transform: translateX(0px) translateY(0px);
-}
-.bar_pushbar{
-	width:20%;
-	height:2px;
-	background:rgba(0,0,0,0.8);
-	margin:0px auto 25px;
-	text-align:center;
-	border-radius:25px;
-}
-.btn_pushbar_close{
-	width:100%;
-	height:auto;
-    padding: 15px 0;
-    margin:0 auto;
-    color: #FAFAFA;
-    background: rgba(0,0,0,0.2);
-    border-radius: 2px;
-    font-size:14px;
-}
-.btn_pushbar_item{
-	width:100%;
-	height:auto;
-    padding: 0 15px 22px;
-    margin:0 auto;
-    color: #FAFAFA;
-    border-radius: 2px;
-    font-size:14px;
-    text-align:left;
-    opacity:0.8;
-}
-//iPadヨコ
-@media only screen and (max-width: 1024px) and (orientation: landscape) {
-	.bar_post {
-	    left:30%;
-	    width:40%;
-	}
-}
-//iPadタテ
-@media only screen and (max-width: 1024px) and (orientation: portrait) {
-	.pushbar.from_bottom {
-	    left:15%;
-	    width:70%;
-	}
-}
-//iPhoneタテ
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-	.pushbar.from_bottom {
-	    left:0;
-	    width:100%;
-	}
-}
-//iPhoneヨコ
-@media only screen and (max-width: 768px) and (orientation: landscape) {
-}
-//SE以下タテ
-@media only screen and (max-width: 370px) and (orientation: portrait) {
-}
-
 
 
 //タブスワイプ関連

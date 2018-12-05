@@ -58,7 +58,7 @@
 					</div>						
 					<div class="pro32">		
 						<div style="text-align:right;">
-							<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:10px;">
+							<a href="" data-toggle="modal" data-target="#myModal_half_<%= post.id %>" style="padding:20px 10px 20px 20px;">
 								<%= image_tag "ellipsis_gray.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
 							</a>			
 						</div>
@@ -126,3 +126,60 @@
 		</div>
 	</div>
 </div>
+
+<%#モーダルlazyload%>
+<script defer>
+	$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
+    	$('img.lazyload_modal_<%= post.id %>').lazyload();
+    });      
+</script>
+<%#モーダルtubolinks不具合修正%>
+<script defer>
+	$(function(){
+		var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
+		//モーダルが表示されているのに表示判定されてなかったら
+		if(display_<%= post.id %> === 'block'){
+			//モーダルを表示状態にする
+			$('body').removeClass('modal-open');
+				$('.modal-backdrop').remove();				
+			$('#myModal_<%= post.id %>').modal('toggle');
+			//クリックでモーダルを閉じる 
+			$('#dismiss_<%= post.id %>').on("click",function(){
+				$('body').removeClass('modal-open');
+			  	$('.modal-backdrop').remove();
+				$('#myModal_<%= post.id %>').modal('hide'); 
+			});
+		}				
+	});
+</script>
+<%# 音楽プレビューjs %>
+<% if post.category == "music" %>
+	<% if post.preview_url.present? %>
+		<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
+			<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
+		</audio>
+		<script defer>						  
+			$(function(){
+		  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
+			  $('#btn_preview_<%= post.id %>').on("click",function(){
+			    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
+			     {
+			       $("#icon_play_<%= post.id %>").removeClass('fa-play');
+			       $("#icon_play_<%= post.id %>").addClass('fa-pause');
+			       audio_<%= post.id %>.play();
+			     }
+			    else
+			     {
+			       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+			       $("#icon_play_<%= post.id %>").addClass('fa-play');
+			       audio_<%= post.id %>.pause();
+			     }
+			  });
+			  audio_<%= post.id %>.onended = function() {
+			    $("#icon_play_<%= post.id %>").removeClass('fa-pause');
+			    $("#icon_play_<%= post.id %>").addClass('fa-play');
+			  };
+		  	});				
+	   	</script>
+	<% end %>
+<% end %>

@@ -1,0 +1,101 @@
+<div class="modal bottom fade" id="myModal_half_<%= post.id %>">
+	<div class="modal-dialog">
+		<div class="a1">
+          	<div class="a4">
+            	<div class="d1">
+              		<div class="d5"></div>
+            	</div>
+          	</div>
+          	<div class="a7">
+              	<a data-toggle="modal" data-dismiss="modal">
+                	<div style="padding:20px;">
+                  		<%= image_tag "cross_gray.png", :style =>'width:18px;height:18px;opacity:0.5' %>
+                	</div>
+              	</a>  
+          	</div>
+          	<div class="a6" style="text-align:center;">
+          		<div style="height:8%;"></div>
+          		<div style="width:40%;display:inline-block;">
+          			<% if post.image_url.blank? %>
+						<img data-src="/assets/nothing01.jpg" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
+					<% else %>					
+						<img  data-src="<%= post.image_url %>" class="lazyload_half_modal_<%= post.id %>"  style="width:100%;height:auto;">
+					<% end %>
+          		</div>
+          		<div style="height:2%;"></div>
+          		<div class="font_white_big" style="width:90%;display:inline-block;font-weight:bold;">
+          			<%= post.title %>
+          		</div>
+          		<div style="height:7%;"></div>
+          		<div style="width:100%;padding:0 10%;">
+	          		<% unless post.user.id == current_user.id %>
+						<span id="bookmark-of-<%= post.id %>">
+					      	<%= render partial: 'works/bookmark', locals: { post: post } %>
+					    </span>
+					    <div style="height:30px"></div>
+						<%= link_to "/works/#{post.id}/copy" do %>
+							<div class="btn_half_item">  
+								<%= image_tag "add_white.png", :style =>'width:18px;height:18px;margin-top:-2px;margin-right:15px;opacity:0.6;' %>この作品を投稿
+							</div>	
+						<% end %>									
+					<% end %>
+					<% if post.user.id == current_user.id %>					
+						<span id="favorite-of-<%= post.id %>">
+					      	<%= render partial: 'works/favorite', locals: { post: post } %>
+					    </span>	
+					    <div style="height:30px"></div>
+						<span id="list-of-<%= post.id %>">
+					      	<%= render partial: 'works/list', locals: { post: post } %>
+					    </span>
+					    <div style="height:30px"></div>
+						<%= link_to "/works/#{post.id}/edit" do %>
+							<div class="btn_half_item">  
+								<%= image_tag "edit_white.png", :style =>'width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.6;' %>投稿を編集
+							</div>
+						<% end %>
+						<div style="height:30px"></div>			
+						<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+							<div class="btn_half_item" style="color:#FB473E;">  
+								<%= image_tag "trash_red.png", :style =>'width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.8;' %>投稿を削除
+							</div>
+						<% end %>
+						<div style="height:30px"></div>	
+					<% end %>
+					<div style="height:90px"></div>	
+				</div>
+          	</div>
+          	<div class="a13" style="text-align:center;">
+          		<a data-toggle="modal" data-dismiss="modal">
+					<div class="btn_half_close">  
+						<%= image_tag "ban_white.png", :style =>'width:20px;height:20px;margin-top:-4px;margin-right:5px;' %>キャンセル  
+					</div>
+			  	</a>
+          	</div>
+        </div>
+	</div>
+</div>
+<%#モーダルlazyload%>
+<script defer>
+	$('#myModal_half_<%= post.id %>').on("show.bs.modal", function () {
+    	$('img.lazyload_half_modal_<%= post.id %>').lazyload();
+    });      
+</script>
+<%#モーダルtubolinks不具合修正%>
+<script defer>
+	$(function(){
+		var display_<%= post.id %> = $('#myModal_half_<%= post.id %>').css('display');
+		//モーダルが表示されているのに表示判定されてなかったら
+		if(display_<%= post.id %> === 'block'){
+			//モーダルを表示状態にする
+			$('body').removeClass('modal-open');
+				$('.modal-backdrop').remove();				
+			$('#myModal_half_<%= post.id %>').modal('toggle');
+			//クリックでモーダルを閉じる 
+			$('#myModal_half_<%= post.id %>').on("click",function(){
+				$('body').removeClass('modal-open');
+			  	$('.modal-backdrop').remove();
+				$('#myModal_<%= post.id %>').modal('hide'); 
+			});
+		}				
+	});
+</script>

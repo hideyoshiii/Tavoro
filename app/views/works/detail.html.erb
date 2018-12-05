@@ -68,6 +68,7 @@
 		        </a>	
           	</div>
           	<div class="a6">
+          		<%#作品情報%>
           		<div style="height:3vh;"></div>
           		<div style="font-size:18px;padding-left:15px;">
           			Works
@@ -113,7 +114,7 @@
 						<% end %>
           			</div>
           		</div>
-
+          		<%#投稿一覧%>
           		<div style="height:3vh;"></div>
           		<div style="font-size:18px;padding-left:15px;">
           			Posts
@@ -267,7 +268,7 @@
 						<% end %>
 					</div>
 				</div>				
-					
+				<%#レコメンド%>	
 				<div style="height:5vh;"></div>
           		<div style="font-size:18px;padding-left:15px;">
           			Reccomends
@@ -333,98 +334,8 @@
 	<% @posts_other.each.with_index do |post, i| %>
 		<%# 作品モーダル %>
 		<%= render partial: 'partial/modal_work', locals: { post: post } %>
-		<%# ハーフモーダル %>
-		<div data-pushbar-id="mypushbar_<%= post.id %>" class="pushbar from_bottom">
-			<div class="bar_pushbar"></div>	
-			<% unless post.user.id == current_user.id %>
-				<span id="bookmark-of-<%= post.id %>">
-			      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-			    </span>
-				<%= link_to "/works/#{post.id}/copy" do %>
-					<div class="btn_pushbar_item">  
-						<%= image_tag "add_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
-					</div>	
-				<% end %>									
-			<% end %>
-			<% if post.user.id == current_user.id %>
-				<span id="favorite-of-<%= post.id %>">
-			      	<%= render partial: 'works/favorite', locals: { post: post } %>
-			    </span>	
-				<span id="list-of-<%= post.id %>">
-			      	<%= render partial: 'works/list', locals: { post: post } %>
-			    </span>				
-				<%= link_to "/works/#{post.id}/edit" do %>
-					<div class="btn_pushbar_item">  
-						<%= image_tag "edit_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
-					</div>
-				<% end %>					
-				<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-					<div class="btn_pushbar_item" style="color:#FB473E;">  
-						<%= image_tag "trash_red.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を削除する
-					</div>	
-				<% end %>				
-			<% end %>	
-		    <a data-pushbar-close>
-				<div class="btn_pushbar_close">  
-					<%= image_tag "ban_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル  
-				</div>
-		  	</a>
-		</div>
-		<script>
-			$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
-		    	$('img.lazyload_modal_<%= post.id %>').lazyload();
-		    });      
-		</script>
-		<%#モーダルtubolinks不具合修正%>
-		<script defer>
-			$(function(){
-				var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
-				//モーダルが表示されているのに表示判定されてなかったら
-				if(display_<%= post.id %> === 'block'){
-					//モーダルを表示状態にする
-					$('body').removeClass('modal-open');
-      				$('.modal-backdrop').remove();				
-					$('#myModal_<%= post.id %>').modal('toggle');
-					//クリックでモーダルを閉じる 
-					$('#dismiss_<%= post.id %>').on("click",function(){
-						$('body').removeClass('modal-open');
-					  	$('.modal-backdrop').remove();
-						$('#myModal_<%= post.id %>').modal('hide'); 
-					});
-				}				
-			});
-		</script>
-		<%# 音楽プレビューjs %>
-		<% if post.category == "music" %>
-			<% if post.preview_url.present? %>
-				<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
-					<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
-				</audio>
-				<script defer>						  
-					$(function(){
-				  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
-					  $('#btn_preview_<%= post.id %>').on("click",function(){
-					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-play');
-					       $("#icon_play_<%= post.id %>").addClass('fa-pause');
-					       audio_<%= post.id %>.play();
-					     }
-					    else
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					       $("#icon_play_<%= post.id %>").addClass('fa-play');
-					       audio_<%= post.id %>.pause();
-					     }
-					  });
-					  audio_<%= post.id %>.onended = function() {
-					    $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					    $("#icon_play_<%= post.id %>").addClass('fa-play');
-					  };
-				  	});				
-			   	</script>
-			<% end %>
-		<% end %>
+		<%#ハーフモーダル%>
+		<%= render partial: 'partial/modal_half', locals: { post: post } %>
 		<%# プロフィールモーダル %>
 		<% unless @user_list.include?(post.user.id) %>
 			<% @user = post.user %>
@@ -439,139 +350,14 @@
 
 <%#モーダルの中身%>
 <% if @posts_reccomend.present? %>
-	<% @posts_reccomend.each.with_index do |post, i| %>
+	<% @posts_reccomend.each.with_index do |post, i| %>	
 		<%# 作品モーダル %>
 		<%= render partial: 'partial/modal_work', locals: { post: post } %>
-		<%# ハーフモーダル %>
-		<div data-pushbar-id="mypushbar_<%= post.id %>" class="pushbar from_bottom">
-			<div class="bar_pushbar"></div>	
-			<% unless post.user.id == current_user.id %>
-				<span id="bookmark-of-<%= post.id %>">
-			      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-			    </span>
-				<%= link_to "/works/#{post.id}/copy" do %>
-					<div class="btn_pushbar_item">  
-						<%= image_tag "add_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>この作品を投稿する
-					</div>	
-				<% end %>									
-			<% end %>
-			<% if post.user.id == current_user.id %>
-				<span id="favorite-of-<%= post.id %>">
-			      	<%= render partial: 'works/favorite', locals: { post: post } %>
-			    </span>	
-				<span id="list-of-<%= post.id %>">
-			      	<%= render partial: 'works/list', locals: { post: post } %>
-			    </span>				
-				<%= link_to "/works/#{post.id}/edit" do %>
-					<div class="btn_pushbar_item">  
-						<%= image_tag "edit_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を編集する	 
-					</div>
-				<% end %>					
-				<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-					<div class="btn_pushbar_item" style="color:#FB473E;">  
-						<%= image_tag "trash_red.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>投稿を削除する
-					</div>	
-				<% end %>				
-			<% end %>	
-		    <a data-pushbar-close>
-				<div class="btn_pushbar_close">  
-					<%= image_tag "ban_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:5px;' %>キャンセル  
-				</div>
-		  	</a>
-		</div>
-		<script>
-			$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
-		    	$('img.lazyload_modal_<%= post.id %>').lazyload();
-		    });      
-		</script>
-		<%#モーダルtubolinks不具合修正%>
-		<script defer>
-			$(function(){
-				var display_<%= post.id %> = $('#myModal_<%= post.id %>').css('display');
-				//モーダルが表示されているのに表示判定されてなかったら
-				if(display_<%= post.id %> === 'block'){
-					//モーダルを表示状態にする
-					$('body').removeClass('modal-open');
-      				$('.modal-backdrop').remove();				
-					$('#myModal_<%= post.id %>').modal('toggle');
-					//クリックでモーダルを閉じる 
-					$('#dismiss_<%= post.id %>').on("click",function(){
-						$('body').removeClass('modal-open');
-					  	$('.modal-backdrop').remove();
-						$('#myModal_<%= post.id %>').modal('hide'); 
-					});
-				}				
-			});
-		</script>
-		<%# 音楽プレビューjs %>
-		<% if post.category == "music" %>
-			<% if post.preview_url.present? %>
-				<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
-					<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
-				</audio>
-				<script defer>						  
-					$(function(){
-				  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
-					  $('#btn_preview_<%= post.id %>').on("click",function(){
-					    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-play');
-					       $("#icon_play_<%= post.id %>").addClass('fa-pause');
-					       audio_<%= post.id %>.play();
-					     }
-					    else
-					     {
-					       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					       $("#icon_play_<%= post.id %>").addClass('fa-play');
-					       audio_<%= post.id %>.pause();
-					     }
-					  });
-					  audio_<%= post.id %>.onended = function() {
-					    $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-					    $("#icon_play_<%= post.id %>").addClass('fa-play');
-					  };
-				  	});				
-			   	</script>
-			<% end %>
-		<% end %>
+		<%#ハーフモーダル%>
+		<%= render partial: 'partial/modal_half', locals: { post: post } %>
 	<% end %>
 <% end %>
 
-<%#hammer.js%>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
-<%#ハーフモーダル%>
-<script defer>
-  $(function(){
-  	//overlayを削除
-  	if ($('div').hasClass("pushbar_overlay")) {
-	  var Back = document.querySelector('html');
-	  Back.classList.remove('pushbar_locked');
-	  Back.removeAttribute('pushbar');
-	}
-	//ハーフモーダルを削除
-	if ($('.opened').hasClass("opened")) {
-	  var Bar = document.querySelector('.opened');
-	  Bar.classList.remove('opened');
-	}
-  	//ハーフモーダル生成
-  	var pushbar = new Pushbar({
-        overlay:true,
-    });
-  	//開いているとき
-    $('body').on("pushbar_opening", function(){
-		//スワイプ方向定義
-	    var hammertime = new Hammer(document.body);
-		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-	    //スワイプイベント登録
-	  	hammertime.on('swipedown', function(){
-		    pushbar.close();	
-		});
-	});
-	//閉じているとき
-	$('body').on("pushbar_closing", function(){
-	});
-  });
-</script>
 
 <%#lazyload.js%>
 <script>

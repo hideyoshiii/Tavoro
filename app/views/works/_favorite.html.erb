@@ -2,23 +2,23 @@
 	<% if @list = List.find_by(user_id: current_user.id, title: "お気に入り") %>
 	    <% if @list_item = ListItem.find_by(list_id: @list.id, post_id: post.id) %>
 	    	<%= link_to "/works/#{post.id}/destroy_favorite", method: :post, remote: true do %>
-				<div class="btn_pushbar_item">  
-					<%= image_tag "star_yellow.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>
-					お気に入りから削除する
+				<div class="btn_half_item">  
+					<%= image_tag "star_yellow.png", :style =>'width:20px;height:20px;margin-top:-4px;margin-right:10px;opacity:0.7;' %>
+					お気に入りから削除
 				</div>
 			<% end %>
 	    <% else %>
 	    	<%= link_to "/works/#{post.id}/create_favorite", method: :post, remote: true do %>
-				<div class="btn_pushbar_item">  
-					<%= image_tag "star_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>
-					お気に入りに追加する
+				<div class="btn_half_item">  
+					<%= image_tag "star_white.png", :style =>'width:20px;height:20px;margin-top:-4px;margin-right:10px;opacity:0.7;' %>
+					お気に入りに追加
 				</div>
 			<% end %>
 	    <% end %>
 	<% else %>
 		<%= link_to "/works/#{post.id}/create_favorite", method: :post, remote: true do %>
-			<div class="btn_pushbar_item">  
-				<%= image_tag "star_white.png", :style =>'width:16px;height:16px;margin-top:-2px;margin-right:10px;' %>お気に入りに追加する
+			<div class="btn_half_item">  
+				<%= image_tag "star_white.png", :style =>'width:20px;height:20px;margin-top:-4px;margin-right:10px;opacity:0.7;' %>お気に入りに追加
 			</div>
 		<% end %>
 	<% end %>

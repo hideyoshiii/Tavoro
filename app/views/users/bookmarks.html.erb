@@ -326,7 +326,7 @@
 							</div>						
 							<div class="pro32">		
 								<div style="text-align:right;">
-									<a data-pushbar-target="mypushbar_<%= post.id %>" style="padding:10px;">
+									<a href="" data-toggle="modal" data-target="#myModal_half_<%= post.id %>" style="padding:20px 10px 20px 20px;">
 										<%= image_tag "ellipsis_gray.png", :style =>'width:17px;height:17px;opacity:0.7;' %>
 									</a>			
 								</div>
@@ -432,7 +432,7 @@
 		  	</a>
 		</div>
 		<%#lazyload.js%>
-		<script>
+		<script defer>
 			$('#myModal_<%= post.id %>').on("show.bs.modal", function () {
 		    	$('img.lazyload_modal_<%= post.id %>').lazyload();
 		    });      
@@ -456,6 +456,8 @@
 				}				
 			});
 		</script>
+		<%#ハーフモーダル%>
+		<%= render partial: 'partial/modal_half', locals: { post: post } %>
 		<%# 音楽プレビューjs %>
 		<% if post.category == "music" %>
 			<% if post.preview_url.present? %>
@@ -544,44 +546,8 @@
 </script>
 
 
-<%#hammer.js%>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
-<%#ハーフモーダル%>
-<script defer>
-  $(function(){
-  	//overlayを削除
-  	if ($('div').hasClass("pushbar_overlay")) {
-	  var Back = document.querySelector('html');
-	  Back.classList.remove('pushbar_locked');
-	  Back.removeAttribute('pushbar');
-	}
-	//ハーフモーダルを削除
-	if ($('.opened').hasClass("opened")) {
-	  var Bar = document.querySelector('.opened');
-	  Bar.classList.remove('opened');
-	}
-  	//ハーフモーダル生成
-  	var pushbar = new Pushbar({
-        overlay:true,
-    });
-  	//開いているとき
-    $('body').on("pushbar_opening", function(){
-		//スワイプ方向定義
-	    var hammertime = new Hammer(document.body);
-		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-	    //スワイプイベント登録
-	  	hammertime.on('swipedown', function(){
-		    pushbar.close();	
-		});
-	});
-	//閉じているとき
-	$('body').on("pushbar_closing", function(){
-	});
-  });
-</script>
-
 <%#lazyload.js%>
-<script>
+<script defer>
 	$(function() {
     	$('img.lazyload_min').lazyload();
 	});
