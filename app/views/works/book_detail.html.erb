@@ -42,6 +42,7 @@
 				<%= hidden_field_tag :category, @category %>
 				<%= hidden_field_tag :title, @title %>
 				<%= hidden_field_tag :work_id, @work_id %>
+				<%= hidden_field_tag :api, @api %>
 				<div style="height:50px;"></div>
 				<div style="height:40px;"></div>
 				<div style="height:3vh;"></div>
@@ -72,7 +73,6 @@
 				<div style="text-align:center;width:100%;margin:0 auto;">
 					<% if @poster.blank? %>
 						<%= image_tag "nothing02.jpg", :class =>'img_lavoro05' %>
-						<%= hidden_field_tag :image_url, "nothing02.jpg" %>
 					<% else %>
 						<%= image_tag @poster, :class =>'img_lavoro05' %>
 						<%= hidden_field_tag :image_url, @poster %>

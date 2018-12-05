@@ -1,4 +1,5 @@
 <% if params[:q].present? %>
+  <%#検索結果%>
   <% if @items.present? %>
     <% @items.each do |item| %>
       <% if item["media_type"] == "movie" || item["media_type"] == "tv" %>
@@ -11,7 +12,7 @@
                 <% if item["poster_path"].blank? %>
                   <img data-src="/assets/nothing01.jpg" class="img_lavoro03 lazyload">
                 <% else %>
-                  <img data-src="https://image.tmdb.org/t/p/w500/<%= item.poster_path %>" class="img_lavoro03 lazyload">
+                  <img data-src="https://image.tmdb.org/t/p/w154/<%= item.poster_path %>" class="img_lavoro03 lazyload">
                 <% end %>
               </div>
               <div class="pro10">
@@ -45,6 +46,7 @@
     <% end %>
   <% end %>
 <% else %>
+  <%#default%>
   <% if @defaults.present? %>
     <% @defaults.each do |item| %>
       <%= form_tag(works_movie_detail_path, method: :get) do %>
@@ -56,7 +58,7 @@
               <% if item["poster_path"].blank? %>
                 <img data-src="/assets/nothing01.jpg" class="img_lavoro03 lazyload">
               <% else %>
-                <img data-src="https://image.tmdb.org/t/p/w500/<%= item.poster_path %>" class="img_lavoro03 lazyload">
+                <img data-src="https://image.tmdb.org/t/p/w154/<%= item.poster_path %>" class="img_lavoro03 lazyload">
               <% end %>
             </div>
             <div class="pro10">

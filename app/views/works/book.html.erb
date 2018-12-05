@@ -74,7 +74,7 @@
 		  input = $(this).val();   //前後の不要な空白を削除
 		  if(preInput !== input){
 		    clearTimeout(preFunc);
-		    preFunc = setTimeout(ajaxPost(input), 1000);
+		    preFunc = setTimeout(ajaxPost(input), 800);
 		  }
 		  preInput = input;
 		});

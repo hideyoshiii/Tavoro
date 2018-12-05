@@ -1,4 +1,5 @@
 <% if params[:q].present? %>
+  <%#検索結果%>
   <% if @items.present? %>
     <% @items.each.with_index(1) do |item, i| %>
       <%= form_tag(works_music_detail_path, method: :get) do %>
@@ -34,6 +35,7 @@
     <% end %>
   <% end %>
 <% else %>
+  <%#default%>
   <% if @defaults.present? %>
     <% @defaults.each.with_index(1) do |item, i| %>
       <%= form_tag(works_music_detail_path, method: :get) do %>

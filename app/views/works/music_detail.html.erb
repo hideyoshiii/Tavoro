@@ -118,7 +118,6 @@
 					<div class="pile_preview">
 						<% if @poster.blank? %>
 							<%= image_tag "nothing03.jpg", :class =>'img_lavoro03' %>
-							<%= hidden_field_tag :image_url, "nothing03.jpg" %>
 						<% else %>
 							<%= image_tag @poster, :class =>'img_lavoro03' %>
 							<%= hidden_field_tag :image_url, @poster %>

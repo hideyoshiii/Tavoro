@@ -1,6 +1,54 @@
 <% if params[:q].present? %>
-  <% if @items.present? %>
-    <% @items.each do |item| %>
+  <%#itunesの検索結果%>
+  <% if @items_itunes.present? %>
+    <% @items_itunes.each.with_index(1) do |item, i| %>
+      <%= form_tag(works_book_detail_path, method: :get) do %>
+        <% if item["genres"].include?("マンガ") %>
+          <%= hidden_field_tag :type, "comic" %>
+        <% else %>
+          <%= hidden_field_tag :type, "book" %>
+        <% end %>
+        <%= hidden_field_tag :id, item["trackId"] %>
+        <%= hidden_field_tag :api, "itunes" %>
+        <button type="submit">
+          <div class="box_tests02">
+            <div class="pro09">
+              <% if item["artworkUrl100"].blank? %>
+                <img data-src="/assets/nothing03.jpg" class="img_lavoro03 lazyload">
+              <% else %>
+                <% @image_url = item["artworkUrl100"] %>
+                <% @image_url = @image_url.sub(/100x100bb/, '200x200bb') %>
+                <img data-src="<%= @image_url %>" class="img_lavoro03 lazyload">
+              <% end %>
+            </div>
+            <div class="pro10">
+              <div class="font_white_big">
+                <%= item["trackCensoredName"] %>  
+              </div>
+              <div class="contain_title02">
+                <div class="font_gray">
+                  ebook
+                </div>
+              </div>
+              <div class="contain_title02">
+                <div class="font_gray">
+                  <%= item["artistName"] %>
+                </div>
+              </div>
+            </div>
+            <div class="pro11">
+              <span class="font_gray_max">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </div>
+          </div>
+        </button>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%#楽天の検索結果%>
+  <% if @items_rakuten.present? %>
+    <% @items_rakuten.each do |item| %>
       <%= form_tag(works_book_detail_path, method: :get) do %>
         <% if item["size"] == "コミック" %>
           <%= hidden_field_tag :type, "comic" %>
@@ -8,6 +56,7 @@
           <%= hidden_field_tag :type, "book" %>
         <% end %>
         <%= hidden_field_tag :id, item["isbn"] %>
+        <%= hidden_field_tag :api, "rakuten" %>
         <button type="submit">
           <div class="box_tests02">
             <div class="pro09">
@@ -15,19 +64,18 @@
                 <img data-src="/assets/nothing02.jpg" class="img_lavoro03 lazyload">
               <% else %>
                 <% @image_url = item["largeImageUrl"] %>
-                <% @image_url = @image_url.sub!(/_ex.*/m, "") %>
-                <% @image_url = @image_url.chop! %>
                 <img data-src="<%= @image_url %>" class="img_lavoro03 lazyload">
               <% end %>
             </div>
             <div class="pro10">
-              <span class="font_white_big">
+              <div class="font_white_big">
                 <%= item["title"] %> 
-              </span>
-              <br>
-              <span class="font_gray">
-                <%= item["author"] %>
-              </span>
+              </div>
+              <div class="contain_title02">
+                <div class="font_gray">
+                  <%= item["author"] %>
+                </div>
+              </div>
             </div>
             <div class="pro11">
               <span class="font_gray_max">
@@ -40,35 +88,42 @@
     <% end %>
   <% end %>
 <% else %>
+  <%#itunesでのdefault%>
   <% if @defaults.present? %>
-    <% @defaults.each do |item| %>
+    <% @defaults.each.with_index(1) do |item, i| %>
       <%= form_tag(works_book_detail_path, method: :get) do %>
-        <% if item["size"] == "コミック" %>
+        <% if item["genres"].include?("マンガ") %>
           <%= hidden_field_tag :type, "comic" %>
         <% else %>
           <%= hidden_field_tag :type, "book" %>
         <% end %>
-        <%= hidden_field_tag :id, item["isbn"] %>
+        <%= hidden_field_tag :id, item["trackId"] %>
+        <%= hidden_field_tag :api, "itunes" %>
         <button type="submit">
           <div class="box_tests02">
             <div class="pro09">
-              <% if item["largeImageUrl"].blank? %>
-                <img data-src="/assets/nothing02.jpg" class="img_lavoro03 lazyload">
+              <% if item["artworkUrl100"].blank? %>
+                <img data-src="/assets/nothing03.jpg" class="img_lavoro03 lazyload">
               <% else %>
-                <% @image_url = item["largeImageUrl"] %>
-                <% @image_url = @image_url.sub!(/_ex.*/m, "") %>
-                <% @image_url = @image_url.chop! %>
+                <% @image_url = item["artworkUrl100"] %>
+                <% @image_url = @image_url.sub(/100x100bb/, '200x200bb') %>
                 <img data-src="<%= @image_url %>" class="img_lavoro03 lazyload">
               <% end %>
             </div>
             <div class="pro10">
-              <span class="font_white_big">
-                <%= item["title"] %>
-              </span>
-              <br>
-              <span class="font_gray">
-                <%= item["author"] %>
-              </span>
+              <div class="font_white_big">
+                <%= item["trackCensoredName"] %>  
+              </div>
+              <div class="contain_title02">
+                <div class="font_gray">
+                  ebook
+                </div>
+              </div>
+              <div class="contain_title02">
+                <div class="font_gray">
+                  <%= item["artistName"] %>
+                </div>
+              </div>
             </div>
             <div class="pro11">
               <span class="font_gray_max">

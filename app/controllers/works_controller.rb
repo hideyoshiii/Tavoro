@@ -86,25 +86,41 @@ class WorksController < ApplicationController
   end
 
   def book
-  	@defaults = RakutenWebService::Books::Book.search(size: 2,sort: "reviewCount", hits: 15)
+  	@defaults = ITunesSearchAPI.search(:term => "comic", :country => "jp", :media => "ebook", :limit  => '20')
   end
 
   def book_detail
-  	@items = RakutenWebService::Books::Book.search(isbn: params[:id].to_i)
-  	if @items.present?
-		@item = @items.first
-	end
-  	@title = @item["title"]
-  	@work_id = @item["isbn"]
-  	@category = params[:type]
-  	@poster = @item["largeImageUrl"]
-    @poster = @poster.sub!(/_ex.*/m, "")
-    @poster = @poster.chop!
+    if params[:api] == "rakuten"
+      @api = "rakuten"
+    	@items = RakutenWebService::Books::Book.search(isbn: params[:id].to_i)
+    	if @items.present?
+  		  @item = @items.first
+  	  end
+    	@title = @item["title"]
+    	@work_id = params[:id].to_i
+    	@category = params[:type]
+    	@poster = @item["largeImageUrl"]
+      @poster = @poster.sub!(/_ex.*/m, "")
+      @poster = @poster.chop!
+    end
+    if params[:api] == "itunes"
+      @api = "itunes"
+      @items = ITunesSearchAPI.lookup(:id => params[:id].to_i, :country => "jp")
+      if @items.present?
+        @item = @items.first
+      end
+      @title = @item["trackCensoredName"]
+      @work_id = params[:id].to_i
+      @category = params[:type]
+      @poster = @item["artworkUrl100"]
+      @poster = @poster.sub(/100x100bb/, '1000x1000bb')
+    end
   end
 
   def ajax_book_list
   	if params[:q].present?
-  		@items = RakutenWebService::Books::Book.search(title: params[:q], hits: 15)
+      @items_itunes = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "ebook", :limit  => '10')
+  		@items_rakuten = RakutenWebService::Books::Book.search(title: params[:q], hits: 10)
   	end
   end
 
@@ -115,9 +131,9 @@ class WorksController < ApplicationController
   def music_detail
   	@items = ITunesSearchAPI.lookup(:id => params[:id].to_i, :country => "jp")
   	if @items.present?
-		@item = @items.first
-	end
-	@title = @item["trackCensoredName"]
+		  @item = @items.first
+	  end
+	  @title = @item["trackCensoredName"]
   	@work_id = @item["trackId"]
   	@category = params[:type]
   	@poster = @item["artworkUrl100"]
@@ -136,7 +152,7 @@ class WorksController < ApplicationController
   		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id])
   	end
   	if params[:category] == "book" || params[:category] == "comic"
-  		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id])
+  		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id], api: params[:api])
   	end
   	if params[:category] == "music"
   		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id], preview_url: params[:preview_url])
@@ -204,31 +220,59 @@ class WorksController < ApplicationController
   	end
 
   	if @post.category == "book"
-  		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
-	  	if @items.present?
-  			@item = @items.first
-        if @item.present?
-          @detail01 = @item["salesDate"].slice(0..3)
-          @detail02 = @item["author"]
-          if @detail02.present?
-            @detail02 = "著者 : " + @detail02
+      if @post.api == "itunes"
+        @items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
+        if @items.present?
+          @item = @items.first
+          if @item.present?
+            @detail01 = @item["releaseDate"].slice(0..3)
+            @detail02 = @item["artistName"]
+            if @detail02.present?
+              @detail02 = "著者 : " + @detail02
+            end
           end
         end
-		  end
+      else
+    		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
+  	  	if @items.present?
+    			@item = @items.first
+          if @item.present?
+            @detail01 = @item["salesDate"].slice(0..3)
+            @detail02 = @item["author"]
+            if @detail02.present?
+              @detail02 = "著者 : " + @detail02
+            end
+          end
+  		  end
+      end
   	end
 
   	if @post.category == "comic"
-  		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
-	  	if @items.present?
-  			@item = @items.first
-        if @item.present?
-          @detail01 = @item["salesDate"].slice(0..3)
-          @detail02 = @item["author"]
-          if @detail02.present?
-            @detail02 = "著者 : " + @detail02
+      if @post.api == "itunes"
+        @items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
+        if @items.present?
+          @item = @items.first
+          if @item.present?
+            @detail01 = @item["releaseDate"].slice(0..3)
+            @detail02 = @item["artistName"]
+            if @detail02.present?
+              @detail02 = "著者 : " + @detail02
+            end
           end
         end
-  		end
+      else
+    		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
+  	  	if @items.present?
+    			@item = @items.first
+          if @item.present?
+            @detail01 = @item["salesDate"].slice(0..3)
+            @detail02 = @item["author"]
+            if @detail02.present?
+              @detail02 = "著者 : " + @detail02
+            end
+          end
+    		end
+      end
   	end
 
   	if @post.category == "music"
@@ -255,6 +299,10 @@ class WorksController < ApplicationController
   def edit
   	@post = Post.find(params[:id])
 
+    if !(current_user == @post.user)
+      redirect_to root_path
+    end
+
     @bookmark = false
     @good = false
   	@favorite = false
@@ -271,9 +319,6 @@ class WorksController < ApplicationController
   	if @post.review == "bad"
   		@bad = true
   	end
-    if !(current_user == @post.user)
-      redirect_to root_path
-    end
 
     if @post.category == "movie"
   		@item = Tmdb::Movie.detail(@post.work_id)
@@ -282,15 +327,15 @@ class WorksController < ApplicationController
 	    @poster_en = Tmdb::Movie.posters(@post.work_id, language: 'en')
 	    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
 	    @posters = @poster_ja + @poster_en
-	end
-	if @post.category == "tv"
+	  end
+	  if @post.category == "tv"
   		@item = Tmdb::TV.detail(@post.work_id)
 	  	@poster_ja = Tmdb::TV.posters(@post.work_id, language: 'ja')
 	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
 	    @poster_en = Tmdb::TV.posters(@post.work_id, language: 'en')
 	    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
 	    @posters = @poster_ja + @poster_en
-	end
+	  end
 
   end
 
@@ -304,15 +349,15 @@ class WorksController < ApplicationController
 		    @poster_en = Tmdb::Movie.posters(@post.work_id, language: 'en')
 		    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
 		    @posters = @poster_ja + @poster_en
-		end
-		if @post.category == "tv"
+		  end
+		  if @post.category == "tv"
 	  		@item = Tmdb::TV.detail(@post.work_id)
 		  	@poster_ja = Tmdb::TV.posters(@post.work_id, language: 'ja')
 		  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
 		    @poster_en = Tmdb::TV.posters(@post.work_id, language: 'en')
 		    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
 		    @posters = @poster_ja + @poster_en
-		end
+		  end
   end
 
   def update
@@ -337,10 +382,8 @@ class WorksController < ApplicationController
       end
     end
     if @post.save
-      #保存に成功した場合
       redirect_to root_path
     else
-      #保存に失敗した場合
       redirect_to root_path
     end   
   end
@@ -361,7 +404,11 @@ class WorksController < ApplicationController
     if @post.category == "music"
       @post_bookmark = Post.create(user_id: current_user.id, title: @post.title, category: @post.category, image_url: @post.image_url, review: "bookmark", work_id: @post.work_id, preview_url: @post.preview_url)
     else
-      @post_bookmark = Post.create(user_id: current_user.id, title: @post.title, category: @post.category, image_url: @post.image_url, review: "bookmark", work_id: @post.work_id)
+      if @post.category == "book" || @post.category == "comic"
+        @post_bookmark = Post.create(user_id: current_user.id, title: @post.title, category: @post.category, image_url: @post.image_url, review: "bookmark", work_id: @post.work_id, api: @post.api)
+      else
+        @post_bookmark = Post.create(user_id: current_user.id, title: @post.title, category: @post.category, image_url: @post.image_url, review: "bookmark", work_id: @post.work_id)
+      end
     end
   end
 

@@ -96,7 +96,6 @@
 						<% else %>
 							<% if @poster.blank? %>
 								<%= image_tag "nothing01.jpg", :class =>'img_lavoro05' %>
-								<%= hidden_field_tag :image_url, "nothing01.jpg" %>
 							<% else %>
 								<%= image_tag @poster, :class =>'img_lavoro05' %>
 								<%= hidden_field_tag :image_url, @poster %>
