@@ -1,34 +1,15 @@
 @import "bootstrap";
 @import url(https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css);
 
-html,body {
-  	width:100%;
-	height:100%;
-  	padding:0;
-  	margin:0;
-  	font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
-  	color:#FAFAFA;
-  	font-size:0;
-}
-body.open {
-  overflow: hidden;
-}
+html{width:100%;height:100%;color:#FAFAFA;font-size:0;font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;}
 
-a:link,
-a:hover,
-a:active,
-a:visited{
-	text-decoration: none;
-}
+body{width:100%;height:100%;}
 
-//プログレスバー関連
-.turbolinks-progress-bar{
-  height: 2px;
-  background-color: rgba(39,134,160,1);
-}
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-	height: 1px;
-}
+body.open {overflow:hidden;}
+
+a:link,a:hover,a:active,a:visited{text-decoration:none;}
+
+.turbolinks-progress-bar{height:1px;background:rgba(39,134,160,1);}
 
 //固定バー関連
 .bar_top {
@@ -657,26 +638,6 @@ a:visited{
 		font-size:14px;
 	}
 }
-
-
-
-//ドロップダウン関係
-.dropdown-toggle{
-	cursor: pointer;
-}
-.dropdown-menu{
-	background:rgba(5,98,123,0.85);
-	border:none;
-}
-.dropdown-menu>li>a{
-	color:#FAFAFA;
-}
-.dropdown-menu>li>a:focus,
-.dropdown-menu>li>a:hover{
-	color:#777777;
-	background:none;
-}
-
 
 
 //フォーム関連
@@ -2019,76 +1980,6 @@ button {
 
 
 
-
-
-//タブ関連
-.nav-pills>li:first-child {
-    padding-left:10px;
-}
-.nav-pills>li:last-child {
-    padding-right:10px;
-}
-.nav-pills>li>a{
-	font-size:15px;
-	color:#999999;
-	border-radius:0px;
-	padding:3px 10px;
-	background:none
-	}
-.nav-pills>li+li{
-	margin-left:2px
-}
-.nav-pills>li>a,
-.nav-pills>li>a:focus,
-.nav-pills>li>a:hover{
-	background:none;
-}
-.nav-pills>li.active>a,
-.nav-pills>li.active>a:focus,
-.nav-pills>li.active>a:hover{
-	color: rgba(200,200,200,0.9);
-	background:none;
-	border-bottom: solid 1px rgba(200,200,200,0.8);
-}
-.nav-tabs > li,
-.nav-pills > li {
-    float:none;
-    display:inline-block;
-    *display:inline;
-     zoom:1;
-}
-.nav-tabs,
-.nav-pills {
-    text-align:center;
-}
-.tab-pane{
-	height:100%;
-	width:100%;
-}
-.tab-content{
-	height:100%;
-	width:100%;
-}
-.tab-pane.fade {
-  transition-duration: 0.3s;
-}
-.tab-pane.fade.in {
-  transition-duration: 0.3s;
-}
-
-
-
-//ビデオ関連
-video {
-	  width: 100%;
-	  height: auto;
-	  margin:0 auto;
-	  padding:0;
-	  background:black;
-}
-
-
-
 //配置凡庸関連
 .a1 {
     position: relative;
@@ -2422,14 +2313,6 @@ video {
 
 
 
-//文字部分だけボーダー関連
-.border01{
-	border-bottom: solid 0.5px rgba(119,119,119,0.5);
-	margin:10px 20px 0px 15px;
-}
-
-
-
 //アイコン関連
 .icon_category{
 	width:12px;
@@ -2442,10 +2325,7 @@ video {
 	margin-top:-2px
 }
 @media only screen and (max-width: 767px) {
-	.icon_menu{
-		width:11px;
-		height:11px;
-	}
+	
 }
 
 .btn_on{
@@ -2537,14 +2417,6 @@ video {
     border: solid 1px rgba(220,220,220,0.3);
     border-radius: 0px;
     font-size:12px;
-}
-
-.h2-sticky {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 20;
-  height:50px;
-  background:red;
 }
 
 
