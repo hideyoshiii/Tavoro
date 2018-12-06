@@ -27,7 +27,7 @@
 
   <body>
 
-  	<header>
+  	<header data-turbolinks-permanent>
       <%= render "partial/navbar" %>
       <% if user_signed_in? %>
         <%= render "partial/modal_dashbord" %>

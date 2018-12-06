@@ -65,27 +65,27 @@
 											<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
 										<% else %>									
 											<% if post.category == "movie" %>
-												<% @image_url = post.image_url.sub(/original/, 'w154') %>
+												<% @image_url = post.image_url.sub(/original/, 'w300') %>
 											<% end %>
 											<% if post.category == "tv" %>
-												<% @image_url = post.image_url.sub(/original/, 'w154') %>
+												<% @image_url = post.image_url.sub(/original/, 'w300') %>
 											<% end %>
 											<% if post.category == "book" %>
 												<% if post.api == "itunes" %>
-													<% @image_url = post.image_url.sub(/1000x1000bb/, '200x200bb') %>
+													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
 												<% else %>
-													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=200x200') %>
+													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
 												<% end %>
 											<% end %>
 											<% if post.category == "comic" %>
 												<% if post.api == "itunes" %>
-													<% @image_url = post.image_url.sub(/1000x1000bb/, '200x200bb') %>
+													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
 												<% else %>
-													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=200x200') %>
+													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
 												<% end %>
 											<% end %>
 											<% if post.category == "music" %>
-												<% @image_url = post.image_url.sub(/1000x1000bb/, '200x200bb') %>
+												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
 											<% end %>
 											<img data-src="<%= @image_url %>" class="img_myboom lazyload_min">
 										<% end %>								
