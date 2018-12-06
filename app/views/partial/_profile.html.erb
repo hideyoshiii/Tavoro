@@ -143,14 +143,14 @@
 </div>
 
 <%#lazyload.js%>
-<script type="text/javascript">
+<script defer>
   $('#myModal_profile_<%= @user.id %>').on("show.bs.modal", function () {
       $('img.lazyload_modal_profile_<%= @user.id %>').lazyload();
     });      
 </script>
 
 <%#モーダルtubolinks不具合修正%>
-<script type="text/javascript">
+<script defer>
   $(function(){
     var display_profile_<%= @user.id %> = $('#myModal_profile_<%= @user.id %>').css('display');
     //モーダルが表示されているのに表示判定されてなかったら

@@ -4,7 +4,7 @@
 		<div class="pro29">
 			<a href="" data-toggle="modal" data-target="#myModal_profile_<%= @user.id %>">
 				<div style="padding:10px 10px 10px 20px;display:inline-block;vertical-align:middle;">
-        			<%= image_tag @user.image(:large), :class =>'img_user11' %>
+        			<%= image_tag @user.image(:medium), :class =>'img_user11' %>
         		</div>
 				<div class="font_white" style="display:inline-block;vertical-align:middle;max-width:50%;word-wrap: break-word;">
         			<%= @user.name %>
@@ -63,7 +63,30 @@
 										<% if post.image_url.blank? %>
 											<img data-src="assets/nothing01.jpg" class="img_myboom lazyload_min">
 										<% else %>									
-											<img data-src="<%= post.image_url %>" class="img_myboom lazyload_min">
+											<% if post.category == "movie" %>
+												<% @image_url = post.image_url.sub(/original/, 'w154') %>
+											<% end %>
+											<% if post.category == "tv" %>
+												<% @image_url = post.image_url.sub(/original/, 'w154') %>
+											<% end %>
+											<% if post.category == "book" %>
+												<% if post.api == "itunes" %>
+													<% @image_url = post.image_url.sub(/1000x1000bb/, '200x200bb') %>
+												<% else %>
+													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=200x200') %>
+												<% end %>
+											<% end %>
+											<% if post.category == "comic" %>
+												<% if post.api == "itunes" %>
+													<% @image_url = post.image_url.sub(/1000x1000bb/, '200x200bb') %>
+												<% else %>
+													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=200x200') %>
+												<% end %>
+											<% end %>
+											<% if post.category == "music" %>
+												<% @image_url = post.image_url.sub(/1000x1000bb/, '200x200bb') %>
+											<% end %>
+											<img data-src="<%= @image_url %>" class="img_myboom lazyload_min">
 										<% end %>										
 										<span>
 											<div class="font_category_min">

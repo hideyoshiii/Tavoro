@@ -113,7 +113,7 @@
 
 
 <%#テキストエリアの自動改行%>
-<script type="text/javascript">
+<script defer>
 	$(function() {
 	  var $textarea = $('#textarea');
 	  var lineHeight = parseInt($textarea.css('lineHeight'));
@@ -125,7 +125,7 @@
 </script>
 
 <%#投稿ボタンボタン%>
-<script type="text/javascript">
+<script defer>
 	$('#btn_post').click(function() {
 		document.myform.submit();
 	});

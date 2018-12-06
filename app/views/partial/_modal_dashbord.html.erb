@@ -145,14 +145,14 @@
 </div>
 
 <%#lazyload.js%>
-<script type="text/javascript">
+<script defer>
   $('#myModal_dashbord').on("show.bs.modal", function () {
       $('img.lazyload_modal_dashbord').lazyload();
     });      
 </script>
 
 <%#モーダルtubolinks不具合修正%>
-<script type="text/javascript">
+<script defer>
   $(function(){
     var display_dashbord = $('#myModal_dashbord').css('display');
     //モーダルが表示されているのに表示判定されてなかったら

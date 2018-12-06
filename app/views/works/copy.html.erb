@@ -17,7 +17,7 @@
 	<audio id="audio" controls preload="none" style="display:none;">
 		<source src="<%= @post.preview_url %>" type="audio/mpeg"></source>
 	</audio>
-	<script type="text/javascript">						  
+	<script defer>
 		$(function(){
 	  	  var audio = document.getElementById('audio');
 		  $('#btn_preview').on("click",function(){
@@ -198,7 +198,7 @@
 
 
 <%#テキストエリアの自動改行%>
-<script type="text/javascript">
+<script defer>
 	$(function() {
 	  var $textarea = $('#textarea');
 	  var lineHeight = parseInt($textarea.css('lineHeight'));
@@ -210,7 +210,7 @@
 </script>
 
 <%#投稿ボタンボタン%>
-<script type="text/javascript">
+<script defer>
 	$('#btn_post').click(function() {
 		document.myform.submit();
 	});
