@@ -1,8 +1,7 @@
 <div class="main">
 	<div class="block_side">
 	</div>
-	<div class="block_main">
-		
+	<div class="block_main">		
 		<div class="a1">
 	        <div class="a4">
 	          <div class="d1">
@@ -25,10 +24,7 @@
 			              		ログインしているユーザーは
 			              		<br>ご利用頂けないページです
 			              	</div>
-			              	<div style="height:5vh;"></div>
-					        <a href="javascript:void(0);" onclick="window.history.back();" class="btn_invite">
-					        	前のページへ戻る
-					        </a> 
+			              	<div style="height:5vh;"></div>					     
 						<% else %>
 							<% if @invitation.present? %>
 				              	<%= image_tag @invitation.user.image(:large), :class => "img_user13" %>
@@ -64,16 +60,12 @@
 				              		<br>すでに使用されています
 				              	</div>				              	
 				              	<div style="height:5vh;"></div>
-						        <a href="javascript:void(0);" onclick="window.history.back();" class="btn_invite">
-						        	前のページへ戻る
-						        </a>   
 						    <% end %>
 						<% end %>
 				    </span>
 			    </div>
 	        </div>
-		</div>	
-		
+		</div>		
 	</div>
 	<div class="block_side">
 	</div>
@@ -81,54 +73,56 @@
 
 
 <% unless user_signed_in? %>
-	<%#サインアップモーダル%>
-	<div class="modal bottom fade" id="myModal_sign_up">
-	  <div class="height_modal"></div>
-	    <div class="modal-dialog">
-	      <div class="a1">
-	        <div class="a4">
-	          <div class="d1">
-	            <div class="d6"></div>
-	          </div>
-	        </div>
-	        <div class="a7">
-	            <a href="" data-toggle="modal" data-dismiss="modal">
-	              <div style="padding:20px;">
-	                <%= image_tag "cross_gray.png", :style =>'width:18px;height:18px;opacity:0.5' %>
-	              </div>
-	            </a>  
-	        </div>
-	        <div class="a8" style="text-align:center;">  
-	        	<div style="height:7vh;"></div>          	
-				<div class="font_white_big">
-					Sign up
-				</div>
-				<div class="gogo">
-					<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-					  <%= hidden_field_tag :invitation_id, @invitation.id %>
-					  <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
-					  <%= f.email_field :email,placeholder: "email", required: "" %>
-					  <%= f.password_field :password,placeholder: "password", required: "" %>
-					  <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
-					  <div style="height:2vh;"></div>
-	      			  <%= f.submit "完了",class:"btn_session" %>
-					<% end %>
-				</div>
-				<div style="height:7vh;"></div>
-				<div class="font_gray_min" style="padding:0 15%;text-align:left;">
-					アカウントを作成することで,TAVOREの
-					<%= link_to terms_path do %>
-						利用規約
-					<% end %>
-					と
-					<%= link_to policy_path do %>
-						プライバシーポリシー
-					<% end %>
-					に同意されたものとします。
-				</div>					
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+	<% if @invitation.present? %>
+		<%#サインアップモーダル%>
+		<div class="modal bottom fade" id="myModal_sign_up">
+		  <div class="height_modal"></div>
+		    <div class="modal-dialog">
+		      <div class="a1">
+		        <div class="a4">
+		          <div class="d1">
+		            <div class="d6"></div>
+		          </div>
+		        </div>
+		        <div class="a7">
+		            <a href="" data-toggle="modal" data-dismiss="modal">
+		              <div style="padding:20px;">
+		                <%= image_tag "cross_gray.png", :style =>'width:18px;height:18px;opacity:0.5' %>
+		              </div>
+		            </a>  
+		        </div>
+		        <div class="a8" style="text-align:center;">  
+		        	<div style="height:7vh;"></div>          	
+					<div class="font_white_big">
+						Sign up
+					</div>
+					<div class="gogo">
+						<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+						  <%= hidden_field_tag :invitation_id, @invitation.id %>
+						  <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
+						  <%= f.email_field :email,placeholder: "email", required: "" %>
+						  <%= f.password_field :password,placeholder: "password", required: "" %>
+						  <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
+						  <div style="height:2vh;"></div>
+		      			  <%= f.submit "完了",class:"btn_session" %>
+						<% end %>
+					</div>
+					<div style="height:7vh;"></div>
+					<div class="font_gray_min" style="padding:0 15%;text-align:left;">
+						アカウントを作成することで,TAVOREの
+						<%= link_to terms_path do %>
+							利用規約
+						<% end %>
+						と
+						<%= link_to policy_path do %>
+							プライバシーポリシー
+						<% end %>
+						に同意されたものとします。
+					</div>					
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	<% end %>
 <% end %>
