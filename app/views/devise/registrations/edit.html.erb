@@ -1,20 +1,20 @@
 <div class="bar_post">      
   <div style="">
-    <div class="pro13">
+    <div class="inline_block_middle" style="width:15%;">
       <div style="text-align:left;">
         <a href="javascript:void(0);" onclick="window.history.back();">
               <%= image_tag "left-arrow.png", :style =>'width:15px;height:15px;' %>
             </a>                    
       </div>
     </div>
-    <div class="pro14">
+    <div class="inline_block_middle" style="width:70%;">
       <div class="contain_title02" style="text-align:center;">
         <div style="font-size:14px;color:#c2c2c2;">
           アカウントを編集
         </div>
       </div>
     </div>
-    <div class="pro15">
+    <div class="inline_block_middle" style="width:15%;">
       <div style="text-align:right;">             
       </div>
     </div>
@@ -44,7 +44,7 @@
                   <% if current_user.image %>
                     <%= image_tag current_user.image(:large), :class => "img_user08" %>
                   <% else %>
-                    <%= image_tag "user04.png", :class =>'img_user08' %>
+                    <%= image_tag "user09.png", :class =>'img_user08' %>
                   <% end %>
                   <span><i class="fas fa-camera"></i></span>
                 </div>
@@ -57,7 +57,7 @@
         <% end %>
         <%#名前%>
         <div class="box_tests06">
-          <div class="pro24">
+          <div class="inline_block_middle" style="width:90%;">
              <div class="font_gray">
               名前
             </div>
@@ -65,12 +65,12 @@
         </div>
         <div class="box_tests07">
           <a href="" data-toggle="modal" data-target="#myModal_name">
-            <div class="pro24">
+            <div class="inline_block_middle" style="width:90%;">
               <div class="font_white_max">
                 <%= @user.name %>
               </div>
             </div>
-            <div class="pro25">
+            <div class="inline_block_middle" style="width:10%;">
               <span class="font_gray_max">
                 <i class="fas fa-chevron-right"></i>
               </span>
@@ -80,20 +80,20 @@
         <div style="height:5vh;"></div> 
         <%#ユーザーid%>
         <div class="box_tests06">
-          <div class="pro24">
-             <div class="font_gray">
+          <div class="inline_block_middle" style="width:90%;">
+            <div class="font_gray">
               ユーザーid
             </div>
           </div>
         </div>
         <div class="box_tests07">
           <a href="" data-toggle="modal" data-target="#myModal_username">
-            <div class="pro24">
+            <div class="inline_block_middle" style="width:90%;">
               <div class="font_white_max">
                 <%= @user.username %>
               </div>
             </div>
-            <div class="pro25">
+            <div class="inline_block_middle" style="width:10%;">
               <span class="font_gray_max">
                 <i class="fas fa-chevron-right"></i>
               </span>
@@ -103,15 +103,15 @@
         <div style="height:5vh;"></div> 
         <%#自己紹介%>
         <div class="box_tests06">
-          <div class="pro24">
-             <div class="font_gray">
+          <div class="inline_block_middle" style="width:90%;">
+            <div class="font_gray">
               自己紹介
             </div>
           </div>
         </div>
         <div class="box_tests07">
           <a href="" data-toggle="modal" data-target="#myModal_description">
-            <div class="pro24">
+            <div class="inline_block_middle" style="width:90%;">
               <div class="font_white_max contain_title02" style="max-width:80%;">
                 <% if @user.description.present? %>
                   <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
@@ -122,7 +122,7 @@
                 <% end %>
               </div>
             </div>
-            <div class="pro25">
+            <div class="inline_block_middle" style="width:10%;">
               <span class="font_gray_max">
                 <i class="fas fa-chevron-right"></i>
               </span>
@@ -132,7 +132,7 @@
         <div style="height:5vh;"></div>
         <%#email%>
         <div class="box_tests06">
-          <div class="pro24">
+          <div class="inline_block_middle" style="width:90%;">
              <div class="font_gray">
               メールアドレス
             </div>
@@ -140,12 +140,12 @@
         </div>
         <div class="box_tests07">
           <a href="" data-toggle="modal" data-target="#myModal_email">
-            <div class="pro24">
+            <div class="inline_block_middle" style="width:90%;">
               <div class="font_white_max">
                 <%= @user.email %>
               </div>
             </div>
-            <div class="pro25">
+            <div class="inline_block_middle" style="width:10%;">
               <span class="font_gray_max">
                 <i class="fas fa-chevron-right"></i>
               </span>
@@ -155,20 +155,20 @@
         <div style="height:5vh;"></div>
         <%#password%>
         <div class="box_tests06">
-          <div class="pro24">
-             <div class="font_gray">
+          <div class="inline_block_middle" style="width:90%;">
+            <div class="font_gray">
               パスワード
             </div>
           </div>
         </div>
         <div class="box_tests07">
           <a href="" data-toggle="modal" data-target="#myModal_password">
-            <div class="pro24">
+            <div class="inline_block_middle" style="width:90%;">
               <div class="font_white_max">
                 パスワードを変更
               </div>
             </div>
-            <div class="pro25">
+            <div class="inline_block_middle" style="width:10%;">
               <span class="font_gray_max">
                 <i class="fas fa-chevron-right"></i>
               </span>
@@ -211,7 +211,7 @@
         <div style="height:5vh;"></div>
       </div>
       <div class="a10">
-        <div class="pro19">             
+        <div class="inline_block_middle" style="width:100%;">
           <a href="" data-dismiss="modal">
             <%= image_tag "close_blue.png", :class =>'img_left02' %>
           </a>
@@ -246,7 +246,7 @@
         <div style="height:5vh;"></div>
       </div>
       <div class="a10">
-        <div class="pro19">             
+        <div class="inline_block_middle" style="width:100%;">
           <a href="" data-dismiss="modal">
             <%= image_tag "close_blue.png", :class =>'img_left02' %>
           </a>
@@ -283,7 +283,7 @@
         <div style="height:5vh;"></div>
       </div>
       <div class="a10">
-        <div class="pro19">             
+        <div class="inline_block_middle" style="width:100%;">
           <a href="" data-dismiss="modal">
             <%= image_tag "close_blue.png", :class =>'img_left02' %>
           </a>
@@ -315,7 +315,7 @@
         <div style="height:5vh;"></div>
       </div>
       <div class="a10">
-        <div class="pro19">             
+        <div class="inline_block_middle" style="width:100%;">
           <a href="" data-dismiss="modal">
             <%= image_tag "close_blue.png", :class =>'img_left02' %>
           </a>
@@ -352,7 +352,7 @@
         <% end %>     
       </div>
       <div class="a10">
-        <div class="pro19">             
+        <div class="inline_block_middle" style="width:100%;">
           <a href="" data-dismiss="modal">
             <%= image_tag "close_blue.png", :class =>'img_left02' %>
           </a>
@@ -363,9 +363,8 @@
 </div>
 
 
-
 <%#テキストエリアの自動改行%>
-<script type="text/javascript">
+<script defer>
   $(function() {
     var $textarea = $('#textarea');
     var lineHeight = parseInt($textarea.css('lineHeight'));
@@ -380,7 +379,8 @@
   });
 </script>
 
-<script type="text/javascript">
+<%#idのvalidation%>
+<script defer>
   $(function(){
     var
     preFunc = null,

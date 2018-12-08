@@ -28,7 +28,7 @@
 	        </div>       
           	<div style="height:7vh;"></div>
           	<div style="text-align:center;width:100%;">
-	            <div class="pro20">
+	            <div class="inline_block_middle" style="width:33.33%;">
 	          	  <div>
 	                <%= image_tag "checked_white.png", :style =>'width:18px;height:18px;' %>
 	              </div> 
@@ -36,7 +36,7 @@
 	                <%= Post.where(user_id: @user.id).where.not(review: "bookmark").size %> checkeds
 	              </div> 
 	            </div>
-	            <div class="pro20">
+	            <div class="inline_block_middle" style="width:33.33%;">
 	              <div>
 	                <%= image_tag "bookmark_white.png", :style =>'width:18px;height:18px;' %>
 	              </div> 
@@ -44,7 +44,7 @@
 	                <%= Post.where(user_id: @user.id, review: "bookmark").size %> bookmarks
 	              </div> 
 	            </div>
-	            <div class="pro20">
+	            <div class="inline_block_middle" style="width:33.33%;">
 	              <div>
 	                <%= image_tag "file_white.png", :style =>'width:18px;height:18px;' %>
 	              </div> 

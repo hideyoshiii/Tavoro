@@ -44,21 +44,21 @@
 
 <div class="bar_post">			
 	<div style="">
-		<div class="pro13">
+		<div class="inline_block_middle" style="width:15%;">
 			<div style="text-align:left;">
 				<a href="javascript:void(0);" onclick="window.history.back();">
 		        	<%= image_tag "left-arrow.png", :style =>'width:15px;height:15px;' %>
 		        </a>										
 			</div>
 		</div>
-		<div class="pro14">
+		<div class="inline_block_middle" style="width:70%;">
 			<div class="contain_title02" style="text-align:center;">
 				<div style="font-size:14px;color:#c2c2c2;">
 					<%= @post.title %>
 				</div>
 			</div>
 		</div>
-		<div class="pro15">
+		<div class="inline_block_middle" style="width:15%;">
 			<button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">		
 				投稿		
 			</button>
@@ -149,7 +149,7 @@
 											<div class="radio01">
 												<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
 												<label for="image_url<%= i %>">
-													<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+													<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :style =>'width:auto;height:45vh;' %>
 												</label>
 											</div>
 										</div>
@@ -158,14 +158,14 @@
 											<div class="radio01">
 												<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
 												<label for="image_url<%= i %>">
-													<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+													<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :style =>'width:auto;height:45vh;' %>
 												</label>
 											</div>
 										</div>
 									<% end %>
 								<% end %>
 							<% else %>
-								<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
+								<%= image_tag @post.image_url, :style =>'width:50%;height:auto;' %>
 							<% end %>
 						</div>
 					</div>
@@ -174,7 +174,7 @@
 						<% if @post.category == "music" %>
 							<div style="text-align:center;width:60%;margin:0 auto;">
 								<div class="pile_preview">								
-									<%= image_tag @post.image_url, :class =>'img_lavoro03' %>		
+									<%= image_tag @post.image_url, :style =>'width:100%;height:100%;' %>		
 									<% if @post.preview_url.present? %>
 										<div id="btn_preview">
 											<i id="icon_play" class="fas fa-play"></i>
@@ -183,7 +183,7 @@
 								</div>
 							</div>	
 						<% else %>
-							<%= image_tag @post.image_url, :class =>'img_lavoro05' %>
+							<%= image_tag @post.image_url, :style =>'width:50%;height:auto;' %>
 						<% end %>
 						<%= hidden_field_tag :image_url, @post.image_url %>
 					</div>

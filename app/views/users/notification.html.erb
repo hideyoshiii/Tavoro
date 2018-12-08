@@ -1,20 +1,20 @@
 <div class="bar_post">			
 	<div style="">
-		<div class="pro13">
+		<div class="inline_block_middle" style="width:15%;">
 			<div style="text-align:left;">
 				<a href="javascript:void(0);" onclick="window.history.back();">
 		        	<%= image_tag "left-arrow.png", :style =>'width:15px;height:15px;' %>
 		        </a>										
 			</div>
 		</div>
-		<div class="pro14">
+		<div class="inline_block_middle" style="width:70%;">
 			<div class="contain_title02" style="text-align:center;">
 				<div style="font-size:14px;color:#c2c2c2;">
 					通知
 				</div>
 			</div>
 		</div>
-		<div class="pro15">
+		<div class="inline_block_middle" style="width:15%;">
 			<div style="text-align:right;">							
 			</div>
 		</div>
@@ -39,15 +39,15 @@
 						<% if User.find_by(id: item.notified_by) %>
 							<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
 								<div class="box_tests08">
-						            <div class="pro21">
+						            <div class="inline_block_middle" style="width:20%;padding-left:5px;">
 							            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
 						            </div>
-						            <div class="pro22">  
+						            <div class="inline_block_middle" style="width:60%;padding-left:5px;">
 						              	<span class="font_white_min">
 						                	<%= item.notified_by.name %>さんからフォローされました
 						              	</span>
 						            </div>
-						            <div class="pro23" style="text-align:right;padding-right:10px;">
+						            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
 						            	<div class="font_gray_max">
 							            	<i class="fas fa-chevron-right"></i>
 							            </div>
@@ -60,15 +60,15 @@
 				    	<% if User.find_by(id: item.notified_by) %>
 					    	<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
 						        <div class="box_tests09">
-						            <div class="pro21">
+						            <div class="inline_block_middle" style="width:20%;padding-left:5px;">
 							            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
 						            </div>
-						            <div class="pro22">  
+						            <div class="inline_block_middle" style="width:60%;padding-left:5px;">
 						              	<span class="font_white_min">
 						                	<%= item.notified_by.name %>さんからフォローされました
 						              	</span>
 						            </div>
-						            <div class="pro23" style="text-align:right;padding-right:10px;">
+						            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
 						            	<div class="font_gray_max">
 							            	<i class="fas fa-chevron-right"></i>
 							            </div>

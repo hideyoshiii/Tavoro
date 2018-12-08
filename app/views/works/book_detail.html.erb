@@ -1,20 +1,20 @@
 <div class="bar_post">			
 	<div style="">
-		<div class="pro13">
+		<div class="inline_block_middle" style="width:15%;">
 			<div style="text-align:left;">
 				<a href="javascript:void(0);" onclick="window.history.back();">
 		        	<%= image_tag "left-arrow.png", :style =>'width:15px;height:15px;' %>
 		        </a>										
 			</div>
 		</div>
-		<div class="pro14">
+		<div class="inline_block_middle" style="width:70%;">
 			<div class="contain_title02" style="text-align:center;">
 				<div style="font-size:14px;color:#c2c2c2;">
 					<%= @title %>
 				</div>
 			</div>
 		</div>
-		<div class="pro15">
+		<div class="inline_block_middle" style="width:15%;">
 			<button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">		
 				投稿		
 			</button>
@@ -72,9 +72,9 @@
 				<div style="height:1.5vh;"></div>
 				<div style="text-align:center;width:100%;margin:0 auto;">
 					<% if @poster.blank? %>
-						<%= image_tag "nothing02.jpg", :class =>'img_lavoro05' %>
+						<%= image_tag "nothing02.jpg", :style =>'width:50%;height:auto;' %>
 					<% else %>
-						<%= image_tag @poster, :class =>'img_lavoro05' %>
+						<%= image_tag @poster, :style =>'width:50%;height:auto;' %>
 						<%= hidden_field_tag :image_url, @poster %>
 					<% end %>
 				</div>

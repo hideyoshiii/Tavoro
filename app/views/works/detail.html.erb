@@ -75,25 +75,23 @@
           		</div>
           		<div style="height:1vh;"></div>
           		<div style="width:90%;text-align:center;margin:0 auto;">
-          			<div class="pro26">
-          				<div style="text-align:left;padding:12px 10px;">
-          					<% if post.image_url.blank? %>
-								<%= image_tag "nothing01.jpg", :class =>'img_lavoro03' %>
-							<% else %>
-								<% if post.category == "music" %>
-									<div class="pile_preview">
-										<%= image_tag post.image_url, :class =>'img_lavoro03' %>
-										<div id="btn_preview">
-											<i id="icon_play" class="fas fa-play"></i>
-										</div>
+          			<div class="inline_block_middle" style="width:40%;text-align:left;padding:12px 10px;">		
+      					<% if post.image_url.blank? %>
+							<%= image_tag "nothing01.jpg", :class =>'img_tavore' %>
+						<% else %>
+							<% if post.category == "music" %>
+								<div class="pile_preview">
+									<%= image_tag post.image_url, :class =>'img_tavore' %>
+									<div id="btn_preview">
+										<i id="icon_play" class="fas fa-play"></i>
 									</div>
-								<% else %>
-									<%= image_tag post.image_url, :class =>'img_lavoro03' %>
-								<% end %>
+								</div>
+							<% else %>
+								<%= image_tag post.image_url, :class =>'img_tavore' %>
 							<% end %>
-          				</div>
+						<% end %> 				
           			</div>
-          			<div class="pro27" style="text-align:left;padding:20px 10px;">
+          			<div class="inline_block_middle" style="width:60%;padding:20px 10px;">
           				<div class="font_white_big">
           					<%= post.title %>
           				</div>

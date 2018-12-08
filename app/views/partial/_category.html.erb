@@ -48,18 +48,13 @@
 	</div>
 </div>	
 
+<%#切り替えボタンjs%>
 <script defer>
 	$(function(){
 	    $('#menu_category').click(function(){
 	    	$('#menu_category_back').toggleClass('open');
 	        $('#menu_category_in').toggleClass('open');
 	        $('.switch_category').toggleClass('open');
-	        var Bounce = iNoBounce.isEnabled()
-	        if(Bounce === true){
-	        	iNoBounce.disable()
-	        } else {
-	        	iNoBounce.enable()
-	        }
 	    });
 	});
 </script>

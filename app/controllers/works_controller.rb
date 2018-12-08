@@ -3,8 +3,7 @@ class WorksController < ApplicationController
 
 
   def test
-    @items01 = ITunesSearchAPI.search(:term => "坂本ですが", :country => "jp", :media => "ebook", :limit  => '100')
-    @items02 = RakutenWebService::Books::Book.search(title: "坂本ですが")
+    
   end
 
   def index

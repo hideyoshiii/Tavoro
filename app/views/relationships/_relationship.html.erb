@@ -4,7 +4,7 @@
 			<%= image_tag "bag_white.png", :style =>'width:16px;height:16px;margin-top:-3.5px;' %>&nbsp;&nbsp;投稿へ
 		</div>
 	<% end %>
-	<div style="display:inline-block;vertical-align:top;">
+	<div class="inline_block_top">
 		<%= link_to configuration_path do %>
 			<div class="btn_follow_on" style="padding-left:1.0em;padding-right:1.0em;">
 				<%= image_tag "control_white.png", :style =>'width:14px;height:14px;margin-top:-2px' %>				
@@ -18,7 +18,7 @@
 				<%= image_tag "bag_white.png", :style =>'width:16px;height:16px;margin-top:-3.5px;' %>&nbsp;&nbsp;投稿へ
 			</div>
 		<% end %>
-		<div style="display:inline-block;vertical-align:top;">
+		<div class="inline_block_top">
 			<%= form_for(current_user.following_relationships.find_by(following_id: @user.id), data: { confirm: 'フォローを解除しますか？' }, html: { method: :delete }, remote: true) do |f| %>
 				<button>
 					<div class="btn_follow_on" style="padding-left:1.0em;padding-right:1.0em;">
