@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   get 'terms' => "users#terms"
   get 'contact' => "users#contact"
   get 'notification' => "users#notification"
-  get 'invitation' => "users#invitation"
 
   resources :users do
     member do
@@ -57,19 +56,19 @@ Rails.application.routes.draw do
   post "works/:id/create_bookmark" => "works#create_bookmark"
   post "works/:id/destroy_bookmark" => "works#destroy_bookmark"
 
-  post "works/:id/create_list" => "works#create_list"
-  post "works/:id/destroy_list" => "works#destroy_list"
-
-  post "works/:id/create_favorite" => "works#create_favorite"
-  post "works/:id/destroy_favorite" => "works#destroy_favorite"
-
-  get 'works/test' => "works#test"
-
   post "likes/:post_id/create" => "likes#create"
   post "likes/:post_id/destroy" => "likes#destroy"
 
   resources :invitations, only: [:create, :destroy]
-  get 'invitation/:id' => "invitations#invite"
+  get 'invitation/:id' => "invitations#invitation"
+  get 'invite' => "invitations#invite"
+
+  post ":id/create_profile" => "lists#create_profile"
+  post ":id/destroy_profile" => "lists#destroy_profile"
+  post ":id/create_favorite" => "lists#create_favorite"
+  post ":id/destroy_favorite" => "lists#destroy_favorite"
+
+  get 'works/test' => "works#test"
 
 
   get '*path', to: 'application#render_404'

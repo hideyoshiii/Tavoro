@@ -116,17 +116,9 @@ class UsersController < ApplicationController
       @notifications_no = @notifications.where(read: false)
     end
 
-    def invitation  
-      @invitation = Invitation.new  
-
-      @invitations = Invitation.where(user_id: current_user.id).order(created_at: "DESC")
-      @invitations_true = @invitations.where(used: true)
-    end
-
     private
       def notification_update
         @notifications_no.update_all(read: true)
       end
-
 
 end

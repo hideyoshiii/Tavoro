@@ -16,23 +16,26 @@
                 <% end %>
               </div>
               <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
-                <span class="font_white_big">
-                  <% if item["media_type"] == "movie" %>
-                    <%= item["title"] %>
-                  <% end %> 
-                  <% if item["media_type"] == "tv" %>
-                    <%= item["name"] %>
-                  <% end %>   
-                </span>
-                <br>
-                <span class="font_gray">
-                  <% if item["media_type"] == "movie" %>
-                    <%= item["release_date"].slice(0..3) %>
-                  <% end %> 
-                  <% if item["media_type"] == "tv" %>
-                    <%= item["first_air_date"].slice(0..3) %>
-                  <% end %>  
-                </span>
+                <div class="contain_title">
+                  <div class="font_white_big">
+                    <% if item["media_type"] == "movie" %>
+                      <%= item["title"] %>
+                    <% end %> 
+                    <% if item["media_type"] == "tv" %>
+                      <%= item["name"] %>
+                    <% end %>   
+                  </div>
+                </div>
+                <div class="contain_title02">
+                  <div class="font_gray">
+                    <% if item["media_type"] == "movie" %>
+                      <%= item["release_date"].slice(0..3) %>
+                    <% end %> 
+                    <% if item["media_type"] == "tv" %>
+                      <%= item["first_air_date"].slice(0..3) %>
+                    <% end %>  
+                  </div>
+                </div>
               </div>
               <div class="inline_block_middle" style="width:20%;">
                 <span class="font_gray_max">
@@ -62,13 +65,16 @@
               <% end %>
             </div>
             <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
-              <span class="font_white_big">   
-                <%= item["title"] %>  
-              </span>
-              <br>
-              <span class="font_gray">
-                <%= item["release_date"].slice(0..3) %>            
-              </span>
+              <div class="contain_title">
+                <div class="font_white_big">   
+                  <%= item["title"] %>  
+                </div>
+              </div>
+              <div class="contain_title02">
+                <div class="font_gray">
+                  <%= item["release_date"].slice(0..3) %>            
+                </div>
+              </div>
             </div>
             <div class="inline_block_middle" style="width:5%;">
               <span class="font_gray_max">

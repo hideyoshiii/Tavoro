@@ -1,6 +1,13 @@
 class InvitationsController < ApplicationController
 
-  def invite
+  def invite  
+    @invitation = Invitation.new  
+
+    @invitations = Invitation.where(user_id: current_user.id).order(created_at: "DESC")
+    @invitations_true = @invitations.where(used: true)
+  end
+
+  def invitation
   	@invitation = Invitation.find_by(code: params[:id], used: false)
   end
 

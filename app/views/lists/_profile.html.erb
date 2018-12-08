@@ -1,19 +1,19 @@
 <% if @list = List.find_by(user_id: current_user.id, title: "プロフィール") %>
     <% if @list_item = ListItem.find_by(list_id: @list.id, post_id: post.id) %>
-    	<%= link_to "/works/#{post.id}/destroy_list", method: :post, remote: true do %>
+    	<%= link_to "/#{post.id}/destroy_profile", method: :post, remote: true do %>
 			<div class="btn_half_item">  
 				<%= image_tag "proflie_green.png", :style =>'width:20px;height:20px;margin-top:-2px;margin-right:15px;opacity:0.7;' %>プロフィールの設定を解除
 			</div>
 		<% end %>
     <% else %>
-    	<%= link_to "/works/#{post.id}/create_list", method: :post, remote: true do %>
+    	<%= link_to "/#{post.id}/create_profile", method: :post, remote: true do %>
 			<div class="btn_half_item">  
 				<%= image_tag "proflie_white.png", :style =>'width:20px;height:20px;margin-top:-2px;margin-right:15px;opacity:0.7;' %>プロフィールに設定
 			</div>
 		<% end %>
     <% end %>
 <% else %>
-	<%= link_to "/works/#{post.id}/create_list", method: :post, remote: true do %>
+	<%= link_to "/#{post.id}/create_profile", method: :post, remote: true do %>
 		<div class="btn_half_item">  
 			<%= image_tag "proflie_white.png", :style =>'width:20px;height:20px;margin-top:-2px;margin-right:15px;opacity:0.7;' %>プロフィールに設定
 		</div>

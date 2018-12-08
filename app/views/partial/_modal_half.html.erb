@@ -41,11 +41,11 @@
 					<% end %>
 					<% if post.user.id == current_user.id %>					
 						<span id="favorite-of-<%= post.id %>">
-					      	<%= render partial: 'works/favorite', locals: { post: post } %>
+					      	<%= render partial: 'lists/favorite', locals: { post: post } %>
 					    </span>	
 					    <div style="height:30px"></div>
-						<span id="list-of-<%= post.id %>">
-					      	<%= render partial: 'works/list', locals: { post: post } %>
+						<span id="profile-of-<%= post.id %>">
+					      	<%= render partial: 'lists/profile', locals: { post: post } %>
 					    </span>
 					    <div style="height:30px"></div>
 						<%= link_to "/works/#{post.id}/edit" do %>
