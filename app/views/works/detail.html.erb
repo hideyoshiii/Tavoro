@@ -1,49 +1,4 @@
 <% post = @post %>
-
-<% if post.preview_url.present? %>
-	<style type="text/css">
-		#btn_preview {
-	    display: block;
-	    width: 32px;
-	    height: 32px;
-	    background: rgba(50,50,50,0.7);
-	    text-align: center;
-	    border-radius: 50%;
-	    cursor: pointer;
-	    line-height: 32px;
-	    vertical-align: middle;
-	    font-size: 8px;
-	    padding-left:1px;
-		}
-	</style>
-	<audio id="audio" controls preload="none" style="display:none;">
-		<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
-	</audio>
-	<script defer>						  
-		$(function(){
-	  	  var audio = document.getElementById('audio');
-		  $('#btn_preview').on("click",function(){
-		    if($("#icon_play").hasClass('fa-play'))
-		     {
-		       $("#icon_play").removeClass('fa-play');
-		       $("#icon_play").addClass('fa-pause');
-		       audio.play();
-		     }
-		    else
-		     {
-		       $("#icon_play").removeClass('fa-pause');
-		       $("#icon_play").addClass('fa-play');
-		       audio.pause();
-		     }
-		  });
-		  audio.onended = function() {
-		    $("#icon_play").removeClass('fa-pause');
-		    $("#icon_play").addClass('fa-play');
-		  };
-	  	});				
-		</script>
-<% end %>
-
 <div class="main">
 	<div class="block_side">
 	</div>
@@ -82,8 +37,8 @@
 							<% if post.category == "music" %>
 								<div class="pile_preview">
 									<%= image_tag post.image_url, :class =>'img_tavore' %>
-									<div id="btn_preview">
-										<i id="icon_play" class="fas fa-play"></i>
+									<div class="btn_preview_min" id="btn_preview">
+										<img src="/assets/play_white.png" id="icon_play" style="width:9px;height:9px;margin-left:0.5px;">
 									</div>
 								</div>
 							<% else %>
@@ -325,6 +280,33 @@
 	</div>
 </div>
 
+<%#音楽プレビューjs%>
+<% if post.preview_url.present? %>
+	<audio id="audio" controls preload="none" style="display:none;">
+		<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
+	</audio>
+	<script defer>						  
+		$(function(){
+	  	  var audio = document.getElementById('audio');
+	  	  var img = $("#icon_play");
+		  $('#btn_preview').on("click",function(){
+		    if(img.attr('src') === "/assets/play_white.png")
+		     {	       		       
+		       img.attr("src","/assets/pause_white.png");
+		       audio.play();
+		     }
+		    else
+		     {
+		       img.attr("src","/assets/play_white.png");
+		       audio.pause();
+		     }
+		  });
+		  audio.onended = function() {
+		  	img.attr("src","/assets/pause_white.png");
+		  };
+	  	});				
+   	</script>
+<% end %>
 
 <%#モーダルの中身%>
 <% if @posts_other.present? %>

@@ -90,7 +90,7 @@
 											<% if post.category == "music" %>
 												<% if post.preview_url.present? %>
 													<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
-														<i id="icon_play_<%= post.id %>" class="fas fa-play"></i>
+														<img src="/assets/play_white.png" id="icon_play_<%= post.id %>" style="width:11px;height:11px;margin-left:0.5px;">
 													</div>
 												<% end %>
 											<% end %>
@@ -162,23 +162,21 @@
 					<script defer>						  
 						$(function(){
 					  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
+					  	  var img_<%= post.id %> = $("#icon_play_<%= post.id %>");
 						  $('#btn_preview_<%= post.id %>').on("click",function(){
-						    if($("#icon_play_<%= post.id %>").hasClass('fa-play'))
-						     {
-						       $("#icon_play_<%= post.id %>").removeClass('fa-play');
-						       $("#icon_play_<%= post.id %>").addClass('fa-pause');
+						    if(img_<%= post.id %>.attr('src') === "/assets/play_white.png")
+						     {	       		       
+						       img_<%= post.id %>.attr("src","/assets/pause_white.png");
 						       audio_<%= post.id %>.play();
 						     }
 						    else
 						     {
-						       $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-						       $("#icon_play_<%= post.id %>").addClass('fa-play');
+						       img_<%= post.id %>.attr("src","/assets/play_white.png");
 						       audio_<%= post.id %>.pause();
 						     }
 						  });
 						  audio_<%= post.id %>.onended = function() {
-						    $("#icon_play_<%= post.id %>").removeClass('fa-pause');
-						    $("#icon_play_<%= post.id %>").addClass('fa-play');
+						  	img_<%= post.id %>.attr("src","/assets/pause_white.png");
 						  };
 					  	});				
 				   	</script>

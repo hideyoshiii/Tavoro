@@ -2177,24 +2177,33 @@ button {
 //音楽再生関連
 .btn_preview_default{
 	display: block;
-	width: 40px;
-	height: 40px;
-	background: rgba(50,50,50,0.7);
-	text-align: center;
-	border-radius: 50%;
-	cursor: pointer;
 	position: relative;
+	vertical-align: middle;
+	text-align:center;
+	width:40px;
+	height:40px;
+	line-height:40px;
 	margin-left:85%;
 	margin-top:-15%;
-	font-size: 10px;
-	line-height: 40px;
-	vertical-align: middle;
-  	padding-left:1px;
+	border-radius:50%;
+	background:rgba(50,50,50,0.7);
+	cursor:pointer;
 }
+.btn_preview_min {
+	    display:block;
+	    vertical-align:middle;
+	    text-align:center;
+	    width:32px;
+	    height:32px;
+	    line-height:32px;
+	    border-radius:50%;
+	    background:rgba(50,50,50,0.7);
+	    cursor:pointer;
+		}
 @media only screen and (max-width: 768px) {
 	.btn_preview_default{
-	margin-left:80%;
-	margin-top:-20%;
+		margin-left:80%;
+		margin-top:-20%;
 	}
 }
 

@@ -1,64 +1,20 @@
-<% if @preview_url.present? %>
-	<style type="text/css">
-		#btn_preview {
-	    display: block;
-	    width: 32px;
-	    height: 32px;
-	    background: rgba(50,50,50,0.7);
-	    text-align: center;
-	    border-radius: 50%;
-	    cursor: pointer;
-	    line-height: 32px;
-	    vertical-align: middle;
-	    font-size: 8px;
-	    padding-left:1px;
-		}
-	</style>
-	<audio id="audio" controls preload="none" style="display:none;">
-		<source src="<%= @preview_url %>" type="audio/mpeg"></source>
-	</audio>
-	<script defer>
-		$(function(){
-	  	  var audio = document.getElementById('audio');
-		  $('#btn_preview').on("click",function(){
-		    if($("#icon_play").hasClass('fa-play'))
-		     {
-		       $("#icon_play").removeClass('fa-play');
-		       $("#icon_play").addClass('fa-pause');
-		       audio.play();
-		     }
-		    else
-		     {
-		       $("#icon_play").removeClass('fa-pause');
-		       $("#icon_play").addClass('fa-play');
-		       audio.pause();
-		     }
-		  });
-		  audio.onended = function() {
-		    $("#icon_play").removeClass('fa-pause');
-		    $("#icon_play").addClass('fa-play');
-		  };
-	  	});				
-		</script>
-<% end %>
-
 <div class="bar_post">			
 	<div style="">
-		<div class="pro13">
-			<div style="text-align:left;">
+		<div class="inline_block_middle" style="width:15%;">
+			<div style="text-align:left;padding-left:10px;">
 				<a href="javascript:void(0);" onclick="window.history.back();">
-		        	<%= image_tag "left-arrow.png", :style =>'width:15px;height:15px;' %>
+		        	<%= image_tag "left_gray.png", :style =>'width:15px;height:15px;' %>
 		        </a>										
 			</div>
 		</div>
-		<div class="pro14">
+		<div class="inline_block_middle" style="width:70%;">
 			<div class="contain_title02" style="text-align:center;">
 				<div style="font-size:14px;color:#c2c2c2;">
 					<%= @title %>
 				</div>
 			</div>
 		</div>
-		<div class="pro15">
+		<div class="inline_block_middle" style="width:15%;">
 			<button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">		
 				投稿		
 			</button>
@@ -123,8 +79,8 @@
 							<%= hidden_field_tag :image_url, @poster %>
 						<% end %>
 						<% if @preview_url.present? %>
-							<div id="btn_preview">
-								<i id="icon_play" class="fas fa-play"></i>
+							<div class="btn_preview_default" id="btn_preview">
+								<img src="/assets/play_white.png" id="icon_play" style="width:11px;height:11px;margin-left:0.5px;">
 							</div>
 						<% end %>
 					</div>
@@ -137,6 +93,33 @@
 	</div>
 </div>
 
+<%#音楽プレビューjs%>
+<% if @preview_url.present? %>
+	<audio id="audio" controls preload="none" style="display:none;">
+		<source src="<%= @preview_url %>" type="audio/mpeg"></source>
+	</audio>
+	<script defer>						  
+		$(function(){
+	  	  var audio = document.getElementById('audio');
+	  	  var img = $("#icon_play");
+		  $('#btn_preview').on("click",function(){
+		    if(img.attr('src') === "/assets/play_white.png")
+		     {	       		       
+		       img.attr("src","/assets/pause_white.png");
+		       audio.play();
+		     }
+		    else
+		     {
+		       img.attr("src","/assets/play_white.png");
+		       audio.pause();
+		     }
+		  });
+		  audio.onended = function() {
+		  	img.attr("src","/assets/pause_white.png");
+		  };
+	  	});				
+   	</script>
+<% end %>
 
 <%#テキストエリアの自動改行%>
 <script defer>
