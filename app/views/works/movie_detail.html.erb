@@ -78,7 +78,7 @@
 										<div class="radio01">
 											<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
 											<label for="image_url<%= i %>">
-												<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+												<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :style =>'width:auto;height:45vh;' %>
 											</label>
 										</div>
 									</div>
@@ -87,7 +87,7 @@
 										<div class="radio01">
 											<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
 											<label for="image_url<%= i %>">
-												<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :class =>'img_tavore01' %>
+												<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :style =>'width:auto;height:45vh;' %>
 											</label>
 										</div>
 									</div>
@@ -95,9 +95,9 @@
 							<% end %>
 						<% else %>
 							<% if @poster.blank? %>
-								<%= image_tag "nothing01.jpg", :class =>'img_lavoro05' %>
+								<%= image_tag "nothing01.jpg", :style =>'width:100%;height:100%;' %>
 							<% else %>
-								<%= image_tag @poster, :class =>'img_lavoro05' %>
+								<%= image_tag @poster, :style =>'width:100%;height:100%;' %>
 								<%= hidden_field_tag :image_url, @poster %>
 							<% end %>
 						<% end %>

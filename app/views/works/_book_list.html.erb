@@ -14,11 +14,11 @@
           <div class="box_tests02">
             <div class="inline_block_middle" style="width:20%;">
               <% if item["artworkUrl100"].blank? %>
-                <img data-src="/assets/nothing03.jpg" class="img_lavoro03 lazyload">
+                <img data-src="/assets/nothing03.jpg" class="img_tavore lazyload">
               <% else %>
                 <% @image_url = item["artworkUrl100"] %>
                 <% @image_url = @image_url.sub(/100x100bb/, '200x200bb') %>
-                <img data-src="<%= @image_url %>" class="img_lavoro03 lazyload">
+                <img data-src="<%= @image_url %>" class="img_tavore lazyload">
               <% end %>
             </div>
             <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
@@ -61,10 +61,10 @@
           <div class="box_tests02">
             <div class="inline_block_middle" style="width:20%;">
               <% if item["largeImageUrl"].blank? %>
-                <img data-src="/assets/nothing02.jpg" class="img_lavoro03 lazyload">
+                <img data-src="/assets/nothing02.jpg" class="img_tavore lazyload">
               <% else %>
                 <% @image_url = item["largeImageUrl"] %>
-                <img data-src="<%= @image_url %>" class="img_lavoro03 lazyload">
+                <img data-src="<%= @image_url %>" class="img_tavore lazyload">
               <% end %>
             </div>
             <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
@@ -103,11 +103,11 @@
           <div class="box_tests02">
             <div class="inline_block_middle" style="width:20%;">
               <% if item["artworkUrl100"].blank? %>
-                <img data-src="/assets/nothing03.jpg" class="img_lavoro03 lazyload">
+                <img data-src="/assets/nothing03.jpg" class="img_tavore lazyload">
               <% else %>
                 <% @image_url = item["artworkUrl100"] %>
                 <% @image_url = @image_url.sub(/100x100bb/, '200x200bb') %>
-                <img data-src="<%= @image_url %>" class="img_lavoro03 lazyload">
+                <img data-src="<%= @image_url %>" class="img_tavore lazyload">
               <% end %>
             </div>
             <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
