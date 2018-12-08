@@ -91,42 +91,42 @@
         <% end %>
         <div style="height:4vh;"></div>
         <div style="text-align:center;">
-          <%= link_to "/#{current_user.username}/posts", :style => "display:inline-block;vertical-align:top;margin:0 5px;" do %>
-            <div class="btn_follow_on">
-              <%= image_tag "bag_white.png", :style =>'width:16px;height:16px;margin-top:-3.5px;' %>&nbsp;&nbsp;投稿へ
-            </div>
-          <% end %>
-          <div style="display:inline-block;vertical-align:top;">
+          <div class="inline_block_top">
             <%= link_to configuration_path do %>
-              <div class="btn_follow_on" style="padding-left:1.0em;padding-right:1.0em;">
-                <%= image_tag "control_white.png", :style =>'width:14px;height:14px;margin-top:-2px' %>        
+              <div class="btn_follow_on">
+                <%= image_tag "control_white.png", :style =>'width:13px;height:13px;margin:-3px 5px 0px -3px;' %>
+                <span style="font-weight:bold;opacity:0.7;letter-spacing:1px;">設定</span>
               </div>
             <% end %>
           </div>
         </div>    
-        <div style="height:8vh;"></div>  
+        <div style="height:7vh;"></div>  
         <div style="text-align:center;width:95%;display:inline-block;">
           <div class="inline_block_middle" style="width:33.33%;">
-            <div>
-              <%= image_tag "checked_white.png", :style =>'width:16px;height:16px;' %>
-            </div> 
-            <div style="font-size:12px;margin-top:5px;">
-              <%= Post.where(user_id: current_user.id).where.not(review: "bookmark").size %> checkeds
-            </div> 
+            <%= link_to "/#{current_user.username}/posts" do %>
+              <div>
+                <%= image_tag "checked_white.png", :style =>'width:16px;height:16px;' %>
+              </div> 
+              <div style="font-size:12px;color:#C2C2C2;margin-top:5px;">
+                <%= Post.where(user_id: current_user.id).where.not(review: "bookmark").size %> checkeds
+              </div>
+            <% end %> 
           </div>
           <div class="inline_block_middle" style="width:33.33%;">
-            <div>
-              <%= image_tag "bookmark_white.png", :style =>'width:16px;height:16px;' %>
-            </div> 
-            <div style="font-size:12px;margin-top:5px;">
-              <%= Post.where(user_id: current_user.id, review: "bookmark").size %> bookmarks
-            </div> 
+            <%= link_to "/#{current_user.username}/bookmarks" do %>
+              <div>
+                <%= image_tag "bookmark_white.png", :style =>'width:16px;height:16px;' %>
+              </div> 
+              <div style="font-size:12px;color:#C2C2C2;margin-top:5px;">
+                <%= Post.where(user_id: current_user.id, review: "bookmark").size %> bookmarks
+              </div> 
+            <% end %> 
           </div>
-          <div class="inline_block_middle" style="width:33.33%;">
+          <div class="inline_block_middle" style="width:33.33%;opacity:0.5;">
             <div>
               <%= image_tag "file_white.png", :style =>'width:16px;height:16px;' %>
             </div> 
-            <div style="font-size:12px;margin-top:5px;">
+            <div style="font-size:12px;color:#C2C2C2;margin-top:5px;">
               coming soon
             </div> 
           </div>

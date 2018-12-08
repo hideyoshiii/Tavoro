@@ -1233,7 +1233,7 @@ button {
 .balloon div{
 	display:-webkit-box;
     -webkit-box-orient:vertical;
-    -webkit-line-clamp:2;   
+    -webkit-line-clamp:2; 
 }
 .balloon_top{
   position: relative;
@@ -1481,7 +1481,6 @@ button {
 .btn_on{
     padding: 0.5em 1.5em;
     text-decoration: none;
-    background: none;
     color: #FAFAFA;
     background: rgba(5,98,123,0.4);
     border: solid 1px rgba(5,98,123,0.4);
@@ -1491,7 +1490,6 @@ button {
 .btn_off{
     padding: 0.5em 1.5em;
     text-decoration: none;
-    background: none;
     color: rgba(220,220,220,0.9);
     background: none;
     border: solid 1px rgba(220,220,220,0.3);
@@ -1501,7 +1499,6 @@ button {
 .btn_on02{
     padding: 0.4em 30%;
     text-decoration: none;
-    background: none;
     color: #FAFAFA;
     background: rgba(5,98,123,0.4);
     border: solid 1px rgba(5,98,123,0.1);
@@ -1511,7 +1508,6 @@ button {
 .btn_off02{
     padding: 0.4em 30%;
     text-decoration: none;
-    background: none;
     color: rgba(220,220,220,0.9);
     background: none;
     border: solid 1px rgba(220,220,220,0.3);
@@ -1519,9 +1515,7 @@ button {
     font-size:12px;
 }
 .btn_follow_on{
-    padding: 0.6em 2.5em;
-    text-decoration: none;
-    background: none;
+    padding: 0.5em 2.5em;
     color: #FAFAFA;
     background: rgba(5,98,123,0.5);
     border: solid 1px rgba(5,98,123,0.1);
@@ -1529,9 +1523,8 @@ button {
     font-size:12px;
 }
 .btn_follow_off{
-    padding: 0.6em 2.5em;
+    padding: 0.5em 2.5em;
     text-decoration: none;
-    background: none;
     color: #FAFAFA;
     background: none;
     border: solid 1px rgba(220,220,220,0.4);
@@ -1539,9 +1532,8 @@ button {
     font-size:12px;
 }
 .btn_follow_now{
-    padding: 0.6em 2.5em;
+    padding: 0.5em 2.5em;
     text-decoration: none;
-    background: none;
     color: #FAFAFA;
     background: rgba(116,198,122,0.4);
     border: solid 1px rgba(248,197,90,0.1);
@@ -1551,7 +1543,6 @@ button {
 .btn_approval{
     padding: 0.8em 1.5em;
     text-decoration: none;
-    background: none;
     color: rgba(220,220,220,0.9);
     background: none;
     border: solid 1px rgba(220,220,220,0.3);
@@ -1561,7 +1552,6 @@ button {
 .btn_dash02{
     padding: 0.5em 1.5em;
     text-decoration: none;
-    background: none;
     color: rgba(220,220,220,0.9);
     background: none;
     border: solid 1px rgba(220,220,220,0.3);
