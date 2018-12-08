@@ -99,7 +99,7 @@
 											<%= link_to "/works/#{post.id}/detail" do %>
 												<div class="font_how">
 													<% if post.review == "bookmark" %>
-														<i class="far fa-bookmark" style="color:rgba(220,220,220,0.8);text-shadow:none;"></i> ブックマーク
+														<%= image_tag "bookmark_blue.png", :class =>'icon_review' %>ブックマーク
 													<% end %>
 													<% if post.review == "good" %>
 														<% if post.category == "movie" || post.category == "tv" %>
@@ -113,10 +113,10 @@
 														<% end %>
 													<% end %>
 													<% if post.review == "favorite" %>
-														<i class="fas fa-star" style="color:rgba(252,228,4,0.8);text-shadow:none;"></i> おすすめしています
+														<%= image_tag "star_yellow.png", :class =>'icon_review' %>おすすめしています
 													<% end %>
 													<% if post.review == "bad" %>
-														<i class="fas fa-ban" style="color:rgba(236,12,28,0.8);text-shadow:none;"></i> おすすめしていません
+														<%= image_tag "ban_red.png", :class =>'icon_review' %>おすすめしていません
 													<% end %>
 												</div>
 												<div class="font_head">

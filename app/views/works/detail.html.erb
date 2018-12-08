@@ -30,7 +30,7 @@
           		</div>
           		<div style="height:1vh;"></div>
           		<div style="width:90%;text-align:center;margin:0 auto;">
-          			<div class="inline_block_middle" style="width:40%;text-align:left;padding:12px 10px;">		
+          			<div class="inline_block_middle" style="width:40%;padding:12px 10px;text-align:left;">		
       					<% if post.image_url.blank? %>
 							<%= image_tag "nothing01.jpg", :class =>'img_tavore' %>
 						<% else %>
@@ -46,7 +46,7 @@
 							<% end %>
 						<% end %> 				
           			</div>
-          			<div class="inline_block_middle" style="width:60%;padding:20px 10px;">
+          			<div class="inline_block_middle" style="width:60%;padding:20px 10px;text-align:left;">
           				<div class="font_white_big">
           					<%= post.title %>
           				</div>
@@ -64,6 +64,22 @@
 							<div style="font-size:12px;color:#999999;">
 								<%= @detail03 %>
 							</div>
+						<% end %>
+						<% if post.category == "movie" || post.category == "tv" || post.category == "music" %>
+							<div style="height:2vh;"></div>
+							<a target="blank" href="https://www.youtube.com/results?search_query=<%= post.title %>">
+								<div class="inline_block_middle btn_off">
+									<%= image_tag "youtube.png", :style =>'width:18px;height:18px;margin:-1px 5px 0 0;' %>youtubeで検索
+								</div>
+							</a>
+						<% end %>
+						<% if post.category == "book" || post.category == "comic" %>
+							<div style="height:2vh;"></div>
+							<a target="blank" href="https://www.amazon.co.jp/s/ref=nb_sb_noss_2?&field-keywords=<%= post.title %>">
+								<div class="inline_block_middle btn_off">
+									<%= image_tag "amazon.png", :style =>'width:15px;height:15px;margin:-3px 5px 0 0;' %>amazonで検索
+								</div>
+							</a>
 						<% end %>
           			</div>
           		</div>
@@ -106,7 +122,7 @@
 			                    <div style="height:3px;"></div>
 							  	<div class="font_white_min" style="color:#c4c4c4;">
 							  		<% if post.review == "bookmark" %>
-										<i class="far fa-bookmark" style="color:rgba(220,220,220,0.6);"></i> ブックマーク
+										<%= image_tag "bookmark_blue.png", :class =>'icon_review_min' %>ブックマーク
 									<% end %>
 									<% if post.review == "good" %>
 										<% if post.category == "movie" || post.category == "tv" %>
@@ -120,10 +136,10 @@
 										<% end %>
 									<% end %>
 									<% if post.review == "favorite" %>
-										<i class="fas fa-star" style="color:rgba(252,228,4,0.6);"></i> おすすめしています
+										<%= image_tag "star_yellow.png", :class =>'icon_review_min' %>おすすめしています
 									<% end %>
 									<% if post.review == "bad" %>
-										<i class="fas fa-ban" style="color:rgba(236,12,28,0.6);"></i> おすすめしていません
+										<%= image_tag "ban_red.png", :class =>'icon_review_min' %>おすすめしていません
 									<% end %>
 							  	</div>
 							  	<div style="height:12px;"></div>
@@ -174,7 +190,7 @@
 					                    <div style="height:3px;"></div>
 									  	<div class="font_white_min" style="color:#c4c4c4;">
 									  		<% if post.review == "bookmark" %>
-												<i class="far fa-bookmark" style="color:rgba(220,220,220,0.6);"></i> ブックマーク
+												<%= image_tag "bookmark_blue.png", :class =>'icon_review_min' %>ブックマーク
 											<% end %>
 											<% if post.review == "good" %>
 												<% if post.category == "movie" || post.category == "tv" %>
@@ -188,10 +204,10 @@
 												<% end %>
 											<% end %>
 											<% if post.review == "favorite" %>
-												<i class="fas fa-star" style="color:rgba(252,228,4,0.6);"></i> おすすめしています
+												<%= image_tag "star_yellow.png", :class =>'icon_review_min' %>おすすめしています
 											<% end %>
 											<% if post.review == "bad" %>
-												<i class="fas fa-ban" style="color:rgba(236,12,28,0.6);"></i> おすすめしていません
+												<%= image_tag "ban_red.png", :class =>'icon_review_min' %>おすすめしていません
 											<% end %>
 									  	</div>
 									  	<div style="height:12px;"></div>
@@ -221,62 +237,9 @@
 						<% end %>
 					</div>
 				</div>				
-				<%#レコメンド%>	
-				<div style="height:5vh;"></div>
-          		<div style="font-size:18px;padding-left:15px;">
-          			Reccomends
-          		</div>
-          		<div style="height:4vh;"></div>
-
-          		<% if @posts_reccomend.blank? %>				  		
-					<div class="font_white" style="text-align:center;margin-top:30vh;">
-						<%= image_tag "warning_wihte.png", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
-					</div>	
-			  	<% else %>
-			  		<div class="horizontal_scroll">			
-				  	<% @posts_reccomend.each.with_index(1) do |post, i| %>
-				  		<div class="scroll_item02">
-			  			<div class="grid_posts">
-					    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">	    		
-								<% if post.image_url.blank? %>
-									<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
-								<% else %>									
-									<img data-src="<%= post.image_url %>" class="img_myboom lazyload_min">
-								<% end %>								
-								<span>
-									<div class="font_category_min">
-										<% if post.category == "movie" %>
-											<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> 映画
-										<% end %>
-										<% if post.category == "tv" %>
-											<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> テレビ
-										<% end %>
-										<% if post.category == "book" %>
-											<%= image_tag "book_gray.png", :class =>'icon_category_min' %> ブック
-										<% end %>
-										<% if post.category == "comic" %>
-											<%= image_tag "book_gray.png", :class =>'icon_category_min' %> コミック
-										<% end %>
-										<% if post.category == "music" %>
-											<%= image_tag "music_gray.png", :class =>'icon_category_min' %> ミュージック
-										<% end %>
-									</div>
-									<div class="contain_title">
-										<div class="font_title_min">
-											<%= post.title %>
-										</div>
-									</div>
-								</span>
-							</a>
-						</div>
-						</div>
-				  	<% end %>
-				  	</div>
-			  	<% end %>
 				<div style="height:15vh;"></div>
           	</div>
 		</div>
-		
 	</div>
 </div>
 
@@ -324,17 +287,6 @@
 			<%= render partial: 'partial/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
 			<% @user_list.push(post.user.id) %>
 		<% end %>
-	<% end %>
-<% end %>
-
-
-<%#モーダルの中身%>
-<% if @posts_reccomend.present? %>
-	<% @posts_reccomend.each.with_index do |post, i| %>	
-		<%# 作品モーダル %>
-		<%= render partial: 'partial/modal_work', locals: { post: post } %>
-		<%#ハーフモーダル%>
-		<%= render partial: 'partial/modal_half', locals: { post: post } %>
 	<% end %>
 <% end %>
 

@@ -48,20 +48,28 @@
 				<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
 					<div style="display:inline-block;">
 						<%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
-					    <label for="bookmark"><i class="far fa-bookmark"></i> ブックマーク</label>
+					    <label for="bookmark">
+					    	<%= image_tag "bookmark_blue.png", :class =>'icon_review' %>ブックマーク
+					    </label>
 					</div>
 					<div style="display:inline-block;">
 					    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
-					    <label for="good" class="radio">観ました</label>
+					    <label for="good" class="radio">
+					    	観ました
+					    </label>
 				    </div>
 				    <div style="height:1.5vh;"></div>
 					<div style="display:inline-block;">
 						<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
-					    <label for="favorite"><i class="fas fa-star" style="color:rgba(252,228,4,0.7);"></i> おすすめ</label>
+					    <label for="favorite">
+					    	<%= image_tag "star_yellow.png", :class =>'icon_review' %>おすすめ
+					    </label>
 					</div>
 				    <div style="display:inline-block;">
 					    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
-					    <label for="bad" class="radio"><i class="fas fa-ban" style="color:rgba(236,12,28,0.7);"></i> おすすめしない</label>
+					    <label for="bad" class="radio">
+					    	<%= image_tag "ban_red.png", :class =>'icon_review' %>おすすめしない
+					    </label>
 				    </div>
 				</div>
 				<div style="height:1.5vh;"></div>

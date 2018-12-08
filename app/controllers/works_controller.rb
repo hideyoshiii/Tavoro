@@ -182,10 +182,6 @@ class WorksController < ApplicationController
         @posts_other.sort_by!{|post| post.created_at}.reverse!
     end
 
-    @posts_reccomend = Post.where(user_id: @post.user.id, category: @post.category)
-    @posts_reccomend = @posts_reccomend.where.not(id: @post.id)
-    @posts_reccomend = @posts_reccomend.order("RANDOM()").limit(6)
-
   	if @post.category == "movie"
   		@item = Tmdb::Movie.detail(@post.work_id)
       if @item.present?
