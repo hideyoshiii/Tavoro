@@ -8,7 +8,7 @@
         <%= hidden_field_tag :id, item["id"] %>
           <button type="submit">
             <div class="box_tests02">
-              <div class="inline_block_middle" style="width:5%;">
+              <div class="inline_block_middle" style="width:20%;">
                 <% if item["poster_path"].blank? %>
                   <img data-src="/assets/nothing01.jpg" class="img_tavore lazyload">
                 <% else %>
@@ -37,7 +37,7 @@
                   </div>
                 </div>
               </div>
-              <div class="inline_block_middle" style="width:20%;">
+              <div class="inline_block_middle" style="width:5%;">
                 <%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
               </div>
             </div>
