@@ -3,16 +3,16 @@
 
 html,body{width:100%;height:100%;padding:0;margin:0;color:#FAFAFA;font-size:0;font-family:游ゴシック体,'Yu Gothic',YuGothic,'ヒラギノ角ゴシック Pro','Hiragino Kaku Gothic Pro',メイリオ,Meiryo,Osaka,'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;}
 
-body.open {overflow:hidden;}
+body.open{overflow:hidden;}
 
 a:link,a:hover,a:active,a:visited{text-decoration:none;}
 
 .turbolinks-progress-bar{height:1.5px;background:rgba(39,134,160,1);}
 
 //固定バー関連
-.bar_top {
-    position: fixed;
-    top: 0;
+.bar_top{
+    position:fixed;
+    top:0;
     left:0;
     background:black;
     width:100%;
@@ -20,7 +20,7 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
     padding:0;
     margin:0;
     z-index:99;
-    border-bottom: 2px solid rgba(39,134,160,1);
+    border-bottom:2px solid rgba(39,134,160,1);
 }
 .bar_top_in01{
 	display:inline-block;
@@ -32,97 +32,97 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
 	width:50%;
 	height:50px;
 }
-.bar_collection {
-  	position: fixed;
-    top: 50px;
+.bar_collection{
+  	position:fixed;
+    top:50px;
     left:32.5%;
-    background: -webkit-linear-gradient(-0deg, #111111, #05627B); 
-	background: linear-gradient(-0deg, #111111, #05627B); 
+    background:-webkit-linear-gradient(-0deg, #111111, #05627B); 
+	background:linear-gradient(-0deg, #111111, #05627B); 
     width:35%;
     height:110px;
     padding:0;
     margin:0 auto;
     z-index:98;
-    border-left: solid 1px #000;
-	border-right: solid 1px #000;
+    border-left:solid 1px #000;
+	border-right:solid 1px #000;
 }
-.bar_post {
-    position: fixed;
-    top: 50px;
+.bar_post{
+    position:fixed;
+    top:50px;
     left:32.5%;
-	background: black; 
-	border-bottom: 1px solid rgba(39,134,160,0.5);
+	background:black; 
+	border-bottom:1px solid rgba(39,134,160,0.5);
     width:35%;
     height:40px;
     padding:0;
     margin:0 auto;
     z-index:98;
-    border-left: solid 1px #000;
-	border-right: solid 1px #000;
+    border-left:solid 1px #000;
+	border-right:solid 1px #000;
 	padding-top:10px;
 }
 .bar_smoke{
-	position: absolute;
-	content: "";
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.65); 
+	position:absolute;
+	content:"";
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0, 0, 0, 0.65); 
 	z-index:-1;
 }
 //iPadヨコ
-@media only screen and (max-width: 1024px) and (orientation: landscape) {
-	.bar_collection {
+@media only screen and (max-width:1024px) and (orientation:landscape) {
+	.bar_collection{
 		left:30%;
 	    width:40%;
 	}
-	.bar_post {
+	.bar_post{
 	    left:30%;
 	    width:40%;
 	}
 }
 //iPadタテ
-@media only screen and (max-width: 1024px) and (orientation: portrait) {
-	.bar_collection {
+@media only screen and (max-width:1024px) and (orientation:portrait) {
+	.bar_collection{
 		left:15%;
 	    width:70%;
 	}
-	.bar_post {
+	.bar_post{
 	    left:15%;
 	    width:70%;
 	}
 }
 //iPhoneタテ
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-	.bar_top {  
+@media only screen and (max-width:767px) and (orientation:portrait) {
+	.bar_top{  
     	border-bottom: 1px solid rgba(39,134,160,1);
 	}
-	.bar_collection {
+	.bar_collection{
 		left:0;
 	    width:100%;
 	    border:none;
 	}
-	.bar_post {
+	.bar_post{
 	    left:0;
 	    width:100%;
 	    border:none;
-	    border-bottom: 1px solid rgba(39,134,160,1);
+	    border-bottom:1px solid rgba(39,134,160,1);
 	    margin-top:-1px;
 	    z-index:100;
 	    padding-top:5px;
 	}
 }
 //iPhoneヨコ
-@media only screen and (max-width: 768px) and (orientation: landscape) {
+@media only screen and (max-width:767px) and (orientation:landscape) {
 }
 //SE以下タテ
-@media only screen and (max-width: 370px) and (orientation: portrait) {
+@media only screen and (max-width:370px) and (orientation:portrait) {
 }
 
 
 //ブロック要素関連
-.main {
+.main{
 	position:relative;
 	height:100%;
 	width:100%;
@@ -130,50 +130,44 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
   	margin:0;
 	color:#FAFAFA;
 	background: #111111;
-	background: -webkit-linear-gradient(-180deg, #111111, #05627B); 
-	background: linear-gradient(-180deg, #111111, #05627B); 
+	background:-webkit-linear-gradient(-180deg, #111111, #05627B); 
+	background:linear-gradient(-180deg, #111111, #05627B); 
 	overflow:hidden;
  }
-.main > .cover {
-	position: absolute;
-	content: "";
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.4);
+.main > .cover{
+	position:absolute;
+	content:"";
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0, 0, 0, 0.4);
 }
 .block_main{
-		float: left;
+		float:left;
 		vertical-align:top;
 		width:35%;
 		height:100%;
 		padding:0;
 		margin:0;
+		border-left:solid 1px #000;
+		border-right:solid 1px #000;
 		overflow-x:hidden;
 		overflow-y:scroll;
-		-webkit-overflow-scrolling: touch;
-		background:none;
-		border-left: solid 1px #000;
-		border-right: solid 1px #000;
+		-webkit-overflow-scrolling:touch;
 	}
-.block_main::-webkit-scrollbar {
-  display: none;
-  -webkit-appearance: none;
+.block_main::-webkit-scrollbar{
+  display:none;
+  -webkit-appearance:none;
 }
 .block_side{
-		float: left;
+		float:left;
 		vertical-align:top;
 		width:32.5%;
 		height:100vh;
-		overflow-y:scroll;
-		-webkit-overflow-scrolling: touch;
-		background:none;
-		text-aline:center;
-		font-size:0px;
 	}
 //iPadヨコ
-@media only screen and (max-width: 1024px) and (orientation: landscape) {
+@media only screen and (max-width:1024px) and (orientation:landscape) {
 	.block_main{
 		width:40%;
 	}
@@ -182,7 +176,7 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
 	}
 }
 //iPadタテ
-@media only screen and (max-width: 1024px) and (orientation: portrait) {
+@media only screen and (max-width:1024px) and (orientation:portrait) {
 	.block_main{
 		width:70%;
 	}
@@ -191,7 +185,7 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
 	}
 }
 //iPhoneタテ
-@media only screen and (max-width: 767px) and (orientation: portrait) {
+@media only screen and (max-width:767px) and (orientation:portrait) {
 	.block_main{
 		width:100%;
 		border:none;
@@ -201,10 +195,10 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
 	}
 }
 //iPhoneヨコ
-@media only screen and (max-width: 768px) and (orientation: landscape) {
+@media only screen and (max-width:767px) and (orientation:landscape) {
 }
 //SE以下タテ
-@media only screen and (max-width: 370px) and (orientation: portrait) {
+@media only screen and (max-width:370px) and (orientation:portrait) {
 }
 
 
@@ -221,59 +215,59 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
 	margin-top:0;
 	padding-top:0;
 }
-.modal.bottom.fade {
-  transition-duration: 0.35s;
+.modal.bottom.fade{
+  transition-duration:0.35s;
 }
-.modal.bottom.in {
-  transition-duration: 0.35s;
+.modal.bottom.in{
+  transition-duration:0.35s;
 }
-.modal.top.fade {
-  transition-duration: 0.4s;
+.modal.top.fade{
+  transition-duration:0.4s;
 }
-.modal.top.in {
-  transition-duration: 0.4s;
+.modal.top.in{
+  transition-duration:0.4s;
 }
-.modal.scale.fade {
-  transition-duration: 0.1s;
+.modal.scale.fade{
+  transition-duration:0.1s;
 }
-.modal.scale.in {
-  transition-duration: 0.1s;
+.modal.scale.in{
+  transition-duration:0.1s;
 }
-.modal.bottom.fade .modal-dialog {
- 	transform: translate3d(0, 25%, 0);
- 	transition: all 0.35s;
+.modal.bottom.fade .modal-dialog{
+ 	transform:translate3d(0, 25%, 0);
+ 	transition:all 0.35s;
 }
-.modal.bottom.fade.in .modal-dialog {
-    transform: translate3d(0, 0, 0);
+.modal.bottom.fade.in .modal-dialog{
+    transform:translate3d(0, 0, 0);
 }
-.modal.top.fade .modal-dialog {
- 	transform: translate3d(0, -25%, 0);
- 	transition: all 0.4s;
+.modal.top.fade .modal-dialog{
+ 	transform:translate3d(0, -25%, 0);
+ 	transition:all 0.4s;
 }
-.modal.top.fade.in .modal-dialog {
-    transform: translate3d(0, 0, 0);
+.modal.top.fade.in .modal-dialog{
+    transform:translate3d(0, 0, 0);
 }
-.modal.scale.fade .modal-dialog {
-    transform: scale(0);
-    transition: all 0.3s;
+.modal.scale.fade .modal-dialog{
+    transform:scale(0);
+    transition:all 0.3s;
 }
-.modal.scale.fade.in .modal-dialog {
+.modal.scale.fade.in .modal-dialog{
     transform: scale(1);
 }
 //iPadヨコ
-@media only screen and (max-width: 1024px) and (orientation: landscape) {
+@media only screen and (max-width:1024px) and (orientation:landscape) {
 	.modal-dialog{
 		width:40%;
 	}
 }
 //iPadタテ
-@media only screen and (max-width: 1024px) and (orientation: portrait) {
+@media only screen and (max-width:1024px) and (orientation:portrait) {
 	.modal-dialog{
 		width:70%;
 	}
 }
 //iPhoneタテ
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width:767px) {
 	.modal-dialog{
 		width:100%;
 		margin:0;
@@ -287,20 +281,20 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
 .btn_half_close{
 	width:100%;
 	height:auto;
-    padding: 30px 0;
+    padding:30px 0;
     margin:0;
-    color: #FAFAFA;
-    background: rgba(0,0,0,1);
     font-size:16px;
+    color:#FAFAFA;
+    background:rgba(0,0,0,1);
 }
 .btn_half_item{
+	text-align:left;
 	width:100%;
 	height:auto;
     padding:0;
     margin:0;
-    color: #FAFAFA;
     font-size:16px;
-    text-align:left;
+    color:#FAFAFA;
     opacity:0.9;
 }
 
@@ -324,129 +318,129 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
 	padding:0;
 	margin:-1% 0 0 -1%;
 	object-fit:cover;
-	filter: blur(3px);
+	filter:blur(3px);
 }
 .img_user04{
-	width: 50px;
-	height: 50px;
+	width:50px;
+	height:50px;
 	margin:12px 15px 12px 12px;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
-	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.2);
-	object-fit: cover;
+	box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);
+	object-fit:cover;
 }
 .img_user07{
-	width: 50px;
-	height: 50px;
+	width:50px;
+	height:50px;
 	padding:0;
 	margin:0;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
-	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.2);
-	object-fit: cover;
+	box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);
+	object-fit:cover;
 }
 .img_user08{
-	width: 95px;
-	height: 95px;
+	width:95px;
+	height:95px;
 	padding:0;
 	margin:0;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
-	object-fit: cover;
+	object-fit:cover;
 }
 .img_user09{
-	width: 55px;
-	height: 55px;
+	width:55px;
+	height:55px;
 	padding:0;
 	margin:0;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
-	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.2);
-	object-fit: cover;
+	box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);
+	object-fit:cover;
 }
 .img_user10{
-	width: 27px;
-	height: 27px;
+	width:27px;
+	height:27px;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
-	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.2);
-	object-fit: cover;
+	box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);
+	object-fit:cover;
 }
 .img_user11{
-	width: 50px;
-	height: 50px;
+	width:50px;
+	height:50px;
 	padding:0;
 	margin:0;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
-	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.2);
-	object-fit: cover;
+	box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);
+	object-fit:cover;
 }
 .img_user12{
-	width: 45px;
-	height: 45px;
+	width:45px;
+	height:45px;
 	padding:0;
 	margin:0;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
-	object-fit: cover;
+	object-fit:cover;
 }
 .img_user13{
-	width: 80px;
-	height: 80px;
+	width:80px;
+	height:80px;
 	padding:0;
 	margin:0;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
-	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.2);
-	object-fit: cover;
+	box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);
+	object-fit:cover;
 }
 .img_user14{
-	width: 50px;
-	height: 50px;
+	width:50px;
+	height:50px;
 	padding:0;
 	margin:0;
 	border-radius:50%;
 	background:rgba(0,0,0,0.1);
-	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.2);
-	object-fit: cover;
+	box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);
+	object-fit:cover;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width:767px) {
 	.img_user04{
-		width: 45px;
-		height: 45px;
+		width:45px;
+		height:45px;
 	}
 	.img_user07{
-		width: 40px;
-		height: 40px;
+		width:40px;
+		height:40px;
 	}
 	.img_user08{
-		width: 95px;
-		height: 95px;
+		width:95px;
+		height:95px;
 	}
 	.img_user09{
-		width: 50px;
-		height: 50px;
+		width:50px;
+		height:50px;
 	}
 	.img_user10{
-		width: 22px;
-		height: 22px;
+		width:22px;
+		height:22px;
 	}
 }
 
 
 //アイコン画像関連
 .img_plus{
-	width: 25px;
-	height: 25px;
-	transform-origin: 50% 50%;     
-    transform: rotate(0deg);
+	width:25px;
+	height:25px;
+	transform-origin:50% 50%;     
+    transform:rotate(0deg);
 }
 .img_time{
-	width: 25px;
-	height: 25px;
-	transform-origin: 50% 50%;     
-    transform: rotate(45deg);
+	width:25px;
+	height:25px;
+	transform-origin:50% 50%;     
+    transform:rotate(45deg);
 }
 .img_left02{
 	width:42px;
@@ -477,7 +471,7 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
 	margin-right:3px;
 	opacity:0.7;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width:767px) {
 	.icon_review{
 		width:16px;
 		height:16px;
@@ -559,14 +553,14 @@ a:link,a:hover,a:active,a:visited{text-decoration:none;}
 .font_logo{
 	font-size:50px;
 	color:rgba(39,134,160,0.8);
-	text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+	text-shadow:1px 1px 2px rgba(0,0,0,0.8);
 }
 .font_logo_sub01{
 	font-size:16px;
 	color:#FAFAFA;
-	text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+	text-shadow:1px 1px 2px rgba(0,0,0,0.8);
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width:767px) {
 	.font_white_min{
 		font-size:11px;
 	}
