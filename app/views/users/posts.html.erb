@@ -91,26 +91,26 @@
 												<% @image_url = post.image_url %>
 											<% end %>
 											<img data-src="<%= @image_url %>" class="img_myboom lazyload_min">
-										<% end %>								
+										<% end %>
 										<span>
 											<div class="font_category_min">
 												<% if post.category == "movie" %>
-													<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> 映画
+													<img data-src="/assets/movie_gray.png" class="icon_category_min lazyload_min"> 映画
 												<% end %>
 												<% if post.category == "tv" %>
-													<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> テレビ
+													<img data-src="/assets/movie_gray.png" class="icon_category_min lazyload_min"> テレビ
 												<% end %>
 												<% if post.category == "book" %>
-													<%= image_tag "book_gray.png", :class =>'icon_category_min' %> ブック
+													<img data-src="/assets/book_gray.png" class="icon_category_min lazyload_min"> ブック
 												<% end %>
 												<% if post.category == "comic" %>
-													<%= image_tag "book_gray.png", :class =>'icon_category_min' %> コミック
+													<img data-src="/assets/book_gray.png" class="icon_category_min lazyload_min"> コミック
 												<% end %>
 												<% if post.category == "music" %>
-													<%= image_tag "music_gray.png", :class =>'icon_category_min' %> ミュージック
+													<img data-src="/assets/music_gray.png" class="icon_category_min lazyload_min"> ミュージック
 												<% end %>
 												<% if post.category == "link" %>
-													<%= image_tag "link_gray.png", :class =>'icon_category_min' %> リンク
+													<img data-src="/assets/link_gray.png" class="icon_category_min lazyload_min"> リンク
 												<% end %>
 											</div>
 											<div class="contain_title">
@@ -140,7 +140,33 @@
 										<% if post.image_url.blank? %>
 											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
-											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
+											<% if post.category == "movie" %>
+												<% @image_url = post.image_url.sub(/original/, 'w300') %>
+											<% end %>
+											<% if post.category == "tv" %>
+												<% @image_url = post.image_url.sub(/original/, 'w300') %>
+											<% end %>
+											<% if post.category == "book" %>
+												<% if post.api == "itunes" %>
+													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+												<% else %>
+													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+												<% end %>
+											<% end %>
+											<% if post.category == "comic" %>
+												<% if post.api == "itunes" %>
+													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+												<% else %>
+													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+												<% end %>
+											<% end %>
+											<% if post.category == "music" %>
+												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+											<% end %>
+											<% if post.category == "link" %>
+												<% @image_url = post.image_url %>
+											<% end %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
 										<span>
 											<div class="font_category_min">
@@ -185,8 +211,9 @@
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
 											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
-											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
+										<% else %>
+											<% @image_url = post.image_url.sub(/original/, 'w300') %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
 										<span>
 											<div class="font_category_min">
@@ -218,7 +245,8 @@
 										<% if post.image_url.blank? %>
 											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
-											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
+											<% @image_url = post.image_url.sub(/original/, 'w300') %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
 										<span>
 											<div class="font_category_min">
@@ -250,7 +278,12 @@
 										<% if post.image_url.blank? %>
 											<img data-src="/assets/nothing02.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
-											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
+											<% if post.api == "itunes" %>
+												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+											<% else %>
+												<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+											<% end %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
 										<span>
 											<div class="font_category_min">										
@@ -282,7 +315,12 @@
 										<% if post.image_url.blank? %>
 											<img data-src="/assets/nothing02.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
-											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
+											<% if post.api == "itunes" %>
+												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+											<% else %>
+												<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+											<% end %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
 										<span>
 											<div class="font_category_min">
@@ -314,7 +352,8 @@
 										<% if post.image_url.blank? %>
 											<img data-src="/assets/nothing03.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
-											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
+											<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>									
 										<span>
 											<div class="font_category_min">
@@ -346,7 +385,8 @@
 										<% if post.image_url.blank? %>
 											<img data-src="/assets/nothing04.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
-											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
+											<% @image_url = post.image_url %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
 										<span>
 											<div class="font_category_min">

@@ -52,37 +52,39 @@
 					  			<%= link_to "/works/#{post.id}/edit" do %>
 						  			<div class="box_tests02">
 							            <div class="inline_block_middle" style="width:20%;">
-							              	<% if post.image_url.blank? %>
-												<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
-											<% else %>									
-												<% if post.category == "movie" %>
-													<% @image_url = post.image_url.sub(/original/, 'w300') %>
-												<% end %>
-												<% if post.category == "tv" %>
-													<% @image_url = post.image_url.sub(/original/, 'w300') %>
-												<% end %>
-												<% if post.category == "book" %>
-													<% if post.api == "itunes" %>
-														<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-													<% else %>
-														<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+							            	<div style="width:100%;height:16vh;">
+								              	<% if post.image_url.blank? %>
+													<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
+												<% else %>									
+													<% if post.category == "movie" %>
+														<% @image_url = post.image_url.sub(/original/, 'w300') %>
 													<% end %>
-												<% end %>
-												<% if post.category == "comic" %>
-													<% if post.api == "itunes" %>
-														<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-													<% else %>
-														<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+													<% if post.category == "tv" %>
+														<% @image_url = post.image_url.sub(/original/, 'w300') %>
 													<% end %>
+													<% if post.category == "book" %>
+														<% if post.api == "itunes" %>
+															<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+														<% else %>
+															<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+														<% end %>
+													<% end %>
+													<% if post.category == "comic" %>
+														<% if post.api == "itunes" %>
+															<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+														<% else %>
+															<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+														<% end %>
+													<% end %>
+													<% if post.category == "music" %>
+														<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+													<% end %>
+													<% if post.category == "link" %>
+														<% @image_url = post.image_url %>
+													<% end %>
+													<img data-src="<%= @image_url %>" class="img_myboom lazyload_min">
 												<% end %>
-												<% if post.category == "music" %>
-													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-												<% end %>
-												<% if post.category == "link" %>
-													<% @image_url = post.image_url %>
-												<% end %>
-												<img data-src="<%= @image_url %>" class="img_myboom lazyload_min">
-											<% end %>		
+											</div>	
 							            </div>
 							            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
 							              	<div class="contain_title">
@@ -134,12 +136,14 @@
 					  			<%= link_to "/works/#{post.id}/edit" do %>
 						  			<div class="box_tests02">
 							            <div class="inline_block_middle" style="width:20%;">
-							              	<% if post.image_url.blank? %>
-												<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-											<% else %>									
-												<% @image_url = post.image_url.sub(/original/, 'w300') %>
-												<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-											<% end %>		
+							            	<div style="width:100%;height:16vh;">
+								              	<% if post.image_url.blank? %>
+													<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+												<% else %>									
+													<% @image_url = post.image_url.sub(/original/, 'w300') %>
+													<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+												<% end %>
+											</div>	
 							            </div>
 							            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
 							              	<div class="contain_title">
@@ -149,12 +153,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<img data-src="/assets/movie_gray.png" class="icon_category_min swiper-lazy"> 映画
+													<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> 映画
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<img data-src="/assets/right_gray.png" class="swiper-lazy" style="width:15px;height:15px;"> 
+							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
 							            </div>
 							        </div>
 							    <% end %>
@@ -174,12 +178,14 @@
 					  			<%= link_to "/works/#{post.id}/edit" do %>
 						  			<div class="box_tests02">
 							            <div class="inline_block_middle" style="width:20%;">
-							              	<% if post.image_url.blank? %>
-												<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-											<% else %>									
-												<% @image_url = post.image_url.sub(/original/, 'w300') %>
-												<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-											<% end %>		
+							            	<div style="width:100%;height:16vh;">
+								              	<% if post.image_url.blank? %>
+													<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+												<% else %>									
+													<% @image_url = post.image_url.sub(/original/, 'w300') %>
+													<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+												<% end %>
+											</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
 							              	<div class="contain_title">
@@ -189,12 +195,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<img data-src="/assets/movie_gray.png" class="icon_category_min swiper-lazy"> テレビ
+													<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> テレビ
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<img data-src="/assets/right_gray.png" class="swiper-lazy" style="width:15px;height:15px;"> 
+							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
 							            </div>
 							        </div>
 							    <% end %>
@@ -214,16 +220,18 @@
 					  			<%= link_to "/works/#{post.id}/edit" do %>
 						  			<div class="box_tests02">
 							            <div class="inline_block_middle" style="width:20%;">
-							              	<% if post.image_url.blank? %>
-												<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-											<% else %>									
-												<% if post.api == "itunes" %>
-													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-												<% else %>
-													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+							            	<div style="width:100%;height:16vh;">
+								              	<% if post.image_url.blank? %>
+													<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+												<% else %>									
+													<% if post.api == "itunes" %>
+														<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+													<% else %>
+														<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+													<% end %>
+													<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 												<% end %>
-												<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-											<% end %>		
+											</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
 							              	<div class="contain_title">
@@ -233,12 +241,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<img data-src="/assets/book_gray.png" class="icon_category_min swiper-lazy"> ブック
+													<%= image_tag "book_gray.png", :class =>'icon_category_min' %> ブック
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<img data-src="/assets/right_gray.png" class="swiper-lazy" style="width:15px;height:15px;"> 
+							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
 							            </div>
 							        </div>
 							    <% end %>
@@ -258,16 +266,18 @@
 					  			<%= link_to "/works/#{post.id}/edit" do %>
 						  			<div class="box_tests02">
 							            <div class="inline_block_middle" style="width:20%;">
-							              	<% if post.image_url.blank? %>
-												<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-											<% else %>									
-												<% if post.api == "itunes" %>
-													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-												<% else %>
-													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+							            	<div style="width:100%;height:16vh;">
+								              	<% if post.image_url.blank? %>
+													<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+												<% else %>									
+													<% if post.api == "itunes" %>
+														<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+													<% else %>
+														<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+													<% end %>
+													<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 												<% end %>
-												<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-											<% end %>		
+											</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
 							              	<div class="contain_title">
@@ -277,12 +287,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<img data-src="/assets/book_gray.png" class="icon_category_min swiper-lazy"> コミック
+													<%= image_tag "book_gray.png", :class =>'icon_category_min' %> コミック
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<img data-src="/assets/right_gray.png" class="swiper-lazy" style="width:15px;height:15px;"> 
+							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
 							            </div>
 							        </div>
 							    <% end %>
@@ -302,12 +312,14 @@
 					  			<%= link_to "/works/#{post.id}/edit" do %>
 						  			<div class="box_tests02">
 							            <div class="inline_block_middle" style="width:20%;">
-							              	<% if post.image_url.blank? %>
-												<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-											<% else %>									
-												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-												<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-											<% end %>		
+							            	<div style="width:100%;height:16vh;">
+								              	<% if post.image_url.blank? %>
+													<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+												<% else %>									
+													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+													<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+												<% end %>
+											</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
 							              	<div class="contain_title">
@@ -317,12 +329,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<img data-src="/assets/music_gray.png" class="icon_category_min swiper-lazy"> ミュージック
+													<%= image_tag "music_gray.png", :class =>'icon_category_min' %> ミュージック
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<img data-src="/assets/right_gray.png" class="swiper-lazy" style="width:15px;height:15px;"> 
+							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
 							            </div>
 							        </div>
 							    <% end %>
@@ -342,12 +354,14 @@
 					  			<%= link_to "/works/#{post.id}/edit" do %>
 						  			<div class="box_tests02">
 							            <div class="inline_block_middle" style="width:20%;">
-							              	<% if post.image_url.blank? %>
-												<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-											<% else %>									
-												<% @image_url = post.image_url %>
-												<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-											<% end %>		
+							            	<div style="width:100%;height:16vh;">
+								              	<% if post.image_url.blank? %>
+													<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+												<% else %>									
+													<% @image_url = post.image_url %>
+													<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+												<% end %>
+											</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
 							              	<div class="contain_title">
@@ -357,12 +371,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<img data-src="/assets/link_gray.png" class="icon_category_min swiper-lazy"> リンク
+													<%= image_tag "link_gray.png", :class =>'icon_category_min' %> リンク
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<img data-src="/assets/right_gray.png" class="swiper-lazy" style="width:15px;height:15px;"> 
+							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
 							            </div>
 							        </div>
 							    <% end %>
