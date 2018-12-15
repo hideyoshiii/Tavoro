@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   get 'works/link' => "works#link"
   get 'works/ajax_link_list' => "works#ajax_link_list"
   get 'works/link/detail' => "works#link_detail"
+  get 'works/bookmark' => "works#bookmark"
   post 'works/save' => "works#save"
   get "works/:id/detail" => "works#detail"
   get "works/:id/edit" => "works#edit"

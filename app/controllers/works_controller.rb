@@ -222,6 +222,23 @@ class WorksController < ApplicationController
     end
   end
 
+  def bookmark
+    @user = User.find_by(id: current_user.id) 
+    if @user
+      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
+      @checkeds_i = @alls.where.not(review: "bookmark").size
+      @bookmarks_i = @alls.where(review: "bookmark").size
+
+      @all = @alls.where(review: "bookmark")
+      @movie = @all.where(category: "movie")
+      @tv = @all.where(category: "tv")
+      @book = @all.where(category: "book")
+      @comic = @all.where(category: "comic")
+      @music = @all.where(category: "music")
+      @link = @all.where(category: "link")
+    end
+  end
+
   def save
   	if params[:category] == "movie" || params[:category] == "tv"
   		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id])
@@ -506,7 +523,7 @@ class WorksController < ApplicationController
 
   def create_bookmark   
     @post = Post.find(params[:id].to_s) 
-    if @post.category == "music"
+    if @post.category == "music" || @post.category == "link"
       @post_bookmark = Post.create(user_id: current_user.id, title: @post.title, category: @post.category, image_url: @post.image_url, review: "bookmark", work_id: @post.work_id, preview_url: @post.preview_url)
     else
       if @post.category == "book" || @post.category == "comic"
@@ -519,7 +536,7 @@ class WorksController < ApplicationController
 
   def destroy_bookmark 
     @post = Post.find(params[:id].to_s) 
-    @post_bookmark = Post.find_by(user_id: current_user.id, category: @post.category, review: "bookmark", work_id: @post.work_id)
+    @post_bookmark = Post.find_by(user_id: current_user.id, category: @post.category, review: "bookmark", work_id: @post.work_id, preview_url: @post.preview_url)
     @post_bookmark.destroy
   end
 
