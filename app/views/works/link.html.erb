@@ -1,0 +1,80 @@
+<div class="bar_post">			
+	<div style="">
+		<div class="inline_block_middle" style="width:15%;">
+			<div style="text-align:left;padding-left:10px;">
+				<a href="javascript:void(0);" onclick="window.history.back();">
+		        	<%= image_tag "left_gray.png", :style =>'width:15px;height:15px;' %>
+		        </a>										
+			</div>
+		</div>
+		<div class="inline_block_middle" style="width:70%;">
+			<div class="contain_title02" style="text-align:center;">
+				<div style="font-size:14px;color:#c2c2c2;">
+					リンクを投稿
+				</div>
+			</div>
+		</div>
+		<div class="inline_block_middle" style="width:15%;">
+			<div style="text-align:right;">							
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="main">
+	<div class="block_side">
+	</div>
+	<div class="block_main">	
+		<div class="a1">
+          <div class="a4">
+            <div class="d1">
+              <div class="d4"></div>
+            </div>
+          </div>
+          <div class="a5">
+			<div style="height:50px;"></div>
+			<div style="height:40px;"></div>				
+			<div class="nmn" style="text-align:center;width:100%;padding:10px;">
+				<form action="#">
+					<input id="inc_search" placeholder="検索する" type="text" required="" >
+				</form>
+			</div>
+			<div id='link_list'>
+			  <%= render partial: 'link_list' %>
+			</div>	
+			<div style="height:1vh;"></div>
+		  </div>
+		</div>
+	</div>
+	<div class="block_side">
+	</div>
+</div>
+
+<%#インクリメンタルサーチjs%>
+<script defer>
+	$(function(){
+		var
+		preFunc = null,
+		preInput = '',
+		input = '',
+		ajaxPost = function(input)
+		{
+		  $.ajax({
+		    url: "ajax_link_list",
+		      type: "GET",
+		      data: ("q=" + input)
+		  });
+		};
+		$('#inc_search').keypress(function(e) {
+			input = $(this).val();   //前後の不要な空白を削除
+			if ( e.which == 13 ) {
+			// ここに処理を書く
+			clearTimeout(preFunc);
+		    preFunc = setTimeout(ajaxPost(input), 0);
+			// スマホのキーボードを閉じる
+			  $("#inc_search").blur();
+			   return false;
+			}
+		})
+	});
+</script>

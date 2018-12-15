@@ -1,0 +1,41 @@
+<% if params[:q].present? %>
+  	<div style="height:18vh;"></div>
+	<div style="text-align:center;margin-top:20px;">
+		<%= image_tag "link_gray.png", :style =>'width:35px;height:35px;' %>
+	</div>
+	<div style="height:10px;"></div>
+	<div style="text-align:center;font-size:12px;">
+		<% if @success.present? %>
+			<div style="color:#38ef7d;">
+				<%= @success %>
+			</div>
+			<div style="height:10px;"></div>
+			<%= form_tag(works_link_detail_path, method: :get) do %>
+	        	<%= hidden_field_tag :type, "link" %>
+	        	<%= hidden_field_tag :url, @url %>
+	        	<button type="submit">
+					<div class="btn_invite">
+						このリンクを投稿する
+					</div>
+				</button>
+			<% end %>
+		<% end %>
+		<% if @error.present? %>
+			<div style="color:#FB473E;">
+				<%= @error %>
+			</div>
+		<% end %>
+	</div>	
+    <div style="height:10vh;"></div> 
+<% else %>
+    <div style="height:20vh;"></div>
+	<div style="text-align:center;margin-top:20px;">
+		<%= image_tag "link_gray.png", :style =>'width:35px;height:35px;' %>
+	</div>
+	<div style="height:10px;"></div>
+	<div style="text-align:center;font-size:12px;color:#999999;">
+		リンクを入力してください
+	</div>	
+    <div style="height:10vh;"></div> 
+<% end %>
+

@@ -3,7 +3,6 @@ class WorksController < ApplicationController
 
 
   def test
-    
   end
 
   def index
@@ -50,6 +49,13 @@ class WorksController < ApplicationController
   	@defaults = @defaults[:results]
   end
 
+  def ajax_movie_list
+    if params[:q].present?
+      @items = Tmdb::Search.multi(params[:q])
+      @items = @items[:results]
+    end
+  end
+
   def movie_detail
   	if params[:type] == "movie"
   		@item = Tmdb::Movie.detail(params[:id].to_i)
@@ -62,30 +68,32 @@ class WorksController < ApplicationController
 	    @poster_en = Tmdb::Movie.posters(@item["id"], language: 'en')
 	    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
 	    @posters = @poster_ja + @poster_en
-	end
-	if params[:type] == "tv"
-  		@item = Tmdb::TV.detail(params[:id].to_i)
-  		@title = @item["name"]
-  		@work_id = @item["id"]
-  		@category = params[:type]
-      @poster = "https://image.tmdb.org/t/p/original/" + @item["poster_path"].to_s
-	  	@poster_ja = Tmdb::TV.posters(@item["id"], language: 'ja')
-	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
-	    @poster_en = Tmdb::TV.posters(@item["id"], language: 'en')
-	    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
-	    @posters = @poster_ja + @poster_en
-	end
-  end
-
-  def ajax_movie_list
-  	if params[:q].present?
-	  	@items = Tmdb::Search.multi(params[:q])
-      @items = @items[:results]
+	 end
+  	if params[:type] == "tv"
+    		@item = Tmdb::TV.detail(params[:id].to_i)
+    		@title = @item["name"]
+    		@work_id = @item["id"]
+    		@category = params[:type]
+        @poster = "https://image.tmdb.org/t/p/original/" + @item["poster_path"].to_s
+  	  	@poster_ja = Tmdb::TV.posters(@item["id"], language: 'ja')
+  	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
+  	    @poster_en = Tmdb::TV.posters(@item["id"], language: 'en')
+  	    @poster_en = @poster_en.sort_by! { |a| -a[:vote_average] }.first(6)
+  	    @posters = @poster_ja + @poster_en
   	end
   end
 
   def book
   	@defaults = ITunesSearchAPI.search(:term => "comic", :country => "jp", :media => "ebook", :limit  => '20')
+  end
+
+  def ajax_book_list
+    if params[:q].present?
+      @items_itunes = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "ebook", :limit  => '20')
+      if @items_itunes.size <= 10
+        @items_rakuten = RakutenWebService::Books::Book.search(title: params[:q], hits: 20)
+      end
+    end
   end
 
   def book_detail
@@ -116,17 +124,14 @@ class WorksController < ApplicationController
     end
   end
 
-  def ajax_book_list
-  	if params[:q].present?
-      @items_itunes = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "ebook", :limit  => '20')
-      if @items_itunes.size <= 10
-  		  @items_rakuten = RakutenWebService::Books::Book.search(title: params[:q], hits: 20)
-      end
-  	end
-  end
-
   def music
   	@defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music",:entity =>'song', :limit  => '20', :attribute => "mixTerm")
+  end
+
+  def ajax_music_list
+    if params[:q].present?
+      @items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music",:entity =>'song', :limit  => '20')
+    end
   end
 
   def music_detail
@@ -142,10 +147,73 @@ class WorksController < ApplicationController
   	@preview_url = @item["previewUrl"]
   end
 
-  def ajax_music_list
-  	if params[:q].present?
-  		@items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music",:entity =>'song', :limit  => '20')
-  	end
+  def link
+  end
+
+  def ajax_link_list
+    if params[:q].present?
+      #URLを定義
+      @url = params[:q]
+      #正規表現バリデーション
+      if @url.match(/\A#{URI::regexp(%w(http https))}\z/)
+        #サーバーバリデーション
+        begin
+          @response = Net::HTTP.get_response(URI.parse(@url))
+        rescue
+          @error = "指定されたURL先でエラーが発生しました"
+        else
+          #404バリデーション
+          begin
+            @file = open(@url)
+            @doc = Nokogiri::HTML(@file)
+          rescue OpenURI::HTTPError => e     
+            @error = "指定されたURL先ででエラーが発生しました"
+          else
+            @success = "URLが正常に検知されました"
+          end
+        end  
+      else
+        @error = "httpまたはhttpsから始まるURLを入力してください"
+      end
+    end
+  end
+
+  def link_detail
+    url = params[:url]
+    uri = url
+    page = URI.parse(uri).read
+    charset = page.charset
+    if charset == "iso-8859-1"
+      charset = page.scan(/charset="?([^\s"]*)/i).first.join
+    end
+    @doc = Nokogiri::HTML(page, uri, charset)
+    #諸情報
+    if @doc.present?
+      #title
+      if @doc.css('//meta[property="og:title"]/@content').empty?
+        @title = @doc.title.to_s
+      else
+        @title = @doc.css('//meta[property="og:title"]/@content').to_s
+      end
+      #url
+      @preview_url = url
+      #category
+      @category = "link"
+      #imgae
+      @posters = []
+      unless @doc.css('//meta[property="og:site_name"]/@content').empty?
+        @posters << @doc.css('//meta[property="og:image"]/@content').to_s
+      end
+      unless @doc.css('img').empty?
+        @doc.css('img').each do |photo|
+          @posters << photo[:src]
+        end 
+      end
+      if @posters.present?
+        @poster = @posters.first
+        @posters = @posters.take(6)
+      end
+    end
   end
 
   def save
@@ -158,6 +226,9 @@ class WorksController < ApplicationController
   	if params[:category] == "music"
   		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id], preview_url: params[:preview_url])
   	end
+    if params[:category] == "link"
+      @post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id], preview_url: params[:preview_url])
+    end
   	if @post.save
       #保存に成功した場合
       redirect_to root_path
@@ -171,12 +242,20 @@ class WorksController < ApplicationController
   	@post = Post.find(params[:id])
   	@users = current_user.followings
   	@posts_other = []
-    @posts_other_mine = Post.where(user_id: current_user.id, work_id: @post.work_id).order('id DESC')
+    if @post.category == "link"
+      @posts_other_mine = Post.where(user_id: current_user.id, preview_url: @post.preview_url).order('id DESC')
+    else
+      @posts_other_mine = Post.where(user_id: current_user.id, work_id: @post.work_id).order('id DESC')
+    end
     @posts_other.concat(@posts_other_mine)
 
   	if @users.present?
         @users.each do |user|
-      		posts_other = Post.where(user_id: user.id, work_id: @post.work_id).order(created_at: :desc)
+          if @post.category == "link"
+            posts_other = Post.where(user_id: user.id, preview_url: @post.preview_url).order(created_at: :desc)
+          else
+      		  posts_other = Post.where(user_id: user.id, work_id: @post.work_id).order(created_at: :desc)
+          end
         	@posts_other.concat(posts_other)
         end
         @posts_other.sort_by!{|post| post.created_at}.reverse!
@@ -289,6 +368,29 @@ class WorksController < ApplicationController
         end
 		  end
   	end
+
+    if @post.category == "link"
+      url = @post.preview_url
+      uri = url
+      page = URI.parse(uri).read
+      charset = page.charset
+      if charset == "iso-8859-1"
+        charset = page.scan(/charset="?([^\s"]*)/i).first.join
+      end
+      @item = Nokogiri::HTML(page, uri, charset)
+      if @item.present?
+        if @item.css('//meta[property="og:site_name"]/@content').empty?
+          @detail01 = @item.title.to_s
+        else
+          @detail01 = @item.css('//meta[property="og:site_name"]/@content').to_s
+        end
+        if @item.css('//meta[property="og:description"]/@content').empty?
+          @detail02 = @item.css('//meta[name$="escription"]/@content').to_s
+        else
+          @detail02 = @item.css('//meta[property="og:description"]/@content').to_s
+        end
+      end
+    end
 
   end
 

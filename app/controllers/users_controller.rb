@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       @book = @all.where(category: "book")
       @comic = @all.where(category: "comic")
       @music = @all.where(category: "music")
+      @link = @all.where(category: "link")
 
       @list_favorite = List.find_by(user_id: @user.id, title: "お気に入り")
       if @list_favorite.present?
@@ -37,6 +38,7 @@ class UsersController < ApplicationController
       @book = @all.where(category: "book")
       @comic = @all.where(category: "comic")
       @music = @all.where(category: "music")
+      @link = @all.where(category: "link")
     end
   end
 

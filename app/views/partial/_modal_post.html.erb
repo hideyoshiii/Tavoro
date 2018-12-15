@@ -9,59 +9,49 @@
 <div class="modal bottom fade" id="myModal_post">
     <div class="modal-dialog">
       <div class="a1">
-        <div class="a4">
+        <div class="a14">
           <div class="d1">
-            <div class="d6"></div>
+            <div class="d4"></div>
           </div>
         </div>
-        <div class="a8" style="text-align:center;"> 
-        	<div class="">	
-		  		<div style="font-size:24px;color:#FAFAFA;margin:0px 0px 40px;">
-			      	投稿を作成
-		        </div>
-		  		<div class="btns_choice02">
-		  			<div>
-				      	<%= link_to(works_movie_path) do %>
-					      	<div class="btn_icon">
-					      		<span>
-					        		<%= image_tag "movie_white.png", :style =>'width:30px;height:30px;' %>
-					        	</span>
-					        </div>
-				        <% end %>
-			        </div>
-			        <div style="font-size:12px;color:#FAFAFA;margin-top:10px;">
+        <div class="a8" style="text-align:center;">   	
+	  		<div style="font-size:20px;color:#2FB4B4;">
+		      	- 投稿を作成 -
+	        </div>
+	        <div style="height:30px;"></div>
+	      	<%= link_to(works_movie_path) do %>
+		      	<div class="btn_icon">
+			      	<div style="font-size:11px;color:#FAFAFA;">
+			        	<%= image_tag "movie_white.png", :style =>'width:18px;height:18px;margin: -2px 8px 0 0;;' %>
 			        	映画/テレビ
 			        </div>
+		        </div>		
+	        <% end %>
+	        <div class="inline_block_middle" style="width:5%;"></div>	
+    		<%= link_to(works_book_path) do %>
+	        	<div class="btn_icon">	
+	        		<div style="font-size:11px;color:#FAFAFA;">		      		
+		        		<%= image_tag "book_white.png", :style =>'width:18px;height:18px;margin: -2px 8px 0 0;' %>ブック/コミック
+		        	</div>
 		        </div>
-		        <div class="btns_choice01">
-		        	<div>
-		        		<%= link_to(works_book_path) do %>
-				        	<div class="btn_icon">
-					      		<span>
-					        		<%= image_tag "book_white.png", :style =>'width:30px;height:30px;' %>
-					        	</span>
-					        </div>
-				        <% end %>
-				    </div>
-			        <div style="font-size:12px;color:#FAFAFA;margin-top:10px;">
-			        	ブック
+	        <% end %>
+	        <div style="height:25px;"></div>
+	      	<%= link_to(works_music_path) do %>
+	        	<div class="btn_icon">	
+	        		<div style="font-size:11px;color:#FAFAFA;">		      		
+		        		<%= image_tag "music_white.png", :style =>'width:18px;height:18px;margin: -2px 8px 0 0;' %>ミュージック
+		        	</div>
+		        </div>
+	        <% end %>		
+	        <div class="inline_block_middle" style="width:5%;"></div>
+	      	<%= link_to(works_link_path) do %>
+	        	<div class="btn_icon">		
+		        	<div style="font-size:11px;color:#FAFAFA;">	      		
+			        	<%= image_tag "link_white.png", :style =>'width:18px;height:18px;margin: -2px 8px 0 0;' %>リンク
 			        </div>
 		        </div>
-		        <div class="btns_choice02">
-		        	<div>
-				      	<%= link_to(works_music_path) do %>
-				        	<div class="btn_icon">
-					      		<span>
-					        		<%= image_tag "music_white.png", :style =>'width:30px;height:30px;' %>
-					        	</span>
-					        </div>
-				        <% end %>
-			        </div>
-			        <div style="font-size:12px;color:#FAFAFA;margin-top:10px;">
-			        	ミュージック
-			        </div>
-		        </div> 
-	        </div>   
+	        <% end %>
+	        <div style="height:25px;"></div>
         </div>
         <a class="btns_plus" data-dismiss="modal" id="dismiss_post">
 			<span id="btn_plus">
@@ -72,6 +62,16 @@
     </div>
   </div>
 </div>
+
+<%#モーダルtubolinks不具合修正%>
+<script defer>
+  $('#myModal_post').on('show.bs.modal', function () {
+    $('.main').css('filter','blur(1.5px)');
+  });
+  $('#myModal_post').on('hide.bs.modal', function () {
+    $('.main').css('filter','blur(0px)');
+  });
+</script>
 
 <%#モーダルtubolinks不具合修正%>
 <script defer>

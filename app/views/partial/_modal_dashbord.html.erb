@@ -35,6 +35,9 @@
                 <% if @mylist_item.post.category == "music" %>
                   <%= image_tag "music_white.png", :class =>'icon_category' %> <%= @mylist_item.post.title %>
                 <% end %>
+                <% if @mylist_item.post.category == "link" %>
+                  <%= image_tag "link_white.png", :class =>'icon_category' %> <%= @mylist_item.post.title %>
+                <% end %>
               </div>
             <% else %>
               <div>

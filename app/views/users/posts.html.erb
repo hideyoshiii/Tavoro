@@ -38,6 +38,7 @@
             <div class="tab__button">ブック</div>
             <div class="tab__button">コミック</div>
             <div class="tab__button">ミュージック</div>
+            <div class="tab__button">リンク</div>
         </div>
     </div>
 </div>
@@ -86,6 +87,9 @@
 											<% if post.category == "music" %>
 												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
 											<% end %>
+											<% if post.category == "link" %>
+												<% @image_url = post.image_url %>
+											<% end %>
 											<img data-src="<%= @image_url %>" class="img_myboom lazyload_min">
 										<% end %>								
 										<span>
@@ -104,6 +108,9 @@
 												<% end %>
 												<% if post.category == "music" %>
 													<%= image_tag "music_gray.png", :class =>'icon_category_min' %> ミュージック
+												<% end %>
+												<% if post.category == "link" %>
+													<%= image_tag "link_gray.png", :class =>'icon_category_min' %> リンク
 												<% end %>
 											</div>
 											<div class="contain_title">
@@ -131,7 +138,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -177,7 +184,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -209,7 +216,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="assets/nothing01.jpg" class="img_myboom swiper-lazy">
+											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -241,7 +248,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="assets/nothing02.jpg" class="img_myboom swiper-lazy">
+											<img data-src="/assets/nothing02.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -273,7 +280,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">			
 										<% if post.image_url.blank? %>
-											<img data-src="assets/nothing02.jpg" class="img_myboom swiper-lazy">
+											<img data-src="/assets/nothing02.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
@@ -305,7 +312,7 @@
 						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
 							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
 										<% if post.image_url.blank? %>
-											<img data-src="assets/nothing03.jpg" class="img_myboom swiper-lazy">
+											<img data-src="/assets/nothing03.jpg" class="img_myboom swiper-lazy">
 										<% else %>									
 											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
 										<% end %>									
@@ -324,6 +331,38 @@
 						  	<% end %>
 					  	<% end %>
 					</div>			
+		        </div>
+		        <div class="swiper-slide" style="height:100%">
+		        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;">
+				  		<div style="height:165px;"></div>
+					  	<% if @link.blank? %>
+					  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+								<%= image_tag "warning_wihte.png", :style =>'width:20px;height:20px;margin-top:-2px;' %> ブックマークがありません
+							</div>	
+					  	<% else %>
+						    <% @link.each.with_index(1) do |post, i| %>
+						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">	
+										<% if post.image_url.blank? %>
+											<img data-src="/assets/nothing04.jpg" class="img_myboom swiper-lazy">
+										<% else %>									
+											<img data-src="<%= post.image_url %>" class="img_myboom swiper-lazy">
+										<% end %>
+										<span>
+											<div class="font_category_min">
+												<%= image_tag "link_gray.png", :class =>'icon_category_min' %> リンク
+											</div>
+											<div class="contain_title">
+												<div class="font_title_min">
+													<%= post.title %>
+												</div>
+											</div>
+										</span>
+									</a>
+								</div>
+						  	<% end %>
+					  	<% end %>
+					</div>	
 		        </div>
 			</div>
 		</div>	

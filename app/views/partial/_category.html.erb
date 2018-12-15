@@ -37,6 +37,12 @@
 			</div>
 		<% end %>
 		<div style="height:5vh;"></div>
+		<%= link_to root_path(params: {category: "link"}) do %>
+			<div class="<%= 'font_blue' if @category == 'link' %> <%= 'font_white' if @category != 'link' %>">
+				リンク
+			</div>
+		<% end %>
+		<div style="height:5vh;"></div>
 	</div>
 	<div id="menu_category">
 		<div class="switch_category open" style="font-size:15px;color:#c2c2c2;">

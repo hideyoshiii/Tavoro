@@ -41,8 +41,19 @@
 										<img src="/assets/play_white.png" id="icon_play" style="width:9px;height:9px;margin-left:0.5px;">
 									</div>
 								</div>
-							<% else %>
-								<%= image_tag post.image_url, :class =>'img_tavore' %>
+							<% else %>								
+								<% if post.category == "link" %>								
+									<div class="pile_preview">
+										<%= image_tag post.image_url, :style =>'width:100%;height:15vh;object-fit:cover;' %>
+										<a target="blank" href="<%= post.preview_url %>">
+											<div class="btn_preview_min">
+												<img src="/assets/link_white.png" id="icon_play" style="width:12px;height:12px;">
+											</div>
+										</a>
+									</div>
+								<% else %>
+									<%= image_tag post.image_url, :class =>'img_tavore' %>
+								<% end %>
 							<% end %>
 						<% end %> 				
           			</div>
@@ -51,18 +62,24 @@
           					<%= post.title %>
           				</div>
       					<% if @detail01.present? %>
-							<div style="font-size:12px;color:#999999;">
-								<%= @detail01 %>
+      						<div class="contain_title">
+								<div style="font-size:12px;color:#999999;">
+									<%= @detail01 %>
+								</div>
 							</div>
 						<% end %>
       					<% if @detail02.present?  %>
-							<div style="font-size:12px;color:#999999;">
-								<%= @detail02 %>
+      						<div class="contain_title">
+								<div style="font-size:12px;color:#999999;">
+									<%= @detail02 %>
+								</div>
 							</div>
 						<% end %>          				
       					<% if @detail03.present?  %>
-							<div style="font-size:12px;color:#999999;">
-								<%= @detail03 %>
+      						<div class="contain_title">
+								<div style="font-size:12px;color:#999999;">
+									<%= @detail03 %>
+								</div>
 							</div>
 						<% end %>
 						<% if post.category == "movie" || post.category == "tv" || post.category == "music" %>
@@ -80,7 +97,7 @@
 									<%= image_tag "amazon.png", :style =>'width:15px;height:15px;margin:-3px 5px 0 0;' %>amazonで検索
 								</div>
 							</a>
-						<% end %>
+						<% end %>						
           			</div>
           		</div>
           		<%#投稿一覧%>
@@ -133,6 +150,9 @@
 										<% end %>
 										<% if post.category == "music" %>
 											聴きました
+										<% end %>
+										<% if post.category == "link" %>
+											見ました
 										<% end %>
 									<% end %>
 									<% if post.review == "favorite" %>
@@ -199,8 +219,8 @@
 												<% if post.category == "book" || post.category == "comic" %>
 													読みました
 												<% end %>
-												<% if post.category == "music" %>
-													聴きました
+												<% if post.category == "link" %>
+													見ました
 												<% end %>
 											<% end %>
 											<% if post.review == "favorite" %>
