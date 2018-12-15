@@ -1,7 +1,6 @@
 class WorksController < ApplicationController
   before_action :authenticate_user!, except: :index
 
-
   def test
   end
 
@@ -155,7 +154,7 @@ class WorksController < ApplicationController
       #URLを定義
       @url = params[:q]
       #正規表現バリデーション
-      if @url.match(/\A#{URI::regexp(%w(http https))}\z/)
+      if @url.match(/\A#{URI::regexp(%w(https))}\z/)
         #サーバーバリデーション
         begin
           @response = Net::HTTP.get_response(URI.parse(@url))
@@ -173,7 +172,7 @@ class WorksController < ApplicationController
           end
         end  
       else
-        @error = "httpまたはhttpsから始まるURLを入力してください"
+        @error = "httpsから始まるURLを入力してください"
       end
     end
   end
@@ -210,8 +209,15 @@ class WorksController < ApplicationController
         end 
       end
       if @posters.present?
-        @poster = @posters.first
-        @posters = @posters.take(6)
+        @posters.each do |poster|
+          unless poster.match(/\A#{URI::regexp(%w(https))}\z/)
+            @posters.delete(poster)
+          end
+        end
+        if @posters.present?
+          @poster = @posters.first
+          @posters = @posters.take(6)
+        end
       end
     end
   end

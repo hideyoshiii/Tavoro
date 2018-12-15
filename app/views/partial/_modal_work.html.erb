@@ -75,7 +75,7 @@
 							<img data-src="/assets/nothing01.jpg" class="img_tavore lazyload_modal_<%= post.id %>">
 						<% else %>
 							<% if post.category == "link" %>
-								<img data-src="<%= post.image_url %>" class="lazyload_modal_<%= post.id %>" style="width:140%;height:30vh;margin:0 -20%;object-fit:cover;">
+								<img data-src="<%= post.image_url %>" class="lazyload_modal_<%= post.id %>" style="width:140%;height:32vh;margin:0 -20%;object-fit:cover;">
 							<% else %>
 								<img data-src="<%= post.image_url %>" class="img_tavore lazyload_modal_<%= post.id %>">
 							<% end %>
@@ -125,8 +125,10 @@
 								<%= image_tag "ban_red.png", :class =>'icon_review' %>おすすめしていません
 							<% end %>
 						</div>
-						<div class="font_head">
-							<%= post.title %>
+						<div class="contain_title">
+							<div class="font_head">
+								<%= post.title %>
+							</div>
 						</div>
 						<% if post.description.present? %>
 							<div class="balloon_top"></div>
