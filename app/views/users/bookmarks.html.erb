@@ -58,68 +58,8 @@
 							</div>	
 					  	<% else %>
 						  	<% @all.each.with_index(1) do |post, i| %>
-					  			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">				
-										<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
-										<% else %>									
-											<% if post.category == "movie" %>
-												<% @image_url = post.image_url.sub(/original/, 'w300') %>
-											<% end %>
-											<% if post.category == "tv" %>
-												<% @image_url = post.image_url.sub(/original/, 'w300') %>
-											<% end %>
-											<% if post.category == "book" %>
-												<% if post.api == "itunes" %>
-													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-												<% else %>
-													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
-												<% end %>
-											<% end %>
-											<% if post.category == "comic" %>
-												<% if post.api == "itunes" %>
-													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-												<% else %>
-													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
-												<% end %>
-											<% end %>
-											<% if post.category == "music" %>
-												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-											<% end %>
-											<% if post.category == "link" %>
-												<% @image_url = post.image_url %>
-											<% end %>
-											<img data-src="<%= @image_url %>" class="img_myboom lazyload_min">
-										<% end %>										
-										<span>
-											<div class="font_category_min">
-												<% if post.category == "movie" %>
-													<img data-src="/assets/movie_gray.png" class="icon_category_min lazyload_min"> 映画
-												<% end %>
-												<% if post.category == "tv" %>
-													<img data-src="/assets/movie_gray.png" class="icon_category_min lazyload_min"> テレビ
-												<% end %>
-												<% if post.category == "book" %>
-													<img data-src="/assets/book_gray.png" class="icon_category_min lazyload_min"> ブック
-												<% end %>
-												<% if post.category == "comic" %>
-													<img data-src="/assets/book_gray.png" class="icon_category_min lazyload_min"> コミック
-												<% end %>
-												<% if post.category == "music" %>
-													<img data-src="/assets/music_gray.png" class="icon_category_min lazyload_min"> ミュージック
-												<% end %>
-												<% if post.category == "link" %>
-													<img data-src="/assets/link_gray.png" class="icon_category_min lazyload_min"> リンク
-												<% end %>
-											</div>
-											<div class="contain_title">
-												<div class="font_title_min">
-													<%= post.title %>
-												</div>
-											</div>
-										</span>
-									</a>
-								</div>
+					  			<%# 3列表示(lazyload) %>
+								<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
 						  	<% end %>
 					  	<% end %>
 				  	</div>
@@ -133,26 +73,8 @@
 							</div>	
 					  	<% else %>
 						    <% @movie.each.with_index(1) do |post, i| %>
-						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">	
-										<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
-											<% @image_url = post.image_url.sub(/original/, 'w300') %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-										<% end %>
-										<span>
-											<div class="font_category_min">
-												<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> 映画
-											</div>
-											<div class="contain_title">
-												<div class="font_title_min">
-													<%= post.title %>
-												</div>
-											</div>
-										</span>
-									</a>
-								</div>
+						  		<%# 3列表示(swiper) %>
+								<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 						  	<% end %>
 					  	<% end %>
 					</div>	
@@ -166,26 +88,8 @@
 							</div>
 					  	<% else %>
 						  	<% @tv.each.with_index(1) do |post, i| %>
-						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">
-										<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
-											<% @image_url = post.image_url.sub(/original/, 'w300') %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-										<% end %>	
-										<span>
-											<div class="font_category_min">
-												<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> テレビ
-											</div>
-											<div class="contain_title">
-												<div class="font_title_min">
-													<%= post.title %>
-												</div>
-											</div>
-										</span>
-									</a>
-								</div>
+						  		<%# 3列表示(swiper) %>
+								<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 						  	<% end %>
 					  	<% end %>
 					</div>	  	
@@ -199,30 +103,8 @@
 							</div>
 					  	<% else %>
 						  	<% @book.each.with_index(1) do |post, i| %>
-						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">	
-										<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing02.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
-											<% if post.api == "itunes" %>
-												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-											<% else %>
-												<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
-											<% end %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-										<% end %>										
-										<span>
-											<div class="font_category_min">										
-												<%= image_tag "book_gray.png", :class =>'icon_category_min' %> ブック
-											</div>
-											<div class="contain_title">
-												<div class="font_title_min">
-													<%= post.title %>
-												</div>
-											</div>
-										</span>
-									</a>
-								</div>
+						  		<%# 3列表示(swiper) %>
+								<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 						  	<% end %>
 					  	<% end %>
 					</div>			  
@@ -236,30 +118,8 @@
 							</div>
 					  	<% else %>
 						  	<% @comic.each.with_index(1) do |post, i| %>
-						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">	
-										<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing02.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
-											<% if post.api == "itunes" %>
-												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-											<% else %>
-												<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
-											<% end %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-										<% end %>								
-										<span>
-											<div class="font_category_min">
-												<%= image_tag "book_gray.png", :class =>'icon_category_min' %> コミック
-											</div>
-											<div class="contain_title">
-												<div class="font_title_min">
-													<%= post.title %>
-												</div>
-											</div>
-										</span>
-									</a>
-								</div>
+						  		<%# 3列表示(swiper) %>
+								<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 						  	<% end %>
 				  		<% end %>
 				  	</div>	  	
@@ -273,26 +133,8 @@
 							</div>	
 					  	<% else %>
 						  	<% @music.each.with_index(1) do |post, i| %>
-						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">			
-										<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing03.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
-											<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-										<% end %>
-										<span>
-											<div class="font_category_min">
-												<%= image_tag "music_gray.png", :class =>'icon_category_min' %> ミュージック
-											</div>
-											<div class="contain_title">
-												<div class="font_title_min">
-													<%= post.title %>
-												</div>
-											</div>
-										</span>
-									</a>
-								</div>	  		
+						  		<%# 3列表示(swiper) %>
+								<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 						  	<% end %>
 					  	<% end %>
 					</div>			
@@ -306,26 +148,8 @@
 							</div>	
 					  	<% else %>
 						    <% @link.each.with_index(1) do |post, i| %>
-						  		<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-							    	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">	
-										<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing04.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
-											<% @image_url = post.image_url %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
-										<% end %>
-										<span>
-											<div class="font_category_min">
-												<%= image_tag "link_gray.png", :class =>'icon_category_min' %> リンク
-											</div>
-											<div class="contain_title">
-												<div class="font_title_min">
-													<%= post.title %>
-												</div>
-											</div>
-										</span>
-									</a>
-								</div>
+						  		<%# 3列表示(swiper) %>
+								<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 						  	<% end %>
 					  	<% end %>
 					</div>	

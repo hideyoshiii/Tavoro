@@ -2,7 +2,7 @@
 	<div class="modal-dialog">
 		<div class="base01">
 			<% if post.image_url.blank? %>
-				<img data-src="assets/nothing01.jpg" class="img_myboom lazyload_modal_<%= post.id %>">
+				<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_modal_<%= post.id %>">
 			<% else %>					
 				<img  data-src="<%= post.image_url %>" class="img_myboom lazyload_modal_<%= post.id %>">
 			<% end %>
@@ -23,27 +23,27 @@
 								<div class="font_white" style="word-wrap:break-word;">
 									<%= post.user.name %>
 									<% if post.user.authority == "public" %>
-				                      <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+				                    	<img data-src="/assets/test55.png" class="lazyload_modal_<%= post.id %>" style="width:14px;height:14px;">
 				                    <% end %>
 								</div>
 								<div class="font_gray_min" style="word-wrap:break-word;">
 									<% if post.category == "movie" %>
-										<%= image_tag "movie_gray.png", :class =>'icon_category' %> 映画
+										<img data-src="/assets/movie_gray.png" class="icon_category lazyload_modal_<%= post.id %>"> 映画
 									<% end %>
 									<% if post.category == "tv" %>
-										<%= image_tag "movie_gray.png", :class =>'icon_category' %> テレビ
+										<img data-src="/assets/movie_gray.png" class="icon_category lazyload_modal_<%= post.id %>"> テレビ
 									<% end %>
 									<% if post.category == "book" %>
-										<%= image_tag "book_gray.png", :class =>'icon_category' %> ブック
+										<img data-src="/assets/book_gray.png" class="icon_category lazyload_modal_<%= post.id %>"> ブック
 									<% end %>
 									<% if post.category == "comic" %>
-										<%= image_tag "book_gray.png", :class =>'icon_category' %> コミック
+										<img data-src="/assets/book_gray.png" class="icon_category lazyload_modal_<%= post.id %>"> コミック
 									<% end %>
 									<% if post.category == "music" %>
-										<%= image_tag "music_gray.png", :class =>'icon_category' %> ミュージック
+										<img data-src="/assets/music_gray.png" class="icon_category lazyload_modal_<%= post.id %>"> ミュージック
 									<% end %>
 									<% if post.category == "link" %>
-										<%= image_tag "link_gray.png", :class =>'icon_category' %> リンク
+										<img data-src="/assets/link_gray.png" class="icon_category lazyload_modal_<%= post.id %>">> リンク
 									<% end %>
 									<% @seconds = (Time.now - post.created_at).round  %>
 									<% if @seconds <= 3600 %>
@@ -102,7 +102,7 @@
 					<%= link_to "/works/#{post.id}/detail" do %>
 						<div class="font_how">
 							<% if post.review == "bookmark" %>
-								<%= image_tag "bookmark_blue.png", :class =>'icon_review' %>ブックマーク
+								<img data-src="/assets/bookmark_blue.png" class="icon_review lazyload_modal_<%= post.id %>">ブックマーク
 							<% end %>
 							<% if post.review == "good" %>
 								<% if post.category == "movie" || post.category == "tv" %>
@@ -119,10 +119,10 @@
 								<% end %>
 							<% end %>
 							<% if post.review == "favorite" %>
-								<%= image_tag "star_yellow.png", :class =>'icon_review' %>おすすめしています
+								<img data-src="/assets/star_yellow.png" class="icon_review lazyload_modal_<%= post.id %>">おすすめしています
 							<% end %>
 							<% if post.review == "bad" %>
-								<%= image_tag "ban_red.png", :class =>'icon_review' %>おすすめしていません
+								<img data-src="/assets/ban_red.png" class="icon_review lazyload_modal_<%= post.id %>">おすすめしていません
 							<% end %>
 						</div>
 						<div class="contain_title">
@@ -143,7 +143,7 @@
 				<div class="layer09">
 					<div class="inline_block_middle" style="width:100%;">
 						<a data-dismiss="modal" id="dismiss_<%= post.id %>">
-							<%= image_tag "close_blue.png", :class =>'img_left02' %>
+							<img data-src="/assets/close_blue.png" class="img_left02 lazyload_modal_<%= post.id %>">
 						</a>
 					</div>
 				</div>
