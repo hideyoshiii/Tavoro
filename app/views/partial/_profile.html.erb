@@ -22,22 +22,22 @@
               <% if @list_item.present? %>
                 <div>
                   <% if @list_item.post.category == "movie" %>
-                    <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
+                    <img data-src="/assets/movie_white.png" class="icon_category lazyload_modal_profile_<%= @user.id %>"> <%= @list_item.post.title %>
                   <% end %>
                   <% if @list_item.post.category == "tv" %>
-                    <%= image_tag "movie_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
+                    <img data-src="/assets/movie_white.png" class="icon_category lazyload_modal_profile_<%= @user.id %>"> <%= @list_item.post.title %>
                   <% end %>
                   <% if @list_item.post.category == "book" %>
-                    <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
+                    <img data-src="/assets/book_white.png" class="icon_category lazyload_modal_profile_<%= @user.id %>"> <%= @list_item.post.title %>
                   <% end %>
                   <% if @list_item.post.category == "comic" %>
-                    <%= image_tag "book_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
+                    <img data-src="/assets/book_white.png" class="icon_category lazyload_modal_profile_<%= @user.id %>"> <%= @list_item.post.title %>
                   <% end %>
                   <% if @list_item.post.category == "music" %>
-                    <%= image_tag "music_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
+                    <img data-src="/assets/music_white.png" class="icon_category lazyload_modal_profile_<%= @user.id %>"> <%= @list_item.post.title %>
                   <% end %>
                   <% if @list_item.post.category == "link" %>
-                    <%= image_tag "link_white.png", :class =>'icon_category' %> <%= @list_item.post.title %>
+                    <img data-src="/assets/link_white.png" class="icon_category lazyload_modal_profile_<%= @user.id %>"> <%= @list_item.post.title %>
                   <% end %>
                 </div>
               <% else %>
@@ -64,13 +64,13 @@
                 <% if user.image.present? %>
                   <img data-src="<%= user.image(:large) %>" class="img_user08 lazyload_modal_profile_<%= @user.id %>">
                 <% else %>
-                  <img  data-src="/assets/user09.png" class="img_user08 lazyload_modal_profile_<%= @user.id %>">
+                  <img data-src="/assets/user09.png" class="img_user08 lazyload_modal_profile_<%= @user.id %>">
                 <% end %>
               </div>
               <div style="font-size:18px;text-align:center;margin-top:10px;">
                 <%= user.name %>
                 <% if user.authority == "public" %>
-                  <%= image_tag "test55.png", :style =>'width:14px;height:14px;' %>
+                  <img data-src="/assets/test55.png" class="lazyload_modal_profile_<%= @user.id %>" style="width:14px;height:14px;">
                 <% end %>
               </div>
             </div>  
@@ -110,7 +110,7 @@
             <div class="inline_block_middle" style="width:33.33%;">
               <%= link_to "/#{@user.username}/posts" do %>
             	  <div>
-                  <%= image_tag "checked_white.png", :style =>'width:16px;height:16px;' %>
+                  <img data-src="/assets/checked_white.png" class="lazyload_modal_profile_<%= @user.id %>" style="width:16px;height:16px;">
                 </div> 
                 <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
                   <%= @checkeds_i %> checkeds
@@ -120,7 +120,7 @@
             <div class="inline_block_middle" style="width:33.33%;">
               <%= link_to "/#{@user.username}/bookmarks" do %>
                 <div>
-                  <%= image_tag "bookmark_white.png", :style =>'width:16px;height:16px;' %>
+                  <img data-src="/assets/bookmark_white.png" class="lazyload_modal_profile_<%= @user.id %>" style="width:16px;height:16px;">
                 </div> 
                 <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
                   <%= @bookmarks_i %> bookmarks
@@ -129,7 +129,7 @@
             </div>
             <div class="inline_block_middle" style="width:33.33%;opacity:0.5;">
               <div>
-                <%= image_tag "file_white.png", :style =>'width:16px;height:16px;' %>
+                <img data-src="/assets/file_white.png" class="lazyload_modal_profile_<%= @user.id %>" style="width:16px;height:16px;">
               </div> 
               <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
                 coming soon
@@ -141,7 +141,7 @@
         <div class="a10">
           <div class="inline_block_middle" style="width:100%;"> 
             <a data-dismiss="modal" id="dismiss_dashbord">
-              <%= image_tag "close_blue.png", :class =>'img_left02' %>
+              <img data-src="/assets/close_blue.png" class="img_left02 lazyload_modal_profile_<%= @user.id %>">
             </a>
           </div>
         </div>

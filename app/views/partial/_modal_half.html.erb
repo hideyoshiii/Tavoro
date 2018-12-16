@@ -6,13 +6,6 @@
               		<div class="d5"></div>
             	</div>
           	</div>
-          	<div class="a7">
-              	<a data-toggle="modal" data-dismiss="modal">
-                	<div style="padding:20px;">
-                  		<%= image_tag "cross_gray.png", :style =>'width:18px;height:18px;opacity:0.5' %>
-                	</div>
-              	</a>  
-          	</div>
           	<div class="a6" style="text-align:center;">
           		<div style="height:8%;"></div>
           		<div style="width:40%;display:inline-block;">
@@ -20,9 +13,9 @@
 						<img data-src="/assets/nothing01.jpg" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
 					<% else %>										
 						<% if post.category == "link" %>
-							<img  data-src="<%= post.image_url %>" class="lazyload_half_modal_<%= post.id %>"  style="width:100%;height:15vh;object-fit:cover;">
+							<img data-src="<%= post.image_url %>" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:15vh;object-fit:cover;">
 						<% else %>
-							<img  data-src="<%= post.image_url %>" class="lazyload_half_modal_<%= post.id %>"  style="width:100%;height:auto;">
+							<img data-src="<%= post.image_url %>" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
 						<% end %>
 					<% end %>
           		</div>
@@ -39,7 +32,7 @@
 					    <div style="height:30px"></div>
 						<%= link_to "/works/#{post.id}/copy" do %>
 							<div class="btn_half_item">  
-								<%= image_tag "add_white.png", :style =>'width:18px;height:18px;margin-top:-2px;margin-right:15px;opacity:0.6;' %>この作品を投稿
+								<img data-src="/assets/add_white.png" class="lazyload_half_modal_<%= post.id %>" style="width:18px;height:18px;margin-top:-2px;margin-right:15px;opacity:0.6;">この作品を投稿
 							</div>	
 						<% end %>									
 					<% end %>
@@ -54,13 +47,13 @@
 					    <div style="height:30px"></div>
 						<%= link_to "/works/#{post.id}/edit" do %>
 							<div class="btn_half_item">  
-								<%= image_tag "edit_white.png", :style =>'width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.6;' %>投稿を編集
+								<img data-src="/assets/edit_white.png" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.6;">投稿を編集
 							</div>
 						<% end %>
 						<div style="height:30px"></div>			
 						<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
 							<div class="btn_half_item" style="color:#FB473E;">  
-								<%= image_tag "trash_red.png", :style =>'width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.8;' %>投稿を削除
+								<img data-src="/assets/trash_red.png" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.8;">投稿を削除
 							</div>
 						<% end %>
 						<div style="height:30px"></div>	
@@ -71,7 +64,7 @@
           	<div class="a13" style="text-align:center;">
           		<a data-toggle="modal" data-dismiss="modal">
 					<div class="btn_half_close">  
-						<%= image_tag "ban_white.png", :style =>'width:20px;height:20px;margin-top:-4px;margin-right:5px;' %>キャンセル  
+						<img data-src="/assets/ban_white.png" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin-top:-4px;margin-right:5px;">キャンセル  
 					</div>
 			  	</a>
           	</div>
