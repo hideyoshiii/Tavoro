@@ -16,34 +16,34 @@
 								<% if post.user.image.present? %>
 				                  <img data-src="<%= post.user.image(:medium) %>" class="img_user04 lazyload_modal_<%= post.id %>">
 				                <% else %>
-				                	<img data-src="/assets/user09.png" class="img_user04 lazyload_modal_<%= post.id %>">
+				                	<img data-src="/assets/user.svg" class="img_user04 lazyload_modal_<%= post.id %>">
 				                <% end %>
 							</div>
 							<div class="inline_block_middle">
 								<div class="font_white" style="word-wrap:break-word;">
 									<%= post.user.name %>
 									<% if post.user.authority == "public" %>
-				                    	<img data-src="/assets/test55.png" class="lazyload_modal_<%= post.id %>" style="width:14px;height:14px;">
+				                    	<img data-src="/assets/public.svg" class="lazyload_modal_<%= post.id %>" style="width:14px;height:14px;">
 				                    <% end %>
 								</div>
 								<div class="font_gray_min" style="word-wrap:break-word;">
 									<% if post.category == "movie" %>
-										<img data-src="/assets/movie_gray.png" class="icon_category lazyload_modal_<%= post.id %>"> 映画
+										<img data-src="/assets/movie_777777.svg" class="icon_category lazyload_modal_<%= post.id %>"> 映画
 									<% end %>
 									<% if post.category == "tv" %>
-										<img data-src="/assets/movie_gray.png" class="icon_category lazyload_modal_<%= post.id %>"> テレビ
+										<img data-src="/assets/movie_777777.svg" class="icon_category lazyload_modal_<%= post.id %>"> テレビ
 									<% end %>
 									<% if post.category == "book" %>
-										<img data-src="/assets/book_gray.png" class="icon_category lazyload_modal_<%= post.id %>"> ブック
+										<img data-src="/assets/book_777777.svg" class="icon_category lazyload_modal_<%= post.id %>"> ブック
 									<% end %>
 									<% if post.category == "comic" %>
-										<img data-src="/assets/book_gray.png" class="icon_category lazyload_modal_<%= post.id %>"> コミック
+										<img data-src="/assets/book_777777.svg" class="icon_category lazyload_modal_<%= post.id %>"> コミック
 									<% end %>
 									<% if post.category == "music" %>
-										<img data-src="/assets/music_gray.png" class="icon_category lazyload_modal_<%= post.id %>"> ミュージック
+										<img data-src="/assets/music_777777.svg" class="icon_category lazyload_modal_<%= post.id %>"> ミュージック
 									<% end %>
 									<% if post.category == "link" %>
-										<img data-src="/assets/link_gray.png" class="icon_category lazyload_modal_<%= post.id %>">> リンク
+										<img data-src="/assets/link_777777.svg" class="icon_category lazyload_modal_<%= post.id %>">> リンク
 									<% end %>
 									<% @seconds = (Time.now - post.created_at).round  %>
 									<% if @seconds <= 3600 %>
@@ -65,7 +65,7 @@
 					</div>						
 					<div class="inline_block_middle" style="width:20%;text-align:right;">					
 						<a href="" data-toggle="modal" data-target="#myModal_half_<%= post.id %>" style="padding:20px 10px 20px 20px;">
-							<img data-src="/assets/ellipsis_gray.png" class="lazyload_modal_<%= post.id %>" style="width:17px;height:17px;opacity:0.7;">
+							<img data-src="/assets/ellipsis_777777.svg" class="lazyload_modal_<%= post.id %>" style="width:17px;height:17px;opacity:0.7;">
 						</a>
 					</div>
 				</div>
@@ -84,7 +84,7 @@
 					<% if post.category == "music" %>
 						<% if post.preview_url.present? %>
 							<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
-								<img data-src="/assets/play_white.png" class="lazyload_modal_<%= post.id %>" id="icon_play_<%= post.id %>" style="width:11px;height:11px;margin-left:0.5px;">
+								<img data-src="/assets/play_FAFAFA.svg" class="lazyload_modal_<%= post.id %>" id="icon_play_<%= post.id %>" style="width:11px;height:11px;margin-left:0.5px;">
 							</div>
 						<% end %>
 					<% end %>
@@ -92,7 +92,7 @@
 						<% if post.preview_url.present? %>
 							<a target="blank" href="<%= post.preview_url %>">
 								<div class="btn_preview_link">
-									<img data-src="/assets/link_white.png" class="lazyload_modal_<%= post.id %>" style="width:15px;height:15px;">
+									<img data-src="/assets/link_FAFAFA.svg" class="lazyload_modal_<%= post.id %>" style="width:15px;height:15px;">
 								</div>
 							</a>
 						<% end %>
@@ -102,7 +102,7 @@
 					<%= link_to "/works/#{post.id}/detail" do %>
 						<div class="font_how">
 							<% if post.review == "bookmark" %>
-								<img data-src="/assets/bookmark_blue.png" class="icon_review lazyload_modal_<%= post.id %>">ブックマーク
+								<img data-src="/assets/bookmark_05627B.svg" class="icon_review lazyload_modal_<%= post.id %>">ブックマーク
 							<% end %>
 							<% if post.review == "good" %>
 								<% if post.category == "movie" || post.category == "tv" %>
@@ -119,10 +119,10 @@
 								<% end %>
 							<% end %>
 							<% if post.review == "favorite" %>
-								<img data-src="/assets/star_yellow.png" class="icon_review lazyload_modal_<%= post.id %>">おすすめしています
+								<img data-src="/assets/star_F8C55A.svg" class="icon_review lazyload_modal_<%= post.id %>">おすすめしています
 							<% end %>
 							<% if post.review == "bad" %>
-								<img data-src="/assets/ban_red.png" class="icon_review lazyload_modal_<%= post.id %>">おすすめしていません
+								<img data-src="/assets/ban_FB473E.svg" class="icon_review lazyload_modal_<%= post.id %>">おすすめしていません
 							<% end %>
 						</div>
 						<div class="contain_title">
@@ -143,7 +143,7 @@
 				<div class="layer09">
 					<div class="inline_block_middle" style="width:100%;">
 						<a data-dismiss="modal" id="dismiss_<%= post.id %>">
-							<img data-src="/assets/close_blue.png" class="img_left02 lazyload_modal_<%= post.id %>">
+							<img data-src="/assets/05627B.svg" class="img_left02 lazyload_modal_<%= post.id %>">
 						</a>
 					</div>
 				</div>
@@ -188,19 +188,19 @@
 		  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
 		  	  var img_<%= post.id %> = $("#icon_play_<%= post.id %>");
 			  $('#btn_preview_<%= post.id %>').on("click",function(){
-			    if(img_<%= post.id %>.attr('src') === "/assets/play_white.png")
+			    if(img_<%= post.id %>.attr('src') === "/assets/play_FAFAFA.svg")
 			     {	       		       
-			       img_<%= post.id %>.attr("src","/assets/pause_white.png");
+			       img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
 			       audio_<%= post.id %>.play();
 			     }
 			    else
 			     {
-			       img_<%= post.id %>.attr("src","/assets/play_white.png");
+			       img_<%= post.id %>.attr("src","/assets/play_FAFAFA.svg");
 			       audio_<%= post.id %>.pause();
 			     }
 			  });
 			  audio_<%= post.id %>.onended = function() {
-			  	img_<%= post.id %>.attr("src","/assets/pause_white.png");
+			  	img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
 			  };
 		  	});				
 	   	</script>

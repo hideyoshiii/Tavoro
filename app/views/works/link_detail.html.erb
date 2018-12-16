@@ -3,7 +3,7 @@
 		<div class="inline_block_middle" style="width:15%;">
 			<div style="text-align:left;padding-left:10px;">
 				<a href="javascript:void(0);" onclick="window.history.back();">
-		        	<%= image_tag "left_gray.png", :style =>'width:15px;height:15px;' %>
+		        	<img src="/assets/left_C2C2C2.svg" style="width:15px;height:15px;">
 		        </a>										
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 					<div style="display:inline-block;">
 						<%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
 					    <label for="bookmark">
-					    	<%= image_tag "bookmark_blue.png", :class =>'icon_review' %>ブックマーク
+					    	<img src="/assets/bookmark_05627B.svg" class="icon_review">ブックマーク
 					    </label>
 					</div>
 					<div style="display:inline-block;">
@@ -62,13 +62,13 @@
 					<div style="display:inline-block;">
 						<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
 					    <label for="favorite">
-					    	<%= image_tag "star_yellow.png", :class =>'icon_review' %>おすすめ
+					    	<img src="/assets/star_F8C55A.svg" class="icon_review">おすすめ
 					    </label>
 					</div>
 				    <div style="display:inline-block;">
 					    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
 					    <label for="bad" class="radio">
-					    	<%= image_tag "ban_red.png", :class =>'icon_review' %>おすすめしない
+					    	<img src="/assets/ban_FB473E.svg" class="icon_review">おすすめしない
 					    </label>
 				    </div>
 				</div>
@@ -119,7 +119,6 @@
 	</div>
 </div>
 
-
 <%#テキストエリアの自動改行%>
 <script defer>
 	$(function() {
@@ -131,7 +130,6 @@
 	  });
 	});
 </script>
-
 <%#投稿ボタンボタン%>
 <script defer>
 	$('#btn_post').click(function() {

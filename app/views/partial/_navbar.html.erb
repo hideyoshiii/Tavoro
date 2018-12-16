@@ -3,7 +3,7 @@
     <div style="float:left;">
       <%= link_to root_path do %>
       <div style="padding:12px 5px 0px 10px;color:rgba(39,134,160,0.8);font-size:20px;">
-        TAVORE <%= image_tag "alpha.png", :style =>'width:10px;height:10px;margin:2px 0px 0px -3px;' %>
+        TAVORE <img src="/assets/alpha.svg" style="width:10px;height:10px;margin:2px 0px 0px -3px;">
       </div>
       <% end %>
     </div>
@@ -12,25 +12,25 @@
     <% if user_signed_in? %>
       <div style="float:right;padding:12px 10px 0px 0px;">
         <a href="" data-toggle="modal" data-target="#myModal_dashbord">
-            <%= image_tag "user09.png", :style =>'width:28px;height:28px;' %>
+          <img src="/assets/user.svg" style="width:28px;height:28px;">
         </a>
       </div>
       <% if Notification.where(user_id: current_user.id,read: false).size >= 1 %>
         <div style="float:right;padding:13px 10px 0px 0px;">
           <%= link_to notification_path do %>
-            <%= image_tag "bell_red.png", :style =>'width:24px;height:24px;' %>
+            <img src="/assets/bell_FB473E.svg" style="width:24px;height:24px;">
           <% end %>
         </div>
       <% else %>
         <div style="float:right;padding:13px 10px 0px 0px;">
           <%= link_to notification_path do %>
-            <%= image_tag "bell_gray.png", :style =>'width:24px;height:24px;' %>
+            <img src="/assets/bell_777777.svg" style="width:24px;height:24px;">
           <% end %>
         </div>
       <% end %>
       <div style="float:right;padding:13px 10px 0px 0px;">
         <%= link_to "/users/user" do %>
-          <%= image_tag "search_gray.png", :style =>'width:24px;height:24px;' %>
+          <img src="/assets/search_777777.svg" style="width:24px;height:24px;">
         <% end %>
       </div>
     <% else %>
@@ -65,7 +65,7 @@
           <div class="a7">
               <a data-toggle="modal" data-dismiss="modal">
                 <div style="padding:20px;">
-                  <%= image_tag "cross_gray.png", :style =>'width:18px;height:18px;opacity:0.5' %>
+                  <img src="/assets/cross_777777.svg" style="width:18px;height:18px;opacity:0.5;">
                 </div>
               </a>  
           </div>
@@ -159,7 +159,7 @@
               <a href="https://twitter.com/tavore_info" target="blank"> 
                 <img  data-src="/assets/tavore_logo_02.png" class="lazyload_modal_what" style ="width:80px;height:80px;border-radius:50%;border: solid 1px #111111;">       
                 <div style="font-size:15px;color:#F3F3F3;margin-top:2vh;">
-                  <%= image_tag "twitter.png", :class =>'icon_review' %>@tavore_info
+                  <img src="/assets/twitter.svg" class="icon_review">@tavore_info
                 </div>  
               </a>    
               <div class="font_gray_min" style="margin-top:4vh;">
@@ -189,7 +189,7 @@
           <div class="a7">
               <a data-toggle="modal" data-dismiss="modal">
                 <div style="padding:20px;">
-                  <%= image_tag "cross_gray.png", :style =>'width:18px;height:18px;opacity:0.5' %>
+                  <img src="/assets/cross_777777.svg" style="width:18px;height:18px;opacity:0.5;">
                 </div>
               </a>  
           </div>
@@ -211,7 +211,7 @@
                   <img  data-src="/assets/pwa01.png" class="lazyload_modal_app" style ="width:100%;height:auto;">
                 </div>
                 <div style="width:20%;display:inline-block;vertical-align:center;">
-                  <%= image_tag "right_gray.png", :style =>'width:20px;height:auto;' %>
+                  <img src="/assets/right_777777.svg" style="width:20px;height:20px;">
                 </div>
                 <div style="width:40%;display:inline-block;vertical-align:center;">
                   <img  data-src="/assets/pwa02.png" class="lazyload_modal_app" style ="width:100%;height:auto;">

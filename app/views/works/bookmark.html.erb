@@ -3,7 +3,7 @@
 		<div class="inline_block_middle" style="width:15%;">
 			<div style="text-align:left;padding-left:10px;">
 				<a href="javascript:void(0);" onclick="window.history.back();">
-		        	<%= image_tag "left_gray.png", :style =>'width:15px;height:15px;' %>
+		        	<img src="/assets/left_C2C2C2.svg" style="width:15px;height:15px;">
 		        </a>										
 			</div>
 		</div>
@@ -45,7 +45,7 @@
 				  		<div style="height:130px;"></div>
 				  		<% if @all.blank? %>				  		
 							<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<%= image_tag "warning_wihte.png", :style =>'width:20px;height:20px;margin-top:-2px;' %> ブックマークがありません
+								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;">  ブックマークがありません
 							</div>
 					  	<% else %>
 					  		<% @all.each.with_index(1) do |post, i| %>
@@ -95,28 +95,28 @@
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
 								                  	<% if post.category == "movie" %>
-														<img data-src="/assets/movie_gray.png" class="icon_category_min lazyload_min"> 映画
+														<img data-src="/assets/movie_777777.svg" class="icon_category_min lazyload_min"> 映画
 													<% end %>
 													<% if post.category == "tv" %>
-														<img data-src="/assets/movie_gray.png" class="icon_category_min lazyload_min"> テレビ
+														<img data-src="/assets/movie_777777.svg" class="icon_category_min lazyload_min"> テレビ
 													<% end %>
 													<% if post.category == "book" %>
-														<img data-src="/assets/book_gray.png" class="icon_category_min lazyload_min"> ブック
+														<img data-src="/assets/book_777777.svg" class="icon_category_min lazyload_min"> ブック
 													<% end %>
 													<% if post.category == "comic" %>
-														<img data-src="/assets/book_gray.png" class="icon_category_min lazyload_min"> コミック
+														<img data-src="/assets/book_777777.svg" class="icon_category_min lazyload_min"> コミック
 													<% end %>
 													<% if post.category == "music" %>
-														<img data-src="/assets/music_gray.png" class="icon_category_min lazyload_min"> ミュージック
+														<img data-src="/assets/music_777777.svg" class="icon_category_min lazyload_min"> ミュージック
 													<% end %>
 													<% if post.category == "link" %>
-														<img data-src="/assets/link_gray.png" class="icon_category_min lazyload_min"> リンク
+														<img data-src="/assets/link_777777.svg" class="icon_category_min lazyload_min"> リンク
 													<% end %>
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<img data-src="/assets/right_gray.png" class="lazyload_min" style="width:15px;height:15px;"> 
+							            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload_min" style="width:15px;height:15px;"> 
 							            </div>
 							        </div>
 							    <% end %>
@@ -129,7 +129,7 @@
 				  		<div style="height:130px;"></div>
 				  		<% if @movie.blank? %>				  		
 							<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<%= image_tag "warning_wihte.png", :style =>'width:20px;height:20px;margin-top:-2px;' %> ブックマークがありません
+								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;">  ブックマークがありません
 							</div>
 					  	<% else %>
 					  		<% @movie.each.with_index(1) do |post, i| %>
@@ -153,12 +153,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> 映画
+													<img src="/assets/movie_777777.svg" class="icon_category_min"> 映画
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
+							            	<img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
 							            </div>
 							        </div>
 							    <% end %>
@@ -171,7 +171,7 @@
 				  		<div style="height:130px;"></div>
 				  		<% if @tv.blank? %>				  		
 							<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<%= image_tag "warning_wihte.png", :style =>'width:20px;height:20px;margin-top:-2px;' %> ブックマークがありません
+								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;">  ブックマークがありません
 							</div>
 					  	<% else %>
 					  		<% @tv.each.with_index(1) do |post, i| %>
@@ -195,12 +195,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<%= image_tag "movie_gray.png", :class =>'icon_category_min' %> テレビ
+													<img src="/assets/movie_777777.svg" class="icon_category_min"> テレビ
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
+							            	<img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
 							            </div>
 							        </div>
 							    <% end %>
@@ -213,7 +213,7 @@
 				  		<div style="height:130px;"></div>
 				  		<% if @book.blank? %>				  		
 							<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<%= image_tag "warning_wihte.png", :style =>'width:20px;height:20px;margin-top:-2px;' %> ブックマークがありません
+								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;">  ブックマークがありません
 							</div>
 					  	<% else %>
 					  		<% @book.each.with_index(1) do |post, i| %>
@@ -241,12 +241,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<%= image_tag "book_gray.png", :class =>'icon_category_min' %> ブック
+													<img src="/assets/book_777777.svg" class="icon_category_min"> ブック
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
+							            	<img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
 							            </div>
 							        </div>
 							    <% end %>
@@ -259,7 +259,7 @@
 				  		<div style="height:130px;"></div>
 				  		<% if @comic.blank? %>				  		
 							<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<%= image_tag "warning_wihte.png", :style =>'width:20px;height:20px;margin-top:-2px;' %> ブックマークがありません
+								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;">  ブックマークがありません
 							</div>
 					  	<% else %>
 					  		<% @comic.each.with_index(1) do |post, i| %>
@@ -287,12 +287,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<%= image_tag "book_gray.png", :class =>'icon_category_min' %> コミック
+													<img src="/assets/book_777777.svg" class="icon_category_min"> コミック
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
+							            	<img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
 							            </div>
 							        </div>
 							    <% end %>
@@ -305,7 +305,7 @@
 				  		<div style="height:130px;"></div>
 				  		<% if @music.blank? %>				  		
 							<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<%= image_tag "warning_wihte.png", :style =>'width:20px;height:20px;margin-top:-2px;' %> ブックマークがありません
+								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;">  ブックマークがありません
 							</div>
 					  	<% else %>
 					  		<% @music.each.with_index(1) do |post, i| %>
@@ -329,12 +329,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<%= image_tag "music_gray.png", :class =>'icon_category_min' %> ミュージック
+													<img src="/assets/music_777777.svg" class="icon_category_min"> ミュージック
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
+							            	<img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
 							            </div>
 							        </div>
 							    <% end %>
@@ -347,7 +347,7 @@
 				  		<div style="height:130px;"></div>
 				  		<% if @link.blank? %>				  		
 							<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<%= image_tag "warning_wihte.png", :style =>'width:20px;height:20px;margin-top:-2px;' %> ブックマークがありません
+								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;">  ブックマークがありません
 							</div>
 					  	<% else %>
 					  		<% @link.each.with_index(1) do |post, i| %>
@@ -371,12 +371,12 @@
 							              	</div>
 							              	<div class="contain_title">
 								                <div class="font_gray_min">
-													<%= image_tag "link_gray.png", :class =>'icon_category_min' %> リンク
+													<img src="/assets/link_777777.svg" class="icon_category_min"> リンク
 								                </div>
 							              	</div>
 							            </div>
 							            <div class="inline_block_middle" style="width:5%;">
-							            	<%= image_tag "right_gray.png", :style =>'width:15px;height:15px;' %>
+							            	<img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
 							            </div>
 							        </div>
 							    <% end %>
@@ -435,7 +435,6 @@
 	    })
 	});
 </script>
-
 <%#lazyload.js%>
 <script defer>
 	$(function() {

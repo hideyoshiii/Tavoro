@@ -25,34 +25,34 @@
 														<% if post.user.image.present? %>
 											                <img data-src="<%= post.user.image(:medium) %>" class="swiper-lazy img_user04">
 											            <% else %>
-											                <img data-src="/assets/user09.png" class="swiper-lazy img_user04" style="box-shadow:none;">
+											                <img data-src="/assets/user.svg" class="swiper-lazy img_user04" style="box-shadow:none;">
 											            <% end %>												
 													</div>
 													<div class="inline_block_middle">
 														<div class="font_white" style="word-wrap:break-word;margin-top:2px;">
 															<%= post.user.name %>
 															<% if post.user.authority == "public" %>
-										                    	<img data-src="/assets/test55.png" class="swiper-lazy" style="width:14px;height:14px;">
+										                    	<img data-src="/assets/public.svg" class="swiper-lazy" style="width:14px;height:14px;">
 										                    <% end %>
 														</div>
 														<div class="font_gray_min" style="word-wrap:break-word;margin-top:2px;">
 															<% if post.category == "movie" %>
-																<img data-src="/assets/movie_gray.png" class="icon_category swiper-lazy"> 映画
+																<img data-src="/assets/movie_777777.svg" class="icon_category swiper-lazy"> 映画
 															<% end %>
 															<% if post.category == "tv" %>
-																<img data-src="/assets/movie_gray.png" class="icon_category swiper-lazy"> テレビ
+																<img data-src="/assets/movie_777777.svg" class="icon_category swiper-lazy"> テレビ
 															<% end %>
 															<% if post.category == "book" %>
-																<img data-src="/assets/book_gray.png" class="icon_category swiper-lazy"> ブック
+																<img data-src="/assets/book_777777.svg" class="icon_category swiper-lazy"> ブック
 															<% end %>
 															<% if post.category == "comic" %>
-																<img data-src="/assets/book_gray.png" class="icon_category swiper-lazy"> コミック
+																<img data-src="/assets/book_777777.svg" class="icon_category swiper-lazy"> コミック
 															<% end %>
 															<% if post.category == "music" %>
-																<img data-src="/assets/music_gray.png" class="icon_category swiper-lazy"> ミュージック
+																<img data-src="/assets/music_777777.svg" class="icon_category swiper-lazy"> ミュージック
 															<% end %>
 															<% if post.category == "link" %>
-																<img data-src="/assets/link_gray.png" class="icon_category swiper-lazy"> リンク
+																<img data-src="/assets/link_777777.svg" class="icon_category swiper-lazy"> リンク
 															<% end %>
 															<% @seconds = (Time.now - post.created_at).round  %>
 															<% if @seconds <= 3600 %>
@@ -93,7 +93,7 @@
 											<% if post.category == "music" %>
 												<% if post.preview_url.present? %>
 													<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
-														<img data-src="/assets/play_white.png" class="swiper-lazy" id="icon_play_<%= post.id %>" style="width:11px;height:11px;margin-left:0.5px;">
+														<img data-src="/assets/play_FAFAFA.svg" class="swiper-lazy" id="icon_play_<%= post.id %>" style="width:11px;height:11px;margin-left:0.5px;">
 													</div>
 												<% end %>
 											<% end %>
@@ -101,7 +101,7 @@
 												<% if post.preview_url.present? %>
 													<a target="blank" href="<%= post.preview_url %>">
 														<div class="btn_preview_link">
-															<img data-src="/assets/link_white.png" class="swiper-lazy" style="width:15px;height:15px;">
+															<img data-src="/assets/link_FAFAFA.svg" class="swiper-lazy" style="width:15px;height:15px;">
 														</div>
 													</a>
 												<% end %>
@@ -111,7 +111,7 @@
 											<%= link_to "/works/#{post.id}/detail" do %>
 												<div class="font_how">
 													<% if post.review == "bookmark" %>
-														<img data-src="/assets/bookmark_blue.png" class="icon_review swiper-lazy">ブックマーク
+														<img data-src="/assets/bookmark_05627B.svg" class="icon_review swiper-lazy">ブックマーク
 													<% end %>
 													<% if post.review == "good" %>
 														<% if post.category == "movie" || post.category == "tv" %>
@@ -128,10 +128,10 @@
 														<% end %>
 													<% end %>
 													<% if post.review == "favorite" %>
-														<img data-src="/assets/star_yellow.png" class="icon_review swiper-lazy">おすすめしています
+														<img data-src="/assets/star_F8C55A.svg" class="icon_review swiper-lazy">おすすめしています
 													<% end %>
 													<% if post.review == "bad" %>
-														<img data-src="/assets/ban_red.png" class="icon_review swiper-lazy">おすすめしていません
+														<img data-src="/assets/ban_FB473E.svg" class="icon_review swiper-lazy">おすすめしていません
 													<% end %>
 												</div>
 												<div class="contain_title">
@@ -181,19 +181,19 @@
 					  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
 					  	  var img_<%= post.id %> = $("#icon_play_<%= post.id %>");
 						  $('#btn_preview_<%= post.id %>').on("click",function(){
-						    if(img_<%= post.id %>.attr('src') === "/assets/play_white.png")
+						    if(img_<%= post.id %>.attr('src') === "/assets/play_FAFAFA.svg")
 						     {	       		       
-						       img_<%= post.id %>.attr("src","/assets/pause_white.png");
+						       img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
 						       audio_<%= post.id %>.play();
 						     }
 						    else
 						     {
-						       img_<%= post.id %>.attr("src","/assets/play_white.png");
+						       img_<%= post.id %>.attr("src","/assets/play_FAFAFA.svg");
 						       audio_<%= post.id %>.pause();
 						     }
 						  });
 						  audio_<%= post.id %>.onended = function() {
-						  	img_<%= post.id %>.attr("src","/assets/pause_white.png");
+						  	img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
 						  };
 					  	});				
 				   	</script>
