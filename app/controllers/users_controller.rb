@@ -21,7 +21,6 @@ class UsersController < ApplicationController
       if @list_favorite.present?
         @list_favorite_items = ListItem.where(list_id: @list_favorite.id).order(created_at: "DESC")
       end
-
     end
 	end
 

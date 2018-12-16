@@ -14,9 +14,9 @@
 						<a href="" data-toggle="modal" data-target="#myModal_profile_<%= post.user.id %>">
 							<div class="inline_block_middle">															
 								<% if post.user.image.present? %>
-				                  <img  data-src="<%= post.user.image(:medium) %>" class="img_user04 lazyload_modal_<%= post.id %>">
+				                  <img data-src="<%= post.user.image(:medium) %>" class="img_user04 lazyload_modal_<%= post.id %>">
 				                <% else %>
-				                	<img  data-src="/assets/user09.png" class="img_user04 lazyload_modal_<%= post.id %>">
+				                	<img data-src="/assets/user09.png" class="img_user04 lazyload_modal_<%= post.id %>">
 				                <% end %>
 							</div>
 							<div class="inline_block_middle">
@@ -84,7 +84,7 @@
 					<% if post.category == "music" %>
 						<% if post.preview_url.present? %>
 							<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
-								<img src="/assets/play_white.png" id="icon_play_<%= post.id %>" style="width:11px;height:11px;margin-left:0.5px;">
+								<img data-src="/assets/play_white.png" class="lazyload_modal_<%= post.id %>" id="icon_play_<%= post.id %>" style="width:11px;height:11px;margin-left:0.5px;">
 							</div>
 						<% end %>
 					<% end %>
@@ -92,7 +92,7 @@
 						<% if post.preview_url.present? %>
 							<a target="blank" href="<%= post.preview_url %>">
 								<div class="btn_preview_link">
-									<img src="/assets/link_white.png" id="icon_play_<%= post.id %>" style="width:15px;height:15px;">
+									<img data-src="/assets/link_white.png" class="lazyload_modal_<%= post.id %>" style="width:15px;height:15px;">
 								</div>
 							</a>
 						<% end %>
