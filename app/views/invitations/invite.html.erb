@@ -5,7 +5,7 @@
 		<div class="inline_block_middle" style="width:15%;">
 			<div style="text-align:left;padding-left:10px;">
 				<a href="javascript:void(0);" onclick="window.history.back();">
-		        	<img src="/assets/left_C2C2C2.svg" style="width:15px;height:15px;">
+		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
 		        </a>										
 			</div>
 		</div>
@@ -61,7 +61,7 @@
 							<button type="submit" data-confirm="招待URLを発行しますか？" style="width:100%;height:100%;">
 							  	<div class="card01" style="background:rgba(220,220,220,0.15);">
 							  		<span>
-									  	<img src="/assets/add_FAFAFA.svg" style="width:40px;height:40px;opacity:0.7;">
+									  	<%= image_tag "add_FAFAFA.svg", :style =>'width:40px;height:40px;opacity:0.7;' %>
 									  	<div style="font-size:10px;color:#FAFAFA;opacity:0.7;margin-top:15px;">
 									  		招待URLを発行する
 									  	</div>		
@@ -76,7 +76,7 @@
 								<div class="scroll_item01">				
 								  	<div class="card01">
 								  		<span>
-										  	<img src="/assets/user.svg" style="width:45px;height:45px;border-radius:50%;background:rgba(0,0,0,0.1);object-fit:cover;">
+										  	<%= image_tag "user.svg", :style =>'width:45px;height:45px;border-radius:50%;background:rgba(0,0,0,0.1);object-fit:cover;' %>
 										  	<div style="height:10px;"></div>
 										  	<div style="font-size:10px;color:#999999;">
 										  		<div class="font_white_min" style="opacity:0.9;">
@@ -95,7 +95,7 @@
 								  	<div class="card01">
 								  		<a href="" data-clipboard-text="https://www.tavore.net/invitation/<%= invitation.code %>" id="copy<%= invitation.id %>" style="width:100%;height:100%;">
 									  		<span>
-											  	<img src="/assets/user.svg" style="width:45px;height:45px;border-radius:50%;background:rgba(0,0,0,0.1);object-fit:cover;">
+											  	<%= image_tag "user.svg", :style =>'width:45px;height:45px;border-radius:50%;background:rgba(0,0,0,0.1);object-fit:cover;' %>
 											  	<div style="height:10px;"></div>
 											  	<div style="font-size:10px;color:#999999;">
 											  		<div class="font_white_min" style="opacity:0.9;">

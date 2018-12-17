@@ -3,7 +3,7 @@
     <div class="inline_block_middle" style="width:15%;">
       <div style="text-align:left;padding-left:10px;">
         <a href="javascript:void(0);" onclick="window.history.back();">
-          <img src="/assets/left_C2C2C2.svg" style="width:15px;height:15px;">
+          <%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
         </a>                    
       </div>
     </div>
@@ -44,10 +44,10 @@
                   <% if current_user.image %>
                     <%= image_tag current_user.image(:large), :class => "img_user08" %>
                   <% else %>
-                    <img src="/assets/user.svg" class="img_user08">
+                    <%= image_tag "user.svg", :class =>'img_user08' %>
                   <% end %>
                   <span>
-                    <img src="/assets/camera_FAFAFA.svg" style="width:20px;height:20px;opacity:0.5;">
+                    <%= image_tag "camera_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.5;' %>
                   </span>
                 </div>
               </div>
@@ -73,7 +73,7 @@
               </div>
             </div>
             <div class="inline_block_middle" style="width:10%;">
-              <img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
+              <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
             </div>
           </a>
         </div>
@@ -94,7 +94,7 @@
               </div>
             </div>
             <div class="inline_block_middle" style="width:10%;">
-              <img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
+              <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
             </div>
           </a>
         </div>
@@ -121,7 +121,7 @@
               </div>
             </div>
             <div class="inline_block_middle" style="width:10%;">
-              <img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
+              <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
             </div>
           </a>
         </div>
@@ -142,7 +142,7 @@
               </div>
             </div>
             <div class="inline_block_middle" style="width:10%;">
-              <img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
+              <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
             </div>
           </a>
         </div>
@@ -163,7 +163,7 @@
               </div>
             </div>
             <div class="inline_block_middle" style="width:10%;">
-              <img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
+              <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
             </div>
           </a>
         </div>
@@ -202,7 +202,7 @@
       <div class="a10">
         <div class="inline_block_middle" style="width:100%;">
           <a href="" data-dismiss="modal">
-            <img src="/assets/close_05627B.svg" class="img_left02">
+            <%= image_tag "close_05627B.svg", :class =>'img_left02' %>
           </a>
         </div>
       </div>
@@ -237,7 +237,7 @@
       <div class="a10">
         <div class="inline_block_middle" style="width:100%;">
           <a href="" data-dismiss="modal">
-            <img src="/assets/close_05627B.svg" class="img_left02">
+            <%= image_tag "close_05627B.svg", :class =>'img_left02' %>
           </a>
         </div>
       </div>
@@ -274,7 +274,7 @@
       <div class="a10">
         <div class="inline_block_middle" style="width:100%;">
           <a href="" data-dismiss="modal">
-            <img src="/assets/close_05627B.svg" class="img_left02">
+            <%= image_tag "close_05627B.svg", :class =>'img_left02' %>
           </a>
         </div>
       </div>
@@ -306,7 +306,7 @@
       <div class="a10">
         <div class="inline_block_middle" style="width:100%;">
           <a href="" data-dismiss="modal">
-            <img src="/assets/close_05627B.svg" class="img_left02">
+            <%= image_tag "close_05627B.svg", :class =>'img_left02' %>
           </a>
         </div>
       </div>
@@ -343,14 +343,13 @@
       <div class="a10">
         <div class="inline_block_middle" style="width:100%;">
           <a href="" data-dismiss="modal">
-            <img src="/assets/close_05627B.svg" class="img_left02">
+            <%= image_tag "close_05627B.svg", :class =>'img_left02' %>
           </a>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <%#テキストエリアの自動改行%>
 <script defer>
@@ -367,7 +366,6 @@
     });
   });
 </script>
-
 <%#idのvalidation%>
 <script defer>
   $(function(){

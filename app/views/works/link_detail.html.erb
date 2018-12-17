@@ -3,7 +3,7 @@
 		<div class="inline_block_middle" style="width:15%;">
 			<div style="text-align:left;padding-left:10px;">
 				<a href="javascript:void(0);" onclick="window.history.back();">
-		        	<img src="/assets/left_C2C2C2.svg" style="width:15px;height:15px;">
+		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
 		        </a>										
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 					<div style="display:inline-block;">
 						<%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
 					    <label for="bookmark">
-					    	<img src="/assets/bookmark_05627B.svg" class="icon_review">ブックマーク
+					    	<%= image_tag "bookmark_05627B.svg", :class =>'icon_review' %>ブックマーク
 					    </label>
 					</div>
 					<div style="display:inline-block;">
@@ -62,13 +62,13 @@
 					<div style="display:inline-block;">
 						<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
 					    <label for="favorite">
-					    	<img src="/assets/star_F8C55A.svg" class="icon_review">おすすめ
+					    	<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめ
 					    </label>
 					</div>
 				    <div style="display:inline-block;">
 					    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
 					    <label for="bad" class="radio">
-					    	<img src="/assets/ban_FB473E.svg" class="icon_review">おすすめしない
+					    	<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしない
 					    </label>
 				    </div>
 				</div>

@@ -8,18 +8,22 @@
 		  		<a href="" data-toggle="modal" data-target="#myModal_profile_<%= user.id %>">
 		          <div class="box_tests05">
 		            <div class="inline_block_middle" style="width:20%;padding-left:5px;">
-			            <%= image_tag user.image(:medium), :class =>'img_user09' %>
+			            <% if user.image.present? %>
+			                <img data-src="<%= user.image(:medium) %>" class="img_user09 lazyload">
+			            <% else %>
+			                <img data-src="/assets/user.svg" class="img_user09 lazyload" style="box-shadow:none;">
+			            <% end %>
 		            </div>
 		            <div class="inline_block_middle" style="width:60%;padding-left:5px;">
 		              	<span class="font_white_max">
 		                	<%= user.name %>
 		                	<% if user.authority == "public" %>
-		                      <img src="/assets/public.svg" style="width:14px;height:14px;">
+		                      <img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
 		                    <% end %>
 		              	</span>
 		            </div>
 		            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
-		            	<img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
+		            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;">
 		            </div>
 		          </div>
 		        </a>      
@@ -33,18 +37,22 @@
 		  		<a href="" data-toggle="modal" data-target="#myModal_profile_<%= user.id %>">
 		          <div class="box_tests05">
 		            <div class="inline_block_middle" style="width:20%;padding-left:5px;">
-			            <%= image_tag user.image(:medium), :class =>'img_user09' %>
+			            <% if user.image.present? %>
+			                <img data-src="<%= user.image(:medium) %>" class="img_user09 lazyload">
+			            <% else %>
+			                <img  data-src="/assets/user.svg" class="img_user09 lazyload" style="box-shadow:none;">
+			            <% end %>
 		            </div>
 		            <div class="inline_block_middle" style="width:60%;padding-left:5px;">
 		              	<span class="font_white_max">
 		                	<%= user.name %>
 		                	<% if user.authority == "public" %>
-		                      <img src="/assets/public.svg" style="width:14px;height:14px;">
+		                      <img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
 		                    <% end %>
 		              	</span>
 		            </div>
 		            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
-		            	<img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
+		            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;">
 		            </div>
 		          </div>
 		        </a>      
@@ -52,7 +60,7 @@
 	  	<% end %>
 	<% else %>
 	 	<div class="font_gray" style="margin-top:30vh;text-align:center;">
-			<img src="/assets/warning_777777.svg" style="width:20px;height:20px;"> フォローしているユーザーがいません
+			<%= image_tag "warning_777777.svg", :style =>'width:20px;height:20px;' %> フォローしているユーザーがいません
 		</div>
 	<% end %>
 <% else %>
@@ -62,18 +70,22 @@
 		  		<a href="" data-toggle="modal" data-target="#myModal_profile_<%= user.id %>">
 		          <div class="box_tests05">
 		            <div class="inline_block_middle" style="width:20%;padding-left:5px;">
-			            <%= image_tag user.image(:medium), :class =>'img_user09' %>
+			            <% if user.image.present? %>
+			                <img data-src="<%= user.image(:medium) %>" class="img_user09 lazyload">
+			            <% else %>
+			                <img  data-src="/assets/user.svg" class="img_user09 lazyload" style="box-shadow:none;">
+			            <% end %>
 		            </div>
 		            <div class="inline_block_middle" style="width:60%;padding-left:5px;">
 		              	<span class="font_white_max">
 		                	<%= user.name %>
 		                	<% if user.authority == "public" %>
-		                      <img src="/assets/public.svg" style="width:14px;height:14px;">
+		                      <img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
 		                    <% end %>
 		              	</span>
 		            </div>
 		            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
-		            	<img src="/assets/right_C2C2C2.svg" style="width:15px;height:15px;">
+		            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;">
 		            </div>
 		          </div>
 		        </a>	        
@@ -81,7 +93,14 @@
 	  	<% end %>
 	<% else %>
 		<div class="font_gray" style="margin-top:30vh;text-align:center;">
-			<img src="/assets/warning_777777.svg" style="width:20px;height:20px;"> 結果がありません
+			<%= image_tag "warning_777777.svg", :style =>'width:20px;height:20px;' %> 結果がありません
 		</div>
 	<% end %>
 <% end %>
+
+<%#lazyload.js%>
+<script defer>
+  $(function() {
+    $('img.lazyload').lazyload();
+  });
+</script>

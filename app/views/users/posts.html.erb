@@ -4,12 +4,16 @@
 		<div class="inline_block_middle" style="width:52%;">
 			<a href="" data-toggle="modal" data-target="#myModal_profile_<%= @user.id %>">
 				<div class="inline_block_middle" style="padding:10px 10px 10px 20px;">
-        			<%= image_tag @user.image(:medium), :class =>'img_user11' %>
+        			<% if @user.image.present? %>
+		                <%= image_tag @user.image(:medium), :class => "img_user11" %>
+		            <% else %>
+		                <%= image_tag "user.svg", :class => "img_user11" ,:style =>'box-shadow:none;' %>
+		            <% end %>
         		</div>
 				<div class="inline_block_middle font_white" style="max-width:50%;word-wrap:break-word;">
         			<%= @user.name %>
         			<% if @user.authority == "public" %>
-                    	<img src="/assets/public.svg" style="width:14px;height:14px;">
+                    	<%= image_tag "public.svg", :style =>'width:14px;height:14px;' %>
                     <% end %>
         		</div>
     		</a>
@@ -17,12 +21,12 @@
 		<div class="inline_block_middle" style="width:48%;">
 			<div style="width:100%;text-align:right;"> 	
 				<div class="inline_block_middle btn_on" style="color:#C2C2C2;">
-					<img src="/assets/checked_FAFAFA.svg" style="width:12px;height:12px;margin-top:-2px;">
+					<%= image_tag "checked_FAFAFA.svg", :style =>'width:12px;height:12px;margin-top:-2px;' %>
 					<%= @checkeds_i %>
 				</div>
 				<%= link_to "/#{@user.username}/bookmarks" do %>
 					<div class="inline_block_middle btn_off" style="color:#C2C2C2;margin-right:10px;">
-						<img src="/assets/bookmark_FAFAFA.svg" style="width:12px;height:12px;margin-top:-2px;">
+						<%= image_tag "bookmark_FAFAFA.svg", :style =>'width:12px;height:12px;margin-top:-2px;' %>
 						<%= @bookmarks_i %>
 					</div>		
 				<% end %>		
@@ -55,7 +59,7 @@
 				  		<div style="height:165px;"></div>
 					  	<% if @all.blank? %>				  		
 							<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;"> 投稿がありません
+								<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
 							</div>	
 					  	<% else %>
 						  	<% @all.each.with_index(1) do |post, i| %>
@@ -70,7 +74,7 @@
 				  		<div style="height:165px;"></div>
 					  	<% if @list_favorite_items.blank? %>
 					  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;"> 投稿がありません
+								<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
 							</div>	
 					  	<% else %>
 						    <% @list_favorite_items.each.with_index(1) do |item, i| %>
@@ -86,7 +90,7 @@
 				  		<div style="height:165px;"></div>
 					  	<% if @movie.blank? %>
 					  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;"> 投稿がありません
+								<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
 							</div>	
 					  	<% else %>
 						    <% @movie.each.with_index(1) do |post, i| %>
@@ -101,7 +105,7 @@
 				  		<div style="height:165px;"></div>
 					    <% if @tv.blank? %>
 					  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;"> 投稿がありません
+								<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
 							</div>
 					  	<% else %>
 						  	<% @tv.each.with_index(1) do |post, i| %>
@@ -116,7 +120,7 @@
 				  		<div style="height:165px;"></div>
 					    <% if @book.blank? %>
 					  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;"> 投稿がありません
+								<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
 							</div>
 					  	<% else %>
 						  	<% @book.each.with_index(1) do |post, i| %>
@@ -131,7 +135,7 @@
 				  		<div style="height:165px;"></div>
 					    <% if @comic.blank? %>
 					  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;"> 投稿がありません
+								<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
 							</div>
 					  	<% else %>
 						  	<% @comic.each.with_index(1) do |post, i| %>
@@ -146,7 +150,7 @@
 				  		<div style="height:165px;"></div>
 					    <% if @music.blank? %>
 					  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;"> 投稿がありません
+								<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
 							</div>	
 					  	<% else %>
 						  	<% @music.each.with_index(1) do |post, i| %>
@@ -161,7 +165,7 @@
 				  		<div style="height:165px;"></div>
 					  	<% if @link.blank? %>
 					  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-								<img src="/assets/warning_FAFAFA.svg" style="width:20px;height:20px;margin-top:-2px;"> 投稿がありません
+								<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
 							</div>	
 					  	<% else %>
 						    <% @link.each.with_index(1) do |post, i| %>
@@ -187,13 +191,10 @@
 		<%= render partial: 'partial/modal_half', locals: { post: post } %>
 	<% end %>
 <% end %>
-
 <%#プロフィールモーダル%>
 <%= render partial: 'partial/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
-
 <%#投稿ボタン%>
 <%= render "partial/modal_post" %>
-
 <%#タブ切り替え%>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script defer>
@@ -238,7 +239,6 @@
 	    })
 	});
 </script>
-
 <%#lazyload.js%>
 <script defer>
 	$(function() {

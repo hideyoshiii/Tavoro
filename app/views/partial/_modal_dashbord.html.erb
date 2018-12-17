@@ -61,7 +61,7 @@
               <% if current_user.image.present? %>
                 <img data-src="<%= current_user.image(:large) %>" class="img_user08 lazyload_modal_dashbord">
               <% else %>
-                <img  data-src="/assets/user.svg" class="img_user08 lazyload_modal_dashbord">
+                <img  data-src="/assets/user.svg" class="img_user08 lazyload_modal_dashbord" style="box-shadow:none;">
               <% end %>
             </div>
             <div style="font-size:18px;text-align:center;margin-top:10px;">
