@@ -7,58 +7,61 @@
             	</div>
           	</div>
           	<div class="a6" style="text-align:center;">
-          		<div style="height:8%;"></div>
-          		<div style="width:40%;display:inline-block;">
-          			<% if post.image_url.blank? %>
-						<img data-src="/assets/nothing01.jpg" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
-					<% else %>										
-						<% if post.category == "link" %>
-							<img data-src="<%= post.image_url %>" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:15vh;object-fit:cover;">
-						<% else %>
-							<img data-src="<%= post.image_url %>" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
+          		<div style="position:relative;width:0;height:0;z-index:1;"></div>
+          		<div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;"> 
+	          		<div style="height:8%;"></div>
+	          		<div style="width:40%;display:inline-block;">
+	          			<% if post.image_url.blank? %>
+							<img data-src="/assets/nothing01.jpg" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
+						<% else %>										
+							<% if post.category == "link" %>
+								<img data-src="<%= post.image_url %>" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:15vh;object-fit:cover;">
+							<% else %>
+								<img data-src="<%= post.image_url %>" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
+							<% end %>
 						<% end %>
-					<% end %>
-          		</div>
-          		<div style="height:2%;"></div>
-          		<div class="font_white_big" style="width:90%;display:inline-block;font-weight:bold;">
-          			<%= post.title %>
-          		</div>
-          		<div style="height:7%;"></div>
-          		<div style="width:100%;padding:0 10%;">
-	          		<% unless post.user.id == current_user.id %>
-						<span id="bookmark-of-<%= post.id %>">
-					      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-					    </span>
-					    <div style="height:30px"></div>
-						<%= link_to "/works/#{post.id}/copy" do %>
-							<div class="btn_half_item">  
-								<img data-src="/assets/add_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:18px;height:18px;margin-top:-2px;margin-right:15px;opacity:0.6;">この作品を投稿
-							</div>	
-						<% end %>									
-					<% end %>
-					<% if post.user.id == current_user.id %>					
-						<span id="favorite-of-<%= post.id %>">
-					      	<%= render partial: 'lists/favorite', locals: { post: post } %>
-					    </span>	
-					    <div style="height:30px"></div>
-						<span id="profile-of-<%= post.id %>">
-					      	<%= render partial: 'lists/profile', locals: { post: post } %>
-					    </span>
-					    <div style="height:30px"></div>
-						<%= link_to "/works/#{post.id}/edit" do %>
-							<div class="btn_half_item">  
-								<img data-src="/assets/edit_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.5;">投稿を編集
-							</div>
+	          		</div>
+	          		<div style="height:2%;"></div>
+	          		<div class="font_white_big" style="width:90%;display:inline-block;font-weight:bold;">
+	          			<%= post.title %>
+	          		</div>
+	          		<div style="height:7%;"></div>
+	          		<div style="width:100%;padding:0 10%;">
+		          		<% unless post.user.id == current_user.id %>
+							<span id="bookmark-of-<%= post.id %>">
+						      	<%= render partial: 'works/bookmark', locals: { post: post } %>
+						    </span>
+						    <div style="height:30px"></div>
+							<%= link_to "/works/#{post.id}/copy" do %>
+								<div class="btn_half_item">  
+									<img data-src="/assets/add_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:18px;height:18px;margin-top:-2px;margin-right:15px;opacity:0.6;">この作品を投稿
+								</div>	
+							<% end %>									
 						<% end %>
-						<div style="height:30px"></div>			
-						<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-							<div class="btn_half_item" style="color:#FB473E;">  
-								<img data-src="/assets/trash_FB473E.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.6;">投稿を削除
-							</div>
+						<% if post.user.id == current_user.id %>					
+							<span id="favorite-of-<%= post.id %>">
+						      	<%= render partial: 'lists/favorite', locals: { post: post } %>
+						    </span>	
+						    <div style="height:30px"></div>
+							<span id="profile-of-<%= post.id %>">
+						      	<%= render partial: 'lists/profile', locals: { post: post } %>
+						    </span>
+						    <div style="height:30px"></div>
+							<%= link_to "/works/#{post.id}/edit" do %>
+								<div class="btn_half_item">  
+									<img data-src="/assets/edit_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.5;">投稿を編集
+								</div>
+							<% end %>
+							<div style="height:30px"></div>			
+							<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+								<div class="btn_half_item" style="color:#FB473E;">  
+									<img data-src="/assets/trash_FB473E.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.6;">投稿を削除
+								</div>
+							<% end %>
+							<div style="height:30px"></div>	
 						<% end %>
-						<div style="height:30px"></div>	
-					<% end %>
-					<div style="height:90px"></div>	
+						<div style="height:90px"></div>	
+					</div>
 				</div>
           	</div>
           	<div class="a13" style="text-align:center;">
