@@ -4,17 +4,17 @@
 	    <div class="d2" style="background:rgba(0,0,0,0.7);"></div>
 	    <% if @post_list.present? %>
 	    	<% if @post_list.category == "movie" || @post_list.category == "tv" %>
-				<% @post_list_poster_show = @post_list.image_url.sub(/original/, 'w300') %>
+				<% @post_list_poster_show = @post_list.image_url.sub(/original/, 'w500') %>
 			<% end %>
 			<% if @post_list.category == "book" || @post_list.category == "comic" %>
 				<% if @post_list.api == "itunes" %>
-					<% @post_list_poster_show = @post_list.image_url.sub(/1000x1000bb/, '300x300bb') %>
+					<% @post_list_poster_show = @post_list.image_url.sub(/1000x1000bb/, '500x500bb') %>
 				<% else %>
-					<% @post_list_poster_show = @post_list.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+					<% @post_list_poster_show = @post_list.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
 				<% end %>
 			<% end %>
 			<% if @post_list.category == "music" %>
-				<% @post_list_poster_show = @post_list.image_url.sub(/1000x1000bb/, '300x300bb') %>
+				<% @post_list_poster_show = @post_list.image_url.sub(/1000x1000bb/, '500x500bb') %>
 			<% end %>
 	        <%= image_tag @post_list_poster_show, :class =>'img_myboom' %>
 	    <% else %>
