@@ -26,7 +26,8 @@ class WorksController < ApplicationController
         if @fillter_user == "following"
           @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users)).order(created_at: "DESC")
         else
-          @posts = @posts.where.not(user_id: @user).order("RANDOM()")
+          @users_test = User.where(authority: "test")
+          @posts = @posts.where.not(user_id: @user).or(@posts.where.not(user_id: @users)).or(@posts.where.not(user_id: @users_test)).order("RANDOM()")
         end
       else
         @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users)).order(created_at: "DESC")
