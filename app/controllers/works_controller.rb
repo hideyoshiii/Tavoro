@@ -27,7 +27,10 @@ class WorksController < ApplicationController
           @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users)).order(created_at: "DESC")
         else
           @users_test = User.where(authority: "test")
-          @posts = @posts.where.not(user_id: @user).or(@posts.where.not(user_id: @users)).or(@posts.where.not(user_id: @users_test)).order("RANDOM()")
+          @posts = @posts.where.not(user_id: @user)
+          @posts = @posts.where.not(user_id: @users)
+          @posts = @posts.where.not(user_id: @users_test)
+          @posts = @posts.order("RANDOM()")
         end
       else
         @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users)).order(created_at: "DESC")
