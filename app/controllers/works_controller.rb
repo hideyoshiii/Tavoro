@@ -4,42 +4,75 @@ class WorksController < ApplicationController
   def test
   end
 
+  def post
+    @post = Post.find(params[:id].to_i)
+  end
+
   def index
     if user_signed_in?
       @user  = User.find(current_user.id)
       @users = @user.followings
-      @posts = []
-      @posts_mine = Post.where(user_id: @user.id).order(created_at: "DESC")
-      @posts_mine = @posts_mine.where.not(review: "bookmark")
-      #もしカテゴリー指定がなければ
-      if params[:category].blank?
-        @category = "all"
-        @posts.concat(@posts_mine)
-        if @users.present?
-          @users.each do |user|
-              posts = Post.where(user_id: user.id)
-              posts = posts.where.not(review: "bookmark")
-              #取得したユーザーの投稿一覧を@postsに格納
-              @posts.concat(posts)
-          end  
-        end
-      else
-        @category = params[:category]
-        @posts_mine = @posts_mine.where(category: @category)
-        @posts.concat(@posts_mine)
-        if @users.present?
-          @users.each do |user|
-              posts = Post.where(user_id: user.id)
-              posts = posts.where.not(review: "bookmark")
-              posts = posts.where(category: @category)
-              #取得したユーザーの投稿一覧を@postsに格納
-              @posts.concat(posts)
-          end  
+      @posts = Post.where.not(review: "bookmark")
+      #categoryのfillter
+      if params[:category].present?
+        @fillter_category = params[:category]
+        unless @fillter_category == "all"
+          @posts = @posts.where(category: @fillter_category)
         end
       end
-      #@postsを新しい順に並べたい
-      @posts.sort_by!{|post| post.created_at}.reverse!
+      #userのfillter
+      if params[:user].present?
+        @fillter_user = params[:user]
+        if @fillter_user == "following"
+          @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users)).order(created_at: "DESC")
+        else
+          @posts = @posts.where.not(user_id: @user).order("RANDOM()")
+        end
+      else
+        @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users)).order(created_at: "DESC")
+      end
       @posts = @posts.take(25)
+      #labelの真偽
+      @following = false
+      @random = false
+      @all = false
+      @movie = false
+      @tv = false
+      @book = false
+      @comic = false
+      @music = false
+      if params[:user].present?
+        if params[:user] == "following"
+          @following = true
+        end
+        if params[:user] == "random"
+          @random = true
+        end
+      else
+        @following = true
+      end
+      if params[:category].present?
+        if params[:category] == "all"
+          @all = true
+        end
+        if params[:category] == "movie"
+          @movie = true
+        end
+        if params[:category] == "tv"
+          @tv = true
+        end
+        if params[:category] == "book"
+          @book = true
+        end
+        if params[:category] == "comic"
+          @comic = true
+        end
+        if params[:category] == "music"
+          @music = true
+        end
+      else
+        @all = true
+      end
     end
   end
 
@@ -61,7 +94,7 @@ class WorksController < ApplicationController
   		@title = @item["title"]
   		@work_id = @item["id"]
   		@category = params[:type]
-      @poster = "https://image.tmdb.org/t/p/original/" + @item["poster_path"].to_s
+      @poster = "https://image.tmdb.org/t/p/original" + @item["poster_path"].to_s
 	  	@poster_ja = Tmdb::Movie.posters(@item["id"], language: 'ja')
 	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
 	    @poster_en = Tmdb::Movie.posters(@item["id"], language: 'en')
@@ -73,7 +106,7 @@ class WorksController < ApplicationController
     		@title = @item["name"]
     		@work_id = @item["id"]
     		@category = params[:type]
-        @poster = "https://image.tmdb.org/t/p/original/" + @item["poster_path"].to_s
+        @poster = "https://image.tmdb.org/t/p/original" + @item["poster_path"].to_s
   	  	@poster_ja = Tmdb::TV.posters(@item["id"], language: 'ja')
   	  	@poster_ja = @poster_ja.sort_by! { |a| -a[:vote_average] }.first(2)
   	    @poster_en = Tmdb::TV.posters(@item["id"], language: 'en')
@@ -89,7 +122,11 @@ class WorksController < ApplicationController
   def ajax_book_list
     if params[:q].present?
       @items_itunes = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "ebook", :limit  => '20')
-      if @items_itunes.size <= 10
+      if @items_itunes.present?
+        if @items_itunes.size <= 10
+          @items_rakuten = RakutenWebService::Books::Book.search(title: params[:q], hits: 20)
+        end
+      else
         @items_rakuten = RakutenWebService::Books::Book.search(title: params[:q], hits: 20)
       end
     end
@@ -129,7 +166,7 @@ class WorksController < ApplicationController
 
   def ajax_music_list
     if params[:q].present?
-      @items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music",:entity =>'song', :limit  => '20')
+      @items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music",:entity =>'song', :limit  => '30')
     end
   end
 
@@ -235,7 +272,6 @@ class WorksController < ApplicationController
       @book = @all.where(category: "book")
       @comic = @all.where(category: "comic")
       @music = @all.where(category: "music")
-      @link = @all.where(category: "link")
     end
   end
 
@@ -249,9 +285,6 @@ class WorksController < ApplicationController
   	if params[:category] == "music"
   		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id], preview_url: params[:preview_url])
   	end
-    if params[:category] == "link"
-      @post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id], preview_url: params[:preview_url])
-    end
   	if @post.save
       #保存に成功した場合
       redirect_to root_path
@@ -263,27 +296,14 @@ class WorksController < ApplicationController
 
   def detail
   	@post = Post.find(params[:id])
-  	@users = current_user.followings
-  	@posts_other = []
-    if @post.category == "link"
-      @posts_other_mine = Post.where(user_id: current_user.id, preview_url: @post.preview_url).order('id DESC')
-    else
-      @posts_other_mine = Post.where(user_id: current_user.id, work_id: @post.work_id).order('id DESC')
+    @users = current_user.followings
+    @posts_all = Post.where(category: @post.category, work_id: @post.work_id).order('id DESC')
+    if @posts_all.present?
+      @posts_mine = @posts_all.where(user_id: current_user.id)   
+      @posts_follow = @posts_all.where(user_id: @users)
+      @posts_unfollow = @posts_all.where.not(user_id: @users).where.not(user_id: current_user)
     end
-    @posts_other.concat(@posts_other_mine)
-
-  	if @users.present?
-        @users.each do |user|
-          if @post.category == "link"
-            posts_other = Post.where(user_id: user.id, preview_url: @post.preview_url).order(created_at: :desc)
-          else
-      		  posts_other = Post.where(user_id: user.id, work_id: @post.work_id).order(created_at: :desc)
-          end
-        	@posts_other.concat(posts_other)
-        end
-        @posts_other.sort_by!{|post| post.created_at}.reverse!
-    end
-
+    #映画の時
   	if @post.category == "movie"
   		@item = Tmdb::Movie.detail(@post.work_id)
       if @item.present?
@@ -298,7 +318,7 @@ class WorksController < ApplicationController
         end
       end
   	end
-
+    #テレビの時
   	if @post.category == "tv"
   		@item = Tmdb::TV.detail(@post.work_id)
       if @item.present?
@@ -317,7 +337,7 @@ class WorksController < ApplicationController
         end
       end
   	end
-
+    #ブックの時
   	if @post.category == "book"
       if @post.api == "itunes"
         @items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
@@ -345,7 +365,7 @@ class WorksController < ApplicationController
   		  end
       end
   	end
-
+    #コミックの時
   	if @post.category == "comic"
       if @post.api == "itunes"
         @items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
@@ -373,7 +393,7 @@ class WorksController < ApplicationController
     		end
       end
   	end
-
+    #ミュージックの時
   	if @post.category == "music"
   		@items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
 	  	if @items.present?
@@ -391,30 +411,6 @@ class WorksController < ApplicationController
         end
 		  end
   	end
-
-    if @post.category == "link"
-      url = @post.preview_url
-      uri = url
-      page = URI.parse(uri).read
-      charset = page.charset
-      if charset == "iso-8859-1"
-        charset = page.scan(/charset="?([^\s"]*)/i).first.join
-      end
-      @item = Nokogiri::HTML(page, uri, charset)
-      if @item.present?
-        if @item.css('//meta[property="og:site_name"]/@content').empty?
-          @detail01 = @item.title.to_s
-        else
-          @detail01 = @item.css('//meta[property="og:site_name"]/@content').to_s
-        end
-        if @item.css('//meta[property="og:description"]/@content').empty?
-          @detail02 = @item.css('//meta[name$="escription"]/@content').to_s
-        else
-          @detail02 = @item.css('//meta[property="og:description"]/@content').to_s
-        end
-      end
-    end
-
   end
 
 
@@ -523,7 +519,7 @@ class WorksController < ApplicationController
 
   def create_bookmark   
     @post = Post.find(params[:id].to_s) 
-    if @post.category == "music" || @post.category == "link"
+    if @post.category == "music"
       @post_bookmark = Post.create(user_id: current_user.id, title: @post.title, category: @post.category, image_url: @post.image_url, review: "bookmark", work_id: @post.work_id, preview_url: @post.preview_url)
     else
       if @post.category == "book" || @post.category == "comic"

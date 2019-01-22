@@ -21,131 +21,114 @@
 	</div>
 </div>
 
-<div class="main">
-	<div class="block_side">
-	</div>
-	<div class="block_main">
-		<div class="a1">
-          <div class="a4">
-            <div class="d1">    
-              <div class="d4"></div>
-            </div>
-          </div>
-          <div class="a5">
-          		<div style="height:50px;"></div>
-				<div style="height:40px;"></div>
-				<div style="height:5vh;"></div>
-				<div class="box_tests06">
-		          <div class="inline_block_middle" style="width:90%;">
-		            <div class="font_gray_min">
-		            	アカウント
-		            </div>
-		          </div>
-		        </div>
-				<div class="box_tests07">
-				  	<%= link_to edit_user_registration_path do %>
-			          <div class="inline_block_middle" style="width:90%;">
-			            <div class="font_white">
-			            	アカウント編集
-			            </div>
-			          </div>
-			          <div class="inline_block_middle" style="width:10%;">
-			            <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-			          </div>
-			        <% end %>
-		        </div>
-		        <div style="height:5vh;"></div>	
-		        <div class="box_tests06">
-		          <div class="inline_block_middle" style="width:90%;">
-		            <div class="font_gray_min">
-		            	サポート
-		            </div>
-		          </div>
-		        </div>
-				<div class="box_tests07">
-					<%= link_to contact_path do %>
-			          <div class="inline_block_middle" style="width:90%;">
-			            <div class="font_white">
-			            	お問い合わせ
-			            </div>
-			          </div>
-			          <div class="inline_block_middle" style="width:10%;">
-			            <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-			          </div>
-			        <% end %>
-		        </div>
-		        <div style="height:5vh;"></div>	    
-		        <div class="box_tests06">
-		          <div class="inline_block_middle" style="width:90%;">
-		            <div class="font_gray_min">
-		            	情報
-		            </div>
-		          </div>
-		        </div>
-				<div class="box_tests07">
-					<%= link_to policy_path do %>
-			          <div class="inline_block_middle" style="width:90%;">
-			            <div class="font_white">
-			            	プライバシーポリシー
-			            </div>
-			          </div>
-			          <div class="inline_block_middle" style="width:10%;">
-			            <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-			          </div>
-			        <% end %>
-		        </div>
-		        <div class="box_tests07">
-		        	<%= link_to terms_path do %>
-			          <div class="inline_block_middle" style="width:90%;">
-			            <div class="font_white">
-			            	利用規約
-			            </div>
-			          </div>
-			          <div class="inline_block_middle" style="width:10%;">
-			            <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-			          </div>
-			        <% end %>
-		        </div>
-		        <div style="height:5vh;"></div>	        
-		        <div class="box_tests06">
-		          <div class="inline_block_middle" style="width:90%;">
-		            <div class="font_gray_min">
-		            	ログイン
-		            </div>
-		          </div>
-		        </div>
-		        <div class="box_tests07">
-					<a href="" data-toggle="modal" data-target="#myModal_destroy_account">
-			          <div class="inline_block_middle" style="width:90%;">
-			             <div class="font_white" style="color:rgba(251, 71, 71, 0.9);">
-			            	アカウントを削除
-			            </div>
-			          </div>
-			          <div class="inline_block_middle" style="width:10%;">
-			            <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-			          </div>
-			       	</a>
-			    </div>
-				<div class="box_tests07">
-					<%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' } do %>
-			          <div class="inline_block_middle" style="width:90%;">
-			            <div class="font_white">
-			            	ログアウト
-			            </div>
-			          </div>
-			          <div class="inline_block_middle" style="width:10%;">
-			            <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-			          </div>
-			        <% end %>
-			    </div>
-		        <div style="height:10vh;"></div> 
-          </div>
-        </div>	
-	</div>
-	<div class="block_side">
-	</div>
-</div>
 
+<div style="height:45px;"></div>
+<div style="height:40px;"></div>
+<div style="height:5vh;"></div>
+<div class="box_tests06">
+  <div class="inline_block_middle" style="width:90%;">
+    <div class="font_gray_min">
+    	アカウント
+    </div>
+  </div>
+</div>
+<div class="box_tests07">
+  	<%= link_to edit_user_registration_path do %>
+      <div class="inline_block_middle" style="width:90%;">
+        <div class="font_white">
+        	アカウント編集
+        </div>
+      </div>
+      <div class="inline_block_middle" style="width:10%;">
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      </div>
+    <% end %>
+</div>
+<div style="height:5vh;"></div>	
+<div class="box_tests06">
+  <div class="inline_block_middle" style="width:90%;">
+    <div class="font_gray_min">
+    	サポート
+    </div>
+  </div>
+</div>
+<div class="box_tests07">
+	<%= link_to contact_path do %>
+      <div class="inline_block_middle" style="width:90%;">
+        <div class="font_white">
+        	お問い合わせ
+        </div>
+      </div>
+      <div class="inline_block_middle" style="width:10%;">
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      </div>
+    <% end %>
+</div>
+<div style="height:5vh;"></div>	    
+<div class="box_tests06">
+  <div class="inline_block_middle" style="width:90%;">
+    <div class="font_gray_min">
+    	情報
+    </div>
+  </div>
+</div>
+<div class="box_tests07">
+	<%= link_to policy_path do %>
+      <div class="inline_block_middle" style="width:90%;">
+        <div class="font_white">
+        	プライバシーポリシー
+        </div>
+      </div>
+      <div class="inline_block_middle" style="width:10%;">
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      </div>
+    <% end %>
+</div>
+<div class="box_tests07">
+	<%= link_to terms_path do %>
+      <div class="inline_block_middle" style="width:90%;">
+        <div class="font_white">
+        	利用規約
+        </div>
+      </div>
+      <div class="inline_block_middle" style="width:10%;">
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      </div>
+    <% end %>
+</div>
+<div style="height:5vh;"></div>	        
+<div class="box_tests06">
+  <div class="inline_block_middle" style="width:90%;">
+    <div class="font_gray_min">
+    	ログイン
+    </div>
+  </div>
+</div>
+<div class="box_tests07">
+	<a href="" data-toggle="modal" data-target="#myModal_destroy_account">
+      <div class="inline_block_middle" style="width:90%;">
+         <div class="font_white" style="color:rgba(251, 71, 71, 0.9);">
+        	アカウントを削除
+        </div>
+      </div>
+      <div class="inline_block_middle" style="width:10%;">
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      </div>
+   	</a>
+</div>
+<div class="box_tests07">
+	<%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' } do %>
+      <div class="inline_block_middle" style="width:90%;">
+        <div class="font_white">
+        	ログアウト
+        </div>
+      </div>
+      <div class="inline_block_middle" style="width:10%;">
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      </div>
+    <% end %>
+</div>
+<div style="height:10vh;"></div> 
 
 <%#アカウント削除モーダル%>
 <div class="modal fade" id="myModal_destroy_account">
@@ -153,7 +136,7 @@
     	<div class="a1">
           <div class="a4">
             <div class="d1">    
-              <div class="d4"></div>
+              <div class="d2"></div>
             </div>
           </div>
           <div class="a8">

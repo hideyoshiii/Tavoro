@@ -2,6 +2,21 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:policy, :terms, :contact]
   after_action :notification_update, only: [:notification]
 
+  def profile
+    @user = User.find_by(username: params[:id]) 
+    @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
+    @checkeds_i = @alls.where.not(review: "bookmark").size
+    @bookmarks_i = @alls.where(review: "bookmark").size
+
+    @list = List.find_by(user_id: @user.id, title: "プロフィール")
+    if @list.present?
+      @list_item = ListItem.find_by(list_id: @list.id)
+      if @list_item.present?
+        @post_list = @list_item.post
+      end
+    end
+  end
+
 	def posts
 		@user = User.find_by(username: params[:id])	
     if @user
@@ -15,7 +30,6 @@ class UsersController < ApplicationController
       @book = @all.where(category: "book")
       @comic = @all.where(category: "comic")
       @music = @all.where(category: "music")
-      @link = @all.where(category: "link")
 
       @list_favorite = List.find_by(user_id: @user.id, title: "お気に入り")
       if @list_favorite.present?
@@ -37,7 +51,6 @@ class UsersController < ApplicationController
       @book = @all.where(category: "book")
       @comic = @all.where(category: "comic")
       @music = @all.where(category: "music")
-      @link = @all.where(category: "link")
     end
   end
 
@@ -52,32 +65,38 @@ class UsersController < ApplicationController
 	  end
 
   	def ajax_user_list
-    	@user = User.find_by(username: params[:q])
+      if params[:q].present?
+        @items = User.where('username LIKE ?', "%#{params[:q]}%")
+      end
   	end
 
   	def configuration 		
   	end
 
   	def following		
-  		@users = current_user.followings
-      @users_public = @users.where(authority: "public")
-      @users_public_i = @users_public.size
-      @users_normal = @users.where(authority: nil)
-      @users_normal_i = @users_normal.size
+      @user = User.find_by(username: params[:id]) 
+  		@users = @user.followings
   	end
 
   	def ajax_following_list
-  		@users = current_user.followings
-    	@items = @users.where('name LIKE ?', "%#{params[:q]}%")
+  		@user = User.find_by(username: params[:id]) 
+      @users = @user.followings
+    	if params[:q].present?
+       @items = @users.where('username LIKE ?', "%#{params[:q]}%")
+      end
   	end
 
   	def follower
-  		@users = current_user.followers
+  		@user = User.find_by(username: params[:id]) 
+      @users = @user.followers
   	end
 
   	def ajax_follower_list
-  		@users = current_user.followers
-    	@items = @users.where('name LIKE ?', "%#{params[:q]}%")
+  		@user = User.find_by(username: params[:id]) 
+      @users = @user.followers
+      if params[:q].present?
+    	 @items = @users.where('username LIKE ?', "%#{params[:q]}%")
+      end
   	end
 
 

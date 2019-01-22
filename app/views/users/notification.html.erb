@@ -21,93 +21,72 @@
 	</div>
 </div>
 
-<div class="main">
-	<div class="block_side">
-	</div>
-	<div class="block_main">
-		<div class="a1">
-          <div class="a4">
-            <div class="d1">    
-              <div class="d4"></div>
-            </div>
-          </div>
-          <div class="a5">
-          		<div style="height:50px;"></div>
-				<div style="height:40px;"></div>
-				<% if @notifications.present? %>
-					<% @notifications_no.each do |item| %>
-						<% if User.find_by(id: item.notified_by) %>
-							<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
-								<div class="box_tests08">
-						            <div class="inline_block_middle" style="width:20%;padding-left:5px;">
-							            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
-						            </div>
-						            <div class="inline_block_middle" style="width:60%;padding-left:5px;">
-						              	<span class="font_white_min">
-						                	<%= item.notified_by.name %>さんからフォローされました
-						              	</span>
-						            </div>
-						            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
-						            	<div class="font_gray_max">
-							            	<i class="fas fa-chevron-right"></i>
-							            </div>
-						            </div>
-						        </div>
-					    	</a>
-				    	<% end %>
-				    <% end %>
-				    <% @notifications_yes.each do |item| %>
-				    	<% if User.find_by(id: item.notified_by) %>
-					    	<a href="" data-toggle="modal" data-target="#myModal_profile_<%= item.notified_by.id %>">
-						        <div class="box_tests09">
-						            <div class="inline_block_middle" style="width:20%;padding-left:5px;">
-							            <%= image_tag item.notified_by.image(:medium), :class =>'img_user09' %>
-						            </div>
-						            <div class="inline_block_middle" style="width:60%;padding-left:5px;">
-						              	<span class="font_white_min">
-						                	<%= item.notified_by.name %>さんからフォローされました
-						              	</span>
-						            </div>
-						            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
-						            	<div class="font_gray_max">
-							            	<i class="fas fa-chevron-right"></i>
-							            </div>
-						            </div>
-						        </div>
-					        </a>
-					    <% end %>
-				    <% end %>
-			        <div style="height:10vh;"></div> 
-			    <% else %>
-			    	<div style="height:50px;"></div>
-			        <div style="height:20vh;"></div>
-					<div style="text-align:center;margin-top:20px;">
-						<%= image_tag "bell_777777.svg", :style =>'width:35px;height:35px;' %>
-					</div>
-					<div style="text-align:center;margin-top:10px;font-size:12px;color:#999999;">
-						通知はありません
-					</div>	
-				    <div style="height:10vh;"></div> 
-				<% end %>
-          </div>
-        </div>	
-	</div>
-	<div class="block_side">
-	</div>
-</div>
 
-
+	<div style="height:45px;"></div>
+<div style="height:40px;"></div>
 <% if @notifications.present? %>
-	<% @user_list = [] %>
-	<% @notifications.each.with_index(1) do |item, i| %>
+	<% @notifications_no.each do |item| %>
 		<% if User.find_by(id: item.notified_by) %>
-			<% unless @user_list.include?(item.notified_by.id) %>
-				<% @user = item.notified_by %>
-		  		<% @checkeds_i = Post.where(user_id: @user.id).where.not(review: "bookmark").size %>
-		  		<% @bookmarks_i = Post.where(user_id: @user.id, review: "bookmark").size %>
-				<%= render partial: 'partial/profile', locals: { user: @user, checkeds_i: @checkeds_i, bookmarks_i: @bookmarks_i } %>
-				<% @user_list.push(item.notified_by.id) %>
-			<% end %>
-		<% end %>
-	<% end %>
+			<%= link_to "/#{item.notified_by.username}/profile" do %>
+				<div class="box_tests08">
+		            <div class="inline_block_middle" style="width:15%;padding-left:5px;">
+			            <% if item.notified_by.image.present? %>
+			                <img data-src="<%= item.notified_by.image(:medium) %>" class="img_user09 lazyload">
+			            <% else %>
+			                <img data-src="/assets/user.svg" class="img_user09 lazyload" style="box-shadow:none;">
+			            <% end %>
+		            </div>
+		            <div class="inline_block_middle" style="width:65%;padding-left:5px;">
+		              	<span class="font_white_min">
+		                	<%= item.notified_by.name %>さんからフォローされました
+		              	</span>
+		            </div>
+		            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
+		            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;">
+		            </div>
+		        </div>
+	    	<% end %>
+    	<% end %>
+    <% end %>
+    <% @notifications_yes.each do |item| %>
+    	<% if User.find_by(id: item.notified_by) %>
+	    	<%= link_to "/#{item.notified_by.username}/profile" do %>
+		        <div class="box_tests09">
+		            <div class="inline_block_middle" style="width:15%;padding-left:5px;">
+			            <% if item.notified_by.image.present? %>
+			                <img data-src="<%= item.notified_by.image(:medium) %>" class="img_user09 lazyload">
+			            <% else %>
+			                <img data-src="/assets/user.svg" class="img_user09 lazyload" style="box-shadow:none;">
+			            <% end %>
+		            </div>
+		            <div class="inline_block_middle" style="width:65%;padding-left:5px;">
+		              	<span class="font_white_min">
+		                	<%= item.notified_by.name %>さんからフォローされました
+		              	</span>
+		            </div>
+		            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
+		            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;">
+		            </div>
+		        </div>
+	        <% end %>
+	    <% end %>
+    <% end %>
+    <div style="height:10vh;"></div> 
+<% else %>
+	<div style="height:50px;"></div>
+    <div style="height:20vh;"></div>
+	<div style="text-align:center;margin-top:20px;">
+		<%= image_tag "bell_777777.svg", :style =>'width:35px;height:35px;' %>
+	</div>
+	<div style="text-align:center;margin-top:10px;font-size:12px;color:#999999;">
+		通知はありません
+	</div>	
+    <div style="height:10vh;"></div> 
 <% end %>
+
+<%#lazyload.js%>
+<script defer>
+  $(function() {
+    $('img.lazyload').lazyload();
+  });
+</script>

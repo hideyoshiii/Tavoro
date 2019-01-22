@@ -1,38 +1,23 @@
-<div class="main">
-  <div class="block_side">
-  </div>
-  <div class="block_main">
-  
-    <div class="a1">
-      <div class="a4">
-        <div class="d1">
-          <div class="d6"></div>
-        </div>
-      </div>
-      <div class="a8" style="text-align:center;"> 
-        <div style="height:50px;"></div>           
-        <div style="height:7vh;"></div>           
-        <div class="font_white_big">
-          Sign in
-        </div>
-        <div class="gogo">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
-            <%= f.password_field :password,placeholder: "password", required: "" %>
-            <div style="height:3vh;"></div>
-                <%= f.submit "完了",class:"btn_session" %>
-          <% end %>
-          <div style="height:7vh;"></div>
-        </div>  
-      <div>
-      <%= link_to new_user_password_path do %>
-        <div class="font_gray_min">
-          パスワードを忘れたら
-        </div>
-      <% end %>
+<div class="a1">
+  <div class="a8" style="text-align:center;"> 
+    <div style="height:45px;"></div>           
+    <div style="height:7vh;"></div>           
+    <div class="font_white_big">
+      Sign in
     </div>
-
-  </div>
-  <div class="block_side">
-  </div>
+    <div class="gogo">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
+        <%= f.password_field :password,placeholder: "password", required: "" %>
+        <div style="height:3vh;"></div>
+            <%= f.submit "完了",class:"btn_session" %>
+      <% end %>
+      <div style="height:7vh;"></div>
+    </div>  
+  <div>
+  <%= link_to new_user_password_path do %>
+    <div class="font_gray_min">
+      パスワードを忘れたら
+    </div>
+  <% end %>
 </div>

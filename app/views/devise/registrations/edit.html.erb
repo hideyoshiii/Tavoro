@@ -21,169 +21,151 @@
   </div>
 </div>
 
-<div class="main">
-  <div class="block_side">
-  </div>
-  <div class="block_main">
-    <div class="a1">
-      <div class="a4">
-        <div class="d1">
-          <div class="d4"></div>
+<div style="height:45px;"></div>
+<div style="height:40px;"></div>
+<div style="height:5vh;"></div>
+<%#アイコン画像%>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <div class="form01" style="text-align:center;">
+   <label for="image">
+      <div class="preview00">
+        <div class="preview01">
+          <% if current_user.image %>
+            <%= image_tag current_user.image(:large), :class => "img_user08" %>
+          <% else %>
+            <%= image_tag "user.svg", :class =>'img_user08' %>
+          <% end %>
+          <span>
+            <%= image_tag "camera_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.5;' %>
+          </span>
         </div>
       </div>
-      <div class="a5">
-        <div style="height:50px;"></div>
-        <div style="height:40px;"></div>
-        <div style="height:5vh;"></div>
-        <%#アイコン画像%>
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <div class="form01" style="text-align:center;">
-           <label for="image">
-              <div class="preview00">
-                <div class="preview01">
-                  <% if current_user.image %>
-                    <%= image_tag current_user.image(:large), :class => "img_user08" %>
-                  <% else %>
-                    <%= image_tag "user.svg", :class =>'img_user08' %>
-                  <% end %>
-                  <span>
-                    <%= image_tag "camera_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.5;' %>
-                  </span>
-                </div>
-              </div>
-              <div class="preview02">
-              </div>
-            </label>
-            <%= f.file_field :image, id:"image", onchange:"this.form.submit()" %>
-          </div>
-        <% end %>
-        <%#名前%>
-        <div class="box_tests06">
-          <div class="inline_block_middle" style="width:90%;">
-             <div class="font_gray">
-              名前
-            </div>
-          </div>
-        </div>
-        <div class="box_tests07">
-          <a href="" data-toggle="modal" data-target="#myModal_name">
-            <div class="inline_block_middle" style="width:90%;">
-              <div class="font_white_max">
-                <%= @user.name %>
-              </div>
-            </div>
-            <div class="inline_block_middle" style="width:10%;">
-              <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-            </div>
-          </a>
-        </div>
-        <div style="height:5vh;"></div> 
-        <%#ユーザーid%>
-        <div class="box_tests06">
-          <div class="inline_block_middle" style="width:90%;">
-            <div class="font_gray">
-              ユーザーid
-            </div>
-          </div>
-        </div>
-        <div class="box_tests07">
-          <a href="" data-toggle="modal" data-target="#myModal_username">
-            <div class="inline_block_middle" style="width:90%;">
-              <div class="font_white_max">
-                <%= @user.username %>
-              </div>
-            </div>
-            <div class="inline_block_middle" style="width:10%;">
-              <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-            </div>
-          </a>
-        </div>
-        <div style="height:5vh;"></div> 
-        <%#自己紹介%>
-        <div class="box_tests06">
-          <div class="inline_block_middle" style="width:90%;">
-            <div class="font_gray">
-              自己紹介
-            </div>
-          </div>
-        </div>
-        <div class="box_tests07">
-          <a href="" data-toggle="modal" data-target="#myModal_description">
-            <div class="inline_block_middle" style="width:90%;">
-              <div class="font_white_max contain_title02" style="max-width:80%;">
-                <% if @user.description.present? %>
-                  <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
-                <% else %>
-                  <div style="color:#999999;">
-                    自己紹介がありません
-                  </div>
-                <% end %>
-              </div>
-            </div>
-            <div class="inline_block_middle" style="width:10%;">
-              <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-            </div>
-          </a>
-        </div>
-        <div style="height:5vh;"></div>
-        <%#email%>
-        <div class="box_tests06">
-          <div class="inline_block_middle" style="width:90%;">
-             <div class="font_gray">
-              メールアドレス
-            </div>
-          </div>
-        </div>
-        <div class="box_tests07">
-          <a href="" data-toggle="modal" data-target="#myModal_email">
-            <div class="inline_block_middle" style="width:90%;">
-              <div class="font_white_max">
-                <%= @user.email %>
-              </div>
-            </div>
-            <div class="inline_block_middle" style="width:10%;">
-              <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-            </div>
-          </a>
-        </div>
-        <div style="height:5vh;"></div>
-        <%#password%>
-        <div class="box_tests06">
-          <div class="inline_block_middle" style="width:90%;">
-            <div class="font_gray">
-              パスワード
-            </div>
-          </div>
-        </div>
-        <div class="box_tests07">
-          <a href="" data-toggle="modal" data-target="#myModal_password">
-            <div class="inline_block_middle" style="width:90%;">
-              <div class="font_white_max">
-                パスワードを変更
-              </div>
-            </div>
-            <div class="inline_block_middle" style="width:10%;">
-              <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-            </div>
-          </a>
-        </div>
-        <div style="height:5vh;"></div>
-        <div style="height:10vh;"></div> 
+      <div class="preview02">
       </div>
-    </div>     
+    </label>
+    <%= f.file_field :image, id:"image", onchange:"this.form.submit()" %>
   </div>
-  <div class="block_side">
+<% end %>
+<%#名前%>
+<div class="box_tests06">
+  <div class="inline_block_middle" style="width:90%;">
+     <div class="font_gray">
+      名前
+    </div>
   </div>
 </div>
-
+<div class="box_tests07">
+  <a href="" data-toggle="modal" data-target="#myModal_name">
+    <div class="inline_block_middle" style="width:90%;">
+      <div class="font_white_max">
+        <%= @user.name %>
+      </div>
+    </div>
+    <div class="inline_block_middle" style="width:10%;">
+      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+    </div>
+  </a>
+</div>
+<div style="height:5vh;"></div> 
+<%#ユーザーid%>
+<div class="box_tests06">
+  <div class="inline_block_middle" style="width:90%;">
+    <div class="font_gray">
+      ユーザーid
+    </div>
+  </div>
+</div>
+<div class="box_tests07">
+  <a href="" data-toggle="modal" data-target="#myModal_username">
+    <div class="inline_block_middle" style="width:90%;">
+      <div class="font_white_max">
+        <%= @user.username %>
+      </div>
+    </div>
+    <div class="inline_block_middle" style="width:10%;">
+      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+    </div>
+  </a>
+</div>
+<div style="height:5vh;"></div> 
+<%#自己紹介%>
+<div class="box_tests06">
+  <div class="inline_block_middle" style="width:90%;">
+    <div class="font_gray">
+      自己紹介
+    </div>
+  </div>
+</div>
+<div class="box_tests07">
+  <a href="" data-toggle="modal" data-target="#myModal_description">
+    <div class="inline_block_middle" style="width:90%;">
+      <div class="font_white_max contain_title02" style="max-width:80%;">
+        <% if @user.description.present? %>
+          <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
+        <% else %>
+          <div style="color:#999999;">
+            自己紹介がありません
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="inline_block_middle" style="width:10%;">
+      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+    </div>
+  </a>
+</div>
+<div style="height:5vh;"></div>
+<%#email%>
+<div class="box_tests06">
+  <div class="inline_block_middle" style="width:90%;">
+     <div class="font_gray">
+      メールアドレス
+    </div>
+  </div>
+</div>
+<div class="box_tests07">
+  <a href="" data-toggle="modal" data-target="#myModal_email">
+    <div class="inline_block_middle" style="width:90%;">
+      <div class="font_white_max">
+        <%= @user.email %>
+      </div>
+    </div>
+    <div class="inline_block_middle" style="width:10%;">
+      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+    </div>
+  </a>
+</div>
+<div style="height:5vh;"></div>
+<%#password%>
+<div class="box_tests06">
+  <div class="inline_block_middle" style="width:90%;">
+    <div class="font_gray">
+      パスワード
+    </div>
+  </div>
+</div>
+<div class="box_tests07">
+  <a href="" data-toggle="modal" data-target="#myModal_password">
+    <div class="inline_block_middle" style="width:90%;">
+      <div class="font_white_max">
+        パスワードを変更
+      </div>
+    </div>
+    <div class="inline_block_middle" style="width:10%;">
+      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+    </div>
+  </a>
+</div>
+<div style="height:5vh;"></div>
+<div style="height:10vh;"></div> 
 
 <%#nameモーダル%>
-<div class="modal fade" id="myModal_name">
+<div class="modal bottom fade" id="myModal_name">
   <div class="modal-dialog">
     <div class="a1">
       <div class="a4">
         <div class="d1">    
-          <div class="d4"></div>
+          <div class="d2"></div>
         </div>
       </div>
       <div class="a8">
@@ -210,12 +192,12 @@
   </div>
 </div>
 <%#usernameモーダル%>
-<div class="modal fade" id="myModal_username">
+<div class="modal bottom fade" id="myModal_username">
   <div class="modal-dialog">
     <div class="a1">
       <div class="a4">
         <div class="d1">    
-          <div class="d4"></div>
+          <div class="d2"></div>
         </div>
       </div>
       <div class="a8">
@@ -246,12 +228,12 @@
 </div>
 
 <%#descriptionモーダル%>
-<div class="modal fade" id="myModal_description">
+<div class="modal bottom fade" id="myModal_description">
   <div class="modal-dialog">
     <div class="a1">
       <div class="a4">
         <div class="d1">    
-          <div class="d4"></div>
+          <div class="d2"></div>
         </div>
       </div>
       <div class="a8">
@@ -282,12 +264,12 @@
   </div>
 </div>
 <%#emailモーダル%>
-<div class="modal fade" id="myModal_email">
+<div class="modal bottom fade" id="myModal_email">
   <div class="modal-dialog">
     <div class="a1">
       <div class="a4">
         <div class="d1">    
-          <div class="d4"></div>
+          <div class="d2"></div>
         </div>
       </div>
       <div class="a8">
@@ -314,12 +296,12 @@
   </div>
 </div>
 <%#passwordモーダル%>
-<div class="modal fade" id="myModal_password">
+<div class="modal bottom fade" id="myModal_password">
   <div class="modal-dialog">
     <div class="a1">
       <div class="a4">
         <div class="d1">    
-          <div class="d4"></div>
+          <div class="d2"></div>
         </div>
       </div>
       <div class="a8">

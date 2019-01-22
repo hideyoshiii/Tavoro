@@ -10,7 +10,7 @@
 		<div class="inline_block_middle" style="width:70%;">
 			<div class="contain_title02" style="text-align:center;">
 				<div style="font-size:14px;color:#c2c2c2;">
-					フォロワー一覧
+					フォロワー
 				</div>
 			</div>
 		</div>
@@ -21,45 +21,26 @@
 	</div>
 </div>
 
-<div class="main">
-	<div class="block_side">
+<div class="a1">
+  <div class="a5">
+	<div style="height:50px;"></div>
+	<div style="height:40px;"></div>
+	<div class="nmn" style="text-align:center;width:100%;padding:10px;">
+		<form action="#">
+			<input id="inc_search" placeholder="検索する" type="text" required="">
+		</form>
 	</div>
-	<div class="block_main">	
-		<div class="a1">
-          <div class="a4">
-            <div class="d1">
-              <div class="d4"></div>
-            </div>
-          </div>
-          <div class="a5">
-			<div style="height:50px;"></div>
-			<div style="height:40px;"></div>
-			<div class="nmn" style="text-align:center;width:100%;padding:10px;">
-				<form action="#">
-					<input id="inc_search" placeholder="検索する" type="text" required="">
-				</form>
-			</div>
-			<div class="box_tests03">
-				<div class="inline_block_middle" style="width:100%;">
-					<span class="font_gray">名前で検索</span>
-				</div>
-			</div>
-			<div id='follower_list'>
-			  <%= render partial: 'follower_list' %>
-			</div>
-			<div style="height:5vh;"></div>	
-		  </div>
+	<div class="box_tests03" style="margin-top:-10px;">
+		<div class="inline_block_middle" style="width:100%;">
+			<span class="font_gray_min">user_idで検索</span>
 		</div>
 	</div>
-	<div class="block_side">
+	<div id='follower_list'>
+	  <%= render partial: 'follower_list' %>
 	</div>
+	<div style="height:5vh;"></div>	
+  </div>
 </div>
-
-<%#プロフィールモーダル用のrender%>
-<div id='follower_list_modal'>
-  <%= render partial: 'follower_list_modal' %>
-</div>
-
 
 <%#インクリメンタルサーチjs%>
 <script defer>

@@ -1,22 +1,12 @@
 <div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-	<a data-toggle="modal" data-target="#myModal_<%= post.id %>">	    		
+	<%= link_to "/works/post/#{post.id}" do %>
 		<% if post.image_url.blank? %>
 			<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
 		<% else %>									
-			<% if post.category == "movie" %>
+			<% if post.category == "movie" || post.category == "tv" %>
 				<% @image_url = post.image_url.sub(/original/, 'w300') %>
 			<% end %>
-			<% if post.category == "tv" %>
-				<% @image_url = post.image_url.sub(/original/, 'w300') %>
-			<% end %>
-			<% if post.category == "book" %>
-				<% if post.api == "itunes" %>
-					<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-				<% else %>
-					<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
-				<% end %>
-			<% end %>
-			<% if post.category == "comic" %>
+			<% if post.category == "book" || post.category == "comic" %>
 				<% if post.api == "itunes" %>
 					<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
 				<% else %>
@@ -25,9 +15,6 @@
 			<% end %>
 			<% if post.category == "music" %>
 				<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-			<% end %>
-			<% if post.category == "link" %>
-				<% @image_url = post.image_url %>
 			<% end %>
 			<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 		<% end %>
@@ -48,9 +35,6 @@
 				<% if post.category == "music" %>
 					ミュージック
 				<% end %>
-				<% if post.category == "link" %>
-					リンク
-				<% end %>
 			</div>
 			<div class="contain_title">
 				<div class="font_title_min">
@@ -58,5 +42,5 @@
 				</div>
 			</div>
 		</span>
-	</a>
+	<% end %>
 </div>

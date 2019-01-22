@@ -3,23 +3,23 @@
 	    <% if @list_item = ListItem.find_by(list_id: @list.id, post_id: post.id) %>
 	    	<%= link_to "/#{post.id}/destroy_profile", method: :post, remote: true do %>
 				<div class="btn_half_item">  
-					<svg style="vertical-align:middle;width:20px;height:20px;margin-top:-5px;margin-right:5px;opacity:0.7;" aria-describedby="desc" aria-labelledby="title" viewBox="0 0 64 64"><path fill="#38ef7d" d="M28-1h8V9h-8z" data-name="layer2"/><path fill="#38ef7d" d="M40 5v8H24V5H8v60h48V5zM22 39.3A10.1 10.1 0 0 1 32 29a6 6 0 1 1 6-6 6 6 0 0 1-6 6 10.1 10.1 0 0 1 10 10.3V41H22zM36 59H20a2 2 0 0 1 0-4h16a2 2 0 0 1 0 4zm8-8H20a2 2 0 0 1 0-4h24a2 2 0 0 1 0 4z" data-name="layer1"/></svg>
-					プロフィールの設定を解除
+					<%= image_tag "profile_74C67A.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>
+					ホーム画像の設定を解除
 				</div>
 			<% end %>
 	    <% else %>
 	    	<%= link_to "/#{post.id}/create_profile", method: :post, remote: true do %>
 				<div class="btn_half_item">
-					<svg style="vertical-align:middle;width:20px;height:20px;margin-top:-5px;margin-right:5px;opacity:0.6;" aria-describedby="desc" aria-labelledby="title" viewBox="0 0 64 64"><path fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M28 8H8v54h48V8H36" data-name="layer2"/><path fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M28 2h8v10h-8z" data-name="layer1"/><path fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M44 48H20m16 8H20" data-name="layer2"/><circle cx="32" cy="25" r="6" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" data-name="layer1"/><path fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M42 41a10 10 0 1 0-20 0z" data-name="layer1"/></svg>		
-					プロフィールに設定
+					<%= image_tag "profile_FAFAFA.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>	
+					ホーム画像に設定
 				</div>
 			<% end %>
 	    <% end %>
 	<% else %>
 		<%= link_to "/#{post.id}/create_profile", method: :post, remote: true do %>
 			<div class="btn_half_item">  				
-				<svg style="vertical-align:middle;width:20px;height:20px;margin-top:-5px;margin-right:5px;opacity:0.6;" aria-describedby="desc" aria-labelledby="title" viewBox="0 0 64 64"><path fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M28 8H8v54h48V8H36" data-name="layer2"/><path fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M28 2h8v10h-8z" data-name="layer1"/><path fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M44 48H20m16 8H20" data-name="layer2"/><circle cx="32" cy="25" r="6" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" data-name="layer1"/><path fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M42 41a10 10 0 1 0-20 0z" data-name="layer1"/></svg>	
-				プロフィールに設定
+				<%= image_tag "profile_FAFAFA.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>	
+				ホーム画像に設定
 			</div>
 		<% end %>
 	<% end %>

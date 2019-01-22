@@ -22,77 +22,75 @@
 	</div>
 </div>
 
-<div class="main">
-	<div class="block_side">
-	</div>
-	<div class="block_main">
-		<div class="a1">
-          <div class="a4">
-            <div class="d1">
-              <% if @poster.blank? %>
-              	<%= image_tag "nothing02.jpg", :class =>'img_myboom_blur' %>
-              <% else %>
-              	<%= image_tag @poster, :class =>'img_myboom_blur' %>
-              <% end %>
-              <div class="d3"></div>
-            </div>
-          </div>
-          <div class="a5">
-            <%= form_tag(works_save_path, method: :post, :name => "myform") do %>
-				<%= hidden_field_tag :category, @category %>
-				<%= hidden_field_tag :title, @title %>
-				<%= hidden_field_tag :work_id, @work_id %>
-				<%= hidden_field_tag :api, @api %>
-				<div style="height:50px;"></div>
-				<div style="height:40px;"></div>
-				<div style="height:3vh;"></div>
-				<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
-					<div style="display:inline-block;">
-						<%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
-					    <label for="bookmark">
-					    	<%= image_tag "bookmark_05627B.svg", :class =>'icon_review' %>ブックマーク
-					    </label>
-					</div>
-					<div style="display:inline-block;">
-					    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
-					    <label for="good" class="radio">
-					    	読みました
-					    </label>
-				    </div>
-				    <div style="height:1.5vh;"></div>
-					<div style="display:inline-block;">
-						<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
-					    <label for="favorite">
-					    	<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめ
-					    </label>
-					</div>
-				    <div style="display:inline-block;">
-					    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
-					    <label for="bad" class="radio">
-					    	<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしない
-					    </label>
-				    </div>
-				</div>
-				<div style="height:1.5vh;"></div>
-				<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
-					<textarea name="description" id="textarea" placeholder="何か書く" wrap="hard"></textarea>
-				</div>
-				<div style="height:1.5vh;"></div>
-				<div style="text-align:center;width:100%;margin:0 auto;">
-					<% if @poster.blank? %>
-						<%= image_tag "nothing02.jpg", :style =>'width:50%;height:auto;' %>
+<div style="height:45px;"></div>
+<div style="height:40px;"></div>
+<div class="wallpaper" style="top:85px;height:calc(100vh - 85px);">
+	<div class="a1">
+		<div class="a4">
+	        <div class="d1">
+	          	<% if @poster.blank? %>
+			      	<%= image_tag "nothing02.jpg", :class =>'img_myboom_blur' %>
+			    <% else %>
+			    	<% if @api == "itunes" %>
+						<% @poster_show = @poster.sub(/1000x1000bb/, '500x500bb') %>
 					<% else %>
-						<%= image_tag @poster, :style =>'width:50%;height:auto;' %>
-						<%= hidden_field_tag :image_url, @poster %>
+						<% @poster_show = @poster.sub(/jpg/, 'jpg?_ex=500x500') %>
 					<% end %>
-				</div>
-			<% end %>
-          </div>
-        </div>
-	</div>
-	<div class="block_side">
+			      	<%= image_tag @poster_show, :class =>'img_myboom_blur' %>
+			    <% end %>
+				<div class="d2" style="background:rgba(0,0,0,0.75);"></div>
+	        </div>
+	  	</div>
 	</div>
 </div>
+
+<%= form_tag(works_save_path, method: :post, :name => "myform") do %>
+	<%= hidden_field_tag :category, @category %>
+	<%= hidden_field_tag :title, @title %>
+	<%= hidden_field_tag :work_id, @work_id %>
+	<%= hidden_field_tag :api, @api %>
+	<div style="height:3vh;"></div>
+	<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
+		<div style="display:inline-block;">
+			<%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
+		    <label for="bookmark">
+		    	<%= image_tag "bookmark_05627B.svg", :class =>'icon_review' %>ブックマーク
+		    </label>
+		</div>
+		<div style="display:inline-block;">
+		    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
+		    <label for="good" class="radio">
+		    	読みました
+		    </label>
+	    </div>
+	    <div style="height:1.5vh;"></div>
+		<div style="display:inline-block;">
+			<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
+		    <label for="favorite">
+		    	<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめ
+		    </label>
+		</div>
+	    <div style="display:inline-block;">
+		    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
+		    <label for="bad" class="radio">
+		    	<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしない
+		    </label>
+	    </div>
+	</div>
+	<div style="height:1.5vh;"></div>
+	<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
+		<textarea name="description" id="textarea" placeholder="何か書く" wrap="hard"></textarea>
+	</div>
+	<div style="height:1.5vh;"></div>
+	<div style="text-align:center;width:100%;margin:0 auto;">
+		<% if @poster.blank? %>
+			<%= image_tag "nothing02.jpg", :style =>'width:50%;height:auto;' %>
+		<% else %>
+			<%= image_tag @poster_show, :style =>'width:50%;height:auto;' %>
+			<%= hidden_field_tag :image_url, @poster %>
+		<% end %>
+	</div>
+<% end %>
 
 <%#テキストエリアの自動改行%>
 <script defer>

@@ -1,36 +1,36 @@
 <div class="bar_top">
-  <div class="bar_top_in01">
+  <div style="display:inline-block;width:50%;height:50px;">
     <div style="float:left;">
       <%= link_to root_path do %>
-      <div style="padding:12px 5px 0px 10px;color:rgba(39,134,160,0.8);font-size:20px;">
+      <div style="padding:10px 5px 0px 10px;color:rgba(39,134,160,0.8);font-size:20px;">
         TAVORE <%= image_tag "alpha.svg", :style =>'width:10px;height:10px;margin:2px 0px 0px -3px;' %>
       </div>
       <% end %>
     </div>
   </div>
-  <div class="bar_top_in02">
+  <div style="display:inline-block;width:50%;height:50px;">
     <% if user_signed_in? %>
-      <div style="float:right;padding:12px 10px 0px 0px;">
-        <a href="" data-toggle="modal" data-target="#myModal_dashbord">
-          <%= image_tag "user.svg", :style =>'width:28px;height:28px;' %>
-        </a>
+      <div style="float:right;padding:10px 10px 0px 0px;">
+        <%= link_to "/#{current_user.username}/profile" do %>
+          <%= image_tag "user.svg", :style =>'width:26px;height:26px;' %>
+        <% end %>
       </div>
       <% if Notification.where(user_id: current_user.id,read: false).size >= 1 %>
-        <div style="float:right;padding:13px 10px 0px 0px;">
+        <div style="float:right;padding:12px 10px 0px 0px;">
           <%= link_to notification_path do %>
-            <%= image_tag "bell_FB473E.svg", :style =>'width:24px;height:24px;' %>
+            <%= image_tag "bell_FB473E.svg", :style =>'width:22px;height:22px;' %>
           <% end %>
         </div>
       <% else %>
-        <div style="float:right;padding:13px 10px 0px 0px;">
+        <div style="float:right;padding:12px 10px 0px 0px;">
           <%= link_to notification_path do %>
-            <%= image_tag "bell_777777.svg", :style =>'width:24px;height:24px;' %>
+            <%= image_tag "bell_777777.svg", :style =>'width:22px;height:22px;' %>
           <% end %>
         </div>
       <% end %>
-      <div style="float:right;padding:13px 10px 0px 0px;">
+      <div style="float:right;padding:12px 10px 0px 0px;">
         <%= link_to "/users/user" do %>
-          <%= image_tag "search_777777.svg", :style =>'width:24px;height:24px;' %>
+          <%= image_tag "search_777777.svg", :style =>'width:22px;height:22px;' %>
         <% end %>
       </div>
     <% else %>
@@ -59,7 +59,7 @@
         <div class="a1">
           <div class="a4">
             <div class="d1">
-              <div class="d6"></div>
+              <div class="d2"></div>
             </div>
           </div>
           <div class="a7">
@@ -183,7 +183,7 @@
         <div class="a1">
           <div class="a4">
             <div class="d1">
-              <div class="d6"></div>
+              <div class="d2"></div>
             </div>
           </div>
           <div class="a7">
@@ -211,7 +211,7 @@
                   <img data-src="/assets/pwa01.png" class="lazyload_modal_app" style ="width:100%;height:auto;">
                 </div>
                 <div style="width:20%;display:inline-block;vertical-align:center;">
-                  <img data-src="/assets/right_777777.svg" class="lazyload_modal_app" style="width:20px;height:20px;">
+                  <img data-src="/assets/right_C2C2C2.svg" class="lazyload_modal_app" style="width:20px;height:20px;">
                 </div>
                 <div style="width:40%;display:inline-block;vertical-align:center;">
                   <img data-src="/assets/pwa02.png" class="lazyload_modal_app" style ="width:100%;height:auto;">

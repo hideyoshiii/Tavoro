@@ -1,0 +1,174 @@
+<% post = @post %>
+
+<div class="base01" style="height:100%;z-index:1000;">
+	<% if post.image_url.blank? %>
+		<%= image_tag "nothing01.jpg", :class =>'img_myboom' %>
+	<% else %>		
+		<% if post.category == "movie" || post.category == "tv" %>
+			<% @poster_show = post.image_url.sub(/original/, 'w500') %>
+		<% end %>
+		<% if post.category == "book" || post.category == "comic" %>
+			<% if post.api == "itunes" %>
+				<% @poster_show = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+			<% else %>
+				<% @poster_show = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
+			<% end %>
+		<% end %>
+		<% if post.category == "music" %>
+			<% @poster_show = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+		<% end %>								
+		<%= image_tag @poster_show, :class =>'img_myboom' %>
+	<% end %>
+	<span>										
+		<div class="layer05">
+		</div>
+		<div class="layer03" style="padding:20px 20px;">
+			<div class="inline_block_middle" style="width:80%;">
+				<%= link_to "/#{post.user.username}/profile" do %>
+					<div class="inline_block_middle">
+						<% if post.user.image.present? %>
+			                <%= image_tag post.user.image(:medium), :style =>'width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);' %>
+			            <% else %>			                
+			                <%= image_tag "user.svg", :style =>'width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+			            <% end %>								
+					</div>
+					<div class="inline_block_middle" style="padding-left:10px;">
+						<div class="font_white_min" style="word-wrap:break-word;margin-top:2px;">
+							<%= post.user.name %>
+							<% if post.user.authority == "public" %>
+		                    	<%= image_tag "public.svg", :style =>'width:14px;height:14px;' %>
+		                    <% end %>
+						</div>
+						<div class="font_gray_min" style="word-wrap:break-word;margin-top:2px;">
+							<% if post.category == "movie" %>
+								<%= image_tag "movie_777777.svg", :class =>'icon_category' %> 映画
+							<% end %>
+							<% if post.category == "tv" %>
+								<%= image_tag "movie_777777.svg", :class =>'icon_category' %> テレビ
+							<% end %>
+							<% if post.category == "book" %>
+								<%= image_tag "book_777777.svg", :class =>'icon_category' %> ブック
+							<% end %>
+							<% if post.category == "comic" %>
+								<%= image_tag "book_777777.svg", :class =>'icon_category' %> コミック
+							<% end %>
+							<% if post.category == "music" %>
+								<%= image_tag "music_777777.svg", :class =>'icon_category' %> ミュージック
+							<% end %>						
+							<% @seconds = (Time.now - post.created_at).round  %>
+							<% if @seconds <= 3600 %>
+								- <%= @seconds / 60 %>分前
+							<% else %>
+								<% if @seconds <= 86400 %>
+										- <%= @seconds / (60 * 60) %>時間前
+								<% else %>
+									<% if @seconds <= 604800 %>
+										- <%= @seconds / (60 * 60 * 24) %>日前
+									<% else %>
+										- <%= post.created_at.strftime('%m月%d日') %>
+									<% end %>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+			</div>						
+			<div class="inline_block_middle" style="width:20%;text-align:right;">
+				<a href="javascript:void(0);" onclick="window.history.back();">					
+		        	<%= image_tag "cross_777777.svg", :style =>'width:18px;height:18px;' %>		        	
+		        </a>	
+			</div>
+		</div>
+		<div class="layer01">
+			<%= link_to "/works/#{post.id}/detail" do %>
+				<% if post.image_url.blank? %>
+					<%= image_tag "nothing01.jpg", :class =>'img_tavore' %>
+				<% else %>
+					<%= image_tag @poster_show, :class =>'img_tavore' %>
+				<% end %>
+			<% end %>
+			<% if post.category == "music" %>
+				<% if post.preview_url.present? %>
+					<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
+						<img src="/assets/play_FAFAFA.svg" id="icon_play_<%= post.id %>" style="width:11px;height:11px;margin-left:0.5px;">
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="layer02">
+			<%= link_to "/works/#{post.id}/detail" do %>
+				<div class="font_how">
+					<% if post.review == "bookmark" %>
+						<%= image_tag "bookmark_05627B.svg", :class =>'icon_review' %>ブックマーク
+					<% end %>
+					<% if post.review == "good" %>
+						<% if post.category == "movie" || post.category == "tv" %>
+							観ました
+						<% end %>
+						<% if post.category == "book" || post.category == "comic" %>
+							読みました
+						<% end %>
+						<% if post.category == "music" %>
+							聴きました
+						<% end %>					
+					<% end %>
+					<% if post.review == "favorite" %>
+						<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめしています
+					<% end %>
+					<% if post.review == "bad" %>
+						<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしていません
+					<% end %>
+				</div>
+				<div class="contain_title">
+					<div class="font_head">
+						<%= post.title %>
+					</div>
+				</div>								
+				<% if post.description.present? %>
+					<div class="balloon_top"></div>
+					<div class="balloon">
+						<div>
+					  		<%= safe_join(post.description.split("\n"),tag(:br)) %>
+					  	</div>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="layer11" style="padding-right:30px;">
+			<a href="" data-toggle="modal" data-target="#myModal_half_<%= post.id %>">
+				<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:22px;height:22px;opacity:0.4;' %>
+			</a>
+		</div>
+	</span>
+</div>
+<%# 音楽プレビューjs %>
+<% if post.category == "music" %>
+	<% if post.preview_url.present? %>
+		<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
+			<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
+		</audio>
+		<script defer>						  
+			$(function(){
+		  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
+		  	  var img_<%= post.id %> = $("#icon_play_<%= post.id %>");
+			  $('#btn_preview_<%= post.id %>').on("click",function(){
+			    if(img_<%= post.id %>.attr('src') === "/assets/play_FAFAFA.svg")
+			     {	       		       
+			       img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
+			       audio_<%= post.id %>.play();
+			     }
+			    else
+			     {
+			       img_<%= post.id %>.attr("src","/assets/play_FAFAFA.svg");
+			       audio_<%= post.id %>.pause();
+			     }
+			  });
+			  audio_<%= post.id %>.onended = function() {
+			  	img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
+			  };
+		  	});				
+	   	</script>
+	<% end %>
+<% end %>
+<%#ハーフモーダル%>
+<%= render partial: 'partial/modal_half', locals: { post: post } %>

@@ -1,9 +1,13 @@
 <% if Like.find_by(user_id: current_user.id, post_id: post.id) %>
-	<%= link_to "/likes/#{post.id}/destroy", method: :post, id: "like-button", remote: true do %>
-		<%= image_tag "like03.png", :style =>'width:35px;height:35px;' %>
+	<%= link_to "/likes/#{post.id}/destroy", method: :post, remote: true do %>
+		<div class="btn_half_item">  
+			<%= image_tag "like_FB473E.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin-top:-5px;margin:-5px 15px 0 0;opacity:0.7;' %>いいね！を削除
+		</div>
 	<% end %>
 <% else %>
-	<%= link_to "/likes/#{post.id}/create", method: :post, id: "like-button", remote: true do %>
-		<%= image_tag "like02.png", :style =>'width:35px;height:35px;' %>
+	<%= link_to "/likes/#{post.id}/create", method: :post, remote: true do %>
+		<div class="btn_half_item">  
+			<%= image_tag "like_FAFAFA.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 15px 0 0;opacity:0.7;' %>いいね！
+		</div>
 	<% end %>
 <% end %>

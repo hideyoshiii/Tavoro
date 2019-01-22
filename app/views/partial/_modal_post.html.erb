@@ -2,7 +2,7 @@
 <div class="btns_plus">
 	<a href="" data-toggle="modal" data-target="#myModal_post" id="btn_plus">
 		<i>
-			<%= image_tag "plus_FAFAFA.svg", :class =>'img_plus' %>
+			<%= image_tag "plus_FAFAFA.svg", :style =>'width:20px;height:20px;transform-origin:50%,50%;transform:rotate(0deg);' %>
 		</i>
 	</a>
 </div>	
@@ -13,59 +13,73 @@
       <div class="a1">
         <div class="a14">
           <div class="d1">
-            <div class="d4"></div>
+            <div class="d2"></div>
           </div>
         </div>
         <div class="a8" style="text-align:center;">   	
-	  		<div style="font-size:20px;color:#2FB4B4;">
-		      	- 投稿を作成 -
+	  		<div style="font-size:22px;color:#2FB4B4;">
+		      	投稿を作成
 	        </div>
-	        <div style="height:30px;"></div>
-	      	<%= link_to(works_movie_path) do %>
-		      	<div class="btn_icon">
-			      	<div style="font-size:11px;color:#FAFAFA;">
-			        	<img data-src="/assets/movie_FAFAFA.svg" class="lazyload_modal_post" style="width:18px;height:18px;margin:-2px 8px 0 0;">映画/テレビ
-			        </div>
-		        </div>		
-	        <% end %>
-	        <div class="inline_block_middle" style="width:5%;"></div>	
-    		<%= link_to(works_book_path) do %>
-	        	<div class="btn_icon">	
-	        		<div style="font-size:11px;color:#FAFAFA;">		      		
-		        		<img data-src="/assets/book_FAFAFA.svg" class="lazyload_modal_post" style="width:18px;height:18px;margin:-2px 8px 0 0;">ブック/コミック
-		        	</div>
-		        </div>
-	        <% end %>
-	        <div style="height:25px;"></div>
-	      	<%= link_to(works_music_path) do %>
-	        	<div class="btn_icon">	
-	        		<div style="font-size:11px;color:#FAFAFA;">		      		
-		        		<img data-src="/assets/music_FAFAFA.svg" class="lazyload_modal_post" style="width:18px;height:18px;margin:-2px 8px 0 0;">ミュージック
-		        	</div>
-		        </div>
-	        <% end %>		
-	        <div class="inline_block_middle" style="width:5%;"></div>
-	      	<%= link_to(works_link_path) do %>
-	        	<div class="btn_icon">		
-		        	<div style="font-size:11px;color:#FAFAFA;">	      		
-			        	<img data-src="/assets/link_FAFAFA.svg" class="lazyload_modal_post" style="width:18px;height:18px;margin:-2px 8px 0 0;">リンク
-			        </div>
-		        </div>
-	        <% end %>
-	        <div style="height:25px;"></div>
-	        <%= link_to(works_bookmark_path) do %>
-	        	<div class="btn_icon" style="width:85%;padding:18px 0;">	
-		        	<div style="font-size:11px;color:#FAFAFA;opacity:0.8;">		      		
-			        	<img data-src="/assets/bookmark_FAFAFA.svg" class="lazyload_modal_post" style="width:18px;height:18px;margin:-2px 8px 0 0;">ブックマークから投稿
-			        </div>
-		        </div>
-	        <% end %>
-	        <div style="height:25px;"></div>
+	        <div style="height:40px;"></div>
+      		<div class="inline_block_middle" style="padding:0 25px;text-align:center;">
+      			<%= link_to(works_movie_path) do %>
+			      	<div class="btn_icon">
+				      	<i>
+				        	<img data-src="/assets/movie_FAFAFA.svg" class="lazyload_modal_post" style="width:22px;height:22px;">
+				        </i>
+			        </div>	
+			        <div style="height:10px;"></div>
+			        <div style="font-size:10px;color:#FAFAFA;">
+				        映画/テレビ
+				    </div>	
+			    <% end %>	
+		    </div>
+        	<div class="inline_block_middle" style="padding:0 25px;text-align:center;">
+        		<%= link_to(works_book_path) do %>
+			      	<div class="btn_icon">
+				      	<i>
+				        	<img data-src="/assets/book_FAFAFA.svg" class="lazyload_modal_post" style="width:22px;height:22px;">
+				        </i>
+			        </div>	
+			        <div style="height:10px;"></div>
+			        <div style="font-size:10px;color:#FAFAFA;">
+				        ブック/コミック
+				    </div>	
+			    <% end %>
+		    </div>
+		    <div style="height:40px;"></div>
+        	<div class="inline_block_middle" style="padding:0 25px;text-align:center;">
+        		<%= link_to(works_music_path) do %>
+			      	<div class="btn_icon">
+				      	<i>
+				        	<img data-src="/assets/music_FAFAFA.svg" class="lazyload_modal_post" style="width:22px;height:22px;">
+				        </i>
+			        </div>	
+			        <div style="height:10px;"></div>
+			        <div style="font-size:10px;color:#FAFAFA;">
+				        ミュージック
+				    </div>
+			    <% end %>	
+		    </div>
+        	<div class="inline_block_middle" style="padding:0 25px;text-align:center;">
+        		<%= link_to(works_bookmark_path) do %>
+			      	<div class="btn_icon">
+				      	<i>
+				        	<img data-src="/assets/bookmark_FAFAFA.svg" class="lazyload_modal_post" style="width:22px;height:22px;">
+				        </i>
+			        </div>	
+			        <div style="height:10px;"></div>
+			        <div style="font-size:10px;color:#FAFAFA;">
+				        ブックマークから
+				    </div>	
+			    <% end %>
+		    </div>
+	        <div style="height:60px;"></div>
         </div>
         <a class="btns_plus" data-dismiss="modal" id="dismiss_post">
 			<span id="btn_plus">
 				<i>
-					<img data-src="/assets/plus_FAFAFA.svg" class="img_time lazyload_modal_post">
+					<img data-src="/assets/plus_FAFAFA.svg" class="lazyload_modal_post" style="width:20px;height:20px;transform-origin:50%,50%;transform:rotate(45deg);">
 				</i>
 			</span>
 		</a>
@@ -74,15 +88,6 @@
   </div>
 </div>
 
-<%#blur%>
-<script defer>
-  $('#myModal_post').on('show.bs.modal', function () {
-    $('.main').css('filter','blur(1.5px)');
-  });
-  $('#myModal_post').on('hide.bs.modal', function () {
-    $('.main').css('filter','blur(0px)');
-  });
-</script>
 <%#モーダルtubolinks不具合修正%>
 <script defer>
   $(function(){

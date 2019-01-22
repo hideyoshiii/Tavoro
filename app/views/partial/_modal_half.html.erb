@@ -3,7 +3,7 @@
 		<div class="a1">
           	<div class="a4">
             	<div class="d1">
-              		<div class="d5"></div>
+              		<div class="d2"></div>
             	</div>
           	</div>
           	<div class="a6" style="text-align:center;">
@@ -28,13 +28,17 @@
 	          		<div style="height:7%;"></div>
 	          		<div style="width:100%;padding:0 10%;">
 		          		<% unless post.user.id == current_user.id %>
+		          			<span id="like-of-<%= post.id %>">
+						      	<%= render partial: 'likes/like', locals: { post: post } %>
+						    </span>
+						    <div style="height:30px"></div>
 							<span id="bookmark-of-<%= post.id %>">
 						      	<%= render partial: 'works/bookmark', locals: { post: post } %>
 						    </span>
 						    <div style="height:30px"></div>
 							<%= link_to "/works/#{post.id}/copy" do %>
 								<div class="btn_half_item">  
-									<img data-src="/assets/add_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:18px;height:18px;margin-top:-2px;margin-right:15px;opacity:0.6;">この作品を投稿
+									<img data-src="/assets/add_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-2px 13px 2px 0;opacity:0.6;">この作品を投稿
 								</div>	
 							<% end %>									
 						<% end %>
@@ -49,13 +53,13 @@
 						    <div style="height:30px"></div>
 							<%= link_to "/works/#{post.id}/edit" do %>
 								<div class="btn_half_item">  
-									<img data-src="/assets/edit_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.5;">投稿を編集
+									<img data-src="/assets/edit_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.6;">投稿を編集
 								</div>
 							<% end %>
 							<div style="height:30px"></div>			
 							<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
 								<div class="btn_half_item" style="color:#FB473E;">  
-									<img data-src="/assets/trash_FB473E.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin-top:-4px;margin-right:15px;opacity:0.6;">投稿を削除
+									<img data-src="/assets/trash_FB473E.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.7;">投稿を削除
 								</div>
 							<% end %>
 							<div style="height:30px"></div>	

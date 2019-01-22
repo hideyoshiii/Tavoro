@@ -1,74 +1,76 @@
-<% if params[:q].present? %>
-	<% if @user.present? %>
-		<div style="height:5vh;"></div>
-		<div style="width:100%;">       
-          	<div style="width:100%;">
-              	<div style="text-align:center;">
-                  	<% if @user.image.present? %>
-		                <%= image_tag @user.image(:large), :class => "img_user08" %>
-		            <% else %>
-		                <%= image_tag "user.svg", :class => "img_user08" ,:style =>'box-shadow:none;' %>
-		            <% end %>
-              	</div>
-	              <div style="font-size:18px;text-align:center;margin-top:10px;">
-	                <%= @user.name %>
-	                <% if @user.authority == "public" %>
-                      <%= image_tag "public.svg", :style =>'width:14px;height:14px;' %>
-                    <% end %>
-	              </div>
-            </div>          
-        </div>     
-      	<% if @user.description.present? %>
-	        <div style="height:0.5vh;"></div>
-	        <div class="font_gray_min" style="width:100%;padding:0 20px;color:#C2C2C2;text-align:center;">
-	        	<%= simple_format(@user.description, {}, wrapper_tag: "div") %>
-	        </div>
-      	<% end %>                   	            
-          <div style="height:3vh;"></div>
-        	<div style="text-align:center;">
-	        	<div id="relationship-of-<%= @user.id %>">
-			      	<%= render partial: 'relationships/relationship' %>
-			    </div>
-	        </div>       
-          	<div style="height:7vh;"></div>
-          	<div style="text-align:center;width:100%;">
-	            <div class="inline_block_middle" style="width:33.33%;">
-	          	  <div>
-	                <%= image_tag "checked_FAFAFA.svg", :style =>'width:16px;height:16px;' %>
-	              </div> 
-	              <div style="font-size:12px;color:#C2C2C2;margin-top:5px;">
-	                <%= Post.where(user_id: @user.id).where.not(review: "bookmark").size %> checkeds
-	              </div> 
-	            </div>
-	            <div class="inline_block_middle" style="width:33.33%;">
-	              <div>
-	                <%= image_tag "bookmark_FAFAFA.svg", :style =>'width:16px;height:16px;' %>
-	              </div> 
-	              <div style="font-size:12px;color:#C2C2C2;margin-top:5px;">
-	                <%= Post.where(user_id: @user.id, review: "bookmark").size %> bookmarks
-	              </div> 
-	            </div>
-	            <div class="inline_block_middle" style="width:33.33%;opacity:0.5;">
-	              <div>
-	                <%= image_tag "file_FAFAFA.svg", :style =>'width:16px;height:16px;' %>
-	              </div> 
-	              <div style="font-size:12px;color:#C2C2C2;margin-top:5px;">
-	                coming soon
-	              </div> 
-            	</div>
-        	</div>  
-		<% else %>
-		<div style="font-size:15px;color:#777777;margin-top:30vh;text-align:center;">
-			<%= image_tag "warning_FAFAF.svg", :style =>'width:15px;height:15px;' %> 入力したIDのユーザーは存在しません
+<% if params[:q].blank? %>
+	<% if @users.present? %>
+	  	<% @users.each do |user| %>
+	  		<% unless user == current_user %>
+		  		<%= link_to "/#{user.username}/profile" do %>
+		          <div class="box_tests05">
+		            <div class="inline_block_middle" style="width:15%;padding-left:5px;">
+			            <% if user.image.present? %>
+			                <img data-src="<%= user.image(:medium) %>" class="img_user09 lazyload">
+			            <% else %>
+			                <img data-src="/assets/user.svg" class="img_user09 lazyload" style="box-shadow:none;">
+			            <% end %>
+		            </div>
+		            <div class="inline_block_middle" style="width:65%;padding-left:5px;">
+		              	<div class="font_white">
+		                	<%= user.name %>
+		                	<% if user.authority == "public" %>		                		
+		                		<img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
+		                	<% end %>
+		              	</div>
+		              	<div class="font_gray" style="margin-top:-2px;">
+		                	<%= user.username %>
+		              	</div>
+		            </div>
+		            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
+		            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;">
+		            </div>
+		          </div>
+		        <% end %>
+	        <% end %>
+	  	<% end %>
+	<% else %>
+	 	<div class="font_gray" style="margin-top:25vh;text-align:center;">
+			IDで友達を検索
 		</div>
 	<% end %>
 <% else %>
-	<div style="height:20vh;"></div>
-	<div style="text-align:center;margin-top:20px;">
-		<%= image_tag "users_777777.svg", :style =>'width:35px;height:35px;' %>
-	</div>
-	<div style="text-align:center;margin-top:10px;font-size:12px;color:#999999;">
-		IDで友達を検索
-	</div>
-    <div style="height:10vh;"></div> 
+	<% if @items.present? %>
+	  	<% @items.each do |user| %>
+	  		<% unless user == current_user %>
+		  		<%= link_to "/#{user.username}/profile" do %>
+		          <div class="box_tests05">
+		            <div class="inline_block_middle" style="width:15%;padding-left:5px;">
+			            <%= image_tag user.image(:medium), :class =>'img_user09' %>
+		            </div>
+		            <div class="inline_block_middle" style="width:65%;padding-left:5px;">
+		              	<div class="font_white">
+		                	<%= user.name %>
+		                	<% if user.authority == "public" %>		                		
+		                		<img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
+		                	<% end %>
+		              	</div>
+		              	<div class="font_gray" style="margin-top:-2px;">
+		                	<%= user.username %>
+		              	</div>
+		            </div>
+		            <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
+		            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;">
+		            </div>
+		          </div>
+		        <% end %>    
+	        <% end %>
+	  	<% end %>
+	<% else %>
+		<div class="font_gray" style="margin-top:30vh;text-align:center;">
+			<%= image_tag "warning_777777.svg", :style =>'width:20px;height:20px;' %> 結果がありません
+		</div>
+	<% end %>
 <% end %>
+
+<%#lazyload.js%>
+<script defer>
+  $(function() {
+    $('img.lazyload').lazyload();
+  });
+</script>

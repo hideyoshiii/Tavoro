@@ -1,0 +1,154 @@
+<div class="a1" style="height:100%;z-index:1000;">
+	<div class="a4">
+	  <div class="d1">
+	    <div class="d2" style="background:rgba(0,0,0,0.7);"></div>
+	    <% if @post_list.present? %>
+	    	<% if @post_list.category == "movie" || @post_list.category == "tv" %>
+				<% @post_list_poster_show = @post_list.image_url.sub(/original/, 'w300') %>
+			<% end %>
+			<% if @post_list.category == "book" || @post_list.category == "comic" %>
+				<% if @post_list.api == "itunes" %>
+					<% @post_list_poster_show = @post_list.image_url.sub(/1000x1000bb/, '300x300bb') %>
+				<% else %>
+					<% @post_list_poster_show = @post_list.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+				<% end %>
+			<% end %>
+			<% if @post_list.category == "music" %>
+				<% @post_list_poster_show = @post_list.image_url.sub(/1000x1000bb/, '300x300bb') %>
+			<% end %>
+	        <%= image_tag @post_list_poster_show, :class =>'img_myboom' %>
+	    <% else %>
+	        <%= image_tag "nothing05.jpg", :class =>'img_myboom' %>
+	    <% end %>
+	  </div>
+	</div>
+	<div class="a11" style="padding:20px 15px;">
+	  <div class="inline_block_middle" style="width:35%;opacity:0.6;">
+	    <div class="contain_title02">
+	      <% if @post_list.present? %>
+		    <%= link_to "/works/post/#{@post_list.id}" do %>
+		        <div style="font-size:12px;color:#FAFAFA">
+			        <% if @post_list.category == "movie" %>
+			            <%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> <%= @post_list.title %>
+			        <% end %>
+			        <% if @post_list.category == "tv" %>
+			            <%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> <%= @post_list.title %>
+			        <% end %>
+			        <% if @post_list.category == "book" %>
+			            <%= image_tag "book_FAFAFA.svg", :class =>'icon_category' %> <%= @post_list.title %>
+			        <% end %>
+			        <% if @post_list.category == "comic" %>
+			            <%= image_tag "book_FAFAFA.svg", :class =>'icon_category' %> <%= @post_list.title %>
+			        <% end %>
+			        <% if @post_list.category == "music" %>
+			            <%= image_tag "music_FAFAFA.svg", :class =>'icon_category' %> <%= @post_list.title %>
+			        <% end %>
+		        </div>
+		    <% end %>
+	      <% else %>
+	      	<% if @user == current_user %>
+		      	<a>
+			        <div style="font-size:12px;color:#2FB4B4;">
+			          	ホーム画像を設定
+			        </div>
+		        </a>
+		    <% end %>
+	      <% end %>
+	    </div>
+	  </div>
+	  <div class="inline_block_middle" style="text-align:right;width:65%;opacity:0.5;">
+	  	<a href="javascript:void(0);" onclick="window.history.back();">
+        	<%= image_tag "cross_777777.svg", :style =>'width:18px;height:18px;' %>
+        </a>
+	  </div>
+	</div>
+	<div class="a8">     
+	  <div style="width:100%;"> 
+	  	<div style="height:5vh;"></div>
+	    <div class="inline_block_bottom" style="width:27.5%;">
+	        <%= link_to "/#{@user.username}/following" do %>              
+	          	<div style="font-size:11px;color:#C2C2C2;border-bottom: solid 1px rgba(5,98,123,0.8);margin-bottom:1vh;">
+	            	<%= @user.followings.size %> followings
+	          	</div> 
+	        <% end %>
+	    </div> 
+	  	<div class="inline_block_bottom" style="width:45%;">
+	      <div style="text-align:center;">
+	        <% if @user.image.present? %>
+	          <%= image_tag @user.image(:large), :style =>'width:90px;height:90px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+	        <% else %>
+	          <%= image_tag "user.svg", :style =>'width:90px;height:90px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+	        <% end %>
+	      </div>
+	    </div>    
+	    <div class="inline_block_bottom" style="width:27.5%;">
+	        <%= link_to "/#{@user.username}/follower" do %>   
+	          	<div style="font-size:11px;color:#C2C2C2;border-bottom: solid 1px rgba(5,98,123,0.8);margin-bottom:1vh;">
+	            	<%= @user.followers.size %> followers
+	          	</div> 
+	        <% end %>
+	    </div>  
+	  </div>
+	  <div style="height:0vh;"></div>  
+	  <div style="font-size:18px;text-align:center;margin-top:10px;">
+	    <%= @user.name %>
+        <% if @user.authority == "public" %>
+          <%= image_tag "public.svg", :style =>'width:14px;height:14px;' %>
+        <% end %>
+	  </div> 
+	  <div style="height:1vh;"></div>  
+	  <% if @user.description.present? %>
+	    <div style="height:0.5vh;"></div>
+	    <div class="font_gray_min" style="width:50%;color:#C2C2C2;display:inline-block;">
+	      <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
+	    </div>
+	  <% else %> 
+	    <% if current_user?(@user) %>
+	      <div style="height:1vh;"></div>
+	      <%= link_to edit_user_registration_path do %>
+	        <div class="font_gray_min" style="width:50%;color:#2FB4B4;display:inline-block;">
+	          自己紹介を書く
+	        </div>
+	      <% end %>
+	    <% end %> 
+	  <% end %>                	            
+	  <div style="height:2vh;"></div>
+		<div style="text-align:center;">
+	  	<div id="relationship-of-<%= @user.id %>">
+	      	  <%= render partial: 'relationships/relationship' %>
+	        </div>
+	    </div>       
+	  <div style="height:7vh;"></div>
+	  <div style="text-align:center;width:95%;display:inline-block;">
+	    <div class="inline_block_middle" style="width:33.33%;">
+	      <%= link_to "/#{@user.username}/posts" do %>
+	    	  <div>
+	          <%= image_tag "checked_FAFAFA.svg", :style =>'width:16px;height:16px;' %>
+	        </div> 
+	        <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
+	          <%= @checkeds_i %> checkeds
+	        </div>
+	      <% end %>
+	    </div>
+	    <div class="inline_block_middle" style="width:33.33%;">
+	      <%= link_to "/#{@user.username}/bookmarks" do %>
+	        <div>
+	          <%= image_tag "bookmark_FAFAFA.svg", :style =>'width:16px;height:16px;' %>
+	        </div> 
+	        <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
+	          <%= @bookmarks_i %> bookmarks
+	        </div>
+	      <% end %>
+	    </div>
+	    <div class="inline_block_middle" style="width:33.33%;opacity:0.5;">
+	      <div>
+	        <%= image_tag "file_FAFAFA.svg", :style =>'width:16px;height:16px;' %>
+	      </div> 
+	      <div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
+	        coming soon
+	      </div> 
+	    </div>
+	  </div>  
+	  <div style="height:10vh;"></div>
+	</div>
+</div>

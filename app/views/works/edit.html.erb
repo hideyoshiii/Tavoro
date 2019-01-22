@@ -22,136 +22,139 @@
 	</div>
 </div>
 
-<div class="main">
-	<div class="block_side">
-	</div>
-	<div class="block_main">
-		<div class="a1">
-          <div class="a4">
-            <div class="d1">
-              <% if @post.image_url.blank? %>
-              	<% if @post.category == "music" %>
-					<%= image_tag "nothing03.jpg", :class =>'img_myboom_blur' %>
-				<% else %>
+<div style="height:45px;"></div>
+<div style="height:40px;"></div>
+<div class="wallpaper" style="top:85px;height:calc(100vh - 85px);">
+	<div class="a1">
+		<div class="a4">
+	        <div class="d1">
+	          	<% if @post.image_url.blank? %>
 					<%= image_tag "nothing01.jpg", :class =>'img_myboom_blur' %>
-				<% end %>
-              <% else %>
-              	<% if @post.category == "music" %>
-					<%= image_tag @post.image_url, :class =>'img_myboom_blur' %>
-				<% else %>
-					<%= image_tag @post.image_url, :class =>'img_myboom_blur' %>
-				<% end %>
-              <% end %>
-              <div class="d3"></div>
-            </div>
-          </div>
-          <div class="a5">
-			<%= form_tag("/works/#{@post.id}/update", method: :post, :name => "myform") do %>
-				<div style="height:50px;"></div>
-				<div style="height:40px;"></div>
-				<div style="height:3vh;"></div>					
-				<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
-					<div style="display:inline-block;">
-					    <%= radio_button_tag(:review, "bookmark", @bookmark, {:id => "bookmark"}) %>
-					    <label for="bookmark" class="radio">
-					    	<%= image_tag "bookmark_05627B.svg", :class =>'icon_review' %>ブックマーク
-					    </label>
-				    </div>
-					<div style="display:inline-block;">
-					    <%= radio_button_tag(:review, "good", @good, {:id => "good"}) %>
-					    <label for="good" class="radio">
-					    	<% if @post.category == "movie" || @post.category == "tv" %>
-								観ました
-							<% end %>
-							<% if @post.category == "book" || @post.category == "comic" %>
-								読みました
-							<% end %>
-							<% if @post.category == "music" %>
-								聴きました
-							<% end %>
-							<% if @post.category == "link" %>
-								見ました
-							<% end %>
-					    </label>
-				    </div>
-				    <div style="height:1.5vh;"></div>
-					<div style="display:inline-block;">
-						<%= radio_button_tag(:review, "favorite", @favorite, {:id => "favorite"}) %>
-					    <label for="favorite">
-					    	<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめ
-					    </label>
-					</div>
-				    <div style="display:inline-block;">
-					    <%= radio_button_tag(:review, "bad", @bad, {:id => "bad"}) %>
-					    <label for="bad" class="radio">
-					    	<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしない
-					    </label>
-				    </div>
-				</div>
-				<div style="height:1.5vh;"></div>
-				<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
-					<textarea name="description" id="textarea" placeholder="何か書く" wrap="hard"><%= @post.description %></textarea>
-				</div>
-				<div style="height:1.5vh;"></div>
-				<% if @post.category == "movie" || @post.category == "tv" %>
-					<div style="text-align:center;width:100%;margin:0 auto;">
-						<div class="horizontal_scroll">
-							<% if @posters.present? %>
-								<% @posters.each.with_index(1) do |poster, i| %>
-									<% if @post.image_url == "https://image.tmdb.org/t/p/original/#{poster.file_path}" %>
-										<div class="scroll_item04">
-											<div class="radio01">
-												<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", true, {:id => "image_url#{i}"}) %>
-												<label for="image_url<%= i %>">
-													<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :style =>'width:auto;height:45vh;' %>
-												</label>
-											</div>
-										</div>
-									<% else %>
-										<div class="scroll_item04">
-											<div class="radio01">
-												<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original/#{poster.file_path}", false, {:id => "image_url#{i}"}) %>
-												<label for="image_url<%= i %>">
-													<%= image_tag "https://image.tmdb.org/t/p/original/#{poster.file_path}", :style =>'width:auto;height:45vh;' %>
-												</label>
-											</div>
-										</div>
-									<% end %>
-								<% end %>
-							<% else %>
-								<%= image_tag @post.image_url, :style =>'width:50%;height:auto;' %>
-							<% end %>
-						</div>
-					</div>
-				<% else %>
-					<div style="text-align:center;width:100%;margin:0 auto;">
-						<% if @post.category == "music" %>
-							<div style="text-align:center;width:60%;margin:0 auto;">
-								<div class="pile_preview">								
-									<%= image_tag @post.image_url, :style =>'width:100%;height:100%;' %>		
-									<% if @post.preview_url.present? %>
-										<div class="btn_preview_default" id="btn_preview">
-											<%= image_tag "play_FAFAFA.svg", :id =>'icon_play', :style =>'width:11px;height:11px;margin-left:0.5px;' %>
-										</div>
-									<% end %>
-								</div>
-							</div>	
+			    <% else %>
+			    	<% if @post.category == "movie" || @post.category == "tv" %>
+						<% @poster_show = @post.image_url.sub(/original/, 'w300') %>
+					<% end %>
+					<% if @post.category == "book" || @post.category == "comic" %>
+						<% if @post.api == "itunes" %>
+							<% @poster_show = @post.image_url.sub(/1000x1000bb/, '300x300bb') %>
 						<% else %>
-							<% if @post.category == "link" %>
-								<%= image_tag @post.image_url, :style =>'width:300px;height:200px;object-fit:cover;' %>
-							<% else %>
-								<%= image_tag @post.image_url, :style =>'width:50%;height:auto;' %>
-							<% end %>
+							<% @poster_show = @post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
 						<% end %>
-					</div>
-				<% end %>			
-			<% end %>
-		  </div>
-		</div>
-	</div>
-	<div class="block_side">
+					<% end %>
+					<% if @post.category == "music" %>
+						<% @poster_show = @post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+					<% end %>
+					<%= image_tag @poster_show, :class =>'img_myboom_blur' %>
+			    <% end %>
+				<div class="d2" style="background:rgba(0,0,0,0.75);"></div>
+	        </div>
+	  	</div>
 	</div>
 </div>
+
+<%= form_tag("/works/#{@post.id}/update", method: :post, :name => "myform") do %>
+	<div style="height:3vh;"></div>		
+	<%#レビュー%>
+	<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
+		<div style="display:inline-block;">
+		    <%= radio_button_tag(:review, "bookmark", @bookmark, {:id => "bookmark"}) %>
+		    <label for="bookmark" class="radio">
+		    	<%= image_tag "bookmark_05627B.svg", :class =>'icon_review' %>ブックマーク
+		    </label>
+	    </div>
+		<div style="display:inline-block;">
+		    <%= radio_button_tag(:review, "good", @good, {:id => "good"}) %>
+		    <label for="good" class="radio">
+		    	<% if @post.category == "movie" || @post.category == "tv" %>
+					観ました
+				<% end %>
+				<% if @post.category == "book" || @post.category == "comic" %>
+					読みました
+				<% end %>
+				<% if @post.category == "music" %>
+					聴きました
+				<% end %>
+		    </label>
+	    </div>
+	    <div style="height:1.5vh;"></div>
+		<div style="display:inline-block;">
+			<%= radio_button_tag(:review, "favorite", @favorite, {:id => "favorite"}) %>
+		    <label for="favorite">
+		    	<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめ
+		    </label>
+		</div>
+	    <div style="display:inline-block;">
+		    <%= radio_button_tag(:review, "bad", @bad, {:id => "bad"}) %>
+		    <label for="bad" class="radio">
+		    	<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしない
+		    </label>
+	    </div>
+	</div>
+	<div style="height:1.5vh;"></div>
+	<%#コメント%>
+	<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
+		<textarea name="description" id="textarea" placeholder="何か書く" wrap="hard"><%= @post.description %></textarea>
+	</div>
+	<div style="height:1.5vh;"></div>
+	<%#ポスター(映画,テレビの時)%>
+	<% if @post.category == "movie" || @post.category == "tv" %>
+		<div style="text-align:center;width:100%;margin:0 auto;">
+			<div class="horizontal_scroll">
+				<% if @posters.present? %>
+					<% @posters.each.with_index(1) do |poster, i| %>
+						<% if @post.image_url == "https://image.tmdb.org/t/p/original#{poster.file_path}" %>
+							<% @boolean = true %>
+						<% else %>
+							<% @boolean = false %>
+						<% end %>
+						<div class="scroll_item04">
+							<div class="radio01">
+								<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original#{poster.file_path}", @boolean, {:id => "image_url#{i}"}) %>
+								<label for="image_url<%= i %>">
+									<%= image_tag "https://image.tmdb.org/t/p/w500#{poster.file_path}", :style =>'width:auto;height:45vh;' %>
+								</label>
+							</div>
+						</div>
+					<% end %>
+				<% else %>
+					<% if @post.image_url.blank? %>
+						<%= image_tag "nothing01.jpg", :style =>'width:auto;height:45vh;' %>
+					<% else %>
+						<%= image_tag @poster_show, :style =>'width:auto;height:45vh;' %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	<%#ポスター(ブック,コミックの時)%>
+	<% if @post.category == "book" || @post.category == "comic" %>
+		<div style="text-align:center;width:100%;margin:0 auto;">
+			<% if @post.image_url.blank? %>
+				<%= image_tag "nothing02.jpg", :style =>'width:50%;height:auto;' %>
+			<% else %>
+				<%= image_tag @poster_show, :style =>'width:50%;height:auto;' %>
+			<% end %>
+		</div>
+	<% end %>
+	<%#ポスター(ミュージックの時)%>
+	<% if @post.category == "music" %>
+	<div style="text-align:center;width:100%;margin:0 auto;">
+		<div style="text-align:center;width:60%;margin:0 auto;">
+			<div class="pile_preview">								
+				<% if @post.image_url.blank? %>
+					<%= image_tag "nothing03.jpg", :style =>'width:100%;height:100%;' %>
+				<% else %>
+					<%= image_tag @poster_show, :style =>'width:100%;height:100%;' %>
+				<% end %>
+				<% if @post.preview_url.present? %>
+					<div class="btn_preview_default" id="btn_preview">
+						<%= image_tag "play_FAFAFA.svg", :id =>'icon_play', :style =>'width:11px;height:11px;margin-left:0.5px;' %>
+					</div>
+				<% end %>
+			</div>
+		</div>	
+	<% end %>			
+<% end %>
 
 <%#音楽プレビューjs%>
 <% if @post.preview_url.present? %>

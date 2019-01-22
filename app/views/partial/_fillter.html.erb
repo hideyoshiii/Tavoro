@@ -1,0 +1,99 @@
+<%#フィルターモーダル%>
+<div class="modal bottom fade" id="myModal_fillter">
+    <div class="modal-dialog">
+      <div class="a1">
+        <div class="a14">
+          <div class="d1">
+            <div class="d2"></div>
+          </div>
+        </div>
+        <div class="a7">
+            <a data-dismiss="modal" id="dismiss_fillter">
+                <div style="padding:20px;">
+                	<img data-src="/assets/cross_777777.svg" class="lazyload_modal_fillter" style="width:18px;height:18px;opacity:0.5;">
+                </div>
+            </a>  
+          </div>
+        <div class="a8" style="text-align:center;"> 
+        	<%= form_tag(root_path, method: :get) do %>        		
+	        	<div class="nmn04 inline_block_middle" style="padding:0 20px;">
+		        	<%= radio_button_tag(:user, "following", @following, {:id => "following"}) %>
+				    <label for="following"></label>
+		        </div>
+		        <div class="inline_block_middle font_white" style="font-size:15px;">
+		        	/
+		        </div>
+		        <div class="nmn05 inline_block_middle" style="padding:0 20px;">
+		        	<%= radio_button_tag(:user, "random", @random, {:id => "random"}) %>
+					<label for="random" class="radio"></label>
+		        </div>
+		        <div style="height:30px;"></div>
+		        <div class="nmn06 inline_block_middle">
+			        <%= radio_button_tag(:category, "all", @all, {:id => "all"}) %>
+					<label for="all">
+						すべて
+					</label>
+			  		<div style="height:20px;"></div>
+			        <%= radio_button_tag(:category, "movie", @movie, {:id => "movie"}) %>
+					<label for="movie">
+						映画
+					</label>
+			        <div style="height:20px;"></div>
+			        <%= radio_button_tag(:category, "tv", @tv, {:id => "tv"}) %>
+					<label for="tv">
+						テレビ
+					</label>
+			        <div style="height:20px;"></div>
+			        <%= radio_button_tag(:category, "book", @book, {:id => "book"}) %>
+					<label for="book">
+						ブック
+					</label>
+			        <div style="height:20px;"></div>
+			        <%= radio_button_tag(:category, "comic", @comic, {:id => "comic"}) %>
+					<label for="comic">
+						コミック
+					</label>
+			        <div style="height:20px;"></div>
+			        <%= radio_button_tag(:category, "music", @music, {:id => "music"}) %>
+					<label for="music">
+						ミュージック
+					</label>
+			    </div>
+		        <div style="height:40px;"></div>
+		        <button type="submit">
+					<div class="inline_block_middle" style="padding:15px 40px;font-size:15px;background:rgba(5,98,123,0.55);border-radius:30px;color:#FAFAFA;">
+						Apply  Fillter
+					</div>
+				</button>
+			<% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%#モーダルtubolinks不具合修正%>
+<script defer>
+  $(function(){
+    var display_fillter = $('#myModal_fillter').css('display');
+    //モーダルが表示されているのに表示判定されてなかったら
+    if(display_fillter === 'block'){
+      //モーダルを表示状態にする
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#myModal_fillter').modal('toggle');
+      //クリックでモーダルを閉じる 
+      $('#dismiss_fillter').on("click",function(){
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        $('#myModal_fillter').modal('hide'); 
+      });
+    }       
+  });
+</script>
+<%#モーダルlazyload%>
+<script defer>
+	$('#myModal_fillter').on("show.bs.modal", function () {
+    	$('img.lazyload_modal_fillter').lazyload();
+    });      
+</script>
