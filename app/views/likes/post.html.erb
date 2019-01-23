@@ -1,0 +1,165 @@
+<div class="bar_post">			
+	<div style="">
+		<div class="inline_block_middle" style="width:15%;">
+			<div style="text-align:left;padding-left:10px;">
+				<a href="javascript:void(0);" onclick="window.history.back();">
+		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+		        </a>										
+			</div>
+		</div>
+		<div class="inline_block_middle" style="width:70%;">
+			<div class="contain_title02" style="text-align:center;">
+				<div style="font-size:14px;color:#c2c2c2;">
+					いいね！一覧
+				</div>
+			</div>
+		</div>
+		<div class="inline_block_middle" style="width:15%;">
+			<div style="text-align:right;">							
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="height:45px;"></div>
+<div style="height:40px;"></div>
+<div style="padding-top:20px;">
+	<div class="card03" style="width:95%;padding:20px 20px;background:-webkit-linear-gradient(-45deg, rgba(0,0,0,0.5), rgba(5,98,123,0.1));background:linear-gradient(-45deg, rgba(0,0,0,0.5), rgba(5,98,123,0.1));">
+			<%= link_to "/works/post/#{@post.id}", :style => "width:100%;height:100%;" do %>
+				<div class="inline_block_top" style="width:75%;">
+					<div class="inline_block_top" style="width:50px;">
+						<% if @post.user.image.present? %>
+			                <img data-src="<%= @post.user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+			            <% else %>
+			                <img data-src="/assets/user.svg" class="img_user12 lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+			            <% end %>
+					</div>
+					<div class="inline_block_top" style="width:calc(100% - 60px);padding-right:10px;">
+						<div style="height:5px;"></div>
+				  		<div class="inline_block_middle font_white">
+					  		<%= @post.user.name %>
+					  		<% if @post.user.authority == "public" %>
+		                      <img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
+		                    <% end %>
+		                </div>
+		                <div class="inline_block_middle font_white_min" style="color:#999999;padding-left:10px;">
+					  		<% @seconds = (Time.now - @post.created_at).round  %>
+							<% if @seconds <= 3600 %>
+								- <%= @seconds / 60 %>分前
+							<% else %>
+								<% if @seconds <= 86400 %>
+										- <%= @seconds / (60 * 60) %>時間前
+								<% else %>
+									<% if @seconds <= 604800 %>
+										- <%= @seconds / (60 * 60 * 24) %>日前
+									<% else %>
+										- <%= @post.created_at.strftime('%m月%d日') %>
+									<% end %>
+								<% end %>
+							<% end %>
+					  	</div>		
+	                	<div style="height:3px;"></div>
+					  	<div class="font_white_min" style="color:#c4c4c4;">
+					  		<% if @post.review == "bookmark" %>
+								<img data-src="/assets/bookmark_05627B.svg" class="icon_review_min lazyload">ブックマーク
+							<% end %>
+							<% if @post.review == "good" %>
+								<% if @post.category == "movie" || @post.category == "tv" %>
+									観ました
+								<% end %>
+								<% if @post.category == "book" || @post.category == "comic" %>
+									読みました
+								<% end %>
+								<% if @post.category == "music" %>
+									聴きました
+								<% end %>
+							<% end %>
+							<% if @post.review == "favorite" %>
+								<img data-src="/assets/star_F8C55A.svg" class="icon_review_min lazyload">おすすめしています
+							<% end %>
+							<% if @post.review == "bad" %>
+								<img data-src="/assets/ban_FB473E.svg" class="icon_review_min lazyload">おすすめしていません
+							<% end %>
+					  	</div>
+				  		<div style="height:12px;"></div>
+				  		<div class="font_white_min" style="color:#c4c4c4;">
+				  			<% if @post.description.present? %>
+				  				"<%= safe_join(@post.description.split("\n"), tag(:br)) %>"
+				  				<div style="height:5px;"></div>
+				  			<% else %>
+				  				""
+				  			<% end %>
+			  			</div>
+					</div>
+				</div>
+				<div class="inline_block_top" style="width:25%;">
+					<% if @post.image_url.blank? %>
+						<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
+					<% else %>
+						<% if @post.category == "movie" || @post.category == "tv" %>
+							<% @poster_show = @post.image_url.sub(/original/, 'w500') %>
+						<% end %>
+						<% if @post.category == "book" || @post.category == "comic" %>
+							<% if @post.api == "itunes" %>
+								<% @poster_show = @post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+							<% else %>
+								<% @poster_show = @post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
+							<% end %>
+						<% end %>
+						<% if @post.category == "music" %>
+							<% @poster_show = @post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+						<% end %>
+						<img data-src="<%= @poster_show %>" class="img_myboom lazyload">
+					<% end %>
+				</div>
+		<% end %>
+	</div>
+</div>
+<div class="box_tests03" style="text-align:left;">
+	<div class="inline_block_middle" style="width:100%;">
+		<span class="font_gray_min">いいね！ <%= @likes_i %> 件</span>
+	</div>
+</div>
+<% if @likes.present? %>
+	<% @likes.each do |like| %>
+		<%= user = User.find(like.user.id) %>
+			<%= link_to "/#{user.username}/profile" do %>
+	      <div class="box_tests05">
+	        <div class="inline_block_middle" style="width:15%;padding-left:5px;">
+	            <% if user.image.present? %>
+	                <img data-src="<%= user.image(:medium) %>" class="img_user09 lazyload">
+	            <% else %>
+	                <img data-src="/assets/user.svg" class="img_user09 lazyload" style="box-shadow:none;">
+	            <% end %>
+	        </div>
+	        <div class="inline_block_middle" style="width:65%;padding-left:5px;">
+	          	<div class="font_white" style="margin-top:4px;">
+	            	<%= user.name %>
+	            	<% if user.authority == "public" %>		                		
+	            		<img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
+	            	<% end %>
+	          	</div>
+	          	<div class="font_gray_min" style="margin-top:-2px;">
+	            	<%= user.username %>
+	          	</div>
+	        </div>
+	        <div class="inline_block_middle" style="width:20%;text-align:right;padding-right:10px;">
+	        	<img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;">
+	        </div>
+	      </div>
+	    <% end %>
+	<% end %>
+<% else %>
+	<div style="height:15vh;"></div>
+	<div style="text-align:center;font-size:12px;color:#999999;">
+		いいね！はありません
+	</div>	
+<% end %>
+<div style="height:5vh;"></div>	
+
+<%#lazyload.js%>
+<script defer>
+	$(function() {
+    	$('img.lazyload').lazyload();
+	});
+</script>

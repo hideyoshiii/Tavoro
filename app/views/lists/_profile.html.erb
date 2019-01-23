@@ -1,26 +1,24 @@
-<% unless post.review == "bookmark" %>
-	<% if @list = List.find_by(user_id: current_user.id, title: "プロフィール") %>
-	    <% if @list_item = ListItem.find_by(list_id: @list.id, post_id: post.id) %>
-	    	<%= link_to "/#{post.id}/destroy_profile", method: :post, remote: true do %>
-				<div class="btn_half_item">  
-					<%= image_tag "profile_74C67A.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>
-					ホーム画像の設定を解除
-				</div>
-			<% end %>
-	    <% else %>
-	    	<%= link_to "/#{post.id}/create_profile", method: :post, remote: true do %>
-				<div class="btn_half_item">
-					<%= image_tag "profile_FAFAFA.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>	
-					ホーム画像に設定
-				</div>
-			<% end %>
-	    <% end %>
-	<% else %>
-		<%= link_to "/#{post.id}/create_profile", method: :post, remote: true do %>
-			<div class="btn_half_item">  				
+<% if @list = List.find_by(user_id: current_user.id, title: "プロフィール") %>
+    <% if @list_item = ListItem.find_by(list_id: @list.id, post_id: post.id) %>
+    	<%= link_to "/#{post.id}/destroy_profile", method: :post, remote: true do %>
+			<div class="btn_half_item">  
+				<%= image_tag "profile_74C67A.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>
+				ホーム画像の設定を解除
+			</div>
+		<% end %>
+    <% else %>
+    	<%= link_to "/#{post.id}/create_profile", method: :post, remote: true do %>
+			<div class="btn_half_item">
 				<%= image_tag "profile_FAFAFA.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>	
 				ホーム画像に設定
 			</div>
 		<% end %>
+    <% end %>
+<% else %>
+	<%= link_to "/#{post.id}/create_profile", method: :post, remote: true do %>
+		<div class="btn_half_item">  				
+			<%= image_tag "profile_FAFAFA.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>	
+			ホーム画像に設定
+		</div>
 	<% end %>
 <% end %>

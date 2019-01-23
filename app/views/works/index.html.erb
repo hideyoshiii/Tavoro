@@ -30,57 +30,61 @@
 								<div class="layer03" style="padding:20px 20px;">
 									<div class="inline_block_middle" style="width:80%;">
 										<%= link_to "/#{post.user.username}/profile" do %>
-											<div class="inline_block_middle">
+											<div class="inline_block_middle" style="width:50px;">
 												<% if post.user.image.present? %>
 									                <img src="<%= post.user.image(:medium) %>" class="swiper-lazy" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
 									            <% else %>
 									                <img src="/assets/user.svg" class="swiper-lazy" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
 									            <% end %>	
 											</div>
-											<div class="inline_block_middle" style="padding-left:10px;">
-												<div class="font_white_min" style="word-wrap:break-word;margin-top:2px;">
-													<%= post.user.name %>
-													<% if post.user.authority == "public" %>
-								                    	<img data-src="/assets/public.svg" class="swiper-lazy" style="width:14px;height:14px;">
-								                    <% end %>
+											<div class="inline_block_middle" style="width:calc(100% - 50px);">
+												<div class="contain_title02">
+													<div class="font_white_min" style="word-wrap:break-word;margin-top:2px;">
+														<%= post.user.name %>
+														<% if post.user.authority == "public" %>
+									                    	<img data-src="/assets/public.svg" class="swiper-lazy" style="width:14px;height:14px;">
+									                    <% end %>
+													</div>
 												</div>
-												<div class="font_gray_min" style="word-wrap:break-word;margin-top:2px;">
-													<% if post.category == "movie" %>
-														<img data-src="/assets/movie_777777.svg" class="icon_category swiper-lazy"> 映画
-													<% end %>
-													<% if post.category == "tv" %>
-														<img data-src="/assets/movie_777777.svg" class="icon_category swiper-lazy"> テレビ
-													<% end %>
-													<% if post.category == "book" %>
-														<img data-src="/assets/book_777777.svg" class="icon_category swiper-lazy"> ブック
-													<% end %>
-													<% if post.category == "comic" %>
-														<img data-src="/assets/book_777777.svg" class="icon_category swiper-lazy"> コミック
-													<% end %>
-													<% if post.category == "music" %>
-														<img data-src="/assets/music_777777.svg" class="icon_category swiper-lazy"> ミュージック
-													<% end %>												
-													<% @seconds = (Time.now - post.created_at).round  %>
-													<% if @seconds <= 3600 %>
-														- <%= @seconds / 60 %>分前
-													<% else %>
-														<% if @seconds <= 86400 %>
-																- <%= @seconds / (60 * 60) %>時間前
+												<div class="contain_title02">
+													<div class="font_gray_min" style="word-wrap:break-word;margin-top:2px;">
+														<% if post.category == "movie" %>
+															<img data-src="/assets/movie_777777.svg" class="icon_category swiper-lazy"> 映画
+														<% end %>
+														<% if post.category == "tv" %>
+															<img data-src="/assets/movie_777777.svg" class="icon_category swiper-lazy"> テレビ
+														<% end %>
+														<% if post.category == "book" %>
+															<img data-src="/assets/book_777777.svg" class="icon_category swiper-lazy"> ブック
+														<% end %>
+														<% if post.category == "comic" %>
+															<img data-src="/assets/book_777777.svg" class="icon_category swiper-lazy"> コミック
+														<% end %>
+														<% if post.category == "music" %>
+															<img data-src="/assets/music_777777.svg" class="icon_category swiper-lazy"> ミュージック
+														<% end %>												
+														<% @seconds = (Time.now - post.created_at).round  %>
+														<% if @seconds <= 3600 %>
+															- <%= @seconds / 60 %>分前
 														<% else %>
-															<% if @seconds <= 604800 %>
-																- <%= @seconds / (60 * 60 * 24) %>日前
+															<% if @seconds <= 86400 %>
+																	- <%= @seconds / (60 * 60) %>時間前
 															<% else %>
-																- <%= post.created_at.strftime('%m月%d日') %>
+																<% if @seconds <= 604800 %>
+																	- <%= @seconds / (60 * 60 * 24) %>日前
+																<% else %>
+																	- <%= post.created_at.strftime('%m月%d日') %>
+																<% end %>
 															<% end %>
 														<% end %>
-													<% end %>
+													</div>
 												</div>
 											</div>
 										<% end %>
 									</div>						
 									<div class="inline_block_middle" style="width:20%;text-align:right;">
 										<a href="" data-toggle="modal" data-target="#myModal_fillter">
-											<%= image_tag "sort_FAFAFA.svg", :style =>'width:22px;height:22px;opacity:0.4;' %>
+											<img data-src="/assets/sort_FAFAFA.svg" class="swiper-lazy" style="width:22px;height:22px;opacity:0.4;">
 										</a>
 									</div>
 								</div>

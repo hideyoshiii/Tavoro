@@ -62,6 +62,8 @@ class UsersController < ApplicationController
 
 
 	  def user
+      @posts = Post.where.not(review: "bookmark")
+      @rank = User.find(@posts.group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
 	  end
 
   	def ajax_user_list
@@ -131,7 +133,7 @@ class UsersController < ApplicationController
     end
 
     def notification
-      @notifications = Notification.where(user_id: current_user.id)
+      @notifications = Notification.where(user_id: current_user.id).order(created_at: "DESC")
       @notifications_yes = @notifications.where(read: true)
       @notifications_no = @notifications.where(read: false)
     end

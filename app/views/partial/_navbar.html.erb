@@ -15,18 +15,26 @@
           <%= image_tag "user.svg", :style =>'width:26px;height:26px;' %>
         <% end %>
       </div>
-      <% if Notification.where(user_id: current_user.id,read: false).size >= 1 %>
-        <div style="float:right;padding:12px 10px 0px 0px;">
-          <%= link_to notification_path do %>
-            <%= image_tag "bell_FB473E.svg", :style =>'width:22px;height:22px;' %>
-          <% end %>
-        </div>
-      <% else %>
+      <% if request.fullpath == "/notification" %>
         <div style="float:right;padding:12px 10px 0px 0px;">
           <%= link_to notification_path do %>
             <%= image_tag "bell_777777.svg", :style =>'width:22px;height:22px;' %>
           <% end %>
         </div>
+      <% else %>
+        <% if Notification.where(user_id: current_user.id,read: false).size >= 1 %>
+          <div style="float:right;padding:12px 10px 0px 0px;">
+            <%= link_to notification_path do %>
+              <%= image_tag "bell_FB473E.svg", :style =>'width:22px;height:22px;' %>
+            <% end %>
+          </div>
+        <% else %>
+          <div style="float:right;padding:12px 10px 0px 0px;">
+            <%= link_to notification_path do %>
+              <%= image_tag "bell_777777.svg", :style =>'width:22px;height:22px;' %>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
       <div style="float:right;padding:12px 10px 0px 0px;">
         <%= link_to "/users/user" do %>

@@ -1,7 +1,7 @@
 <div class="a1" style="height:100%;z-index:1000;">
 	<div class="a4">
 	  <div class="d1">
-	    <div class="d2" style="background:rgba(0,0,0,0.7);"></div>
+	    <div class="d2" style="background:rgba(0,0,0,0.75);"></div>
 	    <% if @post_list.present? %>
 	    	<% if @post_list.category == "movie" || @post_list.category == "tv" %>
 				<% @post_list_poster_show = @post_list.image_url.sub(/original/, 'w500') %>
@@ -16,9 +16,9 @@
 			<% if @post_list.category == "music" %>
 				<% @post_list_poster_show = @post_list.image_url.sub(/1000x1000bb/, '500x500bb') %>
 			<% end %>
-	        <%= image_tag @post_list_poster_show, :class =>'img_myboom' %>
+	        <%= image_tag @post_list_poster_show, :class =>'img_myboom_blur' %>
 	    <% else %>
-	        <%= image_tag "nothing05.jpg", :class =>'img_myboom' %>
+	        <%= image_tag "nothing05.jpg", :class =>'img_myboom_blur' %>
 	    <% end %>
 	  </div>
 	</div>
@@ -47,18 +47,18 @@
 		    <% end %>
 	      <% else %>
 	      	<% if @user == current_user %>
-		      	<a>
+		      	<%= link_to "/lists/setting/profile" do %>              
 			        <div style="font-size:12px;color:#2FB4B4;">
 			          	ホーム画像を設定
 			        </div>
-		        </a>
+		        <% end %>
 		    <% end %>
 	      <% end %>
 	    </div>
 	  </div>
-	  <div class="inline_block_middle" style="text-align:right;width:65%;opacity:0.5;">
+	  <div class="inline_block_middle" style="text-align:right;width:65%;opacity:0.4;">
 	  	<a href="javascript:void(0);" onclick="window.history.back();">
-        	<%= image_tag "cross_777777.svg", :style =>'width:18px;height:18px;' %>
+        	<%= image_tag "cross_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
         </a>
 	  </div>
 	</div>
@@ -89,24 +89,28 @@
 	        <% end %>
 	    </div>  
 	  </div>
-	  <div style="height:0vh;"></div>  
-	  <div style="font-size:18px;text-align:center;margin-top:10px;">
-	    <%= @user.name %>
-        <% if @user.authority == "public" %>
-          <%= image_tag "public.svg", :style =>'width:14px;height:14px;' %>
-        <% end %>
+	  <div style="height:1vh;"></div>  
+	  <div class="contain_title02">
+	  	<div style="padding:0 10%;font-size:18px;text-align:center;">
+		    <%= @user.name %>
+	        <% if @user.authority == "public" %>
+	        	<%= image_tag "public.svg", :style =>'width:14px;height:14px;' %>
+	        <% end %>
+	  	</div> 
 	  </div> 
 	  <div style="height:1vh;"></div>  
 	  <% if @user.description.present? %>
 	    <div style="height:0.5vh;"></div>
-	    <div class="font_gray_min" style="width:50%;color:#C2C2C2;display:inline-block;">
-	      <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
-	    </div>
+	    <div class="contain_title03">
+		    <div style="padding:0 25%;font-size:11px;color:#C2C2C2;text-align:center;">
+		      <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
+		    </div>
+		</div>
 	  <% else %> 
 	    <% if current_user?(@user) %>
 	      <div style="height:1vh;"></div>
 	      <%= link_to edit_user_registration_path do %>
-	        <div class="font_gray_min" style="width:50%;color:#2FB4B4;display:inline-block;">
+	        <div style="padding:0 25%;font-size:11px;color:#2FB4B4;text-align:center;">
 	          自己紹介を書く
 	        </div>
 	      <% end %>

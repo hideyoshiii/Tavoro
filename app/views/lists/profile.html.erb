@@ -1,0 +1,388 @@
+<div class="bar_post" style="height:80px;">			
+	<div style="">
+		<div class="inline_block_middle" style="width:15%;">
+			<div style="text-align:left;padding-left:10px;">
+				<a href="javascript:void(0);" onclick="window.history.back();">
+		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+		        </a>										
+			</div>
+		</div>
+		<div class="inline_block_middle" style="width:70%;">
+			<div class="contain_title02" style="text-align:center;">
+				<div style="font-size:14px;color:#c2c2c2;">
+					ホーム画像を設定
+				</div>
+			</div>
+		</div>
+		<div class="inline_block_middle" style="width:15%;">
+			<div style="text-align:right;">							
+			</div>
+		</div>
+	</div>
+	<div style="height:12px;"></div>
+	<div class="tabContainer">
+        <div class="tab_table">
+        	<div class="tab__button active">すべて</div>
+            <div class="tab__button">映画</div>
+            <div class="tab__button">テレビ</div>
+            <div class="tab__button">ブック</div>
+            <div class="tab__button">コミック</div>
+            <div class="tab__button">ミュージック</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="swiper-container" style="height:100%">
+	<div class="swiper-wrapper" style="height:100%">
+		<div class="swiper-slide" style="height:100%">
+        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+		  		<div style="height:130px;"></div>
+		  		<% if @all.blank? %>				  		
+					<div class="font_white" style="text-align:center;margin-top:30vh;">
+						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+					</div>
+			  	<% else %>
+			  		<% @all.each.with_index(1) do |post, i| %>
+			  			<%= link_to "/#{post.id}/create_profile_sync", method: :post, data: { confirm: 'この作品をホーム画像に設定しますか？' } do %>
+				  			<div class="box_tests02">
+					            <div class="inline_block_middle" style="width:20%;">
+					            	<div style="width:100%;height:16vh;overflow:hidden;">
+						              	<% if post.image_url.blank? %>
+											<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
+										<% else %>									
+											<% if post.category == "movie" %>
+												<% @image_url = post.image_url.sub(/original/, 'w300') %>
+											<% end %>
+											<% if post.category == "tv" %>
+												<% @image_url = post.image_url.sub(/original/, 'w300') %>
+											<% end %>
+											<% if post.category == "book" %>
+												<% if post.api == "itunes" %>
+													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+												<% else %>
+													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+												<% end %>
+											<% end %>
+											<% if post.category == "comic" %>
+												<% if post.api == "itunes" %>
+													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+												<% else %>
+													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+												<% end %>
+											<% end %>
+											<% if post.category == "music" %>
+												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+											<% end %>									
+											<img data-src="<%= @image_url %>" class="img_myboom lazyload_min">
+										<% end %>
+									</div>	
+					            </div>
+					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+					              	<div class="contain_title">
+						                <div class="font_white_big">
+						                	<%= post.title %>
+						                </div>
+					              	</div>
+					              	<div class="contain_title">
+						                <div class="font_gray_min">
+						                  	<% if post.category == "movie" %>
+												<img data-src="/assets/movie_777777.svg" class="icon_category_min lazyload_min"> 映画
+											<% end %>
+											<% if post.category == "tv" %>
+												<img data-src="/assets/movie_777777.svg" class="icon_category_min lazyload_min"> テレビ
+											<% end %>
+											<% if post.category == "book" %>
+												<img data-src="/assets/book_777777.svg" class="icon_category_min lazyload_min"> ブック
+											<% end %>
+											<% if post.category == "comic" %>
+												<img data-src="/assets/book_777777.svg" class="icon_category_min lazyload_min"> コミック
+											<% end %>
+											<% if post.category == "music" %>
+												<img data-src="/assets/music_777777.svg" class="icon_category_min lazyload_min"> ミュージック
+											<% end %>
+											<% if post.category == "link" %>
+												<img data-src="/assets/link_777777.svg" class="icon_category_min lazyload_min"> リンク
+											<% end %>
+						                </div>
+					              	</div>
+					            </div>
+					            <div class="inline_block_middle" style="width:5%;">
+					            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload_min" style="width:15px;height:15px;"> 
+					            </div>
+					        </div>
+					    <% end %>
+			  		<% end %>
+			  	<% end %>
+		  	</div>
+		</div>
+		<div class="swiper-slide" style="height:100%">
+        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+		  		<div style="height:130px;"></div>
+		  		<% if @movie.blank? %>				  		
+					<div class="font_white" style="text-align:center;margin-top:30vh;">
+						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+					</div>
+			  	<% else %>
+			  		<% @movie.each.with_index(1) do |post, i| %>
+			  			<%= link_to "/#{post.id}/create_profile_sync", method: :post, data: { confirm: 'この作品をホーム画像に設定しますか？' } do %>
+				  			<div class="box_tests02">
+					            <div class="inline_block_middle" style="width:20%;">
+					            	<div style="width:100%;height:16vh;overflow:hidden;">
+						              	<% if post.image_url.blank? %>
+											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+										<% else %>									
+											<% @image_url = post.image_url.sub(/original/, 'w300') %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+										<% end %>
+									</div>	
+					            </div>
+					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+					              	<div class="contain_title">
+						                <div class="font_white_big">
+						                	<%= post.title %>
+						                </div>
+					              	</div>
+					              	<div class="contain_title">
+						                <div class="font_gray_min">
+											<%= image_tag "movie_777777.svg", :class =>'icon_category_min' %> 映画
+						                </div>
+					              	</div>
+					            </div>
+					            <div class="inline_block_middle" style="width:5%;">
+					            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+					            </div>
+					        </div>
+					    <% end %>
+			  		<% end %>
+			  	<% end %>
+		  	</div>
+		</div>
+		<div class="swiper-slide" style="height:100%">
+        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+		  		<div style="height:130px;"></div>
+		  		<% if @tv.blank? %>				  		
+					<div class="font_white" style="text-align:center;margin-top:30vh;">
+						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+					</div>
+			  	<% else %>
+			  		<% @tv.each.with_index(1) do |post, i| %>
+			  			<%= link_to "/#{post.id}/create_profile_sync", method: :post, data: { confirm: 'この作品をホーム画像に設定しますか？' } do %>
+				  			<div class="box_tests02">
+					            <div class="inline_block_middle" style="width:20%;">
+					            	<div style="width:100%;height:16vh;overflow:hidden;">
+						              	<% if post.image_url.blank? %>
+											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+										<% else %>									
+											<% @image_url = post.image_url.sub(/original/, 'w300') %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+										<% end %>
+									</div>
+					            </div>
+					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+					              	<div class="contain_title">
+						                <div class="font_white_big">
+						                	<%= post.title %>
+						                </div>
+					              	</div>
+					              	<div class="contain_title">
+						                <div class="font_gray_min">
+											<%= image_tag "movie_777777.svg", :class =>'icon_category_min' %> テレビ
+						                </div>
+					              	</div>
+					            </div>
+					            <div class="inline_block_middle" style="width:5%;">
+					            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+					            </div>
+					        </div>
+					    <% end %>
+			  		<% end %>
+			  	<% end %>
+		  	</div>
+		</div>
+		<div class="swiper-slide" style="height:100%">
+        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+		  		<div style="height:130px;"></div>
+		  		<% if @book.blank? %>				  		
+					<div class="font_white" style="text-align:center;margin-top:30vh;">
+						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+					</div>
+			  	<% else %>
+			  		<% @book.each.with_index(1) do |post, i| %>
+			  			<%= link_to "/#{post.id}/create_profile_sync", method: :post, data: { confirm: 'この作品をホーム画像に設定しますか？' } do %>
+				  			<div class="box_tests02">
+					            <div class="inline_block_middle" style="width:20%;">
+					            	<div style="width:100%;height:16vh;overflow:hidden;">
+						              	<% if post.image_url.blank? %>
+											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+										<% else %>									
+											<% if post.api == "itunes" %>
+												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+											<% else %>
+												<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+											<% end %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+										<% end %>
+									</div>
+					            </div>
+					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+					              	<div class="contain_title">
+						                <div class="font_white_big">
+						                	<%= post.title %>
+						                </div>
+					              	</div>
+					              	<div class="contain_title">
+						                <div class="font_gray_min">
+											<%= image_tag "book_777777.svg", :class =>'icon_category_min' %> ブック
+						                </div>
+					              	</div>
+					            </div>
+					            <div class="inline_block_middle" style="width:5%;">
+					            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+					            </div>
+					        </div>
+					    <% end %>
+			  		<% end %>
+			  	<% end %>
+		  	</div>
+		</div>
+		<div class="swiper-slide" style="height:100%">
+        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+		  		<div style="height:130px;"></div>
+		  		<% if @comic.blank? %>				  		
+					<div class="font_white" style="text-align:center;margin-top:30vh;">
+						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+					</div>
+			  	<% else %>
+			  		<% @comic.each.with_index(1) do |post, i| %>
+			  			<%= link_to "/#{post.id}/create_profile_sync", method: :post, data: { confirm: 'この作品をホーム画像に設定しますか？' } do %>
+				  			<div class="box_tests02">
+					            <div class="inline_block_middle" style="width:20%;">
+					            	<div style="width:100%;height:16vh;overflow:hidden;">
+						              	<% if post.image_url.blank? %>
+											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+										<% else %>									
+											<% if post.api == "itunes" %>
+												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+											<% else %>
+												<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+											<% end %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+										<% end %>
+									</div>
+					            </div>
+					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+					              	<div class="contain_title">
+						                <div class="font_white_big">
+						                	<%= post.title %>
+						                </div>
+					              	</div>
+					              	<div class="contain_title">
+						                <div class="font_gray_min">
+											<%= image_tag "book_777777.svg", :class =>'icon_category_min' %> コミック
+						                </div>
+					              	</div>
+					            </div>
+					            <div class="inline_block_middle" style="width:5%;">
+					            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+					            </div>
+					        </div>
+					    <% end %>
+			  		<% end %>
+			  	<% end %>
+		  	</div>
+		</div>
+		<div class="swiper-slide" style="height:100%">
+        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+		  		<div style="height:130px;"></div>
+		  		<% if @music.blank? %>				  		
+					<div class="font_white" style="text-align:center;margin-top:30vh;">
+						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+			  	<% else %>
+			  		<% @music.each.with_index(1) do |post, i| %>
+			  			<%= link_to "/#{post.id}/create_profile_sync", method: :post, data: { confirm: 'この作品をホーム画像に設定しますか？' } do %>
+				  			<div class="box_tests02">
+					            <div class="inline_block_middle" style="width:20%;">
+					            	<div style="width:100%;height:16vh;overflow:hidden;">
+						              	<% if post.image_url.blank? %>
+											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+										<% else %>									
+											<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+										<% end %>
+									</div>
+					            </div>
+					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+					              	<div class="contain_title">
+						                <div class="font_white_big">
+						                	<%= post.title %>
+						                </div>
+					              	</div>
+					              	<div class="contain_title">
+						                <div class="font_gray_min">
+											<%= image_tag "music_777777.svg", :class =>'icon_category_min' %> ミュージック
+						                </div>
+					              	</div>
+					            </div>
+					            <div class="inline_block_middle" style="width:5%;">
+					            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+					            </div>
+					        </div>
+					    <% end %>
+			  		<% end %>
+			  	<% end %>
+		  	</div>
+		</div>
+	</div>
+</div>
+
+<%#タブ切り替え%>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+<script defer>
+	$(function(){
+	    //タブボタンの数を取得
+	    var tabQuantity = $('.tab__button').length;
+	    //タブの長さとボディの長さの差分を取得
+	    var tabExtraDistance = $('.tab_table').width();
+	    //スライダー発動
+	    var swiper = new Swiper('.swiper-container', {
+				speed: 600,
+				touchAngle: 55,
+				preloadImages: false,
+				lazy: {
+					loadOnTransitionStart: true,
+					loadPrevNext: false,
+				},
+			  	on: {
+				    slideChange: function () {
+				      var newIndex = swiper.realIndex;
+	            	  slideChange(newIndex);
+				    },
+				  },
+			});
+	    //スライドする時に発動する関数。タブの表示調整を行う
+	    function slideChange(newIndex){
+	        //クラスを調整
+	        $('.tab__button').removeClass('active');
+	        $('.tab_table > div:nth-child(' + ( newIndex + 1 ) + ')').addClass('active');
+	        //スクロールするべき距離を取得。タブ全体の長さ / ( タブの個数 - 1 ) * スライドの現在地
+	        var scrollDestination = ( tabExtraDistance / (tabQuantity - 1) ) * ( newIndex );
+	        //スクロール位置を調整
+	        $('.tabContainer').animate({ scrollLeft: scrollDestination }, 'slow');
+	    }
+	    //タブボタンクリックで発動する関数
+	    $('.tab__button').on('click',function(e){
+	        //何番目の要素かを取ってスライドを移動する
+	        var nth = $('.tab__button').index(this);
+	        swiper.slideTo(nth, 500, false);
+	        //クリックイベントを無効化
+	        e.preventDefault();
+	    })
+	});
+</script>
+<%#lazyload.js%>
+<script defer>
+	$(function() {
+    	$('img.lazyload_min').lazyload();
+	});
+</script>

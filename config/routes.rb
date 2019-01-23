@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   post "works/:id/create_bookmark" => "works#create_bookmark"
   post "works/:id/destroy_bookmark" => "works#destroy_bookmark"
 
+  get "likes/post/:post_id" => "likes#post"
   post "likes/:post_id/create" => "likes#create"
   post "likes/:post_id/destroy" => "likes#destroy"
 
@@ -69,6 +70,8 @@ Rails.application.routes.draw do
   get 'invitation/:id' => "invitations#invitation"
   get 'invite' => "invitations#invite"
 
+  get 'lists/setting/profile' => "lists#profile"
+  post ":id/create_profile_sync" => "lists#create_profile_sync"
   post ":id/create_profile" => "lists#create_profile"
   post ":id/destroy_profile" => "lists#destroy_profile"
   post ":id/create_favorite" => "lists#create_favorite"

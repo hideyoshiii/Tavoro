@@ -690,17 +690,17 @@ body:after{
 .nmn input {
   width:100%;
   padding:3px 5px 3px 5px;
-  font-size:13px;
+  font-size:12px;
 }
 .nmn input,
 textarea {
   outline: none;
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.2);
   -webkit-transition: all .3s;
   transition: all .3s;
   border-radius: 5px;
-  color:white;
-  background:rgba(50,50,50,0.5);
+  color:#FAFAFA;
+  background:rgba(50,50,50,0.2);
 }
 .nmn input:focus,
 textarea:focus {
