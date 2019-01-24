@@ -8,9 +8,8 @@ class WorksController < ApplicationController
     @post = Post.find(params[:id].to_i)
   end
 
-  def index
-    #ログインしている時
-    if user_signed_in?
+  def index  
+    if user_signed_in? 
       @user  = User.find(current_user.id)
       @users = @user.followings
       @posts = Post.where.not(review: "bookmark")
@@ -37,67 +36,47 @@ class WorksController < ApplicationController
         @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users)).order(created_at: "DESC")
       end
       @posts = @posts.take(25)
-    #ログインしていない時
-    else
-      @posts = Post.where.not(review: "bookmark")
-      #categoryのfillter
-      if params[:category].present?
-        @fillter_category = params[:category]
-        unless @fillter_category == "all"
-          @posts = @posts.where(category: @fillter_category)
+      #labelの真偽
+      @following = false
+      @random = false
+      @all = false
+      @movie = false
+      @tv = false
+      @book = false
+      @comic = false
+      @music = false
+      if params[:user].present?
+        if params[:user] == "following"
+          @following = true
         end
-      end
-      #userのfillter(ランダムのみ)
-      @users_test = User.where(authority: "test")
-      @posts = @posts.where.not(user_id: @users_test)
-      @posts = @posts.order("RANDOM()")
-      @posts = @posts.take(25)
-    end
-
-    #labelの真偽
-    @following = false
-    @random = false
-    @all = false
-    @movie = false
-    @tv = false
-    @book = false
-    @comic = false
-    @music = false
-    if params[:user].present?
-      if params[:user] == "following"
-        @following = true
-      end
-      if params[:user] == "random"
-        @random = true
-      end
-    else
-      if user_signed_in?
-        @following = true
+        if params[:user] == "random"
+          @random = true
+        end
       else
-        @random = true
+        @following = true
       end
-    end
-    if params[:category].present?
-      if params[:category] == "all"
+      if params[:category].present?
+        if params[:category] == "all"
+          @all = true
+        end
+        if params[:category] == "movie"
+          @movie = true
+        end
+        if params[:category] == "tv"
+          @tv = true
+        end
+        if params[:category] == "book"
+          @book = true
+        end
+        if params[:category] == "comic"
+          @comic = true
+        end
+        if params[:category] == "music"
+          @music = true
+        end
+      else
         @all = true
       end
-      if params[:category] == "movie"
-        @movie = true
-      end
-      if params[:category] == "tv"
-        @tv = true
-      end
-      if params[:category] == "book"
-        @book = true
-      end
-      if params[:category] == "comic"
-        @comic = true
-      end
-      if params[:category] == "music"
-        @music = true
-      end
-    else
-      @all = true
     end
   end
 

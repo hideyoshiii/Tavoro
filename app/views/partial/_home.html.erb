@@ -9,13 +9,13 @@
 		          </div>
 		        </div>
 		        <div class="a8" style="text-align:center;">
-	              <%= image_tag "tavore_logo_01.png", :style =>'width:120px;height:120px;' %>
-	              <div style="font-size:22px;margin-top:-1vh;">
+	              <%= image_tag "tavore_logo_01.png", :style =>'width:100px;height:100px;' %>
+	              <div style="font-size:20px;margin-top:-1vh;">
 	                TAVORE
 	              </div>
 	              <div style="height:3vh;"></div>
 	              <div style="font-size:14px;">
-	               &nbsp;シンプルなコレクションSNS
+	               &nbsp;映画､本､音楽､すべてこの場所に
 	              </div>
 	              <div style="height:21vh;"></div>
 		        </div>
@@ -30,9 +30,10 @@
 		        </div>
 		        <div class="a5" style="text-align:center;">
 		        	<div style="height:8%;"></div>
-	              	<div  style="font-size:17px;margin-bottom:5%;">
-	                  あなたが感じた｢作品｣を記録
+	              	<div  style="font-size:17px;">
+	                  あなたが出会った｢作品｣を記録
 	                </div>
+	                <div style="height:5%;"></div>
 	                <%= image_tag "use01.png", :style =>'width:auto;height:60%;' %>
 		        </div>   
 			</div>
@@ -46,9 +47,10 @@
 		        </div>
 		        <div class="a5" style="text-align:center;">
 		        	<div style="height:8%;"></div>
-	              	<div  style="font-size:17px;margin-bottom:5%;">
+	              	<div  style="font-size:17px;">
 	                  その時､感じたことを残そう
 	                </div>
+	                <div style="height:5%;"></div>
 	                <%= image_tag "use02.png", :style =>'width:auto;height:60%;' %>
 		        </div>
 			</div>
@@ -62,9 +64,10 @@
 		        </div>
 		        <div class="a5" style="text-align:center;">
 		        	<div style="height:8%;"></div>
-	              	<div  style="font-size:17px;margin-bottom:5%;">
+	              	<div  style="font-size:17px;">
 	                  記録した作品を友達と共有
 	                </div>
+	                <div style="height:5%;"></div>
 	                <%= image_tag "use03.png", :style =>'width:auto;height:60%;' %>
 		        </div>
 			</div>
@@ -78,9 +81,10 @@
 		        </div>
 		        <div class="a5" style="text-align:center;">
 		        	<div style="height:8%;"></div>
-	              	<div  style="font-size:17px;margin-bottom:5%;">
-	                  映画､本､音楽などの作品が１つの場所に
+	              	<div  style="font-size:17px;">
+	                  映画､本､音楽が１つの場所に
 	                </div>
+	                <div style="height:5%;"></div>
 	                <%= image_tag "use04.png", :style =>'width:auto;height:60%;' %>
 		        </div>   
 			</div>
@@ -111,88 +115,127 @@
 
 <%#サインインモーダル%>
 <div class="modal bottom fade" id="myModal_sign_in">
-    <div class="modal-dialog">
-      <div class="a1">
-        <div class="a4">
-          <div class="d1">
-            <div class="d2"></div>
-          </div>
-        </div>
-        <div class="a7">
-            <a href="" data-toggle="modal" data-dismiss="modal">
-              <div style="padding:20px;">
-                <%= image_tag "cross_777777.svg", :style =>'width:18px;height:18px;opacity:0.5;' %>
-              </div>
-            </a>  
-        </div>
-        <div class="a8" style="text-align:center;"> 
-        	<div style="height:7vh;"></div>           
-			<div class="font_white_big">
-				Sign in
-			</div>
-			<div class="gogo">
-				<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-				  <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
-				  <%= f.password_field :password,placeholder: "password", required: "" %>
-				  <div style="height:3vh;"></div>
-      			  <%= f.submit "完了",class:"btn_session" %>
-				<% end %>
-				<div style="height:7vh;"></div>
-			</div>	
-			<div>
-				<%= link_to new_user_password_path do %>
-					<div class="font_gray_min">
-						パスワードを忘れたら
-					</div>
-				<% end %>
-			</div>
+  <div class="modal-dialog">
+    <div class="a1">
+      <div class="a4">
+        <div class="d1">
+          <div class="d2"></div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-<%#サインアップモーダル%>
-<div class="modal bottom fade" id="myModal_sign_up">
-    <div class="modal-dialog">
-      <div class="a1">
-        <div class="a4">
-          <div class="d1">
-            <div class="d2"></div>
-          </div>
-        </div>
-        <div class="a7">
-            <a href="" data-toggle="modal" data-dismiss="modal">
-              <div style="padding:20px;">
-                <%= image_tag "cross_777777.svg", :style =>'width:18px;height:18px;opacity:0.5;' %>
-              </div>
-            </a>  
-        </div>
-        <div class="a8" style="text-align:center;">  
-        	<%= image_tag "tavore_logo_01.png", :style =>'width:80px;height:80px;' %>
-            <div style="font-size:18px;">
-              TAVORE
+      <div class="a7">
+          <a href="" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_in">
+            <div style="padding:20px;">
+              <%= image_tag "cross_777777.svg", :style =>'width:18px;height:18px;opacity:0.5;' %>
             </div>
-        	<div style="height:5vh;"></div> 
-        	<div style="padding:0 10%;">	
-				<div class="font_white">
-					TAVOREは完全招待制です
-					<br>すでに利用しているユーザーから招待してもらうか
-					<br>以下から運営に招待をリクエストしてください
-				</div>
-				<div style="height:6vh;"></div> 
-				<a href="https://goo.gl/forms/x45IVgn1CsACk00L2" target="blank">
-			        <div class="btn_invite">
-						招待をリクエスト
-					</div>
-		        </a>
-		        <div style="height:7vh;"></div> 
-			</div>	
+          </a>  
+      </div>
+      <div class="a8" style="text-align:center;"> 
+        <div class="font_white_big">
+          Sign in
+        </div>
+        <div class="gogo">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
+            <%= f.password_field :password,placeholder: "password", required: "" %>
+            <div style="height:3vh;"></div>
+            <%= f.submit "完了",class:"btn_session" %>
+          <% end %>
+        </div>  
+        <div style="height:4vh;"></div>
+        <div class="inline_block_middle">
+          <%= link_to new_user_password_path do %>
+            <div class="font_gray_min">
+              パスワードを忘れたら
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+<%#モーダルtubolinks不具合修正(サインインモーダル)%>
+<script defer>
+$(function(){
+  var display_post = $('#myModal_sign_in').css('display');
+  //モーダルが表示されているのに表示判定されてなかったら
+  if(display_post === 'block'){
+    //モーダルを表示状態にする
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    $('#myModal_sign_in').modal('toggle');
+    //クリックでモーダルを閉じる 
+    $('#dismiss_sign_in').on("click",function(){
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#myModal_sign_in').modal('hide'); 
+    });
+  }       
+});
+</script>
+<%#サインアップモーダル%>
+<div class="modal  bottom fade" id="myModal_sign_up">
+  <div class="modal-dialog">
+    <div class="a1">
+      <div class="a4">
+        <div class="d1">
+          <div class="d2"></div>
+        </div>
+      </div>
+      <div class="a7">
+          <a href="" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_up">
+            <div style="padding:20px;">
+              <%= image_tag "cross_777777.svg", :style =>'width:18px;height:18px;opacity:0.5;' %>
+            </div>
+          </a>  
+      </div>
+      <div class="a8" style="text-align:center;">  
+	    <div class="font_white_big">
+	      Sign up
+	    </div>
+	    <div class="gogo">
+	      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+	        <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
+	        <%= f.email_field :email,placeholder: "email", required: "" %>
+	        <%= f.password_field :password,placeholder: "password", required: "" %>
+	        <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
+	        <div style="height:2vh;"></div>
+	        <%= f.submit "完了",class:"btn_session" %>
+	      <% end %>
+	    </div>
+	    <div style="height:2vh;"></div>
+	    <div class="font_gray_min" style="padding:0 14%;text-align:left;">
+	      アカウントを作成することで,TAVOREの
+	      <%= link_to terms_path do %>
+	        利用規約
+	      <% end %>
+	      と
+	      <%= link_to policy_path do %>
+	        プライバシーポリシー
+	      <% end %>
+	      に同意されたものとします。
+	    </div>      
+	  </div>
+  </div>
+</div>
+<%#モーダルtubolinks不具合修正(サインインモーダル)%>
+<script defer>
+$(function(){
+  var display_post = $('#myModal_sign_up').css('display');
+  //モーダルが表示されているのに表示判定されてなかったら
+  if(display_post === 'block'){
+    //モーダルを表示状態にする
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    $('#myModal_sign_up').modal('toggle');
+    //クリックでモーダルを閉じる 
+    $('#dismiss_sign_up').on("click",function(){
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#myModal_sign_up').modal('hide'); 
+    });
+  }       
+});
+</script>
 <%#swiper.js%>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script defer>

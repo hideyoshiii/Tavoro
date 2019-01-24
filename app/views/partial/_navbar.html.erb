@@ -42,17 +42,9 @@
         <% end %>
       </div>
     <% else %>
-      <div style="float:right;padding:18px 5px 0px 0px;font-size:11px;">
-        <a href="" data-toggle="modal" data-target="#myModal_sign_in" style="color:rgba(5,98,123,1);">
-          ログイン
-        </a>
-      </div>
-      <div style="float:right;padding:18px 5px 0px 0px;font-size:11px;color:rgba(5,98,123,1);">
-        /
-      </div>
-      <div style="float:right;padding:18px 5px 0px 0px;font-size:11px;">
+      <div style="float:right;padding:18px 10px 0px 0px;font-size:11px;">
         <a href="" data-toggle="modal" data-target="#myModal_what" style="color:rgba(5,98,123,1);">
-          TAVOREとは
+          What's TAVORE
         </a>
       </div>
     <% end %>
@@ -86,7 +78,7 @@
                   What's Tavore
                 </div> 
                 <div style="height:1vh;"></div> 
-                <div style="font-size:14px;">
+                <div style="font-size:13px;">
                   TAVOREは映画や本,音楽などの作品を
                   <br>気軽に記録できる場所です
                 </div>    
@@ -95,7 +87,7 @@
                   App
                 </div> 
                 <div style="height:1vh;"></div>
-                <div style="font-size:14px;">
+                <div style="font-size:13px;">
                   ホーム画面に追加することで
                   <br>アプリと同じ操作性で使用することができます
                 </div>
@@ -133,13 +125,13 @@
                 </div> 
                 <div style="height:1vh;"></div>   
                 <%= link_to terms_path do %>
-                  <div style="font-size:14px;color:rgba(5,98,123,0.8);padding-left:2px;">
+                  <div style="font-size:13px;color:rgba(5,98,123,0.8);padding-left:2px;">
                     利用規約
                   </div>  
                 <% end %>
                 <div style="height:1vh;"></div>   
                 <%= link_to policy_path do %>
-                  <div style="font-size:14px;color:rgba(5,98,123,0.8);padding-left:2px;">
+                  <div style="font-size:13px;color:rgba(5,98,123,0.8);padding-left:2px;">
                     プライバシーポリシー
                   </div>
                 <% end %>
@@ -151,58 +143,7 @@
       </div>
     </div>
   </div>
-  <%#サインインモーダル%>
-  <div class="modal top fade" id="myModal_sign_in">
-      <div class="modal-dialog">
-        <div class="a1">
-          <div class="a4">
-            <div class="d1">
-              <div class="d2"></div>
-            </div>
-          </div>
-          <div class="a7">
-              <a href="" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_in">
-                <div style="padding:20px;">
-                  <%= image_tag "cross_777777.svg", :style =>'width:18px;height:18px;opacity:0.5;' %>
-                </div>
-              </a>  
-          </div>
-          <div class="a8" style="text-align:center;"> 
-            <div class="font_white_big">
-              Sign in
-            </div>
-            <div class="gogo">
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
-                <%= f.password_field :password,placeholder: "password", required: "" %>
-                <div style="height:3vh;"></div>
-                <%= f.submit "完了",class:"btn_session" %>
-              <% end %>
-            </div>  
-            <div style="height:4vh;"></div>
-            <div class="inline_block_middle">
-              <%= link_to new_user_password_path do %>
-                <div class="font_gray_min">
-                  パスワードを忘れたら
-                </div>
-              <% end %>
-            </div>
-            <div class="inline_block_middle font_gray_min" style="padding:0 10px;">
-              /
-            </div>
-            <div class="inline_block_middle">
-              <%= link_to new_user_registration_path do %>
-                <div class="font_gray_min">
-                  アカウント登録
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <%#モーダルtubolinks不具合修正(Waht'sTavoreモーダル)%>
+  <%#モーダルtubolinks不具合修正%>
   <script defer>
     $(function(){
       var display_post = $('#myModal_what').css('display');
@@ -217,25 +158,6 @@
           $('body').removeClass('modal-open');
           $('.modal-backdrop').remove();
           $('#myModal_what').modal('hide'); 
-        });
-      }       
-    });
-  </script>
-  <%#モーダルtubolinks不具合修正(サインインモーダル)%>
-  <script defer>
-    $(function(){
-      var display_post = $('#myModal_sign_in').css('display');
-      //モーダルが表示されているのに表示判定されてなかったら
-      if(display_post === 'block'){
-        //モーダルを表示状態にする
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
-        $('#myModal_sign_in').modal('toggle');
-        //クリックでモーダルを閉じる 
-        $('#dismiss_sign_in').on("click",function(){
-          $('body').removeClass('modal-open');
-          $('.modal-backdrop').remove();
-          $('#myModal_sign_in').modal('hide'); 
         });
       }       
     });
