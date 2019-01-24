@@ -23,7 +23,7 @@
 
 
 <div style="height:45px;"></div>
-<div style="height:40px;"></div>
+<div style="height:35px;"></div>
 <% if @notifications.present? %>
 	<% @notifications_no.each do |item| %>
 		<% if User.find_by(id: item.notified_by) %>
