@@ -42,17 +42,17 @@
         <% end %>
       </div>
     <% else %>
-      <div style="float:right;padding:17px 10px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
-        <a href="" data-toggle="modal" data-target="#myModal_what">
-          What'sTavore
+      <div style="float:right;padding:18px 5px 0px 0px;font-size:11px;">
+        <a href="" data-toggle="modal" data-target="#myModal_sign_in" style="color:rgba(5,98,123,1);">
+          ログイン
         </a>
       </div>
-      <div style="float:right;padding:17px 5px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
+      <div style="float:right;padding:18px 5px 0px 0px;font-size:11px;color:rgba(5,98,123,1);">
         /
       </div>
-      <div style="float:right;padding:17px 5px 0px 0px;font-size:12px;color:rgba(39,134,160,0.8);">
-        <a href="" data-toggle="modal" data-target="#myModal_app">
-          App 
+      <div style="float:right;padding:18px 5px 0px 0px;font-size:11px;">
+        <a href="" data-toggle="modal" data-target="#myModal_what" style="color:rgba(5,98,123,1);">
+          TAVOREとは
         </a>
       </div>
     <% end %>
@@ -61,7 +61,7 @@
 
 
 <% unless user_signed_in? %>
-  <%#Waht'sTavore%>
+  <%#Waht'sTavoreモーダル%>
   <div class="modal top fade" id="myModal_what">
       <div class="modal-dialog">
         <div class="a1">
@@ -71,7 +71,7 @@
             </div>
           </div>
           <div class="a7">
-              <a data-toggle="modal" data-dismiss="modal">
+              <a data-toggle="modal" data-dismiss="modal" id="dismiss_what">
                 <div style="padding:20px;">
                   <img data-src="/assets/cross_777777.svg" class="lazyload_modal_what" style="width:18px;height:18px;opacity:0.5;">
                 </div>
@@ -80,113 +80,79 @@
           <div class="a6" style="text-align:center;">
             <div style="position:relative;width:0;height:0;z-index:1;"></div>
             <div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;"> 
-              <div style="width:80%;margin:0 auto;padding:0;text-align:left;">
-                <div style="height:7vh;"></div>
-                <div style="font-size:18px;color:#2FB4B4;">
-                  TAVORE
+              <div style="width:82%;margin:0 auto;padding:0;text-align:left;"> 
+                <div style="height:8vh;"></div>
+                <div style="font-size:16px;color:#2FB4B4;">
+                  What's Tavore
+                </div> 
+                <div style="height:1vh;"></div> 
+                <div style="font-size:14px;">
+                  TAVOREは映画や本,音楽などの作品を
+                  <br>気軽に記録できる場所です
+                </div>    
+                <div style="height:4vh;"></div>   
+                <div style="font-size:16px;color:#2FB4B4;">
+                  App
+                </div> 
+                <div style="height:1vh;"></div>
+                <div style="font-size:14px;">
+                  ホーム画面に追加することで
+                  <br>アプリと同じ操作性で使用することができます
                 </div>
-                <div style="height:3vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  僕の隣にはいつも音楽があった
+                <div style="height:2vh;"></div> 
+                <div class="inline_block_middle" style="width:100%;margin-left:-10px;">
+                  <div class="inline_block_middle" style="width:32%;text-align:center;">
+                    <img data-src="/assets/pwa01.png" class="lazyload_modal_what" style ="width:100%;height:auto;">
+                  </div>
+                  <div class="inline_block_middle" style="width:10%;text-align:center;">
+                    <img data-src="/assets/right_C2C2C2.svg" class="lazyload_modal_what" style="width:15px;height:15px;">
+                  </div>
+                  <div class="inline_block_middle" style="width:32%;text-align:center;">
+                    <img data-src="/assets/pwa02.png" class="lazyload_modal_what" style ="width:100%;height:auto;">
+                  </div>
                 </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  別に音楽にすごく詳しかったわけではないし
-                  <br>誰かのファンで毎回ライブに通ってたってわけでもない    
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  でも気づけばどんな時だって音楽を聴いてきた
-                  <br>失恋して１人で悲しんだ夜や、友達の影響でハマったロックとか、アジアを旅してる時なんかもね
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  僕の人生と音楽は1セット...
-                  とまではいかないけれど少なくとも特別な思いがある曲があったりするんだ
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  それに、多くはないけれど本や映画にも出会った
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  何百冊と読んできたわけじゃないけど、好きな本はあるんだ、もちろん映画もね
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  小さい頃『ホームアローン』に憧れて家中にトラップを仕掛けた事もある
-                  <br>もちろん怒られたさ、そりゃもうこっぴどく
-                  <br>でも後悔はしてない、楽しかったし、やりたかったから
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  今思うと、
-                  <br>本や映画、そして音楽なんて、別に無くても良かったのかもしれない
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  別にそれがないと生きてなかったってものはない
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  でも今の自分を作り上げてるのはそんな作品たちだ
-                  <br>大事な事を思い出させてくれる本があるし、エモい気持ちにさせてくれる曲がある
-                  <br>映画のあのワンシーンが自分の軸になってたりする
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  たぶん僕達はそんな作品達を忘れたくない
-                  <br>ずっと自分の中に、大切に持っておきたい
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  だから読書ノートをつくったり、観た映画をメモしたりしようとする
-                  <br>でもそういうのって続かないし、めんどくさいよね
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  そんな僕みたいな人でも自然に、
-                  <br>息をするように記録ができるのがTAVORE
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  投稿が共有されるのは気の許せる友達だけだから、
-                  <br>別にいかにも通そうなコメントなんてしなくていい
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  <br>自分がその作品と接したときに湧いた感情をそのまま残せばいいし、
-                  <br>別にコメントなんて残さなくてもいい
-                </div>
-                <div style="height:5vh;"></div>
-                <div class="font_white" style="color:#F3F3F3;">
-                  友達と語りあったり、アルバムのように見返してみたりすると、その作品がより一層好きになるかもしれないね
-                </div>
-                <div style="height:10vh;"></div>
-              </div>   
-              <a href="https://twitter.com/tavore_info" target="blank"> 
-                <img data-src="/assets/tavore_logo_02.png" class="lazyload_modal_what" style ="width:80px;height:80px;border-radius:50%;border: solid 1px #111111;">       
-                <div style="font-size:15px;color:#F3F3F3;margin-top:2vh;">
-                  <img data-src="/assets/twitter.svg" class="icon_review lazyload_modal_what">@tavore_info
-                </div>  
-              </a>    
-              <div class="font_gray_min" style="margin-top:4vh;">
-                Twitterアカウントをお持ちでない方はこちらまで
-              </div>
-              <a href="mailto:tavore.info&#64;gmail.com">
-                <div style="font-size:14px;margin-top:1vh;">
-                  tavore.info@gmail.com
-                </div>
-              </a>
-              <div style="height:15vh;"></div>
+                <div style="height:4vh;"></div>  
+                <div style="font-size:16px;color:#2FB4B4;">
+                  Contact
+                </div> 
+                <div style="height:1vh;"></div>   
+                <a href="https://twitter.com/tavore_info" target="blank"> 
+                  <div style="font-size:14px;color:#FAFAFA;padding-left:2px;">
+                    twitter : <span style="color:rgba(5,98,123,0.8)">@tavore_info</span>
+                  </div>  
+                </a>   
+                <div style="height:1vh;"></div>   
+                <a href="mailto:tavore.info&#64;gmail.com">
+                  <div style="font-size:14px;color:#FAFAFA;padding-left:2px;">
+                    email :  <span style="color:rgba(5,98,123,0.8)">tavore.info@gmail.com</span>
+                  </div>
+                </a>
+                <div style="height:4vh;"></div>  
+                <div style="font-size:16px;color:#2FB4B4;">
+                  Other
+                </div> 
+                <div style="height:1vh;"></div>   
+                <%= link_to terms_path do %>
+                  <div style="font-size:14px;color:rgba(5,98,123,0.8);padding-left:2px;">
+                    利用規約
+                  </div>  
+                <% end %>
+                <div style="height:1vh;"></div>   
+                <%= link_to policy_path do %>
+                  <div style="font-size:14px;color:rgba(5,98,123,0.8);padding-left:2px;">
+                    プライバシーポリシー
+                  </div>
+                <% end %>
+              </div>    
+              <div style="height:3vh;"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <%#App%>
-  <div class="modal top fade" id="myModal_app">
+  <%#サインインモーダル%>
+  <div class="modal top fade" id="myModal_sign_in">
       <div class="modal-dialog">
         <div class="a1">
           <div class="a4">
@@ -195,51 +161,88 @@
             </div>
           </div>
           <div class="a7">
-              <a data-toggle="modal" data-dismiss="modal">
+              <a href="" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_in">
                 <div style="padding:20px;">
-                  <img data-src="/assets/cross_777777.svg" class="lazyload_modal_app" style="width:18px;height:18px;opacity:0.5;">
+                  <%= image_tag "cross_777777.svg", :style =>'width:18px;height:18px;opacity:0.5;' %>
                 </div>
               </a>  
           </div>
-          <div class="a8" style="text-align:center;">
-            <div style="position:relative;width:0;height:0;z-index:1;"></div>
-            <div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling: touch;"> 
-              <div style="height:5vh;"></div>
-              <div class="font_white_big" style="color:#2FB4B4;">
-                アプリと同じ使い心地で
-              </div>
-              <div style="height:2vh;"></div>
-              <div class="font_white" style="color:#F3F3F3;">
-                ホーム画面に追加することで、
-                <br>アプリと同じ操作性で使用することができます
-              </div>
-              <div style="height:5vh;"></div>
-              <div style="width:90%;display:inline-block;">
-                <div style="width:40%;display:inline-block;vertical-align:center;">
-                  <img data-src="/assets/pwa01.png" class="lazyload_modal_app" style ="width:100%;height:auto;">
+          <div class="a8" style="text-align:center;"> 
+            <div class="font_white_big">
+              Sign in
+            </div>
+            <div class="gogo">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
+                <%= f.password_field :password,placeholder: "password", required: "" %>
+                <div style="height:3vh;"></div>
+                <%= f.submit "完了",class:"btn_session" %>
+              <% end %>
+            </div>  
+            <div style="height:4vh;"></div>
+            <div class="inline_block_middle">
+              <%= link_to new_user_password_path do %>
+                <div class="font_gray_min">
+                  パスワードを忘れたら
                 </div>
-                <div style="width:20%;display:inline-block;vertical-align:center;">
-                  <img data-src="/assets/right_C2C2C2.svg" class="lazyload_modal_app" style="width:20px;height:20px;">
+              <% end %>
+            </div>
+            <div class="inline_block_middle font_gray_min" style="padding:0 10px;">
+              /
+            </div>
+            <div class="inline_block_middle">
+              <%= link_to new_user_registration_path do %>
+                <div class="font_gray_min">
+                  アカウント登録
                 </div>
-                <div style="width:40%;display:inline-block;vertical-align:center;">
-                  <img data-src="/assets/pwa02.png" class="lazyload_modal_app" style ="width:100%;height:auto;">
-                </div>
-              </div>
-              <div style="height:7vh;"></div>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <%#モーダルtubolinks不具合修正(Waht'sTavoreモーダル)%>
+  <script defer>
+    $(function(){
+      var display_post = $('#myModal_what').css('display');
+      //モーダルが表示されているのに表示判定されてなかったら
+      if(display_post === 'block'){
+        //モーダルを表示状態にする
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        $('#myModal_what').modal('toggle');
+        //クリックでモーダルを閉じる 
+        $('#dismiss_what').on("click",function(){
+          $('body').removeClass('modal-open');
+          $('.modal-backdrop').remove();
+          $('#myModal_what').modal('hide'); 
+        });
+      }       
+    });
+  </script>
+  <%#モーダルtubolinks不具合修正(サインインモーダル)%>
+  <script defer>
+    $(function(){
+      var display_post = $('#myModal_sign_in').css('display');
+      //モーダルが表示されているのに表示判定されてなかったら
+      if(display_post === 'block'){
+        //モーダルを表示状態にする
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        $('#myModal_sign_in').modal('toggle');
+        //クリックでモーダルを閉じる 
+        $('#dismiss_sign_in').on("click",function(){
+          $('body').removeClass('modal-open');
+          $('.modal-backdrop').remove();
+          $('#myModal_sign_in').modal('hide'); 
+        });
+      }       
+    });
+  </script>
   <script defer>
     $('#myModal_what').on("show.bs.modal", function () {
         $('img.lazyload_modal_what').lazyload();
-      });      
-  </script>
-  <script defer>
-    $('#myModal_app').on("show.bs.modal", function () {
-        $('img.lazyload_modal_app').lazyload();
       });      
   </script>
 <% end %>

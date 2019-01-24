@@ -1,32 +1,35 @@
-<% if current_user?(@user) %>
-	<div class="inline_block_top">
-		<%= link_to configuration_path do %>
-			<div class="btn_follow_on">
-				<%= image_tag "control_FAFAFA.svg", :style =>'width:13px;height:13px;margin:-3px 5px 0px -3px;' %>
-				<span style="font-weight:bold;opacity:0.7;letter-spacing:1px;">設定</span>
-			</div>
-		<% end %>
-	</div>
-<% else %>
-	<% if current_user.following?(@user) %>
+<% if user_signed_in? %>
+	<% if current_user?(@user) %>
 		<div class="inline_block_top">
-			<%= form_for(current_user.following_relationships.find_by(following_id: @user.id), data: { confirm: 'フォローを解除しますか？' }, html: { method: :delete }, remote: true) do |f| %>
-				<button>
-					<div class="btn_follow_on" style="font-weight:bold;opacity:0.7;letter-spacing:1px;">
-						フォロー中
-					</div>
-				</button>
+			<%= link_to configuration_path do %>
+				<div class="btn_follow_on">
+					<%= image_tag "control_FAFAFA.svg", :style =>'width:13px;height:13px;margin:-3px 5px 0px -3px;' %>
+					<span style="font-weight:bold;opacity:0.7;letter-spacing:1px;">設定</span>
+				</div>
 			<% end %>
 		</div>
 	<% else %>
-		<%= form_for(current_user.following_relationships.build(following_id: @user.id), remote: true) do |f| %>
-		  <%= f.hidden_field :following_id %>
-		  <%= f.submit "フォローする", class: "btn_follow_off" , style: "font-weight:bold;opacity:0.7;letter-spacing:1px;" %>
-		<% end %>
-		<% unless @info.blank? %>
-			<div style="font-size:10px;color:red;margin-top:5px;">
-				<%= @info %>
+		<% if current_user.following?(@user) %>
+			<div class="inline_block_top">
+				<%= form_for(current_user.following_relationships.find_by(following_id: @user.id), data: { confirm: 'フォローを解除しますか？' }, html: { method: :delete }, remote: true) do |f| %>
+					<button>
+						<div class="btn_follow_on" style="font-weight:bold;opacity:0.7;letter-spacing:1px;">
+							フォロー中
+						</div>
+					</button>
+				<% end %>
 			</div>
+		<% else %>
+			<%= form_for(current_user.following_relationships.build(following_id: @user.id), remote: true) do |f| %>
+			  <%= f.hidden_field :following_id %>
+			  <%= f.submit "フォローする", class: "btn_follow_off" , style: "font-weight:bold;opacity:0.7;letter-spacing:1px;" %>
+			<% end %>
 		<% end %>
+	<% end %>
+<% else %>
+	<%= link_to new_user_session_path do %>
+		<div class="btn_follow_off inline_block_middle" style="font-weight:bold;opacity:0.7;letter-spacing:1px;">
+			フォローする
+		</div>
 	<% end %>
 <% end %>

@@ -18,7 +18,15 @@
         	<%= form_tag(root_path, method: :get) do %>        		
 	        	<div class="nmn04 inline_block_middle" style="padding:0 20px;">
 		        	<%= radio_button_tag(:user, "following", @following, {:id => "following"}) %>
-				    <label for="following"></label>
+		        	<%#ログインしていたら%>
+		        	<% if user_signed_in? %>
+				    	<label for="following"></label>
+				    <%#ログインしてなかったら%>
+				    <% else %>
+				    	<%= link_to new_user_session_path do %>
+				    		<label for="following"></label>
+				    	<% end %>
+				    <% end %>
 		        </div>
 		        <div class="inline_block_middle font_white" style="font-size:15px;">
 		        	/

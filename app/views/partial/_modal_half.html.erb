@@ -36,50 +36,73 @@
 	          		</div>
 	          		<div style="height:7%;"></div>
 	          		<div style="width:100%;padding:0 10%;">
-		          		<% unless post.user.id == current_user.id %>
-		          			<span id="like-of-<%= post.id %>">
-						      	<%= render partial: 'likes/like', locals: { post: post } %>
-						    </span>
-						    <div style="height:30px"></div>
-							<span id="bookmark-of-<%= post.id %>">
-						      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-						    </span>
-						    <div style="height:30px"></div>
+	          			<% if user_signed_in? %>
+	          				<%#投稿者でなかったら%>
+			          		<% unless post.user.id == current_user.id %>
+			          			<span id="like-of-<%= post.id %>">
+							      	<%= render partial: 'likes/like', locals: { post: post } %>
+							    </span>
+							    <div style="height:30px"></div>
+								<span id="bookmark-of-<%= post.id %>">
+							      	<%= render partial: 'works/bookmark', locals: { post: post } %>
+							    </span>
+							    <div style="height:30px"></div>
+								<%= link_to "/works/#{post.id}/copy" do %>
+									<div class="btn_half_item">  
+										<img data-src="/assets/add_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-2px 13px 2px 0;opacity:0.6;">この作品を投稿
+									</div>	
+								<% end %>									
+							<% end %>
+							<%#投稿者でだったら%>
+							<% if post.user.id == current_user.id %>
+								<% unless post.review == "bookmark" %>					
+									<span id="favorite-of-<%= post.id %>">
+								      	<%= render partial: 'lists/favorite', locals: { post: post } %>
+								    </span>	
+								    <div style="height:30px"></div>
+									<span id="profile-of-<%= post.id %>">
+								      	<%= render partial: 'lists/profile', locals: { post: post } %>
+								    </span>
+							    	<div style="height:30px"></div>
+							   	<% end %>
+							    <%= link_to "/likes/post/#{post.id}" do %>
+									<div class="btn_half_item">  
+										<img data-src="/assets/like_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.6;">いいね！一覧
+									</div>
+								<% end %>
+								<div style="height:30px"></div>
+								<%= link_to "/works/#{post.id}/edit" do %>
+									<div class="btn_half_item">  
+										<img data-src="/assets/edit_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.6;">投稿を編集
+									</div>
+								<% end %>
+								<div style="height:30px"></div>			
+								<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+									<div class="btn_half_item" style="color:#FB473E;">  
+										<img data-src="/assets/trash_FB473E.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.7;">投稿を削除
+									</div>
+								<% end %>
+								<div style="height:30px"></div>	
+							<% end %>
+						<%#ログインしてなかったら%>
+						<% else %>							
+							<%= link_to "/likes/#{post.id}/create", method: :post do %>
+								<div class="btn_half_item">  
+									<%= image_tag "like_FAFAFA.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 15px 0 0;opacity:0.7;' %>いいね！
+								</div>
+							<% end %>
+							<div style="height:30px"></div>
+							<%= link_to "/works/#{post.id}/create_bookmark", method: :post do %>
+								<div class="btn_half_item">  
+									<%= image_tag "bookmark_FAFAFA.svg", :style =>'vertical-align:middle;width:22px;height:22px;margin:-5px 14px 0px -1px;opacity:0.7;' %>ブックマーク
+								</div>
+							<% end %>
+							<div style="height:30px"></div>
 							<%= link_to "/works/#{post.id}/copy" do %>
 								<div class="btn_half_item">  
 									<img data-src="/assets/add_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-2px 13px 2px 0;opacity:0.6;">この作品を投稿
 								</div>	
-							<% end %>									
-						<% end %>
-						<% if post.user.id == current_user.id %>
-							<% unless post.review == "bookmark" %>					
-								<span id="favorite-of-<%= post.id %>">
-							      	<%= render partial: 'lists/favorite', locals: { post: post } %>
-							    </span>	
-							    <div style="height:30px"></div>
-								<span id="profile-of-<%= post.id %>">
-							      	<%= render partial: 'lists/profile', locals: { post: post } %>
-							    </span>
-						    	<div style="height:30px"></div>
-						   	<% end %>
-						    <%= link_to "/likes/post/#{post.id}" do %>
-								<div class="btn_half_item">  
-									<img data-src="/assets/like_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.6;">いいね！一覧
-								</div>
-							<% end %>
-							<div style="height:30px"></div>
-							<%= link_to "/works/#{post.id}/edit" do %>
-								<div class="btn_half_item">  
-									<img data-src="/assets/edit_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.6;">投稿を編集
-								</div>
-							<% end %>
-							<div style="height:30px"></div>			
-							<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-								<div class="btn_half_item" style="color:#FB473E;">  
-									<img data-src="/assets/trash_FB473E.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.7;">投稿を削除
-								</div>
-							<% end %>
-							<div style="height:30px"></div>	
+							<% end %>	
 						<% end %>
 						<div style="height:90px"></div>	
 					</div>

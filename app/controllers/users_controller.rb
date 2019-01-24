@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:policy, :terms, :contact]
+  before_action :authenticate_user!, only: [:notification]
   after_action :notification_update, only: [:notification]
 
   def profile

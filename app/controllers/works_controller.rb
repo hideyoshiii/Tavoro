@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :post, :detail]
 
   def test
   end
@@ -9,6 +9,7 @@ class WorksController < ApplicationController
   end
 
   def index
+    #ログインしている時
     if user_signed_in?
       @user  = User.find(current_user.id)
       @users = @user.followings
@@ -36,47 +37,67 @@ class WorksController < ApplicationController
         @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users)).order(created_at: "DESC")
       end
       @posts = @posts.take(25)
-      #labelの真偽
-      @following = false
-      @random = false
-      @all = false
-      @movie = false
-      @tv = false
-      @book = false
-      @comic = false
-      @music = false
-      if params[:user].present?
-        if params[:user] == "following"
-          @following = true
+    #ログインしていない時
+    else
+      @posts = Post.where.not(review: "bookmark")
+      #categoryのfillter
+      if params[:category].present?
+        @fillter_category = params[:category]
+        unless @fillter_category == "all"
+          @posts = @posts.where(category: @fillter_category)
         end
-        if params[:user] == "random"
-          @random = true
-        end
-      else
+      end
+      #userのfillter(ランダムのみ)
+      @users_test = User.where(authority: "test")
+      @posts = @posts.where.not(user_id: @users_test)
+      @posts = @posts.order("RANDOM()")
+      @posts = @posts.take(25)
+    end
+
+    #labelの真偽
+    @following = false
+    @random = false
+    @all = false
+    @movie = false
+    @tv = false
+    @book = false
+    @comic = false
+    @music = false
+    if params[:user].present?
+      if params[:user] == "following"
         @following = true
       end
-      if params[:category].present?
-        if params[:category] == "all"
-          @all = true
-        end
-        if params[:category] == "movie"
-          @movie = true
-        end
-        if params[:category] == "tv"
-          @tv = true
-        end
-        if params[:category] == "book"
-          @book = true
-        end
-        if params[:category] == "comic"
-          @comic = true
-        end
-        if params[:category] == "music"
-          @music = true
-        end
+      if params[:user] == "random"
+        @random = true
+      end
+    else
+      if user_signed_in?
+        @following = true
       else
+        @random = true
+      end
+    end
+    if params[:category].present?
+      if params[:category] == "all"
         @all = true
       end
+      if params[:category] == "movie"
+        @movie = true
+      end
+      if params[:category] == "tv"
+        @tv = true
+      end
+      if params[:category] == "book"
+        @book = true
+      end
+      if params[:category] == "comic"
+        @comic = true
+      end
+      if params[:category] == "music"
+        @music = true
+      end
+    else
+      @all = true
     end
   end
 
@@ -298,12 +319,18 @@ class WorksController < ApplicationController
 
   def detail
   	@post = Post.find(params[:id])
-    @users = current_user.followings
     @posts_all = Post.where(category: @post.category, work_id: @post.work_id).order('id DESC')
-    if @posts_all.present?
-      @posts_mine = @posts_all.where(user_id: current_user.id)   
-      @posts_follow = @posts_all.where(user_id: @users)
-      @posts_unfollow = @posts_all.where.not(user_id: @users).where.not(user_id: current_user)
+    #ログインしている時
+    if user_signed_in?
+      @users = current_user.followings
+      if @posts_all.present?
+        @posts_mine = @posts_all.where(user_id: current_user.id)   
+        @posts_follow = @posts_all.where(user_id: @users)
+        @posts_unfollow = @posts_all.where.not(user_id: @users).where.not(user_id: current_user)
+      end
+    #ログインしてない時
+    else
+      @posts_unfollow = @posts_all
     end
     #映画の時
   	if @post.category == "movie"
