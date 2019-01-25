@@ -1,8 +1,8 @@
 <%#meta_tag%>
 <% if @user.image.present? %>
-	<% set_meta_tags og: { title: "#{@user.name} | TAVORE", description: "", image: @user.image }, twitter: { card: "summary" } %>
+	<% set_meta_tags og: { title: "#{@user.name} | TAVORE(タボーレ)", description: "", image: @user.image }, twitter: { card: "summary" } %>
 <% else %>
-	<% set_meta_tags og: { title: "#{@user.name} | TAVORE", description: "", }, twitter: { card: "summary" } %>
+	<% set_meta_tags og: { title: "#{@user.name} | TAVORE(タボーレ)", description: "", }, twitter: { card: "summary" } %>
 <% end %>
 
 <div class="a1" style="height:100%;z-index:1000;">

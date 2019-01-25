@@ -6,7 +6,7 @@ module ApplicationHelper
 	      reverse: true,
 	      charset: 'utf-8',
 	      description: '映画､本､音楽､すべてこの場所に',
-	      keywords: 'コレクション, 記録, SNS',
+	      keywords: 'コレクション,記録,作品',
 	      canonical: request.original_url,
 	      icon: [
 	        { href: image_url('favicon.ico') },
@@ -22,6 +22,8 @@ module ApplicationHelper
 	        locale: 'ja_JP'
 	      },
 	      twitter: {
+	      	title: 'TAVORE(タボーレ) | 映画､本､音楽､すべてこの場所に',
+	      	description: '',
 	        card: 'summary_large_image',
 	        site: '@tavore_info',
 	      }
