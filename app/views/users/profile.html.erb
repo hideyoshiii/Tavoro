@@ -1,5 +1,5 @@
 <%#meta_tag%>
-<% set_meta_tags twitter: { card: "summary", title: "<%= @user.name %> | TAVORE(タボーレ)", description: "映画､本､音楽､すべてこの場所に", image: image_url(@user.image(:medium)) } %>
+<% set_meta_tags title: '#{@user.name} | TAVORE(タボーレ)', description: '映画､本､音楽､すべてこの場所に', twitter: { card: 'summary', image: @user.image(:medium) } %>
 
 <div class="a1" style="height:100%;z-index:1000;">
 	<div class="a4">
