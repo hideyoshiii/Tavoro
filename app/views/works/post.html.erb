@@ -1,8 +1,8 @@
 <%#meta_tag%>
 <% if @post.image_url.present? %>
-	<% set_meta_tags og: { title: "#{@post.title} | TAVORE(タボーレ)", description: "", image: @post.image_url }, twitter: { card: "summary" } %>
+	<% set_meta_tags og: { title: "#{@post.title} | TAVORE(タボーレ)", description: "", image: @post.image_url }, twitter: { title: "#{@user.name} | TAVORE(タボーレ)", description: "", card: "summary" } %>
 <% else %>
-	<% set_meta_tags og: { title: "#{@post.title} | TAVORE(タボーレ)", description: "" }, twitter: { card: "summary" } %>
+	<% set_meta_tags og: { title: "#{@post.title} | TAVORE(タボーレ)", description: "" }, twitter: { title: "#{@user.name} | TAVORE(タボーレ)", description: "", card: "summary" } %>
 <% end %>		
 
 <% post = @post %>
