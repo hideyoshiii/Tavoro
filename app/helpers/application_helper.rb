@@ -2,11 +2,11 @@ module ApplicationHelper
 
 	def default_meta_tags
 	    {
-	      title: 'TAVORE(タボーレ)',
+	      title: 'TAVORE(タボーレ) | 映画､本､音楽､すべてこの場所に',
 	      reverse: true,
 	      charset: 'utf-8',
-	      description: '映画､本､音楽､すべてこの場所に',
-	      keywords: 'コレクション,記録,作品',
+	      description: 'TAVORE(タボーレ)は映画や本,音楽などの作品を気軽に記録できる場所です',
+	      keywords: 'タボーレ,記録,作品',
 	      canonical: request.original_url,
 	      icon: [
 	        { href: image_url('favicon.ico') },
@@ -14,8 +14,8 @@ module ApplicationHelper
 	      ],
 	      og: {
 	        site_name: 'TAVORE(タボーレ)',
-	        title: 'TAVORE(タボーレ)',
-	        description: '映画､本､音楽､すべてこの場所に',
+	        title: 'TAVORE(タボーレ) | 映画､本､音楽､すべてこの場所に',
+	      	description: '',
 	        type: 'website',
 	        url: request.original_url,
 	        image: image_url('TAVORE.jpg'),
@@ -23,7 +23,7 @@ module ApplicationHelper
 	      },
 	      twitter: {
 	      	title: 'TAVORE(タボーレ) | 映画､本､音楽､すべてこの場所に',
-	      	description: "",
+	      	description: '',
 	        card: 'summary_large_image',
 	        site: '@tavore_info',
 	      }
