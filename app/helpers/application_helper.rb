@@ -24,11 +24,6 @@ module ApplicationHelper
 	      twitter: {
 	        card: 'summary',
 	        site: '@tavore_info',
-	        title: 'TAVORE(タボーレ)',
-	        description: '映画､本､音楽､すべてこの場所に',
-	        type: 'website',
-	        url: request.original_url,
-	        image: image_url('TAVORE.jpg')
 	      }
 	    }
 	  end

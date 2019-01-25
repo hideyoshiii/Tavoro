@@ -1,5 +1,5 @@
 <%#meta_tag%>
-<% set_meta_tags title: '#{@post.title} | TAVORE(タボーレ)', description: '映画､本､音楽､すべてこの場所に', twitter: { card: 'summary', image: @post.image_url } %>
+<% set_meta_tags og: { title: "#{@post.title} | TAVORE(タボーレ)", image: @post.image_url }, twitter: { card: "summary" } %>
 
 <% post = @post %>
 
