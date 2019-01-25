@@ -1,5 +1,9 @@
 <%#meta_tag%>
-<% set_meta_tags og: { title: "#{@user.name} | TAVORE(タボーレ)", image: @user.image(:large) }, twitter: { card: "summary" } %>
+<% if @user.image.present? %>
+	<% set_meta_tags og: { title: "#{@user.name} | TAVORE", description: "", image: @user.image } %>
+<% else %>
+	<% set_meta_tags og: { title: "#{@user.name} | TAVORE", description: "" } %>
+<% end %>
 
 <div class="a1" style="height:100%;z-index:1000;">
 	<div class="a4">
