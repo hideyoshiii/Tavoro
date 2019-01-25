@@ -23,7 +23,7 @@ module ApplicationHelper
 	      },
 	      twitter: {
 	      	title: 'TAVORE(タボーレ) | 映画､本､音楽､すべてこの場所に',
-	      	description: '',
+	      	description: "",
 	        card: 'summary_large_image',
 	        site: '@tavore_info',
 	      }
