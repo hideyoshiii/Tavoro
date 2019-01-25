@@ -22,11 +22,11 @@ module ApplicationHelper
 	        locale: 'ja_JP'
 	      },
 	      twitter: {
-	        card: 'summary',
+	        card: 'summary_large_image',
 	        site: '@tavore_info',
 	      }
 	    }
-	  end
+	end
 
 	def resource_name
     	:user

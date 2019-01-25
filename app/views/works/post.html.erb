@@ -1,8 +1,8 @@
 <%#meta_tag%>
 <% if @post.image_url.present? %>
-	<% set_meta_tags og: { title: "#{@post.title} | TAVORE", description: "", image: @post.image_url } %>
+	<% set_meta_tags og: { title: "#{@post.title} | TAVORE", description: "", image: @post.image_url }, twitter: { card: "summary" } %>
 <% else %>
-	<% set_meta_tags og: { title: "#{@post.title} | TAVORE", description: "" } %>
+	<% set_meta_tags og: { title: "#{@post.title} | TAVORE", description: "" }, twitter: { card: "summary" } %>
 <% end %>		
 
 <% post = @post %>
