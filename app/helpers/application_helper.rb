@@ -2,34 +2,32 @@ module ApplicationHelper
 
 	def default_meta_tags
 	    {
-	      site: 'TAVORE(タボーレ)',
 	      title: 'TAVORE(タボーレ)',
 	      reverse: true,
 	      charset: 'utf-8',
-	      description: 'シンプルなコレクションSNS',
+	      description: '映画､本､音楽､すべてこの場所に',
 	      keywords: 'コレクション, 記録, SNS',
-	      canonical: 'https://www.tavore.net',
-	      separator: '|',
+	      canonical: request.original_url,
 	      icon: [
 	        { href: image_url('favicon.ico') },
 	        { href: image_url('apple-touch-icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' }
 	      ],
 	      og: {
 	        site_name: 'TAVORE(タボーレ)',
-	        title: 'TAVORE(タボーレ) | シンプルなコレクションSNS',
-	        description: 'シンプルなコレクションSNS',
+	        title: 'TAVORE(タボーレ)',
+	        description: '映画､本､音楽､すべてこの場所に',
 	        type: 'website',
-	        url: 'https://www.tavore.net',
+	        url: request.original_url,
 	        image: image_url('TAVORE.jpg'),
 	        locale: 'ja_JP'
 	      },
 	      twitter: {
-	        card: 'Summary Card',
+	        card: 'summary',
 	        site: '@tavore_info',
-	        title: 'TAVORE(タボーレ) | シンプルなコレクションSNS',
-	        description: 'シンプルなコレクションSNS',
+	        title: 'TAVORE(タボーレ)',
+	        description: '映画､本､音楽､すべてこの場所に',
 	        type: 'website',
-	        url: 'https://www.tavore.net',
+	        url: request.original_url,
 	        image: image_url('TAVORE.jpg')
 	      }
 	    }
