@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
 	  def user
       @posts = Post.where.not(review: "bookmark")
-      @rank = User.find(@posts.group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
+      @rank = User.find(@posts.group(:user_id).order('count(user_id) desc').limit(15).pluck(:user_id))
 	  end
 
   	def ajax_user_list
