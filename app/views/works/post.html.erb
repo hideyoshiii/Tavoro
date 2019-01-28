@@ -1,8 +1,8 @@
 <%#meta_tag%>
 <% if @post.image_url.present? %>
-	<% set_meta_tags og: { title: "#{@post.title} | TAVORE(タボーレ)", image: @post.image_url }, twitter: { title: "#{@post.title} | TAVORE(タボーレ)", card: "summary" } %>
+	<% set_meta_tags og: { title: "#{@post.title} | TAVORE", image: @post.image_url }, twitter: { title: "#{@post.title} | TAVORE", card: "summary" } %>
 <% else %>
-	<% set_meta_tags og: { title: "#{@post.title} | TAVORE(タボーレ)" }, twitter: { title: "#{@post.title} | TAVORE(タボーレ)", card: "summary" } %>
+	<% set_meta_tags og: { title: "#{@post.title} | TAVORE" }, twitter: { title: "#{@post.title} | TAVORE", card: "summary" } %>
 <% end %>		
 
 <% post = @post %>
@@ -145,7 +145,14 @@
 				<% end %>
 			<% end %>
 		</div>
-		<div class="layer11" style="padding-right:30px;">
+		<div class="layer11" style="padding-left:30px;">
+			<div class="inline_block_middle">
+				<span id="like-of-<%= post.id %>">
+			      	<%= render partial: 'likes/like', locals: { post: post } %>
+			    </span>
+			</div>
+		</div>
+		<div class="layer12" style="padding-right:30px;">
 			<a href="" data-toggle="modal" data-target="#myModal_half_<%= post.id %>">
 				<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:22px;height:22px;opacity:0.4;' %>
 			</a>

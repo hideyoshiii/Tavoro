@@ -142,10 +142,17 @@
 											</div>
 										<% end %>
 									<% end %>
+								</div>							
+								<div class="layer11" style="padding-left:30px;">
+									<div class="inline_block_middle">
+										<span id="like-of-<%= post.id %>">
+									      	<%= render partial: 'likes/like', locals: { post: post } %>
+									    </span>
+									</div>
 								</div>
-								<div class="layer11" style="padding-right:30px;">
+								<div class="layer12" style="padding-right:30px;">
 									<a href="" data-toggle="modal" data-target="#myModal_half_<%= post.id %>">
-										<img src="/assets/ellipsis_FAFAFA.svg" style="width:22px;height:22px;opacity:0.4;">
+										<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:22px;height:22px;opacity:0.4;' %>
 									</a>
 								</div>
 							</span>

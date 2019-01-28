@@ -36,13 +36,15 @@
 	          		</div>
 	          		<div style="height:7%;"></div>
 	          		<div style="width:100%;padding:0 10%;">
+	          			<%= link_to "/likes/post/#{post.id}" do %>
+							<div class="btn_half_item">  
+								<img data-src="/assets/like_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.6;">いいね！一覧
+							</div>
+						<% end %>
+						<div style="height:30px"></div>
 	          			<% if user_signed_in? %>
 	          				<%#投稿者でなかったら%>
-			          		<% unless post.user.id == current_user.id %>
-			          			<span id="like-of-<%= post.id %>">
-							      	<%= render partial: 'likes/like', locals: { post: post } %>
-							    </span>
-							    <div style="height:30px"></div>
+			          		<% unless post.user.id == current_user.id %>		          			
 								<span id="bookmark-of-<%= post.id %>">
 							      	<%= render partial: 'works/bookmark', locals: { post: post } %>
 							    </span>
@@ -62,14 +64,8 @@
 								    <div style="height:30px"></div>
 									<span id="profile-of-<%= post.id %>">
 								      	<%= render partial: 'lists/profile', locals: { post: post } %>
-								    </span>
-							    	<div style="height:30px"></div>
-							   	<% end %>
-							    <%= link_to "/likes/post/#{post.id}" do %>
-									<div class="btn_half_item">  
-										<img data-src="/assets/like_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.6;">いいね！一覧
-									</div>
-								<% end %>
+								    </span>						    	
+							   	<% end %>						    
 								<div style="height:30px"></div>
 								<%= link_to "/works/#{post.id}/edit" do %>
 									<div class="btn_half_item">  

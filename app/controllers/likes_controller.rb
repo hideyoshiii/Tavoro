@@ -10,7 +10,11 @@ class LikesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     if @like = Like.create(user_id: current_user.id, post_id: @post.id)   
-    	Notification.create(user_id: @post.user.id, notified_by_id: current_user.id, notified_type: 'like', post_id: @post.id)
+      unless @post.user.id == current_user.id
+        unless Notification.find_by(user_id: @post.user.id, notified_by_id: current_user.id, notified_type: 'like', post_id: @post.id)
+      	  Notification.create(user_id: @post.user.id, notified_by_id: current_user.id, notified_type: 'like', post_id: @post.id)
+        end
+      end
    	end
   end
 

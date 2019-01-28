@@ -4,7 +4,9 @@ class RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:relationship][:following_id])
     if current_user.follow!(@user)
-      Notification.create(user_id: @user.id, notified_by_id: current_user.id, notified_type: 'follow')
+      unless Notification.find_by(user_id: @user.id, notified_by_id: current_user.id, notified_type: 'follow')
+        Notification.create(user_id: @user.id, notified_by_id: current_user.id, notified_type: 'follow')
+      end
     end
   end
 
