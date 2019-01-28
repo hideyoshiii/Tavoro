@@ -1,8 +1,8 @@
 <%#meta_tag%>
 <% if @post.image_url.present? %>
-	<% set_meta_tags og: { title: "#{@post.title} | TAVORE", image: @post.image_url }, twitter: { title: "#{@post.title} | TAVORE", card: "summary" } %>
+	<% set_meta_tags title: "#{@post.title} | TAVORE", description: "",og: { title: "#{@post.title} | TAVORE", image: @post.image_url }, twitter: { title: "#{@post.title} | TAVORE", card: "summary" } %>
 <% else %>
-	<% set_meta_tags og: { title: "#{@post.title} | TAVORE" }, twitter: { title: "#{@post.title} | TAVORE", card: "summary" } %>
+	<% set_meta_tags title: "#{@post.title} | TAVORE", description: "", og: { title: "#{@post.title} | TAVORE" }, twitter: { title: "#{@post.title} | TAVORE", card: "summary" } %>
 <% end %>		
 
 <% post = @post %>
