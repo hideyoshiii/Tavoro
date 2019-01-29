@@ -68,7 +68,44 @@ class UsersController < ApplicationController
       @posts = Post.where.not(review: "bookmark")
       @posts = @posts.where.not(user_id: @user)
       @posts = @posts.where.not(user_id: @users)
-      @posts = @posts.where.not(user_id: @users_test).limit(150).order(created_at: "DESC") 
+      @posts = @posts.where.not(user_id: @users_test)
+      #categoryのfillter
+      if params[:category].present?
+        @fillter_category = params[:category]
+        unless @fillter_category == "all"
+          @posts = @posts.where(category: @fillter_category)
+        end
+      end
+      @posts = @posts.order(created_at: "DESC").limit(150)
+      #labelの真偽
+      @all = false
+      @movie = false
+      @tv = false
+      @book = false
+      @comic = false
+      @music = false
+      if params[:category].present?
+        if params[:category] == "all"
+          @all = true
+        end
+        if params[:category] == "movie"
+          @movie = true
+        end
+        if params[:category] == "tv"
+          @tv = true
+        end
+        if params[:category] == "book"
+          @book = true
+        end
+        if params[:category] == "comic"
+          @comic = true
+        end
+        if params[:category] == "music"
+          @music = true
+        end
+      else
+        @all = true
+      end
 	  end
 
   	def ajax_user_list
@@ -81,7 +118,8 @@ class UsersController < ApplicationController
         @posts = Post.where.not(review: "bookmark")
         @posts = @posts.where.not(user_id: @user)
         @posts = @posts.where.not(user_id: @users)
-        @posts = @posts.where.not(user_id: @users_test).limit(150).order(created_at: "DESC") 
+        @posts = @posts.where.not(user_id: @users_test)
+        @posts = @posts.order(created_at: "DESC").limit(150)
       end
   	end
 

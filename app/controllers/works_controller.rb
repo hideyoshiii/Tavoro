@@ -20,41 +20,14 @@ class WorksController < ApplicationController
           @posts = @posts.where(category: @fillter_category)
         end
       end
-      #userのfillter
-      if params[:user].present?
-        @fillter_user = params[:user]
-        if @fillter_user == "following"
-          @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users)).order(created_at: "DESC")
-        else
-          @users_test = User.where(authority: "test")
-          @posts = @posts.where.not(user_id: @user)
-          @posts = @posts.where.not(user_id: @users)
-          @posts = @posts.where.not(user_id: @users_test)
-          @posts = @posts.order("RANDOM()")
-        end
-      else
-        @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users)).order(created_at: "DESC")
-      end
-      @posts = @posts.take(25)
+      @posts = @posts.order(created_at: "DESC").limit(25)
       #labelの真偽
-      @following = false
-      @random = false
       @all = false
       @movie = false
       @tv = false
       @book = false
       @comic = false
       @music = false
-      if params[:user].present?
-        if params[:user] == "following"
-          @following = true
-        end
-        if params[:user] == "random"
-          @random = true
-        end
-      else
-        @following = true
-      end
       if params[:category].present?
         if params[:category] == "all"
           @all = true
@@ -89,6 +62,9 @@ class WorksController < ApplicationController
     if params[:q].present?
       @items = Tmdb::Search.multi(params[:q])
       @items = @items[:results]
+    else
+      @defaults = Tmdb::Movie.popular
+      @defaults = @defaults[:results]
     end
   end
 
@@ -133,6 +109,8 @@ class WorksController < ApplicationController
       else
         @items_rakuten = RakutenWebService::Books::Book.search(title: params[:q], hits: 20)
       end
+    else
+      @defaults = ITunesSearchAPI.search(:term => "comic", :country => "jp", :media => "ebook", :limit  => '20')
     end
   end
 
@@ -171,6 +149,8 @@ class WorksController < ApplicationController
   def ajax_music_list
     if params[:q].present?
       @items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music",:entity =>'song', :limit  => '30')
+    else
+      @defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music",:entity =>'song', :limit  => '20', :attribute => "mixTerm")
     end
   end
 

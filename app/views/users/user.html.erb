@@ -4,9 +4,11 @@
 			<input id="inc_search" placeholder="Search" type="text" required="">
 		</form>
 	</div>
-	<div class="inline_block_middle" style="text-align:center;width:10%;padding-left:15px;">
-		<img src="/assets/sort_FAFAFA.svg" style="width:22px;height:22px;opacity:0.4;">
-	</div>
+	<a href="" data-toggle="modal" data-target="#myModal_fillter">
+		<div class="inline_block_middle" style="text-align:center;width:10%;padding-left:15px;">
+			<img src="/assets/sort_FAFAFA.svg" style="width:22px;height:22px;opacity:0.4;">
+		</div>
+	</a>
 </div>
 
 <div style="height:45px;"></div>
@@ -15,6 +17,9 @@
   <%= render partial: 'user_list' %>
 </span>
 <div style="height:1vh;"></div>	
+
+<%#フィルターボタン%>
+<%= render "partial/fillter" %>
 
 <%#インクリメンタルサーチjs%>
 <script defer>
