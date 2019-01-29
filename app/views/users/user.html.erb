@@ -1,36 +1,19 @@
-<div class="bar_post">			
-	<div style="">
-		<div class="inline_block_middle" style="width:15%;">
-			<div style="text-align:left;padding-left:10px;">
-				<a href="javascript:void(0);" onclick="window.history.back();">
-		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-		        </a>										
-			</div>
-		</div>
-		<div class="inline_block_middle" style="width:70%;">
-			<div class="contain_title02" style="text-align:center;">
-				<div style="font-size:14px;color:#c2c2c2;">
-					ユーザーを検索
-				</div>
-			</div>
-		</div>
-		<div class="inline_block_middle" style="width:15%;">
-			<div style="text-align:right;">							
-			</div>
-		</div>
+<div class="bar_search" style="padding:15px;">
+	<div class="nmn inline_block_middle" style="text-align:center;width:90%;">
+		<form action="#">
+			<input id="inc_search" placeholder="Search" type="text" required="">
+		</form>
+	</div>
+	<div class="inline_block_middle" style="text-align:center;width:10%;padding-left:15px;">
+		<img src="/assets/sort_FAFAFA.svg" style="width:22px;height:22px;opacity:0.4;">
 	</div>
 </div>
 
 <div style="height:45px;"></div>
-<div style="height:35px;"></div>
-<div class="nmn" style="text-align:center;width:100%;padding:10px;">
-	<form action="#">
-		<input id="inc_search" placeholder="検索する" type="text" required="">
-	</form>
-</div>
-<div id='user_list'>
+<div style="height:55px;"></div>
+<span id='user_list'>
   <%= render partial: 'user_list' %>
-</div>
+</span>
 <div style="height:1vh;"></div>	
 
 <%#インクリメンタルサーチjs%>

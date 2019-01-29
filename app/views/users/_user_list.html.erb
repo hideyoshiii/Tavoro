@@ -1,63 +1,39 @@
 <% if params[:q].blank? %>
-	<% if @rank.present? %>
-	  	<% @rank.each.with_index(1) do |user, i| %>
-	  		<%= link_to "/#{user.username}/profile" do %>
-		  		<div style="width:100%;padding:5px 10px 5px 5px;">
-			  		<div class="inline_block_middle" style="width:12%;text-align:center;">
-			  			<% if i == 1 %>
-			  				<img data-src="/assets/no1_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
-			  			<% else %>
-			  				<% if i == 2 %>
-			  					<img data-src="/assets/no2_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
-			  				<% else %>
-			  					<% if i == 3 %>
-				  					<img data-src="/assets/no3_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
-				  				<% else %>
-				  					<span style="font-size:12px;color:#C2C2C2;"><%= i %></span>
-				  				<% end %>
-			  				<% end %>
-			  			<% end %>
-			  		</div>
-			  		<div class="inline_block_middle" style="width:calc(88% - <%= (i - 1) * 3 %>%);padding:8px;border-radius:25px;background:-webkit-linear-gradient(0deg,rgba(50,50,50,0.2),rgba(70,70,70,0.2));background:linear-gradient(0deg,rgba(50,50,50,50,0.2),rgba(70,70,70,0.2));">
-			  			<div class="inline_block_middle" style="width:calc(100% - 50px);padding:0 5px">
-			            	<div class="contain_title02">
-				              	<div class="font_white" style="margin-top:4px;">
-				                	<%= user.name %>
-				                	<% if user.authority == "public" %>		                		
-				                		<img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
-				                	<% end %>
-				              	</div>
-			              	</div>
-			              	<div class="contain_title02">
-				              	<div class="font_gray_min" style="font-size:10px;margin-top:2px;">
-				                	<% checked_i = Post.where(user_id: user.id).where.not(review: "bookmark").size %>
-				                	<%= checked_i %> checkeds
-				              	</div>
-				            </div>
-			            </div>
-			  			<div class="inline_block_middle" style="width:50px;text-align:right;">
-				            <% if user.image.present? %>
-				                <img data-src="<%= user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
-				            <% else %>
-				                <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
-				            <% end %>
-			            </div>
-			  		</div>
-		  		</div>
-		  	<% end %>
+	<% if @posts.present? %>
+		<% @posts.each.with_index(1) do |post, i| %>
+			<%# 3列表示(lazyload) %>
+			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+				<%= link_to "/works/post/#{post.id}" do %>
+					<% if post.image_url.blank? %>
+						<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
+					<% else %>									
+						<% if post.category == "movie" || post.category == "tv" %>
+							<% @image_url = post.image_url.sub(/original/, 'w300') %>
+						<% end %>
+						<% if post.category == "book" || post.category == "comic" %>
+							<% if post.api == "itunes" %>
+								<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+							<% else %>
+								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+							<% end %>
+						<% end %>
+						<% if post.category == "music" %>
+							<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+						<% end %>
+						<img data-src="<%= @image_url %>" class="img_myboom lazyload_min">
+					<% end %>
+				<% end %>
+			</div>
 	  	<% end %>
-	<% else %>
-	 	<div class="font_gray" style="margin-top:25vh;text-align:center;">
-			結果がありません
-		</div>
-	<% end %>
+	  	<%#lazyload.js%>
+		<script defer>
+			$(function() {
+		    	$('img.lazyload_min').lazyload();
+			});
+		</script>
+  	<% end %>
 <% else %>
 	<% if @items.present? %>
-		<div class="box_tests03" style="margin-top:-10px;">
-			<div class="inline_block_middle" style="width:100%;">
-				<span class="font_gray_min">user_idで検索</span>
-			</div>
-		</div>
 	  	<% @items.each do |user| %>
 	  		<% unless user == current_user %>
 		  		<%= link_to "/#{user.username}/profile" do %>

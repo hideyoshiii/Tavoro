@@ -62,13 +62,26 @@ class UsersController < ApplicationController
 
 
 	  def user
+      @user  = User.find(current_user.id)
+      @users = @user.followings
+      @users_test = User.where(authority: "test")
       @posts = Post.where.not(review: "bookmark")
-      @rank = User.find(@posts.group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
+      @posts = @posts.where.not(user_id: @user)
+      @posts = @posts.where.not(user_id: @users)
+      @posts = @posts.where.not(user_id: @users_test).limit(150).order(created_at: "DESC") 
 	  end
 
   	def ajax_user_list
       if params[:q].present?
         @items = User.where('username LIKE ?', "%#{params[:q]}%")
+      else
+        @user  = User.find(current_user.id)
+        @users = @user.followings
+        @users_test = User.where(authority: "test")
+        @posts = Post.where.not(review: "bookmark")
+        @posts = @posts.where.not(user_id: @user)
+        @posts = @posts.where.not(user_id: @users)
+        @posts = @posts.where.not(user_id: @users_test).limit(150).order(created_at: "DESC") 
       end
   	end
 
