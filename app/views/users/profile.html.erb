@@ -33,7 +33,7 @@
 	  <div class="inline_block_middle" style="width:35%;opacity:0.6;">
 	    <div class="contain_title02">
 	      <% if @post_list.present? %>
-		    <%= link_to "/works/post/#{@post_list.id}" do %>
+		    <%= link_to "/post/#{@post_list.id}" do %>
 		        <div style="font-size:12px;color:#FAFAFA">
 			        <% if @post_list.category == "movie" %>
 			            <%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> <%= @post_list.title %>

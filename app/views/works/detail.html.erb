@@ -115,11 +115,13 @@
 	<% end %>
 		<%= link_to "/post/#{@post.id}", :style => "width:100%;height:100%;" do %>
 				<div class="inline_block_top" style="width:50px;">
-					<% if @post.user.image.present? %>
-		                <img data-src="<%= @post.user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-		            <% else %>
-		                <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
-		            <% end %>
+					<%= link_to "/#{@post.user.username}" do %>
+						<% if @post.user.image.present? %>
+			                <img data-src="<%= @post.user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+			            <% else %>
+			                <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+			            <% end %>
+			        <% end %>
 				</div>
 				<div class="inline_block_top" style="width:calc(100% - 50px);padding-right:10px;">
 					<div style="height:5px;"></div>
@@ -169,7 +171,7 @@
 						<% end %>
 				  	</div>
 				  	<% if @post.description.present? %>
-			  			<div style="height:12px;"></div>
+			  			<div style="height:10px;"></div>
 			  			<div class="font_white" style="color:#c4c4c4;line-height:1.2;">	  			
 			  				<%= safe_join(@post.description.split("\n"), tag(:br)) %>	  			
 		  				</div>
@@ -198,11 +200,13 @@
 			<div class="card03">
   				<%= link_to "/post/#{post.id}", :style => "width:100%;height:100%;" do %>
   					<div class="inline_block_top" style="width:50px;">
-						<% if post.user.image.present? %>
-			                <img data-src="<%= post.user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-			            <% else %>
-			                <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
-			            <% end %>
+  						<%= link_to "/#{post.user.username}" do %>
+							<% if post.user.image.present? %>
+				                <img data-src="<%= post.user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+				            <% else %>
+				                <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+				            <% end %>
+				        <% end %>
 					</div>
 					<div class="inline_block_top" style="width:calc(100% - 50px);padding-right:10px;">
 						<div style="height:5px;"></div>
@@ -252,7 +256,7 @@
 							<% end %>
 					  	</div>
 				  		<% if post.description.present? %>
-				  			<div style="height:12px;"></div>
+				  			<div style="height:10px;"></div>
 				  			<div class="font_white" style="color:#c4c4c4;line-height:1.2;">	  			
 				  				<%= safe_join(post.description.split("\n"), tag(:br)) %>	  			
 			  				</div>
@@ -277,11 +281,13 @@
 			<div class="card03">
   				<%= link_to "/post/#{post.id}", :style => "width:100%;height:100%;" do %>
   					<div class="inline_block_top" style="width:50px;">
-						<% if post.user.image.present? %>
-			                <img data-src="<%= post.user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-			            <% else %>
-			                <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
-			            <% end %>
+  						<%= link_to "/#{post.user.username}" do %>
+							<% if post.user.image.present? %>
+				                <img data-src="<%= post.user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+				            <% else %>
+				                <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+				            <% end %>
+				        <% end %>
 					</div>
 					<div class="inline_block_top" style="width:calc(100% - 50px);padding-right:10px;">
 						<div style="height:5px;"></div>
@@ -329,10 +335,9 @@
 							<% if post.review == "bad" %>
 								<img data-src="/assets/ban_FB473E.svg" class="icon_review_min lazyload">おすすめしていません
 							<% end %>
-					  	</div>
-				  		<div style="height:12px;"></div>
+					  	</div>				  		
 				  		<% if post.description.present? %>
-				  			<div style="height:12px;"></div>
+				  			<div style="height:10px;"></div>
 				  			<div class="font_white" style="color:#c4c4c4;line-height:1.2;">	  			
 				  				<%= safe_join(post.description.split("\n"), tag(:br)) %>	  			
 			  				</div>
@@ -357,11 +362,13 @@
 			<div class="card03" style="background:-webkit-linear-gradient(-45deg, rgba(17,17,17,0.6), rgba(200,200,200,0.1));background:linear-gradient(-45deg, rgba(17,17,17,0.6), rgba(200,200,200,0.1));">
   				<%= link_to "/post/#{post.id}", :style => "width:100%;height:100%;" do %>
   					<div class="inline_block_top" style="width:50px;">
-						<% if post.user.image.present? %>
-			                <img data-src="<%= post.user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-			            <% else %>
-			                <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
-			            <% end %>
+  						<%= link_to "/#{post.user.username}" do %>
+							<% if post.user.image.present? %>
+				                <img data-src="<%= post.user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+				            <% else %>
+				                <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+				            <% end %>
+				        <% end %>
 					</div>
 					<div class="inline_block_top" style="width:calc(100% - 50px);padding-right:10px;">
 						<div style="height:5px;"></div>
@@ -411,7 +418,7 @@
 							<% end %>
 					  	</div>
 				  		<% if post.description.present? %>
-				  			<div style="height:12px;"></div>
+				  			<div style="height:10px;"></div>
 				  			<div class="font_white" style="color:#c4c4c4;line-height:1.2;">	  			
 				  				<%= safe_join(post.description.split("\n"), tag(:br)) %>	  			
 			  				</div>
