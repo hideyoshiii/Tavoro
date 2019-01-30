@@ -56,11 +56,25 @@ class WorksController < ApplicationController
 
   def detail
     @post = Post.find(params[:id])
+    if user_signed_in?
+      if current_user == @post.user
+        @relation = true
+      else
+        if current_user.following?(@post.user)
+          @relation = true
+        else
+          @relation = false
+        end
+      end
+    else
+      @relation = false
+    end
     @posts_all = Post.where(category: @post.category, work_id: @post.work_id).order('id DESC')
     #ログインしている時
     if user_signed_in?
       @users = current_user.followings
       if @posts_all.present?
+        @posts_all = @posts_all.where.not(id: @post.id)   
         @posts_mine = @posts_all.where(user_id: current_user.id)   
         @posts_follow = @posts_all.where(user_id: @users)
         @posts_unfollow = @posts_all.where.not(user_id: @users).where.not(user_id: current_user)
