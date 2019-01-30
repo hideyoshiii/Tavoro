@@ -1,8 +1,8 @@
 <%#meta_tag%>
 <% if @user.image.present? %>
-	<% set_meta_tags title: "#{@user.name} | TAVORE", description: "", og: { title: "#{@user.name} | TAVORE", image: @user.image }, twitter: { title: "#{@user.name} | TAVORE", card: "summary" } %>
+	<% set_meta_tags title: "#{@user.name}", description: "", og: { title: "#{@user.name}", image: @user.image }, twitter: { title: "#{@user.name}", card: "summary" } %>
 <% else %>
-	<% set_meta_tags title: "#{@user.name} | TAVORE", description: "", og: { title: "#{@user.name} | TAVORE" }, twitter: { title: "#{@user.name} | TAVORE", card: "summary" } %>
+	<% set_meta_tags title: "#{@user.name}", description: "", og: { title: "#{@user.name}" }, twitter: { title: "#{@user.name}", card: "summary" } %>
 <% end %>
 
 <div class="a1" style="height:100%;z-index:1000;">
