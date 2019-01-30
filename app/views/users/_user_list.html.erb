@@ -3,7 +3,7 @@
 		<% @posts.each.with_index(1) do |post, i| %>
 			<%# 3列表示(lazyload) %>
 			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-				<%= link_to "/works/post/#{post.id}" do %>
+				<%= link_to "/post/#{post.id}" do %>
 					<% if post.image_url.blank? %>
 						<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
 					<% else %>									
@@ -36,7 +36,7 @@
 	<% if @items.present? %>
 	  	<% @items.each do |user| %>
 	  		<% unless user == current_user %>
-		  		<%= link_to "/#{user.username}/profile" do %>
+		  		<%= link_to "/#{user.username}" do %>
 		          <div class="box_tests05">
 		          	<div class="inline_block_middle" style="width:80%;padding:0 5px;">
 			            <div class="inline_block_middle" style="width:50px;">

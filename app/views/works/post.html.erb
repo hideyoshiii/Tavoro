@@ -31,7 +31,7 @@
 		</div>
 		<div class="layer03" style="padding:20px 20px;">
 			<div class="inline_block_middle" style="width:80%;">
-				<%= link_to "/#{post.user.username}/profile" do %>
+				<%= link_to "/#{post.user.username}" do %>
 					<div class="inline_block_middle" style="width:50px;">
 						<% if post.user.image.present? %>
 			                <%= image_tag post.user.image(:medium), :style =>'width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);' %>
@@ -91,7 +91,7 @@
 			</div>
 		</div>
 		<div class="layer01">
-			<%= link_to "/works/#{post.id}/detail" do %>
+			<%= link_to "/post/#{post.id}/detail" do %>
 				<% if post.image_url.blank? %>
 					<%= image_tag "nothing01.jpg", :class =>'img_tavore' %>
 				<% else %>
@@ -107,7 +107,7 @@
 			<% end %>
 		</div>
 		<div class="layer02">
-			<%= link_to "/works/#{post.id}/detail" do %>
+			<%= link_to "/post/#{post.id}/detail" do %>
 				<div class="font_how">
 					<% if post.review == "bookmark" %>
 						<%= image_tag "bookmark_05627B.svg", :class =>'icon_review' %>ブックマーク

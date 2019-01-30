@@ -11,26 +11,26 @@
   <div style="display:inline-block;width:50%;height:50px;">
     <% if user_signed_in? %>
       <div style="float:right;padding:10px 10px 0px 0px;">
-        <%= link_to "/#{current_user.username}/profile" do %>
+        <%= link_to "/#{current_user.username}" do %>
           <%= image_tag "user.svg", :style =>'width:26px;height:26px;' %>
         <% end %>
       </div>
-      <% if request.fullpath == "/notification" %>
+      <% if request.fullpath == "/users/notifications" %>
         <div style="float:right;padding:12px 10px 0px 0px;">
-          <%= link_to notification_path do %>
+          <%= link_to "/users/notifications" do %>
             <%= image_tag "bell_777777.svg", :style =>'width:22px;height:22px;' %>
           <% end %>
         </div>
       <% else %>
         <% if Notification.where(user_id: current_user.id,read: false).size >= 1 %>
           <div style="float:right;padding:12px 10px 0px 0px;">
-            <%= link_to notification_path do %>
+            <%= link_to "/users/notifications" do %>
               <%= image_tag "bell_FB473E.svg", :style =>'width:22px;height:22px;' %>
             <% end %>
           </div>
         <% else %>
           <div style="float:right;padding:12px 10px 0px 0px;">
-            <%= link_to notification_path do %>
+            <%= link_to "/users/notifications" do %>
               <%= image_tag "bell_777777.svg", :style =>'width:22px;height:22px;' %>
             <% end %>
           </div>
@@ -124,13 +124,13 @@
                   Other
                 </div> 
                 <div style="height:1vh;"></div>   
-                <%= link_to terms_path do %>
+                <%= link_to "/users/terms" do %>
                   <div style="font-size:13px;color:rgba(5,98,123,0.8);padding-left:2px;">
                     利用規約
                   </div>  
                 <% end %>
                 <div style="height:1vh;"></div>   
-                <%= link_to policy_path do %>
+                <%= link_to "/users/policy" do %>
                   <div style="font-size:13px;color:rgba(5,98,123,0.8);padding-left:2px;">
                     プライバシーポリシー
                   </div>

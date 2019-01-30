@@ -1,5 +1,5 @@
 <div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-	<%= link_to "/works/post/#{post.id}" do %>
+	<%= link_to "/post/#{post.id}" do %>
 		<% if post.image_url.blank? %>
 			<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
 		<% else %>									

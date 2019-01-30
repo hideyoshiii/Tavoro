@@ -4,10 +4,6 @@ class WorksController < ApplicationController
   def test
   end
 
-  def post
-    @post = Post.find(params[:id].to_i)
-  end
-
   def index  
     if user_signed_in? 
       @user  = User.find(current_user.id)
@@ -20,6 +16,7 @@ class WorksController < ApplicationController
           @posts = @posts.where(category: @fillter_category)
         end
       end
+      @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users))
       @posts = @posts.order(created_at: "DESC").limit(25)
       #labelの真偽
       @all = false
@@ -49,6 +46,135 @@ class WorksController < ApplicationController
         end
       else
         @all = true
+      end
+    end
+  end
+
+  def post
+    @post = Post.find(params[:id].to_i)
+  end
+
+  def detail
+    @post = Post.find(params[:id])
+    @posts_all = Post.where(category: @post.category, work_id: @post.work_id).order('id DESC')
+    #ログインしている時
+    if user_signed_in?
+      @users = current_user.followings
+      if @posts_all.present?
+        @posts_mine = @posts_all.where(user_id: current_user.id)   
+        @posts_follow = @posts_all.where(user_id: @users)
+        @posts_unfollow = @posts_all.where.not(user_id: @users).where.not(user_id: current_user)
+      end
+    #ログインしてない時
+    else
+      @posts_unfollow = @posts_all
+    end
+    #映画の時
+    if @post.category == "movie"
+      @item = Tmdb::Movie.detail(@post.work_id)
+      if @item.present?
+        @detail01 = @item["release_date"].slice(0..3)
+        @detail02 = @item["runtime"]
+        if @detail02.present?
+          @detail02 = "上映時間 : " + @detail02.to_s + "分"
+        end
+        @detail03 = Tmdb::Movie.director(@post.work_id).first["name"]
+        if @detail03.present?
+          @detail03 = "監督 : " + @detail03
+        end
+      end
+    end
+    #テレビの時
+    if @post.category == "tv"
+      @item = Tmdb::TV.detail(@post.work_id)
+      if @item.present?
+        @detail01 = @item["first_air_date"].slice(0..3)
+        if @item["genres"].present?
+          @detail02 = @item["genres"][0]["name"]
+          if @detail02.present?
+            @detail02 = "ジャンル : " + @detail02
+          end
+        end
+        if @item["created_by"].present?
+          @detail03 = @item["created_by"][0]["name"]
+          if @detail03.present?
+            @detail03 = "制作 : " + @detail03
+          end
+        end
+      end
+    end
+    #ブックの時
+    if @post.category == "book"
+      if @post.api == "itunes"
+        @items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
+        if @items.present?
+          @item = @items.first
+          if @item.present?
+            @detail01 = @item["releaseDate"].slice(0..3)
+            @detail02 = @item["artistName"]
+            if @detail02.present?
+              @detail02 = "著者 : " + @detail02
+            end
+          end
+        end
+      else
+        @items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
+        if @items.present?
+          @item = @items.first
+          if @item.present?
+            @detail01 = @item["salesDate"].slice(0..3)
+            @detail02 = @item["author"]
+            if @detail02.present?
+              @detail02 = "著者 : " + @detail02
+            end
+          end
+        end
+      end
+    end
+    #コミックの時
+    if @post.category == "comic"
+      if @post.api == "itunes"
+        @items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
+        if @items.present?
+          @item = @items.first
+          if @item.present?
+            @detail01 = @item["releaseDate"].slice(0..3)
+            @detail02 = @item["artistName"]
+            if @detail02.present?
+              @detail02 = "著者 : " + @detail02
+            end
+          end
+        end
+      else
+        @items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
+        if @items.present?
+          @item = @items.first
+          if @item.present?
+            @detail01 = @item["salesDate"].slice(0..3)
+            @detail02 = @item["author"]
+            if @detail02.present?
+              @detail02 = "著者 : " + @detail02
+            end
+          end
+        end
+      end
+    end
+    #ミュージックの時
+    if @post.category == "music"
+      @items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
+      if @items.present?
+        @item = @items.first
+        if @item.present?
+          @detail01 = @item["releaseDate"].slice(0..3)
+          @detail02 = @item["artistName"]
+          if @detail02.present?
+            @detail02 = "アーティスト : " + @detail02
+          end
+          @detail03 = @item["collectionName"]
+          if @detail03.present?
+            @detail03 = "アルバム : " + @detail03
+          end
+        end
       end
     end
   end
@@ -275,132 +401,6 @@ class WorksController < ApplicationController
       redirect_to root_path
     end     
   end
-
-  def detail
-  	@post = Post.find(params[:id])
-    @posts_all = Post.where(category: @post.category, work_id: @post.work_id).order('id DESC')
-    #ログインしている時
-    if user_signed_in?
-      @users = current_user.followings
-      if @posts_all.present?
-        @posts_mine = @posts_all.where(user_id: current_user.id)   
-        @posts_follow = @posts_all.where(user_id: @users)
-        @posts_unfollow = @posts_all.where.not(user_id: @users).where.not(user_id: current_user)
-      end
-    #ログインしてない時
-    else
-      @posts_unfollow = @posts_all
-    end
-    #映画の時
-  	if @post.category == "movie"
-  		@item = Tmdb::Movie.detail(@post.work_id)
-      if @item.present?
-    		@detail01 = @item["release_date"].slice(0..3)
-    		@detail02 = @item["runtime"]
-        if @detail02.present?
-    		  @detail02 = "上映時間 : " + @detail02.to_s + "分"
-        end
-    		@detail03 = Tmdb::Movie.director(@post.work_id).first["name"]
-        if @detail03.present?
-    		  @detail03 = "監督 : " + @detail03
-        end
-      end
-  	end
-    #テレビの時
-  	if @post.category == "tv"
-  		@item = Tmdb::TV.detail(@post.work_id)
-      if @item.present?
-  		  @detail01 = @item["first_air_date"].slice(0..3)
-        if @item["genres"].present?
-          @detail02 = @item["genres"][0]["name"]
-          if @detail02.present?
-            @detail02 = "ジャンル : " + @detail02
-          end
-        end
-        if @item["created_by"].present?
-          @detail03 = @item["created_by"][0]["name"]
-          if @detail03.present?
-            @detail03 = "制作 : " + @detail03
-          end
-        end
-      end
-  	end
-    #ブックの時
-  	if @post.category == "book"
-      if @post.api == "itunes"
-        @items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
-        if @items.present?
-          @item = @items.first
-          if @item.present?
-            @detail01 = @item["releaseDate"].slice(0..3)
-            @detail02 = @item["artistName"]
-            if @detail02.present?
-              @detail02 = "著者 : " + @detail02
-            end
-          end
-        end
-      else
-    		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
-  	  	if @items.present?
-    			@item = @items.first
-          if @item.present?
-            @detail01 = @item["salesDate"].slice(0..3)
-            @detail02 = @item["author"]
-            if @detail02.present?
-              @detail02 = "著者 : " + @detail02
-            end
-          end
-  		  end
-      end
-  	end
-    #コミックの時
-  	if @post.category == "comic"
-      if @post.api == "itunes"
-        @items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
-        if @items.present?
-          @item = @items.first
-          if @item.present?
-            @detail01 = @item["releaseDate"].slice(0..3)
-            @detail02 = @item["artistName"]
-            if @detail02.present?
-              @detail02 = "著者 : " + @detail02
-            end
-          end
-        end
-      else
-    		@items = RakutenWebService::Books::Book.search(isbn: @post.work_id.to_i)
-  	  	if @items.present?
-    			@item = @items.first
-          if @item.present?
-            @detail01 = @item["salesDate"].slice(0..3)
-            @detail02 = @item["author"]
-            if @detail02.present?
-              @detail02 = "著者 : " + @detail02
-            end
-          end
-    		end
-      end
-  	end
-    #ミュージックの時
-  	if @post.category == "music"
-  		@items = ITunesSearchAPI.lookup(:id => @post.work_id.to_i, :country => "jp")
-	  	if @items.present?
-			  @item = @items.first
-        if @item.present?
-          @detail01 = @item["releaseDate"].slice(0..3)
-          @detail02 = @item["artistName"]
-          if @detail02.present?
-            @detail02 = "アーティスト : " + @detail02
-          end
-          @detail03 = @item["collectionName"]
-          if @detail03.present?
-            @detail03 = "アルバム : " + @detail03
-          end
-        end
-		  end
-  	end
-  end
-
 
   def edit
   	@post = Post.find(params[:id])

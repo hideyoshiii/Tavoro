@@ -4,22 +4,22 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  get ":id/profile" => "users#profile"
+  get ":id" => "users#profile"
   get ":id/posts" => "users#posts"
   get ":id/bookmarks" => "users#bookmarks"
-  get 'users/follow_request' => "users#follow_request"
   get 'users/user' => "users#user"
   get 'users/ajax_user_list' => "users#ajax_user_list"
   get ':id/following' => "users#following"
   get ':id/ajax_following_list' => "users#ajax_following_list"
   get ':id/follower' => "users#follower"
   get ':id/ajax_follower_list' => "users#ajax_follower_list"
-  get 'configuration' => "users#configuration"
+  get 'users/configuration' => "users#configuration"
+  get 'users/policy' => "users#policy"
+  get 'users/terms' => "users#terms"
+  get 'users/contact' => "users#contact"
+  get 'users/notifications' => "users#notifications"
   get 'users/ajax_validate_username' => "users#ajax_validate_username"
-  get 'policy' => "users#policy"
-  get 'terms' => "users#terms"
-  get 'contact' => "users#contact"
-  get 'notification' => "users#notification"
+  get 'users/follow_request' => "users#follow_request"
 
   resources :users do
     member do
@@ -38,7 +38,8 @@ Rails.application.routes.draw do
   post "follow_requests/:id/approval" => "follow_requests#approval"
   post "follow_requests/:id/unapproval" => "follow_requests#unapproval"
 
-  get "works/post/:id" => "works#post"
+  get "post/:id" => "works#post"
+  get "post/:id/detail" => "works#detail"
   get 'works/movie' => "works#movie"
   get 'works/ajax_movie_list' => "works#ajax_movie_list"
   get 'works/movie/detail' => "works#movie_detail"
@@ -53,7 +54,6 @@ Rails.application.routes.draw do
   get 'works/link/detail' => "works#link_detail"
   get 'works/bookmark' => "works#bookmark"
   post 'works/save' => "works#save"
-  get "works/:id/detail" => "works#detail"
   get "works/:id/edit" => "works#edit"
   get "works/:id/copy" => "works#copy"
   post "works/:id/update" => "works#update"

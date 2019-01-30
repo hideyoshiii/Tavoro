@@ -28,7 +28,7 @@
 	<% @notifications_no.each do |item| %>
 		<% if User.find_by(id: item.notified_by) %>
 			<% if item.notified_type == "follow" %>
-				<%= link_to "/#{item.notified_by.username}/profile" do %>
+				<%= link_to "/#{item.notified_by.username}" do %>
 					<div class="box_tests08">
 			            <div class="inline_block_middle" style="width:90%;padding:0 10px;">
 			            	<div class="inline_block_top" style="width:30px;">					            
@@ -87,7 +87,7 @@
     <% @notifications_yes.each do |item| %>
     	<% if User.find_by(id: item.notified_by) %>
     		<% if item.notified_type == "follow" %>
-		    	<%= link_to "/#{item.notified_by.username}/profile" do %>
+		    	<%= link_to "/#{item.notified_by.username}" do %>
 			        <div class="box_tests09">
 			            <div class="inline_block_middle" style="width:90%;padding:0 10px;">
 			            	<div class="inline_block_top" style="width:30px;">					            

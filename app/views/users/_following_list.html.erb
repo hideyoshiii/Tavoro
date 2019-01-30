@@ -1,7 +1,7 @@
 <% if params[:q].blank? %>
 	<% if @users.present? %>
 	  	<% @users.each do |user| %>
-	  		<%= link_to "/#{user.username}/profile" do %>
+	  		<%= link_to "/#{user.username}" do %>
 	          <div class="box_tests05">
 	          	<div class="inline_block_middle" style="width:80%;padding:0 5px;">
 		            <div class="inline_block_middle" style="width:50px;">
@@ -41,7 +41,7 @@
 <% else %>
 	<% if @items.present? %>
 	  	<% @items.each do |user| %>
-	  		<%= link_to "/#{user.username}/profile" do %>
+	  		<%= link_to "/#{user.username}" do %>
 	          <div class="box_tests05">
 	          	<div class="inline_block_middle" style="width:80%;padding:0 5px;">
 		            <div class="inline_block_middle" style="width:50px;">

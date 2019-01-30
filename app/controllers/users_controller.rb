@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:notification]
-  after_action :notification_update, only: [:notification]
+  before_action :authenticate_user!, only: [:notifications]
+  after_action :notifications_update, only: [:notifications]
 
   def profile
     @user = User.find_by(username: params[:id]) 
@@ -183,14 +183,14 @@ class UsersController < ApplicationController
       end
     end
 
-    def notification
+    def notifications
       @notifications = Notification.where(user_id: current_user.id).order(created_at: "DESC")
       @notifications_yes = @notifications.where(read: true)
       @notifications_no = @notifications.where(read: false)
     end
 
     private
-      def notification_update
+      def notifications_update
         @notifications_no.update_all(read: true)
       end
 
