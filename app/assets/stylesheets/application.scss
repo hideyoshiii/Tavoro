@@ -23,8 +23,8 @@ body:after{
   height:100%;
   margin-left:32.5%;
   content:"";
-  background:-webkit-linear-gradient(180deg,rgba(10,10,10,1),rgba(15,15,15,1)); 
-  background:linear-gradient(180deg,rgba(10,10,10,1),rgba(15,15,15,1)); 
+  background:-webkit-linear-gradient(180deg,rgba(8,8,8,1),rgba(12,12,12,1)); 
+  background:linear-gradient(180deg,rgba(8,8,8,1),rgba(12,12,12,1)); 
   z-index:-2;
 }
 .wallpaper{
@@ -1961,6 +1961,16 @@ button {
   margin:0;
   z-index:1;
   }
+.a1 > .a15 {
+  position:absolute;
+  bottom:0%;
+  right:0%;
+  width:auto;
+  height:auto;
+  padding:0;
+  margin:0;
+  z-index:8;
+  }
 .d1{
 	position: relative;
 	width:100%;
@@ -2159,9 +2169,9 @@ button {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    padding: 10px 15px 3px;
+    padding: 12px 12px 3px;
     color: #FAFAFA;
-    font-size: 14px;
+    font-size: 13px;
 }
 .tab__button:first-child {
     margin-left:12px;
