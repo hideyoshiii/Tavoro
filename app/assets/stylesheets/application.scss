@@ -191,6 +191,8 @@ body:after{
 }
 //iPadヨコ
 @media only screen and (max-width:1024px) and (orientation:landscape) {
+	.bar_top{
+	}
 	.bar_collection{
 		left:30%;
 	    width:40%;
@@ -206,6 +208,8 @@ body:after{
 }
 //iPadタテ
 @media only screen and (max-width:1024px) and (orientation:portrait) {
+	.bar_top{
+	}
 	.bar_collection{
 		left:15%;
 	    width:70%;
@@ -221,6 +225,9 @@ body:after{
 }
 //iPhoneタテ
 @media only screen and (max-width:767px) and (orientation:portrait) {
+	.bar_top{
+	    border-bottom:0.5px solid rgba(39,134,160,1);
+	}
 	.bar_collection{
 		left:0;
 	    width:100%;
@@ -230,7 +237,7 @@ body:after{
 		left:0;
 	    width:100%;
 	    border:none;
-	    border-bottom:1px solid rgba(39,134,160,1);
+	    border-bottom:0.5px solid rgba(39,134,160,1);
 	}
 	.bar_search{
 		left:0;
@@ -240,6 +247,8 @@ body:after{
 }
 //iPhoneヨコ
 @media only screen and (max-width:767px) and (orientation:landscape) {
+	.bar_top{
+	}
 	.bar_collection{
 		left:30%;
 	    width:40%;
@@ -255,6 +264,9 @@ body:after{
 }
 //SE以下タテ
 @media only screen and (max-width:370px) and (orientation:portrait) {
+	.bar_top{
+	    border-bottom:0.5px solid rgba(39,134,160,1);
+	}
 	.bar_collection{
 		left:0;
 	    width:100%;
@@ -264,7 +276,7 @@ body:after{
 		left:0;
 	    width:100%;
 	    border:none;
-	    border-bottom:1px solid rgba(39,134,160,1);
+	    border-bottom:0.5px solid rgba(39,134,160,1);
 	}
 	.bar_search{
 		left:0;
