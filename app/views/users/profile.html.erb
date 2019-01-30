@@ -73,7 +73,7 @@
 	</div>
 	<div class="a8">     
 	  <div style="width:100%;"> 
-	  	<div style="height:5vh;"></div>
+	  	<div style="height:6vh;"></div>
 	    <div class="inline_block_bottom" style="width:27.5%;">
 	        <%= link_to "/#{@user.username}/following" do %>              
 	          	<div style="font-size:11px;color:#C2C2C2;border-bottom: solid 1px rgba(5,98,123,0.8);margin-bottom:1vh;">
@@ -105,12 +105,6 @@
 	        <% if @user.authority == "public" %>
 	        	<%= image_tag "public.svg", :style =>'width:14px;height:14px;' %>
 	        <% end %>
-	  	</div> 
-	  </div> 
-	  <div style="height:0vh;"></div>  
-	  <div class="contain_title02">
-	  	<div style="padding:0 10%;font-size:10px;color:#777777;text-align:center;">
-		    @<%= @user.username %>
 	  	</div> 
 	  </div> 
 	  <div style="height:1vh;"></div>  
@@ -178,3 +172,6 @@
 		</a>
 	</div>
 </div>
+
+<%#プロフィールシェアモーダル%>
+<%= render partial: 'partial/profile_share', locals: { user: @user } %>

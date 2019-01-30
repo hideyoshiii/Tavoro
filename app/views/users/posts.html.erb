@@ -40,7 +40,7 @@
 		  		<div style="height:145px;"></div>
 			  	<% if @all.blank? %>				  		
 					<div class="font_white" style="text-align:center;margin-top:30vh;">
-						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+						投稿がありません
 					</div>	
 			  	<% else %>
 				  	<% @all.each.with_index(1) do |post, i| %>
@@ -55,7 +55,7 @@
 		  		<div style="height:145px;"></div>
 			  	<% if @list_favorite_items.blank? %>
 			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+						投稿がありません
 					</div>	
 			  	<% else %>
 				    <% @list_favorite_items.each.with_index(1) do |item, i| %>
@@ -71,7 +71,7 @@
 		  		<div style="height:145px;"></div>
 			  	<% if @movie.blank? %>
 			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+						投稿がありません
 					</div>	
 			  	<% else %>
 				    <% @movie.each.with_index(1) do |post, i| %>
@@ -86,7 +86,7 @@
 		  		<div style="height:145px;"></div>
 			    <% if @tv.blank? %>
 			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+						投稿がありません
 					</div>
 			  	<% else %>
 				  	<% @tv.each.with_index(1) do |post, i| %>
@@ -101,7 +101,7 @@
 		  		<div style="height:145px;"></div>
 			    <% if @book.blank? %>
 			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+						投稿がありません
 					</div>
 			  	<% else %>
 				  	<% @book.each.with_index(1) do |post, i| %>
@@ -116,7 +116,7 @@
 		  		<div style="height:145px;"></div>
 			    <% if @comic.blank? %>
 			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+						投稿がありません
 					</div>
 			  	<% else %>
 				  	<% @comic.each.with_index(1) do |post, i| %>
@@ -131,7 +131,7 @@
 		  		<div style="height:145px;"></div>
 			    <% if @music.blank? %>
 			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						<%= image_tag "warning_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;' %> 投稿がありません
+						投稿がありません
 					</div>	
 			  	<% else %>
 				  	<% @music.each.with_index(1) do |post, i| %>
@@ -145,7 +145,11 @@
 </div>
 
 <%#投稿ボタン%>
-<%= render "partial/modal_post" %>
+<% if user_signed_in? %>	          				
+	<% if @user.id == current_user.id %>
+		<%= render "partial/modal_post" %>
+	<% end %>
+<% end %>
 <%#タブ切り替え%>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script defer>

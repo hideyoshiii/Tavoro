@@ -38,7 +38,7 @@
 	          		<div style="width:100%;padding:0 10%;">
 	          			<%= link_to "/likes/post/#{post.id}" do %>
 							<div class="btn_half_item">  
-								<img data-src="/assets/like_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.6;">いいね！一覧
+								<img data-src="/assets/like_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:22px;height:22px;margin-right:15px;">いいね！一覧
 							</div>
 						<% end %>
 						<div style="height:30px"></div>
@@ -57,13 +57,13 @@
 								<div style="height:30px"></div>
 								<%= link_to "/works/#{post.id}/edit" do %>
 									<div class="btn_half_item">  
-										<img data-src="/assets/edit_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.6;">投稿を編集
+										<img data-src="/assets/edit_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:22px;height:22px;margin-right:15px;">投稿を編集
 									</div>
 								<% end %>
 								<div style="height:30px"></div>			
 								<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
 									<div class="btn_half_item" style="color:#FB473E;">  
-										<img data-src="/assets/trash_FB473E.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-4px 15px 0 0;opacity:0.7;">投稿を削除
+										<img data-src="/assets/trash_FB473E.svg" class="lazyload_half_modal_<%= post.id %>" style="width:22px;height:22px;margin-right:15px;">投稿を削除
 									</div>
 								<% end %>
 			          		<%#投稿者でなかったら%>
@@ -74,7 +74,7 @@
 							    <div style="height:30px"></div>
 								<%= link_to "/works/#{post.id}/copy" do %>
 									<div class="btn_half_item">  
-										<img data-src="/assets/add_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-2px 13px 2px 0;opacity:0.6;">この作品を投稿
+										<img data-src="/assets/add_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:22px;height:22px;margin-right:15px;">この作品を投稿
 									</div>	
 								<% end %>				
 							<% end %>
@@ -92,6 +92,12 @@
 									<img data-src="/assets/add_FAFAFA.svg" class="lazyload_half_modal_<%= post.id %>" style="width:20px;height:20px;margin:-2px 13px 2px 0;opacity:0.6;">この作品を投稿
 								</div>	
 							<% end %>	
+						<% end %>
+						<div style="height:30px"></div>
+						<%= link_to "/" do %>
+							<div class="btn_half_item">  
+								<img data-src="/assets/twitter.svg" class="lazyload_half_modal_<%= post.id %>" style="width:25px;height:25px;margin:0 15px 0 0;">twitterでシェア
+							</div>
 						<% end %>
 						<div style="height:90px"></div>	
 					</div>

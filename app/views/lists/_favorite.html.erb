@@ -2,14 +2,14 @@
     <% if @list_item = ListItem.find_by(list_id: @list.id, post_id: post.id) %>
     	<%= link_to "/#{post.id}/destroy_favorite", method: :post, remote: true do %>
 			<div class="btn_half_item">
-			<%= image_tag "star_F8C55A.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>
+			<%= image_tag "star_F8C55A.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>
 			お気に入りから削除
 			</div>
 		<% end %>
     <% else %>
     	<%= link_to "/#{post.id}/create_favorite", method: :post, remote: true do %>
 			<div class="btn_half_item">  
-			<%= image_tag "star_FAFAFA.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>
+			<%= image_tag "star_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>
 			お気に入りに追加
 			</div>
 		<% end %>
@@ -17,7 +17,7 @@
 <% else %>
 	<%= link_to "/#{post.id}/create_favorite", method: :post, remote: true do %>
 		<div class="btn_half_item">  
-			<%= image_tag "star_FAFAFA.svg", :style =>'vertical-align:middle;width:20px;height:20px;margin:-5px 10px 0 0;opacity:0.7;' %>
+			<%= image_tag "star_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>
 			お気に入りに追加
 		</div>
 	<% end %>
