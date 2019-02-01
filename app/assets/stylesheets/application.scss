@@ -542,6 +542,16 @@ body:after{
 	margin-right:3px;
 	opacity:0.7;
 }
+.icon_public{
+	width:15px;
+	height:15px;
+	margin-top:-2px;
+}
+.icon_public_min{
+	width:10px;
+	height:10px;
+	margin-top:-2px;
+}
 @media only screen and (max-width:767px) {
 	.icon_review{
 		width:14px;
@@ -709,7 +719,7 @@ body:after{
     background-position: 0 0;
     &::-webkit-input-placeholder {
       color: #2FB4B4;
-      font-size: 11px;
+      font-size: 10px;
       transform: translateY(-20px);
       visibility: visible !important;
     }
@@ -1301,7 +1311,7 @@ button {
   }
 .base01 span .layer11 {
   position:absolute;
-  bottom:6.4%;
+  bottom:6%;
   left:0%;
   width:auto;
   height:auto;
@@ -1311,7 +1321,7 @@ button {
 }
 .base01 span .layer12 {
   position:absolute;
-  bottom:6.4%;
+  bottom:6%;
   right:0%;
   width:auto;
   height:auto;
@@ -1534,7 +1544,7 @@ button {
 //ボタン配置関係
 .btns_plus{
   position:fixed;
-  top: 92%;
+  top: 93%;
   left: 50%;
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
@@ -1582,7 +1592,7 @@ button {
     background: rgba(39,134,160,0.8);
     color: rgba(225,225,255,0.8);
     border-radius: 0px;
-    font-size:19px;
+    font-size:18px;
     border: solid 1px rgba(39,134,160,0.8);
 }
 .btn_invite{

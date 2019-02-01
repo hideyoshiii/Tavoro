@@ -1,3 +1,10 @@
+<%#meta_tag%>
+<% if @user.image.present? %>
+	<% set_meta_tags title: "#{@user.name}のcheckeds", description: "", og: { title: "#{@user.name}のcheckeds", image: @user.image }, twitter: { title: "#{@user.name}のcheckeds", card: "summary" } %>
+<% else %>
+	<% set_meta_tags title: "#{@user.name}のcheckeds", description: "", og: { title: "#{@user.name}のcheckeds" }, twitter: { title: "#{@user.name}のcheckeds", card: "summary" } %>
+<% end %>
+
 <div class="bar_collection">
 	<div style="width:100%;padding:10px 15px;">
 		<div class="inline_block_middle" style="width:33.33%;font-size:12px;">
