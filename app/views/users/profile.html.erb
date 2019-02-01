@@ -111,7 +111,7 @@
 	  <% if @user.description.present? %>
 	    <div style="height:0.5vh;"></div>
 	    <div class="contain_title03">
-		    <div style="padding:0 25%;font-size:11px;color:#C2C2C2;text-align:center;">
+		    <div style="padding:0 25%;font-size:10px;color:#C2C2C2;text-align:center;">
 		      <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
 		    </div>
 		</div>
@@ -120,7 +120,7 @@
 		    <% if current_user?(@user) %>
 		      <div style="height:1vh;"></div>
 		      <%= link_to edit_user_registration_path do %>
-		        <div style="padding:0 25%;font-size:11px;color:#2FB4B4;text-align:center;">
+		        <div style="padding:0 25%;font-size:10px;color:#2FB4B4;text-align:center;">
 		          自己紹介を書く
 		        </div>
 		      <% end %>
