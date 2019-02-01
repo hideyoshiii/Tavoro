@@ -2250,6 +2250,12 @@ button {
 }
 
 //いいねのアニメーション
+.like_off{
+	opacity:0.5;
+}
+.like_on{
+	opacity:0.5;
+}
 .like_on:hover {
   animation: like_on 0.5s cubic-bezier(.4, 0, .2, 1);
 }

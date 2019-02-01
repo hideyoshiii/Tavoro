@@ -2,7 +2,7 @@
 	<% if Like.find_by(user_id: current_user.id, post_id: post.id) %>
 		<%= link_to "/likes/#{post.id}/destroy", method: :post, remote: true do %>
 			<div class="inline_block_middle like_on">
-				<%= image_tag "like_FB473E.svg", :style =>'width:22px;height:22px;opacity:0.5;' %>	
+				<%= image_tag "like_FB473E.svg", :style =>'width:22px;height:22px;' %>	
 			</div>					
 			<div class="inline_block_middle" style="font-size:12px;padding-left:5px;color:#FAFAFA;opacity:0.5;">
 				<%= Like.where(post_id: post.id).size %>
@@ -10,8 +10,8 @@
 		<% end %>
 	<% else %>
 		<%= link_to "/likes/#{post.id}/create", method: :post, remote: true do %>
-			<div class="inline_block_middle">
-				<%= image_tag "like_FAFAFA.svg", :style =>'width:22px;height:22px;opacity:0.5;' %>
+			<div class="inline_block_middle like_off">
+				<%= image_tag "like_FAFAFA.svg", :style =>'width:22px;height:22px;' %>
 			</div>								
 			<div class="inline_block_middle" style="font-size:12px;padding-left:5px;color:#FAFAFA;opacity:0.5;">
 				<%= Like.where(post_id: post.id).size %>
@@ -19,9 +19,9 @@
 		<% end %>
 	<% end %>
 <% else %>
-	<%= link_to "/likes/#{post.id}/create", method: :post, remote: true do %>
-		<div class="inline_block_middle">
-			<%= image_tag "like_FAFAFA.svg", :style =>'width:22px;height:22px;opacity:0.5;' %>	
+	<%= link_to "/likes/#{post.id}/create", method: :post do %>
+		<div class="inline_block_middle like_off">
+			<%= image_tag "like_FAFAFA.svg", :style =>'width:22px;height:22px;' %>	
 		</div>						
 		<div class="inline_block_middle" style="font-size:12px;padding-left:5px;color:#FAFAFA;opacity:0.5;">
 			<%= Like.where(post_id: post.id).size %>
