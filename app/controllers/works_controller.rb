@@ -407,11 +407,15 @@ class WorksController < ApplicationController
   	if params[:category] == "music"
   		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id], preview_url: params[:preview_url])
   	end
+    #保存に成功した場合
   	if @post.save
-      #保存に成功した場合
-      redirect_to root_path
+      if @post.review == "bookmark"
+        redirect_to "/#{current_user.username}/bookmarks"
+      else
+        redirect_to "/#{current_user.username}/posts"
+      end
+    #保存に失敗した場合
     else
-      #保存に失敗した場合
       redirect_to root_path
     end     
   end
@@ -502,7 +506,11 @@ class WorksController < ApplicationController
       end
     end
     if @post.save
-      redirect_to root_path
+      if @post.review == "bookmark"
+        redirect_to "/#{current_user.username}/bookmarks"
+      else
+        redirect_to "/#{current_user.username}/posts"
+      end
     else
       redirect_to root_path
     end   

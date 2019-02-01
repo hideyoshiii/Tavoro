@@ -52,9 +52,9 @@
 								    <div style="height:30px"></div>
 									<span id="profile-of-<%= post.id %>">
 								      	<%= render partial: 'lists/profile', locals: { post: post } %>
-								    </span>						    	
-							   	<% end %>						    
-								<div style="height:30px"></div>
+								    </span>	
+								    <div style="height:30px"></div>					    	
+							   	<% end %>						    						
 								<%= link_to "/works/#{post.id}/edit" do %>
 									<div class="btn_half_item">  
 										<%= image_tag "edit_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>投稿を編集
