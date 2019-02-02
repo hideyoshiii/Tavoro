@@ -1,8 +1,8 @@
 <%#meta_tag%>
 <% if @user.image.present? %>
-	<% set_meta_tags title: "#{@user.name}のbookmarks", description: "", og: { title: "#{@user.name}のbookmarks", image: @user.image }, twitter: { title: "#{@user.name}のbookmarks", card: "summary" } %>
+	<% set_meta_tags title: "#{@user.name}のブックマーク一覧", description: "", og: { title: "#{@user.name}のブックマーク一覧", image: @user.image }, twitter: { title: "#{@user.name}のブックマーク一覧", card: "summary" } %>
 <% else %>
-	<% set_meta_tags title: "#{@user.name}のbookmarks", description: "", og: { title: "#{@user.name}のbookmarks" }, twitter: { title: "#{@user.name}のbookmarks", card: "summary" } %>
+	<% set_meta_tags title: "#{@user.name}のブックマーク一覧", description: "", og: { title: "#{@user.name}のブックマーク一覧" }, twitter: { title: "#{@user.name}のブックマーク一覧", card: "summary" } %>
 <% end %>
 
 <div class="bar_collection">
