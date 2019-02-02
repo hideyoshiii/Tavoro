@@ -25,39 +25,28 @@
     
   </head>
 
-  <body>
-
-  	<header>
-      <%= render "partial/navbar" %>
-    </header>
-
-    <% if browser.device.mobile? %>
-      <div class="direction_portrait">
-        <%= yield %>
-      <div>
-      <div class="direction_landscape">  
-        <div style="height:45px;"></div>
-        <div class="font_white" style="margin-top:40vh;text-align:center;">
-          縦方向でご利用ください
-        </div>
-      <div>
-    <% else %>
-      <div style="height:45px;"></div>
-      <div class="a1" style="height:calc(100% - 45px);">
-        <div class="a8">
-          <span>  
-            <div>
-              <%= image_tag "tavore_logo_01.png", :style =>'width:80px;height:80px;' %>
-            </div>
-            <div style="height:2vh;"></div>
-            <div class="font_white">
-              iPhone または Android でご利用ください
-            </div>
-            <div style="height:10vh;"></div>    
-          </span>
-        </div>
+  <% if browser.device.mobile? %>
+    <body class="direction_portrait">
+      	<header>
+          <%= render "partial/navbar" %>
+        </header>
+        <%= yield %>  
+    </body>
+  <% else %>
+    <div class="a1">
+      <div class="a8">
+        <span>  
+          <div>
+            <%= image_tag "tavore_logo_01.png", :style =>'width:80px;height:80px;' %>
+          </div>
+          <div style="height:2vh;"></div>
+          <div class="font_white">
+            iPhone または Android でご利用ください
+          </div>
+          <div style="height:10vh;"></div>    
+        </span>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 
-  </body>
 </html>
