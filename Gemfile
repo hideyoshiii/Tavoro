@@ -46,6 +46,8 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'nokogiri'
 
+gem 'browser'
+
 gem 'meta-tags'
 
 gem 'rack-rewrite'
