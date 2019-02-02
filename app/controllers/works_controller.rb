@@ -17,7 +17,7 @@ class WorksController < ApplicationController
         end
       end
       @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users))
-      @posts = @posts.order(created_at: "DESC").limit(25)
+      @posts = @posts.order(created_at: "DESC").limit(20)
       #labelの真偽
       @all = false
       @movie = false
