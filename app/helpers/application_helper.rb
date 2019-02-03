@@ -22,7 +22,7 @@ module ApplicationHelper
 	        locale: 'ja_JP'
 	      },
 	      twitter: {
-	      	title: 'TAVORE(タボーレ) | 読む、観る、聴く。',
+	      	title: 'TAVORE(タボーレ) | 作品コレクションSNS',
 	      	description: '',
 	      	image: image_url('TAVORE02.jpg'),
 	        card: 'summary_large_image',
