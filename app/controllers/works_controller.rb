@@ -48,8 +48,8 @@ class WorksController < ApplicationController
         @all = true
       end
     else
-      @posts_all = Post.where.not(review: "bookmark").order('id DESC')
-      @posts = @posts_all.limit(9)
+      @posts_all = Post.where.not(review: "bookmark")
+      @posts = @posts_all.order('id DESC').limit(9)
       @users = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(9).pluck(:user_id))
     end
   end
