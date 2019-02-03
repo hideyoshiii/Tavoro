@@ -10,11 +10,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :username, on: :update, unless: :encrypted_password_changed?
   validates_presence_of :username, on: :update, unless: :encrypted_password_changed?
 
-  after_create :send_welcome_mail
- 
-  def send_welcome_mail
-    UserMailer.user_welcome_mail(self).deliver
-  end
+  
 
   has_many :posts, dependent: :destroy
 
