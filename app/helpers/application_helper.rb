@@ -5,7 +5,7 @@ module ApplicationHelper
 	      title: 'TAVORE(タボーレ) | 読む、観る、聴く。',
 	      reverse: true,
 	      charset: 'utf-8',
-	      description: 'TAVORE(タボーレ)は映画や本,音楽などの作品を気軽に記録できる場所です',
+	      description: 'TAVORE(タボーレ)は映画や本,音楽などの作品を気軽に記録,共有できる場所です',
 	      keywords: 'タボーレ,記録,作品',
 	      canonical: request.original_url,
 	      icon: [
@@ -18,12 +18,13 @@ module ApplicationHelper
 	      	description: '',
 	        type: 'website',
 	        url: request.original_url,
-	        image: image_url('TAVORE.jpg'),
+	        image: image_url('TAVORE01.jpg'),
 	        locale: 'ja_JP'
 	      },
 	      twitter: {
 	      	title: 'TAVORE(タボーレ) | 読む、観る、聴く。',
 	      	description: '',
+	      	image: image_url('TAVORE02.jpg'),
 	        card: 'summary_large_image',
 	        site: '@tavore_info',
 	      }
