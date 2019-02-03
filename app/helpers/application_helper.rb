@@ -2,7 +2,7 @@ module ApplicationHelper
 
 	def default_meta_tags
 	    {
-	      title: 'TAVORE(タボーレ) | 映画､本､音楽､すべてこの場所に',
+	      title: 'TAVORE(タボーレ) | 読む、観る、聴く。',
 	      reverse: true,
 	      charset: 'utf-8',
 	      description: 'TAVORE(タボーレ)は映画や本,音楽などの作品を気軽に記録できる場所です',
@@ -14,7 +14,7 @@ module ApplicationHelper
 	      ],
 	      og: {
 	        site_name: 'TAVORE(タボーレ)',
-	        title: 'TAVORE(タボーレ) | 映画､本､音楽､すべてこの場所に',
+	        title: 'TAVORE(タボーレ) | 読む、観る、聴く。',
 	      	description: '',
 	        type: 'website',
 	        url: request.original_url,
@@ -22,7 +22,7 @@ module ApplicationHelper
 	        locale: 'ja_JP'
 	      },
 	      twitter: {
-	      	title: 'TAVORE(タボーレ) | 映画､本､音楽､すべてこの場所に',
+	      	title: 'TAVORE(タボーレ) | 読む、観る、聴く。',
 	      	description: '',
 	        card: 'summary_large_image',
 	        site: '@tavore_info',
