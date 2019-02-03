@@ -166,7 +166,7 @@
 		Recent Posts
 	</div>
 	<div style="height:2vh;"></div>
-	<div class="horizontal_scroll" style="padding:0 5%;">	
+	<div class="horizontal_scroll" style="padding:0 7%;">	
 		<% @posts.each.with_index(1) do |post, i| %>
 			<div class="inline_block_middle" style="width:150px;height:230px;border-radius:3px;overflow:hidden;margin-right:10px;">
 				<%= link_to "/post/#{post.id}" do %>
@@ -198,7 +198,7 @@
 		Recommended Users
 	</div>
 	<div style="height:2vh;"></div>
-	<div class="horizontal_scroll" style="padding:0 5%;">	
+	<div class="horizontal_scroll" style="padding:0 7%;">	
 		<% @users.each.with_index(1) do |user, i| %>
 			<div class="inline_block_middle" style="width:95%;">
 				<%= link_to "/#{user.username}" do %>
@@ -240,7 +240,7 @@
 	</div>	
 </div>	
 <%#フッター%>
-<div style="text-align:center;padding:12% 0 18%;background:rgba(17,17,17,0.4);">
+<div style="text-align:center;padding:10% 0 18%;background:rgba(17,17,17,0.4);">
 	<img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:60px;height:60px;">
 	<div style="font-size:15px;margin-top:-0.5vh;">
 		TAVORE
