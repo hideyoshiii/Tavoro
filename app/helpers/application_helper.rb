@@ -2,7 +2,7 @@ module ApplicationHelper
 
 	def default_meta_tags
 	    {
-	      title: 'TAVORE(タボーレ) | 読む、観る、聴く。',
+	      title: 'TAVORE(タボーレ) | 作品コレクションSNS',
 	      reverse: true,
 	      charset: 'utf-8',
 	      description: 'TAVORE(タボーレ)は映画や本,音楽などの作品を気軽に記録,共有できる場所です',
@@ -14,7 +14,7 @@ module ApplicationHelper
 	      ],
 	      og: {
 	        site_name: 'TAVORE(タボーレ)',
-	        title: 'TAVORE(タボーレ) | 読む、観る、聴く。',
+	        title: 'TAVORE(タボーレ) | 作品コレクションSNS',
 	      	description: '',
 	        type: 'website',
 	        url: request.original_url,
