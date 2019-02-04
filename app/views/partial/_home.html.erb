@@ -6,14 +6,20 @@
 <%#ファーストビュー%>
 <div style="height:45px;"></div>
 <div class="a1" style="height:calc(100% - 45px);">
+	<div class="a14">
+      <div class="d1">
+        <div class="d2" style="background:rgba(0,0,0,0.87);"></div>
+        <img data-src="/assets/home.jpg" class="lazyload img_myboom">
+      </div>
+    </div>
     <div class="a8" style="text-align:center;">
       <div style="height:6vh;"></div>
-      <%= image_tag "tavore_logo_01.png", :style =>'width:110px;height:110px;' %>
+      <img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:100px;height:100px;">
       <div style="font-size:18px;margin-top:-1.5vh;">
         TAVORE
       </div>
       <div style="height:1vh;"></div>
-      <div style="font-size:16px;margin-left:15px;opacity:0.95;">
+      <div style="font-size:15px;margin-left:15px;opacity:0.95;">
       	読む、観る、聴く。
       </div>
       <div style="height:12vh;"></div>
@@ -297,6 +303,8 @@
 <%#lazyload.js%>
 <script defer>
 	$(function() {
-    	$('img.lazyload').lazyload();
+    	$('img.lazyload').lazyload({
+	        effect : 'fadeIn',
+	    });
 	});
 </script>
