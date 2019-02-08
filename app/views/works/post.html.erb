@@ -7,7 +7,8 @@
 
 <% post = @post %>
 
-<div class="base01" style="height:100%;z-index:1000;">
+<div style="height:45px;"></div>
+<div class="base01" style="height:calc(100% - 45px);">
 	<% if post.image_url.blank? %>
 		<%= image_tag "nothing01.jpg", :class =>'img_myboom' %>
 	<% else %>		
