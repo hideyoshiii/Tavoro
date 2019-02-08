@@ -30,7 +30,7 @@
 	<span>										
 		<div class="layer05">
 		</div>
-		<div class="layer03" style="padding:20px 20px;">
+		<div class="layer03" style="padding:15px 20px;">
 			<div class="inline_block_middle" style="width:80%;">
 				<%= link_to "/#{post.user.username}" do %>
 					<div class="inline_block_middle" style="width:50px;">
@@ -146,16 +146,16 @@
 				<% end %>
 			<% end %>
 		</div>
-		<div class="layer11" style="padding-left:30px;">
+		<div class="layer11" style="padding-left:25px;">
 			<div class="inline_block_middle">
 				<span id="like-of-<%= post.id %>">
 			      	<%= render partial: 'likes/like', locals: { post: post } %>
 			    </span>
 			</div>
 		</div>
-		<div class="layer12" style="padding-right:30px;">
+		<div class="layer12" style="padding-right:25px;">
 			<a href="" data-toggle="modal" data-target="#myModal_half_<%= post.id %>">
-				<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:22px;height:22px;opacity:0.4;' %>
+				<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.6;' %>
 			</a>
 		</div>
 	</span>

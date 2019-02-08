@@ -2,6 +2,7 @@ class WorksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :post, :detail]
 
   def test
+    @post = Post.find(109)
   end
 
   def index  
