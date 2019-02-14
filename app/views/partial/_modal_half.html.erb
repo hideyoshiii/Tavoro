@@ -9,96 +9,98 @@
           	<div class="a6" style="text-align:center;">
           		<div style="position:relative;width:0;height:0;z-index:1;"></div>
           		<div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;"> 
-	          		<div style="height:8%;"></div>
-	          		<div style="width:40%;display:inline-block;">
-	          			<% if post.image_url.blank? %>
-							<img data-src="/assets/nothing01.jpg" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
-						<% else %>	
-							<% if post.category == "movie" || post.category == "tv" %>
-								<% @poster_show = post.image_url.sub(/original/, 'w500') %>
-							<% end %>
-							<% if post.category == "book" || post.category == "comic" %>
-								<% if post.api == "itunes" %>
+          			<div style="min-height:101%;"> 
+		          		<div style="height:7vh;"></div>
+		          		<div style="width:40%;display:inline-block;">
+		          			<% if post.image_url.blank? %>
+								<img data-src="/assets/nothing01.jpg" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
+							<% else %>	
+								<% if post.category == "movie" || post.category == "tv" %>
+									<% @poster_show = post.image_url.sub(/original/, 'w500') %>
+								<% end %>
+								<% if post.category == "book" || post.category == "comic" %>
+									<% if post.api == "itunes" %>
+										<% @poster_show = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+									<% else %>
+										<% @poster_show = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
+									<% end %>
+								<% end %>
+								<% if post.category == "music" %>
 									<% @poster_show = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-								<% else %>
-									<% @poster_show = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
 								<% end %>
+								<img data-src="<%= @poster_show %>" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
 							<% end %>
-							<% if post.category == "music" %>
-								<% @poster_show = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+		          		</div>
+		          		<div style="height:2vh;"></div>
+		          		<div class="font_white_big" style="width:90%;display:inline-block;font-weight:bold;">
+		          			<%= post.title %>
+		          		</div>
+		          		<div style="height:7vh;"></div>
+		          		<div style="width:100%;padding:0 10%;">
+		          			<%= link_to "/likes/post/#{post.id}" do %>
+								<div class="btn_half_item">  
+									<%= image_tag "like_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>いいね！一覧
+								</div>
 							<% end %>
-							<img data-src="<%= @poster_show %>" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
-						<% end %>
-	          		</div>
-	          		<div style="height:2%;"></div>
-	          		<div class="font_white_big" style="width:90%;display:inline-block;font-weight:bold;">
-	          			<%= post.title %>
-	          		</div>
-	          		<div style="height:7%;"></div>
-	          		<div style="width:100%;padding:0 10%;">
-	          			<%= link_to "/likes/post/#{post.id}" do %>
-							<div class="btn_half_item">  
-								<%= image_tag "like_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>いいね！一覧
-							</div>
-						<% end %>
-						<div style="height:30px"></div>
-	          			<% if user_signed_in? %>	          				
-	          				<%#投稿者だったら%>
-			          		<% if post.user.id == current_user.id %>
-			          			<% unless post.review == "bookmark" %>					
-									<span id="favorite-of-<%= post.id %>">
-								      	<%= render partial: 'lists/favorite', locals: { post: post } %>
-								    </span>	
+							<div style="height:30px"></div>
+		          			<% if user_signed_in? %>	          				
+		          				<%#投稿者だったら%>
+				          		<% if post.user.id == current_user.id %>
+				          			<% unless post.review == "bookmark" %>					
+										<span id="favorite-of-<%= post.id %>">
+									      	<%= render partial: 'lists/favorite', locals: { post: post } %>
+									    </span>	
+									    <div style="height:30px"></div>
+										<span id="profile-of-<%= post.id %>">
+									      	<%= render partial: 'lists/profile', locals: { post: post } %>
+									    </span>	
+									    <div style="height:30px"></div>					    	
+								   	<% end %>						    						
+									<%= link_to "/works/#{post.id}/edit" do %>
+										<div class="btn_half_item">  
+											<%= image_tag "edit_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>投稿を編集
+										</div>
+									<% end %>
+									<div style="height:30px"></div>			
+									<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
+										<div class="btn_half_item" style="color:#FB473E;">  
+											<%= image_tag "trash_FB473E.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>投稿を削除
+										</div>
+									<% end %>
+				          		<%#投稿者でなかったら%>
+				          		<% else %>		          			
+									<span id="bookmark-of-<%= post.id %>">
+								      	<%= render partial: 'works/bookmark', locals: { post: post } %>
+								    </span>
 								    <div style="height:30px"></div>
-									<span id="profile-of-<%= post.id %>">
-								      	<%= render partial: 'lists/profile', locals: { post: post } %>
-								    </span>	
-								    <div style="height:30px"></div>					    	
-							   	<% end %>						    						
-								<%= link_to "/works/#{post.id}/edit" do %>
+									<%= link_to "/works/#{post.id}/copy" do %>
+										<div class="btn_half_item">  
+											<%= image_tag "add_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>この作品を投稿
+										</div>	
+									<% end %>				
+								<% end %>
+							<%#ログインしてなかったら%>
+							<% else %>							
+								<%= link_to "/works/#{post.id}/create_bookmark", method: :post do %>
 									<div class="btn_half_item">  
-										<%= image_tag "edit_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>投稿を編集
+										<%= image_tag "bookmark_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>ブックマーク
 									</div>
 								<% end %>
-								<div style="height:30px"></div>			
-								<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
-									<div class="btn_half_item" style="color:#FB473E;">  
-										<%= image_tag "trash_FB473E.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>投稿を削除
-									</div>
-								<% end %>
-			          		<%#投稿者でなかったら%>
-			          		<% else %>		          			
-								<span id="bookmark-of-<%= post.id %>">
-							      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-							    </span>
-							    <div style="height:30px"></div>
+								<div style="height:30px"></div>
 								<%= link_to "/works/#{post.id}/copy" do %>
 									<div class="btn_half_item">  
 										<%= image_tag "add_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>この作品を投稿
 									</div>	
-								<% end %>				
-							<% end %>
-						<%#ログインしてなかったら%>
-						<% else %>							
-							<%= link_to "/works/#{post.id}/create_bookmark", method: :post do %>
-								<div class="btn_half_item">  
-									<%= image_tag "bookmark_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>ブックマーク
-								</div>
+								<% end %>	
 							<% end %>
 							<div style="height:30px"></div>
-							<%= link_to "/works/#{post.id}/copy" do %>
-								<div class="btn_half_item">  
-									<%= image_tag "add_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>この作品を投稿
-								</div>	
-							<% end %>	
-						<% end %>
-						<div style="height:30px"></div>
-						<a href="http://twitter.com/share?url=<%= root_url(only_path: false) %>post/<%= post.id %>" target="blank">
-							<div class="btn_half_item">  						
-								<%= image_tag "twitter.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>twitterでシェア
-							</div>
-						</a>
-						<div style="height:90px"></div>	
+							<a href="http://twitter.com/share?url=<%= root_url(only_path: false) %>post/<%= post.id %>" target="blank">
+								<div class="btn_half_item">  						
+									<%= image_tag "twitter.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>twitterでシェア
+								</div>
+							</a>
+							<div style="height:90px"></div>	
+						</div>
 					</div>
 				</div>
           	</div>

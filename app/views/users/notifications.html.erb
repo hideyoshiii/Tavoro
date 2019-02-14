@@ -1,29 +1,4 @@
-<div class="bar_post">			
-	<div style="">
-		<div class="inline_block_middle" style="width:15%;">
-			<div style="text-align:left;padding-left:10px;">
-				<a href="javascript:void(0);" onclick="window.history.back();">
-		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-		        </a>										
-			</div>
-		</div>
-		<div class="inline_block_middle" style="width:70%;">
-			<div class="contain_title02" style="text-align:center;">
-				<div style="font-size:14px;color:#c2c2c2;">
-					通知
-				</div>
-			</div>
-		</div>
-		<div class="inline_block_middle" style="width:15%;">
-			<div style="text-align:right;">							
-			</div>
-		</div>
-	</div>
-</div>
-
-
 <div style="height:45px;"></div>
-<div style="height:35px;"></div>
 <% if @notifications.present? %>
 	<% @notifications_no.each do |item| %>
 		<% if User.find_by(id: item.notified_by) %>
