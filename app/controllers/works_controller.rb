@@ -2,7 +2,6 @@ class WorksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :post, :detail]
 
   def test
-    @post = Post.find(109)
   end
 
   def index  
@@ -50,8 +49,8 @@ class WorksController < ApplicationController
       end
     else
       @posts_all = Post.where.not(review: "bookmark")
-      @posts = @posts_all.order('id DESC').limit(9)
-      @users = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(9).pluck(:user_id))
+      @posts = @posts_all.order('id DESC').limit(12)
+      @users = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(12).pluck(:user_id))
     end
   end
 

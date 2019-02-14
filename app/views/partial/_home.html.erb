@@ -5,16 +5,16 @@
 </style>
 <%#ファーストビュー%>
 <div style="height:45px;"></div>
-<div class="a1" style="height:calc(100% - 45px);">
+<div class="a1 headline" style="height:calc(100% - 45px);">
 	<div class="a14">
       <div class="d1">
         <div class="d2" style="background:rgba(0,0,0,0.87);"></div>
-        <img data-src="/assets/home.jpg" class="lazyload img_myboom">
+        <%= image_tag "home.jpg", :class =>'img_myboom' %>
       </div>
     </div>
     <div class="a8" style="text-align:center;">
       <div style="height:6vh;"></div>
-      <img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:100px;height:100px;">
+      <%= image_tag "tavore_logo_01.png", :style =>'width:100px;height:100px;' %>
       <div style="font-size:18px;margin-top:-1.5vh;">
         TAVORE
       </div>
@@ -40,213 +40,241 @@
 		<div style="height:8vh;"></div>
     </div>
 </div>
-<div style="height:0%;"></div>
+<div style="height:5%;"></div>
 <%#タボーレについて%>
-<div style="font-size:18px;text-align:center;">
-	シンプルな作品コレクションSNS
-</div>
-<div style="height:2%;"></div>
-<div style="font-size:12px;text-align:center;">
-	TAVOREは映画や本,音楽などの作品を
-    <br>気軽に記録,共有できる場所です
+<div class="a1 headline" style="height:100%;">
+	<div class="a8" style="text-align:center;">
+		<div style="font-size:18px;text-align:center;">
+			シンプルな作品コレクションSNS
+		</div>
+		<div style="height:1vh;"></div>
+		<div style="font-size:12px;text-align:center;">
+			TAVOREは映画や本,音楽などの作品を
+		    <br>気軽に記録,共有できる場所です
+		</div>
+		<div style="height:5vh;"></div>
+		<div style="text-align:center;width:100%;padding:0 25%;">
+			<img data-src="/assets/using02.png" class="lazyload" style="width:100%;height:auto;">
+		</div>
+	</div>
 </div>
 <div style="height:5%;"></div>
-<div style="text-align:center;width:100%;padding:0 25%;">
-	<img data-src="/assets/using02.png" class="lazyload" style="width:100%;height:auto;">
-</div>
-<div style="height:25%;"></div>
 <%#カテゴリーについて%>
-<div style="font-size:18px;text-align:center;">
-	映画も本も音楽も１つの場所に
-</div>
-<div style="height:2%;"></div>
-<div style="font-size:12px;text-align:center;">
-	お気に入りの映画も、あの愛読書も、流行りの音楽も
-	<br>TAVOREにまとめてコレクションできます
+<div class="a1 headline" style="height:100%;">
+	<div class="a8" style="text-align:center;">
+		<div style="font-size:18px;text-align:center;">
+			映画も本も音楽も１つの場所に
+		</div>
+		<div style="height:1vh;"></div>
+		<div style="font-size:12px;text-align:center;">
+			お気に入りの映画も、あの愛読書も、流行りの音楽も
+			<br>TAVOREにまとめてコレクションできます
+		</div>
+		<div style="height:5vh;"></div>
+		<div style="padding:0 8%;">
+			<div class="inline_block_middle" style="width:25%;text-align:right;padding-right:10px;">
+				<div class="inline_block_middle" style="text-align:center;">
+					<div class="btn_icon_min">
+					  	<i>
+					    	<img data-src="/assets/movie_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
+					    </i>
+					</div>	
+					<div style="height:5px;"></div>
+					<span style="font-size:10px;color:#FAFAFA;">
+					    movie
+					</span>	
+				</div>
+				<div style="height:7px;"></div>
+				<div class="inline_block_middle" style="text-align:center;">
+					<div class="btn_icon_min">
+					  	<i>
+					    	<img data-src="/assets/tv_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
+					    </i>
+					</div>	
+					<div style="height:5px;"></div>
+					<span style="font-size:10px;color:#FAFAFA;">
+					    tv
+					</span>	
+				</div>
+				<div style="height:7px;"></div>
+				<div class="inline_block_middle" style="text-align:center;">
+					<div class="btn_icon_min">
+					  	<i>
+					    	<img data-src="/assets/book_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
+					    </i>
+					</div>	
+					<div style="height:5px;"></div>
+					<span style="font-size:10px;color:#FAFAFA;">
+					    book
+					</span>	
+				</div>
+				<div style="height:7px;"></div>
+				<div class="inline_block_middle" style="text-align:center;">
+					<div class="btn_icon_min">
+					  	<i>
+					    	<img data-src="/assets/comic_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
+					    </i>
+					</div>	
+					<div style="height:5px;"></div>
+					<span style="font-size:10px;color:#FAFAFA;">
+					    comic
+					</span>	
+				</div>
+				<div style="height:7px;"></div>
+				<div class="inline_block_middle" style="text-align:center;">
+					<div class="btn_icon_min">
+					  	<i>
+					    	<img data-src="/assets/music_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
+					    </i>
+					</div>	
+					<div style="height:5px;"></div>
+					<span style="font-size:10px;color:#FAFAFA;">
+					    music
+					</span>	
+				</div>
+			</div>
+			<div class="inline_block_middle" style="width:75%;text-align:left;padding-left:10px;">
+				<img data-src="/assets/using03.png" class="lazyload" style="width:85%;height:auto;">
+			</div>
+		</div>
+	</div>
 </div>
 <div style="height:5%;"></div>
-<div style="padding:0 8%;">
-	<div class="inline_block_middle" style="width:25%;text-align:right;padding-right:10px;">
-		<div class="inline_block_middle" style="text-align:center;">
-			<div class="btn_icon_min">
-			  	<i>
-			    	<img data-src="/assets/movie_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
-			    </i>
-			</div>	
-			<div style="height:5px;"></div>
-			<span style="font-size:10px;color:#FAFAFA;">
-			    movie
-			</span>	
-		</div>
-		<div style="height:7px;"></div>
-		<div class="inline_block_middle" style="text-align:center;">
-			<div class="btn_icon_min">
-			  	<i>
-			    	<img data-src="/assets/tv_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
-			    </i>
-			</div>	
-			<div style="height:5px;"></div>
-			<span style="font-size:10px;color:#FAFAFA;">
-			    tv
-			</span>	
-		</div>
-		<div style="height:7px;"></div>
-		<div class="inline_block_middle" style="text-align:center;">
-			<div class="btn_icon_min">
-			  	<i>
-			    	<img data-src="/assets/book_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
-			    </i>
-			</div>	
-			<div style="height:5px;"></div>
-			<span style="font-size:10px;color:#FAFAFA;">
-			    book
-			</span>	
-		</div>
-		<div style="height:7px;"></div>
-		<div class="inline_block_middle" style="text-align:center;">
-			<div class="btn_icon_min">
-			  	<i>
-			    	<img data-src="/assets/comic_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
-			    </i>
-			</div>	
-			<div style="height:5px;"></div>
-			<span style="font-size:10px;color:#FAFAFA;">
-			    comic
-			</span>	
-		</div>
-		<div style="height:7px;"></div>
-		<div class="inline_block_middle" style="text-align:center;">
-			<div class="btn_icon_min">
-			  	<i>
-			    	<img data-src="/assets/music_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
-			    </i>
-			</div>	
-			<div style="height:5px;"></div>
-			<span style="font-size:10px;color:#FAFAFA;">
-			    music
-			</span>	
-		</div>
-	</div>
-	<div class="inline_block_middle" style="width:75%;text-align:left;padding-left:10px;">
-		<img data-src="/assets/using03.png" class="lazyload" style="width:85%;height:auto;">
-	</div>
-</div>
-<div style="height:25%;"></div>
 <%#PWAについて%>
-<div style="font-size:18px;text-align:center;">
-	アプリのような使い心地で
-</div>
-<div style="height:2%;"></div>
-<div style="font-size:12px;text-align:center;">
-	ホーム画面に追加することで
-    <br>アプリと同じ操作性で使用することができます
+<div class="a1 headline" style="height:100%;">
+	<div class="a8" style="text-align:center;">
+		<div style="font-size:18px;text-align:center;">
+			アプリのような使い心地で
+		</div>
+		<div style="height:1vh;"></div>
+		<div style="font-size:12px;text-align:center;">
+			ホーム画面に追加することで
+		    <br>アプリと同じ操作性で使用することができます
+		</div>
+		<div style="height:5vh;"></div>
+		<div style="padding:0 8%;">
+			<div class="inline_block_top" style="width:25%;text-align:right;padding-right:10px;">
+				<div style="height:4vh;"></div>
+				<div class="inline_block_middle" style="text-align:center;">		
+					<img data-src="/assets/pwa.png" class="lazyload" style="width:50px;height:auto;">
+				</div>
+				<div style="height:4vh;"></div>
+				<div class="inline_block_middle" style="text-align:center;width:50px;">
+					<img data-src="/assets/cross_FAFAFA.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+				</div>
+				<div style="height:3vh;"></div>
+				<div class="inline_block_middle" style="text-align:center;">
+					<div class="btn_icon_min" style="background:black;border-radius:15%;">
+					  	<i>
+					    	<img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:45px;height:45px;margin-top:-2px;">
+					    </i>
+					</div>	
+				</div>
+			</div>
+			<div class="inline_block_top" style="width:75%;text-align:left;padding-left:10px;">
+				<img data-src="/assets/using01.png" class="lazyload" style="width:85%;height:auto;">
+			</div>
+		</div>
+	</div>
 </div>
 <div style="height:5%;"></div>
-<div style="padding:0 8%;">
-	<div class="inline_block_top" style="width:25%;text-align:right;padding-right:10px;">
-		<div style="height:4vh;"></div>
-		<div class="inline_block_middle" style="text-align:center;">		
-			<img data-src="/assets/pwa.png" class="lazyload" style="width:50px;height:auto;">
-		</div>
-		<div style="height:4vh;"></div>
-		<div class="inline_block_middle" style="text-align:center;width:50px;">
-			<img data-src="/assets/cross_FAFAFA.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+<%#最近の投稿%>
+<div class="a1 headline" style="height:100%;">
+	<div class="a8" style="text-align:left;">
+		<div style="font-size:18px;margin-left:5%;">
+			Recent Posts
 		</div>
 		<div style="height:3vh;"></div>
-		<div class="inline_block_middle" style="text-align:center;">
-			<div class="btn_icon_min" style="background:black;border-radius:15%;">
-			  	<i>
-			    	<img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:45px;height:45px;margin-top:-2px;">
-			    </i>
-			</div>	
-		</div>
-	</div>
-	<div class="inline_block_top" style="width:75%;text-align:left;padding-left:10px;">
-		<img data-src="/assets/using01.png" class="lazyload" style="width:85%;height:auto;">
-	</div>
-</div>
-<div style="height:10%;"></div>
-<div style="padding:15% 0;background:rgba(17,17,17,0.2);">
-	<%#最近の投稿%>
-	<div style="font-size:18px;margin-left:5%;">
-		Recent Posts
-	</div>
-	<div style="height:2vh;"></div>
-	<div class="horizontal_scroll" style="padding:0 7%;">	
-		<% @posts.each.with_index(1) do |post, i| %>
-			<div class="inline_block_middle" style="width:150px;height:230px;border-radius:3px;overflow:hidden;margin-right:10px;">
-				<%= link_to "/post/#{post.id}" do %>
-					<% if post.image_url.blank? %>
-						<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
-					<% else %>									
-						<% if post.category == "movie" || post.category == "tv" %>
-							<% @image_url = post.image_url.sub(/original/, 'w500') %>
-						<% end %>
-						<% if post.category == "book" || post.category == "comic" %>
-							<% if post.api == "itunes" %>
-								<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-							<% else %>
-								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
+		<div class="horizontal_scroll" style="padding:0 7%;">	
+			<% @posts.each.with_index(1) do |post, i| %>
+				<% if i % 2 != 0 %>
+					<div class="inline_block_top" style="margin-right:10px;">
+				<% end %>
+					<div style="width:150px;height:230px;border-radius:3px;overflow:hidden;margin-bottom:10px;">
+						<%= link_to "/post/#{post.id}" do %>
+							<% if post.image_url.blank? %>
+								<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
+							<% else %>									
+								<% if post.category == "movie" || post.category == "tv" %>
+									<% @image_url = post.image_url.sub(/original/, 'w500') %>
+								<% end %>
+								<% if post.category == "book" || post.category == "comic" %>
+									<% if post.api == "itunes" %>
+										<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+									<% else %>
+										<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
+									<% end %>
+								<% end %>
+								<% if post.category == "music" %>
+									<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+								<% end %>
+								<img data-src="<%= @image_url %>" class="img_myboom lazyload">
 							<% end %>
 						<% end %>
-						<% if post.category == "music" %>
-							<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-						<% end %>
-						<img data-src="<%= @image_url %>" class="img_myboom lazyload">
-					<% end %>
+					</div>
+				<% if i % 2 == 0 %>
+					</div>
 				<% end %>
-			</div>
-		<% end %>
-	</div>	
-	<div style="height:10vh;"></div>
-	<%#おすすめユーザー%>
-	<div style="font-size:18px;margin-left:5%;">
-		Recommended Users
-	</div>
-	<div style="height:2vh;"></div>
-	<div class="horizontal_scroll" style="padding:0 7%;">	
-		<% @users.each.with_index(1) do |user, i| %>
-			<div class="inline_block_middle" style="width:95%;">
-				<%= link_to "/#{user.username}" do %>
-					<div class="inline_block_middle" style="width:60%;padding-right:10px;">
-				      <div class="inline_block_middle" style="width:55px;">
-				          <% if user.image.present? %>
-				              <img data-src="<%= user.image(:medium) %>" class="lazyload" style="width:45px;height:45px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-				          <% else %>
-				              <img data-src="/assets/user.svg" class="lazyload" style="width:45px;height:45px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
-				          <% end %>
-				      </div>
-				      <div class="inline_block_middle" style="width:calc(100% - 55px);">
-				      	<div class="contain_title02">
-				            	<div class="font_white" style="margin-top:4px;">
-				              	<%= user.name %>
-				              	<% if user.authority == "public" %>		                		
-				              		<img data-src="/assets/public.svg" class="icon_public_min lazyload">
-				              	<% end %>
-				            	</div>
-				        	</div>
-				        	<div class="contain_title02">
-				            	<div class="font_gray_min" style="margin-top:-2px;">
-				              	<%= user.username %>
-				            	</div>
-				          </div>
-				      </div>
-				    </div>
-				    <div class="inline_block_middle" style="width:40%;text-align:right;padding-right:25px;">
-				    	<div style="display: inline-block;padding: 4px 15px;background:none;color:rgba(250,250,250,0.8);font-size:12px;border:solid 1px rgba(250,250,250,0.55);">
-				    		check
-				    	</div>
-				    </div>
-				<% end %>
-			</div>
-			<% if i % 3 == 0 %>
-				<div style="height:15px;"></div>
 			<% end %>
-		<% end %>
+		</div>	
 	</div>	
 </div>	
+<div style="height:5%;"></div>
+<%#おすすめユーザー%>
+<div class="a1 headline" style="height:100%;">
+	<div class="a8" style="text-align:left;">
+		<div style="font-size:18px;margin-left:5%;color:">
+			Recommended Users
+		</div>
+		<div style="height:3vh;"></div>
+		<div class="horizontal_scroll" style="padding:0 7%;">	
+			<% @users.each.with_index(1) do |user, i| %>
+				<% if i == 1 || i == 7 %>
+					<div class="inline_block_top" style="width:95%;">
+				<% end %>
+					<div class="" style="margin-bottom:15px;">
+						<%= link_to "/#{user.username}" do %>
+							<div class="inline_block_middle" style="width:60%;padding-right:10px;">
+						      <div class="inline_block_middle" style="width:55px;">
+						          <% if user.image.present? %>
+						              <img data-src="<%= user.image(:medium) %>" class="lazyload" style="width:45px;height:45px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+						          <% else %>
+						              <img data-src="/assets/user.svg" class="lazyload" style="width:45px;height:45px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+						          <% end %>
+						      </div>
+						      <div class="inline_block_middle" style="width:calc(100% - 55px);">
+						      	<div class="contain_title02">
+						            	<div class="font_white" style="margin-top:4px;">
+						              	<%= user.name %>
+						              	<% if user.authority == "public" %>		                		
+						              		<img data-src="/assets/public.svg" class="icon_public_min lazyload">
+						              	<% end %>
+						            	</div>
+						        	</div>
+						        	<div class="contain_title02">
+						            	<div class="font_gray_min" style="margin-top:-2px;">
+						              	<%= user.username %>
+						            	</div>
+						          </div>
+						      </div>
+						    </div>
+						    <div class="inline_block_middle" style="width:40%;text-align:right;padding-right:25px;">
+						    	<div style="display: inline-block;padding: 4px 15px;background:none;color:rgba(250,250,250,0.8);font-size:12px;border:solid 1px rgba(250,250,250,0.55);">
+						    		check
+						    	</div>
+						    </div>
+						<% end %>
+					</div>
+				<% if i % 6 == 0 %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>	
+	</div>	
+</div>	
+<div style="height:5%;"></div>
 <%#フッター%>
-<div style="text-align:center;padding:10% 0 18%;background:rgba(17,17,17,0.4);">
+<div class="headline" style="text-align:center;padding:10% 0 18%;background:rgba(17,17,17,0.4);">
 	<img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:80px;height:80px;">
 	<div style="font-size:16px;margin-top:-0.5vh;">
 		TAVORE
@@ -306,5 +334,14 @@
     	$('img.lazyload').lazyload({
 	        effect : 'fadeIn',
 	    });
+	});
+</script>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+    ScrollReveal().reveal('.headline', {
+	    delay: 100,
+	    duration: 1000,
+	    reset: false
 	});
 </script>
