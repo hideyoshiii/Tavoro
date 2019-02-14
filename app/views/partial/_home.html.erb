@@ -24,14 +24,14 @@
       </div>
       <div style="height:12vh;"></div>
       	<div style="display:inline-block;margin-right:10px;">
-			<a href="" data-toggle="modal" data-target="#myModal_sign_in">
+			<a href="#" data-toggle="modal" data-target="#myModal_sign_in">
 	          <div class="btn_session">
 				ログイン
 			  </div>
 	        </a>
 		</div>
 		<div style="display:inline-block;margin-left:10px;">
-			<a href="" data-toggle="modal" data-target="#myModal_sign_up">
+			<a href="#" data-toggle="modal" data-target="#myModal_sign_up">
 		        <div class="btn_register">
 					アカウント作成
 				</div>
@@ -235,14 +235,14 @@
 					<div class="" style="margin-bottom:12px;">
 						<%= link_to "/#{user.username}" do %>
 							<div class="inline_block_middle" style="width:60%;padding-right:10px;">
-						      <div class="inline_block_middle" style="width:58px;">
+						      <div class="inline_block_middle" style="width:55px;">
 						          <% if user.image.present? %>
-						              <img data-src="<%= user.image(:medium) %>" class="lazyload" style="width:48px;height:48px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+						              <img data-src="<%= user.image(:medium) %>" class="lazyload" style="width:45px;height:45px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
 						          <% else %>
-						              <img data-src="/assets/user.svg" class="lazyload" style="width:48px;height:48px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+						              <img data-src="/assets/user.svg" class="lazyload" style="width:45px;height:45px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
 						          <% end %>
 						      </div>
-						      <div class="inline_block_middle" style="width:calc(100% - 58px);">
+						      <div class="inline_block_middle" style="width:calc(100% - 55px);">
 						      	<div class="contain_title02">
 						            	<div class="font_white" style="margin-top:4px;">
 						              	<%= user.name %>
@@ -335,11 +335,13 @@
 	    });
 	});
 </script>
-
+<%#ScrollReveal.js%>
 <script src="https://unpkg.com/scrollreveal"></script>
 <script>
-    ScrollReveal().reveal('.headline', {
-	    duration: 800,
-	    reset: false
+	$(function() {
+	    ScrollReveal().reveal('.headline', {
+		    duration: 800,
+		    reset: false
+		});
 	});
 </script>

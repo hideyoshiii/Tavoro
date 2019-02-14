@@ -1,7 +1,7 @@
 <% if user_signed_in? %>	
 	<%#フィルターボタン%>
 	<div class="close" style="top:48px;">
-		<a href="" data-toggle="modal" data-target="#myModal_fillter">
+		<a href="#" data-toggle="modal" data-target="#myModal_fillter">
 			<div style="padding:20px 20px;">
 				<%= image_tag "sort_FAFAFA.svg", :style =>'width:22px;height:22px;' %>
 			</div>	
@@ -156,7 +156,7 @@
 									</div>
 								</div>
 								<div class="layer12" style="padding-right:25px;">
-									<a href="" data-toggle="modal" data-target="#myModal_half_<%= post.id %>">
+									<a href="#" data-toggle="modal" data-target="#myModal_half_<%= post.id %>">
 										<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.6;' %>
 									</a>
 								</div>
