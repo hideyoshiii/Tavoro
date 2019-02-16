@@ -50,7 +50,7 @@ class WorksController < ApplicationController
     else
       @posts_all = Post.where.not(review: "bookmark")
       @posts = @posts_all.order('id DESC').limit(12)
-      @users = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(9).pluck(:user_id))
+      @users = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
     end
   end
 
