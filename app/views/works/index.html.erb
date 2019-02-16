@@ -57,20 +57,20 @@
 												<div class="contain_title02">
 													<div class="font_gray_min" style="word-wrap:break-word;margin-top:2px;">
 														<% if post.category == "movie" %>
-															<img data-src="/assets/movie_777777.svg" class="icon_category swiper-lazy"> 映画
+															<%= image_tag "movie_777777.svg", :class =>'icon_category' %> 映画
 														<% end %>
 														<% if post.category == "tv" %>
-															<img data-src="/assets/movie_777777.svg" class="icon_category swiper-lazy"> テレビ
+															<%= image_tag "movie_777777.svg", :class =>'icon_category' %> テレビ
 														<% end %>
 														<% if post.category == "book" %>
-															<img data-src="/assets/book_777777.svg" class="icon_category swiper-lazy"> ブック
+															<%= image_tag "book_777777.svg", :class =>'icon_category' %> ブック
 														<% end %>
 														<% if post.category == "comic" %>
-															<img data-src="/assets/book_777777.svg" class="icon_category swiper-lazy"> コミック
+															<%= image_tag "book_777777.svg", :class =>'icon_category' %> コミック
 														<% end %>
 														<% if post.category == "music" %>
-															<img data-src="/assets/music_777777.svg" class="icon_category swiper-lazy"> ミュージック
-														<% end %>												
+															<%= image_tag "music_777777.svg", :class =>'icon_category' %> ミュージック
+														<% end %>													
 														<% @seconds = (Time.now - post.created_at).round  %>
 														<% if @seconds <= 3600 %>
 															- <%= @seconds / 60 %>分前
@@ -113,7 +113,7 @@
 									<%= link_to "/post/#{post.id}/detail" do %>
 										<div class="font_how">
 											<% if post.review == "bookmark" %>
-												<img data-src="/assets/bookmark_05627B.svg" class="icon_review swiper-lazy">ブックマーク
+												<%= image_tag "bookmark_05627B.svg", :class =>'icon_review' %>ブックマーク
 											<% end %>
 											<% if post.review == "good" %>
 												<% if post.category == "movie" || post.category == "tv" %>
@@ -124,13 +124,13 @@
 												<% end %>
 												<% if post.category == "music" %>
 													聴きました
-												<% end %>											
+												<% end %>					
 											<% end %>
 											<% if post.review == "favorite" %>
-												<img data-src="/assets/star_F8C55A.svg" class="icon_review swiper-lazy">おすすめしています
+												<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめしています
 											<% end %>
 											<% if post.review == "bad" %>
-												<img data-src="/assets/ban_FB473E.svg" class="icon_review swiper-lazy">おすすめしていません
+												<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしていません
 											<% end %>
 										</div>
 										<div class="contain_title">
@@ -207,6 +207,10 @@
 			<% end %>
 			<%#ハーフモーダル%>
 			<%= render partial: 'partial/modal_half', locals: { post: post } %>
+			<%#シェアモーダル%>
+			<%= render partial: 'partial/modal_half_share', locals: { post: post } %>
+			<%#クリップボード%>
+			<script defer src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"></script>
 		<% end %>
 	<% end %>
 	<%#投稿ボタン%>

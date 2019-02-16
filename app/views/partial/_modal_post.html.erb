@@ -6,7 +6,6 @@
 		</i>
 	</a>
 </div>	
-
 <%#投稿モーダル%>
 <div class="modal bottom fade" id="myModal_post">
     <div class="modal-dialog">
@@ -25,7 +24,7 @@
       			<%= link_to(works_movie_path) do %>
 			      	<div class="btn_icon">
 				      	<i>
-				        	<img data-src="/assets/movie_FAFAFA.svg" class="lazyload_modal_post" style="width:22px;height:22px;">
+				        	<%= image_tag "movie_FAFAFA.svg", :style =>'width:22px;height:22px;' %>
 				        </i>
 			        </div>	
 			        <div style="height:10px;"></div>
@@ -38,7 +37,7 @@
         		<%= link_to(works_book_path) do %>
 			      	<div class="btn_icon">
 				      	<i>
-				        	<img data-src="/assets/book_FAFAFA.svg" class="lazyload_modal_post" style="width:22px;height:22px;">
+				        	<%= image_tag "book_FAFAFA.svg", :style =>'width:22px;height:22px;' %>
 				        </i>
 			        </div>	
 			        <div style="height:10px;"></div>
@@ -52,7 +51,7 @@
         		<%= link_to(works_music_path) do %>
 			      	<div class="btn_icon">
 				      	<i>
-				        	<img data-src="/assets/music_FAFAFA.svg" class="lazyload_modal_post" style="width:22px;height:22px;">
+				        	<%= image_tag "music_FAFAFA.svg", :style =>'width:22px;height:22px;' %>
 				        </i>
 			        </div>	
 			        <div style="height:10px;"></div>
@@ -65,7 +64,7 @@
         		<%= link_to(works_bookmark_path) do %>
 			      	<div class="btn_icon">
 				      	<i>
-				        	<img data-src="/assets/bookmark_FAFAFA.svg" class="lazyload_modal_post" style="width:22px;height:22px;">
+				        	<%= image_tag "bookmark_FAFAFA.svg", :style =>'width:22px;height:22px;' %>
 				        </i>
 			        </div>	
 			        <div style="height:10px;"></div>
@@ -79,7 +78,7 @@
         <a href="#" class="btns_plus" data-dismiss="modal" id="dismiss_post">
 			<span id="btn_plus">
 				<i>
-					<img data-src="/assets/plus_FAFAFA.svg" class="lazyload_modal_post" style="width:20px;height:20px;transform-origin:50%,50%;transform:rotate(45deg);">
+					<%= image_tag "plus_FAFAFA.svg", :style =>'width:20px;height:20px;transform-origin:50%,50%;transform:rotate(45deg);' %>
 				</i>
 			</span>
 		</a>
@@ -87,7 +86,6 @@
     </div>
   </div>
 </div>
-
 <%#モーダルtubolinks不具合修正%>
 <script defer>
   $(function(){
@@ -106,10 +104,4 @@
       });
     }       
   });
-</script>
-<%#モーダルlazyload%>
-<script defer>
-	$('#myModal_post').on("show.bs.modal", function () {
-    	$('img.lazyload_modal_post').lazyload();
-    });      
 </script>

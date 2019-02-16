@@ -10,7 +10,7 @@
         <div class="a7">
             <a href="#" data-dismiss="modal" id="dismiss_fillter">
                 <div style="padding:20px;">
-                	<img data-src="/assets/cross_777777.svg" class="lazyload_modal_fillter" style="width:18px;height:18px;opacity:0.5;">
+                	<%= image_tag "cross_FAFAFA.svg", :style =>'width:18px;height:18px;opacity:0.4;' %>
                 </div>
             </a>  
           </div>
@@ -59,7 +59,6 @@
     </div>
   </div>
 </div>
-
 <%#モーダルtubolinks不具合修正%>
 <script defer>
   $(function(){
@@ -78,10 +77,4 @@
       });
     }       
   });
-</script>
-<%#モーダルlazyload%>
-<script defer>
-	$('#myModal_fillter').on("show.bs.modal", function () {
-    	$('img.lazyload_modal_fillter').lazyload();
-    });      
 </script>

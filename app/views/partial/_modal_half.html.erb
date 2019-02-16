@@ -36,13 +36,7 @@
 		          			<%= post.title %>
 		          		</div>
 		          		<div style="height:7vh;"></div>
-		          		<div style="width:100%;padding:0 10%;">
-		          			<%= link_to "/likes/post/#{post.id}" do %>
-								<div class="btn_half_item">  
-									<%= image_tag "like_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>いいね！一覧
-								</div>
-							<% end %>
-							<div style="height:30px"></div>
+		          		<div style="width:100%;padding:0 12%;">
 		          			<% if user_signed_in? %>	          				
 		          				<%#投稿者だったら%>
 				          		<% if post.user.id == current_user.id %>
@@ -58,45 +52,35 @@
 								   	<% end %>						    						
 									<%= link_to "/works/#{post.id}/edit" do %>
 										<div class="btn_half_item">  
-											<%= image_tag "edit_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>投稿を編集
+											<%= image_tag "edit_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>投稿を編集
 										</div>
 									<% end %>
 									<div style="height:30px"></div>			
 									<%= link_to "/works/#{post.id}/destroy", method: :post, data: { confirm: '削除しますか？' } do %>
 										<div class="btn_half_item" style="color:#FB473E;">  
-											<%= image_tag "trash_FB473E.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>投稿を削除
+											<%= image_tag "trash_FB473E.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>投稿を削除
 										</div>
 									<% end %>
 				          		<%#投稿者でなかったら%>
-				          		<% else %>		          			
-									<span id="bookmark-of-<%= post.id %>">
-								      	<%= render partial: 'works/bookmark', locals: { post: post } %>
-								    </span>
-								    <div style="height:30px"></div>
+				          		<% else %>		          										
 									<%= link_to "/works/#{post.id}/copy" do %>
 										<div class="btn_half_item">  
-											<%= image_tag "add_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>この作品を投稿
+											<%= image_tag "add_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>この作品を投稿
 										</div>	
 									<% end %>				
 								<% end %>
 							<%#ログインしてなかったら%>
-							<% else %>							
-								<%= link_to "/works/#{post.id}/create_bookmark", method: :post do %>
-									<div class="btn_half_item">  
-										<%= image_tag "bookmark_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>ブックマーク
-									</div>
-								<% end %>
-								<div style="height:30px"></div>
+							<% else %>													
 								<%= link_to "/works/#{post.id}/copy" do %>
 									<div class="btn_half_item">  
-										<%= image_tag "add_FAFAFA.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>この作品を投稿
+										<%= image_tag "add_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>この作品を投稿
 									</div>	
 								<% end %>	
 							<% end %>
 							<div style="height:30px"></div>
-							<a href="http://twitter.com/share?url=<%= root_url(only_path: false) %>post/<%= post.id %>" target="blank">
+							<a href="#" data-toggle="modal" data-target="#myModal_half_share_<%= post.id %>">
 								<div class="btn_half_item">  						
-									<%= image_tag "twitter.svg", :style =>'width:22px;height:22px;margin-right:15px;' %>twitterでシェア
+									<%= image_tag "share_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>シェアする
 								</div>
 							</a>
 							<div style="height:90px"></div>	
@@ -135,7 +119,7 @@
 			$('#myModal_half_<%= post.id %>').on("click",function(){
 				$('body').removeClass('modal-open');
 			  	$('.modal-backdrop').remove();
-				$('#myModal_<%= post.id %>').modal('hide'); 
+				$('#myModal_half_<%= post.id %>').modal('hide'); 
 			});
 		}				
 	});
