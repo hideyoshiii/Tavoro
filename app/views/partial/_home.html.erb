@@ -44,15 +44,15 @@
 <%#タボーレについて%>
 <div class="a1 headline" style="height:100%;">
 	<div class="a8" style="text-align:center;">
-		<div style="font-size:18px;text-align:center;">
+		<div style="font-size:18px;">
 			シンプルな作品コレクションSNS
 		</div>
-		<div style="height:1vh;"></div>
-		<div style="font-size:12px;text-align:center;">
+		<div style="height:0.5vh;"></div>
+		<div style="font-size:12px;">
 			TAVOREは映画や本,音楽などの作品を
 		    <br>気軽に記録,共有できる場所です
 		</div>
-		<div style="height:5vh;"></div>
+		<div style="height:4vh;"></div>
 		<div style="text-align:center;width:100%;padding:0 25%;">
 			<img data-src="/assets/using02.png" class="lazyload" style="width:100%;height:auto;">
 		</div>
@@ -62,15 +62,15 @@
 <%#カテゴリーについて%>
 <div class="a1 headline" style="height:100%;">
 	<div class="a8" style="text-align:center;">
-		<div style="font-size:18px;text-align:center;">
+		<div style="font-size:18px;">
 			映画も本も音楽も１つの場所に
 		</div>
-		<div style="height:1vh;"></div>
-		<div style="font-size:12px;text-align:center;">
+		<div style="height:0.5vh;"></div>
+		<div style="font-size:12px;">
 			お気に入りの映画も、あの愛読書も、流行りの音楽も
 			<br>TAVOREにまとめてコレクションできます
 		</div>
-		<div style="height:5vh;"></div>
+		<div style="height:4vh;"></div>
 		<div style="padding:0 8%;">
 			<div class="inline_block_middle" style="width:25%;text-align:right;padding-right:10px;">
 				<div class="inline_block_middle" style="text-align:center;">
@@ -143,15 +143,15 @@
 <%#PWAについて%>
 <div class="a1 headline" style="height:100%;">
 	<div class="a8" style="text-align:center;">
-		<div style="font-size:18px;text-align:center;">
+		<div style="font-size:18px;">
 			アプリのような使い心地で
 		</div>
-		<div style="height:1vh;"></div>
-		<div style="font-size:12px;text-align:center;">
+		<div style="height:0.5vh;"></div>
+		<div style="font-size:12px;">
 			ホーム画面に追加することで
 		    <br>アプリと同じ操作性で使用することができます
 		</div>
-		<div style="height:5vh;"></div>
+		<div style="height:4vh;"></div>
 		<div style="padding:0 8%;">
 			<div class="inline_block_top" style="width:25%;text-align:right;padding-right:10px;">
 				<div style="height:4vh;"></div>
@@ -177,103 +177,83 @@
 		</div>
 	</div>
 </div>
-<div style="height:5%;"></div>
-<%#最近の投稿%>
-<div class="a1 headline" style="height:100%;">
-	<div class="a8" style="text-align:left;">
-		<div style="font-size:18px;margin-left:5%;">
-			Recent Posts
-		</div>
-		<div style="height:2vh;"></div>
-		<div class="horizontal_scroll" style="padding:0 7%;">	
-			<% @posts.each.with_index(1) do |post, i| %>
-				<% if i % 2 != 0 %>
-					<div class="inline_block_top" style="margin-right:5px;">
-				<% end %>
-					<div style="width:120px;height:180px;border-radius:2px;overflow:hidden;margin-bottom:5px;">
-						<%= link_to "/post/#{post.id}" do %>
-							<% if post.image_url.blank? %>
-								<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
-							<% else %>									
-								<% if post.category == "movie" || post.category == "tv" %>
-									<% @image_url = post.image_url.sub(/original/, 'w500') %>
-								<% end %>
-								<% if post.category == "book" || post.category == "comic" %>
-									<% if post.api == "itunes" %>
-										<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-									<% else %>
-										<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
-									<% end %>
-								<% end %>
-								<% if post.category == "music" %>
-									<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-								<% end %>
-								<img data-src="<%= @image_url %>" class="img_myboom lazyload">
-							<% end %>
-						<% end %>
-					</div>
-				<% if i % 2 == 0 %>
-					</div>
-				<% end %>
-			<% end %>
-		</div>	
-	</div>	
-</div>	
-<div style="height:5%;"></div>
+<div style="height:10%;"></div>
 <%#おすすめユーザー%>
-<div class="a1 headline" style="height:100%;">
-	<div class="a8" style="text-align:left;">
-		<div style="font-size:18px;margin-left:5%;color:">
-			Recommended Users
-		</div>
-		<div style="height:2vh;"></div>
-		<div class="horizontal_scroll" style="padding:0 7%;">	
-			<% @users.each.with_index(1) do |user, i| %>
-				<% if i == 1 || i == 7 %>
-					<div class="inline_block_top" style="width:95%;">
-				<% end %>
-					<div class="" style="margin-bottom:12px;">
-						<%= link_to "/#{user.username}" do %>
-							<div class="inline_block_middle" style="width:60%;padding-right:10px;">
-						      <div class="inline_block_middle" style="width:55px;">
-						          <% if user.image.present? %>
-						              <img data-src="<%= user.image(:medium) %>" class="lazyload" style="width:45px;height:45px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-						          <% else %>
-						              <img data-src="/assets/user.svg" class="lazyload" style="width:45px;height:45px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
-						          <% end %>
-						      </div>
-						      <div class="inline_block_middle" style="width:calc(100% - 55px);">
-						      	<div class="contain_title02">
-						            	<div class="font_white" style="margin-top:4px;">
-						              	<%= user.name %>
-						              	<% if user.authority == "public" %>		                		
-						              		<img data-src="/assets/public.svg" class="icon_public_min lazyload">
-						              	<% end %>
-						            	</div>
-						        	</div>
-						        	<div class="contain_title02">
-						            	<div class="font_gray_min" style="margin-top:-2px;">
-						              	<%= user.username %>
-						            	</div>
-						          </div>
-						      </div>
-						    </div>
-						    <div class="inline_block_middle" style="width:40%;text-align:right;padding-right:25px;">
-						    	<div style="display: inline-block;padding: 4px 15px;background:none;color:rgba(250,250,250,0.8);font-size:12px;border:solid 1px rgba(250,250,250,0.55);">
-						    		check
-						    	</div>
-						    </div>
-						<% end %>
-					</div>
-				<% if i % 6 == 0 %>
-					</div>
-				<% end %>
-			<% end %>
-		</div>	
-	</div>	
+<div class="headline" style="text-align:left;">
+	<div style="font-size:20px;text-align:center;">
+		User Ranking
+	</div>
+	<div style="font-size:12px;text-align:center;">
+		ユーザーランキング
+	</div>
+	<div style="height:4vh;"></div>
+	<% @users.each.with_index(1) do |user, i| %>
+		<%= link_to "/#{user.username}/profile" do %>
+			<div style="width:100%;padding:5px 10px 5px 5px;">
+		  		<div class="inline_block_middle" style="width:12%;text-align:center;">
+		  			<% if i == 1 %>
+		  				<img data-src="/assets/no1_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
+		  			<% else %>
+		  				<% if i == 2 %>
+		  					<img data-src="/assets/no2_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
+		  				<% else %>
+		  					<% if i == 3 %>
+			  					<img data-src="/assets/no3_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
+			  				<% else %>
+			  					<span style="font-size:12px;color:#C2C2C2;"><%= i %></span>
+			  				<% end %>
+		  				<% end %>
+		  			<% end %>
+		  		</div>
+		  		<div class="inline_block_middle" style="width:calc(88% - <%= (i - 1) * 2 %>%);padding:8px;border-radius:25px;background:-webkit-linear-gradient(0deg,rgba(50,50,50,0.2),rgba(70,70,70,0.2));background:linear-gradient(0deg,rgba(50,50,50,50,0.2),rgba(70,70,70,0.2));">
+		  			<div class="inline_block_middle" style="width:calc(100% - 50px);padding:0 5px">
+		            	<div class="contain_title02">
+			              	<div class="font_white" style="margin-top:4px;">
+			                	<%= user.name %>
+			                	<% if user.authority == "public" %>		                		
+			                		<img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
+			                	<% end %>
+			              	</div>
+		              	</div>
+		              	<div class="contain_title02">
+			              	<div class="font_gray_min" style="font-size:10px;margin-top:2px;">
+			                	<% checked_i = Post.where(user_id: user.id).where.not(review: "bookmark").size %>
+			                	<%= checked_i %> checkeds
+			              	</div>
+			            </div>
+		            </div>
+		  			<div class="inline_block_middle" style="width:50px;text-align:right;">
+			            <% if user.image.present? %>
+			                <img data-src="<%= user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+			            <% else %>
+			                <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+			            <% end %>
+		            </div>
+		  		</div>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+<div style="height:20%;"></div>
+<%#最近の投稿%>
+<div class="headline" style="text-align:center;">
+	<div style="font-size:20px;">
+		Recent Posts
+	</div>
+	<div style="font-size:12px;">
+		最近の投稿
+	</div>
+	<div style="height:4vh;"></div>
+	<div style="display:inline-block;">
+		<% @posts.each.with_index(1) do |post, i| %>
+			<%# 3列表示(lazyload) %>
+			<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
+	  	<% end %>
+  	</div>
 </div>	
+<div style="height:5%;"></div>
 <%#フッター%>
-<div class="headline" style="text-align:center;padding:10% 0 18%;background:rgba(17,17,17,0.4);">
+<div class="headline" style="text-align:center;padding:10% 0 20%;background:rgba(17,17,17,0.2);">
 	<img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:80px;height:80px;">
 	<div style="font-size:16px;margin-top:-0.5vh;">
 		TAVORE
