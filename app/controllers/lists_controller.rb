@@ -25,7 +25,7 @@ class ListsController < ApplicationController
       @list = List.create(user_id: current_user.id, title: "プロフィール")
     end
     if @list_item = ListItem.create(list_id: @list.id, post_id: @post.id)
-      redirect_to "/#{current_user.username}/profile"
+      redirect_to "/#{current_user.username}"
     end
   end
   

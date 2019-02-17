@@ -413,11 +413,7 @@ class WorksController < ApplicationController
   	end
     #保存に成功した場合
   	if @post.save
-      if @post.review == "bookmark"
-        redirect_to "/#{current_user.username}/bookmarks"
-      else
-        redirect_to "/#{current_user.username}/posts"
-      end
+      redirect_to "/post/#{@post.id}"
     #保存に失敗した場合
     else
       redirect_to root_path
@@ -510,11 +506,7 @@ class WorksController < ApplicationController
       end
     end
     if @post.save
-      if @post.review == "bookmark"
-        redirect_to "/#{current_user.username}/bookmarks"
-      else
-        redirect_to "/#{current_user.username}/posts"
-      end
+      redirect_to "/post/#{@post.id}"
     else
       redirect_to root_path
     end   
@@ -522,9 +514,14 @@ class WorksController < ApplicationController
 
   def destroy
   	@post = Post.find(params[:id])
+    @review = @post.review
     if @post.destroy
       #削除に成功した場合
-      redirect_to root_path
+      if @review == "bookmark"
+        redirect_to "/#{current_user.username}/bookmarks"
+      else
+        redirect_to "/#{current_user.username}/posts"
+      end
     else
       #削除に失敗した場合
       redirect_to root_path
