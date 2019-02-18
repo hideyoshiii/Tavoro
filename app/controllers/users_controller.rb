@@ -65,7 +65,7 @@ class UsersController < ApplicationController
       @user  = User.find(current_user.id)
       @users = @user.followings
       @users_test = User.where(authority: "test")
-      @posts = Post.where.not(review: "bookmark")
+      @posts = Post.where.not(review: "bookmark").order(created_at: "DESC")
       @posts = @posts.where.not(user_id: @user)
       @posts = @posts.where.not(user_id: @users)
       @posts = @posts.where.not(user_id: @users_test)

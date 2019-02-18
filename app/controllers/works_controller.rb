@@ -49,7 +49,7 @@ class WorksController < ApplicationController
       end
     else
       @posts_all = Post.where.not(review: "bookmark")
-      @posts = @posts_all.order('id DESC').limit(15)
+      @posts = @posts_all.order(created_at: "DESC").limit(15)
       @users = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
     end
   end
@@ -74,18 +74,22 @@ class WorksController < ApplicationController
       @relation = false
     end
     @posts_all = Post.where(category: @post.category, work_id: @post.work_id).order('id DESC')
+    if @posts_all.present? 
+      @posts_all = @posts_all.where.not(id: @post.id)  
+    end
     #ログインしている時
     if user_signed_in?
       @users = current_user.followings
-      if @posts_all.present?
-        @posts_all = @posts_all.where.not(id: @post.id)   
+      if @posts_all.present? 
         @posts_mine = @posts_all.where(user_id: current_user.id)   
         @posts_follow = @posts_all.where(user_id: @users)
         @posts_unfollow = @posts_all.where.not(user_id: @users).where.not(user_id: current_user)
       end
     #ログインしてない時
     else
-      @posts_unfollow = @posts_all
+      if @posts_all.present? 
+        @posts_unfollow = @posts_all
+      end
     end
     #映画の時
     if @post.category == "movie"
