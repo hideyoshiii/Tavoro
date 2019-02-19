@@ -67,9 +67,11 @@
 	    </div>
 	  </div>
 	  <div class="inline_block_middle" style="text-align:right;width:65%;">
-	  	<a href="javascript:void(0);" onclick="window.history.back();">
-        	<%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
-        </a>
+	  	<% if user_signed_in? %>
+		  	<a href="javascript:void(0);" onclick="window.history.back();">
+	        	<%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
+	        </a>
+	    <% end %>
 	  </div>
 	</div>
 	<div class="a8">     

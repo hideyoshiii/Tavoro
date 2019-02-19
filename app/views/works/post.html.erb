@@ -35,9 +35,9 @@
 				<%= link_to "/#{post.user.username}" do %>
 					<div class="inline_block_middle" style="width:50px;">
 						<% if post.user.image.present? %>
-			                <%= image_tag post.user.image(:medium), :style =>'width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);' %>
+			                <%= image_tag post.user.image(:medium), :style =>'width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);' %>
 			            <% else %>			                
-			                <%= image_tag "user.svg", :style =>'width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+			                <%= image_tag "user.svg", :style =>'width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
 			            <% end %>								
 					</div>
 					<div class="inline_block_middle" style="width:calc(100% - 50px);">
@@ -86,9 +86,11 @@
 				<% end %>
 			</div>						
 			<div class="inline_block_middle" style="width:20%;text-align:right;">
-				<a href="javascript:void(0);" onclick="window.history.back();">					
-		        	<%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>		        	
-		        </a>	
+				<% if user_signed_in? %>
+					<a href="javascript:void(0);" onclick="window.history.back();">					
+			        	<%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>		        	
+			        </a>
+			    <% end %>
 			</div>
 		</div>
 		<div class="layer01">

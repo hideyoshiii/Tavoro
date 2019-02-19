@@ -142,7 +142,7 @@ body:after{
     padding:0;
     margin:0;
     background:black;
-    border-bottom:1px solid rgba(39,134,160,1);
+    border-bottom:0.5px solid rgba(39,134,160,1);
     z-index:99;
 }
 .bar_collection{
@@ -207,9 +207,6 @@ body:after{
 }
 //iPadタテ
 @media only screen and (max-width:1024px) and (orientation:portrait) {
-	.bar_top{
-	    border-bottom:0.5px solid rgba(39,134,160,1);
-	}
 	.bar_collection{
 		left:0;
 	    width:100%;
@@ -229,9 +226,6 @@ body:after{
 }
 //iPhone
 @media only screen and (max-width:767px) {
-	.bar_top{
-	    border-bottom:0.5px solid rgba(39,134,160,1);
-	}
 	.bar_collection{
 		left:0;
 	    width:100%;
@@ -251,9 +245,6 @@ body:after{
 }
 //SE以下
 @media only screen and (max-width:370px) {
-	.bar_top{
-	    border-bottom:0.5px solid rgba(39,134,160,1);
-	}
 	.bar_collection{
 		left:0;
 	    width:100%;
@@ -636,7 +627,7 @@ body:after{
 }
 @media only screen and (max-width:767px) {
 	.font_white_min{
-		font-size:11px;
+		font-size:10px;
 	}
 	.font_white{
 		font-size:13px;
@@ -648,7 +639,7 @@ body:after{
 		font-size:16px;
 	}
 	.font_gray_min{
-		font-size:11px;
+		font-size:10px;
 	}
 	.font_gray{
 		font-size:13px;

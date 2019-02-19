@@ -22,9 +22,11 @@
     		<% end %>
 		</div>
 		<div class="inline_block_middle" style="width:33.33%;text-align:right;">
-			<a href="javascript:void(0);" onclick="window.history.back();">			
-	        	<%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
-	        </a>	
+			<% if user_signed_in? %>
+				<a href="javascript:void(0);" onclick="window.history.back();">			
+		        	<%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
+		        </a>	
+		    <% end %>
 		</div>
 	</div>
 	<div class="tabContainer">
@@ -42,111 +44,97 @@
 
 <div class="swiper-container" style="height:100%">
 	<div class="swiper-wrapper" style="height:100%">
-		<div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:145px;"></div>
-			  	<% if @all.blank? %>				  		
-					<div class="font_white" style="text-align:center;margin-top:30vh;">
-						投稿がありません
-					</div>	
-			  	<% else %>
-				  	<% @all.each.with_index(1) do |post, i| %>
-			  			<%# 3列表示(lazyload) %>
-						<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
-				  	<% end %>
+		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+	  		<div style="height:145px;"></div>
+		  	<% if @all.blank? %>				  		
+				<div class="font_white" style="text-align:center;margin-top:30vh;">
+					投稿がありません
+				</div>	
+		  	<% else %>
+			  	<% @all.each.with_index(1) do |post, i| %>
+		  			<%# 3列表示(lazyload) %>
+					<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
 			  	<% end %>
-		  	</div>
+		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:145px;"></div>
-			  	<% if @list_favorite_items.blank? %>
-			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						投稿がありません
-					</div>	
-			  	<% else %>
-				    <% @list_favorite_items.each.with_index(1) do |item, i| %>
-				    	<% post = item.post %>
-				  		<%# 3列表示(swiper) %>
-						<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
-				  	<% end %>
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+	  		<div style="height:145px;"></div>
+		  	<% if @list_favorite_items.blank? %>
+		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+					投稿がありません
+				</div>	
+		  	<% else %>
+			    <% @list_favorite_items.each.with_index(1) do |item, i| %>
+			    	<% post = item.post %>
+			  		<%# 3列表示(swiper) %>
+					<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 			  	<% end %>
-			</div>	
+		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:145px;"></div>
-			  	<% if @movie.blank? %>
-			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						投稿がありません
-					</div>	
-			  	<% else %>
-				    <% @movie.each.with_index(1) do |post, i| %>
-				  		<%# 3列表示(swiper) %>
-						<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
-				  	<% end %>
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+	  		<div style="height:145px;"></div>
+		  	<% if @movie.blank? %>
+		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+					投稿がありません
+				</div>	
+		  	<% else %>
+			    <% @movie.each.with_index(1) do |post, i| %>
+			  		<%# 3列表示(swiper) %>
+					<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 			  	<% end %>
-			</div>	
+		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:145px;"></div>
-			    <% if @tv.blank? %>
-			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						投稿がありません
-					</div>
-			  	<% else %>
-				  	<% @tv.each.with_index(1) do |post, i| %>
-				  		<%# 3列表示(swiper) %>
-						<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
-				  	<% end %>
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+	  		<div style="height:145px;"></div>
+		    <% if @tv.blank? %>
+		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+					投稿がありません
+				</div>
+		  	<% else %>
+			  	<% @tv.each.with_index(1) do |post, i| %>
+			  		<%# 3列表示(swiper) %>
+					<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 			  	<% end %>
-			</div>	  	
+		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:145px;"></div>
-			    <% if @book.blank? %>
-			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						投稿がありません
-					</div>
-			  	<% else %>
-				  	<% @book.each.with_index(1) do |post, i| %>
-				  		<%# 3列表示(swiper) %>
-						<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
-				  	<% end %>
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+	  		<div style="height:145px;"></div>
+		    <% if @book.blank? %>
+		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+					投稿がありません
+				</div>
+		  	<% else %>
+			  	<% @book.each.with_index(1) do |post, i| %>
+			  		<%# 3列表示(swiper) %>
+					<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 			  	<% end %>
-			</div>			  
+		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:145px;"></div>
-			    <% if @comic.blank? %>
-			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						投稿がありません
-					</div>
-			  	<% else %>
-				  	<% @comic.each.with_index(1) do |post, i| %>
-				  		<%# 3列表示(swiper) %>
-						<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
-				  	<% end %>
-		  		<% end %>
-		  	</div>	  	
-        </div>
-        <div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:145px;"></div>
-			    <% if @music.blank? %>
-			  		<div class="font_white" style="text-align:center;margin-top:30vh;">
-						投稿がありません
-					</div>	
-			  	<% else %>
-				  	<% @music.each.with_index(1) do |post, i| %>
-				  		<%# 3列表示(swiper) %>
-						<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
-				  	<% end %>
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+	  		<div style="height:145px;"></div>
+		    <% if @comic.blank? %>
+		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+					投稿がありません
+				</div>
+		  	<% else %>
+			  	<% @comic.each.with_index(1) do |post, i| %>
+			  		<%# 3列表示(swiper) %>
+					<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
 			  	<% end %>
-			</div>			
+	  		<% end %>
+        </div>
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+	  		<div style="height:145px;"></div>
+		    <% if @music.blank? %>
+		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+					投稿がありません
+				</div>	
+		  	<% else %>
+			  	<% @music.each.with_index(1) do |post, i| %>
+			  		<%# 3列表示(swiper) %>
+					<%= render partial: 'partial/row_three_swiper', locals: { post: post, i: i } %>
+			  	<% end %>
+		  	<% end %>
         </div>
 	</div>
 </div>
