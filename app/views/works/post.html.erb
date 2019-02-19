@@ -33,14 +33,14 @@
 		<div class="layer03" style="padding:15px 20px;">
 			<div class="inline_block_middle" style="width:80%;">
 				<%= link_to "/#{post.user.username}" do %>
-					<div class="inline_block_middle" style="width:50px;">
+					<div class="inline_block_middle" style="width:48px;">
 						<% if post.user.image.present? %>
 			                <%= image_tag post.user.image(:medium), :style =>'width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);' %>
 			            <% else %>			                
 			                <%= image_tag "user.svg", :style =>'width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
 			            <% end %>								
 					</div>
-					<div class="inline_block_middle" style="width:calc(100% - 50px);">
+					<div class="inline_block_middle" style="width:calc(100% - 48px);">
 						<div class="contain_title02">
 							<div class="font_white_min" style="word-wrap:break-word;margin-top:2px;">
 								<%= post.user.name %>
