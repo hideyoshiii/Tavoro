@@ -1,30 +1,34 @@
-<div class="bar_post">			
-	<div style="">
-		<div class="inline_block_middle" style="width:15%;">
-			<div style="text-align:left;padding-left:10px;">
-				<a href="javascript:void(0);" onclick="window.history.back();">
-		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-		        </a>										
-			</div>
-		</div>
-		<div class="inline_block_middle" style="width:70%;">
-			<div class="contain_title02" style="text-align:center;">
-				<div style="font-size:14px;color:#c2c2c2;">
-					<%= @post.title %>
-				</div>
-			</div>
-		</div>
-		<div class="inline_block_middle" style="width:15%;">
-			<button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">		
+<% if user_signed_in? %>
+  <style>
+    .bar_top{display:none;}
+  </style>
+  <div class="bar_back">			
+  	<div style="padding-top:15px;">
+  		<div class="inline_block_middle" style="width:15%;">
+  			<div style="text-align:left;padding-left:15px;">
+  				<a href="javascript:void(0);" onclick="window.history.back();">
+  		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+  		        </a>										
+  			</div>
+  		</div>
+  		<div class="inline_block_middle" style="width:70%;">
+  			<div class="contain_title02" style="text-align:center;">
+  				<div style="font-size:14px;color:#c2c2c2;">
+  					<%= @post.title %>
+  				</div>
+  			</div>
+  		</div>
+  		<div class="inline_block_middle" style="width:15%;">
+  			<button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">		
 				投稿		
 			</button>
-		</div>
-	</div>
-</div>
+  		</div>
+  	</div>
+  </div>
+<% end %>
 
 <div style="height:45px;"></div>
-<div style="height:35px;"></div>
-<div class="wallpaper" style="top:80px;height:calc(100vh - 80px);">
+<div class="wallpaper" style="top:45px;height:calc(100vh - 45px);">
 	<div class="a1">
 		<div class="a4">
 	        <div class="d1">
@@ -62,7 +66,7 @@
 	<% if @post.preview_url.present? %>
 		<%= hidden_field_tag :preview_url, @post.preview_url %>
 	<% end %>
-	<div style="height:3vh;"></div>		
+	<div style="height:5vh;"></div>		
 	<%#レビュー%>				
 	<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
 		<div style="display:inline-block;">

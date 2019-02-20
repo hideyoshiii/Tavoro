@@ -1,16 +1,85 @@
 <% if params[:q].blank? %>
-	<% if @posts.present? %>
-		<% @posts.each.with_index(1) do |post, i| %>
-			<%# 3列表示(lazyload) %>
-			<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
-	  	<% end %>
-	  	<%#lazyload.js%>
-		<script defer>
-			$(function() {
-		    	$('img.lazyload_min').lazyload();
-			});
-		</script>
-  	<% end %>
+	<%#all%>
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+		最近の投稿
+	</div>
+	<div class="horizontal_scroll" style="padding:0 5px;">	
+		<% @movie.each.with_index(1) do |post, i| %>
+		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
+		<% end %>
+	</div>
+	<%#movie%>
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+		映画
+	</div>
+	<div class="horizontal_scroll" style="padding:0 5px;">	
+		<% @movie.each.with_index(1) do |post, i| %>
+		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
+		<% end %>
+	</div>
+	<%#tv%>
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+		テレビ
+	</div>
+	<div class="horizontal_scroll" style="padding:0 5px;">	
+		<% @tv.each.with_index(1) do |post, i| %>
+		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
+		<% end %>
+	</div>
+	<%#book%>
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+		ブック
+	</div>
+	<div class="horizontal_scroll" style="padding:0 5px;">	
+		<% @book.each.with_index(1) do |post, i| %>
+		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
+		<% end %>
+	</div>
+	<%#comic%>
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+		コミック
+	</div>
+	<div class="horizontal_scroll" style="padding:0 5px;">	
+		<% @comic.each.with_index(1) do |post, i| %>
+		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
+		<% end %>
+	</div>
+	<%#music%>
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+		ミュージック
+	</div>
+	<div class="horizontal_scroll" style="padding:0 5px;">	
+		<% @music.each.with_index(1) do |post, i| %>
+		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
+		<% end %>
+	</div>
+	<%#おすすめユーザー%>
+	<% @users.each do |user| %>	
+		<% posts = Post.where(user_id: user.id).where.not(review: "bookmark").order(created_at: "DESC").limit(10) %>
+		<div style="margin:16px 0 4px 10px;">
+			<%= link_to "/#{user.username}" do %>
+				<div class="inline_block_bottom" style="width:30px;">
+					<% if user.image.present? %>
+		                <%= image_tag user.image(:medium), :style =>'width:25px;height:25px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);' %>
+		            <% else %>			                
+		                <%= image_tag "user.svg", :style =>'width:25px;height:25px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+		            <% end %>								
+				</div>
+				<div class="inline_block_bottom" style="width:calc(100% - 30px);">
+					<div class="contain_title02">
+						<div class="font_white_min" style="word-wrap:break-word;font-size:15px;font-weight:bolder;opacity:0.7;">
+							<%= user.name %>の投稿
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<div class="horizontal_scroll" style="padding:0 5px;">	
+			<% posts.each.with_index(1) do |post, i| %>
+				<%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
+			<% end %>
+		</div>
+	<% end %>
 <% else %>
 	<% if @items.present? %>
 	  	<% @items.each do |user| %>

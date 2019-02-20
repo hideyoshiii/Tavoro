@@ -1,25 +1,29 @@
-<div class="bar_post" style="height:80px;">			
-	<div style="">
-		<div class="inline_block_middle" style="width:15%;">
-			<div style="text-align:left;padding-left:10px;">
-				<a href="javascript:void(0);" onclick="window.history.back();">
-		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-		        </a>										
-			</div>
-		</div>
-		<div class="inline_block_middle" style="width:70%;">
-			<div class="contain_title02" style="text-align:center;">
-				<div style="font-size:14px;color:#c2c2c2;">
-					ブックマークから投稿
-				</div>
-			</div>
-		</div>
-		<div class="inline_block_middle" style="width:15%;">
-			<div style="text-align:right;">							
-			</div>
-		</div>
-	</div>
-	<div style="height:12px;"></div>
+<% if user_signed_in? %>
+  <style>
+    .bar_top{display:none;}
+  </style>
+  <div class="bar_back" style="height:85px;">			
+  	<div style="padding-top:15px;">
+  		<div class="inline_block_middle" style="width:15%;">
+  			<div style="text-align:left;padding-left:15px;">
+  				<a href="javascript:void(0);" onclick="window.history.back();">
+  		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+  		        </a>										
+  			</div>
+  		</div>
+  		<div class="inline_block_middle" style="width:70%;">
+  			<div class="contain_title02" style="text-align:center;">
+  				<div style="font-size:14px;color:#c2c2c2;">
+  					ブックマークから投稿
+  				</div>
+  			</div>
+  		</div>
+  		<div class="inline_block_middle" style="width:15%;">
+  			<div style="text-align:right;">							
+  			</div>
+  		</div>
+  	</div>
+  	<div style="height:10px;"></div>
 	<div class="tabContainer">
         <div class="tab_table">
         	<div class="tab__button active">すべて</div>
@@ -30,14 +34,14 @@
             <div class="tab__button">ミュージック</div>
         </div>
     </div>
-</div>
-
+  </div>
+<% end %>
 
 <div class="swiper-container" style="height:100%">
 	<div class="swiper-wrapper" style="height:100%">
 		<div class="swiper-slide" style="height:100%">
         	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:125px;"></div>
+		  		<div style="height:85px;"></div>
 		  		<% if @all.blank? %>				  		
 					<div class="font_white" style="text-align:center;margin-top:30vh;">
 						ブックマークがありません
@@ -118,7 +122,7 @@
 		</div>
 		<div class="swiper-slide" style="height:100%">
         	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:125px;"></div>
+		  		<div style="height:85px;"></div>
 		  		<% if @movie.blank? %>				  		
 					<div class="font_white" style="text-align:center;margin-top:30vh;">
 						ブックマークがありません
@@ -160,7 +164,7 @@
 		</div>
 		<div class="swiper-slide" style="height:100%">
         	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:125px;"></div>
+		  		<div style="height:85px;"></div>
 		  		<% if @tv.blank? %>				  		
 					<div class="font_white" style="text-align:center;margin-top:30vh;">
 						ブックマークがありません
@@ -202,7 +206,7 @@
 		</div>
 		<div class="swiper-slide" style="height:100%">
         	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:125px;"></div>
+		  		<div style="height:85px;"></div>
 		  		<% if @book.blank? %>				  		
 					<div class="font_white" style="text-align:center;margin-top:30vh;">
 						ブックマークがありません
@@ -248,7 +252,7 @@
 		</div>
 		<div class="swiper-slide" style="height:100%">
         	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:125px;"></div>
+		  		<div style="height:85px;"></div>
 		  		<% if @comic.blank? %>				  		
 					<div class="font_white" style="text-align:center;margin-top:30vh;">
 						ブックマークがありません
@@ -294,7 +298,7 @@
 		</div>
 		<div class="swiper-slide" style="height:100%">
         	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:125px;"></div>
+		  		<div style="height:85px;"></div>
 		  		<% if @music.blank? %>				  		
 					<div class="font_white" style="text-align:center;margin-top:30vh;">
 						ブックマークがありません

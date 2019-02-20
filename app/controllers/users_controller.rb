@@ -62,50 +62,19 @@ class UsersController < ApplicationController
 
 
 	  def user
-      @user  = User.find(current_user.id)
-      @users = @user.followings
-      @users_test = User.where(authority: "test")
       @posts = Post.where.not(review: "bookmark").order(created_at: "DESC")
-      @posts = @posts.where.not(user_id: @user)
-      @posts = @posts.where.not(user_id: @users)
-      @posts = @posts.where.not(user_id: @users_test)
-      #categoryのfillter
-      if params[:category].present?
-        @fillter_category = params[:category]
-        unless @fillter_category == "all"
-          @posts = @posts.where(category: @fillter_category)
-        end
+      @all = @posts.limit(10)
+      @movie = @posts.where(category: "movie").limit(10)
+      @tv = @posts.where(category: "tv").limit(10)
+      @book = @posts.where(category: "book").limit(10)
+      @comic = @posts.where(category: "comic").limit(10)
+      @music = @posts.where(category: "music").limit(10)
+      @users =  User.where.not(id: current_user)
+      @users_follow = current_user.followings
+      if @users_follow.present?
+        @users =  @users.where.not(id: @users_follow)
       end
-      @posts = @posts.order(created_at: "DESC").limit(150)
-      #labelの真偽
-      @all = false
-      @movie = false
-      @tv = false
-      @book = false
-      @comic = false
-      @music = false
-      if params[:category].present?
-        if params[:category] == "all"
-          @all = true
-        end
-        if params[:category] == "movie"
-          @movie = true
-        end
-        if params[:category] == "tv"
-          @tv = true
-        end
-        if params[:category] == "book"
-          @book = true
-        end
-        if params[:category] == "comic"
-          @comic = true
-        end
-        if params[:category] == "music"
-          @music = true
-        end
-      else
-        @all = true
-      end
+      @users = @users.select('users.*', 'count(posts.id) AS posts').left_joins(:posts).group('users.id').order('posts desc').limit(5)
 	  end
 
   	def ajax_user_list

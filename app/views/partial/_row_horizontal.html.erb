@@ -1,0 +1,22 @@
+<div class="inline_block_middle" style="width:110px;height:160px;position:relative;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
+	<%= link_to "/post/#{post.id}" do %>
+		<% if post.image_url.blank? %>
+			<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
+		<% else %>									
+			<% if post.category == "movie" || post.category == "tv" %>
+				<% @image_url = post.image_url.sub(/original/, 'w300') %>
+			<% end %>
+			<% if post.category == "book" || post.category == "comic" %>
+				<% if post.api == "itunes" %>
+					<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+				<% else %>
+					<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+				<% end %>
+			<% end %>
+			<% if post.category == "music" %>
+				<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+			<% end %>
+			<img data-src="<%= @image_url %>" class="img_myboom lazyload">
+		<% end %>
+	<% end %>
+</div>
