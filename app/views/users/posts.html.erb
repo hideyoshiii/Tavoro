@@ -157,19 +157,24 @@
 	    var swiper = new Swiper('.swiper-container', {
 				speed: 600,
 				touchAngle: 55,
-				preloadImages: false,
+				navigation: {
+			    	nextEl: '.swiper-button-next',
+			    	prevEl: '.swiper-button-prev',
+			  	},
+			  	hideOnClick: false,
+			  	preloadImages: false,
 				lazy: {
 					loadOnTransitionStart: true,
 					loadPrevNext: false,
+				},
+				hashNavigation: {
+				    watchState: true,
 				},
 			  	on: {
 				    slideChange: function () {
 				      var newIndex = swiper.realIndex;
 	            	  slideChange(newIndex);
 				    },
-				},
-				hashNavigation: {
-				    watchState: true,
 				},
 			});
 	    //スライドする時に発動する関数。タブの表示調整を行う
