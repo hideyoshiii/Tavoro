@@ -44,7 +44,7 @@
 
 <div class="swiper-container" style="height:100%">
 	<div class="swiper-wrapper" style="height:100%">
-		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="slide1">
+		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
 	  		<div style="height:145px;"></div>
 		  	<% if @all.blank? %>				  		
 				<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -57,7 +57,7 @@
 			  	<% end %>
 		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="slide2">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
 	  		<div style="height:145px;"></div>
 		  	<% if @list_favorite_items.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -71,7 +71,7 @@
 			  	<% end %>
 		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="slide3">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
 	  		<div style="height:145px;"></div>
 		  	<% if @movie.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -84,7 +84,7 @@
 			  	<% end %>
 		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="slide4">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
 	  		<div style="height:145px;"></div>
 		    <% if @tv.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -97,7 +97,7 @@
 			  	<% end %>
 		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="slide5">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
 	  		<div style="height:145px;"></div>
 		    <% if @book.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -110,7 +110,7 @@
 			  	<% end %>
 		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="slide6">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
 	  		<div style="height:145px;"></div>
 		    <% if @comic.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -123,7 +123,7 @@
 			  	<% end %>
 	  		<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="slide7">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
 	  		<div style="height:145px;"></div>
 		    <% if @music.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -157,18 +157,10 @@
 	    var swiper = new Swiper('.swiper-container', {
 				speed: 600,
 				touchAngle: 55,
-				navigation: {
-			    	nextEl: '.swiper-button-next',
-			    	prevEl: '.swiper-button-prev',
-			  	},
-			  	hideOnClick: false,
-			  	preloadImages: false,
+				preloadImages: false,
 				lazy: {
 					loadOnTransitionStart: true,
 					loadPrevNext: false,
-				},
-				hashNavigation: {
-				    watchState: true,
 				},
 			  	on: {
 				    slideChange: function () {
