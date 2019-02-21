@@ -147,9 +147,20 @@
 					loadOnTransitionStart: true,
 					loadPrevNext: false,
 				},
-			  	
 				hashNavigation: {
 				    watchState: true,
+				},
+				on: {
+				    init: function () {
+				      var newIndex = swiper.realIndex;
+	            	  slideChange(newIndex);
+				    },
+				},
+			  	on: {
+				    slideChange: function () {
+				      var newIndex = swiper.realIndex;
+	            	  slideChange(newIndex);
+				    },
 				},
 			});
 	    //スライドする時に発動する関数。タブの表示調整を行う
