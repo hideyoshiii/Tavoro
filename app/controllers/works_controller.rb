@@ -48,9 +48,15 @@ class WorksController < ApplicationController
         @all = true
       end
     else
-      @posts_all = Post.where.not(review: "bookmark")
-      @posts = @posts_all.order(created_at: "DESC").limit(15)
-      @users = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
+      @users = User.select('users.*', 'count(posts.id) AS posts').left_joins(:posts).group('users.id').order('posts desc').limit(5)
+      @posts = Post.where.not(review: "bookmark").order(created_at: "DESC")
+      @all = @posts.limit(20)
+      @movie = @posts.where(category: "movie").limit(20)
+      @tv = @posts.where(category: "tv").limit(20)
+      @book = @posts.where(category: "book").limit(20)
+      @comic = @posts.where(category: "comic").limit(20)
+      @music = @posts.where(category: "music").limit(20)
+      @users = User.find(@posts.group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
     end
   end
 

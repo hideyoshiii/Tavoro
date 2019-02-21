@@ -1,27 +1,27 @@
 <% if params[:q].blank? %>
 	<%#all%>
-	<div style="font-size:15px;margin:10px 0 4px 10px;font-weight:bolder;opacity:0.8;">
+	<div style="font-size:16px;margin:12px 0 5px 10px;font-weight:bolder;opacity:0.75;">
 		最近の投稿
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
 		<% @all.each.with_index(1) do |post, i| %>
-		    <div class="inline_block_middle" style="width:240px;height:350px;position:relative;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
+		    <div class="inline_block_middle" style="width:200px;height:300px;position:relative;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
 				<%= link_to "/post/#{post.id}" do %>
 					<% if post.image_url.blank? %>
 						<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
 					<% else %>									
 						<% if post.category == "movie" || post.category == "tv" %>
-							<% @image_url = post.image_url.sub(/original/, 'w780') %>
+							<% @image_url = post.image_url.sub(/original/, 'w500') %>
 						<% end %>
 						<% if post.category == "book" || post.category == "comic" %>
 							<% if post.api == "itunes" %>
-								<% @image_url = post.image_url.sub(/1000x1000bb/, '780x780bb') %>
+								<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
 							<% else %>
-								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=780x780') %>
+								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=500x5000') %>
 							<% end %>
 						<% end %>
 						<% if post.category == "music" %>
-							<% @image_url = post.image_url.sub(/1000x1000bb/, '780x780bb') %>
+							<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
 						<% end %>
 						<img data-src="<%= @image_url %>" class="img_myboom lazyload">
 					<% end %>
@@ -30,7 +30,7 @@
 		<% end %>
 	</div>
 	<%#movie%>
-	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
+	<div style="font-size:16px;margin:18px 0 5px 10px;font-weight:bolder;opacity:0.75;">
 		映画
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -39,7 +39,7 @@
 		<% end %>
 	</div>
 	<%#tv%>
-	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
+	<div style="font-size:16px;margin:18px 0 5px 10px;font-weight:bolder;opacity:0.75;">
 		テレビ
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -48,7 +48,7 @@
 		<% end %>
 	</div>
 	<%#book%>
-	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
+	<div style="font-size:16px;margin:18px 0 5px 10px;font-weight:bolder;opacity:0.75;">
 		ブック
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -57,7 +57,7 @@
 		<% end %>
 	</div>
 	<%#comic%>
-	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
+	<div style="font-size:16px;margin:18px 0 5px 10px;font-weight:bolder;opacity:0.75;">
 		コミック
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -66,7 +66,7 @@
 		<% end %>
 	</div>
 	<%#music%>
-	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
+	<div style="font-size:16px;margin:18px 0 5px 10px;font-weight:bolder;opacity:0.7;">
 		ミュージック
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -78,7 +78,7 @@
 	<% @users.each do |user| %>	
 		<% posts = Post.where(user_id: user.id).where.not(review: "bookmark").order(created_at: "DESC").limit(20) %>
 		<% if posts.present? %>
-			<div style="margin:16px 0 8px 10px;">
+			<div style="margin:18px 0 5px 10px;">
 				<%= link_to "/#{user.username}" do %>
 					<div class="inline_block_bottom" style="width:30px;">
 						<% if user.image.present? %>	         
@@ -90,7 +90,7 @@
 					</div>
 					<div class="inline_block_bottom" style="width:calc(100% - 30px);">
 						<div class="contain_title02">
-							<div class="font_white_min" style="word-wrap:break-word;font-size:15px;font-weight:bolder;opacity:0.8;line-height:1.0;">
+							<div class="font_white_min" style="word-wrap:break-word;font-size:15px;font-weight:bolder;opacity:0.75;line-height:1.0;">
 								<%= user.name %>の投稿
 							</div>
 						</div>
