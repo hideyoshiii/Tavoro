@@ -1,110 +1,31 @@
 <% if params[:q].blank? %>
-	<%#all%>
-	<div style="font-size:16px;margin:12px 0 5px 10px;opacity:0.8;">
-		最近の投稿
-	</div>
-	<div class="horizontal_scroll" style="padding:0 6px;">	
-		<% @all.each.with_index(1) do |post, i| %>
-		    <div class="inline_block_middle" style="width:200px;height:300px;position:relative;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
-				<%= link_to "/post/#{post.id}" do %>
-					<% if post.image_url.blank? %>
-						<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
-					<% else %>									
-						<% if post.category == "movie" || post.category == "tv" %>
-							<% @image_url = post.image_url.sub(/original/, 'w500') %>
-						<% end %>
-						<% if post.category == "book" || post.category == "comic" %>
-							<% if post.api == "itunes" %>
-								<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-							<% else %>
-								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=500x5000') %>
-							<% end %>
-						<% end %>
-						<% if post.category == "music" %>
-							<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-						<% end %>
-						<img data-src="<%= @image_url %>" class="img_myboom lazyload">
+	<% if @posts.present? %>
+		<% @posts.each.with_index(1) do |post, i| %>
+			<%# 3列表示(lazyload) %>
+			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+			<%= link_to "/post/#{post.id}" do %>
+				<% if post.image_url.blank? %>
+					<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
+				<% else %>									
+					<% if post.category == "movie" || post.category == "tv" %>
+						<% @image_url = post.image_url.sub(/original/, 'w300') %>
 					<% end %>
+					<% if post.category == "book" || post.category == "comic" %>
+						<% if post.api == "itunes" %>
+							<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+						<% else %>
+							<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+						<% end %>
+					<% end %>
+					<% if post.category == "music" %>
+						<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+					<% end %>
+					<img data-src="<%= @image_url %>" class="img_myboom lazyload">
 				<% end %>
-			</div>
-		<% end %>
-	</div>
-	<%#movie%>
-	<div style="font-size:16px;margin:18px 0 5px 10px;opacity:0.8;">
-		映画
-	</div>
-	<div class="horizontal_scroll" style="padding:0 6px;">	
-		<% @movie.each.with_index(1) do |post, i| %>
-		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
-		<% end %>
-	</div>
-	<%#tv%>
-	<div style="font-size:16px;margin:18px 0 5px 10px;opacity:0.8;">
-		テレビ
-	</div>
-	<div class="horizontal_scroll" style="padding:0 6px;">	
-		<% @tv.each.with_index(1) do |post, i| %>
-		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
-		<% end %>
-	</div>
-	<%#book%>
-	<div style="font-size:16px;margin:18px 0 5px 10px;opacity:0.8;">
-		ブック
-	</div>
-	<div class="horizontal_scroll" style="padding:0 6px;">	
-		<% @book.each.with_index(1) do |post, i| %>
-		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
-		<% end %>
-	</div>
-	<%#comic%>
-	<div style="font-size:16px;margin:18px 0 5px 10px;opacity:0.8;">
-		コミック
-	</div>
-	<div class="horizontal_scroll" style="padding:0 6px;">	
-		<% @comic.each.with_index(1) do |post, i| %>
-		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
-		<% end %>
-	</div>
-	<%#music%>
-	<div style="font-size:16px;margin:18px 0 5px 10px;opacity:0.8;">
-		ミュージック
-	</div>
-	<div class="horizontal_scroll" style="padding:0 6px;">	
-		<% @music.each.with_index(1) do |post, i| %>
-		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
-		<% end %>
-	</div>
-	<%#おすすめユーザー%>
-	<% @users.each do |user| %>	
-		<% posts = Post.where(user_id: user.id).where.not(review: "bookmark").order(created_at: "DESC").limit(20) %>
-		<% if posts.present? %>
-			<div style="margin:18px 0 8px 10px;">
-				<%= link_to "/#{user.username}" do %>
-					<div class="inline_block_bottom" style="width:30px;">
-						<% if user.image.present? %>	         
-			                <img data-src="<%= user.image(:medium) %>" class="lazyload" style="width:25px;height:25px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
-			            <% else %>		
-			            	<img data-src="/assets/user.svg" class="lazyload" style="width:25px;height:25px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">	                
-			                
-			            <% end %>								
-					</div>
-					<div class="inline_block_bottom" style="width:calc(100% - 30px);">
-						<div class="contain_title02">
-							<div class="font_white_min" style="word-wrap:break-word;font-size:16px;opacity:0.8;line-height:1.0;">
-								<%= user.name %>の投稿
-							</div>
-						</div>
-					</div>
-				<% end %>
-			</div>
-			<div class="horizontal_scroll" style="padding:0 6px;">	
-				<% posts.each.with_index(1) do |post, i| %>
-					<%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
-				<% end %>
-			</div>
-		<% end %>
-	<% end %>
-	<div style="height:1vh;"></div>
+			<% end %>
+		</div>
+	  	<% end %>
+  	<% end %>
 <% else %>
 	<% if @items.present? %>
 	  	<% @items.each do |user| %>
@@ -122,12 +43,6 @@
 <%#lazyload.js%>
 <script defer>
   $(function() {
-    $(":not(.horizontal_scroll) img.lazyload").lazyload({
-        effect: "fadeIn"
-    });
-    $("img.lazyload").lazyload({
-        effect: "fadeIn",
-        container: $(".horizontal_scroll")
-     });
-});
+    $('img.lazyload').lazyload();
+  });
 </script>

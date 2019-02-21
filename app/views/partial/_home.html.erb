@@ -4,8 +4,8 @@
 	}
 	/*FadeiN*/
 	body {
-    animation:fadeIn 1s ease 0s 1 normal;
-    -webkit-animation:fadeIn 1s ease 0s 1 normal;
+    	animation:fadeIn 1s ease 0s 1 normal;
+    	-webkit-animation:fadeIn 1s ease 0s 1 normal;
 	}
 	@keyframes fadeIn {
 	    0% {opacity: 0}
@@ -55,7 +55,7 @@
     /*上から*/
     .top.delighter {
       transition:all .5s ease-out;
-      transform:translateY(100%);
+      transform:translateY(-20%);
       opacity: 0;
     }
     .top.delighter.started {
@@ -67,7 +67,7 @@
     /*下から*/
     .bottom.delighter {
       transition:all .5s ease-out;
-      transform:translateY(-100%);
+      transform:translateY(20%);
       opacity:0;
     }
     .bottom.delighter.started {
@@ -127,7 +127,7 @@
 	</div>
 </div>
 <div style="height:3vh;"></div>
-<div class="front" style="text-align:center;width:100%;padding:0 25%;" data-delighter>
+<div class="bottom" style="text-align:center;width:100%;padding:0 25%;" data-delighter>
 	<img data-src="/assets/using02.png" class="lazyload" style="width:100%;height:auto;">
 </div>
 <div style="height:25%;"></div>
@@ -193,7 +193,7 @@
 			</span>	
 		</div>
 		<div style="height:7px;"></div>
-		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
+		<div class="inline_block_middle front" style="text-align:center;" data-delighter>
 			<div class="btn_icon_min">
 			  	<i>
 			    	<img data-src="/assets/music_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
@@ -205,7 +205,7 @@
 			</span>	
 		</div>
 	</div>
-	<div class="inline_block_middle front" style="width:75%;text-align:left;padding-left:10px;" data-delighter>
+	<div class="inline_block_middle left" style="width:75%;text-align:left;padding-left:10px;" data-delighter>
 		<img data-src="/assets/using03.png" class="lazyload" style="width:85%;height:auto;">
 	</div>
 </div>
@@ -241,7 +241,7 @@
 			</div>	
 		</div>
 	</div>
-	<div class="inline_block_top front" style="width:75%;text-align:left;padding-left:10px;" data-delighter>
+	<div class="inline_block_top left" style="width:75%;text-align:left;padding-left:10px;" data-delighter>
 		<img data-src="/assets/using01.png" class="lazyload" style="width:85%;height:auto;">
 	</div>
 </div>
@@ -256,7 +256,7 @@
 	</div>
 	<div style="height:3vh;"></div>
 </div>	
-<div class="horizontal_scroll front" style="padding:0 6px;" data-delighter>	
+<div class="horizontal_scroll bottom" style="padding:0 6px;" data-delighter>	
 	<% @posts.each.with_index(1) do |post, i| %>
 	    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
 	<% end %>
@@ -328,7 +328,7 @@
 		</div>
 	</div>
 	<div style="height:5vh;"></div>
-	<div class="left" data-delighter>
+	<div class="bottom" data-delighter>
 		<div class="inline_block_middle" style="margin:0 20px;">
 		    <%= link_to "/" do %>  
 		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
@@ -352,7 +352,7 @@
 	    </div>
 	</div>
 	<div style="height:2vh;"></div>
-	<div class="front" data-delighter>
+	<div class="bottom" data-delighter>
 		<div class="inline_block_middle" style="margin:0 20px;">
 			<%= link_to "https://goo.gl/forms/8u5OwHgXpyIKF4f83" do %>  
 		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">

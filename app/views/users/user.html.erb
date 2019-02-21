@@ -1,9 +1,14 @@
-<div class="bar_search" style="padding:15px 10px;">
-	<div class="nmn inline_block_middle" style="text-align:center;width:100%;">
+<div class="bar_search" style="padding:15px;">
+	<div class="nmn inline_block_middle" style="text-align:center;width:90%;">
 		<form action="#">
-			<input id="inc_search" placeholder="Search" type="text" required="">
+			<input id="inc_search" placeholder="ユーザーをIDで検索" type="text" required="">
 		</form>
 	</div>
+	<a href="#" data-toggle="modal" data-target="#myModal_fillter">
+		<div class="inline_block_middle" style="text-align:center;width:10%;padding-left:15px;">
+			<%= image_tag "sort_FAFAFA.svg", :style =>'width:22px;height:22px;opacity:0.2;' %>
+		</div>
+	</a>
 </div>
 
 <div style="height:45px;"></div>
@@ -13,6 +18,8 @@
 </span>
 <div style="height:1vh;"></div>	
 
+<%#フィルターボタン%>
+<%= render "partial/fillter" %>
 
 <%#インクリメンタルサーチjs%>
 <script defer>
