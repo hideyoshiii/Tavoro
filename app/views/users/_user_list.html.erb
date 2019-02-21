@@ -5,23 +5,23 @@
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
 		<% @all.each.with_index(1) do |post, i| %>
-		    <div class="inline_block_middle" style="width:165px;height:250px;position:relative;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
+		    <div class="inline_block_middle" style="width:240px;height:350px;position:relative;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
 				<%= link_to "/post/#{post.id}" do %>
 					<% if post.image_url.blank? %>
 						<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
 					<% else %>									
 						<% if post.category == "movie" || post.category == "tv" %>
-							<% @image_url = post.image_url.sub(/original/, 'w500') %>
+							<% @image_url = post.image_url.sub(/original/, 'w780') %>
 						<% end %>
 						<% if post.category == "book" || post.category == "comic" %>
 							<% if post.api == "itunes" %>
-								<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+								<% @image_url = post.image_url.sub(/1000x1000bb/, '780x780bb') %>
 							<% else %>
-								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
+								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=780x780') %>
 							<% end %>
 						<% end %>
 						<% if post.category == "music" %>
-							<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+							<% @image_url = post.image_url.sub(/1000x1000bb/, '780x780bb') %>
 						<% end %>
 						<img data-src="<%= @image_url %>" class="img_myboom lazyload">
 					<% end %>
@@ -76,7 +76,7 @@
 	</div>
 	<%#おすすめユーザー%>
 	<% @users.each do |user| %>	
-		<% posts = Post.where(user_id: user.id).where.not(review: "bookmark").order(created_at: "DESC").limit(10) %>
+		<% posts = Post.where(user_id: user.id).where.not(review: "bookmark").order(created_at: "DESC").limit(20) %>
 		<% if posts.present? %>
 			<div style="margin:16px 0 8px 10px;">
 				<%= link_to "/#{user.username}" do %>
@@ -90,7 +90,7 @@
 					</div>
 					<div class="inline_block_bottom" style="width:calc(100% - 30px);">
 						<div class="contain_title02">
-							<div class="font_white_min" style="word-wrap:break-word;font-size:14px;font-weight:bolder;opacity:0.8;">
+							<div class="font_white_min" style="word-wrap:break-word;font-size:15px;font-weight:bolder;opacity:0.8;line-height:1.0;">
 								<%= user.name %>の投稿
 							</div>
 						</div>
@@ -104,6 +104,7 @@
 			</div>
 		<% end %>
 	<% end %>
+	<div style="height:1vh;"></div>
 <% else %>
 	<% if @items.present? %>
 	  	<% @items.each do |user| %>
