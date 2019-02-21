@@ -48,7 +48,6 @@ class WorksController < ApplicationController
         @all = true
       end
     else
-      @users = User.select('users.*', 'count(posts.id) AS posts').left_joins(:posts).group('users.id').order('posts desc').limit(5)
       @posts = Post.where.not(review: "bookmark").order(created_at: "DESC")
       @all = @posts.limit(20)
       @movie = @posts.where(category: "movie").limit(20)
