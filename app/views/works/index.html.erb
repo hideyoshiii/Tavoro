@@ -1,4 +1,6 @@
-<% if user_signed_in? %>	
+<% if user_signed_in? %>
+	<%#turbolinksにキャッシュさせない%>
+	<meta name="turbolinks-cache-control" content="no-cache">	
 	<%#フィルターボタン%>
 	<div class="close" style="top:48px;">
 		<a href="#" data-toggle="modal" data-target="#myModal_fillter">
@@ -218,9 +220,9 @@
 	<%#フィルターボタン%>
 	<%= render "partial/fillter" %>
 	<%#swiper.js%>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
-	<script >
-		
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+	<script defer>
+		$(function(){
 			var swiper = new Swiper('.swiper-container', {
 				direction: 'vertical',
 				speed: 450,
@@ -236,8 +238,11 @@
 					loadOnTransitionStart: true,
 					loadPrevNext: true,
 				},
+				hashNavigation: {
+				    replaceState: true,
+				},
 			});
-		
+		});
 	</script>
 <%#ログインしていない時%>
 <% else %>

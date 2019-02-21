@@ -1,3 +1,6 @@
+<%#turbolinksにキャッシュさせない%>
+<meta name="turbolinks-cache-control" content="no-cache">
+
 <%#meta_tag%>
 <% if @user.image.present? %>
 	<% set_meta_tags title: "#{@user.name}の投稿一覧", description: "", og: { title: "#{@user.name}の投稿一覧", image: @user.image }, twitter: { title: "#{@user.name}の投稿一覧", image: @user.image, card: "summary" } %>
@@ -167,7 +170,10 @@
 				      var newIndex = swiper.realIndex;
 	            	  slideChange(newIndex);
 				    },
-				  },
+				},
+				hashNavigation: {
+				    replaceState: true,
+				},
 			});
 	    //スライドする時に発動する関数。タブの表示調整を行う
 	    function slideChange(newIndex){
