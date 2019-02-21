@@ -1,6 +1,3 @@
-<%#turbolinksにキャッシュさせない%>
-<meta name="turbolinks-cache-control" content="no-cache">
-
 <%#meta_tag%>
 <% if @post.image_url.present? %>
 	<% set_meta_tags title: "#{@post.title} | #{@post.user.name}", description: "", og: { title: "#{@post.title} | #{@post.user.name}", image: @post.image_url }, twitter: { title: "#{@post.title} | #{@post.user.name}", image: @post.image_url, card: "summary" } %>

@@ -1,6 +1,3 @@
-<%#turbolinksにキャッシュさせない%>
-<meta name="turbolinks-cache-control" content="no-cache">
-
 <style>
   .bar_top{border:none;}
 </style>
@@ -363,7 +360,7 @@
 				    },
 				},
 				hashNavigation: {
-				    replaceState: true,
+				    watchState: true,
 				},
 			});
 	    //スライドする時に発動する関数。タブの表示調整を行う

@@ -1,6 +1,4 @@
-<% if user_signed_in? %>
-	<%#turbolinksにキャッシュさせない%>
-	<meta name="turbolinks-cache-control" content="no-cache">	
+<% if user_signed_in? %>	
 	<%#フィルターボタン%>
 	<div class="close" style="top:48px;">
 		<a href="#" data-toggle="modal" data-target="#myModal_fillter">
@@ -239,7 +237,7 @@
 					loadPrevNext: true,
 				},
 				hashNavigation: {
-				    replaceState: true,
+				    watchState: true,
 				},
 			});
 		});
