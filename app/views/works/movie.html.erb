@@ -1,33 +1,28 @@
-<% if user_signed_in? %>
-  <style>
-    .bar_top{display:none;}
-  </style>
-  <div class="bar_back">			
-  	<div style="padding-top:15px;">
-  		<div class="inline_block_middle" style="width:15%;">
-  			<div style="text-align:left;padding-left:15px;">
-  				<a href="javascript:void(0);" onclick="window.history.back();">
-  		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-  		        </a>										
-  			</div>
-  		</div>
-  		<div class="inline_block_middle" style="width:70%;">
-  			<div class="contain_title02" style="text-align:center;">
-  				<div style="font-size:14px;color:#c2c2c2;">
-  					映画/テレビを投稿
-  				</div>
-  			</div>
-  		</div>
-  		<div class="inline_block_middle" style="width:15%;">
-  			<div style="text-align:right;">							
-  			</div>
-  		</div>
-  	</div>
+<style>
+  .bar_top{border:none;}
+</style>
+<div class="bar_post">      
+  <div style="">
+    <div class="inline_block_middle" style="width:15%;">
+      <div style="text-align:left;padding-left:15px;">
+        <a href="javascript:void(0);" onclick="window.history.back();">
+          <%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+        </a>                    
+      </div>
+    </div>
+    <div class="inline_block_middle" style="width:70%;">
+      <div class="contain_title02" style="text-align:center;">
+        <div style="font-size:14px;color:#c2c2c2;">
+          映画/テレビを投稿
+        </div>
+      </div>
+    </div>
+    <div class="inline_block_middle" style="width:15%;">
+    </div>
   </div>
-<% end %>
+</div>
 
-
-<div class="bar_search" style="top:45px;padding:15px;">
+<div class="bar_search" style="top:80px;padding:15px;">
 	<div class="nmn inline_block_middle" style="text-align:center;width:100%;">
 		<form action="#">
 			<input id="inc_search" placeholder="Search" type="text" required="">
@@ -36,6 +31,7 @@
 </div>
 
 <div style="height:45px;"></div>
+<div style="height:35px;"></div>
 <div style="height:55px;"></div>				
 <div id='movie_list'>
   <%= render partial: 'movie_list' %>

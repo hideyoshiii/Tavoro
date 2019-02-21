@@ -1,42 +1,41 @@
-<% if user_signed_in? %>
-  <style>
-    .bar_top{display:none;}
-  </style>
-  <div class="bar_back">			
-  	<div style="padding-top:15px;">
-  		<div class="inline_block_middle" style="width:15%;">
-  			<div style="text-align:left;padding-left:15px;">
-  				<a href="javascript:void(0);" onclick="window.history.back();">
-  		        	<%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-  		        </a>										
-  			</div>
-  		</div>
-  		<div class="inline_block_middle" style="width:70%;">
-  			<div class="contain_title02" style="text-align:center;">
-  				<div style="font-size:14px;color:#c2c2c2;">
-  					お問い合わせ
-  				</div>
-  			</div>
-  		</div>
-  		<div class="inline_block_middle" style="width:15%;">
-  			<div style="text-align:right;">							
-  			</div>
-  		</div>
-  	</div>
+<style>
+  .bar_top{border:none;}
+</style>
+<div class="bar_post">      
+  <div style="">
+    <div class="inline_block_middle" style="width:15%;">
+      <div style="text-align:left;padding-left:15px;">
+        <a href="javascript:void(0);" onclick="window.history.back();">
+          <%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+        </a>                    
+      </div>
+    </div>
+    <div class="inline_block_middle" style="width:70%;">
+      <div class="contain_title02" style="text-align:center;">
+        <div style="font-size:14px;color:#c2c2c2;">
+          お問い合わせ
+        </div>
+      </div>
+    </div>
+    <div class="inline_block_middle" style="width:15%;">
+      <div style="text-align:right;">             
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
 
 <div style="height:45px;"></div>
-<div style="height:20vh;"></div>
+<div style="height:35px;"></div>
+<div style="height:15vh;"></div>
 <div style="text-align:center;padding:0 20px;">
-	<%= image_tag "tavore_logo_01.png", :style =>'width:80px;height:80px;' %>
-	<div style="font-size:16px;margin-top:-0.5vh;">
-        TAVORE
-    </div>  
-	<div style="height:5vh;"></div> 
-    <div class="font_gray_min">
-      Twitter公式アカウント
-    </div>
+  <%= image_tag "tavore_logo_01.png", :style =>'width:80px;height:80px;' %>
+  <div style="font-size:16px;margin-top:-0.5vh;">
+    TAVORE
+  </div>  
+  <div style="height:5vh;"></div> 
+  <div class="font_gray_min">
+    Twitter公式アカウント
+  </div>
 　	<a href="https://twitter.com/tavore_info" target="blank"> 
       <div style="font-size:14px;margin-top:1vh;">
         @tavore_info
@@ -46,9 +45,18 @@
     <div class="font_gray_min">
       Twitterアカウントをお持ちでない方はこちらまで
     </div>
-    <a href="mailto:tavore.info&#64;gmail.com">
+    <a href="mailto:tavore.info&#64;gmail.com" target="_blank">
       <div style="font-size:14px;margin-top:1vh;">
         tavore.info@gmail.com
+      </div>
+    </a>
+    <div style="height:5vh;"></div> 
+    <div class="font_gray_min">
+      問題が発生しましたか？
+    </div>
+    <a href="https://goo.gl/forms/8u5OwHgXpyIKF4f83" target="_blank">
+      <div style="font-size:12px;margin-top:1vh;">
+        フィードバックはこちら
       </div>
     </a>
     <div style="height:5vh;"></div> 
