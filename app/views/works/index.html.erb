@@ -218,9 +218,9 @@
 	<%#フィルターボタン%>
 	<%= render "partial/fillter" %>
 	<%#swiper.js%>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
-	<script defer>
-		$(function(){
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+	<script >
+		
 			var swiper = new Swiper('.swiper-container', {
 				direction: 'vertical',
 				speed: 450,
@@ -237,7 +237,7 @@
 					loadPrevNext: true,
 				},
 			});
-		});
+		
 	</script>
 <%#ログインしていない時%>
 <% else %>
