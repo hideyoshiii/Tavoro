@@ -1,15 +1,36 @@
 <% if params[:q].blank? %>
 	<%#all%>
-	<div style="font-size:15px;margin:10px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+	<div style="font-size:15px;margin:10px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		最近の投稿
 	</div>
 	<div class="horizontal_scroll" style="padding:0 5px;">	
 		<% @all.each.with_index(1) do |post, i| %>
-		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
+		    <div class="inline_block_middle" style="width:165px;height:250px;position:relative;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
+				<%= link_to "/post/#{post.id}" do %>
+					<% if post.image_url.blank? %>
+						<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
+					<% else %>									
+						<% if post.category == "movie" || post.category == "tv" %>
+							<% @image_url = post.image_url.sub(/original/, 'w500') %>
+						<% end %>
+						<% if post.category == "book" || post.category == "comic" %>
+							<% if post.api == "itunes" %>
+								<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+							<% else %>
+								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
+							<% end %>
+						<% end %>
+						<% if post.category == "music" %>
+							<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+						<% end %>
+						<img data-src="<%= @image_url %>" class="img_myboom lazyload">
+					<% end %>
+				<% end %>
+			</div>
 		<% end %>
 	</div>
 	<%#movie%>
-	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		映画
 	</div>
 	<div class="horizontal_scroll" style="padding:0 5px;">	
@@ -18,7 +39,7 @@
 		<% end %>
 	</div>
 	<%#tv%>
-	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		テレビ
 	</div>
 	<div class="horizontal_scroll" style="padding:0 5px;">	
@@ -27,7 +48,7 @@
 		<% end %>
 	</div>
 	<%#book%>
-	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		ブック
 	</div>
 	<div class="horizontal_scroll" style="padding:0 5px;">	
@@ -36,7 +57,7 @@
 		<% end %>
 	</div>
 	<%#comic%>
-	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		コミック
 	</div>
 	<div class="horizontal_scroll" style="padding:0 5px;">	
@@ -45,7 +66,7 @@
 		<% end %>
 	</div>
 	<%#music%>
-	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.7;">
+	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		ミュージック
 	</div>
 	<div class="horizontal_scroll" style="padding:0 5px;">	
@@ -69,8 +90,8 @@
 					</div>
 					<div class="inline_block_bottom" style="width:calc(100% - 30px);">
 						<div class="contain_title02">
-							<div class="font_white_min" style="word-wrap:break-word;font-size:15px;font-weight:bolder;opacity:0.7;">
-								<%= user.name %>
+							<div class="font_white_min" style="word-wrap:break-word;font-size:14px;font-weight:bolder;opacity:0.8;">
+								<%= user.name %>の投稿
 							</div>
 						</div>
 					</div>
@@ -100,6 +121,12 @@
 <%#lazyload.js%>
 <script defer>
   $(function() {
-    $('img.lazyload').lazyload();
-  });
+    $(":not(.horizontal_scroll) img.lazyload").lazyload({
+        effect: "fadeIn"
+    });
+    $("img.lazyload").lazyload({
+        effect: "fadeIn",
+        container: $(".horizontal_scroll")
+     });
+});
 </script>

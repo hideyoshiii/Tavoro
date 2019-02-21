@@ -62,19 +62,24 @@ class UsersController < ApplicationController
 
 
 	  def user
-      @posts = Post.where.not(review: "bookmark").order(created_at: "DESC")
-      @all = @posts.limit(10)
-      @movie = @posts.where(category: "movie").limit(10)
-      @tv = @posts.where(category: "tv").limit(10)
-      @book = @posts.where(category: "book").limit(10)
-      @comic = @posts.where(category: "comic").limit(10)
-      @music = @posts.where(category: "music").limit(10)
       @users =  User.where.not(id: current_user)
       @users_follow = current_user.followings
       if @users_follow.present?
         @users =  @users.where.not(id: @users_follow)
       end
       @users = @users.select('users.*', 'count(posts.id) AS posts').left_joins(:posts).group('users.id').order('posts desc').limit(5)
+
+      @posts = Post.where.not(review: "bookmark").order(created_at: "DESC")
+      @posts = @posts.where.not(user_id: current_user)
+      if @users_follow.present?
+        @posts = @posts.where.not(user_id: @users_follow)
+      end
+      @all = @posts.limit(10)
+      @movie = @posts.where(category: "movie").limit(10)
+      @tv = @posts.where(category: "tv").limit(10)
+      @book = @posts.where(category: "book").limit(10)
+      @comic = @posts.where(category: "comic").limit(10)
+      @music = @posts.where(category: "music").limit(10)
 	  end
 
   	def ajax_user_list
