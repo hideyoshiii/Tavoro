@@ -1,14 +1,88 @@
-<style type="text/css">
+<style>
 	body:after{
 		background:none; 
 	}
+	/*FadeiN*/
+	body {
+    animation:fadeIn 1s ease 0s 1 normal;
+    -webkit-animation:fadeIn 1s ease 0s 1 normal;
+	}
+	@keyframes fadeIn {
+	    0% {opacity: 0}
+	    100% {opacity: 1}
+	}
+
+	@-webkit-keyframes fadeIn {
+	    0% {opacity: 0}
+	    100% {opacity: 1}
+	}
+	/*そのまま*/
+    .front.delighter {
+      transition:all .5s ease-out;
+      transform:none;
+      opacity:0;
+    }
+    .front.delighter.started {
+      transform:none;
+      opacity:1;
+    }
+    .front.delighter.started.ended { 
+    }
+	/*左から*/
+    .left.delighter {
+      transition:all .5s ease-out;
+      transform:translateX(-100%);
+      opacity:0;
+    }
+    .left.delighter.started {
+      transform:none;
+      opacity:1;
+    }
+    .left.delighter.started.ended { 
+    }
+    /*右から*/
+    .right.delighter {
+      transition:all .5s ease-out;
+      transform:translateX(100%);
+      opacity:0;
+    }
+    .right.delighter.started {
+      transform:none;
+      opacity: 1;
+    }
+    .right.delighter.started.ended { 
+    }
+    /*上から*/
+    .top.delighter {
+      transition:all .5s ease-out;
+      transform:translateY(100%);
+      opacity: 0;
+    }
+    .top.delighter.started {
+      transform:none;
+      opacity:1;
+    }
+    .top.delighter.started.ended { 
+    }
+    /*下から*/
+    .bottom.delighter {
+      transition:all .5s ease-out;
+      transform:translateY(-100%);
+      opacity:0;
+    }
+    .bottom.delighter.started {
+      transform:none;
+      opacity:1;
+    }
+    .bottom.delighter.started.ended { 
+    }
 </style>
 <%#ファーストビュー%>
 <div style="height:45px;"></div>
 <div class="a1" style="height:calc(100% - 45px);">
 	<div class="a14">
       <div class="d1">
-        <div class="d2" style="background:rgba(0,0,0,0.87);"></div>
+        <div class="d2" style="background:rgba(0,0,0,0.85);"></div>
         <%= image_tag "home.jpg", :class =>'img_myboom' %>
       </div>
     </div>
@@ -42,7 +116,7 @@
 </div>
 <div style="height:5%;"></div>
 <%#タボーレについて%>
-<div class="headline" style="text-align:center;">
+<div class="left" style="text-align:center;" data-delighter>
 	<div style="font-size:18px;">
 		シンプルな作品コレクションSNS
 	</div>
@@ -53,12 +127,12 @@
 	</div>
 </div>
 <div style="height:3vh;"></div>
-<div style="text-align:center;width:100%;padding:0 25%;">
+<div class="front" style="text-align:center;width:100%;padding:0 25%;" data-delighter>
 	<img data-src="/assets/using02.png" class="lazyload" style="width:100%;height:auto;">
 </div>
 <div style="height:25%;"></div>
 <%#カテゴリーについて%>
-<div class="headline" style="text-align:center;">
+<div class="left" style="text-align:center;" data-delighter>
 	<div style="font-size:18px;">
 		映画も本も音楽も１つの場所に
 	</div>
@@ -71,7 +145,7 @@
 <div style="height:3vh;"></div>
 <div style="padding:0 8%;">
 	<div class="inline_block_middle" style="width:25%;text-align:right;padding-right:10px;">
-		<div class="inline_block_middle" style="text-align:center;">
+		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
 			<div class="btn_icon_min">
 			  	<i>
 			    	<img data-src="/assets/movie_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
@@ -83,7 +157,7 @@
 			</span>	
 		</div>
 		<div style="height:7px;"></div>
-		<div class="inline_block_middle" style="text-align:center;">
+		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
 			<div class="btn_icon_min">
 			  	<i>
 			    	<img data-src="/assets/tv_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
@@ -95,7 +169,7 @@
 			</span>	
 		</div>
 		<div style="height:7px;"></div>
-		<div class="inline_block_middle" style="text-align:center;">
+		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
 			<div class="btn_icon_min">
 			  	<i>
 			    	<img data-src="/assets/book_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
@@ -107,7 +181,7 @@
 			</span>	
 		</div>
 		<div style="height:7px;"></div>
-		<div class="inline_block_middle" style="text-align:center;">
+		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
 			<div class="btn_icon_min">
 			  	<i>
 			    	<img data-src="/assets/comic_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
@@ -119,7 +193,7 @@
 			</span>	
 		</div>
 		<div style="height:7px;"></div>
-		<div class="inline_block_middle" style="text-align:center;">
+		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
 			<div class="btn_icon_min">
 			  	<i>
 			    	<img data-src="/assets/music_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
@@ -131,13 +205,13 @@
 			</span>	
 		</div>
 	</div>
-	<div class="inline_block_middle" style="width:75%;text-align:left;padding-left:10px;">
+	<div class="inline_block_middle front" style="width:75%;text-align:left;padding-left:10px;" data-delighter>
 		<img data-src="/assets/using03.png" class="lazyload" style="width:85%;height:auto;">
 	</div>
 </div>
 <div style="height:25%;"></div>
 <%#PWAについて%>
-<div class="headline" style="text-align:center;">
+<div class="left" style="text-align:center;" data-delighter>
 	<div style="font-size:18px;">
 		アプリのような使い心地で
 	</div>
@@ -151,15 +225,15 @@
 <div style="padding:0 8%;">
 	<div class="inline_block_top" style="width:25%;text-align:right;padding-right:10px;">
 		<div style="height:4vh;"></div>
-		<div class="inline_block_middle" style="text-align:center;">		
+		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>		
 			<img data-src="/assets/pwa.png" class="lazyload" style="width:50px;height:auto;">
 		</div>
 		<div style="height:4vh;"></div>
-		<div class="inline_block_middle" style="text-align:center;width:50px;">
+		<div class="inline_block_middle bottom" style="text-align:center;width:50px;" data-delighter>
 			<img data-src="/assets/cross_FAFAFA.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
 		</div>
 		<div style="height:3vh;"></div>
-		<div class="inline_block_middle" style="text-align:center;">
+		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
 			<div class="btn_icon_min" style="background:black;border-radius:15%;">
 			  	<i>
 			    	<img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:45px;height:45px;margin-top:-2px;">
@@ -167,13 +241,13 @@
 			</div>	
 		</div>
 	</div>
-	<div class="inline_block_top" style="width:75%;text-align:left;padding-left:10px;">
+	<div class="inline_block_top front" style="width:75%;text-align:left;padding-left:10px;" data-delighter>
 		<img data-src="/assets/using01.png" class="lazyload" style="width:85%;height:auto;">
 	</div>
 </div>
 <div style="height:25%;"></div>
 <%#all%>
-<div class="headline" style="text-align:center;">
+<div class="left" style="text-align:center;" data-delighter>
 	<div style="font-size:20px;">
 		Recent Posts
 	</div>
@@ -182,14 +256,14 @@
 	</div>
 	<div style="height:3vh;"></div>
 </div>	
-<div class="horizontal_scroll" style="padding:0 6px;">	
+<div class="horizontal_scroll front" style="padding:0 6px;" data-delighter>	
 	<% @posts.each.with_index(1) do |post, i| %>
 	    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
 	<% end %>
 </div>
 <div style="height:5%;"></div>
 <%#おすすめユーザー%>
-<div class="headline" style="text-align:center;">
+<div class="left" style="text-align:center;" data-delighter>
 	<div style="font-size:20px;;">
 		User Ranking
 	</div>
@@ -200,7 +274,7 @@
 <div style="height:2vh;"></div>
 <% @users.each.with_index(1) do |user, i| %>
 	<%= link_to "/#{user.username}" do %>
-		<div style="width:100%;padding:5px 10px 5px 5px;">
+		<div class="bottom" style="width:100%;padding:5px 10px 5px 5px;" data-delighter>
 	  		<div class="inline_block_middle" style="width:12%;text-align:center;">
 	  			<% if i == 1 %>
 	  				<img data-src="/assets/no1_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
@@ -246,62 +320,70 @@
 <% end %>
 <div style="height:10%;"></div>
 <%#フッター%>
-<div style="text-align:center;padding:10% 0 20%;background:rgba(17,17,17,0.2);">
-	<div class="headline">
+<div style="text-align:center;padding:10% 0 30%;background:rgba(17,17,17,0.2);">
+	<div class="front" data-delighter>
 		<img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:80px;height:80px;">
 		<div style="font-size:16px;margin-top:-0.5vh;">
 			TAVORE
 		</div>
 	</div>
 	<div style="height:5vh;"></div>
-	<div class="inline_block_middle" style="margin:0 20px;">
-	    <%= link_to "/" do %>  
-	        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-	          ホーム
-	        </div>
-	    <% end %>
-    </div>
-	<div class="inline_block_middle" style="margin:0 20px;">
-	    <%= link_to "/users/terms" do %>  
-	        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-	          利用規約
-	        </div>
-	    <% end %>
-    </div>
-    <div class="inline_block_middle" style="margin:0 20px;">
-	    <%= link_to "/users/policy" do %>  
-	        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-	          プライバシーポリシー
-	        </div>
-	    <% end %>
-    </div>
+	<div class="left" data-delighter>
+		<div class="inline_block_middle" style="margin:0 20px;">
+		    <%= link_to "/" do %>  
+		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
+		          ホーム
+		        </div>
+		    <% end %>
+	    </div>
+		<div class="inline_block_middle" style="margin:0 20px;">
+		    <%= link_to "/users/terms" do %>  
+		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
+		          利用規約
+		        </div>
+		    <% end %>
+	    </div>
+	    <div class="inline_block_middle" style="margin:0 20px;">
+		    <%= link_to "/users/policy" do %>  
+		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
+		          プライバシーポリシー
+		        </div>
+		    <% end %>
+	    </div>
+	</div>
 	<div style="height:2vh;"></div>
-	<div class="inline_block_middle" style="margin:0 20px;">
-		<%= link_to "https://goo.gl/forms/8u5OwHgXpyIKF4f83" do %>  
-	        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-	          フィードバック
-	        </div>
-	    <% end %>
+	<div class="front" data-delighter>
+		<div class="inline_block_middle" style="margin:0 20px;">
+			<%= link_to "https://goo.gl/forms/8u5OwHgXpyIKF4f83" do %>  
+		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
+		          フィードバック
+		        </div>
+		    <% end %>
+		</div>
+	    <div class="inline_block_middle" style="margin:0 20px;">
+		    <a href="mailto:tavore.info&#64;gmail.com">
+		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
+		          Email
+		        </div>
+		    </a>
+		</div>
+	    <div class="inline_block_middle" style="margin:0 20px;">
+		    <a href="https://twitter.com/tavore_info" target="blank">
+		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
+		          Twitter
+		        </div>
+		    </a>
+	    </div>
 	</div>
-    <div class="inline_block_middle" style="margin:0 20px;">
-	    <a href="mailto:tavore.info&#64;gmail.com">
-	        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-	          Email
-	        </div>
-	    </a>
-	</div>
-    <div class="inline_block_middle" style="margin:0 20px;">
-	    <a href="https://twitter.com/tavore_info" target="blank">
-	        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-	          Twitter
-	        </div>
-	    </a>
-    </div>
 	<div style="height:5vh;"></div>
-	<div style="font-size:12px;opacity:0.5;">
+	<div class="front" style="font-size:12px;opacity:0.5;" data-delighter>
 		© 2019 tavore.net
 	</div>
 </div>
+<%#delighter%>
+<script defer>
+	var Delighters=new function(){var t=this.dels=[],e={attribute:"data-delighter",classNames:["delighter","started","ended"],start:.75,end:.75,autoInit:!0};function s(){document.addEventListener("scroll",d);for(var s=document.querySelectorAll("["+e.attribute+"]"),a=0;a<s.length;a++){var n=s[a],i=n.getAttribute(e.attribute,2).split(";"),r={};r.start=e.start,r.end=e.end;for(var l=0;l<i.length;l++){var o=i[l].split(":"),c=o[0],u=isNaN(1*o[1])?o[1]:1*o[1];c&&(r[c]=void 0===u||u)}r.el=n,r.id=t.length,t.push(r),n.classList.add(e.classNames[0]),r.debug&&(n.style.outline="solid red 4px")}d()}function d(){for(var s=window.innerHeight,d=0;d<t.length;d++){var a=t[d],n=a.el.getBoundingClientRect(),i=n.top/s,r=n.bottom/s;a.debug&&(i>=0&&i<=1&&(a.startLine||(a.startLine=document.createElement("div"),document.body.appendChild(a.startLine),a.startLine.style="position:fixed;height:0;width:100%;border-bottom:dotted red 2px;top:"+100*a.start+"vh")),(r<a.end||i>1)&&a.startLine&&(a.startLine.parentNode.removeChild(a.startLine),delete a.startLine)),i<a.start&&!a.started?(a.started=!0,a.el.classList.add(e.classNames[1])):i>a.start&&a.started&&(a.started=!1,a.el.classList.remove(e.classNames[1])),r<a.end&&!a.ended?(a.ended=!0,a.el.classList.add(e.classNames[2])):r>a.end&&a.ended&&(a.ended=!1,a.el.classList.remove(e.classNames[2]))}}document.addEventListener("DOMContentLoaded",function(){e.autoInit&&s()}),this.init=s,this.config=function(t){for(var s in t)e[s]=t[s]}};
+</script>
 <%#lazyload.js%>
 <script defer>
   $(function() {
@@ -313,14 +395,4 @@
         container: $(".horizontal_scroll")
      });
 });
-</script>
-<%#ScrollReveal.js%>
-<script src="https://unpkg.com/scrollreveal"></script>
-<script>
-	$(function() {
-	    ScrollReveal().reveal('.headline', {
-		    duration: 800,
-		    reset: false
-		});
-	});
 </script>
