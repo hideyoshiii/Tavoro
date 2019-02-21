@@ -3,7 +3,7 @@
 	<div style="font-size:15px;margin:10px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		最近の投稿
 	</div>
-	<div class="horizontal_scroll" style="padding:0 5px;">	
+	<div class="horizontal_scroll" style="padding:0 6px;">	
 		<% @all.each.with_index(1) do |post, i| %>
 		    <div class="inline_block_middle" style="width:165px;height:250px;position:relative;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
 				<%= link_to "/post/#{post.id}" do %>
@@ -33,7 +33,7 @@
 	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		映画
 	</div>
-	<div class="horizontal_scroll" style="padding:0 5px;">	
+	<div class="horizontal_scroll" style="padding:0 6px;">	
 		<% @movie.each.with_index(1) do |post, i| %>
 		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
 		<% end %>
@@ -42,7 +42,7 @@
 	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		テレビ
 	</div>
-	<div class="horizontal_scroll" style="padding:0 5px;">	
+	<div class="horizontal_scroll" style="padding:0 6px;">	
 		<% @tv.each.with_index(1) do |post, i| %>
 		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
 		<% end %>
@@ -51,7 +51,7 @@
 	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		ブック
 	</div>
-	<div class="horizontal_scroll" style="padding:0 5px;">	
+	<div class="horizontal_scroll" style="padding:0 6px;">	
 		<% @book.each.with_index(1) do |post, i| %>
 		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
 		<% end %>
@@ -60,7 +60,7 @@
 	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		コミック
 	</div>
-	<div class="horizontal_scroll" style="padding:0 5px;">	
+	<div class="horizontal_scroll" style="padding:0 6px;">	
 		<% @comic.each.with_index(1) do |post, i| %>
 		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
 		<% end %>
@@ -69,7 +69,7 @@
 	<div style="font-size:15px;margin:16px 0 4px 10px;font-weight:bolder;opacity:0.8;">
 		ミュージック
 	</div>
-	<div class="horizontal_scroll" style="padding:0 5px;">	
+	<div class="horizontal_scroll" style="padding:0 6px;">	
 		<% @music.each.with_index(1) do |post, i| %>
 		    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
 		<% end %>
@@ -78,7 +78,7 @@
 	<% @users.each do |user| %>	
 		<% posts = Post.where(user_id: user.id).where.not(review: "bookmark").order(created_at: "DESC").limit(10) %>
 		<% if posts.present? %>
-			<div style="margin:16px 0 4px 10px;">
+			<div style="margin:16px 0 8px 10px;">
 				<%= link_to "/#{user.username}" do %>
 					<div class="inline_block_bottom" style="width:30px;">
 						<% if user.image.present? %>	         
@@ -97,7 +97,7 @@
 					</div>
 				<% end %>
 			</div>
-			<div class="horizontal_scroll" style="padding:0 5px;">	
+			<div class="horizontal_scroll" style="padding:0 6px;">	
 				<% posts.each.with_index(1) do |post, i| %>
 					<%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
 				<% end %>

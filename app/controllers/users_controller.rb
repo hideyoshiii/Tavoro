@@ -74,12 +74,12 @@ class UsersController < ApplicationController
       if @users_follow.present?
         @posts = @posts.where.not(user_id: @users_follow)
       end
-      @all = @posts.limit(10)
-      @movie = @posts.where(category: "movie").limit(10)
-      @tv = @posts.where(category: "tv").limit(10)
-      @book = @posts.where(category: "book").limit(10)
-      @comic = @posts.where(category: "comic").limit(10)
-      @music = @posts.where(category: "music").limit(10)
+      @all = @posts.limit(20)
+      @movie = @posts.where(category: "movie").limit(20)
+      @tv = @posts.where(category: "tv").limit(20)
+      @book = @posts.where(category: "book").limit(20)
+      @comic = @posts.where(category: "comic").limit(20)
+      @music = @posts.where(category: "music").limit(20)
 	  end
 
   	def ajax_user_list

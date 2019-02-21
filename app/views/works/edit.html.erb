@@ -115,7 +115,7 @@
 							<div class="radio01">
 								<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original#{poster.file_path}", @boolean, {:id => "image_url#{i}"}) %>
 								<label for="image_url<%= i %>">
-									<%= image_tag "https://image.tmdb.org/t/p/w500#{poster.file_path}", :style =>'width:auto;height:45vh;' %>
+									<img data-src="https://image.tmdb.org/t/p/w500<%= poster.file_path %>" class="lazyload" style="width:auto;height:45vh;">
 								</label>
 							</div>
 						</div>
@@ -207,4 +207,16 @@
 	$('#btn_post').click(function() {
 		document.myform.submit();
 	});
+</script>
+<%#lazyload.js%>
+<script defer>
+  $(function() {
+    $(":not(.horizontal_scroll) img.lazyload").lazyload({
+        effect: "fadeIn"
+    });
+    $("img.lazyload").lazyload({
+        effect: "fadeIn",
+        container: $(".horizontal_scroll")
+     });
+});
 </script>
