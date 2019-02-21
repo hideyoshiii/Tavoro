@@ -25,7 +25,6 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/css/animsition.css">
     
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -38,23 +37,8 @@
     <body class="direction_portrait">
       <header>
         <%= render "partial/navbar" %>
-      </header>
-      <div class="animsition" style="height:100%;">
-        <%= yield %> 
-      </div> 
-      <%#animsition%>
-      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/js/animsition.js"></script>
-      <script defer>
-        $(function() {
-          $(".animsition").animsition({
-            inDuration: 200, // ロード時の演出時間
-            outDuration: 200, // 離脱時の演出時間
-            linkElement: 'a:not([target="_blank"]):not([href^="#"])',
-            timeout: true,
-            timeoutCountdown: 400,
-          });
-        });
-      </script>
+      </header>  
+      <%= yield %>   
     </body>
   <% else %>
     <div style="height:45px;"></div>
