@@ -1,6 +1,6 @@
 <% if params[:q].blank? %>
 	<%#all%>
-	<div style="font-size:16px;margin:12px 0 5px 10px;font-weight:bolder;opacity:0.75;">
+	<div style="font-size:16px;margin:12px 0 5px 10px;opacity:0.8;">
 		最近の投稿
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -30,7 +30,7 @@
 		<% end %>
 	</div>
 	<%#movie%>
-	<div style="font-size:16px;margin:18px 0 5px 10px;font-weight:bolder;opacity:0.75;">
+	<div style="font-size:16px;margin:18px 0 5px 10px;opacity:0.8;">
 		映画
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -39,7 +39,7 @@
 		<% end %>
 	</div>
 	<%#tv%>
-	<div style="font-size:16px;margin:18px 0 5px 10px;font-weight:bolder;opacity:0.75;">
+	<div style="font-size:16px;margin:18px 0 5px 10px;opacity:0.8;">
 		テレビ
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -48,7 +48,7 @@
 		<% end %>
 	</div>
 	<%#book%>
-	<div style="font-size:16px;margin:18px 0 5px 10px;font-weight:bolder;opacity:0.75;">
+	<div style="font-size:16px;margin:18px 0 5px 10px;opacity:0.8;">
 		ブック
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -57,7 +57,7 @@
 		<% end %>
 	</div>
 	<%#comic%>
-	<div style="font-size:16px;margin:18px 0 5px 10px;font-weight:bolder;opacity:0.75;">
+	<div style="font-size:16px;margin:18px 0 5px 10px;opacity:0.8;">
 		コミック
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -66,7 +66,7 @@
 		<% end %>
 	</div>
 	<%#music%>
-	<div style="font-size:16px;margin:18px 0 5px 10px;font-weight:bolder;opacity:0.7;">
+	<div style="font-size:16px;margin:18px 0 5px 10px;opacity:0.8;">
 		ミュージック
 	</div>
 	<div class="horizontal_scroll" style="padding:0 6px;">	
@@ -78,7 +78,7 @@
 	<% @users.each do |user| %>	
 		<% posts = Post.where(user_id: user.id).where.not(review: "bookmark").order(created_at: "DESC").limit(20) %>
 		<% if posts.present? %>
-			<div style="margin:18px 0 5px 10px;">
+			<div style="margin:18px 0 8px 10px;">
 				<%= link_to "/#{user.username}" do %>
 					<div class="inline_block_bottom" style="width:30px;">
 						<% if user.image.present? %>	         
@@ -90,7 +90,7 @@
 					</div>
 					<div class="inline_block_bottom" style="width:calc(100% - 30px);">
 						<div class="contain_title02">
-							<div class="font_white_min" style="word-wrap:break-word;font-size:15px;font-weight:bolder;opacity:0.75;line-height:1.0;">
+							<div class="font_white_min" style="word-wrap:break-word;font-size:16px;opacity:0.8;line-height:1.0;">
 								<%= user.name %>の投稿
 							</div>
 						</div>

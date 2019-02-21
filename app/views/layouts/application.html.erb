@@ -34,7 +34,7 @@
     
   </head>
 
-  <% if browser.device.mobile? %>
+  
     <body class="direction_portrait">
       <header>
         <%= render "partial/navbar" %>
@@ -56,17 +56,6 @@
         });
       </script>
     </body>
-  <% else %>
-    <div style="height:45px;"></div>
-    <div class="a1 headline" style="height:calc(100% - 45px);">
-      <div class="a8" style="text-align:center;">
-        <%= image_tag "tavore_logo_01.png", :style =>'width:80px;height:80px;' %>
-        <div style="font-size:14px;">
-          iPhone または Android でご利用ください
-        </div>
-        <div style="height:15vh;"></div>
-      </div>
-    </div>
-  <% end %>
+  
   
 </html>

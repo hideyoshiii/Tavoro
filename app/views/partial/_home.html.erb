@@ -183,7 +183,7 @@
 	<div style="height:3vh;"></div>
 </div>	
 <div class="horizontal_scroll" style="padding:0 6px;">	
-	<% @all.each.with_index(1) do |post, i| %>
+	<% @posts.each.with_index(1) do |post, i| %>
 	    <div class="inline_block_middle" style="width:200px;height:300px;position:relative;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
 			<%= link_to "/post/#{post.id}" do %>
 				<% if post.image_url.blank? %>
@@ -206,86 +206,6 @@
 				<% end %>
 			<% end %>
 		</div>
-	<% end %>
-</div>
-<div style="height:5%;"></div>
-<%#movie%>
-<div class="headline" style="text-align:center;">
-	<div style="font-size:18px;">
-		Movie
-	</div>
-	<div style="font-size:12px;opacity:0.8;">
-		映画
-	</div>
-	<div style="height:2vh;"></div>
-</div>	
-<div class="horizontal_scroll" style="padding:0 6px;">	
-	<% @movie.each.with_index(1) do |post, i| %>
-	    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
-	<% end %>
-</div>
-<div style="height:5%;"></div>
-<%#tv%>
-<div class="headline" style="text-align:center;">
-	<div style="font-size:18px;">
-		Tv
-	</div>
-	<div style="font-size:12px;opacity:0.8;">
-		テレビ
-	</div>
-	<div style="height:2vh;"></div>
-</div>	
-<div class="horizontal_scroll" style="padding:0 6px;">	
-	<% @tv.each.with_index(1) do |post, i| %>
-	    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
-	<% end %>
-</div>
-<div style="height:5%;"></div>
-<%#book%>
-<div class="headline" style="text-align:center;">
-	<div style="font-size:18px;">
-		Book
-	</div>
-	<div style="font-size:12px;opacity:0.8;">
-		ブック
-	</div>
-	<div style="height:2vh;"></div>
-</div>	
-<div class="horizontal_scroll" style="padding:0 6px;">	
-	<% @book.each.with_index(1) do |post, i| %>
-	    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
-	<% end %>
-</div>
-<div style="height:5%;"></div>
-<%#comic%>
-<div class="headline" style="text-align:center;">
-	<div style="font-size:18px;">
-		Comic
-	</div>
-	<div style="font-size:12px;opacity:0.8;">
-		コミック
-	</div>
-	<div style="height:2vh;"></div>
-</div>	
-<div class="horizontal_scroll" style="padding:0 6px;">	
-	<% @comic.each.with_index(1) do |post, i| %>
-	    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
-	<% end %>
-</div>
-<div style="height:5%;"></div>
-<%#music%>
-<div class="headline" style="text-align:center;">
-	<div style="font-size:18px;">
-		Music
-	</div>
-	<div style="font-size:12px;opacity:0.8;">
-		ミュージック
-	</div>
-	<div style="height:2vh;"></div>
-</div>	
-<div class="horizontal_scroll" style="padding:0 6px;">	
-	<% @music.each.with_index(1) do |post, i| %>
-	    <%= render partial: 'partial/row_horizontal', locals: { post: post, i: i } %>
 	<% end %>
 </div>
 <div style="height:5%;"></div>
