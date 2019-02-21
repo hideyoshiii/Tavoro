@@ -122,10 +122,6 @@
 		  	<% end %>
         </div>
 	</div>
-	<div class="visible-md visible-lg">
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
-	</div>
 </div>
 
 <%#投稿ボタン%>
@@ -135,8 +131,8 @@
 	<% end %>
 <% end %>
 <%#タブ切り替え%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
-<script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+<script defer>
 	$(function(){
 	    //タブボタンの数を取得
 	    var tabQuantity = $('.tab__button').length;
@@ -146,24 +142,14 @@
 	    var swiper = new Swiper('.swiper-container', {
 				speed: 600,
 				touchAngle: 55,
-				navigation: {
-			    	nextEl: '.swiper-button-next',
-			    	prevEl: '.swiper-button-prev',
-			  	},
-			  	hideOnClick: false,
-			  	preloadImages: false,
+				preloadImages: false,
 				lazy: {
 					loadOnTransitionStart: true,
 					loadPrevNext: false,
 				},
+			  	
 				hashNavigation: {
-				    replaceState: true,
-				},
-			  	on: {
-				    slideChange: function () {
-				      var newIndex = swiper.realIndex;
-	            	  slideChange(newIndex);
-				    },
+				    watchState: true,
 				},
 			});
 	    //スライドする時に発動する関数。タブの表示調整を行う
