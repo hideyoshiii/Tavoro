@@ -35,303 +35,291 @@
 
 <div class="swiper-container" style="height:100%">
 	<div class="swiper-wrapper" style="height:100%">
-		<div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:120px;"></div>
-		  		<% if @all.blank? %>				  		
-					<div class="font_white" style="text-align:center;margin-top:30vh;">
-						ブックマークがありません
-					</div>
-			  	<% else %>
-			  		<% @all.each.with_index(1) do |post, i| %>
-			  			<%= link_to "/works/#{post.id}/edit" do %>
-				  			<div class="box_tests02">
-					            <div class="inline_block_middle" style="width:20%;">
-					            	<div style="width:100%;height:16vh;overflow:hidden;">
-						              	<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload_min">
-										<% else %>									
-											<% if post.category == "movie" %>
-												<% @image_url = post.image_url.sub(/original/, 'w300') %>
-											<% end %>
-											<% if post.category == "tv" %>
-												<% @image_url = post.image_url.sub(/original/, 'w300') %>
-											<% end %>
-											<% if post.category == "book" %>
-												<% if post.api == "itunes" %>
-													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-												<% else %>
-													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
-												<% end %>
-											<% end %>
-											<% if post.category == "comic" %>
-												<% if post.api == "itunes" %>
-													<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-												<% else %>
-													<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
-												<% end %>
-											<% end %>
-											<% if post.category == "music" %>
-												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-											<% end %>									
-											<img data-src="<%= @image_url %>" class="img_myboom lazyload_min">
-										<% end %>
-									</div>	
-					            </div>
-					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
-					              	<div class="contain_title">
-						                <div class="font_white_big">
-						                	<%= post.title %>
-						                </div>
-					              	</div>
-					              	<div class="contain_title">
-						                <div class="font_gray_min">
-						                  	<% if post.category == "movie" %>
-												<img data-src="/assets/movie_777777.svg" class="icon_category_min lazyload_min"> 映画
-											<% end %>
-											<% if post.category == "tv" %>
-												<img data-src="/assets/movie_777777.svg" class="icon_category_min lazyload_min"> テレビ
-											<% end %>
-											<% if post.category == "book" %>
-												<img data-src="/assets/book_777777.svg" class="icon_category_min lazyload_min"> ブック
-											<% end %>
-											<% if post.category == "comic" %>
-												<img data-src="/assets/book_777777.svg" class="icon_category_min lazyload_min"> コミック
-											<% end %>
-											<% if post.category == "music" %>
-												<img data-src="/assets/music_777777.svg" class="icon_category_min lazyload_min"> ミュージック
-											<% end %>
-											<% if post.category == "link" %>
-												<img data-src="/assets/link_777777.svg" class="icon_category_min lazyload_min"> リンク
-											<% end %>
-						                </div>
-					              	</div>
-					            </div>
-					            <div class="inline_block_middle" style="width:5%;">
-					            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload_min" style="width:15px;height:15px;"> 
-					            </div>
-					        </div>
-					    <% end %>
-			  		<% end %>
-			  	<% end %>
-		  	</div>
-		</div>
-		<div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:120px;"></div>
-		  		<% if @movie.blank? %>				  		
-					<div class="font_white" style="text-align:center;margin-top:30vh;">
-						ブックマークがありません
-					</div>
-			  	<% else %>
-			  		<% @movie.each.with_index(1) do |post, i| %>
-			  			<%= link_to "/works/#{post.id}/edit" do %>
-				  			<div class="box_tests02">
-					            <div class="inline_block_middle" style="width:20%;">
-					            	<div style="width:100%;height:16vh;overflow:hidden;">
-						              	<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
+		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="all">
+	  		<div style="height:120px;"></div>
+	  		<% if @all.blank? %>				  		
+				<div class="font_white" style="text-align:center;margin-top:30vh;">
+					ブックマークがありません
+				</div>
+		  	<% else %>
+		  		<% @all.each.with_index(1) do |post, i| %>
+		  			<%= link_to "/works/#{post.id}/edit" do %>
+			  			<div class="box_tests02">
+				            <div class="inline_block_middle" style="width:20%;">
+				            	<div style="width:100%;height:16vh;overflow:hidden;">
+					              	<% if post.image_url.blank? %>
+										<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
+									<% else %>									
+										<% if post.category == "movie" %>
 											<% @image_url = post.image_url.sub(/original/, 'w300') %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
-									</div>	
-					            </div>
-					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
-					              	<div class="contain_title">
-						                <div class="font_white_big">
-						                	<%= post.title %>
-						                </div>
-					              	</div>
-					              	<div class="contain_title">
-						                <div class="font_gray_min">
-											<%= image_tag "movie_777777.svg", :class =>'icon_category_min' %> 映画
-						                </div>
-					              	</div>
-					            </div>
-					            <div class="inline_block_middle" style="width:5%;">
-					            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-					            </div>
-					        </div>
-					    <% end %>
-			  		<% end %>
-			  	<% end %>
-		  	</div>
-		</div>
-		<div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:120px;"></div>
-		  		<% if @tv.blank? %>				  		
-					<div class="font_white" style="text-align:center;margin-top:30vh;">
-						ブックマークがありません
-					</div>
-			  	<% else %>
-			  		<% @tv.each.with_index(1) do |post, i| %>
-			  			<%= link_to "/works/#{post.id}/edit" do %>
-				  			<div class="box_tests02">
-					            <div class="inline_block_middle" style="width:20%;">
-					            	<div style="width:100%;height:16vh;overflow:hidden;">
-						              	<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
+										<% if post.category == "tv" %>
 											<% @image_url = post.image_url.sub(/original/, 'w300') %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
-									</div>
-					            </div>
-					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
-					              	<div class="contain_title">
-						                <div class="font_white_big">
-						                	<%= post.title %>
-						                </div>
-					              	</div>
-					              	<div class="contain_title">
-						                <div class="font_gray_min">
-											<%= image_tag "movie_777777.svg", :class =>'icon_category_min' %> テレビ
-						                </div>
-					              	</div>
-					            </div>
-					            <div class="inline_block_middle" style="width:5%;">
-					            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-					            </div>
-					        </div>
-					    <% end %>
-			  		<% end %>
-			  	<% end %>
-		  	</div>
-		</div>
-		<div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:120px;"></div>
-		  		<% if @book.blank? %>				  		
-					<div class="font_white" style="text-align:center;margin-top:30vh;">
-						ブックマークがありません
-					</div>
-			  	<% else %>
-			  		<% @book.each.with_index(1) do |post, i| %>
-			  			<%= link_to "/works/#{post.id}/edit" do %>
-				  			<div class="box_tests02">
-					            <div class="inline_block_middle" style="width:20%;">
-					            	<div style="width:100%;height:16vh;overflow:hidden;">
-						              	<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
+										<% if post.category == "book" %>
 											<% if post.api == "itunes" %>
 												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
 											<% else %>
 												<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
 											<% end %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
-									</div>
-					            </div>
-					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
-					              	<div class="contain_title">
-						                <div class="font_white_big">
-						                	<%= post.title %>
-						                </div>
-					              	</div>
-					              	<div class="contain_title">
-						                <div class="font_gray_min">
-											<%= image_tag "book_777777.svg", :class =>'icon_category_min' %> ブック
-						                </div>
-					              	</div>
-					            </div>
-					            <div class="inline_block_middle" style="width:5%;">
-					            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-					            </div>
-					        </div>
-					    <% end %>
-			  		<% end %>
-			  	<% end %>
-		  	</div>
-		</div>
-		<div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:120px;"></div>
-		  		<% if @comic.blank? %>				  		
-					<div class="font_white" style="text-align:center;margin-top:30vh;">
-						ブックマークがありません
-					</div>
-			  	<% else %>
-			  		<% @comic.each.with_index(1) do |post, i| %>
-			  			<%= link_to "/works/#{post.id}/edit" do %>
-				  			<div class="box_tests02">
-					            <div class="inline_block_middle" style="width:20%;">
-					            	<div style="width:100%;height:16vh;overflow:hidden;">
-						              	<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
+										<% if post.category == "comic" %>
 											<% if post.api == "itunes" %>
 												<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
 											<% else %>
 												<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
 											<% end %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
 										<% end %>
-									</div>
-					            </div>
-					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
-					              	<div class="contain_title">
-						                <div class="font_white_big">
-						                	<%= post.title %>
-						                </div>
-					              	</div>
-					              	<div class="contain_title">
-						                <div class="font_gray_min">
-											<%= image_tag "book_777777.svg", :class =>'icon_category_min' %> コミック
-						                </div>
-					              	</div>
-					            </div>
-					            <div class="inline_block_middle" style="width:5%;">
-					            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-					            </div>
-					        </div>
-					    <% end %>
-			  		<% end %>
-			  	<% end %>
-		  	</div>
-		</div>
-		<div class="swiper-slide" style="height:100%">
-        	<div style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
-		  		<div style="height:120px;"></div>
-		  		<% if @music.blank? %>				  		
-					<div class="font_white" style="text-align:center;margin-top:30vh;">
-						ブックマークがありません
-			  	<% else %>
-			  		<% @music.each.with_index(1) do |post, i| %>
-			  			<%= link_to "/works/#{post.id}/edit" do %>
-				  			<div class="box_tests02">
-					            <div class="inline_block_middle" style="width:20%;">
-					            	<div style="width:100%;height:16vh;overflow:hidden;">
-						              	<% if post.image_url.blank? %>
-											<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
-										<% else %>									
+										<% if post.category == "music" %>
 											<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-											<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+										<% end %>									
+										<img data-src="<%= @image_url %>" class="img_myboom lazyload">
+									<% end %>
+								</div>	
+				            </div>
+				            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+				              	<div class="contain_title">
+					                <div class="font_white_big">
+					                	<%= post.title %>
+					                </div>
+				              	</div>
+				              	<div class="contain_title">
+					                <div class="font_gray_min">
+					                  	<% if post.category == "movie" %>
+											<img data-src="/assets/movie_777777.svg" class="icon_category_min lazyload"> 映画
 										<% end %>
-									</div>
-					            </div>
-					            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
-					              	<div class="contain_title">
-						                <div class="font_white_big">
-						                	<%= post.title %>
-						                </div>
-					              	</div>
-					              	<div class="contain_title">
-						                <div class="font_gray_min">
-											<%= image_tag "music_777777.svg", :class =>'icon_category_min' %> ミュージック
-						                </div>
-					              	</div>
-					            </div>
-					            <div class="inline_block_middle" style="width:5%;">
-					            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-					            </div>
-					        </div>
-					    <% end %>
-			  		<% end %>
-			  	<% end %>
-		  	</div>
+										<% if post.category == "tv" %>
+											<img data-src="/assets/movie_777777.svg" class="icon_category_min lazyload"> テレビ
+										<% end %>
+										<% if post.category == "book" %>
+											<img data-src="/assets/book_777777.svg" class="icon_category_min lazyload"> ブック
+										<% end %>
+										<% if post.category == "comic" %>
+											<img data-src="/assets/book_777777.svg" class="icon_category_min lazyload"> コミック
+										<% end %>
+										<% if post.category == "music" %>
+											<img data-src="/assets/music_777777.svg" class="icon_category_min lazyload"> ミュージック
+										<% end %>
+										<% if post.category == "link" %>
+											<img data-src="/assets/link_777777.svg" class="icon_category_min lazyload"> リンク
+										<% end %>
+					                </div>
+				              	</div>
+				            </div>
+				            <div class="inline_block_middle" style="width:5%;">
+				            	<img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;"> 
+				            </div>
+				        </div>
+				    <% end %>
+		  		<% end %>
+		  	<% end %>
+		</div>
+		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="movie">
+	  		<div style="height:120px;"></div>
+	  		<% if @movie.blank? %>				  		
+				<div class="font_white" style="text-align:center;margin-top:30vh;">
+					ブックマークがありません
+				</div>
+		  	<% else %>
+		  		<% @movie.each.with_index(1) do |post, i| %>
+		  			<%= link_to "/works/#{post.id}/edit" do %>
+			  			<div class="box_tests02">
+				            <div class="inline_block_middle" style="width:20%;">
+				            	<div style="width:100%;height:16vh;overflow:hidden;">
+					              	<% if post.image_url.blank? %>
+										<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+									<% else %>									
+										<% @image_url = post.image_url.sub(/original/, 'w300') %>
+										<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+									<% end %>
+								</div>	
+				            </div>
+				            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+				              	<div class="contain_title">
+					                <div class="font_white_big">
+					                	<%= post.title %>
+					                </div>
+				              	</div>
+				              	<div class="contain_title">
+					                <div class="font_gray_min">
+										<%= image_tag "movie_777777.svg", :class =>'icon_category_min' %> 映画
+					                </div>
+				              	</div>
+				            </div>
+				            <div class="inline_block_middle" style="width:5%;">
+				            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+				            </div>
+				        </div>
+				    <% end %>
+		  		<% end %>
+		  	<% end %>	  	
+		</div>
+		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="tv">
+	  		<div style="height:120px;"></div>
+	  		<% if @tv.blank? %>				  		
+				<div class="font_white" style="text-align:center;margin-top:30vh;">
+					ブックマークがありません
+				</div>
+		  	<% else %>
+		  		<% @tv.each.with_index(1) do |post, i| %>
+		  			<%= link_to "/works/#{post.id}/edit" do %>
+			  			<div class="box_tests02">
+				            <div class="inline_block_middle" style="width:20%;">
+				            	<div style="width:100%;height:16vh;overflow:hidden;">
+					              	<% if post.image_url.blank? %>
+										<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+									<% else %>									
+										<% @image_url = post.image_url.sub(/original/, 'w300') %>
+										<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+									<% end %>
+								</div>
+				            </div>
+				            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+				              	<div class="contain_title">
+					                <div class="font_white_big">
+					                	<%= post.title %>
+					                </div>
+				              	</div>
+				              	<div class="contain_title">
+					                <div class="font_gray_min">
+										<%= image_tag "movie_777777.svg", :class =>'icon_category_min' %> テレビ
+					                </div>
+				              	</div>
+				            </div>
+				            <div class="inline_block_middle" style="width:5%;">
+				            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+				            </div>
+				        </div>
+				    <% end %>
+		  		<% end %>
+		  	<% end %>
+		</div>
+		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="book">
+	  		<div style="height:120px;"></div>
+	  		<% if @book.blank? %>				  		
+				<div class="font_white" style="text-align:center;margin-top:30vh;">
+					ブックマークがありません
+				</div>
+		  	<% else %>
+		  		<% @book.each.with_index(1) do |post, i| %>
+		  			<%= link_to "/works/#{post.id}/edit" do %>
+			  			<div class="box_tests02">
+				            <div class="inline_block_middle" style="width:20%;">
+				            	<div style="width:100%;height:16vh;overflow:hidden;">
+					              	<% if post.image_url.blank? %>
+										<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+									<% else %>									
+										<% if post.api == "itunes" %>
+											<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+										<% else %>
+											<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+										<% end %>
+										<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+									<% end %>
+								</div>
+				            </div>
+				            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+				              	<div class="contain_title">
+					                <div class="font_white_big">
+					                	<%= post.title %>
+					                </div>
+				              	</div>
+				              	<div class="contain_title">
+					                <div class="font_gray_min">
+										<%= image_tag "book_777777.svg", :class =>'icon_category_min' %> ブック
+					                </div>
+				              	</div>
+				            </div>
+				            <div class="inline_block_middle" style="width:5%;">
+				            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+				            </div>
+				        </div>
+				    <% end %>
+		  		<% end %>
+		  	<% end %>
+		</div>
+		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="comic">
+	  		<div style="height:120px;"></div>
+	  		<% if @comic.blank? %>				  		
+				<div class="font_white" style="text-align:center;margin-top:30vh;">
+					ブックマークがありません
+				</div>
+		  	<% else %>
+		  		<% @comic.each.with_index(1) do |post, i| %>
+		  			<%= link_to "/works/#{post.id}/edit" do %>
+			  			<div class="box_tests02">
+				            <div class="inline_block_middle" style="width:20%;">
+				            	<div style="width:100%;height:16vh;overflow:hidden;">
+					              	<% if post.image_url.blank? %>
+										<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+									<% else %>									
+										<% if post.api == "itunes" %>
+											<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+										<% else %>
+											<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+										<% end %>
+										<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+									<% end %>
+								</div>
+				            </div>
+				            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+				              	<div class="contain_title">
+					                <div class="font_white_big">
+					                	<%= post.title %>
+					                </div>
+				              	</div>
+				              	<div class="contain_title">
+					                <div class="font_gray_min">
+										<%= image_tag "book_777777.svg", :class =>'icon_category_min' %> コミック
+					                </div>
+				              	</div>
+				            </div>
+				            <div class="inline_block_middle" style="width:5%;">
+				            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+				            </div>
+				        </div>
+				    <% end %>
+		  		<% end %>
+		  	<% end %>
+		</div>
+		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="music">
+	  		<div style="height:120px;"></div>
+	  		<% if @music.blank? %>				  		
+				<div class="font_white" style="text-align:center;margin-top:30vh;">
+					ブックマークがありません
+		  	<% else %>
+		  		<% @music.each.with_index(1) do |post, i| %>
+		  			<%= link_to "/works/#{post.id}/edit" do %>
+			  			<div class="box_tests02">
+				            <div class="inline_block_middle" style="width:20%;">
+				            	<div style="width:100%;height:16vh;overflow:hidden;">
+					              	<% if post.image_url.blank? %>
+										<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">
+									<% else %>									
+										<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+										<img data-src="<%= @image_url %>" class="img_myboom swiper-lazy">
+									<% end %>
+								</div>
+				            </div>
+				            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+				              	<div class="contain_title">
+					                <div class="font_white_big">
+					                	<%= post.title %>
+					                </div>
+				              	</div>
+				              	<div class="contain_title">
+					                <div class="font_gray_min">
+										<%= image_tag "music_777777.svg", :class =>'icon_category_min' %> ミュージック
+					                </div>
+				              	</div>
+				            </div>
+				            <div class="inline_block_middle" style="width:5%;">
+				            	<%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+				            </div>
+				        </div>
+				    <% end %>
+		  		<% end %>
+		  	<% end %>
 		</div>
 	</div>
 </div>
@@ -346,20 +334,28 @@
 	    var tabExtraDistance = $('.tab_table').width();
 	    //スライダー発動
 	    var swiper = new Swiper('.swiper-container', {
-				speed: 600,
-				touchAngle: 55,
-				preloadImages: false,
-				lazy: {
-					loadOnTransitionStart: true,
-					loadPrevNext: false,
-				},
-			  	on: {
-				    slideChange: function () {
-				      var newIndex = swiper.realIndex;
-	            	  slideChange(newIndex);
-				    },
-				  },
-			});
+			speed: 600,
+			touchAngle: 55,
+			preloadImages: false,
+			lazy: {
+				loadOnTransitionStart: true,
+				loadPrevNext: false,
+			},
+			hashNavigation: {
+				    watchState: true,
+				    replaceState: true,
+			},		
+		});
+		//スライドが描写されたら
+		$(function(){
+		  	var newIndex = swiper.realIndex;
+            slideChange(newIndex);
+		});
+		//スライドが変更されたら
+		swiper.on('slideChange', function () {
+		  	var newIndex = swiper.realIndex;
+            slideChange(newIndex);
+		});
 	    //スライドする時に発動する関数。タブの表示調整を行う
 	    function slideChange(newIndex){
 	        //クラスを調整
@@ -383,6 +379,6 @@
 <%#lazyload.js%>
 <script defer>
 	$(function() {
-    	$('img.lazyload_min').lazyload();
+    	$('img.lazyload').lazyload();
 	});
 </script>

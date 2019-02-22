@@ -12,7 +12,7 @@
 		<div class="swiper-wrapper" style="height:100%">
 			<% if @posts.present? %>
 				<% @posts.each.with_index(1) do |post, i| %>
-					<div class="swiper-slide" style="height:100%" data-hash="slide<%= i %>"> 
+					<div class="swiper-slide" style="height:100%" data-hash="<%= post.id %>"> 
 						<div class="base01">
 							<% if post.image_url.blank? %>
 								<img data-src="/assets/nothing01.jpg" class="img_myboom swiper-lazy">

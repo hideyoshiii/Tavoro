@@ -44,7 +44,7 @@
 
 <div class="swiper-container" style="height:100%">
 	<div class="swiper-wrapper" style="height:100%">
-		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+		<div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="all">
 	  		<div style="height:145px;"></div>
 		  	<% if @all.blank? %>				  		
 				<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -57,7 +57,7 @@
 			  	<% end %>
 		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="favorite">
 	  		<div style="height:145px;"></div>
 		  	<% if @list_favorite_items.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -71,7 +71,7 @@
 			  	<% end %>
 		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="movie">
 	  		<div style="height:145px;"></div>
 		  	<% if @movie.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -84,7 +84,7 @@
 			  	<% end %>
 		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="tv">
 	  		<div style="height:145px;"></div>
 		    <% if @tv.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -97,7 +97,7 @@
 			  	<% end %>
 		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="book">
 	  		<div style="height:145px;"></div>
 		    <% if @book.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -110,7 +110,7 @@
 			  	<% end %>
 		  	<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="comic">
 	  		<div style="height:145px;"></div>
 		    <% if @comic.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -123,7 +123,7 @@
 			  	<% end %>
 	  		<% end %>
         </div>
-        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
+        <div class="swiper-slide" style="height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;" data-hash="music">
 	  		<div style="height:145px;"></div>
 		    <% if @music.blank? %>
 		  		<div class="font_white" style="text-align:center;margin-top:30vh;">
@@ -155,20 +155,28 @@
 	    var tabExtraDistance = $('.tab_table').width();
 	    //スライダー発動
 	    var swiper = new Swiper('.swiper-container', {
-				speed: 600,
-				touchAngle: 55,
-				preloadImages: false,
-				lazy: {
-					loadOnTransitionStart: true,
-					loadPrevNext: false,
-				},
-			  	on: {
-				    slideChange: function () {
-				      var newIndex = swiper.realIndex;
-	            	  slideChange(newIndex);
-				    },
-				},
-			});
+			speed: 600,
+			touchAngle: 55,
+			preloadImages: false,
+			lazy: {
+				loadOnTransitionStart: true,
+				loadPrevNext: false,
+			},
+			hashNavigation: {
+				    watchState: true,
+				    replaceState: true,
+			},		
+		});
+		//スライドが描写されたら
+		$(function(){
+		  	var newIndex = swiper.realIndex;
+            slideChange(newIndex);
+		});
+		//スライドが変更されたら
+		swiper.on('slideChange', function () {
+		  	var newIndex = swiper.realIndex;
+            slideChange(newIndex);
+		});
 	    //スライドする時に発動する関数。タブの表示調整を行う
 	    function slideChange(newIndex){
 	        //クラスを調整
