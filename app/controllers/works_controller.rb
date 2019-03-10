@@ -2,6 +2,24 @@ class WorksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :post, :detail]
 
   def test
+    @user = current_user
+    if @user
+      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
+      @checkeds_i = @alls.where.not(review: "bookmark").size
+      @bookmarks_i = @alls.where(review: "bookmark").size
+
+      @all = @alls.where.not(review: "bookmark")
+      @movie = @all.where(category: "movie")
+      @tv = @all.where(category: "tv")
+      @book = @all.where(category: "book")
+      @comic = @all.where(category: "comic")
+      @music = @all.where(category: "music")
+
+      @list_favorite = List.find_by(user_id: @user.id, title: "お気に入り")
+      if @list_favorite.present?
+        @list_favorite_items = ListItem.where(list_id: @list_favorite.id).order(created_at: "DESC")
+      end
+    end
   end
 
   def index  

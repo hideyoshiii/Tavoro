@@ -2195,6 +2195,50 @@ button {
     border-bottom: 1px solid rgba(39,134,160,0.8);
 }
 
+//
+.nav-tabs {
+	padding:12px 0;
+	margin:0;
+	font-size:14px;
+	overflow-x:auto;
+	overflow-y:hidden;
+	-webkit-overflow-scrolling:touch;
+	display:-webkit-box;
+	display:-moz-box;
+	border:none
+}
+.nav-tabs>li {
+	padding:0;
+	margin:0;
+	float:none;
+}
+.nav-tabs>li:first-child {
+    padding-left:12px;
+}
+.nav-tabs>li:last-child {
+    padding-right:12px;
+}
+
+.nav-tabs>li>a,
+.nav-tabs>li>a:focus,
+.nav-tabs>li>a:hover{
+	padding:3px 12px;
+	margin:0;
+	color:rgba(250,250,250,0.6);
+	background:none;
+	border:none;
+}
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover{
+	padding:3px 12px;
+	margin:0;
+	color:rgba(250,250,250,0.8);
+	background:none;
+	border:none;
+	border-bottom:solid 1px rgba(39,134,160,0.8);
+}
+
 
 //音楽再生関連
 .btn_preview_default{

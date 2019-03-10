@@ -1,0 +1,137 @@
+<div style="height:45px;"></div>
+
+  <!-- タブボタン部分 -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#all" class="nav-link active" data-toggle="tab">すべて</a>
+    </li>
+    <li class="nav-item">
+      <a href="#favorite" class="nav-link" data-toggle="tab">お気に入り</a>
+    </li>
+    <li class="nav-item">
+      <a href="#movie" class="nav-link" data-toggle="tab">映画</a>
+    </li>
+    <li class="nav-item">
+      <a href="#tv" class="nav-link" data-toggle="tab">テレビ</a>
+    </li>
+    <li class="nav-item">
+      <a href="#book" class="nav-link" data-toggle="tab">ブック</a>
+    </li>
+    <li class="nav-item">
+      <a href="#comic" class="nav-link" data-toggle="tab">コミック</a>
+    </li>
+    <li class="nav-item">
+      <a href="#music" class="nav-link" data-toggle="tab">ミュージック</a>
+    </li>
+  </ul>
+
+  <!--タブのコンテンツ部分-->
+  <div class="tab-content">
+    <div id="all" class="tab-pane active">
+      	<% if @all.blank? %>				  		
+			<div class="font_white" style="text-align:center;margin-top:30vh;">
+				投稿がありません
+			</div>	
+	  	<% else %>
+		  	<% @all.each.with_index(1) do |post, i| %>
+	  			<%# 3列表示(lazyload) %>
+				<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
+		  	<% end %>
+	  	<% end %>
+    </div>
+    <div id="favorite" class="tab-pane">
+    	<% if @list_favorite_items.blank? %>
+	  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+				投稿がありません
+			</div>	
+	  	<% else %>
+		    <% @list_favorite_items.each.with_index(1) do |item, i| %>
+		    	<% post = item.post %>
+		  		<%# 3列表示(swiper) %>
+				<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
+		  	<% end %>
+	  	<% end %>
+    </div>
+    <div id="movie" class="tab-pane">
+    	<% if @movie.blank? %>
+	  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+				投稿がありません
+			</div>	
+	  	<% else %>
+		    <% @movie.each.with_index(1) do |post, i| %>
+		  		<%# 3列表示(swiper) %>
+				<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
+		  	<% end %>
+	  	<% end %>
+    </div>
+    <div id="tv" class="tab-pane">
+    	<% if @tv.blank? %>
+	  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+				投稿がありません
+			</div>
+	  	<% else %>
+		  	<% @tv.each.with_index(1) do |post, i| %>
+		  		<%# 3列表示(swiper) %>
+				<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
+		  	<% end %>
+	  	<% end %>
+    </div>
+    <div id="book" class="tab-pane">
+    	<% if @book.blank? %>
+	  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+				投稿がありません
+			</div>
+	  	<% else %>
+		  	<% @book.each.with_index(1) do |post, i| %>
+		  		<%# 3列表示(swiper) %>
+				<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
+		  	<% end %>
+	  	<% end %>
+    </div>
+    <div id="comic" class="tab-pane">
+    	<% if @comic.blank? %>
+	  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+				投稿がありません
+			</div>
+	  	<% else %>
+		  	<% @comic.each.with_index(1) do |post, i| %>
+		  		<%# 3列表示(swiper) %>
+				<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
+		  	<% end %>
+  		<% end %>
+    </div>
+    <div id="music" class="tab-pane">
+    	<% if @music.blank? %>
+	  		<div class="font_white" style="text-align:center;margin-top:30vh;">
+				投稿がありません
+			</div>	
+	  	<% else %>
+		  	<% @music.each.with_index(1) do |post, i| %>
+		  		<%# 3列表示(swiper) %>
+				<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
+		  	<% end %>
+	  	<% end %>
+    </div>
+  </div>
+
+
+<%#タブ%>
+<script>
+	$(function() {
+		// Javascript to enable link to tab
+		var url = document.location.toString();
+		if (url.match('#')) {
+		    $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+		} 
+		// Change hash for page-reload
+		$('.nav-tabs a').on('shown.bs.tab', function (e) {
+		    history.pushState(null, null, e.target.hash)
+		})
+	});
+</script>
+<%#lazyload.js%>
+<script defer>
+	$(function() {
+    	$('img.lazyload').lazyload();
+	});
+</script>
