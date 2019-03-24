@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
 	  def user
       @posts_all = Post.where.not(review: "bookmark").order(created_at: "DESC")
-      @user_ranking = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
+      @user_ranking = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(15).pluck(:user_id))
 	  end
 
   	def ajax_user_list
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
         @items = User.where('username LIKE ?', "%#{params[:q]}%")
       else
         @posts_all = Post.where.not(review: "bookmark").order(created_at: "DESC")
-        @user_ranking = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
+        @user_ranking = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(15).pluck(:user_id))
       end
   	end
 
