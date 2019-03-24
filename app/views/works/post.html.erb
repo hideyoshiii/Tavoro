@@ -184,6 +184,7 @@
 			  	});
 			  	audio_<%= post.id %>.onended = function() {
 			  		img_<%= post.id %>.attr("src","/assets/play_FAFAFA.svg");
+			  		audio_<%= post.id %>.currentTime = 0;
 			  	};
 		  	});				
 	   	</script>
