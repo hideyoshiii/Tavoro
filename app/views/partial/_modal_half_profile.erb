@@ -15,7 +15,7 @@
 		          			<% if @user.image.present? %>     
 					          <img data-src="<%= @user.image(:large) %>" class="lazyload_Modal_half_profile" style="width:90px;height:90px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
 					        <% else %>
-					          <img data-src="/assets/user.svg" class="lazyload_Modal_half_profile" style="width:90px;height:90px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+					          <img data-src="/assets/user.jpg" class="lazyload_Modal_half_profile" style="width:90px;height:90px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
 					        <% end %>
 		          		</div>
 		          		<div style="height:2vh;"></div>
@@ -27,29 +27,17 @@
 		          		</div>
 		          		<div style="height:7vh;"></div>
 		          		<div style="width:100%;padding:0 10%;">
-		          			<a href="http://twitter.com/share?url=<%= url_for(only_path: false) %>" target="_blank">
-								<div class="btn_half_item">  						
-									<%= image_tag "twitter.svg", :style =>'width:22px;height:22px;margin-right:15px;border-radius:50%;' %>Twitter
-								</div>
-							</a>
-							<div style="height:30px"></div>
-							<a href="https://www.facebook.com/sharer/sharer.php?u=<%= url_for(only_path: false) %>" target="_blank">
-								<div class="btn_half_item">  						
-									<%= image_tag "facebook.svg", :style =>'width:22px;height:22px;margin-right:15px;border-radius:50%;' %>Facebook
-								</div>
-							</a>
-							<div style="height:30px"></div>
-		          			<a href="http://line.me/R/msg/text/?<%= url_for(only_path: false) %>" target="_blank">
+		          			<%= link_to "/users/configuration" do %>
 								<div class="btn_half_item">  
-									<%= image_tag "line.svg", :style =>'width:22px;height:22px;margin-right:15px;border-radius:50%;' %>LINE
+									<%= image_tag "setting_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>設定
 								</div>
-							</a>
+							<% end %>
 							<div style="height:30px"></div>
-		          			<span data-clipboard-text="<%= url_for(only_path: false) %>" id="copy">
-								<div class="btn_half_item">  
-									<%= image_tag "link_FAFAFA.svg", :style =>'width:16px;height:16px;margin-right:15px;margin-left:5px;' %>リンクをコピー
+		          			<a href="#" data-toggle="modal" data-target="#myModal_half_profile_share">
+								<div class="btn_half_item">  						
+									<%= image_tag "share_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>シェアする
 								</div>
-							</span>		
+							</a>	
 							<div style="height:90px"></div>	
 						</div>
 					</div>
@@ -91,19 +79,3 @@
 		}				
 	});
 </script>
-<%#クリップボード%>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"></script>
-<%#コピーのJS%>
-<script defer>
-	$(function(){
-	  var clipboard = new Clipboard('#copy');
-	  clipboard.on('success', function(e) {
-	    console.info('Trigger:', e.trigger);
-	    alert('コピーできました');
-	  });
-	  clipboard.on('error', function(e) {
-	    console.error('Trigger:', e.trigger);
-	    alert('このブラウザでは対応していません');
-	  });
-  	});
-</script>	  

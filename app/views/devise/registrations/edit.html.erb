@@ -33,10 +33,10 @@
    <label for="image">
       <div class="preview00">
         <div class="preview01">
-          <% if current_user.image %>
+          <% if current_user.image.present? %>
             <%= image_tag current_user.image(:large), :class => "img_user08" %>
           <% else %>
-            <%= image_tag "user.svg", :class =>'img_user08' %>
+            <%= image_tag "user.jpg", :class =>'img_user08' %>
           <% end %>
           <span>
             <%= image_tag "camera_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.5;' %>

@@ -1,4 +1,5 @@
 <div style="height:45px;"></div>
+<%#壁紙%>
 <div class="wallpaper" style="top:45px;height:calc(100vh - 45px);">
 	<div class="a1">
 		<div class="a4">
@@ -21,28 +22,28 @@
 					<% end %>							
 					<%= image_tag @poster_show, :class =>'img_myboom_blur' %>
 				<% end %>
-				<div class="d2" style="background:rgba(0,0,0,0.75);"></div>
+				<div class="d2" style="background:rgba(0,0,0,0.8);"></div>
 	        </div>
 	  	</div>
 	</div>
 </div>
-<div class="close" style="top:45px;">
-	<a href="javascript:void(0);" onclick="window.history.back();">
-		<% if user_signed_in? %>
-			<div style="padding:20px 20px;">
-				<%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;' %>
-			</div>
-		<% end %>
-	</a>
-</div>	
-  	
 <%#作品情報%>
-<div style="height:3vh;"></div>
-<div style="font-size:16px;padding-left:15px;">
-	Works
+<div style="height:20px;"></div>
+<div style="">
+    <div class="inline_block_middle" style="width:50%;text-align:left;">
+      	<div style="padding-left:15px;font-size:18px;">
+        	Works              
+      	</div>
+    </div>
+    <div class="inline_block_middle" style="width:50%;text-align:right;">
+    	<div style="padding-right:20px;">
+      		<a href="javascript:void(0);" onclick="window.history.back();">
+				<%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;;opacity:0.4;' %>
+			</a>             
+      	</div>
+    </div>
 </div>
-<div style="height:1vh;"></div>
-<div style="text-align:center;padding:0 20px;">
+<div style="padding:12px 20px;">
 	<div class="inline_block_middle" style="width:40%;padding-right:10px;text-align:left;">		
 	<% if @post.image_url.blank? %>
 		<%= image_tag "nothing01.jpg", :class =>'img_tavore' %>
@@ -103,76 +104,53 @@
 	</div>
 </div>
 <%#投稿%>
-<div style="height:3vh;"></div>
-<div style="font-size:16px;padding-left:15px;">
-	Post
-</div>
-<div style="height:0vh;margin-top:-2vh;"></div>
-<div style="padding:20px 0px 0 0px;">
-	<%#フォローしているかどうかの判別%>
-	<% if @relation == true %>
-	<div class="card03">
+<% if user_signed_in? %>
+	<% if current_user == @post.user %>
+		<%#自分の時%>
+		<div style="margin:12px 20px;padding:15px 20px;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.2));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.2));border-radius:5px;">
+			<%= render partial: 'partial/wall_posts', locals: { post: @post } %>
+		</div>
 	<% else %>
-	<div class="card03" style="background:-webkit-linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(220,220,220,0.15));background:linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(220,220,220,0.15));">
+		<% if current_user.following?(@post.user) %>
+			<%#フォローしている時%>
+			<div style="margin:12px 20px;padding:15px 20px;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.2));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.2));border-radius:5px;">
+    			<%= render partial: 'partial/wall_posts', locals: { post: @post } %>
+			</div>
+		<% else %>
+			<%#フォローしていない時%>
+			<div style="margin:12px 20px;padding:15px 20px;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(100,100,100,0.2));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(100,100,100,0.2));border-radius:5px;">
+				<%= render partial: 'partial/wall_posts', locals: { post: @post } %>
+			</div>
+		<% end %>
 	<% end %>
+<% else %>
+	<%#ログインしていない時%>
+	<div style="margin:12px 20px;padding:15px 20px;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(100,100,100,0.2));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(100,100,100,0.2));border-radius:5px;">
 		<%= render partial: 'partial/wall_posts', locals: { post: @post } %>
 	</div>
-</div>	
-<%#投稿一覧%>
-<div style="height:3vh;"></div>
-<div style="font-size:16px;padding-left:15px;">
-	Other Posts
-</div>
-<div style="height:0vh;margin-top:-2vh;"></div>
-<%#自分の投稿%>
-<% if @posts_mine.present? %>
-	<% @posts_mine.each.with_index(1) do |post, i| %>	
-		<div style="padding:20px 0px 0 0px;">
-			<div class="card03">
-  				<%= render partial: 'partial/wall_posts', locals: { post: post } %>
-			</div>
-		</div>	
-	<% end %>
 <% end %>
-<%#フォローしているユーザーの投稿%>
-<% if @posts_follow.present? %>
-	<% @posts_follow.each.with_index(1) do |post, i| %>	
-		<div style="padding:20px 0px 0 0px;">
-			<div class="card03">
-  				<%= render partial: 'partial/wall_posts', locals: { post: post } %>
-			</div>
-		</div>	
-	<% end %>
-<% end %>
-<%#フォローしてないユーザーの投稿%>
-<% if @posts_unfollow.present? %>
-	<% @posts_unfollow.each.with_index(1) do |post, i| %>	
-		<div style="padding:20px 0px 0 0px;">
-			<div class="card03" style="background:-webkit-linear-gradient(-45deg, rgba(17,17,17,0.6), rgba(200,200,200,0.1));background:linear-gradient(-45deg, rgba(17,17,17,0.6), rgba(200,200,200,0.1));">
-				<%= render partial: 'partial/wall_posts', locals: { post: post } %>
-			</div>
-		</div>	
+<%#その他の投稿%>
+<% if @posts_other.present? %>
+	<% @posts_other.each.with_index(1) do |post, i| %>	
+		<div style="margin:12px 20px;padding:15px 20px;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.2));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.2));border-radius:5px;">
+			<%= render partial: 'partial/wall_posts', locals: { post: post } %>
+		</div>
 	<% end %>
 <% end %>
 <%#この作品を投稿%>
-<div style="padding:20px 0px 0 0px;">
-	<div class="card03" style="text-align:center;background:-webkit-linear-gradient(-45deg, rgba(17,17,17,0.6), rgba(200,200,200,0.1));background:linear-gradient(-45deg, rgba(17,17,17,0.6), rgba(200,200,200,0.1));">
-			<%= link_to "/works/#{@post.id}/copy" ,:style => 'width:100%;height:100%;' do %>	
-				<div style="height:15px;"></div>
-				<div class="inline_block_middle">
-					<img data-src="/assets/add_FAFAFA.svg" class="lazyload" style="width:25px;height:25px;opacity:0.5;">
-				</div>
-				<div class="inline_block_middle" style="padding-left:10px;">
-					<div style="font-size:14px;color:#FAFAFA;opacity:0.5;">
-				  		この作品を投稿する
-				  	</div>	 
-			  	</div>
-		  		<div style="height:15px;"></div>
-			<% end %>
-		</div>
+<div style="margin:12px 20px;padding:15px 20px;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(50,50,50,0.4));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(100,100,100,0.2));border-radius:5px;text-align:center;">
+		<%= link_to "/works/#{@post.id}/copy" ,:style => 'width:100%;height:100%;' do %>	
+			<div style="height:15px;"></div>
+			<img data-src="/assets/add_FAFAFA.svg" class="inline_block_middle lazyload" style="width:20px;height:20px;opacity:0.6;">
+			<div class="inline_block_middle" style="padding-left:10px;">
+				<div style="font-size:13px;color:#FAFAFA;opacity:0.6;">
+			  		この作品を投稿する
+			  	</div>	 
+		  	</div>
+	  		<div style="height:15px;"></div>
+		<% end %>
 	</div>
 </div>
-<div style="height:5vh;"></div>
 
 <%#音楽プレビューjs%>
 <% if @post.preview_url.present? %>
@@ -181,23 +159,21 @@
 	</audio>
 	<script defer>						  
 		$(function(){
-	  	  var audio = document.getElementById('audio');
-	  	  var img = $("#icon_play");
-		  $('#btn_preview').on("click",function(){
-		    if(img.attr('src') === "/assets/play_FAFAFA.svg")
-		     {	       		       
-		       img.attr("src","/assets/pause_FAFAFA.svg");
-		       audio.play();
-		     }
-		    else
-		     {
-		       img.attr("src","/assets/play_FAFAFA.svg");
-		       audio.pause();
-		     }
-		  });
-		  audio.onended = function() {
-		  	img.attr("src","/assets/pause_FAFAFA.svg");
-		  };
+	  		var audio = document.getElementById('audio');
+	  		var img = $("#icon_play");
+		  	$('#btn_preview').on("click",function(){
+			    if(img.attr('src') === "/assets/play_FAFAFA.svg"){		     	       		       
+			       	img.attr("src","/assets/pause_FAFAFA.svg");
+			       	audio.play();
+			    }
+			    else{	     
+			       	img.attr("src","/assets/play_FAFAFA.svg");
+			       	audio.pause();
+			    }
+		  	});
+		  	audio.onended = function() {
+		  		img.attr("src","/assets/play_FAFAFA.svg");
+		  	};
 	  	});				
    	</script>
 <% end %>

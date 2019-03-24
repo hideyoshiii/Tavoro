@@ -1,60 +1,52 @@
 <div class="bar_top">
-  <div style="display:inline-block;width:50%;height:50px;">
-    <div style="float:left;">
+  <div class="inline_block_middle" style="width:50%;">
+    <div class="inline_block_middle">
       <%= link_to root_path do %>
-      <div style="padding:10px 5px 0px 10px;color:rgba(39,134,160,0.8);font-size:20px;">
-        TAVORE <%= image_tag "beta.svg", :style =>'width:15px;height:15px;margin:2px 0px 0px -6px;opacity:0.8;' %>
-      </div>
+        <div style="padding:0 7px 0 14px;">
+          <div class="neon">T<span>A</span>VO<span>RE</span></div>
+        </div>
       <% end %>
     </div>
   </div>
-  <div style="display:inline-block;width:50%;height:50px;">
+  <div class="inline_block_middle" style="width:50%;text-align:right;margin-top:-6px">
     <% if user_signed_in? %>
-      <div style="float:right;padding:10px 10px 0px 0px;">
-        <%= link_to "/#{current_user.username}" do %>
-          <%= image_tag "user.svg", :style =>'width:26px;height:26px;' %>
-        <% end %>
-      </div>
-      <% if request.fullpath == "/users/notifications" %>
-        <div style="float:right;padding:12px 10px 0px 0px;">
-          <%= link_to "/users/notifications" do %>
-            <%= image_tag "bell_777777.svg", :style =>'width:22px;height:22px;' %>
+      <%= link_to "/users/user" do %>
+        <div class="inline_block_middle" style="padding:0 7px 0 7px;">
+          <%= image_tag "search_FAFAFA.svg", :style =>'width:21px;height:20px;opacity:0.6;' %>
+        </div>
+      <% end %>  
+      <%= link_to "/users/notifications" do %>
+        <div class="inline_block_middle" style="padding:0 7px;">
+          <% if request.fullpath == "/users/notifications" %>
+            <%= image_tag "bell_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.6;' %>
+          <% else %>
+            <% if Notification.where(user_id: current_user.id,read: false).size >= 1 %>
+              <%= image_tag "bell_FB473E.svg", :style =>'width:20px;height:20px;opacity:0.6;' %>
+            <% else %>
+              <%= image_tag "bell_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.6;' %>
+            <% end %>
           <% end %>
         </div>
-      <% else %>
-        <% if Notification.where(user_id: current_user.id,read: false).size >= 1 %>
-          <div style="float:right;padding:12px 10px 0px 0px;">
-            <%= link_to "/users/notifications" do %>
-              <%= image_tag "bell_FB473E.svg", :style =>'width:22px;height:22px;' %>
-            <% end %>
-          </div>
-        <% else %>
-          <div style="float:right;padding:12px 10px 0px 0px;">
-            <%= link_to "/users/notifications" do %>
-              <%= image_tag "bell_777777.svg", :style =>'width:22px;height:22px;' %>
-            <% end %>
-          </div>
-        <% end %>
       <% end %>
-      <div style="float:right;padding:12px 10px 0px 0px;">
-        <%= link_to "/users/user" do %>
-          <%= image_tag "search_777777.svg", :style =>'width:22px;height:22px;' %>
-        <% end %>
-      </div>
+      <%= link_to "/#{current_user.username}" do %>
+        <div class="inline_block_middle" style="padding:0 14px 0 7px;">
+          <%= image_tag "user_FAFAFA.svg", :style =>'width:22px;height:22px;opacity:0.6;' %>
+        </div>
+      <% end %>    
     <% else %>
-      <div style="float:right;padding:15px 10px 0px 0px;font-size:12px;">
-        <a href="#" data-toggle="modal" data-target="#myModal_sign_up" style="color:rgba(5,98,123,1);">
-          Sign up
-        </a>
-      </div>
-      <div style="float:right;padding:15px 5px 0px 0px;font-size:12px;color:rgba(5,98,123,1);">
+      <a href="#" data-toggle="modal" data-target="#myModal_sign_in">
+        <div class="inline_block_middle" style="padding:0 2.5px 0 2.5px;font-size:12px;color:rgba(5,98,123,0.8);">
+          Sign in
+        </div>
+      </a>
+      <div class="inline_block_middle" style="padding:0 2.5px 0 2.5px;font-size:12px;color:rgba(5,98,123,0.8);">
         /
       </div>
-      <div style="float:right;padding:15px 5px 0px 0px;font-size:12px;">
-        <a href="#" data-toggle="modal" data-target="#myModal_sign_in" style="color:rgba(5,98,123,1);">
-          Sign in
-        </a>
-      </div>
+      <a href="#" data-toggle="modal" data-target="#myModal_sign_up">
+        <div class="inline_block_middle" style="padding:0 10px 0 2.5px;font-size:12px;color:rgba(5,98,123,0.8);">
+          Sign up
+        </div>   
+      </a>
     <% end %>
   </div>
 </div>

@@ -4,8 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  get ":id" => "users#profile"
-  get ":id/posts" => "users#posts"
+  get ":id" => "users#posts"
   get ":id/bookmarks" => "users#bookmarks"
   get 'users/user' => "users#user"
   get 'users/ajax_user_list' => "users#ajax_user_list"
@@ -49,9 +48,6 @@ Rails.application.routes.draw do
   get 'works/music' => "works#music"
   get 'works/ajax_music_list' => "works#ajax_music_list"
   get 'works/music/detail' => "works#music_detail"
-  get 'works/link' => "works#link"
-  get 'works/ajax_link_list' => "works#ajax_link_list"
-  get 'works/link/detail' => "works#link_detail"
   get 'works/bookmark' => "works#bookmark"
   post 'works/save' => "works#save"
   get "works/:id/edit" => "works#edit"

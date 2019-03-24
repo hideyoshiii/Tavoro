@@ -33,12 +33,12 @@
 		<div class="layer03" style="padding:15px 20px;">
 			<div class="inline_block_middle" style="width:80%;">
 				<%= link_to "/#{post.user.username}" do %>
-					<div class="inline_block_middle" style="width:48px;">
-						<% if post.user.image.present? %>
+					<div class="inline_block_middle" style="width:48px;">			            
+			            <% if post.user.image.present? %>
 			                <%= image_tag post.user.image(:medium), :style =>'width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);' %>
-			            <% else %>			                
-			                <%= image_tag "user.svg", :style =>'width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
-			            <% end %>								
+			            <% else %>
+			                <%= image_tag "user.jpg", :style =>'width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);' %>
+			            <% end %>
 					</div>
 					<div class="inline_block_middle" style="width:calc(100% - 48px);">
 						<div class="contain_title02">
@@ -170,23 +170,21 @@
 		</audio>
 		<script defer>						  
 			$(function(){
-		  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
-		  	  var img_<%= post.id %> = $("#icon_play_<%= post.id %>");
-			  $('#btn_preview_<%= post.id %>').on("click",function(){
-			    if(img_<%= post.id %>.attr('src') === "/assets/play_FAFAFA.svg")
-			     {	       		       
-			       img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
-			       audio_<%= post.id %>.play();
-			     }
-			    else
-			     {
-			       img_<%= post.id %>.attr("src","/assets/play_FAFAFA.svg");
-			       audio_<%= post.id %>.pause();
-			     }
-			  });
-			  audio_<%= post.id %>.onended = function() {
-			  	img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
-			  };
+		  		var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
+		  		var img_<%= post.id %> = $("#icon_play_<%= post.id %>");
+			  	$('#btn_preview_<%= post.id %>').on("click",function(){
+			    	if(img_<%= post.id %>.attr('src') === "/assets/play_FAFAFA.svg"){
+			       		img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
+			       		audio_<%= post.id %>.play();
+			     	}
+			    	else{		     
+			       		img_<%= post.id %>.attr("src","/assets/play_FAFAFA.svg");
+			       		audio_<%= post.id %>.pause();
+			     	}
+			  	});
+			  	audio_<%= post.id %>.onended = function() {
+			  		img_<%= post.id %>.attr("src","/assets/play_FAFAFA.svg");
+			  	};
 		  	});				
 	   	</script>
 	<% end %>

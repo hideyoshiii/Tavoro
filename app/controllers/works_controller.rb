@@ -2,24 +2,6 @@ class WorksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :post, :detail]
 
   def test
-    @user = current_user
-    if @user
-      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
-      @checkeds_i = @alls.where.not(review: "bookmark").size
-      @bookmarks_i = @alls.where(review: "bookmark").size
-
-      @all = @alls.where.not(review: "bookmark")
-      @movie = @all.where(category: "movie")
-      @tv = @all.where(category: "tv")
-      @book = @all.where(category: "book")
-      @comic = @all.where(category: "comic")
-      @music = @all.where(category: "music")
-
-      @list_favorite = List.find_by(user_id: @user.id, title: "お気に入り")
-      if @list_favorite.present?
-        @list_favorite_items = ListItem.where(list_id: @list_favorite.id).order(created_at: "DESC")
-      end
-    end
   end
 
   def index  
@@ -78,19 +60,6 @@ class WorksController < ApplicationController
 
   def detail
     @post = Post.find(params[:id])
-    if user_signed_in?
-      if current_user == @post.user
-        @relation = true
-      else
-        if current_user.following?(@post.user)
-          @relation = true
-        else
-          @relation = false
-        end
-      end
-    else
-      @relation = false
-    end
     @posts_all = Post.where(category: @post.category, work_id: @post.work_id).order('id DESC')
     if @posts_all.present? 
       @posts_all = @posts_all.where.not(id: @post.id)  
@@ -101,12 +70,7 @@ class WorksController < ApplicationController
       if @posts_all.present? 
         @posts_mine = @posts_all.where(user_id: current_user.id)   
         @posts_follow = @posts_all.where(user_id: @users)
-        @posts_unfollow = @posts_all.where.not(user_id: @users).where.not(user_id: current_user)
-      end
-    #ログインしてない時
-    else
-      if @posts_all.present? 
-        @posts_unfollow = @posts_all
+        @posts_other = @posts_mine + @posts_follow
       end
     end
     #映画の時
@@ -331,82 +295,6 @@ class WorksController < ApplicationController
   	@poster = @item["artworkUrl100"]
   	@poster = @poster.sub(/100x100bb/, '1000x1000bb')
   	@preview_url = @item["previewUrl"]
-  end
-
-  def link
-  end
-
-  def ajax_link_list
-    if params[:q].present?
-      #URLを定義
-      @url = params[:q]
-      #正規表現バリデーション
-      if @url.match(/\A#{URI::regexp(%w(https))}\z/)
-        #サーバーバリデーション
-        begin
-          @response = Net::HTTP.get_response(URI.parse(@url))
-        rescue
-          @error = "指定されたURL先でエラーが発生しました"
-        else
-          #404バリデーション
-          begin
-            @file = open(@url)
-            @doc = Nokogiri::HTML(@file)
-          rescue OpenURI::HTTPError => e     
-            @error = "指定されたURL先ででエラーが発生しました"
-          else
-            @success = "URLが正常に検知されました"
-          end
-        end  
-      else
-        @error = "httpsから始まるURLを入力してください"
-      end
-    end
-  end
-
-  def link_detail
-    url = params[:url]
-    uri = url
-    page = URI.parse(uri).read
-    charset = page.charset
-    if charset == "iso-8859-1"
-      charset = page.scan(/charset="?([^\s"]*)/i).first.join
-    end
-    @doc = Nokogiri::HTML(page, uri, charset)
-    #諸情報
-    if @doc.present?
-      #title
-      if @doc.css('//meta[property="og:title"]/@content').empty?
-        @title = @doc.title.to_s
-      else
-        @title = @doc.css('//meta[property="og:title"]/@content').to_s
-      end
-      #url
-      @preview_url = url
-      #category
-      @category = "link"
-      #imgae
-      @posters = []
-      unless @doc.css('//meta[property="og:site_name"]/@content').empty?
-        @posters << @doc.css('//meta[property="og:image"]/@content').to_s
-      end
-      unless @doc.css('img').empty?
-        @doc.css('img').each do |photo|
-          @posters << photo[:src]
-        end 
-      end
-      if @posters.present?
-        @posters.each do |poster|
-          unless poster.match(/\A#{URI::regexp(%w(https))}\z/)
-            @posters.delete(poster)
-          end
-        end
-        if @posters.present?
-          @poster = @posters.first
-          @posters = @posters.take(6)
-        end
-      end
-    end
   end
 
   def bookmark

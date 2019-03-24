@@ -1,31 +1,62 @@
 <% if params[:q].blank? %>
-	<% if @posts.present? %>
-		<% @posts.each.with_index(1) do |post, i| %>
-			<%# 3列表示(lazyload) %>
-			<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
-			<%= link_to "/post/#{post.id}" do %>
-				<% if post.image_url.blank? %>
-					<img data-src="/assets/nothing01.jpg" class="img_myboom lazyload">
-				<% else %>									
-					<% if post.category == "movie" || post.category == "tv" %>
-						<% @image_url = post.image_url.sub(/original/, 'w300') %>
-					<% end %>
-					<% if post.category == "book" || post.category == "comic" %>
-						<% if post.api == "itunes" %>
-							<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-						<% else %>
-							<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
-						<% end %>
-					<% end %>
-					<% if post.category == "music" %>
-						<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-					<% end %>
-					<img data-src="<%= @image_url %>" class="img_myboom lazyload">
-				<% end %>
-			<% end %>
+	<div style="height:5px;"></div>
+	<%#おすすめユーザー%>
+	<div style="padding:0 15px;">
+		<div style="font-size:19px;font-weight:bold;">
+			User Ranking
 		</div>
-	  	<% end %>
-  	<% end %>
+		<div style="font-size:12px;opacity:0.8;margin-top:-2px;">
+			ユーザーランキング
+		</div>
+	</div>
+	<div style="height:10px;"></div>
+	<% @user_ranking.each.with_index(1) do |user, i| %>
+		<%= link_to "/#{user.username}" do %>
+			<div style="width:100%;padding:5px 10px;">
+		  		<div class="inline_block_middle" style="width:12%;text-align:center;">
+		  			<% if i == 1 %>
+		  				<img data-src="/assets/no1_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
+		  			<% else %>
+		  				<% if i == 2 %>
+		  					<img data-src="/assets/no2_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
+		  				<% else %>
+		  					<% if i == 3 %>
+			  					<img data-src="/assets/no3_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
+			  				<% else %>
+			  					<span style="font-size:12px;color:#C2C2C2;"><%= i %></span>
+			  				<% end %>
+		  				<% end %>
+		  			<% end %>
+		  		</div>
+		  		<div class="inline_block_middle" style="width:calc(88% - <%= (i - 1) * 1 %>%);padding:8px;border-radius:25px;background:-webkit-linear-gradient(0deg,rgba(50,50,50,0.2),rgba(70,70,70,0.2));background:linear-gradient(0deg,rgba(50,50,50,50,0.2),rgba(70,70,70,0.2));">
+		  			<div class="inline_block_middle" style="width:calc(100% - 50px);padding:0 5px">
+		            	<div class="contain_title02">
+			              	<div class="font_white" style="margin-top:4px;">
+			                	<%= user.name %>
+			                	<% if user.authority == "public" %>		                		
+			                		<img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
+			                	<% end %>
+			              	</div>
+		              	</div>
+		              	<div class="contain_title02">
+			              	<div class="font_gray_min" style="font-size:10px;margin-top:2px;">
+			                	<% checked_i = Post.where(user_id: user.id).where.not(review: "bookmark").size %>
+			                	<%= checked_i %> checkeds
+			              	</div>
+			            </div>
+		            </div>
+		  			<div class="inline_block_middle" style="width:50px;text-align:right;">
+			            <% if user.image.present? %>
+			                <img data-src="<%= user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+			            <% else %>
+			                <img data-src="/assets/user.jpg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+			            <% end %>
+		            </div>
+		  		</div>
+			</div>
+		<% end %>
+	<% end %>
+	<div style="height:20px;"></div>
 <% else %>
 	<% if @items.present? %>
 	  	<% @items.each do |user| %>
@@ -41,8 +72,9 @@
 <% end %>
 
 <%#lazyload.js%>
+<%#lazyload.js%>
 <script defer>
-  $(function() {
-    $('img.lazyload').lazyload();
-  });
+	$(function() {
+    	$('img.lazyload').lazyload();
+	});
 </script>

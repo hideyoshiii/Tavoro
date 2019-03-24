@@ -1,7 +1,7 @@
 @import "bootstrap";
 @import url(https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css);
 
-html,body{width:100%;height:100%;padding:0;margin:0;color:#FAFAFA;font-size:0;font-family:游ゴシック体,'Yu Gothic',YuGothic,'ヒラギノ角ゴシック Pro','Hiragino Kaku Gothic Pro',メイリオ,Meiryo,Osaka,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;}
+html,body{width:100%;height:100%;padding:0;margin:0;color:#FAFAFA;font-size:0;font-family:游ゴシック体,'Yu Gothic',YuGothic,'ヒラギノ角ゴシック Pro','Hiragino Kaku Gothic Pro',メイリオ,Meiryo,Osaka,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
 
 a:link,a:hover,a:active,a:visited{text-decoration:none;}
 
@@ -129,29 +129,95 @@ body:after{
 }
 
 
+//タイトルロゴ
+.neon {
+  font-family: 'Raleway', sans-serif;
+  display:inline-block;
+  color:#2FB4B4;
+  letter-spacing:0.05em;
+  font-size:21px;
+  font-weight:200;
+  text-shadow:0 1px 30px #2FB4B4,0 0 12px #2FB4B4,2px 5px 100px #2FB4B4;
+  
+}
+.neon > span {
+  -webkit-animation: blink 3s infinite alternate;
+  animation: blink 3s infinite alternate;
+}
+@-webkit-keyframes blink {
+  40% {
+    opacity: .85;
+  }
+  42% {
+    opacity: .4;
+  }
+  43% {
+    opacity: .85;
+  }
+  45% {
+    opacity: .4;
+  }
+  46% {
+    opacity: .85;
+  }
+}
+@keyframes blink {
+  40% {
+    opacity: .85;
+  }
+  42% {
+    opacity: .4;
+  }
+  43% {
+    opacity: .85;
+  }
+  45% {
+    opacity: .4;
+  }
+  46% {
+    opacity: .85;
+  }
+}
+
+
+
 //固定バー関連
 .bar_top{
     position:fixed;
+    vertical-align:middle;
     top:0;
     left:0;
     width:100%;
     height:45px;
+    line-height:45px;
     padding:0;
     margin:0;
     background:black;
-    border-bottom:0.5px solid rgba(39,134,160,1);
+    border-bottom:0.5px solid rgba(5,98,123,1);
+    -moz-box-sizing:border-box;
+   	-webkit-box-sizing:border-box;
+   	-o-box-sizing:border-box;
+   	-ms-box-sizing:border-box;
+   	box-sizing:border-box;
     z-index:99;
 }
 .bar_back{
     position:fixed;
+    vertical-align:middle;
     top:0;
     left:0;
     width:100%;
     height:45px;
+    line-height:45px;
     padding:0;
     margin:0;
     background:black;
-    border-bottom:0.5px solid rgba(39,134,160,1);
+    border-bottom:1px solid rgba(5,98,123,0.8);
+    -moz-box-sizing:border-box;
+   	-webkit-box-sizing:border-box;
+   	-o-box-sizing:border-box;
+   	-ms-box-sizing:border-box;
+   	box-sizing:border-box;
     z-index:99;
 }
 .bar_collection{
@@ -180,7 +246,7 @@ body:after{
     background:black; 
     border-left:solid 1px #000;
 	border-right:solid 1px #000;
-	border-bottom:1px solid rgba(39,134,160,1);
+	border-bottom:1px solid rgba(5,98,123,0.8);
 	z-index:100;
 }
 .bar_search{
@@ -192,7 +258,7 @@ body:after{
     padding:0;
     padding-top:3px;
     margin:0;
-    background:black; 
+    background:rgba(10,10,10,1); 
     border-left:solid 1px #000;
 	border-right:solid 1px #000;
     z-index:101;
@@ -223,7 +289,7 @@ body:after{
 		left:0;
 	    width:100%;
 	    border:none;
-	    border-bottom:0.5px solid rgba(39,134,160,1);
+	    border-bottom:1px solid rgba(5,98,123,0.8);
 	}
 	.bar_search{
 		left:0;
@@ -242,7 +308,7 @@ body:after{
 		left:0;
 	    width:100%;
 	    border:none;
-	    border-bottom:0.5px solid rgba(39,134,160,1);
+	    border-bottom:1px solid rgba(5,98,123,0.8);
 	}
 	.bar_search{
 		left:0;
@@ -261,7 +327,7 @@ body:after{
 		left:0;
 	    width:100%;
 	    border:none;
-	    border-bottom:0.5px solid rgba(39,134,160,1);
+	    border-bottom:1px solid rgba(5,98,123,0.8);
 	}
 	.bar_search{
 		left:0;
@@ -374,7 +440,6 @@ body:after{
 }
 
 
-
 //画像関連
 .img_tavore{
 	width:100%;
@@ -393,7 +458,8 @@ body:after{
 	padding:0;
 	margin:-1% 0 0 -1%;
 	object-fit:cover;
-	filter:blur(3px);
+	filter:blur(4px);
+  	-webkit-filter:blur(4px);
 }
 .img_user04{
 	width:50px;
@@ -611,26 +677,16 @@ body:after{
 
 }
 .font_category_min{
+	font-size:10px;
 	line-height:1.0;
 	color:#777777;
-	font-size:10px;
-	text-align:left;
+	opacity:0.9;
 }
 .font_title_min{
+	font-size:10px;
 	line-height:1.2;
 	color:#FAFAFA;
-	font-size:12px;
-	text-align:left;
-}
-.font_logo{
-	font-size:50px;
-	color:rgba(39,134,160,0.8);
-	text-shadow:1px 1px 2px rgba(0,0,0,0.8);
-}
-.font_logo_sub01{
-	font-size:16px;
-	color:#FAFAFA;
-	text-shadow:1px 1px 2px rgba(0,0,0,0.8);
+	opacity:0.9;
 }
 @media only screen and (max-width:767px) {
 	.font_white_min{
@@ -665,18 +721,6 @@ body:after{
 	}
 	.font_head{
 		font-size:18px;
-	}
-	.font_category_min{
-		font-size:10px;
-	}
-	.font_title_min{
-		font-size:10px;
-	}
-	.font_logo{
-		font-size:40px;
-	}
-	.font_logo_sub01{
-		font-size:14px;
 	}
 }
 
@@ -748,11 +792,11 @@ body:after{
   }
 }
 .nmn input::-webkit-input-placeholder {
-  color: #777777;
+  color:rgba(100,100,100,1);
   text-align:center;
 }
 .nmn input:focus::-webkit-input-placeholder {
-  color: #777777;
+  color:rgba(100,100,100,1);
   text-align:left;
 }
 .nmn input {
@@ -1232,18 +1276,15 @@ button {
   text-align:left;
   }
 .base01 span .layer05 {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  -ms-transform: translate(0%,0%);
-  -webkit-transform: translate(0%,0%);
-  transform: translate(0%,0%);
+  position:absolute;
+  top:0%;
+  left:0%;
   width:100%;
   height:100%;
   padding:0;
   margin:0;
+  background:rgba(0,0,0,0.8);
   z-index:3;
-  background:rgba(0,0,0,0.75);
   }
 .base01 span .layer06 {
   position: absolute;
@@ -1394,9 +1435,11 @@ button {
   float:left;
   width:auto;
   height:auto;
-  padding:7px 9px;
+  padding:5.5px 9px;
   margin:0;
-  font-size:15px;
+  font-size:13.5px;
+  line-height:1.5;
+  word-spacing:0.05em;
   border-radius:0px 5px 5px 5px;
   color:#FAFAFA;
   background:rgba(5,98,123,0.9);
@@ -1409,7 +1452,7 @@ button {
     -webkit-line-clamp:2; 
 }
 .balloon_top{
-  position: relative;
+  position:relative;
   width:0;
   height:0;
   padding:0;
@@ -1419,13 +1462,6 @@ button {
   border-left:0px solid transparent;
   z-index:1;
 }
-@media only screen and (max-width: 767px) {
-	.balloon{
-	  padding:6px 8px;
-	  font-size:14px;
-	}
-}
-
 
 
 //テキストの行数限定関連
@@ -1541,11 +1577,11 @@ button {
 //ボタン配置関係
 .btns_plus{
   position:fixed;
-  top: 93%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+  top:93%;
+  left:50%;
+  -ms-transform:translate(-50%,-50%);
+  -webkit-transform:translate(-50%,-50%);
+  transform:translate(-50%,-50%);
   z-index:99;
 }
 .btns_session{
@@ -1602,37 +1638,34 @@ button {
     font-size:16px;
 }
 #btn_plus {
+	position:relative;
     display:block;
-    width:50px;
-    height:50px;
-    background:rgba(5,98,123,0.55);
+    vertical-align:middle;
+    width:54px;
+    height:54px;
+    line-height:54px;
+    background:rgba(5,98,123,0.5);
     text-align:center;
     border-radius:50%;
 }
-#btn_plus i {
-  line-height:50px;
-  vertical-align:middle;
-}
 .btn_icon {
     display:inline-block;
-    width:70px;
-    height:70px;
-    background:rgba(5,98,123,0.5);
     text-align:center;
+    width:68px;
+    height:68px;
     background:rgba(0,0,0,0.8);
     border-radius: 50%;
     border:1px solid rgba(100,100,100,0.4);
 }
 .btn_icon i {
-  line-height:70px;
+  line-height:68px;
   vertical-align:middle;
 }
 .btn_icon_min {
     display:inline-block;
+    text-align:center;
     width:50px;
     height:50px;
-    background:rgba(5,98,123,0.5);
-    text-align:center;
     background:rgba(0,0,0,0.8);
     border-radius: 50%;
     border:1px solid rgba(100,100,100,0.4);
@@ -1678,25 +1711,26 @@ button {
     font-size:12px;
 }
 .btn_follow_on{
-    padding: 0.5em 2.5em;
-    color: #FAFAFA;
-    background: rgba(5,98,123,0.5);
-    border: solid 1px rgba(5,98,123,0.1);
-    border-radius: 0px;
+    padding:0.6em 2.0em;
+    color:rgba(250,250,250,0.9);
+    background:rgba(5,98,123,0.5);
+    border:solid 1px rgba(5,98,123,0.1);
+    border-radius:2.5px;
     font-size:12px;
+    letter-spacing:0.05em
 }
 .btn_follow_off{
-    padding: 0.5em 2.5em;
-    text-decoration: none;
-    color: #FAFAFA;
-    background: none;
-    border: solid 1px rgba(220,220,220,0.4);
-    border-radius: 0px;
+    padding:0.6em 2.0em;
+    color:rgba(250,250,250,0.9);
+    background:rgba(50,50,50,0.5);
+    border:solid 1px rgba(50,50,50,0.1);
+    border-radius:2.5px;
     font-size:12px;
+    letter-spacing:0.05em
 }
 .btn_follow_now{
     padding: 0.5em 2.5em;
-    text-decoration: none;
+    text-decoration:none;
     color: #FAFAFA;
     background: rgba(116,198,122,0.4);
     border: solid 1px rgba(248,197,90,0.1);
@@ -1749,12 +1783,12 @@ button {
 .test_radio {
   	position:relative;
 	height:28%;
-	width:32%;
+	width:31.33%;
 	padding:0;
-    margin:1px 0px 1px 1%;
+    margin:2px 0px 2px 1.5%;
     overflow:hidden;
     float:left;
-    border-radius:3px;
+    border-radius:2px;
   }
 .test_radio span {
   position:absolute;
@@ -1773,12 +1807,12 @@ button {
 .test_radio_right {
   	position:relative;
 	height:28%;
-	width:32%;
+	width:31.33%;
 	padding:0;
-    margin:1px 1% 1px 1%;
+    margin:2px 1.5% 2px 1.5%;
     overflow:hidden;
     float:left;
-    border-radius:3px;
+    border-radius:2px;
   }
 .test_radio_right span {
   position:absolute;
@@ -2197,15 +2231,22 @@ button {
 
 //
 .nav-tabs {
-	padding:12px 0;
+	padding:10px 0;
 	margin:0;
-	font-size:14px;
+	font-size:12px;
 	overflow-x:auto;
 	overflow-y:hidden;
 	-webkit-overflow-scrolling:touch;
 	display:-webkit-box;
 	display:-moz-box;
 	border:none
+}
+.nav-tabs::-webkit-scrollbar {
+    height:0;
+    display:none;
+    border:none;
+    outline:none;
+    -webkit-appearance:none;
 }
 .nav-tabs>li {
 	padding:0;
@@ -2222,21 +2263,28 @@ button {
 .nav-tabs>li>a,
 .nav-tabs>li>a:focus,
 .nav-tabs>li>a:hover{
-	padding:3px 12px;
+	padding:5px 12px;
 	margin:0;
-	color:rgba(250,250,250,0.6);
+	color:rgba(250,250,250,0.8);
 	background:none;
 	border:none;
 }
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover{
-	padding:3px 12px;
+	padding:5px 12px;
 	margin:0;
-	color:rgba(250,250,250,0.8);
+	color:rgba(250,250,250,1);
 	background:none;
 	border:none;
-	border-bottom:solid 1px rgba(39,134,160,0.8);
+	border-bottom:solid 0.5px rgba(39,134,160,0.8);
+}
+.tab-pane.active {
+    animation: slide-down 1s ease-out;
+}
+@keyframes slide-down {
+    0% { opacity: 0; transform: translateY(100%); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 

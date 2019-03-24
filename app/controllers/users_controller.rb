@@ -62,64 +62,16 @@ class UsersController < ApplicationController
 
 
 	  def user
-      @user  = User.find(current_user.id)
-      @users = @user.followings
-      @users_test = User.where(authority: "test")
-      @posts = Post.where.not(review: "bookmark").order(created_at: "DESC")
-      @posts = @posts.where.not(user_id: @user)
-      @posts = @posts.where.not(user_id: @users)
-      @posts = @posts.where.not(user_id: @users_test)
-      #categoryのfillter
-      if params[:category].present?
-        @fillter_category = params[:category]
-        unless @fillter_category == "all"
-          @posts = @posts.where(category: @fillter_category)
-        end
-      end
-      @posts = @posts.order(created_at: "DESC").limit(150)
-      #labelの真偽
-      @all = false
-      @movie = false
-      @tv = false
-      @book = false
-      @comic = false
-      @music = false
-      if params[:category].present?
-        if params[:category] == "all"
-          @all = true
-        end
-        if params[:category] == "movie"
-          @movie = true
-        end
-        if params[:category] == "tv"
-          @tv = true
-        end
-        if params[:category] == "book"
-          @book = true
-        end
-        if params[:category] == "comic"
-          @comic = true
-        end
-        if params[:category] == "music"
-          @music = true
-        end
-      else
-        @all = true
-      end
+      @posts_all = Post.where.not(review: "bookmark").order(created_at: "DESC")
+      @user_ranking = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
 	  end
 
   	def ajax_user_list
       if params[:q].present?
         @items = User.where('username LIKE ?', "%#{params[:q]}%")
       else
-        @user  = User.find(current_user.id)
-        @users = @user.followings
-        @users_test = User.where(authority: "test")
-        @posts = Post.where.not(review: "bookmark")
-        @posts = @posts.where.not(user_id: @user)
-        @posts = @posts.where.not(user_id: @users)
-        @posts = @posts.where.not(user_id: @users_test)
-        @posts = @posts.order(created_at: "DESC").limit(150)
+        @posts_all = Post.where.not(review: "bookmark").order(created_at: "DESC")
+        @user_ranking = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
       end
   	end
 

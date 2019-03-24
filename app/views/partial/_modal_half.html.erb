@@ -44,10 +44,6 @@
 										<span id="favorite-of-<%= post.id %>">
 									      	<%= render partial: 'lists/favorite', locals: { post: post } %>
 									    </span>	
-									    <div style="height:30px"></div>
-										<span id="profile-of-<%= post.id %>">
-									      	<%= render partial: 'lists/profile', locals: { post: post } %>
-									    </span>	
 									    <div style="height:30px"></div>					    	
 								   	<% end %>						    						
 									<%= link_to "/works/#{post.id}/edit" do %>

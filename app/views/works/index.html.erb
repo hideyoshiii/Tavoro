@@ -39,11 +39,11 @@
 									<div class="inline_block_middle" style="width:80%;">
 										<%= link_to "/#{post.user.username}" do %>
 											<div class="inline_block_middle" style="width:48px;">
-												<% if post.user.image.present? %>
-									                <img src="<%= post.user.image(:medium) %>" class="swiper-lazy" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+									            <% if post.user.image.present? %>
+									                <img data-src="<%= post.user.image(:medium) %>" class="swiper-lazy" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
 									            <% else %>
-									                <img src="/assets/user.svg" class="swiper-lazy" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
-									            <% end %>	
+									                <img data-src="/assets/user.jpg" class="swiper-lazy" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+									            <% end %>
 											</div>
 											<div class="inline_block_middle" style="width:calc(100% - 48px);">
 												<div class="contain_title02">
@@ -104,7 +104,7 @@
 									<% if post.category == "music" %>
 										<% if post.preview_url.present? %>
 											<div class="btn_preview_default" id="btn_preview_<%= post.id %>">
-												<img data-src="/assets/play_FAFAFA.svg" class="swiper-lazy" id="icon_play_<%= post.id %>" style="width:11px;height:11px;margin-left:0.5px;">
+												<img data-src="/assets/play_FAFAFA.svg" class="swiper-lazy img_audio" id="icon_play_<%= post.id %>" style="width:11px;height:11px;margin-left:0.5px;">
 											</div>
 										<% end %>
 									<% end %>							
@@ -182,26 +182,30 @@
 					<audio id="audio_<%= post.id %>" controls preload="none" style="display:none;">
 						<source src="<%= post.preview_url %>" type="audio/mpeg"></source>
 					</audio>
-					<script defer>						  
+					<script defer>
 						$(function(){
-					  	  var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
-					  	  var img_<%= post.id %> = $("#icon_play_<%= post.id %>");
-						  $('#btn_preview_<%= post.id %>').on("click",function(){
-						    if(img_<%= post.id %>.attr('src') === "/assets/play_FAFAFA.svg")
-						     {	       		       
-						       img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
-						       audio_<%= post.id %>.play();
-						     }
-						    else
-						     {
-						       img_<%= post.id %>.attr("src","/assets/play_FAFAFA.svg");
-						       audio_<%= post.id %>.pause();
-						     }
-						  });
-						  audio_<%= post.id %>.onended = function() {
-						  	img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
-						  };
-					  	});				
+					  		var audio_<%= post.id %> = document.getElementById('audio_<%= post.id %>');
+					  		var img_<%= post.id %> = $("#icon_play_<%= post.id %>");
+							$('#btn_preview_<%= post.id %>').on("click",function(){
+								if(img_<%= post.id %>.attr('src') === "/assets/play_FAFAFA.svg"){
+							   		$(".img_audio").attr("src","/assets/play_FAFAFA.svg");
+							    	var sounds = document.getElementsByTagName('audio');
+	  						  	  	for(i=0; i<sounds.length; i++){
+	  						  	   		sounds[i].pause();
+	  						  	   		sounds[i].currentTime = 0;
+	  						  	   	}
+							       	img_<%= post.id %>.attr("src","/assets/pause_FAFAFA.svg");
+							       	audio_<%= post.id %>.play();
+							    }
+							    else{
+							       	img_<%= post.id %>.attr("src","/assets/play_FAFAFA.svg");
+							       	audio_<%= post.id %>.pause();
+							    }
+							});
+						  	audio_<%= post.id %>.onended = function() {
+						  		img_<%= post.id %>.attr("src","/assets/play_FAFAFA.svg");
+						  	};
+					  	});
 				   	</script>
 				<% end %>
 			<% end %>
@@ -223,9 +227,8 @@
 		$(function(){
 			var swiper = new Swiper('.swiper-container', {
 				direction: 'vertical',
-				speed: 450,
+				speed: 400,
 				touchAngle: 55,
-				longSwipesRatio: 0.4,
 				navigation: {
 			    	nextEl: '.swiper-button-next',
 			    	prevEl: '.swiper-button-prev',

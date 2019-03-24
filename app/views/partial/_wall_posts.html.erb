@@ -1,22 +1,22 @@
 <div class="inline_block_top" style="width:50px;">
 	<%= link_to "/#{post.user.username}" do %>
 		<% if post.user.image.present? %>
-            <img data-src="<%= post.user.image(:medium) %>" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+            <img data-src="<%= post.user.image(:medium) %>" class="lazyload" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
         <% else %>
-            <img data-src="/assets/user.svg" class="lazyload" style="width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+            <img data-src="/assets/user.jpg" class="lazyload" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
         <% end %>
     <% end %>
 </div>
-<div class="inline_block_top" style="width:calc(100% - 50px);padding-right:10px;">
+<div class="inline_block_top" style="width:calc(100% - 58px);padding-right:10px;">
 	<%= link_to "/post/#{post.id}" do %>
 		<div style="height:5px;"></div>
-  		<div class="inline_block_middle font_white">
+  		<div class="inline_block_middle" style="font-size:12px;color:#FAFAFA;">
 	  		<%= post.user.name %>
 	  		<% if post.user.authority == "public" %>
               <img data-src="/assets/public.svg" class="icon_public_min lazyload">
             <% end %>
         </div>
-        <div class="inline_block_middle font_white_min" style="color:#999999;padding-left:10px;">
+        <div class="inline_block_middle" style="font-size:10px;color:#999999;padding-left:10px;">
 	  		<% @seconds = (Time.now - post.created_at).round  %>
 			<% if @seconds <= 3600 %>
 				- <%= @seconds / 60 %>分前
@@ -33,7 +33,7 @@
 			<% end %>
 	  	</div>		
     	<div style="height:3px;"></div>
-	  	<div class="font_white_min" style="color:#c4c4c4;">
+	  	<div style="font-size:10px;color:#C4C4C4;">
 	  		<% if post.review == "bookmark" %>
 				<img data-src="/assets/bookmark_05627B.svg" class="icon_review_min lazyload">ブックマーク
 			<% end %>
@@ -57,7 +57,7 @@
 	  	</div>
   		<% if post.description.present? %>
   			<div style="height:10px;"></div>
-  			<div class="font_white" style="color:#c4c4c4;line-height:1.2;">	  			
+  			<div style="font-size:12px;color:#C4C4C4;line-height:1.2;">	  			
   				<%= safe_join(post.description.split("\n"), tag(:br)) %>	  			
 				</div>
 			<% end %>
