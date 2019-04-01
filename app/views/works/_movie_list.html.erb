@@ -3,14 +3,14 @@
   <% if @items.present? %>
     <% @items.each do |item| %>
       <% if item["media_type"] == "movie" || item["media_type"] == "tv" %>
-        <%= form_tag(works_movie_detail_path, method: :get) do %>
-        <%= hidden_field_tag :type, item["media_type"] %>
+        <%= form_tag(works_new_path, method: :get) do %>
+        <%= hidden_field_tag :category, item["media_type"] %>
         <%= hidden_field_tag :id, item["id"] %>
           <button type="submit">
             <div class="box_tests02">
               <div class="inline_block_middle" style="width:20%;">
                 <% if item["poster_path"].blank? %>
-                  <img data-src="/assets/nothing01.jpg" class="img_tavore lazyload">
+                  <img data-src="/assets/movie.jpg" class="img_tavore lazyload">
                 <% else %>
                   <img data-src="https://image.tmdb.org/t/p/w154/<%= item.poster_path %>" class="img_tavore lazyload">
                 <% end %>
@@ -50,14 +50,14 @@
   <%#default%>
   <% if @defaults.present? %>
     <% @defaults.each do |item| %>
-      <%= form_tag(works_movie_detail_path, method: :get) do %>
-        <%= hidden_field_tag :type, "movie" %>
+      <%= form_tag(works_new_path, method: :get) do %>
+        <%= hidden_field_tag :category, "movie" %>
         <%= hidden_field_tag :id, item["id"] %>
         <button type="submit">
           <div class="box_tests02">
             <div class="inline_block_middle" style="width:20%;">
               <% if item["poster_path"].blank? %>
-                <img data-src="/assets/nothing01.jpg" class="img_tavore lazyload">
+                <img data-src="/assets/movie.jpg" class="img_tavore lazyload">
               <% else %>
                 <img data-src="https://image.tmdb.org/t/p/w154/<%= item.poster_path %>" class="img_tavore lazyload">
               <% end %>

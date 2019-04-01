@@ -17,14 +17,18 @@ class UsersController < ApplicationController
     end
   end
 
-	def posts
-		@user = User.find_by(username: params[:id])	
+  def posts_all
+    @user = User.find_by(username: params[:id]) 
     if @user
       @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
-      @checkeds_i = @alls.where.not(review: "bookmark").size
-      @bookmarks_i = @alls.where(review: "bookmark").size
 
-      @all = @alls.where.not(review: "bookmark")
+      @all_i = @alls.size
+      @good_i = @alls.where(review: "favorite").size
+      @normal_i = @alls.where(review: "good").size
+      @bad_i = @alls.where(review: "bad").size
+      @want_i = @alls.where(review: "bookmark").size
+
+      @all = @alls
       @movie = @all.where(category: "movie")
       @tv = @all.where(category: "tv")
       @book = @all.where(category: "book")
@@ -36,14 +40,78 @@ class UsersController < ApplicationController
         @list_favorite_items = ListItem.where(list_id: @list_favorite.id).order(created_at: "DESC")
       end
     end
-	end
+  end
 
-  def bookmarks
+  def posts_good
     @user = User.find_by(username: params[:id]) 
     if @user
       @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
-      @checkeds_i = @alls.where.not(review: "bookmark").size
-      @bookmarks_i = @alls.where(review: "bookmark").size
+
+      @all_i = @alls.size
+      @good_i = @alls.where(review: "favorite").size
+      @normal_i = @alls.where(review: "good").size
+      @bad_i = @alls.where(review: "bad").size
+      @want_i = @alls.where(review: "bookmark").size
+
+      @all = @alls.where(review: "favorite")
+      @movie = @all.where(category: "movie")
+      @tv = @all.where(category: "tv")
+      @book = @all.where(category: "book")
+      @comic = @all.where(category: "comic")
+      @music = @all.where(category: "music")
+    end
+  end
+
+  def posts_normal
+    @user = User.find_by(username: params[:id]) 
+    if @user
+      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
+
+      @all_i = @alls.size
+      @good_i = @alls.where(review: "favorite").size
+      @normal_i = @alls.where(review: "good").size
+      @bad_i = @alls.where(review: "bad").size
+      @want_i = @alls.where(review: "bookmark").size
+
+      @all = @alls.where(review: "good")
+      @movie = @all.where(category: "movie")
+      @tv = @all.where(category: "tv")
+      @book = @all.where(category: "book")
+      @comic = @all.where(category: "comic")
+      @music = @all.where(category: "music")
+    end
+  end
+
+  def posts_bad
+    @user = User.find_by(username: params[:id]) 
+    if @user
+      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
+
+      @all_i = @alls.size
+      @good_i = @alls.where(review: "favorite").size
+      @normal_i = @alls.where(review: "good").size
+      @bad_i = @alls.where(review: "bad").size
+      @want_i = @alls.where(review: "bookmark").size
+
+      @all = @alls.where(review: "bad")
+      @movie = @all.where(category: "movie")
+      @tv = @all.where(category: "tv")
+      @book = @all.where(category: "book")
+      @comic = @all.where(category: "comic")
+      @music = @all.where(category: "music")
+    end
+  end
+
+  def posts_want
+    @user = User.find_by(username: params[:id]) 
+    if @user
+      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
+
+      @all_i = @alls.size
+      @good_i = @alls.where(review: "favorite").size
+      @normal_i = @alls.where(review: "good").size
+      @bad_i = @alls.where(review: "bad").size
+      @want_i = @alls.where(review: "bookmark").size
 
       @all = @alls.where(review: "bookmark")
       @movie = @all.where(category: "movie")
@@ -62,16 +130,14 @@ class UsersController < ApplicationController
 
 
 	  def user
-      @posts_all = Post.where.not(review: "bookmark")
-      @user_ranking = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
+      @user_ranking = User.find(Post.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
 	  end
 
   	def ajax_user_list
       if params[:q].present?
         @items = User.where('username LIKE ?', "%#{params[:q]}%")
       else
-        @posts_all = Post.where.not(review: "bookmark")
-        @user_ranking = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
+        @user_ranking = User.find(Post.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
       end
   	end
 

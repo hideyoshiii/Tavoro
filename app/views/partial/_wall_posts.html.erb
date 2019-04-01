@@ -1,19 +1,19 @@
-<div class="inline_block_top" style="width:50px;">
+<div class="inline_block_top" style="width:45px;">
 	<%= link_to "/#{post.user.username}" do %>
 		<% if post.user.image.present? %>
-            <img data-src="<%= post.user.image(:medium) %>" class="lazyload" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+            <img data-src="<%= post.user.image(:medium) %>" class="lazyload" style="width:35px;height:35px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
         <% else %>
-            <img data-src="/assets/user.jpg" class="lazyload" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+            <img data-src="/assets/user.jpg" class="lazyload" style="width:35px;height:35px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
         <% end %>
     <% end %>
 </div>
-<div class="inline_block_top" style="width:calc(100% - 58px);padding-right:10px;">
+<div class="inline_block_top" style="width:calc(100% - 45px);padding-right:10px;">
 	<%= link_to "/post/#{post.id}" do %>
 		<div style="height:5px;"></div>
   		<div class="inline_block_middle" style="font-size:12px;color:#FAFAFA;">
 	  		<%= post.user.name %>
 	  		<% if post.user.authority == "public" %>
-              <img data-src="/assets/public.svg" class="icon_public_min lazyload">
+            	<img data-src="/assets/public.svg" class="icon_public_min lazyload">
             <% end %>
         </div>
         <div class="inline_block_middle" style="font-size:10px;color:#999999;padding-left:10px;">
@@ -33,9 +33,17 @@
 			<% end %>
 	  	</div>		
     	<div style="height:3px;"></div>
-	  	<div style="font-size:10px;color:#C4C4C4;">
+	  	<div style="font-size:11px;color:#FAFAFA;opacity:0.9;">
 	  		<% if post.review == "bookmark" %>
-				<img data-src="/assets/bookmark_05627B.svg" class="icon_review_min lazyload">ブックマーク
+				<% if post.category == "movie" || post.category == "tv" %>
+					観たいです
+				<% end %>
+				<% if post.category == "book" || post.category == "comic" %>
+					読みたいです
+				<% end %>
+				<% if post.category == "music" %>
+					聴きたいです
+				<% end %>
 			<% end %>
 			<% if post.review == "good" %>
 				<% if post.category == "movie" || post.category == "tv" %>
@@ -57,15 +65,10 @@
 	  	</div>
   		<% if post.description.present? %>
   			<div style="height:10px;"></div>
-  			<div style="font-size:12px;color:#C4C4C4;line-height:1.2;">	  			
+  			<div style="font-size:11.5px;color:#FAFAFA;opacity:0.9;line-height:1.2;">	  			
   				<%= safe_join(post.description.split("\n"), tag(:br)) %>	  			
-				</div>
-			<% end %>
-			<div style="height:5px;"></div>
+			</div>
 		<% end %>
-</div>
-<div style="width:100%;text-align:right;">
-	<span id="like-of-<%= post.id %>">
-      	<%= render partial: 'likes/like', locals: { post: post } %>
-    </span>
+		<div style="height:5px;"></div>
+	<% end %>
 </div>

@@ -1,8 +1,8 @@
 <%#meta_tag%>
 <% if @user.image.present? %>
-	<% set_meta_tags title: "#{@user.name}のブックマーク一覧", description: "", og: { title: "#{@user.name}のブックマーク一覧", image: @user.image }, twitter: { title: "#{@user.name}のプロフィール", image: @user.image, card: "summary" } %>
+	<% set_meta_tags title: "#{@user.name}の投稿一覧", description: "", og: { title: "#{@user.name}の投稿一覧", image: @user.image }, twitter: { title: "#{@user.name}の投稿一覧", image: @user.image, card: "summary" } %>
 <% else %>
-	<% set_meta_tags title: "#{@user.name}のブックマーク一覧", description: "", og: { title: "#{@user.name}のブックマーク一覧", image: "user.jpg" }, twitter: { title: "#{@user.name}のプロフィール", image: "user.jpg", card: "summary" } %>
+	<% set_meta_tags title: "#{@user.name}の投稿一覧", description: "", og: { title: "#{@user.name}の投稿一覧", image: "user.jpg" }, twitter: { title: "#{@user.name}の投稿一覧", image: "user.jpg", card: "summary" } %>
 <% end %>
 
 <%#壁紙%>
@@ -20,31 +20,31 @@
 <div style="height:45px;"></div>
 <!-- プロフィール部分 -->
 <div style="height:20px;"></div>
-<div style="">
+<div style="width:100%;">
     <div class="inline_block_middle" style="width:50%;">
-      	<div style="text-align:left;padding-left:15px;">
+      	<div style="text-align:left;padding-left:20px;">
         	<a href="javascript:void(0);" onclick="window.history.back();">
           		<%= image_tag "left_FAFAFA.svg", :class =>'inline_block_middle', :style =>'width:15px;height:15px;margin-right:3px;opacity:0.6;' %>
-          		<div class="inline_block_middle" style="font-size:12px;color:#FAFAFA;opacity:0.6;">
+          		<div class="inline_block_middle" style="font-size:13px;color:#FAFAFA;opacity:0.6;">
           			<%= @user.username %>
           		</div>
         	</a>                    
       	</div>
     </div>
     <div class="inline_block_middle" style="width:50%;">
-    	<div style="text-align:right;padding-right:15px;">
+    	<div style="text-align:right;padding-right:20px;">
       		<a href="#" data-toggle="modal" data-target="#myModal_half_profile">
 				<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.6;' %>
 			</a>             
       	</div>
     </div>
 </div>
-<div style="height:10px;"></div>
+<div style="height:15px;"></div>
 <div style="width:100%;text-align:center;">
 	<% if @user.image.present? %>
-	    <%= image_tag @user.image(:large), :style =>'width:90px;height:90px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+	    <%= image_tag @user.image(:large), :style =>'width:80px;height:80px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
 	<% else %>
-	    <%= image_tag "user.jpg", :style =>'width:90px;height:90px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+	    <%= image_tag "user.jpg", :style =>'width:80px;height:80px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
 	<% end %>
 </div>
 <div style="height:5px;"></div>
@@ -57,52 +57,88 @@
 		    <% end %>
 		</div> 
 	</div> 
-	<div style="height:5px;"></div>
-	<%= link_to "/#{@user.username}/follower" do %>   
-		<div class="inline_block_middle" style="font-size:11.5px;color:#FAFAFA;opacity:0.6;">
-			<%= @user.followers.size %> フォロワー
-		</div>
-	<% end %>
-	<div class="inline_block_middle" style="padding:0 3px;font-size:11.5px;color:#FAFAFA;opacity:0.6;">
-		・
-	</div>
+	<div style="height:3px;"></div>
 	<%= link_to "/#{@user.username}/following" do %>
-		<div class="inline_block_middle" style="font-size:11.5px;color:#FAFAFA;opacity:0.6;">
+		<div class="inline_block_middle" style="font-size:9px;color:#FAFAFA;opacity:0.6;">
 			<%= @user.followings.size %> フォロー
 		</div>
 	<% end %>
+	<div class="inline_block_middle" style="padding:0 2px;font-size:9px;color:#FAFAFA;opacity:0.6;">
+		・
+	</div>
+	<%= link_to "/#{@user.username}/follower" do %>   
+		<div class="inline_block_middle" style="font-size:9px;color:#FAFAFA;opacity:0.6;">
+			<%= @user.followers.size %> フォロワー
+		</div>
+	<% end %>
 	<% if @user.description.present? %>
-		<div style="height:10px;"></div>  
+		<div style="height:5px;"></div>  
 	    <div class="contain_title03">
-		    <div style="font-size:10px;color:#FAFAFA;opacity:0.8;">
+		    <div style="font-size:9px;color:#FAFAFA;opacity:0.6;">
 		      <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
 		    </div>
 		</div>
 	<% end %>
 </div>
-<div style="height:20px;"></div>
+<div style="height:15px;"></div>
 <div style="width:100%;text-align:center;">
 	<div id="relationship-of-<%= @user.id %>">
 	    <%= render partial: 'relationships/relationship' %>
 	</div>
 </div>
 <div style="height:30px"></div>
-<div style="text-align:center;width:100%;padding:0 10%">
-    <div class="inline_block_middle" style="width:50%;opacity:0.5;">
-    	<a href="javascript:void(0);" onclick="replace()">
-	      	<%= image_tag "checked_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
-	    	<div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
-	      		<%= @checkeds_i %> Checked
+<div class="" style="text-align:center;padding:0 10%;">	
+	<div class="inline_block_middle" style="text-align:center;width:20%;opacity:0.5;">
+		<a href="javascript:void(0);" onclick="goAll()">
+	      	<div style="font-size:18px;color:#FAFAFA;">
+	      		<%= @all_i %>
 	    	</div>
-    	</a>
+	    	<div style="font-size:10px;color:#FAFAFA;">
+	      		Posts
+	    	</div>
+	    </a>
     </div>
-    <div class="inline_block_middle" style="width:50%;">  	
-    	<%= image_tag "bookmark_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
-    	<div style="font-size:12px;color:#FAFAFA;margin-top:5px;">
-      		<%= @bookmarks_i %> Bookmark
-    	</div>	
+    <div class="inline_block_middle" style="text-align:center;width:20%;">
+    	<a href="javascript:void(0);" onclick="goGood()">
+	      	<div style="font-size:18px;color:#FAFAFA;">
+	      		<%= @good_i %>
+	    	</div>
+	    	<div style="font-size:10px;color:#FAFAFA;">
+	      		Good
+	    	</div>
+	    </a>
     </div>
-</div> 
+    <div class="inline_block_middle" style="text-align:center;width:20%;opacity:0.5;">
+    	<a href="javascript:void(0);" onclick="goNormal()">
+	      	<div style="font-size:18px;color:#FAFAFA;">
+	      		<%= @normal_i %>
+	    	</div>
+	    	<div style="font-size:10px;color:#FAFAFA;">
+	      		Normal
+	    	</div>
+	    </a>
+    </div>
+    <div class="inline_block_middle" style="text-align:center;width:20%;opacity:0.5;">
+    	<a href="javascript:void(0);" onclick="goBad()">
+	      	<div style="font-size:18px;color:#FAFAFA;">
+	      		<%= @bad_i %>
+	    	</div>
+	    	<div style="font-size:10px;color:#FAFAFA;">
+	      		Bad
+	    	</div>
+	    </a>
+    </div>
+    <div class="inline_block_middle" style="text-align:center;width:20%;opacity:0.5;">
+    	<a href="javascript:void(0);" onclick="goWant()">
+	      	<div style="font-size:18px;color:#FAFAFA;">
+	      		<%= @want_i %>
+	    	</div>
+	    	<div style="font-size:10px;color:#FAFAFA;">
+	      		Want
+	    	</div>
+	    </a>
+    </div>
+</div>
 <div style="height:30px"></div> 
 <div style="border-bottom:solid 0.5px rgba(250,250,250,0.1);"></div>
 <!-- タブボタン部分 -->
@@ -202,6 +238,7 @@
     </div>
 </div>
 
+
 <%#プロフィールモーダル%>
 <%= render partial: 'partial/modal_half_profile', locals: { user: @user } %>
 <%#プロフィールシェアモーダル%>
@@ -229,8 +266,20 @@
 </script>
 <%#URL置換%>
 <script defer>
-	function replace(){
+	function goAll(){
   		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>");
+	}
+	function goGood(){
+  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/good");
+	}
+	function goNormal(){
+  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/normal");
+	}
+	function goBad(){
+  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/bad");
+	}
+	function goWant(){
+  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/want");
 	}
 </script>
 <%#lazyload.js%>

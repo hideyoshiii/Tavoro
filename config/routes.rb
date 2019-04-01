@@ -4,8 +4,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  get ":id" => "users#posts"
-  get ":id/bookmarks" => "users#bookmarks"
+  get ":id" => "users#posts_all"
+  get ":id/good" => "users#posts_good"
+  get ":id/normal" => "users#posts_normal"
+  get ":id/bad" => "users#posts_bad"
+  get ":id/want" => "users#posts_want"
   get 'users/user' => "users#user"
   get 'users/ajax_user_list' => "users#ajax_user_list"
   get ':id/following' => "users#following"
@@ -38,27 +41,19 @@ Rails.application.routes.draw do
   post "follow_requests/:id/unapproval" => "follow_requests#unapproval"
 
   get "post/:id" => "works#post"
-  get "post/:id/detail" => "works#detail"
   get 'works/movie' => "works#movie"
   get 'works/ajax_movie_list' => "works#ajax_movie_list"
-  get 'works/movie/detail' => "works#movie_detail"
   get 'works/book' => "works#book"
   get 'works/ajax_book_list' => "works#ajax_book_list"
-  get 'works/book/detail' => "works#book_detail"
   get 'works/music' => "works#music"
   get 'works/ajax_music_list' => "works#ajax_music_list"
-  get 'works/music/detail' => "works#music_detail"
-  get 'works/bookmark' => "works#bookmark"
-  post 'works/save' => "works#save"
+  get 'works/new' => "works#new"
   get "works/:id/edit" => "works#edit"
   get "works/:id/copy" => "works#copy"
+  post 'works/save' => "works#save"
   post "works/:id/update" => "works#update"
   post "works/:id/destroy" => "works#destroy"
 
-  post "works/:id/create_bookmark" => "works#create_bookmark"
-  post "works/:id/destroy_bookmark" => "works#destroy_bookmark"
-
-  get "likes/post/:post_id" => "likes#post"
   post "likes/:post_id/create" => "likes#create"
   post "likes/:post_id/destroy" => "likes#destroy"
 

@@ -13,7 +13,7 @@
 		          		<div style="height:7vh;"></div>
 		          		<div style="width:40%;display:inline-block;">
 		          			<% if post.image_url.blank? %>
-								<img data-src="/assets/nothing01.jpg" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
+								<img data-src="/assets/<%= post.category %>.jpg" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;">
 							<% else %>	
 								<% if post.category == "movie" || post.category == "tv" %>
 									<% @poster_show = post.image_url.sub(/original/, 'w500') %>

@@ -35,35 +35,6 @@
 			        </div>
 		        <% end %>
 		    <% end %>
-		    <% if item.notified_type == "like" %>
-	        	<% if post = Post.find_by(id: item.post_id) %>
-	        		<% @i = @i + 1 %>
-		        	<%= link_to "/likes/post/#{post.id}" do %>
-				        <div style="margin:12px 15px;padding:20px 0;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.1));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.1));border-radius:5px;">
-				            <div class="inline_block_middle" style="width:100%;padding:0 10px;">
-				            	<div class="inline_block_top" style="width:30px;">					            
-						            <img data-src="/assets/like_FB473E.svg" class="lazyload" style="width:20px;height:20px;opacity:0.7;">					            
-					            </div>
-					            <div class="inline_block_top" style="width:calc(100% - 40px);margin-top:-5px;">
-					            	<% if item.notified_by.image.present? %>
-						                <img data-src="<%= item.notified_by.image(:medium) %>" class="lazyload" style="width:30px;height:30px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-						            <% else %>
-						                <img data-src="/assets/user.jpg" class="lazyload" style="width:30px;height:30px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-						            <% end %>
-						            <div style="height:7px;"></div>
-					              	<div style="font-size:11px;color:#FAFAFA;">
-					                	<%= item.notified_by.name %>さんがあなたの投稿にいいねしました
-					              	</div>
-					              	<div style="height:5px;"></div>
-					              	<div style="font-size:10px;color:#FAFAFA;opacity:0.5;">
-					                	「<%= post.title %>」
-					              	</div>
-					            </div>
-				            </div>
-				        </div>
-			        <% end %>
-			    <% end %>
-		    <% end %>
     	<% end %>
     <% end %>
     <%#既読%>
@@ -91,35 +62,6 @@
 			            </div>       
 			        </div>
 		        <% end %>
-		    <% end %>
-	        <% if item.notified_type == "like" %>
-	        	<% if post = Post.find_by(id: item.post_id) %>
-	        		<% @i = @i + 1 %>
-		        	<%= link_to "/likes/post/#{post.id}" do %>
-				        <div style="margin:12px 15px;padding:20px 0;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(50,50,50,0.2));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(50,50,50,0.2));border-radius:5px;">
-				            <div class="inline_block_middle" style="width:100%;padding:0 10px;">
-				            	<div class="inline_block_top" style="width:30px;">					            
-						            <img data-src="/assets/like_FB473E.svg" class="lazyload" style="width:20px;height:20px;opacity:0.7;">					            
-					            </div>
-					            <div class="inline_block_top" style="width:calc(100% - 40px);margin-top:-5px;">
-					            	<% if item.notified_by.image.present? %>
-						                <img data-src="<%= item.notified_by.image(:medium) %>" class="lazyload" style="width:30px;height:30px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-						            <% else %>
-						                <img data-src="/assets/user.jpg" class="lazyload" style="width:30px;height:30px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-						            <% end %>
-						            <div style="height:7px;"></div>
-					              	<div style="font-size:11px;color:#FAFAFA;">
-					                	<%= item.notified_by.name %>さんがあなたの投稿にいいねしました
-					              	</div>
-					              	<div style="height:5px;"></div>
-					              	<div style="font-size:10px;color:#FAFAFA;opacity:0.5;">
-					                	「<%= post.title %>」
-					              	</div>
-					            </div>
-				            </div>
-				        </div>
-			        <% end %>
-			    <% end %>
 		    <% end %>
 	    <% end %>
     <% end %>

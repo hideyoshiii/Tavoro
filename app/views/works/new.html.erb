@@ -13,7 +13,7 @@
     <div class="inline_block_middle" style="width:70%;">
       <div class="contain_title02" style="text-align:center;">
         <div style="font-size:14px;color:#c2c2c2;">
-          <%= @post.title %>
+          <%= @title %>
         </div>
       </div>
     </div>
@@ -31,21 +31,21 @@
 	<div class="a1">
 		<div class="a4">
 	        <div class="d1">
-	          	<% if @post.image_url.blank? %>
-					<%= image_tag "#{@post.category}.jpg", :class =>'img_myboom_blur' %>
+	          	<% if @poster.blank? %>
+					<%= image_tag "#{@category}.jpg", :class =>'img_myboom_blur' %>					
 			    <% else %>
-			    	<% if @post.category == "movie" || @post.category == "tv" %>
-						<% @poster_show = @post.image_url.sub(/original/, 'w300') %>
+			    	<% if @category == "movie" || @category == "tv" %>
+						<% @poster_show = @poster.sub(/original/, 'w300') %>
 					<% end %>
-					<% if @post.category == "book" || @post.category == "comic" %>
-						<% if @post.api == "itunes" %>
-							<% @poster_show = @post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+					<% if @category == "book" || @category == "comic" %>
+						<% if @api == "itunes" %>
+							<% @poster_show = @poster.sub(/1000x1000bb/, '300x300bb') %>
 						<% else %>
-							<% @poster_show = @post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+							<% @poster_show = @poster.sub(/jpg/, 'jpg?_ex=300x300') %>
 						<% end %>
 					<% end %>
-					<% if @post.category == "music" %>
-						<% @poster_show = @post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+					<% if @category == "music" %>
+						<% @poster_show = @poster.sub(/1000x1000bb/, '300x300bb') %>
 					<% end %>
 					<%= image_tag @poster_show, :class =>'img_myboom_blur' %>
 			    <% end %>
@@ -55,65 +55,74 @@
 	</div>
 </div>
 
-<%= form_tag("/works/#{@post.id}/update", method: :post, :name => "myform") do %>
+<%= form_tag(works_save_path, method: :post, :name => "myform") do %>
+	<%= hidden_field_tag :title, @title %>
+	<%= hidden_field_tag :work_id, @work_id %>
+	<%= hidden_field_tag :category, @category %>
+	<% if @api.present? %>
+		<%= hidden_field_tag :api, @api %>
+	<% end %>
+	<% if @preview_url.present? %>
+		<%= hidden_field_tag :preview_url, @preview_url %>
+	<% end %>
 	<div style="height:4vh;"></div>		
-	<%#レビュー%>
+	<%#レビュー%>				
 	<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
 		<div class="inline_block_middle">
-		    <%= radio_button_tag(:review, "bookmark", @bookmark, {:id => "bookmark"}) %>
+		    <%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
 		    <label for="bookmark" class="radio">
-		    	<% if @post.category == "movie" || @post.category == "tv" %>
+		    	<% if @category == "movie" || @category == "tv" %>
 					観たいです
 				<% end %>
-				<% if @post.category == "book" || @post.category == "comic" %>
+				<% if @category == "book" || @category == "comic" %>
 					読みたいです
 				<% end %>
-				<% if @post.category == "music" %>
+				<% if @category == "music" %>
 					聴きたいです
 				<% end %>
 		    </label>
 	    </div>
-		<div class="inline_block_middle">
-		    <%= radio_button_tag(:review, "good", @good, {:id => "good"}) %>
+	    <div class="inline_block_middle">
+		    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
 		    <label for="good" class="radio">
-		    	<% if @post.category == "movie" || @post.category == "tv" %>
+		    	<% if @category == "movie" || @category == "tv" %>
 					観ました
 				<% end %>
-				<% if @post.category == "book" || @post.category == "comic" %>
+				<% if @category == "book" || @category == "comic" %>
 					読みました
 				<% end %>
-				<% if @post.category == "music" %>
+				<% if @category == "music" %>
 					聴きました
 				<% end %>
 		    </label>
 	    </div>
 	    <div style="height:1.5vh;"></div>
-		<div class="inline_block_middle">
-			<%= radio_button_tag(:review, "favorite", @favorite, {:id => "favorite"}) %>
+	    <div class="inline_block_middle">
+			<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
 		    <label for="favorite">
 		    	<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめ
 		    </label>
 		</div>
 	    <div class="inline_block_middle">
-		    <%= radio_button_tag(:review, "bad", @bad, {:id => "bad"}) %>
+		    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
 		    <label for="bad" class="radio">
 		    	<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしない
 		    </label>
 	    </div>
 	</div>
-	<div style="height:1.5vh;"></div>
 	<%#コメント%>
+	<div style="height:1.5vh;"></div>
 	<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
-		<textarea name="description" id="textarea" placeholder="何か書く" wrap="soft"><%= @post.description %></textarea>
+		<textarea name="description" id="textarea" placeholder="何か書く" wrap="soft"></textarea>
 	</div>
 	<div style="height:1.5vh;"></div>
 	<%#ポスター(映画,テレビの時)%>
-	<% if @post.category == "movie" || @post.category == "tv" %>
-		<div style="text-align:center;width:100%;margin:0 auto;">
+	<% if @category == "movie" || @category == "tv" %>
+		<div style="text-align:center;width:100%;margin:0 auto;">		
 			<div class="horizontal_scroll">
 				<% if @posters.present? %>
 					<% @posters.each.with_index(1) do |poster, i| %>
-						<% if @post.image_url == "https://image.tmdb.org/t/p/original#{poster.file_path}" %>
+						<% if i == 1 %>
 							<% @boolean = true %>
 						<% else %>
 							<% @boolean = false %>
@@ -128,50 +137,54 @@
 						</div>
 					<% end %>
 				<% else %>
-					<% if @post.image_url.blank? %>
-						<%= image_tag "#{@post.category}.jpg", :style =>'width:auto;height:45vh;' %>
+					<% if @poster.blank? %>
+						<%= image_tag "#{@category}.jpg", :style =>'width:auto;height:45vh;' %>
 					<% else %>
 						<%= image_tag @poster_show, :style =>'width:auto;height:45vh;' %>
+						<%= hidden_field_tag :image_url, @poster %>
 					<% end %>
 				<% end %>
-			</div>
+			</div>		
 		</div>
 	<% end %>
 	<%#ポスター(ブック,コミックの時)%>
-	<% if @post.category == "book" || @post.category == "comic" %>
+	<% if @category == "book" || @category == "comic" %>
 		<div style="text-align:center;width:100%;margin:0 auto;">
-			<% if @post.image_url.blank? %>
-				<%= image_tag "#{@post.category}.jpg", :style =>'width:50%;height:auto;' %>
+			<% if @poster.blank? %>
+				<%= image_tag "#{@category}.jpg", :style =>'width:50%;height:auto;' %>
 			<% else %>
 				<%= image_tag @poster_show, :style =>'width:50%;height:auto;' %>
+				<%= hidden_field_tag :image_url, @poster %>
 			<% end %>
 		</div>
 	<% end %>
 	<%#ポスター(ミュージックの時)%>
-	<% if @post.category == "music" %>
-	<div style="text-align:center;width:100%;margin:0 auto;">
-		<div style="text-align:center;width:60%;margin:0 auto;">
-			<div class="pile_preview">								
-				<% if @post.image_url.blank? %>
-					<%= image_tag "#{@post.category}.jpg", :style =>'width:100%;height:100%;' %>
-				<% else %>
-					<%= image_tag @poster_show, :style =>'width:100%;height:100%;' %>
-				<% end %>
-				<% if @post.preview_url.present? %>
-					<div class="btn_preview_default" id="btn_preview">
-						<%= image_tag "play_FAFAFA.svg", :id =>'icon_play', :style =>'width:11px;height:11px;margin-left:0.5px;' %>
-					</div>
-				<% end %>
-			</div>
+	<% if @category == "music" %>
+		<div style="text-align:center;width:100%;margin:0 auto;">
+			<div style="text-align:center;width:60%;margin:0 auto;">
+				<div class="pile_preview">
+					<% if @poster.blank? %>
+						<%= image_tag "#{@category}.jpg", :style =>'width:100%;height:100%;' %>
+					<% else %>
+						<%= image_tag @poster_show, :style =>'width:100%;height:100%;' %>
+						<%= hidden_field_tag :image_url, @poster %>
+					<% end %>
+					<% if @preview_url.present? %>
+						<div class="btn_preview_default" id="btn_preview">
+							<%= image_tag "play_FAFAFA.svg", :id =>'icon_play', :style =>'width:11px;height:11px;margin-left:0.5px;' %>
+						</div>
+					<% end %>
+				</div>
+			</div>	
 		</div>	
-	<% end %>			
+	<% end %>
 <% end %>
 
 <%#音楽プレビューjs%>
-<% if @post.category == "music" %>
-	<% if @post.preview_url.present? %>
+<% if @category == "music" %>
+	<% if @preview_url.present? %>
 		<audio id="audio" controls preload="none" style="display:none;">
-			<source src="<%= @post.preview_url %>" type="audio/mpeg"></source>
+			<source src="<%= @preview_url %>" type="audio/mpeg"></source>
 		</audio>
 		<script defer>						  
 			$(function(){
@@ -200,10 +213,6 @@
 	$(function() {
 	  var $textarea = $('#textarea');
 	  var lineHeight = parseInt($textarea.css('lineHeight'));
-	  $(function() {
-	      var lines = ($textarea.val() + '\n').match(/\n/g).length;
-	      $textarea.height(lineHeight * lines);
-	    });
 	  $textarea.on('input', function(e) {
 	    var lines = ($(this).val() + '\n').match(/\n/g).length;
 	    $(this).height(lineHeight * lines);

@@ -40,8 +40,8 @@
 		              	</div>
 		              	<div class="contain_title02">
 			              	<div class="font_gray_min" style="font-size:10px;margin-top:2px;">
-			                	<% checked_i = Post.where(user_id: user.id).where.not(review: "bookmark").size %>
-			                	<%= checked_i %> checkeds
+			                	<% posts_i = Post.where(user_id: user.id).size %>
+			                	<%= posts_i %> posts
 			              	</div>
 			            </div>
 		            </div>

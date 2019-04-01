@@ -32,7 +32,7 @@
 		<div class="a4">
 	        <div class="d1">
 	          	<% if @post.image_url.blank? %>		      	
-					<%= image_tag "nothing01.jpg", :class =>'img_myboom_blur' %>					
+					<%= image_tag "#{@post.category}.jpg", :class =>'img_myboom_blur' %>					
 			    <% else %>
 			    	<% if @post.category == "movie" || @post.category == "tv" %>
 						<% @poster_show = @post.image_url.sub(/original/, 'w300') %>
@@ -68,13 +68,21 @@
 	<div style="height:4vh;"></div>		
 	<%#レビュー%>				
 	<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
-		<div style="display:inline-block;">
+		<div class="inline_block_middle">
 		    <%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
 		    <label for="bookmark" class="radio">
-		    	<%= image_tag "bookmark_05627B.svg", :class =>'icon_review' %>ブックマーク
+		    	<% if @post.category == "movie" || @post.category == "tv" %>
+					観たいです
+				<% end %>
+				<% if @post.category == "book" || @post.category == "comic" %>
+					読みたいです
+				<% end %>
+				<% if @post.category == "music" %>
+					聴きたいです
+				<% end %>
 		    </label>
 	    </div>
-	    <div style="display:inline-block;">
+	    <div class="inline_block_middle">
 		    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
 		    <label for="good" class="radio">
 		    	<% if @post.category == "movie" || @post.category == "tv" %>
@@ -89,13 +97,13 @@
 		    </label>
 	    </div>
 	    <div style="height:1.5vh;"></div>
-	    <div style="display:inline-block;">
+	    <div class="inline_block_middle">
 			<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
 		    <label for="favorite">
 		    	<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめ
 		    </label>
 		</div>
-	    <div style="display:inline-block;">
+	    <div class="inline_block_middle">
 		    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
 		    <label for="bad" class="radio">
 		    	<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしない
@@ -130,7 +138,7 @@
 					<% end %>
 				<% else %>
 					<% if @post.image_url.blank? %>
-						<%= image_tag "nothing01.jpg", :style =>'width:auto;height:45vh;' %>
+						<%= image_tag "#{@post.category}.jpg", :style =>'width:auto;height:45vh;' %>
 					<% else %>
 						<%= image_tag @poster_show, :style =>'width:auto;height:45vh;' %>
 						<%= hidden_field_tag :image_url, @post.image_url %>
@@ -143,7 +151,7 @@
 	<% if @post.category == "book" || @post.category == "comic" %>
 		<div style="text-align:center;width:100%;margin:0 auto;">
 			<% if @post.image_url.blank? %>
-				<%= image_tag "nothing02.jpg", :style =>'width:50%;height:auto;' %>
+				<%= image_tag "#{@post.category}.jpg", :style =>'width:50%;height:auto;' %>
 			<% else %>
 				<%= image_tag @poster_show, :style =>'width:50%;height:auto;' %>
 				<%= hidden_field_tag :image_url, @post.image_url %>
@@ -156,7 +164,7 @@
 			<div style="text-align:center;width:60%;margin:0 auto;">
 				<div class="pile_preview">								
 					<% if @post.image_url.blank? %>
-						<%= image_tag "nothing03.jpg", :style =>'width:100%;height:100%;' %>
+						<%= image_tag "#{@post.category}.jpg", :style =>'width:100%;height:100%;' %>
 					<% else %>
 						<%= image_tag @poster_show, :style =>'width:100%;height:100%;' %>
 						<%= hidden_field_tag :image_url, @post.image_url %>		
@@ -173,31 +181,32 @@
 <% end %>
 
 <%#音楽プレビューjs%>
-<% if @post.preview_url.present? %>
-	<audio id="audio" controls preload="none" style="display:none;">
-		<source src="<%= @post.preview_url %>" type="audio/mpeg"></source>
-	</audio>
-	<script defer>						  
-		$(function(){
-	  	  var audio = document.getElementById('audio');
-	  	  var img = $("#icon_play");
-		  $('#btn_preview').on("click",function(){
-		    if(img.attr('src') === "/assets/play_FAFAFA.svg")
-		     {	       		       
-		       img.attr("src","/assets/pause_FAFAFA.svg");
-		       audio.play();
-		     }
-		    else
-		     {
-		       img.attr("src","/assets/play_FAFAFA.svg");
-		       audio.pause();
-		     }
-		  });
-		  audio.onended = function() {
-		  	img.attr("src","/assets/pause_FAFAFA.svg");
-		  };
-	  	});				
-   	</script>
+<% if @post.category == "music" %>
+	<% if @post.preview_url.present? %>
+		<audio id="audio" controls preload="none" style="display:none;">
+			<source src="<%= @post.preview_url %>" type="audio/mpeg"></source>
+		</audio>
+		<script defer>						  
+			$(function(){
+		  		var audio = document.getElementById('audio');
+		  		var img = $("#icon_play");
+			  	$('#btn_preview').on("click",function(){
+				    if(img.attr('src') === "/assets/play_FAFAFA.svg"){		     	       		       
+				       	img.attr("src","/assets/pause_FAFAFA.svg");
+				       	audio.play();
+				    }
+				    else{	     
+				       	img.attr("src","/assets/play_FAFAFA.svg");
+				       	audio.pause();
+				    }
+			  	});
+			  	audio.onended = function() {
+			  		img.attr("src","/assets/play_FAFAFA.svg");
+			  		audio.currentTime = 0;
+			  	};
+		  	});				
+	   	</script>
+	<% end %>
 <% end %>
 <%#テキストエリアの自動改行%>
 <script defer>

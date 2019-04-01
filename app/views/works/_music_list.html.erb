@@ -2,14 +2,14 @@
   <%#検索結果%>
   <% if @items.present? %>
     <% @items.each.with_index(1) do |item, i| %>
-      <%= form_tag(works_music_detail_path, method: :get) do %>
-      <%= hidden_field_tag :type, "music" %>
+      <%= form_tag(works_new_path, method: :get) do %>
+      <%= hidden_field_tag :category, "music" %>
       <%= hidden_field_tag :id, item["trackId"] %>
         <button type="submit">
           <div class="box_tests02">
             <div class="inline_block_middle" style="width:20%;">
               <% if item["artworkUrl100"].blank? %>
-                <img data-src="/assets/nothing03.jpg" class="img_tavore lazyload">
+                <img data-src="/assets/music.jpg" class="img_tavore lazyload">
               <% else %>
                 <% @image_url = item["artworkUrl100"] %>
                 <img data-src="<%= @image_url %>" class="img_tavore lazyload">
@@ -39,14 +39,14 @@
   <%#default%>
   <% if @defaults.present? %>
     <% @defaults.each.with_index(1) do |item, i| %>
-      <%= form_tag(works_music_detail_path, method: :get) do %>
-      <%= hidden_field_tag :type, "music" %>
+      <%= form_tag(works_new_path, method: :get) do %>
+      <%= hidden_field_tag :category, "music" %>
       <%= hidden_field_tag :id, item["trackId"] %>
         <button type="submit">
           <div class="box_tests02">
             <div class="inline_block_middle" style="width:20%;">
               <% if item["artworkUrl100"].blank? %>
-                <img data-src="/assets/nothing03.jpg" class="img_tavore lazyload">
+                <img data-src="/assets/music.jpg" class="img_tavore lazyload">
               <% else %>
                 <% @image_url = item["artworkUrl100"] %>
                 <img data-src="<%= @image_url %>" class="img_tavore lazyload">

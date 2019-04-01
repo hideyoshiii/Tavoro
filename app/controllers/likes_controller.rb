@@ -1,12 +1,6 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!, except: :post
 
-  def post
-	@post = Post.find(params[:post_id])
-	@likes = Like.where(post_id: @post.id)
-	@likes_i = @likes.size
-  end
-
   def create
     @post = Post.find(params[:post_id])
     if @like = Like.create(user_id: current_user.id, post_id: @post.id)   
