@@ -9,48 +9,8 @@ class WorksController < ApplicationController
       @user  = User.find(current_user.id)
       @users = @user.followings
       @posts = Post.all
-      #categoryのfillter
-      if params[:category].present?
-        @fillter_category = params[:category]
-        unless @fillter_category == "all"
-          @posts = @posts.where(category: @fillter_category)
-        end
-      end
       @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users))
       @posts = @posts.order(created_at: "DESC").limit(20)
-      #labelの真偽
-      @all = false
-      @movie = false
-      @tv = false
-      @book = false
-      @comic = false
-      @music = false
-      if params[:category].present?
-        if params[:category] == "all"
-          @all = true
-        end
-        if params[:category] == "movie"
-          @movie = true
-        end
-        if params[:category] == "tv"
-          @tv = true
-        end
-        if params[:category] == "book"
-          @book = true
-        end
-        if params[:category] == "comic"
-          @comic = true
-        end
-        if params[:category] == "music"
-          @music = true
-        end
-      else
-        @all = true
-      end
-    else
-      @posts_all = Post.where.not(review: "bookmark")
-      @posts = @posts_all.order(created_at: "DESC").limit(20)
-      @users = User.find(@posts_all.group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
     end
   end
 

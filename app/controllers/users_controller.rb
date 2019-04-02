@@ -2,21 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:notifications]
   after_action :notifications_update, only: [:notifications]
 
-  def profile
-    @user = User.find_by(username: params[:id]) 
-    @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
-    @checkeds_i = @alls.where.not(review: "bookmark").size
-    @bookmarks_i = @alls.where(review: "bookmark").size
-
-    @list = List.find_by(user_id: @user.id, title: "プロフィール")
-    if @list.present?
-      @list_item = ListItem.find_by(list_id: @list.id)
-      if @list_item.present?
-        @post_list = @list_item.post
-      end
-    end
-  end
-
   def posts_done
     @user = User.find_by(username: params[:id]) 
     if @user
@@ -83,87 +68,86 @@ class UsersController < ApplicationController
   end
 
 
-	  def user
+  def user
+    @user_ranking = User.find(Post.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
+  end
+
+	def ajax_user_list
+    if params[:q].present?
+      @items = User.where('username LIKE ?', "%#{params[:q]}%")
+    else
       @user_ranking = User.find(Post.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
-	  end
-
-  	def ajax_user_list
-      if params[:q].present?
-        @items = User.where('username LIKE ?', "%#{params[:q]}%")
-      else
-        @user_ranking = User.find(Post.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
-      end
-  	end
-
-  	def configuration 		
-  	end
-
-  	def following		
-      @user = User.find_by(username: params[:id]) 
-  		@users = @user.followings
-  	end
-
-  	def ajax_following_list
-  		@user = User.find_by(username: params[:id]) 
-      @users = @user.followings
-    	if params[:q].present?
-       @items = @users.where('username LIKE ?', "%#{params[:q]}%")
-      end
-  	end
-
-  	def follower
-  		@user = User.find_by(username: params[:id]) 
-      @users = @user.followers
-  	end
-
-  	def ajax_follower_list
-  		@user = User.find_by(username: params[:id]) 
-      @users = @user.followers
-      if params[:q].present?
-    	 @items = @users.where('username LIKE ?', "%#{params[:q]}%")
-      end
-  	end
-
-
-    def policy     
     end
+	end
 
-    def terms     
+	def configuration 		
+	end
+
+	def following		
+    @user = User.find_by(username: params[:id]) 
+		@users = @user.followings
+	end
+
+	def ajax_following_list
+		@user = User.find_by(username: params[:id]) 
+    @users = @user.followings
+  	if params[:q].present?
+     @items = @users.where('username LIKE ?', "%#{params[:q]}%")
     end
+	end
 
-    def contact     
+	def follower
+		@user = User.find_by(username: params[:id]) 
+    @users = @user.followers
+	end
+
+	def ajax_follower_list
+		@user = User.find_by(username: params[:id]) 
+    @users = @user.followers
+    if params[:q].present?
+  	 @items = @users.where('username LIKE ?', "%#{params[:q]}%")
     end
+	end
 
-    def ajax_validate_username
-      if params[:q].present?
-        if User.where(username: params[:q]).exists?
-          if current_user.username == params[:q]
-            
-          else
-            @validation = "このidはすでに使われています"
-            @check = false
-          end
+  def policy     
+  end
+
+  def terms     
+  end
+
+  def contact     
+  end
+
+  def ajax_validate_username
+    if params[:q].present?
+      if User.where(username: params[:q]).exists?
+        if current_user.username == params[:q]
+          
         else
-          if params[:q].match(/\A[a-z\d_]{5,15}\z/i)
-            @validation = "使用可能なidです"
-            @check = true
-          else
-            @validation = "idは5文字以上15文字以内で,英字,数字と「_」が使用できます。スペースは使用できません。"
-            @check = false
-          end
+          @validation = "このidはすでに使われています"
+          @check = false
+        end
+      else
+        if params[:q].match(/\A[a-z\d_]{5,15}\z/i)
+          @validation = "使用可能なidです"
+          @check = true
+        else
+          @validation = "idは5文字以上15文字以内で,英字,数字と「_」が使用できます。スペースは使用できません。"
+          @check = false
         end
       end
     end
+  end
 
-    def notifications
-      @notifications = Notification.where(user_id: current_user.id).order(created_at: "DESC")
-      @notifications_yes = @notifications.where(read: true)
-      @notifications_no = @notifications.where(read: false)
+  def notifications
+    @notifications = Notification.where(user_id: current_user.id).order(created_at: "DESC")
+    @notifications_yes = @notifications.where(read: true)
+    @notifications_no = @notifications.where(read: false)
+  end
+
+  private
+    def notifications_update
+      @notifications_no.update_all(read: true)
     end
-
-    private
-      def notifications_update
-        @notifications_no.update_all(read: true)
-      end
 
 end
