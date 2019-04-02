@@ -854,20 +854,20 @@ button {
   }
 }
 .nmn03 input{
-    display: none;
+    display:none;
 }
 .nmn03 label {
-    padding: 0.5em 1.5em;
-    color: #777777;
-    border: solid 1px #777777;
-    border-radius: 0px;
-    font-size:14px;
+    padding:0.6em 1.5em;
+    color:#777777;
+    border:solid 0.5px #777777;
+    border-radius:0px;
+    font-size:11px;
     background:none;
     margin:0px 5px;
 }
 .nmn03 input[type="radio"]:checked + label {
-    color: #c2c2c2;
-    border: solid 1px white;
+    color: #C2C2C2;
+    border: solid 0.5px #FAFAFA;
 }
 .nmn04 input{
     display: none;
@@ -926,19 +926,6 @@ button {
 	.nmn02 textarea {
 	  height:32px;
 	  font-size:18px;
-	}
-	.nmn03 label {
-	    border: solid 0.5px #777777;
-	    font-size:12px;
-	}
-	.nmn03 input[type="radio"]:checked + label {
-	    border: solid 0.5px white;
-	}
-}
-@media only screen and (max-width: 370px) {
-	.nmn03 label {
-	    padding: 0.4em 1.0em;
-	    font-size:11px;
 	}
 }
 

@@ -87,50 +87,30 @@
 	</div>
 </div>
 <div style="height:30px"></div>
-<div class="" style="text-align:center;padding:0 10%;">	
-	<div class="inline_block_middle" style="text-align:center;width:20%;opacity:0.5;">
-		<a href="javascript:void(0);" onclick="goAll()">
-	      	<div style="font-size:18px;color:#FAFAFA;">
-	      		<%= @all_i %>
+<div class="" style="text-align:center;padding:0 15%;font-family:;">	
+	<div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.5;">
+		<a href="javascript:void(0);" onclick="goDone()">
+	      	<div style="font-size:20px;color:#FAFAFA;">
+	      		<%= @done_i %>
 	    	</div>
 	    	<div style="font-size:10px;color:#FAFAFA;">
-	      		Posts
+	      		Done
 	    	</div>
 	    </a>
     </div>
-    <div class="inline_block_middle" style="text-align:center;width:20%;opacity:0.5;">
-    	<a href="javascript:void(0);" onclick="goGood()">
-	      	<div style="font-size:18px;color:#FAFAFA;">
-	      		<%= @good_i %>
+    <div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.5;">
+    	<a href="javascript:void(0);" onclick="goDoing()">
+	      	<div style="font-size:20px;color:#FAFAFA;">
+	      		<%= @doing_i %>
 	    	</div>
 	    	<div style="font-size:10px;color:#FAFAFA;">
-	      		Good
+	      		Doing
 	    	</div>
 	    </a>
     </div>
-    <div class="inline_block_middle" style="text-align:center;width:20%;opacity:0.5;">
-    	<a href="javascript:void(0);" onclick="goNormal()">
-	      	<div style="font-size:18px;color:#FAFAFA;">
-	      		<%= @normal_i %>
-	    	</div>
-	    	<div style="font-size:10px;color:#FAFAFA;">
-	      		Normal
-	    	</div>
-	    </a>
-    </div>
-    <div class="inline_block_middle" style="text-align:center;width:20%;opacity:0.5;">
-    	<a href="javascript:void(0);" onclick="goBad()">
-	      	<div style="font-size:18px;color:#FAFAFA;">
-	      		<%= @bad_i %>
-	    	</div>
-	    	<div style="font-size:10px;color:#FAFAFA;">
-	      		Bad
-	    	</div>
-	    </a>
-    </div>
-    <div class="inline_block_middle" style="text-align:center;width:20%;">
+    <div class="inline_block_middle" style="text-align:center;width:33.33%;">
     	<a href="javascript:void(0);" onclick="goWant()">
-	      	<div style="font-size:18px;color:#FAFAFA;">
+	      	<div style="font-size:20px;color:#FAFAFA;">
 	      		<%= @want_i %>
 	    	</div>
 	    	<div style="font-size:10px;color:#FAFAFA;">
@@ -266,17 +246,11 @@
 </script>
 <%#URL置換%>
 <script defer>
-	function goAll(){
+	function goDone(){
   		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>");
 	}
-	function goGood(){
-  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/good");
-	}
-	function goNormal(){
-  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/normal");
-	}
-	function goBad(){
-  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/bad");
+	function goDoing(){
+  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/doing");
 	}
 	function goWant(){
   		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/want");

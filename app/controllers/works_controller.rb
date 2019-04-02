@@ -297,11 +297,15 @@ class WorksController < ApplicationController
 	    @posters = @poster_ja + @poster_en
 	  end
     @bookmark = false
+    @doing = false
     @good = false
     @favorite = false
     @bad = false
     if @post.review == "bookmark"
       @bookmark = true
+    end
+    if @post.review == "doing"
+      @doing = true
     end
     if @post.review == "good"
       @good = true

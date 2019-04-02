@@ -17,18 +17,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def posts_all
+  def posts_done
     @user = User.find_by(username: params[:id]) 
     if @user
       @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
 
-      @all_i = @alls.size
-      @good_i = @alls.where(review: "favorite").size
-      @normal_i = @alls.where(review: "good").size
-      @bad_i = @alls.where(review: "bad").size
+      @done_i = @alls.where.not(review: "doing").where.not(review: "bookmark").size
+      @doing_i = @alls.where(review: "doing").size
       @want_i = @alls.where(review: "bookmark").size
 
-      @all = @alls
+      @all = @alls.where.not(review: "doing").where.not(review: "bookmark")
       @movie = @all.where(category: "movie")
       @tv = @all.where(category: "tv")
       @book = @all.where(category: "book")
@@ -42,58 +40,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def posts_good
+  def posts_doing
     @user = User.find_by(username: params[:id]) 
     if @user
       @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
 
-      @all_i = @alls.size
-      @good_i = @alls.where(review: "favorite").size
-      @normal_i = @alls.where(review: "good").size
-      @bad_i = @alls.where(review: "bad").size
+      @done_i = @alls.where.not(review: "doing").where.not(review: "bookmark").size
+      @doing_i = @alls.where(review: "doing").size
       @want_i = @alls.where(review: "bookmark").size
 
-      @all = @alls.where(review: "favorite")
-      @movie = @all.where(category: "movie")
-      @tv = @all.where(category: "tv")
-      @book = @all.where(category: "book")
-      @comic = @all.where(category: "comic")
-      @music = @all.where(category: "music")
-    end
-  end
-
-  def posts_normal
-    @user = User.find_by(username: params[:id]) 
-    if @user
-      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
-
-      @all_i = @alls.size
-      @good_i = @alls.where(review: "favorite").size
-      @normal_i = @alls.where(review: "good").size
-      @bad_i = @alls.where(review: "bad").size
-      @want_i = @alls.where(review: "bookmark").size
-
-      @all = @alls.where(review: "good")
-      @movie = @all.where(category: "movie")
-      @tv = @all.where(category: "tv")
-      @book = @all.where(category: "book")
-      @comic = @all.where(category: "comic")
-      @music = @all.where(category: "music")
-    end
-  end
-
-  def posts_bad
-    @user = User.find_by(username: params[:id]) 
-    if @user
-      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
-
-      @all_i = @alls.size
-      @good_i = @alls.where(review: "favorite").size
-      @normal_i = @alls.where(review: "good").size
-      @bad_i = @alls.where(review: "bad").size
-      @want_i = @alls.where(review: "bookmark").size
-
-      @all = @alls.where(review: "bad")
+      @all = @alls.where(review: "doing")
       @movie = @all.where(category: "movie")
       @tv = @all.where(category: "tv")
       @book = @all.where(category: "book")
@@ -107,10 +63,8 @@ class UsersController < ApplicationController
     if @user
       @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
 
-      @all_i = @alls.size
-      @good_i = @alls.where(review: "favorite").size
-      @normal_i = @alls.where(review: "good").size
-      @bad_i = @alls.where(review: "bad").size
+      @done_i = @alls.where.not(review: "doing").where.not(review: "bookmark").size
+      @doing_i = @alls.where(review: "doing").size
       @want_i = @alls.where(review: "bookmark").size
 
       @all = @alls.where(review: "bookmark")

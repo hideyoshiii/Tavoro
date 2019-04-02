@@ -118,6 +118,17 @@
 													聴きたいです
 												<% end %>
 											<% end %>
+											<% if post.review == "doing" %>
+												<% if post.category == "movie" || post.category == "tv" %>
+													観ています
+												<% end %>
+												<% if post.category == "book" || post.category == "comic" %>
+													読んでいます
+												<% end %>
+												<% if post.category == "music" %>
+													聴いています
+												<% end %>
+											<% end %>
 											<% if post.review == "good" %>
 												<% if post.category == "movie" || post.category == "tv" %>
 													観ました

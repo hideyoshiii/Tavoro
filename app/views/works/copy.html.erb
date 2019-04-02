@@ -83,6 +83,20 @@
 		    </label>
 	    </div>
 	    <div class="inline_block_middle">
+		    <%= radio_button_tag(:review, "doing", false, {:id => "doing"}) %>
+		    <label for="doing" class="radio">
+		    	<% if @category == "movie" || @category == "tv" %>
+					観ています
+				<% end %>
+				<% if @category == "book" || @category == "comic" %>
+					読んでいます
+				<% end %>
+				<% if @category == "music" %>
+					聴いています
+				<% end %>
+		    </label>
+	    </div>
+	    <div class="inline_block_middle">
 		    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
 		    <label for="good" class="radio">
 		    	<% if @post.category == "movie" || @post.category == "tv" %>

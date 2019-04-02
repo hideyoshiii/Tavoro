@@ -4,10 +4,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  get ":id" => "users#posts_all"
-  get ":id/good" => "users#posts_good"
-  get ":id/normal" => "users#posts_normal"
-  get ":id/bad" => "users#posts_bad"
+  get ":id" => "users#posts_done"
+  get ":id/doing" => "users#posts_doing"
   get ":id/want" => "users#posts_want"
   get 'users/user' => "users#user"
   get 'users/ajax_user_list' => "users#ajax_user_list"
