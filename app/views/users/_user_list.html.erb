@@ -12,23 +12,23 @@
 	<div style="height:10px;"></div>
 	<div class="horizontal_scroll" style="padding:0 15px;">
 		<% @posts.each.with_index(1) do |post, i| %>	
-			<div class="inline_block_middle" style="width:165px;height:240px;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
+			<div class="inline_block_middle" style="width:150px;height:220px;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
 				<%= link_to "/post/#{post.id}" do %>
 					<% if post.image_url.blank? %>
 						<img data-src="/assets/<%= post.category %>.jpg" class="img_myboom lazyload">
 					<% else %>									
 						<% if post.category == "movie" || post.category == "tv" %>
-							<% @image_url = post.image_url.sub(/original/, 'w500') %>
+							<% @image_url = post.image_url.sub(/original/, 'w300') %>
 						<% end %>
 						<% if post.category == "book" || post.category == "comic" %>
 							<% if post.api == "itunes" %>
-								<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+								<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
 							<% else %>
-								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
+								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
 							<% end %>
 						<% end %>
 						<% if post.category == "music" %>
-							<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+							<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
 						<% end %>
 						<img data-src="<%= @image_url %>" class="img_myboom lazyload">
 					<% end %>
