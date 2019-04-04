@@ -42,7 +42,9 @@ class WorksController < ApplicationController
       @item = Tmdb::TV.detail(@post.work_id)
       if @item.present?
         @release = @item["first_air_date"].slice(0..3)
-        @producer = @item["created_by"][0]["name"]
+        if @item["created_by"].present?
+          @producer = @item["created_by"][0]["name"]
+        end
       end
     end
     #ブックの時

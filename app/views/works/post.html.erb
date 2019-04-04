@@ -55,7 +55,16 @@
 	<% if @post.image_url.blank? %>
 		<%= image_tag "#{@post.category}.jpg", :style =>'width:42%;height:auto;' %>
 	<% else %>	
-		<%= image_tag @poster_show, :style =>'width:42%;height:auto;' %>
+		<% if @post.category == "music" %>
+			<div class="pile_preview" style="width:42%;height:auto;">
+				<%= image_tag @poster_show, :class =>'img_tavore' %>
+				<div class="btn_preview_min" id="btn_preview">
+					<%= image_tag "play_FAFAFA.svg", :id =>'icon_play', :style =>'width:9px;height:9px;margin-left:0.5px;' %>
+				</div>
+			</div>
+		<% else %>													
+			<%= image_tag @poster_show, :style =>'width:42%;height:auto;' %>
+		<% end %>
 	<% end %>
 	<div style="height:10px;"></div>
 	<div style="padding:0 10%;font-size:16px;color:#FAFAFA;font-weight:bold;">

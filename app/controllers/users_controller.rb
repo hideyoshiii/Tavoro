@@ -69,6 +69,14 @@ class UsersController < ApplicationController
 
 
   def user
+    if user_signed_in? 
+      @followings = current_user.followings
+      @posts = Post.where.not(user_id: current_user)
+      @posts = @posts.where.not(user_id: @followings)
+      @posts = @posts.order(created_at: "DESC").limit(20)
+    else
+      @posts = Post.order(created_at: "DESC").limit(20)
+    end
     @user_ranking = User.find(Post.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
   end
 
@@ -76,6 +84,14 @@ class UsersController < ApplicationController
     if params[:q].present?
       @items = User.where('username LIKE ?', "%#{params[:q]}%")
     else
+      if user_signed_in? 
+        @followings = current_user.followings
+        @posts = Post.where.not(user_id: current_user)
+        @posts = @posts.where.not(user_id: @followings)
+        @posts = @posts.order(created_at: "DESC").limit(20)
+      else
+        @posts = Post.order(created_at: "DESC").limit(20)
+      end
       @user_ranking = User.find(Post.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
     end
 	end
@@ -141,7 +157,6 @@ class UsersController < ApplicationController
 
   def notifications
     @notifications = Notification.where(user_id: current_user.id).order(created_at: "DESC")
-    @notifications_yes = @notifications.where(read: true)
     @notifications_no = @notifications.where(read: false)
   end
 
