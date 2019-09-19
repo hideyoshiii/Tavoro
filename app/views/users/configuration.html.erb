@@ -1,183 +1,195 @@
-<style>
-  .bar_top{border:none;}
-</style>
-<div class="bar_post">      
-  <div style="">
-    <div class="inline_block_middle" style="width:15%;">
-      <div style="text-align:left;padding-left:15px;">
-        <a href="javascript:void(0);" onclick="window.history.back();">
-          <%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-        </a>                    
-      </div>
+<%#トップバー%>
+<div class="bar_top">      
+  <div class="inline_block_middle" style="width:15%;">
+    <div style="text-align:left;padding-left:15px;">
+      <a href="javascript:void(0);" onclick="window.history.back();">
+        <%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+      </a>                    
     </div>
-    <div class="inline_block_middle" style="width:70%;">
-      <div class="contain_title02" style="text-align:center;">
-        <div style="font-size:14px;color:#c2c2c2;">
-          設定
-        </div>
-      </div>
-    </div>
-    <div class="inline_block_middle" style="width:15%;">
-      <div style="text-align:right;">             
+  </div>
+  <div class="inline_block_middle" style="width:70%;">
+    <div class="contain_title02" style="text-align:center;">
+      <div style="font-size:14px;color:#FAFAFA;">
+        設定
       </div>
     </div>
   </div>
+  <div class="inline_block_middle" style="width:15%;">
+    <div style="text-align:right;padding-right:15px;">             
+    </div>
+  </div>
 </div>
+<div style="height:50px;"></div>
 
-<div style="height:45px;"></div>
-<div style="height:35px;"></div>
-<div style="height:3vh;"></div>
-<div class="box_tests06">
+<%#項目%>
+<div style="height:10px;"></div>  
+<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <div class="inline_block_middle" style="width:90%;">
-    <div class="font_gray_min">
+    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
     	アカウント
     </div>
   </div>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   	<%= link_to edit_user_registration_path do %>
       <div class="inline_block_middle" style="width:90%;">
-        <div class="font_white">
+        <div style="font-size:14px;color:#FAFAFA;;">
         	アカウント編集
         </div>
       </div>
       <div class="inline_block_middle" style="width:10%;">
-        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
       </div>
     <% end %>
 </div>
-<div style="height:5vh;"></div>	
-<div class="box_tests06">
+<div style="height:20px;"></div>
+<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <div class="inline_block_middle" style="width:90%;">
-    <div class="font_gray_min">
+    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
     	サポート
     </div>
   </div>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
 	<%= link_to "/users/contact" do %>
       <div class="inline_block_middle" style="width:90%;">
-        <div class="font_white">
+        <div style="font-size:14px;color:#FAFAFA;">
         	お問い合わせ
         </div>
       </div>
       <div class="inline_block_middle" style="width:10%;">
-        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
       </div>
     <% end %>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <a href="https://goo.gl/forms/8u5OwHgXpyIKF4f83" target="_blank">
       <div class="inline_block_middle" style="width:90%;">
-        <div class="font_white">
+        <div style="font-size:14px;color:#FAFAFA;">
           フィードバック
         </div>
       </div>
       <div class="inline_block_middle" style="width:10%;">
-        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
       </div>
   </a>
 </div>
-<div style="height:5vh;"></div>	    
-<div class="box_tests06">
+<div style="height:20px;"></div>
+<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <div class="inline_block_middle" style="width:90%;">
-    <div class="font_gray_min">
+    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
     	情報
     </div>
   </div>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
 	<%= link_to "/users/policy" do %>
       <div class="inline_block_middle" style="width:90%;">
-        <div class="font_white">
+        <div style="font-size:14px;color:#FAFAFA;">
         	プライバシーポリシー
         </div>
       </div>
       <div class="inline_block_middle" style="width:10%;">
-        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
       </div>
     <% end %>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
 	<%= link_to "/users/terms" do %>
       <div class="inline_block_middle" style="width:90%;">
-        <div class="font_white">
+        <div style="font-size:14px;color:#FAFAFA;">
         	利用規約
         </div>
       </div>
       <div class="inline_block_middle" style="width:10%;">
-        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
       </div>
     <% end %>
 </div>
-<div style="height:5vh;"></div>	        
-<div class="box_tests06">
+<div style="height:20px;"></div>
+<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <div class="inline_block_middle" style="width:90%;">
-    <div class="font_gray_min">
+    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
     	ログイン
     </div>
   </div>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
 	<a href="#" data-toggle="modal" data-target="#myModal_destroy_account">
       <div class="inline_block_middle" style="width:90%;">
-         <div class="font_white" style="color:rgba(251, 71, 71, 0.9);">
+        <div style="font-size:14px;color:rgba(251, 71, 71, 0.9);">
         	アカウントを削除
         </div>
       </div>
       <div class="inline_block_middle" style="width:10%;">
-        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
       </div>
    	</a>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
 	<%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' } do %>
       <div class="inline_block_middle" style="width:90%;">
-        <div class="font_white">
+        <div style="font-size:14px;color:#FAFAFA;">
         	ログアウト
         </div>
       </div>
       <div class="inline_block_middle" style="width:10%;">
-        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+        <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
       </div>
     <% end %>
 </div>
-<div style="height:5vh;"></div> 
+<div style="height:20px;"></div>
 
 <%#アカウント削除モーダル%>
-<div class="modal fade" id="myModal_destroy_account">
-    <div class="modal-dialog">
-    	<div class="a1">
-          <div class="a4">
-            <div class="d1">    
-              <div class="d2"></div>
-            </div>
+<div class="modal bottom fade" id="myModal_destroy_account">
+  <div class="modal-dialog">
+    <div class="a1">
+      <div class="a14">
+        <div class="d1">
+          <div class="d2" style="background:rgba(12,12,12,1);"></div>
+        </div>
+      </div>
+      <div class="a8" style="text-align:center;">     
+        <div style="font-size:20px;font-weight:bold;">
+          アカウントを削除しますか？
+        </div>
+        <div style="height:5px;"></div>
+        <div style="font-size:12px;opacity:0.8;">
+          アカウントを削除すると<br>これまでのデータが全て削除されます
+        </div>
+        <div style="height:35px;"></div>
+        <%= link_to "/users", method: :delete, data: { confirm: '本当に削除してよろしいですか？' } do %>
+          <div style="padding:0.5em 1.5em;color:rgba(250,250,250,0.9);background:rgba(251, 71, 71, 0.8);border:solid 1px rgba(5,98,123,0.1);border-radius:2.5px;font-size:16px;letter-spacing:0.05em;display:inline-block;vertical-align:middle;text-align:center;box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);font-weight:bolder;">
+            アカウントを削除
           </div>
-          <div class="a8">
-          	<div class="font_white_big">
-				アカウントを削除
-			</div>
-			<div style="height:5vh;"></div>
-			<div class="font_gray" style="padding:0 10%;">
-				アカウントを削除するとこれまでのデータが全て削除されます
-			</div>
-			<div style="height:5vh;"></div>
-			<div style="width:50%;text-align:center;margin:0 auto;">
-				<%= link_to "/users", method: :delete, data: { confirm: '本当に削除してよろしいですか？' } do %>
-					<div class="btn_session" style="color:rgba(251, 71, 71, 0.9);">
-						削除
-					</div>
-				<% end %>
-			</div>	
-			<div style="height:10vh;"></div>	
+        <% end %>
+        <div style="height:50px;"></div>
+      </div>
+      <div class="a13" style="text-align:center;">
+        <a href="#" data-toggle="modal" data-dismiss="modal" id="dismiss_modal">
+          <div class="btn_half_close">  
+            <%= image_tag "ban_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;margin-right:5px;' %>キャンセル
           </div>
-          <div class="a10">
-			<div class="inline_block_middle" style="width:100%;">		
-				<a href="#" data-dismiss="modal">
-					<%= image_tag "close_05627B.svg", :class =>'img_left02' %>
-				</a>
-			</div>
-		  </div>
-		</div>
+        </a>
+      </div>
     </div>
+  </div>
 </div>
+<%#モーダルtubolinks不具合修正%>
+<script defer>
+  $(function(){
+    var display_post = $('#myModal_destroy_account').css('display');
+    //モーダルが表示されているのに表示判定されてなかったら
+    if(display_post === 'block'){
+      //モーダルを表示状態にする
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#myModal_destroy_account').modal('toggle');
+      //クリックでモーダルを閉じる 
+      $('#dismiss_modal').on("click",function(){
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        $('#myModal_destroy_account').modal('hide'); 
+      });
+    }       
+  });

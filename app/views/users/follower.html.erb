@@ -1,44 +1,41 @@
-<style>
-  .bar_top{border:none;}
-</style>
-<div class="bar_post">      
-  <div style="">
+<%#トップバー%>
+<div class="bar_top">      
     <div class="inline_block_middle" style="width:15%;">
-      <div style="text-align:left;padding-left:15px;">
-        <a href="javascript:void(0);" onclick="window.history.back();">
-          <%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-        </a>                    
-      </div>
+    	<div style="text-align:left;padding-left:15px;">
+        	<a href="javascript:void(0);" onclick="window.history.back();">
+          		<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+        	</a>                    
+      	</div>
     </div>
     <div class="inline_block_middle" style="width:70%;">
-      <div class="contain_title02" style="text-align:center;">
-        <div style="font-size:14px;color:#c2c2c2;">
-          フォロワー
-        </div>
-      </div>
+      	<div class="contain_title02" style="text-align:center;">
+        	<div style="font-size:14px;color:#FAFAFA;">
+          		フォロワー
+        	</div>
+      	</div>
     </div>
     <div class="inline_block_middle" style="width:15%;">
-      <div style="text-align:right;">             
-      </div>
+    	<div style="text-align:right;padding-right:15px;">             
+	    </div>
     </div>
-  </div>
 </div>
+<div style="height:50px;"></div>
 
-<div class="bar_search" style="top:80px;padding:15px;">
+<%#検索バー%>
+<div class="bar_search" style="padding:5px 15px;">
 	<div class="nmn inline_block_middle" style="text-align:center;width:100%;">
 		<form action="#">
-			<input id="inc_search" placeholder="Search" type="text" required="">
+			<input id="inc_search" placeholder="検索" type="text" required="">
 		</form>
 	</div>
 </div>
-
-<div style="height:45px;"></div>
-<div style="height:35px;"></div>
 <div style="height:55px;"></div>
+
+<%#検索結果%>
+<div style="margin-top:-20px;"></div>
 <div id='follower_list'>
   <%= render partial: 'follower_list' %>
 </div>
-<div style="height:1vh;"></div>	
 
 <%#インクリメンタルサーチjs%>
 <script defer>

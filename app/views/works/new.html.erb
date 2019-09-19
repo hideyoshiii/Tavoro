@@ -1,59 +1,28 @@
-<style>
-  .bar_top{border:none;}
-</style>
-<div class="bar_post">      
-  <div style="">
+<%#トップバー%>
+<div class="bar_top">      
     <div class="inline_block_middle" style="width:15%;">
-      <div style="text-align:left;padding-left:15px;">
-        <a href="javascript:void(0);" onclick="window.history.back();">
-          <%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-        </a>                    
-      </div>
+    	<div style="text-align:left;padding-left:15px;">
+        	<a href="javascript:void(0);" onclick="window.history.back();">
+          		<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+        	</a>                    
+      	</div>
     </div>
     <div class="inline_block_middle" style="width:70%;">
-      <div class="contain_title02" style="text-align:center;">
-        <div style="font-size:14px;color:#c2c2c2;">
-          <%= @title %>
-        </div>
-      </div>
+      	<div class="contain_title02" style="text-align:center;">
+        	<div style="font-size:14px;color:#FAFAFA;">
+          		<%= @title %>
+        	</div>
+      	</div>
     </div>
     <div class="inline_block_middle" style="width:15%;">
-      	<button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">		
-			投稿		
-		</button>
+    	<div style="text-align:right;">
+    		<button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">		
+				投稿		
+			</button>         
+	    </div>
     </div>
-  </div>
 </div>
-
-<div style="height:45px;"></div>
-<div style="height:35px;"></div>
-<div class="wallpaper" style="top:80px;height:calc(100vh - 80px);">
-	<div class="a1">
-		<div class="a4">
-	        <div class="d1">
-	          	<% if @poster.blank? %>
-					<%= image_tag "#{@category}.jpg", :class =>'img_myboom_blur' %>					
-			    <% else %>
-			    	<% if @category == "movie" || @category == "tv" %>
-						<% @poster_show = @poster.sub(/original/, 'w300') %>
-					<% end %>
-					<% if @category == "book" || @category == "comic" %>
-						<% if @api == "itunes" %>
-							<% @poster_show = @poster.sub(/1000x1000bb/, '300x300bb') %>
-						<% else %>
-							<% @poster_show = @poster.sub(/jpg/, 'jpg?_ex=300x300') %>
-						<% end %>
-					<% end %>
-					<% if @category == "music" %>
-						<% @poster_show = @poster.sub(/1000x1000bb/, '300x300bb') %>
-					<% end %>
-					<%= image_tag @poster_show, :class =>'img_myboom_blur' %>
-			    <% end %>
-				<div class="d2" style="background:rgba(0,0,0,0.75);"></div>
-	        </div>
-	  	</div>
-	</div>
-</div>
+<div style="height:50px;"></div>
 
 <%= form_tag(works_save_path, method: :post, :name => "myform") do %>
 	<%= hidden_field_tag :title, @title %>
@@ -65,7 +34,7 @@
 	<% if @preview_url.present? %>
 		<%= hidden_field_tag :preview_url, @preview_url %>
 	<% end %>
-	<div style="height:4vh;"></div>		
+	<div style="height:15px;"></div>
 	<%#レビュー%>				
 	<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
 		<div class="inline_block_middle">
@@ -110,7 +79,7 @@
 				<% end %>
 		    </label>
 	    </div>
-	    <div style="height:1.5vh;"></div>
+	    <div style="height:10px;"></div>
 	    <div class="inline_block_middle">
 			<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
 		    <label for="favorite">
@@ -125,11 +94,11 @@
 	    </div>
 	</div>
 	<%#コメント%>
-	<div style="height:1.5vh;"></div>
+	<div style="height:10px;"></div>
 	<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
 		<textarea name="description" id="textarea" placeholder="何か書く" wrap="soft"></textarea>
 	</div>
-	<div style="height:1.5vh;"></div>
+	<div style="height:10px;"></div>
 	<%#ポスター(映画,テレビの時)%>
 	<% if @category == "movie" || @category == "tv" %>
 		<div style="text-align:center;width:100%;margin:0 auto;">		
@@ -145,16 +114,16 @@
 							<div class="radio01">
 								<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original#{poster.file_path}", @boolean, {:id => "image_url#{i}"}) %>
 								<label for="image_url<%= i %>">
-									<img data-src="https://image.tmdb.org/t/p/w500<%= poster.file_path %>" class="lazyload" style="width:auto;height:45vh;">
+									<img data-src="https://image.tmdb.org/t/p/w500<%= poster.file_path %>" class="lazyload" style="width:auto;height:50vh;">
 								</label>
 							</div>
 						</div>
 					<% end %>
 				<% else %>
 					<% if @poster.blank? %>
-						<%= image_tag "#{@category}.jpg", :style =>'width:auto;height:45vh;' %>
+						<%= image_tag "#{@category}.jpg", :style =>'width:auto;height:50vh;' %>
 					<% else %>
-						<%= image_tag @poster_show, :style =>'width:auto;height:45vh;' %>
+						<%= image_tag @poster_show, :style =>'width:auto;height:50vh;' %>
 						<%= hidden_field_tag :image_url, @poster %>
 					<% end %>
 				<% end %>
@@ -165,9 +134,9 @@
 	<% if @category == "book" || @category == "comic" %>
 		<div style="text-align:center;width:100%;margin:0 auto;">
 			<% if @poster.blank? %>
-				<%= image_tag "#{@category}.jpg", :style =>'width:50%;height:auto;' %>
+				<%= image_tag "#{@category}.jpg", :style =>'width:55%;height:auto;' %>
 			<% else %>
-				<%= image_tag @poster_show, :style =>'width:50%;height:auto;' %>
+				<%= image_tag @poster_show, :style =>'width:55%;height:auto;' %>
 				<%= hidden_field_tag :image_url, @poster %>
 			<% end %>
 		</div>
@@ -175,7 +144,7 @@
 	<%#ポスター(ミュージックの時)%>
 	<% if @category == "music" %>
 		<div style="text-align:center;width:100%;margin:0 auto;">
-			<div style="text-align:center;width:60%;margin:0 auto;">
+			<div style="text-align:center;width:65%;margin:0 auto;">
 				<div class="pile_preview">
 					<% if @poster.blank? %>
 						<%= image_tag "#{@category}.jpg", :style =>'width:100%;height:100%;' %>

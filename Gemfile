@@ -45,6 +45,7 @@ gem 'itunes-search-api', github: 'rlivsey/itunes-search-api'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'nokogiri'
+gem 'kaminari'
 
 gem 'browser'
 

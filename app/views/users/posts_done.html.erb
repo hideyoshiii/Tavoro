@@ -5,122 +5,133 @@
 	<% set_meta_tags title: "#{@user.name}の投稿一覧", description: "", og: { title: "#{@user.name}の投稿一覧", image: "user.jpg" }, twitter: { title: "#{@user.name}の投稿一覧", image: "user.jpg", card: "summary" } %>
 <% end %>
 
-<%#壁紙%>
-<div class="wallpaper" style="top:45px;height:calc(100vh - 45px);">
-	<div class="a1">
-		<div class="a4">
-	        <div class="d1">
-	          	<%= image_tag "wallpaper.jpg", :class =>'img_myboom' %>
-				<div class="d2" style="background:rgba(0,0,0,0.8);"></div>
+<%#トップバー%>
+<% if user_signed_in? %>
+	<div class="bar_top">      
+	    <div class="inline_block_middle" style="width:20%;">
+	    	<div style="text-align:left;padding-left:15px;">
+	        	<a href="javascript:void(0);" onclick="window.history.back();">
+	          		<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+	        	</a>                    
+	      	</div>
+	    </div>
+	    <div class="inline_block_middle" style="width:60%;">
+	      	<div class="contain_title02" style="text-align:center;">
+	        	<div style="font-size:14px;color:#FAFAFA;">
+	          		<%= @user.username %>
+	        	</div>
+	      	</div>
+	    </div>
+	    <div class="inline_block_middle" style="width:20%;">
+	    	<div style="text-align:right;padding-right:15px;">
+	    		<div class="inline_block_middle" style="margin-right:15px;"> 
+		        	<%= link_to "/users/user" do %>			        
+			        	<%= image_tag "search_FAFAFA.svg", :style =>'width:18px;height:18px;' %>        
+			    	<% end %>
+			    </div>
+	    		<div class="inline_block_middle"> 
+		        	<a href="#" data-toggle="modal" data-target="#myModal_half_profile">
+		        		<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+		        	</a>
+		        </div>		        
+		    </div>
+	    </div>
+	</div>
+<% else %>
+	<div class="bar_top">      
+	    <div class="inline_block_middle" style="width:50%;">
+	      <%= link_to root_path do %>
+	        <div style="padding-left:15px;">
+	          <div class="neon">T<span>A</span>VO<span>RE</span></div>
 	        </div>
-	  	</div>
+	      <% end %>
+	    </div>
+	    <div class="inline_block_middle" style="width:50%;">
+	    	<div style="text-align:right;padding-right:15px;">
+		        <a href="#" data-toggle="modal" data-target="#myModal_half_profile">
+		        	<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+		        </a>                    
+		    </div>
+	    </div>
+	</div>
+<% end %>
+<div style="height:50px;"></div>
+<div style="height:20px;"></div>
+
+<!-- プロフィール部分 -->
+<div class="" style="text-align:center;padding:0 8%;">
+	<div class="inline_block_middle" style="width:35%;">
+		<div style="width:100%;text-align:left;">
+			<% if @user.image.present? %>
+			    <%= image_tag @user.image(:large), :style =>'width:75px;height:75px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+			<% else %>
+			    <%= image_tag "user.jpg", :style =>'width:75px;height:75px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+			<% end %>
+		</div>
+	</div>
+	<div class="inline_block_middle" style="width:65%;">
+		<div class="" style="width:100%;">	
+			<div class="inline_block_middle" style="text-align:center;width:33.33%;">
+				<span onclick="goDone()">
+			      	<div style="font-size:16px;color:#FAFAFA;font-weight:bolder">
+			      		<%= @done_i %>
+			    	</div>
+			    	<div style="font-size:11px;color:#FAFAFA;margin-top:-1px;">
+			      		Done
+			    	</div>
+			    </span>
+		    </div>
+		    <div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.5;">
+		    	<span onclick="goDoing()">
+			      	<div style="font-size:16px;color:#FAFAFA;font-weight:bolder">
+			      		<%= @doing_i %>
+			    	</div>
+			    	<div style="font-size:11px;color:#FAFAFA;margin-top:-1px;">
+			      		Doing
+			    	</div>
+			    </span>
+		    </div>
+		    <div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.5;">
+		    	<span onclick="goWant()">
+			      	<div style="font-size:16px;color:#FAFAFA;font-weight:bolder">
+			      		<%= @want_i %>
+			    	</div>
+			    	<div style="font-size:11px;color:#FAFAFA;margin-top:-1px;">
+			      		Want
+			    	</div>
+			    </span>
+		    </div>
+		</div>
+		<div style="height:12px;"></div>
+		<div style="width:100%;text-align:center;">
+			<div id="relationship-of-<%= @user.id %>">
+			    <%= render partial: 'relationships/relationship' %>
+			</div>
+		</div>
 	</div>
 </div>
-
-<div style="height:45px;"></div>
-<!-- プロフィール部分 -->
-<div style="height:20px;"></div>
-<div style="width:100%;">
-    <div class="inline_block_middle" style="width:50%;">
-      	<div style="text-align:left;padding-left:20px;">
-        	<a href="javascript:void(0);" onclick="window.history.back();">
-          		<%= image_tag "left_FAFAFA.svg", :class =>'inline_block_middle', :style =>'width:15px;height:15px;margin-right:3px;opacity:0.6;' %>
-          		<div class="inline_block_middle" style="font-size:13px;color:#FAFAFA;opacity:0.6;">
-          			<%= @user.username %>
-          		</div>
-        	</a>                    
-      	</div>
-    </div>
-    <div class="inline_block_middle" style="width:50%;">
-    	<div style="text-align:right;padding-right:20px;">
-      		<a href="#" data-toggle="modal" data-target="#myModal_half_profile">
-				<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.6;' %>
-			</a>             
-      	</div>
-    </div>
-</div>
-<div style="height:15px;"></div>
-<div style="width:100%;text-align:center;">
-	<% if @user.image.present? %>
-	    <%= image_tag @user.image(:large), :style =>'width:80px;height:80px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
-	<% else %>
-	    <%= image_tag "user.jpg", :style =>'width:80px;height:80px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
-	<% end %>
-</div>
-<div style="height:5px;"></div>
-<div style="width:100%;padding:0 20px;text-align:center;">
+<div style="height:8px;"></div>
+<div style="width:100%;padding:0 8%;text-align:left;">
 	<div class="contain_title02">
-		<div style="font-size:18px;font-weight:bolder">
+		<div style="font-size:14px;font-weight:bolder">
 		    <%= @user.name %>
 		    <% if @user.authority == "public" %>
 		    	<%= image_tag "public.svg", :class =>'icon_public' %>
 		    <% end %>
 		</div> 
-	</div> 
-	<div style="height:3px;"></div>
-	<%= link_to "/#{@user.username}/following" do %>
-		<div class="inline_block_middle" style="font-size:9px;color:#FAFAFA;opacity:0.6;">
-			<%= @user.followings.size %> フォロー
-		</div>
-	<% end %>
-	<div class="inline_block_middle" style="padding:0 2px;font-size:9px;color:#FAFAFA;opacity:0.6;">
-		・
 	</div>
-	<%= link_to "/#{@user.username}/follower" do %>   
-		<div class="inline_block_middle" style="font-size:9px;color:#FAFAFA;opacity:0.6;">
-			<%= @user.followers.size %> フォロワー
-		</div>
-	<% end %>
 	<% if @user.description.present? %>
-		<div style="height:5px;"></div>  
+		<div style="height:2px;"></div>  
 	    <div class="contain_title03">
-		    <div style="font-size:9px;color:#FAFAFA;opacity:0.6;">
+		    <div style="font-size:10.5px;color:#FAFAFA;opacity:0.6;">
 		      <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
 		    </div>
 		</div>
 	<% end %>
 </div>
-<div style="height:15px;"></div>
-<div style="width:100%;text-align:center;">
-	<div id="relationship-of-<%= @user.id %>">
-	    <%= render partial: 'relationships/relationship' %>
-	</div>
-</div>
-<div style="height:30px"></div>
-<div class="" style="text-align:center;padding:0 15%;font-family:;">	
-	<div class="inline_block_middle" style="text-align:center;width:33.33%;">
-		<a href="javascript:void(0);" onclick="goDone()">
-	      	<div style="font-size:20px;color:#FAFAFA;">
-	      		<%= @done_i %>
-	    	</div>
-	    	<div style="font-size:10px;color:#FAFAFA;">
-	      		Done
-	    	</div>
-	    </a>
-    </div>
-    <div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.5;">
-    	<a href="javascript:void(0);" onclick="goDoing()">
-	      	<div style="font-size:20px;color:#FAFAFA;">
-	      		<%= @doing_i %>
-	    	</div>
-	    	<div style="font-size:10px;color:#FAFAFA;">
-	      		Doing
-	    	</div>
-	    </a>
-    </div>
-    <div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.5;">
-    	<a href="javascript:void(0);" onclick="goWant()">
-	      	<div style="font-size:20px;color:#FAFAFA;">
-	      		<%= @want_i %>
-	    	</div>
-	    	<div style="font-size:10px;color:#FAFAFA;">
-	      		Want
-	    	</div>
-	    </a>
-    </div>
-</div>
-<div style="height:30px"></div> 
-<div style="border-bottom:solid 0.5px rgba(250,250,250,0.1);"></div>
+<div style="height:20px"></div> 
+<div style="margin:0 10px;border-bottom:solid 0.5px rgba(150,150,150,0.2);"></div>
+
 <!-- タブボタン部分 -->
 <ul class="nav nav-tabs">
     <li class="nav-item active">

@@ -1,23 +1,19 @@
 <% if user_signed_in? %>
-	<% if current_user?(@user) %>
-		<div class="inline_block_top">
-			<%= link_to edit_user_registration_path do %>
-				<div class="btn_follow_on inline_block_middle">
-					編集
-				</div>
-			<% end %>
-		</div>
+	<% if current_user?(@user) %>	
+		<%= link_to edit_user_registration_path do %>
+			<div class="btn_follow_on">
+				編集
+			</div>
+		<% end %>
 	<% else %>
 		<% if current_user.following?(@user) %>
-			<div class="inline_block_top">
-				<%= form_for(current_user.following_relationships.find_by(following_id: @user.id), data: { confirm: 'フォローを解除しますか？' }, html: { method: :delete }, remote: true) do |f| %>
-					<button>
-						<div class="btn_follow_on inline_block_middle">
-							フォロー中
-						</div>
-					</button>
-				<% end %>
-			</div>
+			<%= form_for(current_user.following_relationships.find_by(following_id: @user.id), data: { confirm: 'フォローを解除しますか？' }, html: { method: :delete }, remote: true) do |f| %>
+				<button>
+					<div class="btn_follow_on">
+						フォロー中
+					</div>
+				</button>
+			<% end %>
 		<% else %>
 			<%= form_for(current_user.following_relationships.build(following_id: @user.id), remote: true) do |f| %>
 			  <%= f.hidden_field :following_id %>
@@ -27,7 +23,7 @@
 	<% end %>
 <% else %>
 	<%= link_to new_user_session_path do %>
-		<div class="btn_follow_off inline_block_middle">
+		<div class="btn_follow_off">
 			フォロー
 		</div>
 	<% end %>

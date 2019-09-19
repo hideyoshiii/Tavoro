@@ -1,79 +1,123 @@
 <%#投稿ボタン%>
-<div class="btns_plus">
-	<a href="#" data-toggle="modal" data-target="#myModal_post" id="btn_plus">
-		<i>
-			<%= image_tag "plus_FAFAFA.svg", :style =>'width:22px;height:22px;transform-origin:50%,50%;transform:rotate(0deg);' %>
-		</i>
-	</a>
-</div>	
+<div style="position:fixed;bottom:5%;left:0%;width:100%;z-index:99;">
+	<div style="width:33.33%;display:inline-block;text-align:left;padding-left:15px;">
+		<% if request.path == "/" %>
+			<span onclick="scrollGO()" class="btn_tool" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,0.9);text-align:center;border-radius:20%;box-shadow:0px 0px 10px #000000;">
+				<i>
+					<%= image_tag "home_FAFAFA.svg", :style =>'width:17px;height:17px;opacity:0.8;' %>
+				</i>
+			</span>
+		<% else %>
+			<a href="/" class="btn_tool" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,0.9);text-align:center;border-radius:20%;box-shadow:0px 0px 10px #000000;">
+				<i>
+					<%= image_tag "home_FAFAFA.svg", :style =>'width:17px;height:17px;opacity:0.8;' %>
+				</i>
+			</a>
+		<% end %>
+	</div>
+	<div style="width:33.33%;display:inline-block;text-align:center;">
+		<a href="#" data-toggle="modal" data-target="#myModal_post" style="position:relative;display:inline-block;vertical-align:middle;width:55px;height:55px;line-height:55px;background:rgba(0,60,85,0.7);text-align:center;border-radius:50%;">
+			<i>
+				<%= image_tag "plus_FAFAFA.svg", :style =>'width:22px;height:22px;' %>
+			</i>
+		</a>
+	</div>
+	<div style="width:33.33%;display:inline-block;text-align:right;padding-right:15px;">
+		<% if request.path == "/" + current_user.username || request.path == "/" + current_user.username + "/doing" || request.path == "/" + current_user.username + "/want" %>
+			<span onclick="scrollGO()" class="btn_tool" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,0.9);text-align:center;border-radius:20%;box-shadow:0px 0px 10px #000000;">
+				<i>
+					<%= image_tag "avatar_FAFAFA.svg", :style =>'width:17px;height:17px;opacity:0.8;' %>
+				</i>
+			</span>
+		<% else %>
+			<a href="/<%= current_user.username %>" class="btn_tool" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,0.9);text-align:center;border-radius:20%;box-shadow:box-shadow:0px 0px 150x #000000;">
+				<i>
+					<%= image_tag "avatar_FAFAFA.svg", :style =>'width:17px;height:17px;opacity:0.8;' %>
+				</i>
+			</a>
+		<% end %>
+	</div>
+</div>
+
+<%#TOPに戻る%>
+<script defer>
+	function scrollGO(){
+  		// ページ上部までスムーズにスクロール
+	    $('html,body').animate({
+	        scrollTop: 0,
+	    }, 250, 'swing');
+	}
+</script>
+
 <%#投稿モーダル%>
 <div class="modal bottom fade" id="myModal_post">
     <div class="modal-dialog">
       <div class="a1">
         <div class="a14">
           <div class="d1">
-            <div class="d2"></div>
+            <div class="d2" style="background:rgba(12,12,12,1);"></div>
           </div>
         </div>
         <div class="a8" style="text-align:center;">   	
-	  		<div style="font-size:19px;font-weight:bold;">
+	  		<div style="font-size:28px;font-weight:bold;">
 				Create Post
 			</div>
-			<div style="font-size:12px;opacity:0.8;margin-top:-2px;">
+			<div style="font-size:12px;opacity:0.8;">
 				投稿を作成
 			</div>
-	        <div style="height:20px;"></div>
-	        <div style="padding:0 8%;">
+	        <div style="height:35px;"></div>
+	        <div style="padding:0 6%;">
 	      		<div class="inline_block_top" style="width:33.33%;text-align:center;">
 	      			<%= link_to(works_movie_path) do %>
 				      	<div class="btn_icon">
 					      	<i>
-					        	<%= image_tag "movie_FAFAFA.svg", :style =>'width:21px;height:21px;' %>
+					        	<%= image_tag "movie_FAFAFA.svg", :style =>'width:24px;height:24px;' %>
 					        </i>
 				        </div>	
-				        <div style="height:10px;"></div>
-				        <div style="font-size:10px;color:#FAFAFA;">
+				        <div style="height:15px;"></div>
+				        <div style="font-size:11px;color:#FAFAFA;">
 					        映画/テレビ
 					    </div>	
 				    <% end %>	
 			    </div>
-	        	<div class="inline_block_top" style="width:33.33%;text-align:center;">
-	        		<div style="height:20px;"></div>
+	        	<div class="inline_block_top" style="width:33.33%;text-align:center;">        		
 	        		<%= link_to(works_book_path) do %>
-				      	<div class="btn_icon">
+				      	<div class="btn_icon"">
 					      	<i>
-					        	<%= image_tag "book_FAFAFA.svg", :style =>'width:21px;height:21px;' %>
+					        	<%= image_tag "book_FAFAFA.svg", :style =>'width:24px;height:24px;' %>
 					        </i>
 				        </div>	
-				        <div style="height:10px;"></div>
-				        <div style="font-size:10px;color:#FAFAFA;">
+				        <div style="height:15px;"></div>
+				        <div style="font-size:11px;color:#FAFAFA;">
 					        ブック/コミック
 					    </div>	
 				    <% end %>
 			    </div>
 	        	<div class="inline_block_top" style="width:33.33%;text-align:center;">
 	        		<%= link_to(works_music_path) do %>
-				      	<div class="btn_icon">
+				      	<div class="btn_icon"">
 					      	<i>
-					        	<%= image_tag "music_FAFAFA.svg", :style =>'width:21px;height:21px;' %>
+					        	<%= image_tag "music_FAFAFA.svg", :style =>'width:24px;height:24px;' %>
 					        </i>
 				        </div>	
-				        <div style="height:10px;"></div>
-				        <div style="font-size:10px;color:#FAFAFA;">
+				        <div style="height:15px;"></div>
+				        <div style="font-size:11px;color:#FAFAFA;">
 					        ミュージック
 					    </div>
 				    <% end %>	
 			    </div>
 		    </div>
-	        <div style="height:70px;"></div>
+	        <div style="height:80px;"></div>
         </div>
-        <a href="#" class="btns_plus" data-dismiss="modal" id="dismiss_post">
-			<span id="btn_plus">
-				<i>
-					<%= image_tag "plus_FAFAFA.svg", :style =>'width:22px;height:22px;transform-origin:50%,50%;transform:rotate(45deg);' %>
-				</i>
-			</span>
-		</a>
+        <div style="position:fixed;bottom:5%;left:0%;width:100%;z-index:99;">
+        	<div style="width:100%;display:inline-block;text-align:center;">				
+				<a href="#" data-dismiss="modal" id="dismiss_post" style="position:relative;display:inline-block;vertical-align:middle;width:55px;height:55px;line-height:55px;background:rgba(0,60,85,0.7);text-align:center;border-radius:50%;">
+					<i>
+						<%= image_tag "plus_FAFAFA.svg", :style =>'width:22px;height:22px;transform-origin:50%,50%;transform:rotate(45deg);' %>
+					</i>
+				</a>				
+			</div>
+		</div>
       </div>
     </div>
   </div>

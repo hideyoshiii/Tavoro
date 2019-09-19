@@ -1,48 +1,10 @@
 <% if params[:q].blank? %>
-	<div style="height:5px;"></div>
-	<%#最近の投稿%>
-	<div style="padding:0 15px;">
-		<div style="font-size:16px;font-weight:bold;">
-			Recent Posts
-		</div>
-		<div style="font-size:10px;opacity:0.8;margin-top:-2px;">
-			最近の投稿
-		</div>
-	</div>
-	<div style="height:10px;"></div>
-	<div class="horizontal_scroll" style="padding:0 15px;">
-		<% @posts.each.with_index(1) do |post, i| %>	
-			<div class="inline_block_middle" style="width:165px;height:240px;padding:0;margin:0 4px;overflow:hidden;border-radius:1px;">
-				<%= link_to "/post/#{post.id}" do %>
-					<% if post.image_url.blank? %>
-						<img data-src="/assets/<%= post.category %>.jpg" class="img_myboom lazyload">
-					<% else %>									
-						<% if post.category == "movie" || post.category == "tv" %>
-							<% @image_url = post.image_url.sub(/original/, 'w500') %>
-						<% end %>
-						<% if post.category == "book" || post.category == "comic" %>
-							<% if post.api == "itunes" %>
-								<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-							<% else %>
-								<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
-							<% end %>
-						<% end %>
-						<% if post.category == "music" %>
-							<% @image_url = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-						<% end %>
-						<img data-src="<%= @image_url %>" class="img_myboom lazyload">
-					<% end %>
-				<% end %>
-			</div>	
-		<% end %>
-	</div>
-	<div style="height:20px;"></div>
 	<%#おすすめユーザー%>
-	<div style="padding:0 15px;">
+	<div style="padding:0 15px;margin-top:-5px;">
 		<div style="font-size:16px;font-weight:bold;">
 			User Ranking
 		</div>
-		<div style="font-size:10px;opacity:0.8;margin-top:-2px;">
+		<div style="font-size:10px;opacity:0.8;">
 			ユーザーランキング
 		</div>
 	</div>
@@ -96,6 +58,7 @@
 	<div style="height:20px;"></div>
 <% else %>
 	<% if @items.present? %>
+		<div style="margin-top:-20px;"></div>
 	  	<% @items.each do |user| %>
 	  		<% unless user == current_user %>
 		  		<%= render partial: 'partial/user_list', locals: { user: user } %>

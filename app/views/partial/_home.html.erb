@@ -1,101 +1,20 @@
-<style>
-	body:after{
-		background:none; 
-	}
-	/*FadeiN*/
-	body {
-    	animation:fadeIn 1s ease 0s 1 normal;
-    	-webkit-animation:fadeIn 1s ease 0s 1 normal;
-	}
-	@keyframes fadeIn {
-	    0% {opacity: 0}
-	    100% {opacity: 1}
-	}
-	@-webkit-keyframes fadeIn {
-	    0% {opacity: 0}
-	    100% {opacity: 1}
-	}
-	/*そのまま*/
-    .front.delighter {
-      transition:all .6s ease-out;
-      transform:none;
-      opacity:0;
-    }
-    .front.delighter.started {
-      transform:none;
-      opacity:1;
-    }
-    .front.delighter.started.ended { 
-    }
-	/*左から*/
-    .left.delighter {
-      transition:all .6s ease-out;
-      transform:translateX(-100%);
-      opacity:0;
-    }
-    .left.delighter.started {
-      transform:none;
-      opacity:1;
-    }
-    .left.delighter.started.ended { 
-    }
-    /*右から*/
-    .right.delighter {
-      transition:all .6s ease-out;
-      transform:translateX(100%);
-      opacity:0;
-    }
-    .right.delighter.started {
-      transform:none;
-      opacity: 1;
-    }
-    .right.delighter.started.ended { 
-    }
-    /*上から*/
-    .top.delighter {
-      transition:all .6s ease-out;
-      transform:translateY(-20%);
-      opacity: 0;
-    }
-    .top.delighter.started {
-      transform:none;
-      opacity:1;
-    }
-    .top.delighter.started.ended { 
-    }
-    /*下から*/
-    .bottom.delighter {
-      transition:all .6s ease-out;
-      transform:translateY(20%);
-      opacity:0;
-    }
-    .bottom.delighter.started {
-      transform:none;
-      opacity:1;
-    }
-    .bottom.delighter.started.ended { 
-    }
-</style>
 <%#ファーストビュー%>
-<div style="height:45px;"></div>
-<div class="a1" style="height:calc(100% - 45px);">
+<div class="a1" style="height:calc(100% - 0px);">
 	<div class="a14">
-      <div class="d1">
-        <div class="d2" style="background:rgba(0,0,0,0.85);"></div>
-        <%= image_tag "home.jpg", :class =>'img_myboom' %>
-      </div>
+      	<div class="d1">
+        	<div class="d2" style="background:rgba(12,12,12,1);"></div>
+      	</div>
     </div>
     <div class="a8" style="text-align:center;">
-      <div style="height:6vh;"></div>
-      <%= image_tag "tavore_logo_01.png", :style =>'width:100px;height:100px;' %>
-      <div style="font-size:18px;margin-top:-1.5vh;">
-        TAVORE
-      </div>
-      <div style="height:1vh;"></div>
-      <div style="font-size:15px;margin-left:15px;opacity:0.95;">
-      	読む、観る、聴く。
-      </div>
-      <div style="height:12vh;"></div>
+      	<%= image_tag "tavore_logo_01.png", :style =>'width:100px;height:100px;' %>
+      	<div style="font-size:20px;margin-top:-5px;">
+        	TAVORE
+      	</div>
+      	<div style="height:5px;"></div>
+      	<div style="font-size:14px;margin-left:15px;opacity:0.9;">
+      		読む、観る、聴く。
+      	</div>
+      	<div style="height:40px;"></div>
       	<div style="display:inline-block;margin-right:10px;">
 			<a href="#" data-toggle="modal" data-target="#myModal_sign_in">
 	          <div class="btn_session">
@@ -110,299 +29,130 @@
 				</div>
 	        </a>
 		</div>
-		<div style="height:8vh;"></div>
+		<div style="height:40px;"></div>
     </div>
 </div>
-<div style="height:5%;"></div>
-<%#タボーレについて%>
-<div class="left" style="text-align:center;" data-delighter>
-	<div style="font-size:18px;">
-		シンプルな作品コレクションSNS
-	</div>
-	<div style="height:0.5vh;"></div>
-	<div style="font-size:12px;opacity:0.8;">
-		TAVOREは映画や本,音楽などの作品を
-	    <br>気軽に記録,共有できる場所です
-	</div>
-</div>
-<div style="height:3vh;"></div>
-<div class="bottom" style="text-align:center;width:100%;padding:0 25%;" data-delighter>
-	<img data-src="/assets/using02.png" class="lazyload" style="width:100%;height:auto;">
-</div>
-<div style="height:25%;"></div>
-<%#カテゴリーについて%>
-<div class="left" style="text-align:center;" data-delighter>
-	<div style="font-size:18px;">
-		映画も本も音楽も１つの場所に
-	</div>
-	<div style="height:0.5vh;"></div>
-	<div style="font-size:12px;opacity:0.8;">
-		お気に入りの映画も、あの愛読書も、流行りの音楽も
-		<br>TAVOREにまとめてコレクションできます
-	</div>
-</div>
-<div style="height:3vh;"></div>
-<div style="padding:0 8%;">
-	<div class="inline_block_middle" style="width:25%;text-align:right;padding-right:10px;">
-		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
-			<div class="btn_icon_min">
-			  	<i>
-			    	<img data-src="/assets/movie_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
-			    </i>
-			</div>	
-			<div style="height:5px;"></div>
-			<span style="font-size:10px;color:#FAFAFA;">
-			    movie
-			</span>	
-		</div>
-		<div style="height:7px;"></div>
-		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
-			<div class="btn_icon_min">
-			  	<i>
-			    	<img data-src="/assets/tv_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
-			    </i>
-			</div>	
-			<div style="height:5px;"></div>
-			<span style="font-size:10px;color:#FAFAFA;">
-			    tv
-			</span>	
-		</div>
-		<div style="height:7px;"></div>
-		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
-			<div class="btn_icon_min">
-			  	<i>
-			    	<img data-src="/assets/book_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
-			    </i>
-			</div>	
-			<div style="height:5px;"></div>
-			<span style="font-size:10px;color:#FAFAFA;">
-			    book
-			</span>	
-		</div>
-		<div style="height:7px;"></div>
-		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
-			<div class="btn_icon_min">
-			  	<i>
-			    	<img data-src="/assets/comic_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
-			    </i>
-			</div>	
-			<div style="height:5px;"></div>
-			<span style="font-size:10px;color:#FAFAFA;">
-			    comic
-			</span>	
-		</div>
-		<div style="height:7px;"></div>
-		<div class="inline_block_middle front" style="text-align:center;" data-delighter>
-			<div class="btn_icon_min">
-			  	<i>
-			    	<img data-src="/assets/music_FAFAFA.svg" class="lazyload" style="width:16px;height:16px;">
-			    </i>
-			</div>	
-			<div style="height:5px;"></div>
-			<span style="font-size:10px;color:#FAFAFA;">
-			    music
-			</span>	
-		</div>
-	</div>
-	<div class="inline_block_middle left" style="width:75%;text-align:left;padding-left:10px;" data-delighter>
-		<img data-src="/assets/using03.png" class="lazyload" style="width:85%;height:auto;">
-	</div>
-</div>
-<div style="height:25%;"></div>
-<%#PWAについて%>
-<div class="left" style="text-align:center;" data-delighter>
-	<div style="font-size:18px;">
-		アプリのような使い心地で
-	</div>
-	<div style="height:0.5vh;"></div>
-	<div style="font-size:12px;opacity:0.8;">
-		ホーム画面に追加することで
-	    <br>アプリと同じ操作性で使用することができます
-	</div>
-</div>
-<div style="height:3vh;"></div>
-<div style="padding:0 8%;">
-	<div class="inline_block_top" style="width:25%;text-align:right;padding-right:10px;">
-		<div style="height:4vh;"></div>
-		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>		
-			<img data-src="/assets/pwa.png" class="lazyload" style="width:50px;height:auto;">
-		</div>
-		<div style="height:4vh;"></div>
-		<div class="inline_block_middle bottom" style="text-align:center;width:50px;" data-delighter>
-			<img data-src="/assets/cross_FAFAFA.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
-		</div>
-		<div style="height:3vh;"></div>
-		<div class="inline_block_middle bottom" style="text-align:center;" data-delighter>
-			<div class="btn_icon_min" style="background:black;border-radius:15%;">
-			  	<i>
-			    	<img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:45px;height:45px;margin-top:-2px;">
-			    </i>
-			</div>	
-		</div>
-	</div>
-	<div class="inline_block_top left" style="width:75%;text-align:left;padding-left:10px;" data-delighter>
-		<img data-src="/assets/using01.png" class="lazyload" style="width:85%;height:auto;">
-	</div>
-</div>
-<div style="height:25%;"></div>
-<%#フッター%>
-<div style="text-align:center;padding:10% 0 30%;background:rgba(17,17,17,0.2);">
-	<div class="front" data-delighter>
-		<img data-src="/assets/tavore_logo_01.png" class="lazyload" style="width:100px;height:100px;">
-		<div style="font-size:18px;margin-top:-1.5vh;">
-	        TAVORE
-	    </div>
-	</div>
-	<div style="height:5vh;"></div>
-	<div class="bottom" data-delighter>
-		<div class="inline_block_middle" style="margin:0 20px;">
-		    <%= link_to "/" do %>  
-		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-		          ホーム
-		        </div>
-		    <% end %>
-	    </div>
-		<div class="inline_block_middle" style="margin:0 20px;">
-		    <%= link_to "/users/terms" do %>  
-		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-		          利用規約
-		        </div>
-		    <% end %>
-	    </div>
-	    <div class="inline_block_middle" style="margin:0 20px;">
-		    <%= link_to "/users/policy" do %>  
-		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-		          プライバシーポリシー
-		        </div>
-		    <% end %>
-	    </div>
-	</div>
-	<div style="height:2vh;"></div>
-	<div class="bottom" data-delighter>
-		<div class="inline_block_middle" style="margin:0 20px;">
-			<%= link_to "https://goo.gl/forms/8u5OwHgXpyIKF4f83" do %>  
-		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-		          フィードバック
-		        </div>
-		    <% end %>
-		</div>
-	    <div class="inline_block_middle" style="margin:0 20px;">
-		    <a href="mailto:tavore.info&#64;gmail.com">
-		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-		          Email
-		        </div>
-		    </a>
-		</div>
-	    <div class="inline_block_middle" style="margin:0 20px;">
-		    <a href="https://twitter.com/tavore_info" target="blank">
-		        <div style="font-size:12px;color:rgba(39,134,160,0.8);">
-		          Twitter
-		        </div>
-		    </a>
-	    </div>
-	</div>
-	<div style="height:5vh;"></div>
-	<div class="front" style="font-size:12px;opacity:0.5;" data-delighter>
-		© 2019 tavore.net
-	</div>
-</div>
-<div style="height:15%;"></div>
-<%#delighter%>
-<script defer>
-	var Delighters = new (function() {
-		var self = this,
-				dels = this.dels = [],
-				// default options
-				options = {
-					attribute: 	'data-delighter',
-					classNames: ['delighter', 'started', 'ended'],
-					start: 			0.9, // default start threshold
-					end: 				0.9, // default end threshold
-					autoInit: 	true 	// initialize when DOMContentLoaded
-				};
-		document.addEventListener("DOMContentLoaded", function() {
-			if (options.autoInit) init();
-		});
-		function config(opts) {
-			for (var name in opts) options[name] = opts[name];
-		}		
-		function init() {		
-			document.addEventListener('scroll', scroll)
-			var els = document.querySelectorAll('[' + options.attribute + ']');
-			for (var i=0; i<els.length; i++) {
-				var el 			= els[i],
-						def 		= el.getAttribute(options.attribute, 2),
-						pairs 	= def.split(';'),
-						del 		= {};
-						del.start = options.start;
-						del.end = options.end;
-				
-				for (var j=0; j<pairs.length; j++) {
-					var pair 	= pairs[j].split(':'),
-							name 	= pair[0],
-							val 	= isNaN(pair[1] * 1)? pair[1] : pair[1] * 1;
-					if (name) del[name] = (val === undefined)? true : val;
-				}
 
-				del.el = el;
-				del.id = dels.length;
-				dels.push(del);
-				el.classList.add(options.classNames[0])
-				if (del.debug) el.style.outline = 'solid red 4px';
-			}
-			scroll();
-		}
-		function scroll() {
-			var viewportHeight = window.innerHeight;
-			for (var i=0; i<dels.length; i++) {
-				var del = dels[i],
-						box = del.el.getBoundingClientRect(),
-						factorStart = box.top / viewportHeight,
-						factorEnd = box.bottom / viewportHeight;
-				if (del.debug) {
-					if (factorStart >= 0 && factorStart <= 1) {
-						if (!del.startLine) {
-							del.startLine = document.createElement('div')
-							document.body.appendChild(del.startLine);
-							del.startLine.style = 'position:fixed;height:0;width:100%;border-bottom:dotted red 2px;top:' + (del.start * 100) + 'vh';
-						}
-					}
-					if (((factorEnd < del.end) || (factorStart > 1)) && del.startLine) {
-						del.startLine.parentNode.removeChild(del.startLine);
-						delete del.startLine;
-					}
-				}
-				if (factorStart < del.start && !del.started) {
-					del.started = true;
-					del.el.classList.add(options.classNames[1])
-				}
-				else if (factorStart > del.start && del.started) {
-					del.started = false;
-					del.el.classList.remove(options.classNames[1])
-				}
-				if (factorEnd < del.end && !del.ended) {
-					del.ended = true;
-					del.el.classList.add(options.classNames[2])
-				}
-				else if (factorEnd > del.end && del.ended) {
-					del.ended = false;
-					del.el.classList.remove(options.classNames[2])
-				}
-			}
-		}
-		self.init = init;
-		self.config = config;
-	})();
-</script>
-<%#lazyload.js%>
-<script defer>
-  $(function() {
-    $(":not(.horizontal_scroll) img.lazyload").lazyload({
-        effect: "fadeIn"
-    });
-    $("img.lazyload").lazyload({
-        effect: "fadeIn",
-        container: $(".horizontal_scroll")
-     });
-});
-</script>
+<%#サインインモーダル%>
+  <div class="modal bottom fade" id="myModal_sign_in">
+    <div class="modal-dialog">
+      <div class="a1">
+        <div class="a4">
+          <div class="d1">
+            <div class="d2"></div>
+          </div>
+        </div>
+        <div class="a7">
+            <a href="#" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_in">
+              <div style="padding:20px;">
+                <%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
+              </div>
+            </a>  
+        </div>
+        <div class="a8" style="text-align:center;"> 
+          <div class="font_white_big">
+            Sign in
+          </div>
+          <div class="gogo">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
+              <%= f.password_field :password,placeholder: "password", required: "" %>
+              <div style="height:3vh;"></div>
+              <%= f.submit "完了",class:"btn_session" %>
+            <% end %>
+          </div>  
+          <div style="height:4vh;"></div>
+          <div class="inline_block_middle">
+            <%= link_to new_user_password_path do %>
+              <div class="font_gray_min">
+                パスワードを忘れたら
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%#モーダルtubolinks不具合修正(サインインモーダル)%>
+  <script defer>
+  $(function(){
+    var display_post = $('#myModal_sign_in').css('display');
+    //モーダルが表示されているのに表示判定されてなかったら
+    if(display_post === 'block'){
+      //モーダルを表示状態にする
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#myModal_sign_in').modal('toggle');
+      //クリックでモーダルを閉じる 
+      $('#dismiss_sign_in').on("click",function(){
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        $('#myModal_sign_in').modal('hide'); 
+      });
+    }       
+  });
+  </script>
+  <%#サインアップモーダル%>
+  <div class="modal  bottom fade" id="myModal_sign_up">
+    <div class="modal-dialog">
+      <div class="a1">
+        <div class="a4">
+          <div class="d1">
+            <div class="d2"></div>
+          </div>
+        </div>
+        <div class="a7">
+            <a href="#" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_up">
+              <div style="padding:20px;">
+                <%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
+              </div>
+            </a>  
+        </div>
+        <div class="a8" style="text-align:center;">  
+        <div class="font_white_big">
+          Sign up
+        </div>
+        <div class="gogo">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
+            <%= f.email_field :email,placeholder: "email", required: "" %>
+            <%= f.password_field :password,placeholder: "password", required: "" %>
+            <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
+            <div style="height:2vh;"></div>
+            <%= f.submit "完了",class:"btn_session" %>
+          <% end %>
+        </div>
+        <div style="height:2vh;"></div>
+        <div class="font_gray_min" style="padding:0 14%;text-align:left;">
+          アカウントを作成することで,TAVOREの
+          <%= link_to "/users/terms" do %>
+            利用規約
+          <% end %>
+          と
+          <%= link_to "/users/policy" do %>
+            プライバシーポリシー
+          <% end %>
+          に同意されたものとします。
+        </div>      
+      </div>
+    </div>
+  </div>
+  <%#モーダルtubolinks不具合修正(サインインモーダル)%>
+  <script defer>
+  $(function(){
+    var display_post = $('#myModal_sign_up').css('display');
+    //モーダルが表示されているのに表示判定されてなかったら
+    if(display_post === 'block'){
+      //モーダルを表示状態にする
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $('#myModal_sign_up').modal('toggle');
+      //クリックでモーダルを閉じる 
+      $('#dismiss_sign_up').on("click",function(){
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        $('#myModal_sign_up').modal('hide'); 
+      });
+    }       
+  });
+  </script>

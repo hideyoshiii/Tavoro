@@ -1,33 +1,28 @@
-<style>
-  .bar_top{border:none;}
-</style>
-<div class="bar_post">      
-  <div style="">
-    <div class="inline_block_middle" style="width:15%;">
-      <div style="text-align:left;padding-left:15px;">
-        <a href="javascript:void(0);" onclick="window.history.back();">
-              <%= image_tag "left_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
-            </a>                    
-      </div>
+<%#トップバー%>
+<div class="bar_top">      
+  <div class="inline_block_middle" style="width:15%;">
+    <div style="text-align:left;padding-left:15px;">
+      <a href="javascript:void(0);" onclick="window.history.back();">
+        <%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+      </a>                    
     </div>
-    <div class="inline_block_middle" style="width:70%;">
-      <div class="contain_title02" style="text-align:center;">
-        <div style="font-size:14px;color:#c2c2c2;">
-          アカウントを編集
-        </div>
-      </div>
-    </div>
-    <div class="inline_block_middle" style="width:15%;">
-      <div style="text-align:right;">             
+  </div>
+  <div class="inline_block_middle" style="width:70%;">
+    <div class="contain_title02" style="text-align:center;">
+      <div style="font-size:14px;color:#FAFAFA;">
+        アカウントを編集
       </div>
     </div>
   </div>
+  <div class="inline_block_middle" style="width:15%;">
+    <div style="text-align:right;padding-right:15px;">             
+    </div>
+  </div>
 </div>
+<div style="height:50px;"></div>
 
-<div style="height:45px;"></div>
-<div style="height:35px;"></div>
-<div style="height:5vh;"></div>
 <%#アイコン画像%>
+<div style="height:10px;"></div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <div class="form01" style="text-align:center;">
    <label for="image">
@@ -50,63 +45,63 @@
   </div>
 <% end %>
 <%#名前%>
-<div class="box_tests06">
+<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <div class="inline_block_middle" style="width:90%;">
-     <div class="font_gray">
+    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
       名前
     </div>
   </div>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <a href="#" data-toggle="modal" data-target="#myModal_name">
     <div class="inline_block_middle" style="width:90%;">
       <div class="contain_title02" style="max-width:80%;">
-        <div class="font_white_max">
+        <div style="font-size:14px;color:#FAFAFA;;">
           <%= @user.name %>
         </div>
       </div>
     </div>
     <div class="inline_block_middle" style="width:10%;">
-      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
     </div>
   </a>
 </div>
 <div style="height:5vh;"></div> 
 <%#ユーザーid%>
-<div class="box_tests06">
+<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <div class="inline_block_middle" style="width:90%;">
-    <div class="font_gray">
+    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
       ユーザーid
     </div>
   </div>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <a href="#" data-toggle="modal" data-target="#myModal_username">
     <div class="inline_block_middle" style="width:90%;">
       <div class="contain_title02" style="max-width:80%;">
-        <div class="font_white_max">
+        <div style="font-size:14px;color:#FAFAFA;;">
           <%= @user.username %>
         </div>
       </div>
     </div>
     <div class="inline_block_middle" style="width:10%;">
-      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
     </div>
   </a>
 </div>
 <div style="height:5vh;"></div> 
 <%#自己紹介%>
-<div class="box_tests06">
+<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <div class="inline_block_middle" style="width:90%;">
-    <div class="font_gray">
+    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
       自己紹介
     </div>
   </div>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <a href="#" data-toggle="modal" data-target="#myModal_description">
     <div class="inline_block_middle" style="width:90%;">
-      <div class="font_white_max contain_title02" style="max-width:80%;">
+      <div class="contain_title02" style="font-size:14px;color:#FAFAFA;max-width:80%;">
         <% if @user.description.present? %>
           <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
         <% else %>
@@ -117,51 +112,51 @@
       </div>
     </div>
     <div class="inline_block_middle" style="width:10%;">
-      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
     </div>
   </a>
 </div>
 <div style="height:5vh;"></div>
 <%#email%>
-<div class="box_tests06">
+<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <div class="inline_block_middle" style="width:90%;">
-     <div class="font_gray">
+    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
       メールアドレス
     </div>
   </div>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <a href="#" data-toggle="modal" data-target="#myModal_email">
     <div class="inline_block_middle" style="width:90%;">
       <div class="contain_title02" style="max-width:80%;">
-        <div class="font_white_max">
+        <div style="font-size:14px;color:#FAFAFA;">
           <%= @user.email %>
         </div>
       </div>
     </div>
     <div class="inline_block_middle" style="width:10%;">
-      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
     </div>
   </a>
 </div>
 <div style="height:5vh;"></div>
 <%#password%>
-<div class="box_tests06">
+<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <div class="inline_block_middle" style="width:90%;">
-    <div class="font_gray">
+    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
       パスワード
     </div>
   </div>
 </div>
-<div class="box_tests07">
+<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
   <a href="#" data-toggle="modal" data-target="#myModal_password">
     <div class="inline_block_middle" style="width:90%;">
-      <div class="font_white_max">
+      <div style="font-size:14px;color:#FAFAFA;">
         パスワードを変更
       </div>
     </div>
     <div class="inline_block_middle" style="width:10%;">
-      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;' %>
+      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
     </div>
   </a>
 </div>

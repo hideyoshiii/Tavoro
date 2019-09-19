@@ -3,14 +3,14 @@
 		<div class="a1">
           	<div class="a4">
             	<div class="d1">
-              		<div class="d2"></div>
+              		<div class="d2" style="background:rgba(12,12,12,1);"></div>
             	</div>
           	</div>
           	<div class="a6" style="text-align:center;">
           		<div style="position:relative;width:0;height:0;z-index:1;"></div>
           		<div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
 	          		<div style="min-height:101%;">  
-		          		<div style="height:7vh;"></div>
+		          		<div style="height:6vh;"></div>
 		          		<div style="width:40%;display:inline-block;">
 		          			<% if @user.image.present? %>     
 					          <img data-src="<%= @user.image(:large) %>" class="lazyload_Modal_half_profile" style="width:90px;height:90px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
@@ -18,21 +18,54 @@
 					          <img data-src="/assets/user.jpg" class="lazyload_Modal_half_profile" style="width:90px;height:90px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
 					        <% end %>
 		          		</div>
-		          		<div style="height:2vh;"></div>
-		          		<div class="font_white_big" style="width:90%;display:inline-block;font-weight:bold;">
+		          		<div style="height:5px;"></div>
+		          		<div style="font-size:18px;color:#FAFAFA;width:90%;display:inline-block;font-weight:bold;">
 		          			<%= @user.name %>
 					        <% if @user.authority == "public" %>
 					        	<%= image_tag "public.svg", :class =>'icon_public' %>
 					        <% end %>
 		          		</div>
-		          		<div style="height:7vh;"></div>
-		          		<div style="width:100%;padding:0 10%;">
-		          			<%= link_to "/users/configuration" do %>
-								<div class="btn_half_item">  
-									<%= image_tag "setting_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>設定
+		          		<div style="height:0px;"></div>
+		          		<div style="font-size:11px;color:#FAFAFA;width:90%;display:inline-block;opacity:0.6;">
+		          			@<%= @user.username %>
+		          		</div>
+		          		<div style="height:20px;"></div>
+		          		<%#もしログインしていて本人だったら%>
+		          		<% if user_signed_in? %>	          						          			
+				          	<% if @user.id == current_user.id %>
+				          		<div style="width:70%;display:inline-block;">
+									<div class="inline_block_middle" style="text-align:center;width:45%;">
+										<%= link_to "/#{@user.username}/following" do %>							      	
+									    	<div class="btn_follow_off" style="padding:0.8em 0em;">
+												<%= @user.followings.size %> フォロー
+											</div>
+									    <% end %>
+								    </div>
+								    <div class="inline_block_middle" style="text-align:center;width:10%;">
+								    </div>
+								    <div class="inline_block_middle" style="text-align:center;width:45%;">
+								    	<%= link_to "/#{@user.username}/follower" do %>   							      	
+									    	<div class="btn_follow_off" style="padding:0.7em 0em;">
+												<%= @user.followers.size %> フォロワー
+											</div>
+									    <% end %>
+								    </div>					   
 								</div>
 							<% end %>
-							<div style="height:30px"></div>
+						<% end %>
+		          		<div style="height:30px;"></div>
+		          		<div style="width:100%;padding:0 10%;">
+		          			<%#もしログインしていて本人だったら%>
+		          			<% if user_signed_in? %>	          						          			
+				          		<% if @user.id == current_user.id %>
+				          			<%= link_to "/users/configuration" do %>
+										<div class="btn_half_item">  
+											<%= image_tag "setting_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>設定
+										</div>
+									<% end %>
+									<div style="height:30px"></div>
+								<% end %>
+							<% end %>
 		          			<a href="#" data-toggle="modal" data-target="#myModal_half_profile_share">
 								<div class="btn_half_item">  						
 									<%= image_tag "share_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>シェアする

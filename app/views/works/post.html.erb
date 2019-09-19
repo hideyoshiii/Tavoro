@@ -5,65 +5,66 @@
 	<% set_meta_tags title: "#{@post.title} | #{@post.user.name}", description: "", og: { title: "#{@post.title} | #{@post.user.name}" }, twitter: { title: "#{@post.title} | #{@post.user.name}", card: "summary" } %>
 <% end %>	
 
-<%#壁紙%>
-<div class="wallpaper" style="top:45px;height:calc(100vh - 45px);">
-	<div class="a1">
-		<div class="a4">
-	        <div class="d1">
-	          	<% if @post.image_url.blank? %>
-					<%= image_tag "#{@post.category}.jpg", :class =>'img_myboom_blur' %>
-				<% else %>
-					<% if @post.category == "movie" || @post.category == "tv" %>
-						<% @poster_show = @post.image_url.sub(/original/, 'w500') %>
-					<% end %>
-					<% if @post.category == "book" || @post.category == "comic" %>
-						<% if @post.api == "itunes" %>
-							<% @poster_show = @post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-						<% else %>
-							<% @poster_show = @post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
-						<% end %>
-					<% end %>
-					<% if @post.category == "music" %>
-						<% @poster_show = @post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-					<% end %>							
-					<%= image_tag @poster_show, :class =>'img_myboom_blur' %>
-				<% end %>
-				<div class="d2" style="background:rgba(0,0,0,0.75);"></div>
-	        </div>
-	  	</div>
+<%#トップバー%>
+<% if user_signed_in? %>
+	<div class="bar_top">      
+	    <div class="inline_block_middle" style="width:15%;">
+	    	<div style="text-align:left;padding-left:15px;">
+	        	<a href="javascript:void(0);" onclick="window.history.back();">
+	          		<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+	        	</a>                    
+	      	</div>
+	    </div>
+	    <div class="inline_block_middle" style="width:70%;">
+	      	<div class="contain_title02" style="text-align:center;">
+	        	<div style="font-size:14px;color:#FAFAFA;">
+	          		投稿
+	        	</div>
+	      	</div>
+	    </div>
+	    <div class="inline_block_middle" style="width:15%;">
+	    	<div style="text-align:right;padding-right:15px;">
+		        <a href="#" data-toggle="modal" data-target="#myModal_half_<%= @post.id %>">
+		        	<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+		        </a>                    
+		    </div>
+	    </div>
 	</div>
-</div>
-
-<div style="height:45px;"></div>
-<div style="height:20px;"></div>
-<div style="width:100%;">
-    <div class="inline_block_middle" style="width:50%;">
-      	<div style="text-align:left;padding-left:20px;">
-    	   	<a href="javascript:void(0);" onclick="window.history.back();">
-          		<%= image_tag "left_FAFAFA.svg", :class =>'inline_block_middle', :style =>'width:15px;height:15px;margin-right:3px;opacity:0.4;' %>
-        	</a>
-      	</div>
-    </div>
-    <div class="inline_block_middle" style="width:50%;">
-    	<div style="text-align:right;padding-right:20px;">    		
-      	</div>
-    </div>
-</div>
-<div style="height:20px;"></div>
-
+<% else %>
+	<div class="bar_top">      
+	    <div class="inline_block_middle" style="width:50%;">
+	      <%= link_to root_path do %>
+	        <div style="padding-left:15px;">
+	          <div class="neon">T<span>A</span>VO<span>RE</span></div>
+	        </div>
+	      <% end %>
+	    </div>
+	    <div class="inline_block_middle" style="width:50%;">
+	    	<div style="text-align:right;padding-right:15px;">
+		        <a href="#" data-toggle="modal" data-target="#myModal_half_<%= @post.id %>">
+		        	<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+		        </a>                    
+		    </div>
+	    </div>
+	</div>
+<% end %>
+<div style="height:50px;"></div>
+<div style="height:15px;"></div>
+				
+<%#作品%>
 <div style="text-align:center;">
 	<% if @post.image_url.blank? %>
-		<%= image_tag "#{@post.category}.jpg", :style =>'width:42%;height:auto;' %>
+		<%= image_tag "#{@post.category}.jpg", :style =>'width:50%;height:auto;border-radius:8px;' %>
 	<% else %>	
 		<% if @post.category == "music" %>
-			<div class="pile_preview" style="width:42%;height:auto;">
-				<%= image_tag @poster_show, :class =>'img_tavore' %>
+			<div class="pile_preview" style="width:50%;height:auto;;">
+				<%= image_tag @poster_show, :class =>'img_tavore', :style =>'border-radius:8px' %>
 				<div class="btn_preview_min" id="btn_preview">
 					<%= image_tag "play_FAFAFA.svg", :id =>'icon_play', :style =>'width:9px;height:9px;margin-left:0.5px;' %>
 				</div>
 			</div>
 		<% else %>													
-			<%= image_tag @poster_show, :style =>'width:42%;height:auto;' %>
+			<%= image_tag @poster_show, :style =>'width:50%;height:auto;border-radius:8px;' %>
 		<% end %>
 	<% end %>
 	<div style="height:10px;"></div>
@@ -71,7 +72,6 @@
 		<%= @post.title %>
 	</div>
 	<% if @release.present? %>
-		<div style="height:2px;"></div>
 		<div class="contain_title">
 			<div style="font-size:12px;color:#999999;">
 				<%= @release %>
@@ -79,7 +79,6 @@
 		</div>
 	<% end %>
 	<% if @producer.present? %>
-		<div style="height:2px;"></div>
 		<div class="contain_title">
 			<div style="font-size:12px;color:#999999;">
 				<%= @producer %>
@@ -90,36 +89,109 @@
 <div style="height:20px;"></div>
 
 <%#投稿%>
-<div style="margin:12px 20px;padding:15px 20px;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.3));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.3));border-radius:5px;">
-	<%= render partial: 'partial/wall_posts', locals: { post: @post } %>
-	<div style="height:10px;"></div>
-	<div style="width:100%;text-align:right;">
-		<a href="#" data-toggle="modal" data-target="#myModal_half_<%= @post.id %>">
-	  		<img data-src="/assets/ellipsis_FAFAFA.svg" class="icon_review_min lazyload" style="width:16px;height:16px;margin-right:3px;opacity:0.4;">
-		</a>
-	</div>
-</div>
-<%#その他の投稿%>
-<% if @posts_other.present? %>
-	<% @posts_other.each.with_index(1) do |post, i| %>	
-		<div style="margin:12px 20px;padding:15px 20px;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(50,50,50,0.3));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(100,100,100,0.3));border-radius:5px;">
-			<%= render partial: 'partial/wall_posts', locals: { post: post } %>
+<div style="margin:0px 15px;padding:20px 15px;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.3));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(5,98,123,0.3));border-radius:5px;">
+	<div class="inline_block_middle" style="width:100%;">
+		<%= link_to "/#{@post.user.username}" do %>
+			<div class="inline_block_middle" style="width:55px;">
+	            <% if @post.user.image.present? %>
+	                <img src="<%= @post.user.image(:medium) %>" class="" style="width:45px;height:45px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+	            <% else %>
+	                <img src="/assets/user.jpg" class="" style="width:45px;height:45px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+	            <% end %>
+			</div>
+			<div class="inline_block_middle" style="width:calc(100% - 55px);">
+				<div class="contain_title02">
+					<div style="font-size:13px;color:#FAFAFA;word-wrap:break-word;margin-top:1px;">
+						<%= @post.user.name %>
+						<% if @post.user.authority == "public" %>
+	                    	<img data-src="/assets/public.svg" class="icon_public_min swiper-lazy">
+	                    <% end %>
+					</div>
+				</div>
+				<div class="contain_title02">
+					<div style="font-size:10px;color:#FAFAFA;opacity:0.6;word-wrap:break-word;margin-top:1px;">
+						<% if @post.category == "movie" %>
+							<%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> 映画
+						<% end %>
+						<% if @post.category == "tv" %>
+							<%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> テレビ
+						<% end %>
+						<% if @post.category == "book" %>
+							<%= image_tag "book_FAFAFA.svg", :class =>'icon_category' %> ブック
+						<% end %>
+						<% if @post.category == "comic" %>
+							<%= image_tag "book_FAFAFA.svg", :class =>'icon_category' %> コミック
+						<% end %>
+						<% if @post.category == "music" %>
+							<%= image_tag "music_FAFAFA.svg", :class =>'icon_category' %> ミュージック
+						<% end %>													
+						<% @seconds = (Time.now - @post.created_at).round  %>
+						<% if @seconds <= 3600 %>
+							- <%= @seconds / 60 %>分前
+						<% else %>
+							<% if @seconds <= 86400 %>
+									- <%= @seconds / (60 * 60) %>時間前
+							<% else %>
+								<% if @seconds <= 604800 %>
+									- <%= @seconds / (60 * 60 * 24) %>日前
+								<% else %>
+									- <%= @post.created_at.strftime('%m月%d日') %>
+								<% end %>
+							<% end %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>						
+	<div style="height:15px;"></div>
+	<div style="font-size:12px;color:#FAFAFA;opacity:0.8;margin-left:5px">
+		<% if @post.review == "bookmark" %>
+			<% if @post.category == "movie" || @post.category == "tv" %>
+				観たいです
+			<% end %>
+			<% if @post.category == "book" || @post.category == "comic" %>
+				読みたいです
+			<% end %>
+			<% if @post.category == "music" %>
+				聴きたいです
+			<% end %>
+		<% end %>
+		<% if @post.review == "doing" %>
+			<% if @post.category == "movie" || @post.category == "tv" %>
+				観ています
+			<% end %>
+			<% if @post.category == "book" || @post.category == "comic" %>
+				読んでいます
+			<% end %>
+			<% if @post.category == "music" %>
+				聴いています
+			<% end %>
+		<% end %>
+		<% if @post.review == "good" %>
+			<% if @post.category == "movie" || @post.category == "tv" %>
+				観ました
+			<% end %>
+			<% if @post.category == "book" || @post.category == "comic" %>
+				読みました
+			<% end %>
+			<% if @post.category == "music" %>
+				聴きました
+			<% end %>
+		<% end %>
+		<% if @post.review == "favorite" %>
+			<%= image_tag "star_F8C55A.svg", :class =>'icon_review_min' %>おすすめしています
+		<% end %>
+		<% if @post.review == "bad" %>
+			<%= image_tag "ban_FB473E.svg", :class =>'icon_review_min' %>おすすめしていません
+		<% end %>
+		</div>
+		<% if @post.description.present? %>
+			<div style="height:5px;"></div>
+			<div style="font-size:13px;color:#FAFAFA;font-weight:bold;opacity:0.8;line-height:1.4;margin-left:10px;">
+				”<%= safe_join(@post.description.split("\n"), tag(:br)) %>”			
 		</div>
 	<% end %>
-<% end %>
-<%#この作品を投稿%>
-<div style="margin:12px 20px;padding:15px 20px;background:-webkit-linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(50,50,50,0.3));background:linear-gradient(-45deg,rgba(17,17,17,0.6),rgba(100,100,100,0.3));border-radius:5px;text-align:center;">
-		<%= link_to "/works/#{@post.id}/copy" ,:style => 'width:100%;height:100%;' do %>	
-			<div style="height:15px;"></div>
-			<img data-src="/assets/add_FAFAFA.svg" class="inline_block_middle lazyload" style="width:20px;height:20px;opacity:0.6;">
-			<div class="inline_block_middle" style="padding-left:10px;">
-				<div style="font-size:13px;color:#FAFAFA;opacity:0.6;">
-			  		この作品を投稿する
-			  	</div>	 
-		  	</div>
-	  		<div style="height:15px;"></div>
-		<% end %>
-	</div>
 </div>
 <div style="height:20px;"></div>
 
@@ -149,8 +221,6 @@
 	  	});				
    	</script>
 <% end %>
-<%#作品詳細モーダル%>
-<%= render partial: 'partial/modal_info', locals: { post: @post } %>
 <%#ハーフモーダル%>
 <%= render partial: 'partial/modal_half', locals: { post: @post } %>
 <%#シェアモーダル%>
