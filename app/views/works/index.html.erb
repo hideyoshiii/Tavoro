@@ -20,7 +20,7 @@
 	<div style="height:50px;"></div>
 	<% if @posts.present? %>
 		<% @posts.each.with_index(1) do |post, i| %>
-			<div style="height:80%;margin:0px 6% 15px;"> 
+			<div style="height:75%;margin:0px 6% 15px;"> 
 				<div class="base01" style="border-radius:10px;">
 					<% if post.image_url.blank? %>
 						<img src="/assets/<%= post.category %>.jpg" class="img_myboom">
