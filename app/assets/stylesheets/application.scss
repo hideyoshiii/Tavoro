@@ -2224,15 +2224,15 @@ button {
     -webkit-appearance:none;
 }
 .nav-tabs>li {
-	padding:5px 10px;
+	padding:5px 9px;
 	margin:0;
 	float:none;
 }
 .nav-tabs>li:first-child {
-    padding-left:20px;
+    padding-left:18px;
 }
 .nav-tabs>li:last-child {
-    padding-right:20px;
+    padding-right:18px;
 }
 
 .nav-tabs>li>a,
@@ -2240,7 +2240,7 @@ button {
 .nav-tabs>li>a:hover{
 	padding:0px 2px 5px;
 	margin:0;
-	color:rgba(250,250,250,0.6);
+	color:rgba(250,250,250,0.8);
 	background:none;
 	border:none;
 }

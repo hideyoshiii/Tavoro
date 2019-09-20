@@ -6,11 +6,9 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:id]) 
     if @user
       @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
-
       @done_i = @alls.where.not(review: "doing").where.not(review: "bookmark").size
       @doing_i = @alls.where(review: "doing").size
       @want_i = @alls.where(review: "bookmark").size
-
       if params[:type].present?
         if params[:type] == "doing"
           @type = "doing"
@@ -21,7 +19,6 @@ class UsersController < ApplicationController
       else
         @type = "done"
       end
-
       if @type == "done"
         @all = @alls.where.not(review: "doing").where.not(review: "bookmark")
         @movie = @all.where(category: "movie")
@@ -50,7 +47,6 @@ class UsersController < ApplicationController
         @comic = @all.where(category: "comic")
         @music = @all.where(category: "music")
       end
-
     end
   end
 
