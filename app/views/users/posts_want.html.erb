@@ -9,26 +9,25 @@
 <% if user_signed_in? %>
 	<div class="bar_top">      
 	    <div class="inline_block_middle" style="width:20%;">
-	    	<div style="text-align:left;padding-left:15px;">
-	        	<a href="javascript:void(0);" onclick="window.history.back();">
-	          		<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
-	        	</a>                    
+	    	<div style="text-align:left;padding-left:15px;">	    		
+	    		<% unless @user.id == current_user.id %>
+		    		<% if request.referer&.include?(request.host_with_port) %>
+					  	<a href="javascript:void(0);" onclick="window.history.back();">
+		          			<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+		        		</a>
+					<% end %>
+				<% end %>
 	      	</div>
 	    </div>
-	    <div class="inline_block_middle" style="width:60%;">
+	    <div class="inline_block_middle" style="width:60%;"> 	
 	      	<div class="contain_title02" style="text-align:center;">
-	        	<div style="font-size:14px;color:#FAFAFA;">
-	          		<%= @user.username %>
-	        	</div>
+	      		<%= link_to root_path do %>
+	        		<div class="neon">T<span>A</span>VO<span>RE</span></div>
+	        	<% end %>
 	      	</div>
 	    </div>
 	    <div class="inline_block_middle" style="width:20%;">
-	    	<div style="text-align:right;padding-right:15px;">
-	    		<div class="inline_block_middle" style="margin-right:15px;"> 
-		        	<%= link_to "/users/user" do %>			        
-			        	<%= image_tag "search_FAFAFA.svg", :style =>'width:18px;height:18px;' %>        
-			    	<% end %>
-			    </div>
+	    	<div style="text-align:right;padding-right:15px;">   			
 	    		<div class="inline_block_middle"> 
 		        	<a href="#" data-toggle="modal" data-target="#myModal_half_profile">
 		        		<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
@@ -39,70 +38,81 @@
 	</div>
 <% else %>
 	<div class="bar_top">      
-	    <div class="inline_block_middle" style="width:50%;">
-	      <%= link_to root_path do %>
-	        <div style="padding-left:15px;">
-	          <div class="neon">T<span>A</span>VO<span>RE</span></div>
-	        </div>
-	      <% end %>
+	    <div class="inline_block_middle" style="width:20%;">
+	    	<div style="text-align:left;padding-left:15px;">
+	    		<% if request.referer&.include?(request.host_with_port) %>
+				  	<a href="javascript:void(0);" onclick="window.history.back();">
+	          			<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+	        		</a>  
+				<% end %>
+	      	</div>
 	    </div>
-	    <div class="inline_block_middle" style="width:50%;">
-	    	<div style="text-align:right;padding-right:15px;">
-		        <a href="#" data-toggle="modal" data-target="#myModal_half_profile">
-		        	<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
-		        </a>                    
+	    <div class="inline_block_middle" style="width:60%;"> 	
+	      	<div class="contain_title02" style="text-align:center;">
+	      		<%= link_to root_path do %>
+	        		<div class="neon">T<span>A</span>VO<span>RE</span></div>
+	        	<% end %>
+	      	</div>
+	    </div>
+	    <div class="inline_block_middle" style="width:20%;">
+	    	<div style="text-align:right;padding-right:15px;">    		
+	    		<div class="inline_block_middle"> 
+		        	<a href="#" data-toggle="modal" data-target="#myModal_half_profile">
+		        		<%= image_tag "ellipsis_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
+		        	</a>
+		        </div>		        
 		    </div>
 	    </div>
 	</div>
 <% end %>
 <div style="height:50px;"></div>
-<div style="height:20px;"></div>
+<div style="height:10px;"></div>
 
 <!-- プロフィール部分 -->
 <div class="" style="text-align:center;padding:0 8%;">
 	<div class="inline_block_middle" style="width:35%;">
 		<div style="width:100%;text-align:left;">
 			<% if @user.image.present? %>
-			    <%= image_tag @user.image(:large), :style =>'width:75px;height:75px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+			    <%= image_tag @user.image(:large), :style =>'width:90px;height:90px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
 			<% else %>
-			    <%= image_tag "user.jpg", :style =>'width:75px;height:75px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+			    <%= image_tag "user.jpg", :style =>'width:90px;height:90px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
 			<% end %>
 		</div>
 	</div>
 	<div class="inline_block_middle" style="width:65%;">
 		<div class="" style="width:100%;">	
-			<div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.5;">
+			<div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.6;">
 				<span onclick="goDone()">
-			      	<div style="font-size:16px;color:#FAFAFA;font-weight:bolder">
+			      	<div style="font-size:16px;color:#FAFAFA;">
 			      		<%= @done_i %>
 			    	</div>
 			    	<div style="font-size:11px;color:#FAFAFA;margin-top:-1px;">
-			      		Done
+			      		done
 			    	</div>
-			    </a>
+			    </span>
 		    </div>
-		    <div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.5;">
+		    <div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.6;">
 		    	<span onclick="goDoing()">
-			      	<div style="font-size:16px;color:#FAFAFA;font-weight:bolder">
+			      	<div style="font-size:16px;color:#FAFAFA;">
 			      		<%= @doing_i %>
 			    	</div>
 			    	<div style="font-size:11px;color:#FAFAFA;margin-top:-1px;">
-			      		Doing
+			      		doing
 			    	</div>
 			    </span>
 		    </div>
 		    <div class="inline_block_middle" style="text-align:center;width:33.33%;">
 		    	<span onclick="goWant()">
-			      	<div style="font-size:16px;color:#FAFAFA;font-weight:bolder">
+			      	<div style="font-size:16px;color:#FAFAFA;font-weight:bolder;">
 			      		<%= @want_i %>
 			    	</div>
 			    	<div style="font-size:11px;color:#FAFAFA;margin-top:-1px;">
-			      		Want
+			      		want
 			    	</div>
 			    </span>
 		    </div>
 		</div>
-		<div style="height:12px;"></div>
+		<div style="height:10px;"></div>
 		<div style="width:100%;text-align:center;">
 			<div id="relationship-of-<%= @user.id %>">
 			    <%= render partial: 'relationships/relationship' %>
@@ -121,9 +131,9 @@
 		</div> 
 	</div>
 	<% if @user.description.present? %>
-		<div style="height:2px;"></div>  
+		<div style="height:1px;"></div>  
 	    <div class="contain_title03">
-		    <div style="font-size:10.5px;color:#FAFAFA;opacity:0.6;">
+		    <div style="font-size:11px;color:#FAFAFA;opacity:0.6;">
 		      <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
 		    </div>
 		</div>
@@ -136,6 +146,9 @@
 <ul class="nav nav-tabs">
     <li class="nav-item active">
     	<a href="#all" class="nav-link" data-toggle="tab">すべて</a>
+    </li>
+    <li class="nav-item">
+      	<a href="#favorite" class="nav-link" data-toggle="tab">お気に入り</a>
     </li>
     <li class="nav-item">
       	<a href="#movie" class="nav-link" data-toggle="tab">映画</a>
@@ -163,6 +176,19 @@
 	  	<% else %>
 		  	<% @all.each.with_index(1) do |post, i| %>
 	  			<%# 3列表示(lazyload) %>
+				<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
+		  	<% end %>
+	  	<% end %>
+    </div>
+    <div id="favorite" class="tab-pane">
+    	<% if @list_favorite_items.blank? %>
+	  		<div style="text-align:center;margin-top:10vh;font-size:12px;opacity:0.8;">
+				
+			</div>	
+	  	<% else %>
+		    <% @list_favorite_items.each.with_index(1) do |item, i| %>
+		    	<% post = item.post %>
+		  		<%# 3列表示(swiper) %>
 				<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
 		  	<% end %>
 	  	<% end %>
@@ -229,11 +255,9 @@
     </div>
 </div>
 
-
 <%#プロフィールモーダル%>
 <%= render partial: 'partial/modal_half_profile', locals: { user: @user } %>
-<%#プロフィールシェアモーダル%>
-<%= render partial: 'partial/modal_half_profile_share', locals: { user: @user } %>
+
 <%#投稿ボタン%>
 <% if user_signed_in? %>	          				
 	<% if @user.id == current_user.id %>

@@ -2,7 +2,7 @@
 	<% if current_user?(@user) %>	
 		<%= link_to edit_user_registration_path do %>
 			<div class="btn_follow_on">
-				編集
+				プロフィールを編集
 			</div>
 		<% end %>
 	<% else %>
@@ -17,7 +17,7 @@
 		<% else %>
 			<%= form_for(current_user.following_relationships.build(following_id: @user.id), remote: true) do |f| %>
 			  <%= f.hidden_field :following_id %>
-			  <%= f.submit "フォロー", class: "btn_follow_off" , style: "letter-spacing:1px;" %>
+			  <%= f.submit "フォロー", class: "btn_follow_off" %>
 			<% end %>
 		<% end %>
 	<% end %>

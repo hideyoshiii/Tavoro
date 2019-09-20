@@ -10,12 +10,12 @@
           		<div style="position:relative;width:0;height:0;z-index:1;"></div>
           		<div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
 	          		<div style="min-height:101%;">  
-		          		<div style="height:6vh;"></div>
+		          		<div style="height:30px;"></div>
 		          		<div style="width:40%;display:inline-block;">
 		          			<% if @user.image.present? %>     
-					          <img data-src="<%= @user.image(:large) %>" class="lazyload_Modal_half_profile" style="width:90px;height:90px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+					          <img data-src="<%= @user.image(:large) %>" class="lazyload_Modal_half_profile" style="width:100px;height:100px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
 					        <% else %>
-					          <img data-src="/assets/user.jpg" class="lazyload_Modal_half_profile" style="width:90px;height:90px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
+					          <img data-src="/assets/user.jpg" class="lazyload_Modal_half_profile" style="width:100px;height:100px;padding:0;margin:0;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);">
 					        <% end %>
 		          		</div>
 		          		<div style="height:5px;"></div>
@@ -24,19 +24,18 @@
 					        <% if @user.authority == "public" %>
 					        	<%= image_tag "public.svg", :class =>'icon_public' %>
 					        <% end %>
-		          		</div>
-		          		<div style="height:0px;"></div>
-		          		<div style="font-size:11px;color:#FAFAFA;width:90%;display:inline-block;opacity:0.6;">
+		          		</div>		          		
+		          		<div style="font-size:12px;color:#FAFAFA;width:90%;display:inline-block;opacity:0.6;">
 		          			@<%= @user.username %>
 		          		</div>
+		          		<%#フォローフォロワー数%>
 		          		<div style="height:20px;"></div>
-		          		<%#もしログインしていて本人だったら%>
 		          		<% if user_signed_in? %>	          						          			
 				          	<% if @user.id == current_user.id %>
 				          		<div style="width:70%;display:inline-block;">
 									<div class="inline_block_middle" style="text-align:center;width:45%;">
-										<%= link_to "/#{@user.username}/following" do %>							      	
-									    	<div class="btn_follow_off" style="padding:0.8em 0em;">
+										<%= link_to "/#{@user.username}/following" do %>
+									    	<div style="width:100%;padding:0.7em 0em;color:rgba(250,250,250,0.9);background:rgba(25,25,25,0.6);border:solid 1px rgba(50,50,50,0.1);border-radius:2.5px;font-size:12px;letter-spacing:0.05em;display:inline-block;vertical-align:middle;text-align:center;box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);font-weight:bolder;">
 												<%= @user.followings.size %> フォロー
 											</div>
 									    <% end %>
@@ -44,8 +43,8 @@
 								    <div class="inline_block_middle" style="text-align:center;width:10%;">
 								    </div>
 								    <div class="inline_block_middle" style="text-align:center;width:45%;">
-								    	<%= link_to "/#{@user.username}/follower" do %>   							      	
-									    	<div class="btn_follow_off" style="padding:0.7em 0em;">
+								    	<%= link_to "/#{@user.username}/follower" do %>
+									    	<div style="width:100%;padding:0.7em 0em;color:rgba(250,250,250,0.9);background:rgba(25,25,25,0.6);border:solid 1px rgba(50,50,50,0.1);border-radius:2.5px;font-size:12px;letter-spacing:0.05em;display:inline-block;vertical-align:middle;text-align:center;box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);font-weight:bolder;">
 												<%= @user.followers.size %> フォロワー
 											</div>
 									    <% end %>
@@ -55,9 +54,15 @@
 						<% end %>
 		          		<div style="height:30px;"></div>
 		          		<div style="width:100%;padding:0 10%;">
-		          			<%#もしログインしていて本人だったら%>
+		          			<%#本人だったら%>
 		          			<% if user_signed_in? %>	          						          			
 				          		<% if @user.id == current_user.id %>
+				          			<%= link_to "/users/user" do %>
+										<div class="btn_half_item">  
+											<%= image_tag "search_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>ユーザーを検索
+										</div>
+									<% end %>
+				          			<div style="height:30px"></div>
 				          			<%= link_to "/users/configuration" do %>
 										<div class="btn_half_item">  
 											<%= image_tag "setting_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>設定
@@ -65,12 +70,30 @@
 									<% end %>
 									<div style="height:30px"></div>
 								<% end %>
-							<% end %>
-		          			<a href="#" data-toggle="modal" data-target="#myModal_half_profile_share">
+							<% end %>	          			
+							<a href="http://twitter.com/share?url=<%= url_for(only_path: false) %>" target="_blank">
 								<div class="btn_half_item">  						
-									<%= image_tag "share_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>シェアする
+									<%= image_tag "twitter.svg", :style =>'width:22px;height:22px;margin-right:15px;border-radius:50%;' %>Twitterdでシェア
 								</div>
-							</a>	
+							</a>
+							<div style="height:30px"></div>
+							<a href="https://www.facebook.com/sharer/sharer.php?u=<%= url_for(only_path: false) %>" target="_blank">
+								<div class="btn_half_item">  						
+									<%= image_tag "facebook.svg", :style =>'width:22px;height:22px;margin-right:15px;border-radius:50%;' %>Facebookシェア
+								</div>
+							</a>
+							<div style="height:30px"></div>
+		          			<a href="http://line.me/R/msg/text/?<%= url_for(only_path: false) %>" target="_blank">
+								<div class="btn_half_item">  
+									<%= image_tag "line.svg", :style =>'width:22px;height:22px;margin-right:15px;border-radius:50%;' %>LINEでシェア
+								</div>
+							</a>
+							<div style="height:30px"></div>
+		          			<span data-clipboard-text="<%= url_for(only_path: false) %>" id="copy">
+								<div class="btn_half_item">  
+									<%= image_tag "link_FAFAFA.svg", :style =>'width:16px;height:16px;margin-right:15px;margin-left:5px;' %>リンクをコピー
+								</div>
+							</span>		
 							<div style="height:90px"></div>	
 						</div>
 					</div>
@@ -112,3 +135,19 @@
 		}				
 	});
 </script>
+<%#クリップボード%>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"></script>
+<%#コピーのJS%>
+<script defer>
+	$(function(){
+	  var clipboard = new Clipboard('#copy');
+	  clipboard.on('success', function(e) {
+	    console.info('Trigger:', e.trigger);
+	    alert('コピーできました');
+	  });
+	  clipboard.on('error', function(e) {
+	    console.error('Trigger:', e.trigger);
+	    alert('このブラウザでは対応していません');
+	  });
+  	});
+</script>	  

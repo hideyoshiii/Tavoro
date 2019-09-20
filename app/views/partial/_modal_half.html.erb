@@ -10,8 +10,8 @@
           		<div style="position:relative;width:0;height:0;z-index:1;"></div>
           		<div style="width:100%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;"> 
           			<div style="min-height:101%;"> 
-		          		<div style="height:6vh;"></div>
-		          		<div style="width:40%;display:inline-block;">
+		          		<div style="height:30px;"></div>
+		          		<div style="width:45%;display:inline-block;">
 		          			<% if post.image_url.blank? %>
 								<img data-src="/assets/<%= post.category %>.jpg" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;border-radius:5px;">
 							<% else %>	
@@ -31,14 +31,14 @@
 								<img data-src="<%= @poster_show %>" class="lazyload_half_modal_<%= post.id %>" style="width:100%;height:auto;border-radius:5px;">
 							<% end %>
 		          		</div>
-		          		<div style="height:2vh;"></div>
+		          		<div style="height:10px;"></div>
 		          		<div class="font_white_big" style="width:90%;display:inline-block;font-weight:bold;">
 		          			<%= post.title %>
 		          		</div>
-		          		<div style="height:6vh;"></div>
+		          		<div style="height:30px;"></div>
 		          		<div style="width:100%;padding:0 12%;">
+		          			<%#本人だったら%>
 		          			<% if user_signed_in? %>	          				
-		          				<%#投稿者だったら%>
 				          		<% if post.user.id == current_user.id %>			          			
 									<span id="favorite-of-<%= post.id %>">
 								      	<%= render partial: 'lists/favorite', locals: { post: post } %>
@@ -55,28 +55,32 @@
 											<%= image_tag "trash_FB473E.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>投稿を削除
 										</div>
 									<% end %>
-				          		<%#投稿者でなかったら%>
-				          		<% else %>		          										
-									<%= link_to "/works/#{post.id}/copy" do %>
-										<div class="btn_half_item">  
-											<%= image_tag "add_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>この作品を投稿
-										</div>	
-									<% end %>				
+									<div style="height:30px"></div>
 								<% end %>
-							<%#ログインしてなかったら%>
-							<% else %>													
-								<%= link_to "/works/#{post.id}/copy" do %>
-									<div class="btn_half_item">  
-										<%= image_tag "add_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>この作品を投稿
-									</div>	
-								<% end %>	
 							<% end %>
-							<div style="height:30px"></div>
-							<a href="#" data-toggle="modal" data-target="#myModal_half_share_<%= post.id %>">
+							<a href="http://twitter.com/share?url=<%= root_url(only_path: false) %>post/<%= post.id %>" target="_blank">
 								<div class="btn_half_item">  						
-									<%= image_tag "share_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>シェアする
+									<%= image_tag "twitter.svg", :style =>'width:22px;height:22px;margin-right:15px;border-radius:50%;' %>Twitterでシェア
 								</div>
 							</a>
+							<div style="height:30px"></div>
+							<a href="https://www.facebook.com/sharer/sharer.php?u=<%= root_url(only_path: false) %>post/<%= post.id %>" target="_blank">
+								<div class="btn_half_item">  						
+									<%= image_tag "facebook.svg", :style =>'width:22px;height:22px;margin-right:15px;border-radius:50%;' %>Facebookでシェア
+								</div>
+							</a>
+							<div style="height:30px"></div>
+		          			<a href="http://line.me/R/msg/text/?<%= root_url(only_path: false) %>post/<%= post.id %>" target="_blank">
+								<div class="btn_half_item">  
+									<%= image_tag "line.svg", :style =>'width:22px;height:22px;margin-right:15px;border-radius:50%;' %>LINEでシェア
+								</div>
+							</a>
+							<div style="height:30px"></div>
+		          			<span data-clipboard-text="<%= root_url(only_path: false) %>post/<%= post.id %>" id="copy_<%= post.id %>">
+								<div class="btn_half_item">  
+									<%= image_tag "link_FAFAFA.svg", :style =>'width:16px;height:16px;margin-right:15px;margin-left:5px;' %>リンクをコピー
+								</div>
+							</span>	
 							<div style="height:90px"></div>	
 						</div>
 					</div>
@@ -118,3 +122,19 @@
 		}				
 	});
 </script>
+<%#クリップボード%>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"></script>
+<%#コピーのJS%>
+<script defer>
+	$(function(){
+	  var clipboard = new Clipboard('#copy_<%= post.id %>');
+	  clipboard.on('success', function(e) {
+	    console.info('Trigger:', e.trigger);
+	    alert('コピーできました');
+	  });
+	  clipboard.on('error', function(e) {
+	    console.error('Trigger:', e.trigger);
+	    alert('このブラウザでは対応していません');
+	  });
+  	});
+</script>	  
