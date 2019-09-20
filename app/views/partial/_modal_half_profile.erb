@@ -57,7 +57,7 @@
 		          			<%#本人だったら%>
 		          			<% if user_signed_in? %>	          						          			
 				          		<% if @user.id == current_user.id %>
-				          			<%= link_to "/" do %>
+				          			<%= link_to "/works/index" do %>
 										<div class="btn_half_item">  
 											<%= image_tag "time_FAFAFA.svg", :style =>'width:18px;height:18px;margin-right:15px;' %>最近の投稿
 										</div>

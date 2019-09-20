@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 
-  root :to => 'works#index'
+  root :to => 'works#home'
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  get ":id" => "users#posts_done"
-  get ":id/doing" => "users#posts_doing"
-  get ":id/want" => "users#posts_want"
+  get ":id" => "users#posts"
   get 'users/user' => "users#user"
   get 'users/ajax_user_list' => "users#ajax_user_list"
   get ':id/following' => "users#following"
@@ -38,6 +36,7 @@ Rails.application.routes.draw do
   post "follow_requests/:id/approval" => "follow_requests#approval"
   post "follow_requests/:id/unapproval" => "follow_requests#unapproval"
 
+  get "works/index" => 'works#index'
   get "post/:id" => "works#post"
   get 'works/movie' => "works#movie"
   get 'works/ajax_movie_list' => "works#ajax_movie_list"

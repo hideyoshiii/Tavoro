@@ -66,7 +66,7 @@
 	</div>
 <% end %>
 <div style="height:50px;"></div>
-<div style="height:15px;"></div>
+<div style="height:10px;"></div>
 
 <!-- プロフィール部分 -->
 <div class="" style="text-align:center;padding:0 8%;">
@@ -81,9 +81,9 @@
 	</div>
 	<div class="inline_block_middle" style="width:65%;">
 		<div class="" style="width:100%;">	
-			<div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.6;">
+			<div class="inline_block_middle" style="text-align:center;width:33.33%;<%= 'opacity:0.6;' unless @type == "done" %>">
 				<span onclick="goDone()">
-			      	<div style="font-size:16px;color:#FAFAFA;">
+			      	<div style="font-size:16px;color:#FAFAFA;letter-spacing:0.05em;<%= 'font-weight:bolder;' if @type == "done" %>">
 			      		<%= @done_i %>
 			    	</div>
 			    	<div style="font-size:12px;color:#FAFAFA;margin-top:-2px;">
@@ -91,9 +91,9 @@
 			    	</div>
 			    </span>
 		    </div>
-		    <div class="inline_block_middle" style="text-align:center;width:33.33%;opacity:0.6;">
+		    <div class="inline_block_middle" style="text-align:center;width:33.33%;<%= 'opacity:0.6;' unless @type == "doing" %>">
 		    	<span onclick="goDoing()">
-			      	<div style="font-size:16px;color:#FAFAFA;">
+			      	<div style="font-size:16px;color:#FAFAFA;letter-spacing:0.05em;<%= 'font-weight:bolder;' if @type == "doing" %>">
 			      		<%= @doing_i %>
 			    	</div>
 			    	<div style="font-size:12px;color:#FAFAFA;margin-top:-2px;">
@@ -101,9 +101,9 @@
 			    	</div>
 			    </span>
 		    </div>
-		    <div class="inline_block_middle" style="text-align:center;width:33.33%;">
+		    <div class="inline_block_middle" style="text-align:center;width:33.33%;<%= 'opacity:0.6;' unless @type == "want" %>">
 		    	<span onclick="goWant()">
-			      	<div style="font-size:16px;color:#FAFAFA;font-weight:bolder;">
+			      	<div style="font-size:16px;color:#FAFAFA;letter-spacing:0.05em;<%= 'font-weight:bolder;' if @type == "want" %>">
 			      		<%= @want_i %>
 			    	</div>
 			    	<div style="font-size:12px;color:#FAFAFA;margin-top:-2px;">
@@ -147,6 +147,11 @@
     <li class="nav-item active">
     	<a href="#all" class="nav-link" data-toggle="tab">すべて</a>
     </li>
+    <% if @type == "done" %>
+	    <li class="nav-item">
+	      	<a href="#favorite" class="nav-link" data-toggle="tab">お気に入り</a>
+	    </li>
+	<% end %>
     <li class="nav-item">
       	<a href="#movie" class="nav-link" data-toggle="tab">映画</a>
     </li>
@@ -177,6 +182,21 @@
 		  	<% end %>
 	  	<% end %>
     </div>
+    <% if @type == "done" %>
+	    <div id="favorite" class="tab-pane">
+	    	<% if @list_favorite_items.blank? %>
+		  		<div style="text-align:center;margin-top:10vh;font-size:12px;opacity:0.8;">
+					
+				</div>	
+		  	<% else %>
+			    <% @list_favorite_items.each.with_index(1) do |item, i| %>
+			    	<% post = item.post %>
+			  		<%# 3列表示(swiper) %>
+					<%= render partial: 'partial/row_three_lazyload', locals: { post: post, i: i } %>
+			  	<% end %>
+		  	<% end %>
+	    </div>
+	<% end %>
     <div id="movie" class="tab-pane">
     	<% if @movie.blank? %>
 	  		<div style="text-align:center;margin-top:10vh;font-size:12px;opacity:0.8;">
@@ -269,10 +289,10 @@
   		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>");
 	}
 	function goDoing(){
-  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/doing");
+  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>?type=doing");
 	}
 	function goWant(){
-  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>/want");
+  		location.replace("<%= root_url(only_path: false) %>/<%= @user.username %>?type=want");
 	}
 </script>
 <%#lazyload.js%>

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:notifications]
   after_action :notifications_update, only: [:notifications]
 
-  def posts_done
+  def posts
     @user = User.find_by(username: params[:id]) 
     if @user
       @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
@@ -11,53 +11,46 @@ class UsersController < ApplicationController
       @doing_i = @alls.where(review: "doing").size
       @want_i = @alls.where(review: "bookmark").size
 
-      @all = @alls.where.not(review: "doing").where.not(review: "bookmark")
-      @movie = @all.where(category: "movie")
-      @tv = @all.where(category: "tv")
-      @book = @all.where(category: "book")
-      @comic = @all.where(category: "comic")
-      @music = @all.where(category: "music")
-
-      @list_favorite = List.find_by(user_id: @user.id, title: "お気に入り")
-      if @list_favorite.present?
-        @list_favorite_items = ListItem.where(list_id: @list_favorite.id).order(created_at: "DESC")
+      if params[:type].present?
+        if params[:type] == "doing"
+          @type = "doing"
+        end
+        if params[:type] == "want"
+          @type = "want"
+        end
+      else
+        @type = "done"
       end
-    end
-  end
 
-  def posts_doing
-    @user = User.find_by(username: params[:id]) 
-    if @user
-      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
+      if @type == "done"
+        @all = @alls.where.not(review: "doing").where.not(review: "bookmark")
+        @movie = @all.where(category: "movie")
+        @tv = @all.where(category: "tv")
+        @book = @all.where(category: "book")
+        @comic = @all.where(category: "comic")
+        @music = @all.where(category: "music")
+        @list_favorite = List.find_by(user_id: @user.id, title: "お気に入り")
+        if @list_favorite.present?
+          @list_favorite_items = ListItem.where(list_id: @list_favorite.id).order(created_at: "DESC")
+        end
+      end
+      if @type == "doing"
+        @all = @alls.where(review: "doing")
+        @movie = @all.where(category: "movie")
+        @tv = @all.where(category: "tv")
+        @book = @all.where(category: "book")
+        @comic = @all.where(category: "comic")
+        @music = @all.where(category: "music")
+      end
+      if @type == "want"
+        @all = @alls.where(review: "bookmark")
+        @movie = @all.where(category: "movie")
+        @tv = @all.where(category: "tv")
+        @book = @all.where(category: "book")
+        @comic = @all.where(category: "comic")
+        @music = @all.where(category: "music")
+      end
 
-      @done_i = @alls.where.not(review: "doing").where.not(review: "bookmark").size
-      @doing_i = @alls.where(review: "doing").size
-      @want_i = @alls.where(review: "bookmark").size
-
-      @all = @alls.where(review: "doing")
-      @movie = @all.where(category: "movie")
-      @tv = @all.where(category: "tv")
-      @book = @all.where(category: "book")
-      @comic = @all.where(category: "comic")
-      @music = @all.where(category: "music")
-    end
-  end
-
-  def posts_want
-    @user = User.find_by(username: params[:id]) 
-    if @user
-      @alls = Post.where(user_id: @user.id).order(created_at: "DESC")
-
-      @done_i = @alls.where.not(review: "doing").where.not(review: "bookmark").size
-      @doing_i = @alls.where(review: "doing").size
-      @want_i = @alls.where(review: "bookmark").size
-
-      @all = @alls.where(review: "bookmark")
-      @movie = @all.where(category: "movie")
-      @tv = @all.where(category: "tv")
-      @book = @all.where(category: "book")
-      @comic = @all.where(category: "comic")
-      @music = @all.where(category: "music")
     end
   end
 

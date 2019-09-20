@@ -1,7 +1,13 @@
 class WorksController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :post, :detail]
+  before_action :authenticate_user!, except: [:home, :post, :detail]
 
   def test
+  end
+
+  def home
+    if user_signed_in?
+      redirect_to "/#{current_user.username}"
+    end
   end
 
   def index  
