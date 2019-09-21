@@ -124,7 +124,7 @@
 <div style="width:100%;padding:0 6%;text-align:left;">
 	<div class="contain_title02">
 		<div style="font-size:12px;font-weight:bolder;letter-spacing:0.05em;">
-		    hideyoshi
+		    <%= @user.name %>
 		    <% if @user.authority == "public" %>
 		    	<%= image_tag "public.svg", :class =>'icon_public' %>
 		    <% end %>
