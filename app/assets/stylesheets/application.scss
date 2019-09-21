@@ -111,13 +111,13 @@ body:after{
 
 //タイトルロゴ
 .neon {
-  font-family: 'Raleway', sans-serif;
+  font-family:'Raleway',sans-serif;
   display:inline-block;
   color:#2FB4B4;
   letter-spacing:0.05em;
   font-size:21px;
   font-weight:200;
-  text-shadow:0px 0px 10px #2FB4B4; 
+  text-shadow:0px 0px 20px #2FB4B4; 
 }
 .neon > span {
   -webkit-animation: blink 3s infinite alternate;
@@ -1772,8 +1772,8 @@ button {
   margin:0;
   padding:0 5px;
   z-index:3;
-  box-shadow:0 -3px 5px 5px rgba(0,0,0,0.65);
-  background:rgba(0,0,0,0.65);
+  box-shadow:0 -3px 5px 5px rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.7);
   overflow:hidden;
   word-wrap:break-word;
   }
@@ -1796,8 +1796,8 @@ button {
   margin:0;
   padding:0 5px;
   z-index:3;
-  box-shadow:0 -3px 5px 5px rgba(0,0,0,0.65);
-  background:rgba(0,0,0,0.65);
+  box-shadow:0 -3px 5px 5px rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.7);
   overflow:hidden;
   word-wrap:break-word;
   }
