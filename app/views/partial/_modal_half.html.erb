@@ -3,7 +3,7 @@
 		<div class="a1">
           	<div class="a4">
             	<div class="d1">
-              		<div class="d2" style="background:rgba(12,12,12,1);"></div>
+              		<div class="d2" style="background:rgba(15,15,15,1);"></div>
             	</div>
           	</div>
           	<div class="a6" style="text-align:center;">
@@ -87,11 +87,11 @@
 				</div>
           	</div>
           	<div class="a13" style="text-align:center;">
-          		<a href="#" data-toggle="modal" data-dismiss="modal">
+          		<span data-toggle="modal" data-dismiss="modal" id="dismiss_myModal_half_<%= post.id %>">
 					<div class="btn_half_close">  
 						<%= image_tag "ban_FAFAFA.svg", :style =>'width:20px;height:20px;margin-top:-2px;margin-right:5px;' %>キャンセル
 					</div>
-			  	</a>
+			  	</span>
           	</div>
         </div>
 	</div>
@@ -114,7 +114,7 @@
 				$('.modal-backdrop').remove();				
 			$('#myModal_half_<%= post.id %>').modal('toggle');
 			//クリックでモーダルを閉じる 
-			$('#myModal_half_<%= post.id %>').on("click",function(){
+			$('#dismiss_myModal_half_<%= post.id %>').on("click",function(){
 				$('body').removeClass('modal-open');
 			  	$('.modal-backdrop').remove();
 				$('#myModal_half_<%= post.id %>').modal('hide'); 

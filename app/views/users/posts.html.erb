@@ -123,15 +123,15 @@
 <div style="height:8px;"></div>
 <div style="width:100%;padding:0 6%;text-align:left;">
 	<div class="contain_title02">
-		<div style="font-size:13px;font-weight:bolder;letter-spacing:0.02em;">
-		    <%= @user.name %>
+		<div style="font-size:12px;font-weight:bolder;letter-spacing:0.05em;">
+		    hideyoshi
 		    <% if @user.authority == "public" %>
 		    	<%= image_tag "public.svg", :class =>'icon_public' %>
 		    <% end %>
 		</div> 
 	</div>
 	<% if @user.description.present? %>
-		<div style="height:2px;"></div>  
+		<div style="height:1px;"></div>  
 	    <div class="contain_title03">
 		    <div style="font-size:11px;color:#FAFAFA;opacity:0.6;letter-spacing:0.02em;">
 		      <%= simple_format(@user.description, {}, wrapper_tag: "div") %>

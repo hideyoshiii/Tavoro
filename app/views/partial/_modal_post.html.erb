@@ -1,7 +1,7 @@
 <%#投稿ボタン%>
 <div style="position:fixed;bottom:3%;left:0%;width:100%;z-index:99;">
 	<div style="width:100%;display:inline-block;text-align:center;">
-		<a href="#" data-toggle="modal" data-target="#myModal_post" style="position:relative;display:inline-block;vertical-align:middle;width:55px;height:55px;line-height:55px;background:rgba(0,60,85,0.7);text-align:center;border-radius:50%;">
+		<a href="#" data-toggle="modal" data-target="#myModal_post" style="position:relative;display:inline-block;vertical-align:middle;width:55px;height:55px;line-height:55px;background:rgba(0,60,85,0.8);text-align:center;border-radius:50%;">
 			<i>
 				<%= image_tag "plus_FAFAFA.svg", :style =>'width:22px;height:22px;' %>
 			</i>
@@ -15,7 +15,7 @@
       <div class="a1">
         <div class="a14">
           <div class="d1">
-            <div class="d2" style="background:rgba(12,12,12,1);"></div>
+            <div class="d2" style="background:rgba(15,15,15,1);"></div>
           </div>
         </div>
         <div class="a8" style="text-align:center;">   	
@@ -71,11 +71,11 @@
         </div>
         <div style="position:fixed;bottom:5%;left:0%;width:100%;z-index:99;">
         	<div style="width:100%;display:inline-block;text-align:center;">				
-				<a href="#" data-dismiss="modal" id="dismiss_post" style="position:relative;display:inline-block;vertical-align:middle;width:55px;height:55px;line-height:55px;background:rgba(0,60,85,0.7);text-align:center;border-radius:50%;">
+				<span data-dismiss="modal" id="dismiss_myModal_post" style="position:relative;display:inline-block;vertical-align:middle;width:55px;height:55px;line-height:55px;background:rgba(0,60,85,0.8);text-align:center;border-radius:50%;">
 					<i>
 						<%= image_tag "plus_FAFAFA.svg", :style =>'width:22px;height:22px;transform-origin:50%,50%;transform:rotate(45deg);' %>
 					</i>
-				</a>				
+				</span>				
 			</div>
 		</div>
       </div>
@@ -93,7 +93,7 @@
       $('.modal-backdrop').remove();
       $('#myModal_post').modal('toggle');
       //クリックでモーダルを閉じる 
-      $('#dismiss_post').on("click",function(){
+      $('#dismiss_myModal_post').on("click",function(){
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
         $('#myModal_post').modal('hide'); 

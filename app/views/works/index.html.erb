@@ -189,7 +189,30 @@
 	<% end %>
 	<div style="height:20px;"></div>
 <% else %>
-	<%= render "partial/nothing" %>
+	<%#投稿がない時%>
+	<div class="a1">
+	  <div class="a4">
+	    <div class="d1">    
+	      <div class="d2" style="background:rgba(15,15,15,1);"></div>
+	    </div>
+	  </div>
+	  <div class="a8">
+	  		<div style="text-align:center;padding:0 10%;">
+				<div>
+					<%= image_tag "tavore_logo_01.png", :style =>'width:80px;height:80px;' %>
+				</div>
+				<div style="font-size:18px;">
+					TAVOREへようこそ
+				</div>
+				<div style="height:5px;"></div>
+				<div style="font-size:12px;opacity:0.9;">
+					まずはあなたのお気に入りの映画､本､音楽を
+					<br>投稿してみましょう
+				</div>
+				<div style="height:40px;"></div>
+			</div>
+	  </div>
+	</div>
 <% end %>
 		
 <% if @posts.present? %>
