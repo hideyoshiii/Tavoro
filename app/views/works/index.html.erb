@@ -208,15 +208,15 @@
 		  </div>
 		</div>
 	<% end %>
+	<%#投稿ボタン%>
+	<%= render "partial/modal_post" %>
+	<%#lazyload.js%>
+	<script defer>
+		$(function() {
+	    	$('img.lazyload').lazyload();
+		});
+	</script>
 <% else %>
 	<%#ログインしてない時%>
 	<%= render "partial/home" %>
 <% end %>
-<%#投稿ボタン%>
-<%= render "partial/modal_post" %>
-<%#lazyload.js%>
-<script defer>
-	$(function() {
-    	$('img.lazyload').lazyload();
-	});
-</script>
