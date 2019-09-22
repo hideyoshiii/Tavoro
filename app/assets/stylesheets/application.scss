@@ -435,9 +435,9 @@ body:after{
 	padding:0;
 	margin:-1% 0 0 -1%;
 	object-fit:cover;
-	-webkit-filter:blur(8px);
-	-moz-filter:blur(8px);
-	filter:blur(8px);
+	-webkit-filter:blur(6px);
+	-moz-filter:blur(6px);
+	filter:blur(6px);
 }
 .img_user04{
 	width:50px;
@@ -1002,12 +1002,12 @@ button {
 .horizontal_scroll{
     width:100%;
     height:auto;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
+    overflow-x:scroll;
+    overflow-y:auto;
+    white-space:nowrap;
     padding:0;
     margin:0;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling:touch;
 }
 .horizontal_scroll::-webkit-scrollbar {
   display:none;
@@ -1208,14 +1208,13 @@ button {
 .base01 span .layer02 {
   position: absolute;
   top: 50%;
-  left: 8%;
+  left: 0%;
   -ms-transform: translate(-0%,-50%);
   -webkit-transform: translate(-0%,-50%);
   transform: translate(-0%,-50%);
-  max-width:80%;
-  width:auto;
+  width:100%;
   height:auto;
-  padding:0;
+  padding:0 15px;
   margin:0 auto;
   z-index:5;
   }
@@ -1413,6 +1412,7 @@ button {
   background:rgba(5,98,123,0.9);
   overflow:hidden;
   z-index:2;
+  white-space:normal;
 }
 .balloon div{
 	display:-webkit-box;
@@ -1424,7 +1424,7 @@ button {
   width:0;
   height:0;
   padding:0;
-  margin:5px 0px -5px;
+  margin:4px 0px -5px;
   border-right:5px solid transparent;
   border-bottom:9px solid rgba(5,98,123,0.9);
   border-left:0px solid transparent;
@@ -1567,19 +1567,6 @@ button {
 
 
 //ボタン関連
-.btn_tool:hover {
-  animation: tool_on 0.2s cubic-bezier(.4, 0, .2, 1);
-}
-@keyframes tool_on {
-  0% {
-    clip-path: circle(0 at 50% 50%);
-    -webkit-clip-path: circle(0 at 50% 50%);
-  }
-  100% {
-    clip-path: circle(100% at 50% 50%);
-    -webkit-clip-path: circle(100% at 50% 50%);
-  }
-}
 .btn_session{
     display: inline-block;
     padding: 0.5em 1.8em;
