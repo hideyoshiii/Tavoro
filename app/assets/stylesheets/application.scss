@@ -2193,7 +2193,7 @@ button {
 .nav-tabs {
 	padding:10px 0;
 	margin:0;
-	font-size:13px;
+	font-size:12px;
 	overflow-x:auto;
 	overflow-y:hidden;
 	-webkit-overflow-scrolling:touch;
@@ -2209,21 +2209,21 @@ button {
     -webkit-appearance:none;
 }
 .nav-tabs>li {
-	padding:4px 8px;
+	padding:4px 10px;
 	margin:0;
 	float:none;
 }
 .nav-tabs>li:first-child {
-    padding-left:16px;
+    padding-left:20px;
 }
 .nav-tabs>li:last-child {
-    padding-right:16px;
+    padding-right:20px;
 }
 
 .nav-tabs>li>a,
 .nav-tabs>li>a:focus,
 .nav-tabs>li>a:hover{
-	padding:0px 2px 4px;
+	padding:0px 1px 5px;
 	margin:0;
 	color:rgba(250,250,250,0.8);
 	background:none;
@@ -2232,7 +2232,7 @@ button {
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover{
-	padding:0px 2px 4px;
+	padding:0px 1px 5px;
 	margin:0;
 	color:rgba(250,250,250,1);
 	background:none;
