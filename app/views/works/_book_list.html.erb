@@ -11,8 +11,8 @@
         <%= hidden_field_tag :id, item["trackId"] %>
         <%= hidden_field_tag :api, "itunes" %>
         <button type="submit">
-          <div style="text-align:left;margin:0 10px;padding:14px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-            <div class="inline_block_middle" style="width:20%;">
+          <div style="text-align:left;margin:0 10px;padding:12px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+            <div class="inline_block_middle" style="width:18%;">
               <% if item["artworkUrl100"].blank? %>
                 <img data-src="/assets/book.jpg" class="img_tavore lazyload">
               <% else %>
@@ -21,7 +21,7 @@
                 <img data-src="<%= @image_url %>" class="img_tavore lazyload">
               <% end %>
             </div>
-            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+            <div class="inline_block_middle" style="width:77%;padding:0px 20px;">
               <div class="contain_title">
                 <div style="font-size:14px;color:#FAFAFA;font-weight:bolder;margin-top:2px;">
                   <%= item["trackCensoredName"] %>  
@@ -39,7 +39,11 @@
               </div>
             </div>
             <div class="inline_block_middle" style="width:5%;">
-              <img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% if Post.find_by(user_id: current_user.id, work_id: item["trackId"]).present? %>
+                <img data-src="/assets/checked_2FB4B4.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% else %>
+                <img data-src="/assets/right_FAFAFA.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% end %>
             </div>
           </div>
         </button>
@@ -58,8 +62,8 @@
         <%= hidden_field_tag :id, item["isbn"] %>
         <%= hidden_field_tag :api, "rakuten" %>
         <button type="submit">
-          <div style="text-align:left;margin:0 10px;padding:14px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-            <div class="inline_block_middle" style="width:20%;">
+          <div style="text-align:left;margin:0 10px;padding:12px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+            <div class="inline_block_middle" style="width:18%;">
               <% if item["largeImageUrl"].blank? %>
                 <img data-src="/assets/book.jpg" class="img_tavore lazyload">
               <% else %>
@@ -67,7 +71,7 @@
                 <img data-src="<%= @image_url %>" class="img_tavore lazyload">
               <% end %>
             </div>
-            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+            <div class="inline_block_middle" style="width:77%;padding:0px 20px;">
               <div class="contain_title">
                 <div style="font-size:14px;color:#FAFAFA;font-weight:bolder;margin-top:2px;">
                   <%= item["title"] %> 
@@ -80,7 +84,11 @@
               </div>
             </div>
             <div class="inline_block_middle" style="width:5%;">
-              <img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% if Post.find_by(user_id: current_user.id, work_id: item["isbn"]).present? %>
+                <img data-src="/assets/checked_2FB4B4.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% else %>
+                <img data-src="/assets/right_FAFAFA.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% end %>
             </div>
           </div>
         </button>
@@ -100,8 +108,8 @@
         <%= hidden_field_tag :id, item["trackId"] %>
         <%= hidden_field_tag :api, "itunes" %>
         <button type="submit">
-          <div style="text-align:left;margin:0 10px;padding:14px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-            <div class="inline_block_middle" style="width:20%;">
+          <div style="text-align:left;margin:0 10px;padding:12px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+            <div class="inline_block_middle" style="width:18%;">
               <% if item["artworkUrl100"].blank? %>
                 <img data-src="/assets/book.jpg" class="img_tavore lazyload">
               <% else %>
@@ -110,7 +118,7 @@
                 <img data-src="<%= @image_url %>" class="img_tavore lazyload">
               <% end %>
             </div>
-            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+            <div class="inline_block_middle" style="width:77%;padding:0px 20px;">
               <div class="contain_title">
                 <div style="font-size:14px;color:#FAFAFA;font-weight:bolder;margin-top:2px;">
                   <%= item["trackCensoredName"] %>  
@@ -128,7 +136,11 @@
               </div>
             </div>
             <div class="inline_block_middle" style="width:5%;">
-              <img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% if Post.find_by(user_id: current_user.id, work_id: item["trackId"]).present? %>
+                <img data-src="/assets/checked_2FB4B4.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% else %>
+                <img data-src="/assets/right_FAFAFA.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% end %>
             </div>
           </div>
         </button>

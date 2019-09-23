@@ -14,13 +14,13 @@
 			<div style="width:100%;padding:5px 10px;">
 		  		<div class="inline_block_middle" style="width:12%;text-align:center;">
 		  			<% if i == 1 %>
-		  				<img data-src="/assets/no1_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
+		  				<img src="/assets/no1_2FB4B4.svg" style="width:20px;height:20px;">
 		  			<% else %>
 		  				<% if i == 2 %>
-		  					<img data-src="/assets/no2_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
+		  					<img src="/assets/no2_2FB4B4.svg" style="width:20px;height:20px;">
 		  				<% else %>
 		  					<% if i == 3 %>
-			  					<img data-src="/assets/no3_2FB4B4.svg" class="lazyload" style="width:20px;height:20px;">
+			  					<img src="/assets/no3_2FB4B4.svg" style="width:20px;height:20px;">
 			  				<% else %>
 			  					<span style="font-size:12px;color:#C2C2C2;"><%= i %></span>
 			  				<% end %>
@@ -33,7 +33,7 @@
 			              	<div style="margin-top:4px;font-size:13px;color:#FAFAFA;">
 			                	<%= user.name %>
 			                	<% if user.authority == "public" %>		                		
-			                		<img data-src="/assets/public.svg" class="lazyload" style="width:14px;height:14px;">
+			                		<img src="/assets/public.svg" style="width:14px;height:14px;">
 			                	<% end %>
 			              	</div>
 		              	</div>

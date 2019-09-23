@@ -127,33 +127,33 @@ class WorksController < ApplicationController
   end
 
   def book
-  	@defaults = ITunesSearchAPI.search(:term => "comic", :country => "jp", :media => "ebook", :limit  => '20')
+  	@defaults = ITunesSearchAPI.search(:term => "comic", :country => "jp", :media => "ebook", :limit  => '30')
   end
 
   def ajax_book_list
     if params[:q].present?
-      @items_itunes = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "ebook", :limit  => '20')
+      @items_itunes = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "ebook", :limit  => '30')
       if @items_itunes.present?
         if @items_itunes.size <= 10
-          @items_rakuten = RakutenWebService::Books::Book.search(title: params[:q], hits: 20)
+          @items_rakuten = RakutenWebService::Books::Book.search(title: params[:q], hits: 30)
         end
       else
-        @items_rakuten = RakutenWebService::Books::Book.search(title: params[:q], hits: 20)
+        @items_rakuten = RakutenWebService::Books::Book.search(title: params[:q], hits: 30)
       end
     else
-      @defaults = ITunesSearchAPI.search(:term => "comic", :country => "jp", :media => "ebook", :limit  => '20')
+      @defaults = ITunesSearchAPI.search(:term => "comic", :country => "jp", :media => "ebook", :limit  => '30')
     end
   end
 
   def music
-  	@defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music",:entity =>'song', :limit  => '20', :attribute => "mixTerm")
+  	@defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music",:entity =>'song', :limit  => '30', :attribute => "mixTerm")
   end
 
   def ajax_music_list
     if params[:q].present?
       @items = ITunesSearchAPI.search(:term => params[:q], :country => "jp", :media => "music",:entity =>'song', :limit  => '30')
     else
-      @defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music",:entity =>'song', :limit  => '20', :attribute => "mixTerm")
+      @defaults = ITunesSearchAPI.search(:term => "jpop", :country => "jp", :media => "music",:entity =>'song', :limit  => '30', :attribute => "mixTerm")
     end
   end
 

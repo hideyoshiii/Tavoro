@@ -285,15 +285,21 @@
 </script>
 <%#URL置換%>
 <script defer>
-	function goDone(){
-  		location.replace("<%= root_url(only_path: false) %><%= @user.username %>");
-	}
-	function goDoing(){
-  		location.replace("<%= root_url(only_path: false) %><%= @user.username %>?type=doing");
-	}
-	function goWant(){
-  		location.replace("<%= root_url(only_path: false) %><%= @user.username %>?type=want");
-	}
+	<% unless @type == "done" %>
+		function goDone(){
+  			location.replace("<%= root_url(only_path: false) %><%= @user.username %>");
+		}
+	<% end %>
+	<% unless @type == "doing" %>
+		function goDoing(){
+	  		location.replace("<%= root_url(only_path: false) %><%= @user.username %>?type=doing");
+		}
+	<% end %>
+	<% unless @type == "want" %>
+		function goWant(){
+  			location.replace("<%= root_url(only_path: false) %><%= @user.username %>?type=want");
+		}
+	<% end %>
 </script>
 <%#lazyload.js%>
 <script defer>

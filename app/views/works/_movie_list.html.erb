@@ -7,15 +7,15 @@
         <%= hidden_field_tag :category, item["media_type"] %>
         <%= hidden_field_tag :id, item["id"] %>
           <button type="submit">
-            <div style="text-align:left;margin:0 10px;padding:14px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-              <div class="inline_block_middle" style="width:20%;">
+            <div style="text-align:left;margin:0 10px;padding:12px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+              <div class="inline_block_middle" style="width:18%;">
                 <% if item["poster_path"].blank? %>
                   <img data-src="/assets/movie.jpg" class="img_tavore lazyload">
                 <% else %>
                   <img data-src="https://image.tmdb.org/t/p/w154/<%= item.poster_path %>" class="img_tavore lazyload">
                 <% end %>
               </div>
-              <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+              <div class="inline_block_middle" style="width:77%;padding:0px 20px;">
                 <div class="contain_title">
                   <div style="font-size:14px;color:#FAFAFA;font-weight:bolder;margin-top:2px;">
                     <% if item["media_type"] == "movie" %>
@@ -38,7 +38,11 @@
                 </div>
               </div>
               <div class="inline_block_middle" style="width:5%;">
-                <img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+                <% if Post.find_by(user_id: current_user.id, work_id: item["id"]).present? %>
+                  <img data-src="/assets/checked_2FB4B4.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+                <% else %>
+                  <img data-src="/assets/right_FAFAFA.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+                <% end %>
               </div>
             </div>
           </button>
@@ -54,15 +58,15 @@
         <%= hidden_field_tag :category, "movie" %>
         <%= hidden_field_tag :id, item["id"] %>
         <button type="submit">
-          <div style="text-align:left;margin:0 10px;padding:14px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-            <div class="inline_block_middle" style="width:20%;">
+          <div style="text-align:left;margin:0 10px;padding:12px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+            <div class="inline_block_middle" style="width:18%;">
               <% if item["poster_path"].blank? %>
                 <img data-src="/assets/movie.jpg" class="img_tavore lazyload">
               <% else %>
                 <img data-src="https://image.tmdb.org/t/p/w154/<%= item.poster_path %>" class="img_tavore lazyload">
               <% end %>
             </div>
-            <div class="inline_block_middle" style="width:75%;padding:0px 20px;">
+            <div class="inline_block_middle" style="width:77%;padding:0px 20px;">
               <div class="contain_title">
                 <div style="font-size:14px;color:#FAFAFA;font-weight:bolder;margin-top:2px;">
                   <%= item["title"] %>  
@@ -72,10 +76,14 @@
                 <div style="font-size:12px;color:#FAFAFA;opacity:0.8;">
                   <%= item["release_date"].slice(0..3) %>            
                 </div>
-              </div>
+              </div>         
             </div>
             <div class="inline_block_middle" style="width:5%;">
-              <img data-src="/assets/right_C2C2C2.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% if Post.find_by(user_id: current_user.id, work_id: item["id"]).present? %>
+                <img data-src="/assets/checked_2FB4B4.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% else %>
+                <img data-src="/assets/right_FAFAFA.svg" class="lazyload" style="width:15px;height:15px;opacity:0.8;">
+              <% end %>
             </div>
           </div>
         </button>
