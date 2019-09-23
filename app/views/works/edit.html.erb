@@ -1,20 +1,20 @@
 <%#トップバー%>
 <div class="bar_top">      
-    <div class="inline_block_middle" style="width:15%;">
+    <div class="inline_block_middle" style="width:20%;">
     	<div style="text-align:left;padding-left:15px;">
         	<a href="javascript:void(0);" onclick="window.history.back();">
           		<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
         	</a>                    
       	</div>
     </div>
-    <div class="inline_block_middle" style="width:70%;">
+    <div class="inline_block_middle" style="width:60%;">
       	<div class="contain_title02" style="text-align:center;">
         	<div style="font-size:14px;color:#FAFAFA;">
           		<%= @post.title %>
         	</div>
       	</div>
     </div>
-    <div class="inline_block_middle" style="width:15%;">
+    <div class="inline_block_middle" style="width:20%;">
     	<div style="text-align:right;">
     		<button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">		
 				更新
@@ -102,20 +102,24 @@
 						<% else %>
 							<% @boolean = false %>
 						<% end %>
-						<div class="scroll_item04">
+						<div style="width:60%;height:auto;display:inline-block;vertical-align:middle;padding:0;margin:0;<%= 'margin-left:20%;' if i == 1 %><%= 'margin-left:50px;' if i != 1 %><%= 'margin-right:20%;' if i == @posters.size %>"> 
 							<div class="radio01">
 								<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original#{poster.file_path}", @boolean, {:id => "image_url#{i}"}) %>
 								<label for="image_url<%= i %>">
-									<img data-src="https://image.tmdb.org/t/p/w500<%= poster.file_path %>" class="lazyload" style="width:auto;height:50vh;">
+									<img data-src="https://image.tmdb.org/t/p/w500<%= poster.file_path %>" class="lazyload" style="width:100%;height:auto;">
 								</label>
 							</div>
 						</div>
 					<% end %>
 				<% else %>
 					<% if @post.image_url.blank? %>
-						<%= image_tag "#{@post.category}.jpg", :style =>'width:auto;height:50vh;' %>
+						<div style="width:60%;height:auto;display:inline-block;vertical-align:middle;padding:0;margin:0 20%;"> 
+							<%= image_tag "#{@post.category}.jpg", :style =>'width:100%;height:auto;' %>
+						</div>
 					<% else %>
-						<%= image_tag @poster_show, :style =>'width:auto;height:50vh;' %>
+						<div style="width:60%;height:auto;display:inline-block;vertical-align:middle;padding:0;margin:0 20%;"> 
+							<%= image_tag @poster_show, :style =>'width:100%;height:auto;' %>
+						</div>
 					<% end %>
 				<% end %>
 			</div>
@@ -123,23 +127,22 @@
 	<% end %>
 	<%#ポスター(ブック,コミックの時)%>
 	<% if @post.category == "book" || @post.category == "comic" %>
-		<div style="text-align:center;width:100%;margin:0 auto;">
+		<div style="width:60%;height:auto;display:inline-block;vertical-align:middle;padding:0;margin:0 20%;">
 			<% if @post.image_url.blank? %>
-				<%= image_tag "#{@post.category}.jpg", :style =>'width:55%;height:auto;' %>
+				<%= image_tag "#{@post.category}.jpg", :style =>'width:100%;height:auto;' %>
 			<% else %>
-				<%= image_tag @poster_show, :style =>'width:55%;height:auto;' %>
+				<%= image_tag @poster_show, :style =>'width:100%;height:auto;' %>
 			<% end %>
 		</div>
 	<% end %>
 	<%#ポスター(ミュージックの時)%>
 	<% if @post.category == "music" %>
-	<div style="text-align:center;width:100%;margin:0 auto;">
-		<div style="text-align:center;width:65%;margin:0 auto;">
+		<div style="width:60%;height:auto;display:inline-block;vertical-align:middle;padding:0;margin:0 20%;">
 			<div class="pile_preview">								
 				<% if @post.image_url.blank? %>
-					<%= image_tag "#{@post.category}.jpg", :style =>'width:100%;height:100%;' %>
+					<%= image_tag "#{@post.category}.jpg", :style =>'width:100%;height:auto;' %>
 				<% else %>
-					<%= image_tag @poster_show, :style =>'width:100%;height:100%;' %>
+					<%= image_tag @poster_show, :style =>'width:100%;height:auto;' %>
 				<% end %>
 				<% if @post.preview_url.present? %>
 					<div class="btn_preview_default" id="btn_preview">
