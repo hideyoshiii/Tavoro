@@ -1742,7 +1742,7 @@ button {
 //コレクション画像グリッド
 .test_radio {
   	position:relative;
-	height:28%;
+	height:210px;
 	width:30.666%;
 	padding:0;
     margin:3px 0px 3px 2%;
@@ -1759,14 +1759,14 @@ button {
   margin:0;
   padding:0 5px;
   z-index:3;
-  box-shadow:0 -3px 5px 5px rgba(0,0,0,0.7);
-  background:rgba(0,0,0,0.7);
+  box-shadow:0 -3px 5px 5px rgba(0,0,0,0.75);
+  background:rgba(0,0,0,0.75);
   overflow:hidden;
   word-wrap:break-word;
   }
 .test_radio_right {
   	position:relative;
-	height:28%;
+	height:210px;
 	width:30.666%;
 	padding:0;
     margin:3px 2% 3px 2%;
@@ -1783,17 +1783,17 @@ button {
   margin:0;
   padding:0 5px;
   z-index:3;
-  box-shadow:0 -3px 5px 5px rgba(0,0,0,0.7);
-  background:rgba(0,0,0,0.7);
+  box-shadow:0 -3px 5px 5px rgba(0,0,0,0.75);
+  background:rgba(0,0,0,0.75);
   overflow:hidden;
   word-wrap:break-word;
   }
 @media only screen and (max-width: 767px) and (orientation: portrait) {
 	.test_radio {
-		height:165px;
+		height:160px;
   	}
   	.test_radio_right {
-		height:165px;
+		height:160px;
   	}
 }
 @media only screen and (max-width: 370px) and (orientation: portrait) {
