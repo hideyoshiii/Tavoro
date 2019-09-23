@@ -22,165 +22,169 @@
 	    </div>
 	</div>
 	<div style="height:50px;"></div>
-	<div style="height:5px;"></div>
 
 	<% if @posts.present? %>
-		<% @hash = @posts.group_by{|u| [u.created_at.strftime('%Y%m%d'), u.user] } %>
-		<% @hash.each.with_index(1) do |(key, value), index| %>
-			<div class="horizontal_scroll">
-				<% value.each.with_index(1) do |post, i| %>			
-					<div style="width:80%;height:68vh;display:inline-block;padding:0;margin:0 0 15px;<%= 'margin-left:10%;' if i == 1 %><%= 'margin-left:15px;' if i != 1 %><%= 'margin-right:10%;' if i == value.size %>"> 
-						<div class="base01" style="border-radius:8px;">
-							<% if post.image_url.blank? %>
-								<img src="/assets/<%= post.category %>.jpg" class="img_myboom">
-							<% else %>
-								<% if post.category == "movie" || post.category == "tv" %>
-									<% @poster_show = post.image_url.sub(/original/, 'w500') %>
-								<% end %>
-								<% if post.category == "book" || post.category == "comic" %>
-									<% if post.api == "itunes" %>
-										<% @poster_show = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-									<% else %>
-										<% @poster_show = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
+		<div class="post-list jscroll">
+			<% @hash = @posts.group_by{|u| [u.created_at.strftime('%Y%m%d'), u.user] } %>
+			<% @hash.each.with_index(1) do |(key, value), index| %>
+				<div class="horizontal_scroll">
+					<% value.each.with_index(1) do |post, i| %>			
+						<div style="width:82%;height:70vh;display:inline-block;padding:0;margin:0 0 15px;<%= 'margin-left:9%;' if i == 1 %><%= 'margin-left:15px;' if i != 1 %><%= 'margin-right:9%;' if i == value.size %>"> 
+							<div class="base01" style="border-radius:8px;">
+								<% if post.image_url.blank? %>
+									<img src="/assets/<%= post.category %>.jpg" class="img_myboom">
+								<% else %>
+									<% if post.category == "movie" || post.category == "tv" %>
+										<% @poster_show = post.image_url.sub(/original/, 'w500') %>
 									<% end %>
+									<% if post.category == "book" || post.category == "comic" %>
+										<% if post.api == "itunes" %>
+											<% @poster_show = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+										<% else %>
+											<% @poster_show = post.image_url.sub(/jpg/, 'jpg?_ex=500x500') %>
+										<% end %>
+									<% end %>
+									<% if post.category == "music" %>
+										<% @poster_show = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
+									<% end %>
+									<img src="<%= @poster_show %>" class="img_myboom_blur" style="border-radius:8px;">
 								<% end %>
-								<% if post.category == "music" %>
-									<% @poster_show = post.image_url.sub(/1000x1000bb/, '500x500bb') %>
-								<% end %>
-								<img src="<%= @poster_show %>" class="img_myboom_blur" style="border-radius:10px;">
-							<% end %>
-							<span>										
-								<div class="layer05" style="background:rgba(0,0,0,0.65);">
-								</div>
-								<div class="layer03" style="padding:15px 15px;">
-									<div class="inline_block_middle" style="width:800%;">
-										<%= link_to "/#{post.user.username}" do %>
-											<div class="inline_block_middle" style="width:45px;">
-									            <% if post.user.image.present? %>
-									                <img src="<%= post.user.image(:medium) %>" style="width:35px;height:35px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-									            <% else %>
-									                <img src="/assets/user.jpg" style="width:35px;height:35px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
-									            <% end %>
-											</div>
-											<div class="inline_block_middle" style="width:calc(100% - 45px);">
-												<div class="contain_title02">
-													<div style="font-size:12px;color:#FAFAFA;word-wrap:break-word;margin-top:1px;">
-														<%= post.user.name %>
-														<% if post.user.authority == "public" %>
-									                    	<img src="/assets/public.svg" class="icon_public_min">
-									                    <% end %>
-													</div>
+								<span>										
+									<div class="layer05" style="background:rgba(0,0,0,0.65);">
+									</div>
+									<div class="layer03" style="padding:15px 15px;">
+										<div class="inline_block_middle" style="width:800%;">
+											<%= link_to "/#{post.user.username}" do %>
+												<div class="inline_block_middle" style="width:45px;">
+										            <% if post.user.image.present? %>
+										                <img src="<%= post.user.image(:medium) %>" style="width:35px;height:35px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+										            <% else %>
+										                <img src="/assets/user.jpg" style="width:35px;height:35px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+										            <% end %>
 												</div>
-												<div class="contain_title02">
-													<div style="font-size:10px;color:#FAFAFA;word-wrap:break-word;margin-top:1px;opacity:0.6;">
-														<% if post.category == "movie" %>
-															<%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> 映画
-														<% end %>
-														<% if post.category == "tv" %>
-															<%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> テレビ
-														<% end %>
-														<% if post.category == "book" %>
-															<%= image_tag "book_FAFAFA.svg", :class =>'icon_category' %> ブック
-														<% end %>
-														<% if post.category == "comic" %>
-															<%= image_tag "book_FAFAFA.svg", :class =>'icon_category' %> コミック
-														<% end %>
-														<% if post.category == "music" %>
-															<%= image_tag "music_FAFAFA.svg", :class =>'icon_category' %> ミュージック
-														<% end %>													
-														<% @seconds = (Time.now - post.created_at).round  %>
-														<% if @seconds <= 3600 %>
-															- <%= @seconds / 60 %>分前
-														<% else %>
-															<% if @seconds <= 86400 %>
-																	- <%= @seconds / (60 * 60) %>時間前
+												<div class="inline_block_middle" style="width:calc(100% - 45px);">
+													<div class="contain_title02">
+														<div style="font-size:12px;color:#FAFAFA;word-wrap:break-word;margin-top:1px;">
+															<%= post.user.name %>
+															<% if post.user.authority == "public" %>
+										                    	<img src="/assets/public.svg" class="icon_public_min">
+										                    <% end %>
+														</div>
+													</div>
+													<div class="contain_title02">
+														<div style="font-size:10px;color:#FAFAFA;word-wrap:break-word;margin-top:1px;opacity:0.6;">
+															<% if post.category == "movie" %>
+																<%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> 映画
+															<% end %>
+															<% if post.category == "tv" %>
+																<%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> テレビ
+															<% end %>
+															<% if post.category == "book" %>
+																<%= image_tag "book_FAFAFA.svg", :class =>'icon_category' %> ブック
+															<% end %>
+															<% if post.category == "comic" %>
+																<%= image_tag "book_FAFAFA.svg", :class =>'icon_category' %> コミック
+															<% end %>
+															<% if post.category == "music" %>
+																<%= image_tag "music_FAFAFA.svg", :class =>'icon_category' %> ミュージック
+															<% end %>													
+															<% @seconds = (Time.now - post.created_at).round  %>
+															<% if @seconds <= 3600 %>
+																- <%= @seconds / 60 %>分前
 															<% else %>
-																<% if @seconds <= 604800 %>
-																	- <%= @seconds / (60 * 60 * 24) %>日前
+																<% if @seconds <= 86400 %>
+																		- <%= @seconds / (60 * 60) %>時間前
 																<% else %>
-																	- <%= post.created_at.strftime('%m月%d日') %>
+																	<% if @seconds <= 604800 %>
+																		- <%= @seconds / (60 * 60 * 24) %>日前
+																	<% else %>
+																		- <%= post.created_at.strftime('%m月%d日') %>
+																	<% end %>
 																<% end %>
 															<% end %>
-														<% end %>
+														</div>
 													</div>
 												</div>
-											</div>
-										<% end %>
-									</div>
-								</div>
-								<div class="layer01">
-									<%= link_to "/post/#{post.id}" do %>
-										<% if post.image_url.blank? %>
-											<img src="/assets/<%= post.category %>.jpg" class="img_tavore" style="border-radius:4px;">
-										<% else %>	
-											<img src="<%= @poster_show %>" class="img_tavore" style="border-radius:4px;" >		
-										<% end %>
-									<% end %>					
-								</div>
-								<div class="layer02">
-									<%= link_to "/post/#{post.id}" do %>
-										<div style="font-size:14px;color:#FAFAFA;text-shadow:0px 0px 2px rgba(0,0,0,1);">
-											<% if post.review == "bookmark" %>
-												<% if post.category == "movie" || post.category == "tv" %>
-													観たいです
-												<% end %>
-												<% if post.category == "book" || post.category == "comic" %>
-													読みたいです
-												<% end %>
-												<% if post.category == "music" %>
-													聴きたいです
-												<% end %>
-											<% end %>
-											<% if post.review == "doing" %>
-												<% if post.category == "movie" || post.category == "tv" %>
-													観ています
-												<% end %>
-												<% if post.category == "book" || post.category == "comic" %>
-													読んでいます
-												<% end %>
-												<% if post.category == "music" %>
-													聴いています
-												<% end %>
-											<% end %>
-											<% if post.review == "good" %>
-												<% if post.category == "movie" || post.category == "tv" %>
-													観ました
-												<% end %>
-												<% if post.category == "book" || post.category == "comic" %>
-													読みました
-												<% end %>
-												<% if post.category == "music" %>
-													聴きました
-												<% end %>
-											<% end %>
-											<% if post.review == "favorite" %>
-												<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめしています
-											<% end %>
-											<% if post.review == "bad" %>
-												<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしていません
 											<% end %>
 										</div>
-										<div class="contain_title" style="white-space:normal;">
-											<div style="font-size:18px;color:#FAFAFA;text-shadow:0px 0px 2px rgba(0,0,0,0.8);font-weight:bold;letter-spacing:0.02em;">
-												<%= post.title %>
+									</div>
+									<div class="layer01">
+										<%= link_to "/post/#{post.id}" do %>
+											<% if post.image_url.blank? %>
+												<img src="/assets/<%= post.category %>.jpg" class="img_tavore" style="border-radius:4px;">
+											<% else %>	
+												<img src="<%= @poster_show %>" class="img_tavore" style="border-radius:4px;" >		
+											<% end %>
+										<% end %>					
+									</div>
+									<div class="layer02">
+										<%= link_to "/post/#{post.id}" do %>
+											<div style="font-size:14px;color:#FAFAFA;text-shadow:0px 0px 2px rgba(0,0,0,1);">
+												<% if post.review == "bookmark" %>
+													<% if post.category == "movie" || post.category == "tv" %>
+														観たいです
+													<% end %>
+													<% if post.category == "book" || post.category == "comic" %>
+														読みたいです
+													<% end %>
+													<% if post.category == "music" %>
+														聴きたいです
+													<% end %>
+												<% end %>
+												<% if post.review == "doing" %>
+													<% if post.category == "movie" || post.category == "tv" %>
+														観ています
+													<% end %>
+													<% if post.category == "book" || post.category == "comic" %>
+														読んでいます
+													<% end %>
+													<% if post.category == "music" %>
+														聴いています
+													<% end %>
+												<% end %>
+												<% if post.review == "good" %>
+													<% if post.category == "movie" || post.category == "tv" %>
+														観ました
+													<% end %>
+													<% if post.category == "book" || post.category == "comic" %>
+														読みました
+													<% end %>
+													<% if post.category == "music" %>
+														聴きました
+													<% end %>
+												<% end %>
+												<% if post.review == "favorite" %>
+													<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめしています
+												<% end %>
+												<% if post.review == "bad" %>
+													<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしていません
+												<% end %>
 											</div>
-										</div>								
-										<% if post.description.present? %>
-											<div class="balloon_top"></div>
-											<div class="balloon">
-												<div>
-											  		<%= safe_join(post.description.split("\n"),tag(:br)) %>
-											  	</div>
-											</div>
+											<div class="contain_title" style="white-space:normal;">
+												<div style="font-size:18px;color:#FAFAFA;text-shadow:0px 0px 2px rgba(0,0,0,0.8);font-weight:bold;letter-spacing:0.02em;">
+													<%= post.title %>
+												</div>
+											</div>								
+											<% if post.description.present? %>
+												<div class="balloon_top"></div>
+												<div class="balloon">
+													<div>
+												  		<%= safe_join(post.description.split("\n"),tag(:br)) %>
+												  	</div>
+												</div>
+											<% end %>
 										<% end %>
-									<% end %>
-								</div>
-							</span>
-						</div>
-					</div>		
-				<% end %>
+									</div>
+								</span>
+							</div>
+						</div>		
+					<% end %>
+				</div>
+			<% end %>
+			<div style="display:none;">
+				<%= paginate @posts %>
 			</div>
-		<% end %>
+		</div>
 		<div style="height:40px;"></div>
 	<% else %>
 		<%#投稿がない時%>
@@ -210,10 +214,19 @@
 	<% end %>
 	<%#投稿ボタン%>
 	<%= render "partial/modal_post" %>
-	<%#lazyload.js%>
+	<%#jscroll.js%>
 	<script defer>
 		$(function() {
-	    	$('img.lazyload').lazyload();
+	    	$(window).on('scroll', function() {
+			    scrollHeight = $(document).height();
+			    scrollPosition = $(window).height() + $(window).scrollTop();
+			    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+			        $('.jscroll').jscroll({
+			            contentSelector: '.post-list',
+			            nextSelector: 'span.next:last a',
+			        });
+			    }
+			});
 		});
 	</script>
 <% else %>

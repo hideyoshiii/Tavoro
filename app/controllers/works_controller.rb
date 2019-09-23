@@ -10,7 +10,8 @@ class WorksController < ApplicationController
       @users = @user.followings
       @posts = Post.all
       @posts = @posts.where(user_id: @user).or(@posts.where(user_id: @users))
-      @posts = @posts.order(created_at: "DESC").limit(10)
+      @posts = @posts.order(created_at: "DESC")
+      @posts = @posts.page(params[:page]).per(10)
     end
   end
 
