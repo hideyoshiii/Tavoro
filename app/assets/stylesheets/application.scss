@@ -1099,322 +1099,6 @@ button {
 }
 
 
-//カード関連
-.invitation_card {
-	position: relative;
-    background: -webkit-linear-gradient(-450deg, rgba(17,17,17,0.35), rgba(5,98,123,0.35));
-    background: linear-gradient(-45deg, rgba(17,17,17,0.35), rgba(5,98,123,0.35)); 
-    width:100%;
-    height:70%;
-    text-align:center;
-    overflow:hidden;
-    padding:15px;
-    margin:0 auto;
-    border-radius:2px;
-}
-.invitation_card span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  width:100%;
-  height:auto;
-  padding:0;
-  margin:0;
-  text-align:center;
-}
-.invitation_card02 {
-	position: relative;
-    background: -webkit-linear-gradient(-450deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5));
-    background: linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5)); 
-    width:70%;
-    height:65vh;
-    text-align:center;
-    overflow:hidden;
-    padding:15px;
-    margin:0 auto;
-    border-radius:2px;
-}
-.invitation_card02 span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  width:100%;
-  height:auto;
-  padding:0 20px;
-  margin:0;
-  text-align:center;
-}
-.card01 {
-	position: relative;
-    border-radius:2px;
-    background: -webkit-linear-gradient(-450deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5));
-    background: linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5)); 
-    width:140px;
-    height:190px;
-    text-align:center;
-    overflow:hidden;
-    padding:10px;
-    margin:0;
-}
-.card01 span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  width:100%;
-  height:auto;
-  padding:0;
-  margin:0;
-  text-align:center;
-}
-.card02 {
-    border-radius:2px;
-    background: -webkit-linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5));
-    background: linear-gradient(-45deg, rgba(17,17,17,0.5), rgba(5,98,123,0.5)); 
-    width:160px;
-    height:220px;
-    padding:10px;
-    text-align:center;
-    overflow:hidden;
-}
-.card03 {
-	position:relative;
-    background:-webkit-linear-gradient(-45deg, rgba(17,17,17,0.6), rgba(5,98,123,0.2));
-    background:linear-gradient(-45deg, rgba(17,17,17,0.6), rgba(5,98,123,0.2)); 
-    width:90%;
-    height:auto;
-    padding:12px 15px;
-    margin:0 auto;
-    border-radius:2px;
-}
-
-
-
-
-
-//配置関連
-.base01 {
-  	position: relative;
-	height:100%;
-	width:100%;
-	padding:0;
-	margin: 0 auto;
-    overflow:hidden;
-  }
-.base01 span .layer01 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  width:55%;
-  height:auto;
-  padding:0;
-  margin:0;
-  z-index:4;
-  text-align:center;
-  }
-.base01 span .layer02 {
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  -ms-transform: translate(-0%,-50%);
-  -webkit-transform: translate(-0%,-50%);
-  transform: translate(-0%,-50%);
-  width:100%;
-  height:auto;
-  padding:0 15px;
-  margin:0 auto;
-  z-index:5;
-  }
-.base01 span .layer03 {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width:100%;
-  height:auto;
-  padding:0;
-  margin:0;
-  z-index:5;
-  }
-.base01 span .layer04 {
-  position: absolute;
-  bottom: 0%;
-  left: 0%;
-  -ms-transform: translate(0%,0%);
-  -webkit-transform: translate(0%,0%);
-  transform: translate(0%,0%);
-  width:100%;
-  height:auto;
-  padding:0;
-  margin:0;
-  z-index:4;
-  text-align:left;
-  }
-.base01 span .layer05 {
-  position:absolute;
-  top:0%;
-  left:0%;
-  width:100%;
-  height:100%;
-  padding:0;
-  margin:0;
-  background:rgba(0,0,0,0.75);
-  z-index:3;
-  }
-.base01 span .layer06 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  width:100%;
-  height:auto;
-  padding:0;
-  margin:0;
-  z-index:4;
-  text-align:center;
-  }
-.base01 span .layer07 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  width:60%;
-  height:auto;
-  padding:0;
-  margin:0;
-  z-index:4;
-  }
-.base01 span .layer08 {
-  position: absolute;
-  top: 0%;
-  right: 0%;
-  width:auto;
-  height:auto;
-  padding:0;
-  margin:0;
-  z-index:6;
-  }
-.base01 span .layer09 {
-  position: absolute;
-  top: 88%;
-  left: 0%;
-  width:100%;
-  height:auto;
-  padding:0;
-  margin:0;
-  z-index:5;
-  text-align:center;
-  background:none;
-  }
-.base01 span .layer10 {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width:100%;
-  height:100%;
-  padding:0;
-  margin:0;
-  z-index:3;
-  text-align:right;
-  background:rgba(0,0,0,0.3);
-  }
-.base01 span .layer11 {
-  position:absolute;
-  bottom:6%;
-  left:0%;
-  width:auto;
-  height:auto;
-  padding:0;
-  margin:0;
-  z-index:5;
-}
-.base01 span .layer12 {
-  position:absolute;
-  bottom:6%;
-  right:0%;
-  width:auto;
-  height:auto;
-  padding:0;
-  margin:0;
-  z-index:5;
-}
-.test_radio03 {
-  	position: relative;
-	height:100vh;
-	width:100%;
-	padding:0;
-	margin: 0 auto;
-    overflow:scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-.test_radio03 span .tango01 {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width:100%;
-  height:auto;
-  padding:0;
-  margin:0;
-  z-index:2;
-  }
-.pile_preview {
-  	position: relative;
-  	width:100%;
-    height:100%;
-    margin:0 auto;
-  }
-.pile_preview div {
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  }
-.pile_category {
-  	position: relative;
-  	width:120px;
-    height:auto;
-    padding:0;
-    margin:0 auto;
-    border-radius:3px;
-    text-align:center
-  }
-.pile_category p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  font-size:15px;
-  z-index:2;
-  }
-.pile_category > .smoke {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width:100%;
-  height:100%;
-  padding:0;
-  margin:0;
-  background:rgba(0,0,0,0.3);
-  z-index:1;
-  }
-
-
-
 //吹き出しコメント
 .balloon{
   float:left;
@@ -1761,48 +1445,47 @@ button {
 	}
 }
 
-
-//コレクション画像グリッド
-.test_radio {
+//コレクショングリッド
+.grid_collection {
   	position:relative;
-	height:210px;
+  	float:left;
 	width:30.666%;
+	height:auto;
 	padding:0;
     margin:3px 0px 3px 2%;
-    overflow:hidden;
-    float:left;
     border-radius:4px;
-  }
-.test_radio span {
-  position:absolute;
-  bottom:0%;
-  left:0%;
-  width:100%;
-  height:26%;
-  margin:0;
-  padding:0 5px;
-  z-index:3;
-  box-shadow:0 -3px 5px 5px rgba(0,0,0,0.75);
-  background:rgba(0,0,0,0.75);
-  overflow:hidden;
-  word-wrap:break-word;
-  }
-.test_radio_right {
+    overflow:hidden;
+}
+.grid_collection_right {
   	position:relative;
-	height:210px;
+  	float:left;
 	width:30.666%;
+	height:auto;
 	padding:0;
     margin:3px 2% 3px 2%;
-    overflow:hidden;
-    float:left;
     border-radius:4px;
-  }
-.test_radio_right span {
+    overflow:hidden;
+    z-index:1;
+}
+.inner {
+  	position:relative;
+    width:100%;
+    height:100%;
+    padding:140% 0 0;
+}
+.inner > .img {
+  	position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+.inner > .smoke {
   position:absolute;
   bottom:0%;
   left:0%;
   width:100%;
-  height:26%;
+  height:25%;
   margin:0;
   padding:0 5px;
   z-index:3;
@@ -1810,22 +1493,81 @@ button {
   background:rgba(0,0,0,0.75);
   overflow:hidden;
   word-wrap:break-word;
-  }
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-	.test_radio {
-		height:158px;
-  	}
-  	.test_radio_right {
-		height:158px;
-  	}
+  z-index:2;
 }
-@media only screen and (max-width: 370px) and (orientation: portrait) {
-	.test_radio {
-		height:155px;
-  	}
-  	.test_radio_right {
-		height:155px;
-  	}
+
+//ホームグリッド
+.grid_home {
+  	position:relative;
+  	display:inline-block;
+	width:86%;
+	height:auto;
+	padding:0;
+    margin:0 0 15px;
+    border-radius:8px;
+    overflow:hidden;
+    z-index:1;
+}
+.inner_home {
+  	position:relative;
+  	width:100%;
+	height:100%;
+	padding:150% 0 0;
+	margin:0;
+  }
+.inner_home > .img {
+  	position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+}
+.inner_home > .smoke {
+  position:absolute;
+  top:0%;
+  left:0%;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0);
+  z-index:2;
+  }
+.inner_home > .layer01 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width:55%;
+  height:auto;
+  padding:0;
+  margin:0;
+  z-index:3;
+  text-align:center;
+  }
+.inner_home > .layer02 {
+  position:absolute;
+  top:50%;
+  left:0%;
+  -ms-transform:translate(-0%,-50%);
+  -webkit-transform:translate(-0%,-50%);
+  transform:translate(-0%,-50%);
+  width:100%;
+  height:auto;
+  padding:0 15px;
+  margin:0;
+  z-index:4;
+  }
+.inner_home > .layer03 {
+  position:absolute;
+  top:0%;
+  left:0%;
+  width:100%;
+  height:auto;
+  padding:0;
+  margin:0;
+  z-index:5;
 }
 
 
@@ -2272,6 +2014,17 @@ button {
 
 
 //音楽再生関連
+.pile_preview {
+  	position: relative;
+  	width:100%;
+    height:100%;
+    margin:0 auto;
+  }
+.pile_preview div {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  }
 .btn_preview_default{
 	display: block;
 	position: relative;

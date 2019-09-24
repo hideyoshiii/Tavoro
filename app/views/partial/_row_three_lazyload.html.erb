@@ -1,47 +1,51 @@
-<div class="<%= 'test_radio_right' if i % 3 == 0 %> <%= 'test_radio' if i % 3 != 0 %>">
+<div class="<%= 'grid_collection_right' if i % 3 == 0 %> <%= 'grid_collection' if i % 3 != 0 %>">
 	<%= link_to "/post/#{post.id}" do %>
-		<% if post.image_url.blank? %>
-			<img data-src="/assets/<%= post.category %>.jpg" class="img_myboom lazyload">
-		<% else %>									
-			<% if post.category == "movie" || post.category == "tv" %>
-				<% @image_url = post.image_url.sub(/original/, 'w300') %>
-			<% end %>
-			<% if post.category == "book" || post.category == "comic" %>
-				<% if post.api == "itunes" %>
-					<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-				<% else %>
-					<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
-				<% end %>
-			<% end %>
-			<% if post.category == "music" %>
-				<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
-			<% end %>
-			<img data-src="<%= @image_url %>" class="img_myboom lazyload">
-		<% end %>
-		<span>
-			<div style="font-size:10px;line-height:1.0;color:#FAFAFA;opacity:0.8;">
-				<% if post.category == "movie" %>
-					映画
-				<% end %>
-				<% if post.category == "tv" %>
-					テレビ
-				<% end %>
-				<% if post.category == "book" %>
-					ブック
-				<% end %>
-				<% if post.category == "comic" %>
-					コミック
-				<% end %>
-				<% if post.category == "music" %>
-					ミュージック
+		<div class="inner">
+			<div class="img">
+				<% if post.image_url.blank? %>
+					<img data-src="/assets/<%= post.category %>.jpg" class="img_myboom lazyload">
+				<% else %>									
+					<% if post.category == "movie" || post.category == "tv" %>
+						<% @image_url = post.image_url.sub(/original/, 'w300') %>
+					<% end %>
+					<% if post.category == "book" || post.category == "comic" %>
+						<% if post.api == "itunes" %>
+							<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+						<% else %>
+							<% @image_url = post.image_url.sub(/jpg/, 'jpg?_ex=300x300') %>
+						<% end %>
+					<% end %>
+					<% if post.category == "music" %>
+						<% @image_url = post.image_url.sub(/1000x1000bb/, '300x300bb') %>
+					<% end %>
+					<img data-src="<%= @image_url %>" class="img_myboom lazyload">
 				<% end %>
 			</div>
-			<div style="height:3px;"></div>
-			<div class="contain_title">
-				<div style="font-size:10px;line-height:1.2;color:#FAFAFA;opacity:1;font-weight:bold;letter-spacing:0.05em;">
-					<%= post.title %>
+			<div class="smoke">
+				<div style="font-size:10px;line-height:1.0;color:#FAFAFA;opacity:0.8;">
+					<% if post.category == "movie" %>
+						映画
+					<% end %>
+					<% if post.category == "tv" %>
+						テレビ
+					<% end %>
+					<% if post.category == "book" %>
+						ブック
+					<% end %>
+					<% if post.category == "comic" %>
+						コミック
+					<% end %>
+					<% if post.category == "music" %>
+						ミュージック
+					<% end %>
+				</div>
+				<div style="height:3px;"></div>
+				<div class="contain_title">
+					<div style="font-size:10px;line-height:1.2;color:#FAFAFA;opacity:1;font-weight:bold;letter-spacing:0.05em;">
+						<%= post.title %>
+					</div>
 				</div>
 			</div>
-		</span>
+		</div>
 	<% end %>
 </div>
