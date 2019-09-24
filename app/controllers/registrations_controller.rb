@@ -8,7 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    "/users/edit"
+    "/#{current_user.username}"
   end
 
   def follow_tavore

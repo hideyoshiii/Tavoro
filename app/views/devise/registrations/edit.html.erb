@@ -1,341 +1,127 @@
 <%#トップバー%>
 <div class="bar_top">      
-  <div class="inline_block_middle" style="width:15%;">
+  <div class="inline_block_middle" style="width:20%;">
     <div style="text-align:left;padding-left:15px;">
       <a href="javascript:void(0);" onclick="window.history.back();">
         <%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
       </a>                    
     </div>
   </div>
-  <div class="inline_block_middle" style="width:70%;">
+  <div class="inline_block_middle" style="width:60%;">
     <div class="contain_title02" style="text-align:center;">
       <div style="font-size:14px;color:#FAFAFA;">
-        アカウントを編集
+        アカウント編集
       </div>
     </div>
   </div>
-  <div class="inline_block_middle" style="width:15%;">
-    <div style="text-align:right;padding-right:15px;">             
+  <div class="inline_block_middle" style="width:20%;">
+    <div style="text-align:right;">
+      <button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">    
+        変更
+      </button> 
     </div>
   </div>
 </div>
 <div style="height:50px;"></div>
 
-<%#アイコン画像%>
-<div style="height:10px;"></div>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <div class="form01" style="text-align:center;">
-   <label for="image">
-      <div class="preview00">
-        <div class="preview01">
-          <% if current_user.image.present? %>
-            <%= image_tag current_user.image(:large), :class => "img_user08" %>
-          <% else %>
-            <%= image_tag "user.jpg", :class =>'img_user08' %>
-          <% end %>
-          <span>
-            <%= image_tag "camera_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.5;' %>
-          </span>
-        </div>
-      </div>
-      <div class="preview02">
-      </div>
+  <div style="height:20px;"></div>
+  <%#アイコン画像%>
+  <div class="form_user_edit_image" style="text-align:center;">
+    <label for="image" id="preview">
+      <% if current_user.image.present? %>
+        <%= image_tag current_user.image(:large), :style => "width:110px;height:110px;border-radius:50%;object-fit:cover;", :id => "preview_image" %>
+      <% else %>
+        <%= image_tag "user.jpg", :style =>'width:110px;height:110px;border-radius:50%;object-fit:cover;', :id => "preview_image" %>
+      <% end %>
+      <span>
+        <%= image_tag "camera_FAFAFA.svg", :style =>'width:20px;height:20px;opacity:0.5;' %>
+      </span>
     </label>
-    <%= f.file_field :image, id:"image", onchange:"this.form.submit()" %>
+    <%= f.file_field :image, id: "image" %>
   </div>
+  <div style="height:20px;"></div>
+  <%#名前%>
+  <div style="padding:3px 15px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="inline_block_middle" style="width:90%;">
+      <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
+        name
+      </div>
+    </div>
+  </div>
+  <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="form_user_edit_name">
+      <%= f.text_field :name,placeholder: "名前", required: "", autofocus: true %>
+    </div>
+  </div>
+  <div style="height:30px;"></div> 
+  <%#ユーザーid%>
+  <div style="padding:5px 15px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="inline_block_middle" style="width:90%;">
+      <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
+        user_id
+      </div>
+    </div>
+  </div>
+  <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="form_user_edit_name">
+      <%= f.text_field :username,placeholder: "ユーザーid", required: "", autofocus: true, :id => "inc_search" %>
+      <div id='validate_username'>
+        <%= render partial: 'users/validate_username' %>
+      </div>
+    </div>
+  </div>
+  <div style="height:30px;"></div> 
+  <%#自己紹介%>
+  <div style="padding:5px 15px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="inline_block_middle" style="width:90%;">
+      <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
+        description
+      </div>
+    </div>
+  </div>
+  <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="form_user_edit_description">
+      <%= f.text_area :description, id: "textarea", placeholder: "自己紹介を書く", autofocus: true %>
+    </div>
+  </div>
+  <div style="height:30px;"></div>
+  <%#email%>
+  <div style="padding:5px 15px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="inline_block_middle" style="width:90%;">
+      <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
+        e-mail
+      </div>
+    </div>
+  </div>
+  <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="form_user_edit_name">
+      <%= f.email_field :email,placeholder: "メールアドレス", required: "", autofocus: true %>
+    </div>
+  </div>
+  <div style="height:30px;"></div>
+  <%#password%>
+  <div style="padding:5px 15px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="inline_block_middle" style="width:90%;">
+      <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
+        password(変更時のみ)
+      </div>
+    </div>
+  </div>
+  <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="form_user_edit_name">
+      <%= f.password_field :password,placeholder: "パスワード" %>
+    </div>
+  </div>
+  <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="form_user_edit_name">
+      <%= f.password_field :password_confirmation,:placeholder => 'パスワード(確認用)' %>
+    </div>
+  </div>
+  <div style="height:30px;"></div>
 <% end %>
-<%#名前%>
-<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-  <div class="inline_block_middle" style="width:90%;">
-    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
-      名前
-    </div>
-  </div>
-</div>
-<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-  <a href="#" data-toggle="modal" data-target="#myModal_name">
-    <div class="inline_block_middle" style="width:90%;">
-      <div class="contain_title02" style="max-width:80%;">
-        <div style="font-size:14px;color:#FAFAFA;;">
-          <%= @user.name %>
-        </div>
-      </div>
-    </div>
-    <div class="inline_block_middle" style="width:10%;">
-      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
-    </div>
-  </a>
-</div>
-<div style="height:5vh;"></div> 
-<%#ユーザーid%>
-<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-  <div class="inline_block_middle" style="width:90%;">
-    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
-      ユーザーid
-    </div>
-  </div>
-</div>
-<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-  <a href="#" data-toggle="modal" data-target="#myModal_username">
-    <div class="inline_block_middle" style="width:90%;">
-      <div class="contain_title02" style="max-width:80%;">
-        <div style="font-size:14px;color:#FAFAFA;;">
-          <%= @user.username %>
-        </div>
-      </div>
-    </div>
-    <div class="inline_block_middle" style="width:10%;">
-      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
-    </div>
-  </a>
-</div>
-<div style="height:5vh;"></div> 
-<%#自己紹介%>
-<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-  <div class="inline_block_middle" style="width:90%;">
-    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
-      自己紹介
-    </div>
-  </div>
-</div>
-<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-  <a href="#" data-toggle="modal" data-target="#myModal_description">
-    <div class="inline_block_middle" style="width:90%;">
-      <div class="contain_title02" style="font-size:14px;color:#FAFAFA;max-width:80%;">
-        <% if @user.description.present? %>
-          <%= simple_format(@user.description, {}, wrapper_tag: "div") %>
-        <% else %>
-          <div style="color:#999999;">
-            自己紹介がありません
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="inline_block_middle" style="width:10%;">
-      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
-    </div>
-  </a>
-</div>
-<div style="height:5vh;"></div>
-<%#email%>
-<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-  <div class="inline_block_middle" style="width:90%;">
-    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
-      メールアドレス
-    </div>
-  </div>
-</div>
-<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-  <a href="#" data-toggle="modal" data-target="#myModal_email">
-    <div class="inline_block_middle" style="width:90%;">
-      <div class="contain_title02" style="max-width:80%;">
-        <div style="font-size:14px;color:#FAFAFA;">
-          <%= @user.email %>
-        </div>
-      </div>
-    </div>
-    <div class="inline_block_middle" style="width:10%;">
-      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
-    </div>
-  </a>
-</div>
-<div style="height:5vh;"></div>
-<%#password%>
-<div style="padding:3px 9px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-  <div class="inline_block_middle" style="width:90%;">
-    <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
-      パスワード
-    </div>
-  </div>
-</div>
-<div style="padding:10px 15px;margin-left:20px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
-  <a href="#" data-toggle="modal" data-target="#myModal_password">
-    <div class="inline_block_middle" style="width:90%;">
-      <div style="font-size:14px;color:#FAFAFA;">
-        パスワードを変更
-      </div>
-    </div>
-    <div class="inline_block_middle" style="width:10%;">
-      <%= image_tag "right_C2C2C2.svg", :style =>'width:15px;height:15px;opacity:0.8;' %>
-    </div>
-  </a>
-</div>
-<div style="height:5vh;"></div>
-<div style="height:10vh;"></div> 
 
-<%#nameモーダル%>
-<div class="modal bottom fade" id="myModal_name">
-  <div class="modal-dialog">
-    <div class="a1">
-      <div class="a4">
-        <div class="d1">    
-          <div class="d2"></div>
-        </div>
-      </div>
-      <div class="a7">
-        <a href="#" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_in">
-          <div style="padding:20px;">
-            <%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
-          </div>
-        </a>  
-      </div>
-      <div class="a8">
-        <div class="font_white_big">
-          名前
-        </div>
-        <div class="gogo">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
-            <div style="height:3vh;"></div>
-            <%= f.submit "保存",class:"btn_session" %>
-          <% end %>
-        </div>
-        <div style="height:5vh;"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<%#usernameモーダル%>
-<div class="modal bottom fade" id="myModal_username">
-  <div class="modal-dialog">
-    <div class="a1">
-      <div class="a4">
-        <div class="d1">    
-          <div class="d2"></div>
-        </div>
-      </div>
-      <div class="a7">
-        <a href="#" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_in">
-          <div style="padding:20px;">
-            <%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
-          </div>
-        </a>  
-      </div>
-      <div class="a8">
-        <div class="font_white_big">
-          ユーザーid
-        </div>
-        <div class="gogo">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= f.text_field :username,placeholder: "username", required: "", autofocus: true, :id => "inc_search" %>
-            <div id='validate_username'>
-              <%= render partial: 'users/validate_username' %>
-            </div>
-            <div style="height:3vh;"></div>
-            <%= f.submit "保存",class:"btn_session" %>
-          <% end %>
-        </div>
-        <div style="height:5vh;"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%#descriptionモーダル%>
-<div class="modal bottom fade" id="myModal_description">
-  <div class="modal-dialog">
-    <div class="a1">
-      <div class="a4">
-        <div class="d1">    
-          <div class="d2"></div>
-        </div>
-      </div>
-      <div class="a7">
-        <a href="#" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_in">
-          <div style="padding:20px;">
-            <%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
-          </div>
-        </a>  
-      </div>
-      <div class="a8">
-        <div class="font_white_big">
-          自己紹介
-        </div>
-        <div class="gogo">
-          <div style="height:3vh;"></div>
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <div class="" style="text-align:center;width:75%;padding:10px;margin:0 auto;">
-              <div style="position:relative;width:0;height:0;z-index:1;"></div>
-              <%= f.text_area :description, id: "textarea", placeholder: "自己紹介を書く", autofocus: true %>
-            </div>
-            <div style="height:5vh;"></div>
-            <%= f.submit "保存",class:"btn_session" %>
-          <% end %>
-        </div>
-        <div style="height:5vh;"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<%#emailモーダル%>
-<div class="modal bottom fade" id="myModal_email">
-  <div class="modal-dialog">
-    <div class="a1">
-      <div class="a4">
-        <div class="d1">    
-          <div class="d2"></div>
-        </div>
-      </div>
-      <div class="a7">
-        <a href="#" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_in">
-          <div style="padding:20px;">
-            <%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
-          </div>
-        </a>  
-      </div>
-      <div class="a8">
-        <div class="font_white_big">
-          メールアドレス
-        </div>
-        <div class="gogo">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= f.email_field :email,placeholder: "email", required: "", autofocus: true %>
-            <div style="height:3vh;"></div>
-            <%= f.submit "保存",class:"btn_session" %>
-          <% end %>
-        </div>
-        <div style="height:5vh;"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<%#passwordモーダル%>
-<div class="modal bottom fade" id="myModal_password">
-  <div class="modal-dialog">
-    <div class="a1">
-      <div class="a4">
-        <div class="d1">    
-          <div class="d2"></div>
-        </div>
-      </div>
-      <div class="a7">
-        <a href="#" data-toggle="modal" data-dismiss="modal" id="dismiss_sign_in">
-          <div style="padding:20px;">
-            <%= image_tag "cross_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.4;' %>
-          </div>
-        </a>  
-      </div>
-      <div class="a8">
-        <div class="font_white_big">
-          パスワードを変更
-        </div>
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %> 
-          <div class="gogo">
-            <div class="font_white">
-              (パスワードを変更時のみ下欄を埋めてください)
-            </div>
-            <div style="height:5vh;"></div>
-            <%= f.password_field :password,placeholder: "password", required: "" %>
-            <%= f.password_field :password_confirmation,:placeholder => 'password confirmation', required: "" %>
-            <div style="height:5vh;"></div>
-            <%= f.submit "変更",class:"btn_session" %>
-            <div style="height:10vh;"></div>
-          </div>
-        <% end %>     
-      </div>
-    </div>
-  </div>
-</div>
 
 <%#テキストエリアの自動改行%>
 <script defer>
@@ -367,7 +153,6 @@
           data: ("q=" + input)
       });
     };
-
     $('#inc_search').keyup(function() {
       input = $(this).val();   //前後の不要な空白を削除
       if(preInput !== input){
@@ -375,6 +160,28 @@
         preFunc = setTimeout(ajaxPost(input), 0);
       }
       preInput = input;
+    });
+  });
+</script>
+<%#投稿ボタンボタン%>
+<script defer>
+  $(function(){
+    //フォームにname属性を追加
+    var name = $('#edit_user').attr('name', 'myform');
+    $('#btn_post').click(function() {
+      document.myform.submit();
+    });
+  });
+</script>
+<%#投稿ボタンボタン%>
+<script defer>
+  $(function(){
+    $('#image').on('change', function (e) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $("#preview_image").attr('src', e.target.result);
+      }
+      reader.readAsDataURL(e.target.files[0]);
     });
   });
 </script>

@@ -1,14 +1,14 @@
 <%#投稿ボタン%>
-<div style="position:fixed;bottom:3%;left:0%;width:70%;margin:0 15%;z-index:99;">
+<div style="position:fixed;bottom:3%;left:0%;width:80%;margin:0 10%;z-index:99;">
 	<div style="width:33.3333%;display:inline-block;text-align:left;padding-left:15px;">
 		<% if request.path == "/" %>
-			<span onclick="scrollGO()" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,0.95);text-align:center;border-radius:20%;box-shadow:0px 0px 0px #000000;">
+			<span onclick="scrollGO()" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,1);text-align:center;border-radius:20%;box-shadow:0px 0px 8px rgba(0,0,0,0.8);">
 				<i>
 					<%= image_tag "home_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.8;' %>
 				</i>
 			</span>
 		<% else %>
-			<a href="/" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,0.95);text-align:center;border-radius:20%;box-shadow:0px 0px 0px #000000;">
+			<a href="/" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,1);text-align:center;border-radius:20%;box-shadow:0px 0px 8px rgba(0,0,0,0.8);">
 				<i>
 					<%= image_tag "home_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.8;' %>
 				</i>
@@ -16,7 +16,7 @@
 		<% end %>
 	</div>
 	<div style="width:33.3333%;display:inline-block;text-align:center;">
-		<a href="#" data-toggle="modal" data-target="#myModal_post" style="position:relative;display:inline-block;vertical-align:middle;width:60px;height:60px;line-height:60px;background:rgba(0,60,85,0.95);text-align:center;border-radius:50%;">
+		<a href="#" data-toggle="modal" data-target="#myModal_post" style="position:relative;display:inline-block;vertical-align:middle;width:55px;height:55px;line-height:55px;background:rgba(0,60,85,1);text-align:center;border-radius:50%;box-shadow:0px 2px 8px rgba(0,0,0,0.8);">
 			<i>
 				<%= image_tag "plus_FAFAFA.svg", :style =>'width:22px;height:22px;' %>
 			</i>
@@ -24,13 +24,13 @@
 	</div>
 	<div style="width:33.3333%;display:inline-block;text-align:right;padding-right:15px;">
 		<% if request.path == "/" + current_user.username || request.path == "/" + current_user.username + "/doing" || request.path == "/" + current_user.username + "/want" %>
-			<span onclick="scrollGO()" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,0.95);text-align:center;border-radius:20%;box-shadow:0px 0px 0px #000000;">
+			<span onclick="scrollGO()" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,1);text-align:center;border-radius:20%;box-shadow:0px 0px 8px rgba(0,0,0,0.8);">
 				<i>
 					<%= image_tag "avatar_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.8;' %>
 				</i>
 			</span>
 		<% else %>
-			<a href="/<%= current_user.username %>" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,0.95);text-align:center;border-radius:20%;box-shadow:0px 0px 0px #000000;">
+			<a href="/<%= current_user.username %>" style="position:relative;display:inline-block;vertical-align:middle;width:45px;height:45px;line-height:45px;background:rgba(25,25,25,1);text-align:center;border-radius:20%;box-shadow:0px 0px 8px rgba(0,0,0,0.8);">
 				<i>
 					<%= image_tag "avatar_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.8;' %>
 				</i>

@@ -246,3 +246,18 @@
     	$('img.lazyload').lazyload();
 	});
 </script>
+<%#ブラウザバック変更%>
+<% if request.referer&.include?(request.host_with_port) %>
+	<% if request.referer&.include?("edit") %>
+		<script defer>
+			$(function() {
+		    	// 戻るボタンを押された時に何も処理を行わない
+				history.pushState(null, null, null);
+				// 戻るボタンを押した時の処理を追加
+				window.addEventListener("popstate", function() {
+				  history.go(-3);
+				})
+			});
+		</script>
+	<% end %>
+<% end %>
