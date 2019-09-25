@@ -36,69 +36,65 @@
 	<% end %>
 	<div style="height:15px;"></div>
 	<%#レビュー%>				
-	<div class="nmn03" style="text-align:center;width:100%;padding:0px;margin:0 auto;">
-		<div class="inline_block_middle">
-		    <%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
-		    <label for="bookmark" class="radio">
-		    	<% if @category == "movie" || @category == "tv" %>
-					観たいです
-				<% end %>
-				<% if @category == "book" || @category == "comic" %>
-					読みたいです
-				<% end %>
-				<% if @category == "music" %>
-					聴きたいです
-				<% end %>
-		    </label>
-	    </div>
-	    <div class="inline_block_middle">
-		    <%= radio_button_tag(:review, "doing", false, {:id => "doing"}) %>
-		    <label for="doing" class="radio">
-		    	<% if @category == "movie" || @category == "tv" %>
-					観ています
-				<% end %>
-				<% if @category == "book" || @category == "comic" %>
-					読んでいます
-				<% end %>
-				<% if @category == "music" %>
-					聴いています
-				<% end %>
-		    </label>
-	    </div>
-	    <div class="inline_block_middle">
-		    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
-		    <label for="good" class="radio">
-		    	<% if @category == "movie" || @category == "tv" %>
-					観ました
-				<% end %>
-				<% if @category == "book" || @category == "comic" %>
-					読みました
-				<% end %>
-				<% if @category == "music" %>
-					聴きました
-				<% end %>
-		    </label>
-	    </div>
-	    <div style="height:10px;"></div>
-	    <div class="inline_block_middle">
-			<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
-		    <label for="favorite">
-		    	<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめ
-		    </label>
-		</div>
-	    <div class="inline_block_middle">
-		    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
-		    <label for="bad" class="radio">
-		    	<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしない
-		    </label>
-	    </div>
+	<div class="form03" style="text-align:center;width:100%;margin:0 auto;">
+	    <%= radio_button_tag(:review, "bookmark", true, {:id => "bookmark"}) %>
+	    <label for="bookmark" class="inline_block_middle">
+	    	<% if @category == "movie" || @category == "tv" %>
+				観たいです
+			<% end %>
+			<% if @category == "book" || @category == "comic" %>
+				読みたいです
+			<% end %>
+			<% if @category == "music" %>
+				聴きたいです
+			<% end %>
+	    </label>
+	    <%= radio_button_tag(:review, "doing", false, {:id => "doing"}) %>
+	    <label for="doing" class="inline_block_middle">
+	    	<% if @category == "movie" || @category == "tv" %>
+				観ています
+			<% end %>
+			<% if @category == "book" || @category == "comic" %>
+				読んでいます
+			<% end %>
+			<% if @category == "music" %>
+				聴いています
+			<% end %>
+	    </label>
+	    <%= radio_button_tag(:review, "good", false, {:id => "good"}) %>
+	    <label for="good" class="inline_block_middle">
+	    	<% if @category == "movie" || @category == "tv" %>
+				観ました
+			<% end %>
+			<% if @category == "book" || @category == "comic" %>
+				読みました
+			<% end %>
+			<% if @category == "music" %>
+				聴きました
+			<% end %>
+	    </label>
+	    <div style="height:10px;"></div>    
+		<%= radio_button_tag(:review, "favorite", false, {:id => "favorite"}) %>
+	    <label for="favorite" class="inline_block_middle">
+	    	<%= image_tag "star_F8C55A.svg",:class => "inline_block_middle", :style =>'width:12px;height:12px;margin-top:-2px;' %>
+	    	<span class="inline_block_middle">
+	    		おすすめ
+	    	</span>
+	    </label>
+	    <%= radio_button_tag(:review, "bad", false, {:id => "bad"}) %>
+	    <label for="bad" class="inline_block_middle">
+	    	<%= image_tag "ban_FB473E.svg",:class => "inline_block_middle", :style =>'width:12px;height:12px;margin-top:-0.5px;' %>
+	    	<span class="inline_block_middle">
+	    		おすすめしない
+	    	</span>
+		</label>
 	</div>
+	<div style="height:20px;"></div>
 	<%#コメント%>
-	<div style="height:10px;"></div>
-	<div class="nmn02" style="text-align:center;width:90%;padding:10px;margin:0 auto;">
+	<div class="form02" style="text-align:center;width:85%;margin:0 auto;">
 		<textarea name="description" id="textarea" placeholder="何か書く" wrap="soft"></textarea>
 	</div>
-	<div style="height:10px;"></div>
+	<div style="height:20px;"></div>
 	<%#ポスター(映画,テレビの時)%>
 	<% if @category == "movie" || @category == "tv" %>
 		<div class="horizontal_scroll">
@@ -110,7 +106,7 @@
 						<% @boolean = false %>
 					<% end %>
 					<div style="width:60%;height:auto;display:inline-block;vertical-align:middle;padding:0;margin:0;<%= 'margin-left:20%;' if i == 1 %><%= 'margin-left:50px;' if i != 1 %><%= 'margin-right:20%;' if i == @posters.size %>"> 
-						<div class="radio01">
+						<div class="form01">
 							<%= radio_button_tag(:image_url, "https://image.tmdb.org/t/p/original#{poster.file_path}", @boolean, {:id => "image_url#{i}"}) %>
 							<label for="image_url<%= i %>">
 								<img data-src="https://image.tmdb.org/t/p/w500<%= poster.file_path %>" class="lazyload" style="width:100%;height:auto;">
@@ -161,6 +157,7 @@
 			</div>
 		</div>	
 	<% end %>
+	<div style="height:20px;"></div>
 <% end %>
 
 <%#音楽プレビューjs%>
@@ -196,6 +193,10 @@
 	$(function() {
 	  var $textarea = $('#textarea');
 	  var lineHeight = parseInt($textarea.css('lineHeight'));
+	  $(function() {
+	      var lines = ($textarea.val() + '\n').match(/\n/g).length;
+	      $textarea.height(lineHeight * lines);
+	    });
 	  $textarea.on('input', function(e) {
 	    var lines = ($(this).val() + '\n').match(/\n/g).length;
 	    $(this).height(lineHeight * lines);

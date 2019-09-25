@@ -6,7 +6,7 @@
         <%= form_tag(works_new_path, method: :get) do %>
         <%= hidden_field_tag :category, item["media_type"] %>
         <%= hidden_field_tag :id, item["id"] %>
-          <button type="submit">
+          <button type="submit" style="width:100%;">
             <div style="text-align:left;margin:0 10px;padding:12px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
               <div class="inline_block_middle" style="width:18%;">
                 <% if item["poster_path"].blank? %>
@@ -57,7 +57,7 @@
       <%= form_tag(works_new_path, method: :get) do %>
         <%= hidden_field_tag :category, "movie" %>
         <%= hidden_field_tag :id, item["id"] %>
-        <button type="submit">
+        <button type="submit" style="width:100%;">
           <div style="text-align:left;margin:0 10px;padding:12px 5px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
             <div class="inline_block_middle" style="width:18%;">
               <% if item["poster_path"].blank? %>

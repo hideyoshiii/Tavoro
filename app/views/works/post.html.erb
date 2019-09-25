@@ -116,51 +116,69 @@
 			</div>
 			<div class="inline_block_middle" style="width:calc(100% - 55px);">
 				<div class="contain_title02">
-					<div style="font-size:13px;color:#FAFAFA;word-wrap:break-word;margin-top:1px;">
+					<div style="font-size:12px;color:#FAFAFA;word-wrap:break-word;margin-top:1px;">
 						<%= @post.user.name %>
 						<% if @post.user.authority == "public" %>
 	                    	<img data-src="/assets/public.svg" class="icon_public_min swiper-lazy">
 	                    <% end %>
 					</div>
 				</div>
+				<div style="height:2px;"></div>
 				<div class="contain_title02">
-					<div style="font-size:10px;color:#FAFAFA;opacity:0.6;word-wrap:break-word;margin-top:1px;">
+					<div style="font-size:11px;color:#FAFAFA;opacity:0.6;word-wrap:break-word;margin-top:1px;">
 						<% if @post.category == "movie" %>
-							<%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> 映画
+							<%= image_tag "movie_FAFAFA.svg",:class => "inline_block_middle", :style =>'width:10px;height:10px;' %>
+							<span class="inline_block_middle">
+								映画
+							</span>
 						<% end %>
 						<% if @post.category == "tv" %>
-							<%= image_tag "movie_FAFAFA.svg", :class =>'icon_category' %> テレビ
+							<%= image_tag "movie_FAFAFA.svg",:class => "inline_block_middle", :style =>'width:10px;height:10px;' %>
+							<span class="inline_block_middle">
+								テレビ
+							</span>
 						<% end %>
 						<% if @post.category == "book" %>
-							<%= image_tag "book_FAFAFA.svg", :class =>'icon_category' %> ブック
+							<%= image_tag "book_FAFAFA.svg",:class => "inline_block_middle", :style =>'width:10px;height:10px;' %>
+							<span class="inline_block_middle">
+								ブック
+							</span>
 						<% end %>
 						<% if @post.category == "comic" %>
-							<%= image_tag "book_FAFAFA.svg", :class =>'icon_category' %> コミック
+							<%= image_tag "book_FAFAFA.svg",:class => "inline_block_middle", :style =>'width:10px;height:10px;' %>
+							<span class="inline_block_middle">
+								コミック
+							</span>
 						<% end %>
 						<% if @post.category == "music" %>
-							<%= image_tag "music_FAFAFA.svg", :class =>'icon_category' %> ミュージック
-						<% end %>													
-						<% @seconds = (Time.now - @post.created_at).round  %>
-						<% if @seconds <= 3600 %>
-							- <%= @seconds / 60 %>分前
-						<% else %>
-							<% if @seconds <= 86400 %>
-									- <%= @seconds / (60 * 60) %>時間前
+							<%= image_tag "music_FAFAFA.svg",:class => "inline_block_middle", :style =>'width:10px;height:10px;' %>
+							<span class="inline_block_middle">
+								ミュージック
+							</span>
+						<% end %>
+						<span class="inline_block_middle">
+							<% @seconds = (Time.now - @post.created_at).round  %>
+							<% if @seconds <= 3600 %>
+								- <%= @seconds / 60 %>分前
 							<% else %>
-								<% if @seconds <= 604800 %>
-									- <%= @seconds / (60 * 60 * 24) %>日前
+								<% if @seconds <= 86400 %>
+										- <%= @seconds / (60 * 60) %>時間前
 								<% else %>
-									- <%= @post.created_at.strftime('%m月%d日') %>
+									<% if @seconds <= 604800 %>
+										- <%= @seconds / (60 * 60 * 24) %>日前
+									<% else %>
+										- <%= @post.created_at.strftime('%m月%d日') %>
+									<% end %>
 								<% end %>
 							<% end %>
-						<% end %>
+						</span>
 					</div>
 				</div>
 			</div>
 		<% end %>
 	</div>						
 	<div style="height:15px;"></div>
-	<div style="font-size:12px;color:#FAFAFA;opacity:0.8;margin-left:5px">
+	<div style="font-size:12px;color:#FAFAFA;;margin-left:5px">
 		<% if @post.review == "bookmark" %>
 			<% if @post.category == "movie" || @post.category == "tv" %>
 				観たいです

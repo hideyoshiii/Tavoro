@@ -226,17 +226,17 @@ class WorksController < ApplicationController
     #画像定義
     if @poster.present?
       if @category == "movie" || @category == "tv"
-        @poster_show = @poster.sub(/original/, 'w300')
+        @poster_show = @poster.sub(/original/, 'w500')
       end
       if @category == "book" || @category == "comic"
         if @api == "itunes"
-          @poster_show = @poster.sub(/1000x1000bb/, '300x300bb')
+          @poster_show = @poster.sub(/1000x1000bb/, '500x500bb')
         else
-          @poster_show = @poster.sub(/jpg/, 'jpg?_ex=300x300')
+          @poster_show = @poster.sub(/jpg/, 'jpg?_ex=500x500')
         end
       end
       if @category == "music"
-        @poster_show = @poster.sub(/1000x1000bb/, '300x300bb')
+        @poster_show = @poster.sub(/1000x1000bb/, '500x500bb')
       end
     end
   end
@@ -304,17 +304,17 @@ class WorksController < ApplicationController
     #画像定義
     if @post.image_url.present?
       if @post.category == "movie" || @post.category == "tv"
-        @poster_show = @post.image_url.sub(/original/, 'w300')
+        @poster_show = @post.image_url.sub(/original/, 'w500')
       end
       if @post.category == "book" || @post.category == "comic"
         if @post.api == "itunes"
-          @poster_show = @post.image_url.sub(/1000x1000bb/, '300x300bb')
+          @poster_show = @post.image_url.sub(/1000x1000bb/, '500x500bb')
         else
-          @poster_show = @post.image_url.sub(/jpg/, 'jpg?_ex=300x300')
+          @poster_show = @post.image_url.sub(/jpg/, 'jpg?_ex=500x500')
         end
       end
       if @post.category == "music"
-        @poster_show = @post.image_url.sub(/1000x1000bb/, '300x300bb')
+        @poster_show = @post.image_url.sub(/1000x1000bb/, '500x500bb')
       end
     end
   end
@@ -349,6 +349,11 @@ class WorksController < ApplicationController
   	end
     if params[:review]
       @post.review = params[:review]
+    end
+    if params[:latest]
+      if params[:latest] == "latest"
+        @post.created_at = Time.now
+      end
     end
     if @post.save
       redirect_to "/post/#{@post.id}"

@@ -10,7 +10,7 @@
   <div class="inline_block_middle" style="width:60%;">
     <div class="contain_title02" style="text-align:center;">
       <div style="font-size:14px;color:#FAFAFA;">
-        アカウント登録
+        
       </div>
     </div>
   </div>
@@ -26,7 +26,8 @@
     <div style="font-size:20px;color:#FAFAFA;font-weight:bolder;">
       Sign up
     </div>
-    <div class="gogo">
+    <div style="height:10px;"></div>
+    <div class="form_sign">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.text_field :name,placeholder: "name", required: "", autofocus: true %>
         <%= f.email_field :email,placeholder: "email", required: "" %>
