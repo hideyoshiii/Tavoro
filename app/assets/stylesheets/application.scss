@@ -157,6 +157,18 @@ body:after{
   }
 }
 
+//アラート
+.alert{
+	position:fixed;
+	top:1%;
+	left:0;
+	width:90%;
+	height:auto;
+	margin:0 5%;
+	padding:15px 5%;
+	border:none;
+	z-index:999;
+}
 
 
 //固定バー関連
@@ -981,7 +993,7 @@ button {
   width:100%;
   height:auto;
   padding:3px 0;
-  font-size:15px;
+  font-size:14px;
   line-height:1.5;
   background:none;
   box-shadow:none;
@@ -1001,7 +1013,7 @@ button {
   width:100%;
   height:auto;
   padding:3px 0;
-  font-size:15px;
+  font-size:14px;
   line-height:1.5;
   background:none;
   box-shadow:none;
@@ -1455,6 +1467,7 @@ button {
     margin:3px 0px 3px 2%;
     border-radius:4px;
     overflow:hidden;
+    z-index:1;
 }
 .grid_collection_right {
   	position:relative;

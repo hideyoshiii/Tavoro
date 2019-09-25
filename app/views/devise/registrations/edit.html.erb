@@ -1,7 +1,7 @@
 <%#トップバー%>
-<div class="bar_top">      
+<div class="bar_top">
   <div class="inline_block_middle" style="width:20%;">
-    <div style="text-align:left;padding-left:15px;">
+    <div style="text-align:left;padding-left:20px;">
       <a href="javascript:void(0);" onclick="window.history.back();">
         <%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
       </a>                    
@@ -24,6 +24,8 @@
 </div>
 <div style="height:50px;"></div>
 
+<%#エラーメッセージ%>
+<%= devise_error_messages! %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <div style="height:20px;"></div>
@@ -52,7 +54,7 @@
   </div>
   <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="form_user_edit_name">
-      <%= f.text_field :name,placeholder: "名前", required: "", autofocus: true %>
+      <%= f.text_field :name,placeholder: "名前", required: "", autofocus: true, :id => "name" %>
     </div>
   </div>
   <div style="height:30px;"></div> 
@@ -60,17 +62,17 @@
   <div style="padding:5px 15px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="inline_block_middle" style="width:90%;">
       <div style="font-size:12px;color:#FAFAFA;opacity:0.6;">
-        user_id
+        username
       </div>
     </div>
   </div>
   <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="form_user_edit_name">
-      <%= f.text_field :username,placeholder: "ユーザーid", required: "", autofocus: true, :id => "inc_search" %>
-      <div id='validate_username'>
-        <%= render partial: 'users/validate_username' %>
-      </div>
+      <%= f.text_field :username,placeholder: "ユーザーid", required: "", autofocus: true, :id => "username" %>
     </div>
+  </div>
+  <div id='validate_username' style="padding:5px 15px;margin-left:10px;">
+    <%= render partial: 'users/validate_username' %>
   </div>
   <div style="height:30px;"></div> 
   <%#自己紹介%>
@@ -83,7 +85,7 @@
   </div>
   <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="form_user_edit_description">
-      <%= f.text_area :description, id: "textarea", placeholder: "自己紹介を書く", autofocus: true %>
+      <%= f.text_area :description, placeholder: "自己紹介を書く", autofocus: true, id: "textarea" %>
     </div>
   </div>
   <div style="height:30px;"></div>
@@ -97,7 +99,7 @@
   </div>
   <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="form_user_edit_name">
-      <%= f.email_field :email,placeholder: "メールアドレス", required: "", autofocus: true %>
+      <%= f.email_field :email,placeholder: "メールアドレス", required: "", autofocus: true, :id => "email" %>
     </div>
   </div>
   <div style="height:30px;"></div>
@@ -111,18 +113,33 @@
   </div>
   <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="form_user_edit_name">
-      <%= f.password_field :password,placeholder: "パスワード" %>
+      <%= f.password_field :current_password, placeholder: "現在のパスワード" , :id => "current_password"%>
     </div>
   </div>
   <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="form_user_edit_name">
-      <%= f.password_field :password_confirmation,:placeholder => 'パスワード(確認用)' %>
+      <%= f.password_field :password,placeholder: "パスワード", :id => "password" %>
+    </div>
+  </div>
+  <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
+    <div class="form_user_edit_name">
+      <%= f.password_field :password_confirmation,:placeholder => 'パスワード(確認用)', :id => "password_confirmation" %>
     </div>
   </div>
   <div style="height:30px;"></div>
 <% end %>
 
 
+<%#投稿ボタンボタン%>
+<script defer>
+  $(function(){
+    //フォームにname属性を追加
+    var name = $('#edit_user').attr('name', 'myform');
+    $('#btn_post').click(function() {
+      document.myform.submit();
+    });
+  });
+</script>
 <%#テキストエリアの自動改行%>
 <script defer>
   $(function() {
@@ -138,6 +155,41 @@
     });
   });
 </script>
+<%#キーボードを閉じる%>
+<script defer>
+  $(function(){
+    $('#name').keypress(function(e) {
+      if ( e.which == 13 ) {
+        $("#name").blur();
+        return false;
+      }
+    });
+    $('#email').keypress(function(e) {
+      if ( e.which == 13 ) {
+        $("#email").blur();
+        return false;
+      }
+    });
+    $('#current_password').keypress(function(e) {
+      if ( e.which == 13 ) {
+        $("#current_password").blur();
+        return false;
+      }
+    });
+    $('#password').keypress(function(e) {
+      if ( e.which == 13 ) {
+        $("#password").blur();
+        return false;
+      }
+    });
+    $('#password_confirmation').keypress(function(e) {
+      if ( e.which == 13 ) {
+        $("#password_confirmation").blur();
+        return false;
+      }
+    });
+  });
+</script>
 <%#idのvalidation%>
 <script defer>
   $(function(){
@@ -148,32 +200,34 @@
     ajaxPost = function(input)
     {
       $.ajax({
-        url: "ajax_validate_username",
+        url: "/users/ajax_validate_username",
           type: "GET",
           data: ("q=" + input)
       });
     };
-    $('#inc_search').keyup(function() {
-      input = $(this).val();   //前後の不要な空白を削除
+    //初期値の判定
+    input = $('#username').val();
+    ajaxPost(input);
+    $('#username').keyup(function() {
+      input = $(this).val(); //前後の不要な空白を削除
       if(preInput !== input){
         clearTimeout(preFunc);
         preFunc = setTimeout(ajaxPost(input), 0);
       }
       preInput = input;
     });
+    $('#username').keypress(function(e) {
+      if ( e.which == 13 ) {
+        clearTimeout(preFunc);
+        preFunc = setTimeout(ajaxPost(input), 0);
+        // スマホのキーボードを閉じる
+        $("#username").blur();
+        return false;
+      }
+    })
   });
 </script>
-<%#投稿ボタンボタン%>
-<script defer>
-  $(function(){
-    //フォームにname属性を追加
-    var name = $('#edit_user').attr('name', 'myform');
-    $('#btn_post').click(function() {
-      document.myform.submit();
-    });
-  });
-</script>
-<%#投稿ボタンボタン%>
+<%#画像プレビュー%>
 <script defer>
   $(function(){
     $('#image').on('change', function (e) {
@@ -185,3 +239,18 @@
     });
   });
 </script>
+<%#ブラウザバック変更%>
+<% if request.referer&.include?(request.host_with_port) %>
+  <% if request.referer&.include?("edit") %>
+    <script defer>
+      $(function() {
+          // 戻るボタンを押された時に何も処理を行わない
+        history.pushState(null, null, null);
+        // 戻るボタンを押した時の処理を追加
+        window.addEventListener("popstate", function() {
+          location.replace("<%= root_url(only_path: false) %><%= current_user.username %>");
+        })
+      });
+    </script>
+  <% end %>
+<% end %>

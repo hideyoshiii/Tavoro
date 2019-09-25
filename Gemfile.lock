@@ -780,6 +780,9 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.7.2)
+      devise (>= 4.5)
+    devise-i18n-views (0.3.7)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.8.0)
@@ -994,6 +997,8 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   devise
+  devise-i18n
+  devise-i18n-views
   figaro
   google-analytics-rails
   heroku-deflater

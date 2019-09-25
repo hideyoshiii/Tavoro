@@ -111,7 +111,8 @@ class UsersController < ApplicationController
     if params[:q].present?
       if User.where(username: params[:q]).exists?
         if current_user.username == params[:q]
-          
+          @validation = ""
+          @check = true
         else
           @validation = "このidはすでに使われています"
           @check = false
