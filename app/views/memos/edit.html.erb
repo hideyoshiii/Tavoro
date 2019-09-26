@@ -24,11 +24,11 @@
 </div>
 <div style="height:50px;"></div>
 
-<%= form_tag("/memos/#{@memo.id}/update", method: :post, :name => "myform") do %>
+<%= form_tag("/memos/#{@memo.id}/update", method: :post, :name => "myform", :style => "height:calc(100% - 50px);") do %>
 	<%#バリデーション用submit%>
 	<input type="submit" style="display:none" name="submit">
 	<%#内容%>
-	<div class="form02" style="text-align:center;width:90%;margin:0 auto;">
+	<div class="form02" style="text-align:center;width:90%;height:100%;margin:0 auto;">
 		<textarea name="content" id="textarea" placeholder="メモを書く(非公開)" wrap="soft" required="required" autofocus="autofocus"><%= @memo.content %></textarea>
 	</div>
 <% end %>
@@ -52,5 +52,13 @@
 <script defer>
 	$('#btn_post').click(function() {
 		$("input[name=submit]").click();
+	});
+</script>
+<%#タッチしたらフォーカス%>
+<script defer>
+	$('.form02').click(function() {
+		if (document.hasFocus()) {
+			document.getElementById("textarea").focus()
+    	}
 	});
 </script>
