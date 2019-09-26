@@ -8,7 +8,7 @@
       	</div>
     </div>
     <div class="inline_block_middle" style="width:60%;">
-      	<div class="contain_title02" style="text-align:center;">
+      	<div class="line_limit01" style="text-align:center;">
         	<div style="font-size:14px;color:#FAFAFA;">
           		<%= @title %>
         	</div>
@@ -25,6 +25,8 @@
 <div style="height:50px;"></div>
 
 <%= form_tag(works_save_path, method: :post, :name => "myform") do %>
+	<%#バリデーション用submit%>
+  	<input type="submit" style="display:none" name="submit">
 	<%= hidden_field_tag :title, @title %>
 	<%= hidden_field_tag :work_id, @work_id %>
 	<%= hidden_field_tag :category, @category %>
@@ -206,7 +208,7 @@
 <%#投稿ボタンボタン%>
 <script defer>
 	$('#btn_post').click(function() {
-		document.myform.submit();
+		$("input[name=submit]").click();
 	});
 </script>
 <%#lazyload.js%>

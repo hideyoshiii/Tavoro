@@ -1,14 +1,14 @@
 <%#トップバー%>
 <div class="bar_top">
   <div class="inline_block_middle" style="width:20%;">
-    <div style="text-align:left;padding-left:20px;">
+    <div style="text-align:left;padding-left:15px;">
       <a href="javascript:void(0);" onclick="window.history.back();">
         <%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;' %>
       </a>                    
     </div>
   </div>
   <div class="inline_block_middle" style="width:60%;">
-    <div class="contain_title02" style="text-align:center;">
+    <div class="line_limit01" style="text-align:center;">
       <div style="font-size:14px;color:#FAFAFA;">
         アカウント編集
       </div>
@@ -28,6 +28,8 @@
 <%= devise_error_messages! %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%#バリデーション用submit%>
+  <input type="submit" style="display:none" name="submit">
   <div style="height:20px;"></div>
   <%#アイコン画像%>
   <div class="form_user_edit_image" style="text-align:center;">
@@ -54,7 +56,7 @@
   </div>
   <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="form_user_edit_name">
-      <%= f.text_field :name,placeholder: "名前", required: "", autofocus: true, :id => "name" %>
+      <%= f.text_field :name,placeholder: "名前", required: "", :id => "name" %>
     </div>
   </div>
   <div style="height:30px;"></div> 
@@ -68,7 +70,7 @@
   </div>
   <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="form_user_edit_name">
-      <%= f.text_field :username,placeholder: "ユーザーid", required: "", autofocus: true, :id => "username" %>
+      <%= f.text_field :username,placeholder: "ユーザーid", required: "", :id => "username" %>
     </div>
   </div>
   <div id='validate_username' style="padding:5px 15px;margin-left:10px;">
@@ -85,7 +87,7 @@
   </div>
   <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="form_user_edit_description">
-      <%= f.text_area :description, placeholder: "自己紹介を書く", autofocus: true, id: "textarea" %>
+      <%= f.text_area :description, placeholder: "自己紹介を書く", id: "textarea" %>
     </div>
   </div>
   <div style="height:30px;"></div>
@@ -99,7 +101,7 @@
   </div>
   <div style="padding:5px 15px;margin-left:10px;border-bottom:solid 0.5px rgba(150, 150, 150, 0.2);">
     <div class="form_user_edit_name">
-      <%= f.email_field :email,placeholder: "メールアドレス", required: "", autofocus: true, :id => "email" %>
+      <%= f.email_field :email,placeholder: "メールアドレス", required: "", :id => "email" %>
     </div>
   </div>
   <div style="height:30px;"></div>
@@ -136,7 +138,7 @@
     //フォームにname属性を追加
     var name = $('#edit_user').attr('name', 'myform');
     $('#btn_post').click(function() {
-      document.myform.submit();
+      $("input[name=submit]").click();
     });
   });
 </script>
@@ -239,18 +241,3 @@
     });
   });
 </script>
-<%#ブラウザバック変更%>
-<% if request.referer&.include?(request.host_with_port) %>
-  <% if request.referer&.include?("edit") %>
-    <script defer>
-      $(function() {
-          // 戻るボタンを押された時に何も処理を行わない
-        history.pushState(null, null, null);
-        // 戻るボタンを押した時の処理を追加
-        window.addEventListener("popstate", function() {
-          location.replace("<%= root_url(only_path: false) %><%= current_user.username %>");
-        })
-      });
-    </script>
-  <% end %>
-<% end %>

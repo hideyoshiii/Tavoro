@@ -17,6 +17,7 @@ class WorksController < ApplicationController
 
   def post
     @post = Post.find(params[:id])
+    @memos = Memo.where(user_id: @post.user, post_id: @post).order(created_at: "DESC")
     #画像定義
     if @post.image_url.present?
       if @post.category == "movie" || @post.category == "tv"
@@ -251,10 +252,8 @@ class WorksController < ApplicationController
   	if params[:category] == "music"
   		@post = Post.new(user_id: current_user.id, title: params[:title], description: params[:description], category: params[:category], image_url: params[:image_url], review: params[:review], work_id: params[:work_id], preview_url: params[:preview_url])
   	end
-    #保存に成功した場合
   	if @post.save
       redirect_to root_path
-    #保存に失敗した場合
     else
       redirect_to root_path
     end     
@@ -358,19 +357,16 @@ class WorksController < ApplicationController
     if @post.save
       redirect_to "/post/#{@post.id}"
     else
-      redirect_to root_path
+      redirect_to "/post/#{@post.id}"
     end   
   end
 
   def destroy
   	@post = Post.find(params[:id])
-    @review = @post.review
     if @post.destroy
-      #削除に成功した場合
       redirect_to "/#{current_user.username}"
     else
-      #削除に失敗した場合
-      redirect_to root_path
+      redirect_to "/post/#{@post.id}"
     end   
   end
 

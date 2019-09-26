@@ -6,7 +6,7 @@
 	      	</div>
 	    </div>
 	    <div class="inline_block_middle" style="width:60%;"> 	
-	      	<div class="contain_title02" style="text-align:center;">
+	      	<div class="line_limit01" style="text-align:center;">
 	      		<%= link_to root_path do %>
 	        		<div class="neon">T<span>A</span>VO<span>RE</span></div>
 	        	<% end %>
@@ -60,7 +60,7 @@
 									            <% end %>
 											</div>
 											<div class="inline_block_middle" style="width:calc(100% - 48px);">
-												<div class="contain_title02">
+												<div class="line_limit01">
 													<div style="font-size:12px;color:#FAFAFA;word-wrap:break-word;margin-top:1px;">
 														<%= post.user.name %>
 														<% if post.user.authority == "public" %>
@@ -69,7 +69,7 @@
 													</div>
 												</div>
 												<div style="height:2px;"></div>
-												<div class="contain_title02">
+												<div class="line_limit01">
 													<div style="font-size:11px;color:#FAFAFA;word-wrap:break-word;opacity:0.6;">
 														<% if post.category == "movie" %>
 															<%= image_tag "movie_FAFAFA.svg",:class => "inline_block_middle", :style =>'width:10px;height:10px;' %>
@@ -169,13 +169,19 @@
 												<% end %>
 											<% end %>
 											<% if post.review == "favorite" %>
-												<%= image_tag "star_F8C55A.svg", :class =>'icon_review' %>おすすめしています
+												<%= image_tag "star_F8C55A.svg",:class => "inline_block_middle", :style =>'width:14px;height:14px;margin-top:-2px;' %>
+										    	<span class="inline_block_middle">
+										    		おすすめしています
+										    	</span>
 											<% end %>
 											<% if post.review == "bad" %>
-												<%= image_tag "ban_FB473E.svg", :class =>'icon_review' %>おすすめしていません
+												<%= image_tag "ban_FB473E.svg",:class => "inline_block_middle", :style =>'width:14px;height:14px;' %>
+										    	<span class="inline_block_middle">
+										    		おすすめしていません
+										    	</span>
 											<% end %>
 										</div>
-										<div class="contain_title" style="white-space:normal;">
+										<div class="line_limit02" style="white-space:normal;">
 											<div style="font-size:18px;color:#FAFAFA;text-shadow:0px 0px 2px rgba(0,0,0,0.8);font-weight:bold;letter-spacing:0.02em;">
 												<%= post.title %>
 											</div>

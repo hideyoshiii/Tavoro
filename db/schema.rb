@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190122185224) do
+ActiveRecord::Schema.define(version: 20190926071553) do
 
   create_table "follow_requests", force: :cascade do |t|
     t.integer "requester_id"
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(version: 20190122185224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "memos", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_memos_on_post_id"
+    t.index ["user_id"], name: "index_memos_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|

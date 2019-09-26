@@ -50,6 +50,12 @@ Rails.application.routes.draw do
   post "works/:id/update" => "works#update"
   post "works/:id/destroy" => "works#destroy"
 
+  get 'memos/:post_id/new' => "memos#new"
+  post "memos/create" => "memos#create"
+  get 'memos/:id/edit' => "memos#edit"
+  post "memos/:id/update" => "memos#update"
+  post "memos/:id/destroy" => "memos#destroy"
+
   post "likes/:post_id/create" => "likes#create"
   post "likes/:post_id/destroy" => "likes#destroy"
 

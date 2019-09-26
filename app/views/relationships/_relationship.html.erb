@@ -1,29 +1,27 @@
 <% if user_signed_in? %>
 	<% if current_user?(@user) %>	
 		<%= link_to edit_user_registration_path do %>
-			<div class="btn_follow_on">
+			<div class="btn_on">
 				プロフィールを編集
 			</div>
 		<% end %>
 	<% else %>
 		<% if current_user.following?(@user) %>
 			<%= form_for(current_user.following_relationships.find_by(following_id: @user.id), data: { confirm: 'フォローを解除しますか？' }, html: { method: :delete }, remote: true) do |f| %>
-				<button>
-					<div class="btn_follow_on">
-						フォロー中
-					</div>
+				<button class="btn_on">
+					フォロー中
 				</button>
 			<% end %>
 		<% else %>
 			<%= form_for(current_user.following_relationships.build(following_id: @user.id), remote: true) do |f| %>
 			  <%= f.hidden_field :following_id %>
-			  <%= f.submit "フォローする", class: "btn_follow_off" %>
+			  <%= f.submit "フォローする", class: "btn_off" %>
 			<% end %>
 		<% end %>
 	<% end %>
 <% else %>
 	<%= link_to new_user_session_path do %>
-		<div class="btn_follow_off">
+		<div class="btn_off">
 			フォローする
 		</div>
 	<% end %>

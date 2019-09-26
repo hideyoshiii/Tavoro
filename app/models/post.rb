@@ -5,4 +5,6 @@ class Post < ApplicationRecord
 
 	has_many :likes, dependent: :destroy
 
+	has_many :memos, dependent: :destroy
+
 end

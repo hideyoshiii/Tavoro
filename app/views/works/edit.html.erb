@@ -8,7 +8,7 @@
       	</div>
     </div>
     <div class="inline_block_middle" style="width:60%;">
-      	<div class="contain_title02" style="text-align:center;">
+      	<div class="line_limit01" style="text-align:center;">
         	<div style="font-size:14px;color:#FAFAFA;">
           		<%= @post.title %>
         	</div>
@@ -26,6 +26,8 @@
 
 
 <%= form_tag("/works/#{@post.id}/update", method: :post, :name => "myform") do %>
+	<%#バリデーション用submit%>
+  	<input type="submit" style="display:none" name="submit">
 	<div style="height:15px;"></div>		
 	<%#レビュー%>
 	<div class="form03" style="text-align:center;width:100%;margin:0 auto;">	
@@ -205,7 +207,7 @@
 <%#投稿ボタンボタン%>
 <script defer>
 	$('#btn_post').click(function() {
-		document.myform.submit();
+		$("input[name=submit]").click();
 	});
 </script>
 <%#lazyload.js%>
