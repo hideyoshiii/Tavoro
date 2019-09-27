@@ -197,10 +197,11 @@
 		</div>
 		<% if @post.description.present? %>
 			<div style="height:10px;"></div>
-			<div style="font-size:15px;color:#FAFAFA;opacity:0.8;line-height:1.4;font-weight:bold;margin:0 5px;">
+			<div style="font-size:14px;color:#FAFAFA;opacity:0.8;line-height:1.4;font-weight:bold;margin:0 5px;letter-spacing:0.03em;">
 				“<%= safe_join(@post.description.split("\n"), tag(:br)) %>”
-		</div>
-	<% end %>
+			</div>
+		<% end %>
+	</div>
 </div>
 <div style="height:15px;"></div>
 
@@ -296,7 +297,7 @@
 		<div style="position:fixed;bottom:3%;right:5%;width:auto;z-index:99;">
 			<a href="/memos/<%= @post.id %>/new" style="position:relative;display:inline-block;vertical-align:middle;width:60px;height:60px;line-height:60px;background:rgba(0,60,85,1);text-align:center;border-radius:50%;box-shadow:0px 0px 15px rgba(0,0,0,0.3);">
 				<i>
-					<%= image_tag "memo_FAFAFA.svg", :style =>'width:22px;height:22px;opacity:0.9;' %>
+					<%= image_tag "memo_FAFAFA.svg", :style =>'width:20px;height:20px;' %>
 				</i>
 			</a>
 		</div>

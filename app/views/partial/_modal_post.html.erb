@@ -4,13 +4,13 @@
 		<% if request.path == "/" %>
 			<span onclick="scrollGO()" style="position:relative;display:inline-block;vertical-align:middle;width:50px;height:50px;line-height:50px;background:rgba(25,25,25,1);text-align:center;border-radius:50%;box-shadow:0px 0px 15px rgba(0,0,0,0.3);">
 				<i>
-					<%= image_tag "up_FAFAFA.svg", :style =>'width:18px;height:18px;opacity:0.8;' %>
+					<%= image_tag "up_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.8;' %>
 				</i>
 			</span>
 		<% else %>
 			<a href="/" style="position:relative;display:inline-block;vertical-align:middle;width:50px;height:50px;line-height:50px;background:rgba(25,25,25,1);text-align:center;border-radius:50%;box-shadow:0px 0px 15px rgba(0,0,0,0.3);">
 				<i>
-					<%= image_tag "home_FAFAFA.svg", :style =>'width:18px;height:18px;opacity:0.8;' %>
+					<%= image_tag "home_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.8;' %>
 				</i>
 			</a>
 		<% end %>
@@ -26,13 +26,13 @@
 		<% if request.path == "/" + current_user.username || request.path == "/" + current_user.username + "/doing" || request.path == "/" + current_user.username + "/want" %>
 			<span onclick="scrollGO()" style="position:relative;display:inline-block;vertical-align:middle;width:50px;height:50px;line-height:50px;background:rgba(25,25,25,1);text-align:center;border-radius:50%;box-shadow:0px 0px 15px rgba(0,0,0,0.3);">
 				<i>
-					<%= image_tag "up_FAFAFA.svg", :style =>'width:18px;height:18px;opacity:0.8;' %>
+					<%= image_tag "up_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.8;' %>
 				</i>
 			</span>
 		<% else %>
 			<a href="/<%= current_user.username %>" style="position:relative;display:inline-block;vertical-align:middle;width:50px;height:50px;line-height:50px;background:rgba(25,25,25,1);text-align:center;border-radius:50%;box-shadow:0px 0px 15px rgba(0,0,0,0.3);">
 				<i>
-					<%= image_tag "avatar_FAFAFA.svg", :style =>'width:18px;height:18px;opacity:0.8;' %>
+					<%= image_tag "avatar_FAFAFA.svg", :style =>'width:16px;height:16px;opacity:0.8;' %>
 				</i>
 			</a>
 		<% end %>
