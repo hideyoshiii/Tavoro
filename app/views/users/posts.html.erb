@@ -10,9 +10,18 @@
     <div class="inline_block_middle" style="width:20%;">
     	<div style="text-align:left;padding-left:15px;">	    		
     		<% if request.referer&.include?(request.host_with_port) %>
-			  	<a href="javascript:void(0);" onclick="window.history.back();">
-          			<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;opacity:0.8;' %>
-        		</a>
+    			<% if user_signed_in? %>
+	    			<% if @user.id == current_user.id %>
+	    			<% else %>
+					  	<a href="javascript:void(0);" onclick="window.history.back();">
+	          				<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;opacity:0.8;' %>
+	        			</a>
+		        	<% end %>
+		        <% else %>
+		        	<a href="javascript:void(0);" onclick="window.history.back();">
+	          			<%= image_tag "left_FAFAFA.svg", :style =>'width:18px;height:18px;opacity:0.8;' %>
+	        		</a>
+		        <% end %>
 			<% end %>
       	</div>
     </div>
