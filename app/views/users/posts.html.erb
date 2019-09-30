@@ -46,50 +46,50 @@
 <div style="height:5px;"></div>
 
 <!-- プロフィール部分 -->
-<div class="" style="text-align:center;padding:0 25px;">
-	<div class="inline_block_middle" style="width:32%;">
+<div class="" style="text-align:center;padding:0 20px;">
+	<div class="inline_block_middle" style="width:35%;">
 		<div style="width:100%;text-align:left;">
 			<% if @user.image.present? %>
-			    <%= image_tag @user.image(:large), :style =>'width:80px;height:80px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+			    <%= image_tag @user.image(:large), :style =>'width:82px;height:82px;border-radius:50%;object-fit:cover;' %>
 			<% else %>
-			    <%= image_tag "user.jpg", :style =>'width:80px;height:80px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);' %>
+			    <%= image_tag "user.jpg", :style =>'width:82px;height:82px;border-radius:50%;object-fit:cover;' %>
 			<% end %>
 		</div>
 	</div>
-	<div class="inline_block_middle" style="width:68%;">
+	<div class="inline_block_middle" style="width:65%;">
 		<div style="width:100%;padding:0 4%;">	
 			<div class="inline_block_middle" style="text-align:center;width:33.33%;<%= 'opacity:0.6;' unless @type == "done" %><%= 'font-weight:bolder;' if @type == "done" %>">
 				<span onclick="goDone()">
-			      	<div style="font-size:15px;color:#FAFAFA;letter-spacing:0.02em;">
+			      	<div style="font-size:16px;color:#FAFAFA;letter-spacing:0.02em;">
 			      		<%= @done_i %>
 			    	</div>
-			    	<div style="font-size:11px;color:#FAFAFA;margin-top:-2px;">
+			    	<div style="font-size:10px;color:#FAFAFA;letter-spacing:0.02em;font-weight:normal;margin-top:-1px;">
 			      		done
 			    	</div>
 			    </span>
 		    </div>
 		   <div class="inline_block_middle" style="text-align:center;width:33.33%;<%= 'opacity:0.6;' unless @type == "doing" %><%= 'font-weight:bolder;' if @type == "doing" %>">
 		    	<span onclick="goDoing()">
-			      	<div style="font-size:15px;color:#FAFAFA;letter-spacing:0.02em;">
+			      	<div style="font-size:16px;color:#FAFAFA;letter-spacing:0.02em;">
 			      		<%= @doing_i %>
 			    	</div>
-			    	<div style="font-size:11px;color:#FAFAFA;margin-top:-2px;">
+			    	<div style="font-size:10px;color:#FAFAFA;letter-spacing:0.02em;font-weight:normal;margin-top:-1px;">
 			      		doing
 			    	</div>
 			    </span>
 		    </div>
 		    <div class="inline_block_middle" style="text-align:center;width:33.33%;<%= 'opacity:0.6;' unless @type == "want" %><%= 'font-weight:bolder;' if @type == "want" %>">
 		    	<span onclick="goWant()">
-			      	<div style="font-size:15px;color:#FAFAFA;letter-spacing:0.02em;">
+			      	<div style="font-size:16px;color:#FAFAFA;letter-spacing:0.02em;">
 			      		<%= @want_i %>
 			    	</div>
-			    	<div style="font-size:11px;color:#FAFAFA;margin-top:-2px;">
+			    	<div style="font-size:10px;color:#FAFAFA;letter-spacing:0.02em;font-weight:normal;margin-top:-1px;">
 			      		want
 			    	</div>
 			    </span>
 		    </div>
 		</div>
-		<div style="height:10px;"></div>
+		<div style="height:8px;"></div>
 		<div style="width:100%;text-align:center;">
 			<div id="relationship-of-<%= @user.id %>">
 			    <%= render partial: 'relationships/relationship' %>
@@ -97,10 +97,10 @@
 		</div>
 	</div>
 </div>
-<div style="height:8px;"></div>
-<div style="width:100%;padding:0 30px;text-align:left;">
+<div style="height:5px;"></div>
+<div style="width:100%;padding:0 20px;text-align:left;">
 	<div class="line_limit01">
-		<div style="font-size:12px;font-weight:bolder;letter-spacing:0.05em;line-height:1.5;">
+		<div style="font-size:14px;color:#FAFAFA;font-weight:bolder;letter-spacing:0.04em;line-height:1.5;">
 		    <%= @user.name %>
 		    <% if @user.authority == "public" %>
 		    	<%= image_tag "public.svg", :class =>'icon_public' %>
@@ -108,7 +108,7 @@
 		</div> 
 	</div>
 	<% if @user.description.present? %>	    
-	    <div style="font-size:11px;color:#FAFAFA;opacity:0.8;letter-spacing:0.02em;line-height:1.2;">
+	    <div style="font-size:11px;color:#FAFAFA;letter-spacing:0.01em;line-height:1.5;">
 	    	<%= safe_join(@user.description.split("\n"), tag(:br)) %>
 	    </div>		
 	<% end %>
@@ -143,7 +143,7 @@
     </li>
 </ul>
 <!--タブのコンテンツ部分-->
-<div class="tab-content" style="padding:0 10px;">
+<div class="tab-content" style="padding:0 20px;">
     <div id="all" class="tab-pane active">
       	<% if @all.blank? %>				  		
 			<div style="text-align:center;margin-top:10vh;font-size:12px;opacity:0.8;">
@@ -250,11 +250,10 @@
 		var url = document.location.toString();
 		if (url.match('#')) {
 		    $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
-		} 
+		};
 		// Change hash for page-reload
 		$('.nav-tabs a').on('shown.bs.tab', function (e) {
-		    history.replaceState(null, null, e.target.hash)
-		})
+		});
 	});
 </script>
 <%#URL置換%>

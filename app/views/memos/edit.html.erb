@@ -15,10 +15,10 @@
       	</div>
     </div>
     <div class="inline_block_middle" style="width:20%;">
-    	<div style="text-align:right;">
-    		<button id="btn_post" style="text-align:right;padding-right:15px;font-size:15px;color:#2FB4B4;">		
+    	<div style="text-align:right;padding-right:15px;">
+    		<button id="btn_post" style="font-size:15px;color:#2FB4B4;">
 				更新
-			</button>         
+			</button>
 	    </div>
     </div>
 </div>
@@ -28,37 +28,14 @@
 	<%#バリデーション用submit%>
 	<input type="submit" style="display:none" name="submit">
 	<%#内容%>
-	<div class="form02" style="text-align:center;width:90%;height:100%;margin:0 auto;">
+	<div class="form05" style="text-align:center;width:90%;height:100%;margin:0 auto;">
 		<textarea name="content" id="textarea" placeholder="メモを書く(非公開)" wrap="soft" required="required" autofocus="autofocus"><%= @memo.content %></textarea>
 	</div>
 <% end %>
 
-<%#テキストエリアの自動改行%>
-<script defer>
-	$(function() {
-	  var $textarea = $('#textarea');
-	  var lineHeight = parseInt($textarea.css('lineHeight'));
-	  $(function() {
-	      var lines = ($textarea.val() + '\n').match(/\n/g).length;
-	      $textarea.height(lineHeight * lines);
-	    });
-	  $textarea.on('input', function(e) {
-	    var lines = ($(this).val() + '\n').match(/\n/g).length;
-	    $(this).height(lineHeight * lines);
-	  });
-	});
-</script>
 <%#投稿ボタンボタン%>
 <script defer>
 	$('#btn_post').click(function() {
 		$("input[name=submit]").click();
-	});
-</script>
-<%#タッチしたらフォーカス%>
-<script defer>
-	$('.form02').click(function() {
-		if (document.hasFocus()) {
-			document.getElementById("textarea").focus()
-    	}
 	});
 </script>

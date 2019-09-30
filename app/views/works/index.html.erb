@@ -54,9 +54,9 @@
 										<%= link_to "/#{post.user.username}" do %>
 											<div class="inline_block_middle" style="width:48px;">
 									            <% if post.user.image.present? %>
-									                <img src="<%= post.user.image(:medium) %>" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+									                <img src="<%= post.user.image(:medium) %>" style="width:38px;height:38px;border-radius:50%;object-fit:cover;box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
 									            <% else %>
-									                <img src="/assets/user.jpg" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:rgba(0,0,0,0.1);box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
+									                <img src="/assets/user.jpg" style="width:38px;height:38px;border-radius:50%;object-fit:cover;box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);">
 									            <% end %>
 											</div>
 											<div class="inline_block_middle" style="width:calc(100% - 48px);">

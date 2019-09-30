@@ -1,4 +1,4 @@
-<div class="<%= 'grid_collection_right' if i % 3 == 0 %> <%= 'grid_collection' if i % 3 != 0 %>">
+<div class="<%= 'grid_collection_center' if (i - 2) % 3 == 0 %> <%= 'grid_collection' if (i - 2) % 3 != 0 %>">
 	<%= link_to "/post/#{post.id}" do %>
 		<div class="inner">
 			<div class="img">
