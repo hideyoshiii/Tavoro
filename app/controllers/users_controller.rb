@@ -109,8 +109,8 @@ class UsersController < ApplicationController
 
   def ajax_validate_username
     if params[:q].present?
-      if User.where(username: params[:q]).exists?
-        if current_user.username == params[:q]
+      if User.where('lower(username) = ?', params[:q].downcase).exists?
+        if current_user.username.casecmp(params[:q]) == 0
           @validation = ""
           @check = true
         else

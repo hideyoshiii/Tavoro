@@ -98,7 +98,7 @@ class User < ApplicationRecord
   def generate_username
     loop do
       self.username = SecureRandom.hex(4)
-      break unless User.where(username: username).exists?
+      break unless User.where('lower(username) = ?', username.downcase).exists?
     end
   end
   
